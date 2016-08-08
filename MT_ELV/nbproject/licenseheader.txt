@@ -1,0 +1,12 @@
+<#if licenseFirst??>
+${licenseFirst}
+</#if>
+${licensePrefix}Copyright (c) 2016, Mattto
+${licensePrefix}All rights reserved.
+${licensePrefix}
+${licensePrefix}Any usage of the source code, program or any parts
+${licensePrefix}of it must be consulted and the permission granted 
+${licensePrefix}by the author Matej Cenky.
+<#if licenseLast??>
+${licenseLast}
+</#if>
