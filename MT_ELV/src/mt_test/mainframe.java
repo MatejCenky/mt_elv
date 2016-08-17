@@ -18,7 +18,12 @@ public class mainframe extends javax.swing.JFrame {
      * Creates new form mainframe
      */
     public mainframe() {
+        language lang = new language();
+        
+        language.language_label2();
         initComponents();
+        
+        
     }
 
     /**
@@ -60,7 +65,7 @@ public class mainframe extends javax.swing.JFrame {
 
         gama_textfield.setText("answer");
 
-        jLabel1.setText("m [m]");
+        jLabel1.setText(language.language_label(1,1));
 
         jLabel2.setText("gama [N/m*mm^2]");
 
@@ -195,7 +200,8 @@ public class mainframe extends javax.swing.JFrame {
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
+        
+        
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
@@ -240,4 +246,6 @@ public class mainframe extends javax.swing.JFrame {
     private javax.swing.JTable jTable4;
     private javax.swing.JTextField m_textfield;
     // End of variables declaration//GEN-END:variables
+    
+
 }
