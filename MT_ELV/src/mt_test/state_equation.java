@@ -110,7 +110,7 @@ public class state_equation {
      * @param teta_0 conductor temperature in state "0"
      * @return coefficient B [double]
      */
-    public double cubic_equation_coef_B(double gama, double E, double a, double z_0, double sigma_h0, double alfa, double teta_1, double teta_0 ){
+    public double cubic_equation_coef_B(double gama, double E, double a, double z_0, double sigma_h0, double alfa, double teta_1, double teta_0){
         return Math.pow(gama,2)*E/24 * Math.pow(a*z_0/sigma_h0, 2) + alfa*E*(teta_1 - teta_0) - sigma_h0;
     }
     
@@ -130,7 +130,7 @@ public class state_equation {
      * @param z_1 conductor overload in state "1" [-]
      * @return coefficient D [double]
      */
-    public double cubic_equation_coef_D(double gama, double E, double a, double z_1 ){
+    public double cubic_equation_coef_D(double gama, double E, double a, double z_1){
         return Math.pow(gama,2)*E/24 * Math.pow(a*z_1, 2);
     }
     
