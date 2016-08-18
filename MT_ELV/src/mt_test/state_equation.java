@@ -22,7 +22,7 @@ public class state_equation {
      * Values a[0] and dh[0] set to "-1" as default;
      */
     public state_equation(int terrain){
-        this.ter = terrain;
+        state_equation.ter = terrain;
         state_equation.a[0] = -1;
         state_equation.dh[0] = -1;
     }
@@ -33,7 +33,7 @@ public class state_equation {
      * @param heights array containing all conductor catching points on towers [n dim]
      */
     public state_equation(int terrain, double spans[], double heights[]){
-        this.ter = terrain;
+        state_equation.ter = terrain;
         state_equation.a = spans;
         state_equation.dh = heights;
     }
@@ -43,23 +43,26 @@ public class state_equation {
 // basic global variables
     public static double a[];         // array of the spans on the suspension section [m]
     public static double dh[];        // array of height differences of the suspension points of towers [m]
-    public double gama;        // specific gravity of the conductor [N/m*mm^2]
-    public double m;           // weight of the conductor per unit [kg/m]
-    public double S;           // cross-section area of the conductor [mm^2]
-    public double E;           // Young model of elasticity of conductor [MPa]
-    public double alpha;       // linear expansion coefficient [1/degree_C]
+    public static double gama;        // specific gravity of the conductor [N/m*mm^2]
+    public static double m;           // weight of the conductor per unit [kg/m]
+    public static double S;           // cross-section area of the conductor [mm^2]
+    public static double E;           // Young model of elasticity of conductor [MPa]
+    public static double alpha;       // linear expansion coefficient [1/degree_C]
     
 // values for state equation
-    private final int ter;      // specify flat / non-flat terrain - in constructor !!!;
-    private double MSF;         // /average/ span of flat suspension section [m] 
-    private double MST;         // /average/ span of terrain suspension section [m] 
-    private double Bc;          // coefficient B in cubic equation
-    private double Dc;          // coefficient D in cubic equation
-    private double z_0;         // conductor overload in state "0" [-]
-    private double z_1;         // conductor overload in state "1" [-]
-    private double theta_1;     // conductor temperature in state "1"
-    private double theta_0;     // conductor temperature in state "0"
-    private double sigma_h0;    // horizontal stress in conductor in state "0" [MPa]
+    private static int ter;      // specify flat / non-flat terrain - in constructor !!!;
+    private static double MSF;         // /average/ span of flat suspension section [m] 
+    private static double MST;         // /average/ span of terrain suspension section [m] 
+    private static double Bc;          // coefficient B in cubic equation
+    private static double Dc;          // coefficient D in cubic equation
+    private static double z_0;         // conductor overload in state "0" [-]
+    private static double z_1;         // conductor overload in state "1" [-]
+    private static double theta_1;     // conductor temperature in state "1"
+    private static double theta_0;     // conductor temperature in state "0"
+    private static double sigma_h0;    // horizontal stress in conductor in state "0" [MPa]
+
+//values for state equation with imaginary temperatures
+    private static double Bc_i;        // coefficient B in cubic equation with imaginary temperatures
     
 // results
     /**
@@ -95,45 +98,45 @@ public class state_equation {
      * Not known values set to "-1" as a default value when error checking;
      * 
      */    
-    public void set_variables(){
-        // local - results
+    public static void set_variables(){
+        // public - results
         state_equation.F_mH1 = -1;
         state_equation.sigma_h1 = -1;
         state_equation.c = -1;
         state_equation.sag_max = -1;
         state_equation.sag_vis[0] = -1;
         
-        // local - sources
-        this.gama = -1;
-        this.MSF = -1;
-        this.MST = -1;
+        // local - results
+        state_equation.gama = -1;
+        state_equation.MSF = -1;
+        state_equation.MST = -1;
         
-        //mainframe - need to be added
-        this.m = -1;
-        this.S = -1;
+        // mainframe - need to be done based on mainframe
+        state_equation.m = -1;
+        state_equation.S = -1;
         state_equation.a[0] = -1;
         state_equation.dh[0] = -1;
-        this.E = -1;
-        this.z_0 = -1;
-        this.z_1 = -1;
-        this.alpha = -1;
-        this.theta_0 = -1;
-        this.theta_1 = -1;
-        this.sigma_h0 = -1;
-        //for example: this.m = mainframe.jText_m.getText();
+        state_equation.E = -1;
+        state_equation.z_0 = -1;
+        state_equation.z_1 = -1;
+        state_equation.alpha = -1;
+        state_equation.theta_0 = -1;
+        state_equation.theta_1 = -1;
+        state_equation.sigma_h0 = -1;
+        //for example: state_equation.m = mainframe.jText_m.getText();
     }
     
-    public void get_variables(){
-        // need to be done
+    public static void get_variables(){
+        // need to be done based on mainframe
     }
     
     /**
      * Computes the state equation using set variables; 
      * Variables need to be set BEFORE computation;
      */
-    public void compute(){
+    public static void compute_sigma_H1(){
         //basic check if variables are set
-        if (this.m == -1) {
+        if (state_equation.m == -1) {
             set_variables();
             System.out.println("Variables were set!");
         } 
@@ -151,12 +154,21 @@ public class state_equation {
         sag_visible();
     }
     
+    /**
+     * Storing the result sigma_HT into the conductor_creeping variable!!
+     * @param T_EDT average year temperature [degreeC] - act as theta_1
+     */
+    public static void compute_sigma_HT(double T_EDT){
+        cubic_equation_coef_B_imaginary(theta_0, T_EDT);
+        cubic_equation_solve_imaginary();
+    }
+    
     
 // **************** PRIVATE METHODS **************** //
     /**
      * Set the cubic equation B,D coefficients values
      */
-    private void set_cubic_values(){
+    private static void set_cubic_values(){
         cubic_equation_coef_B();
         cubic_equation_coef_D();
     }
@@ -164,27 +176,27 @@ public class state_equation {
     /**
      * Method computes the specific gravity of the conductor "gama".
      */
-    private void gama(){
-        this.gama = this.m * this.S;
+    private static void gama(){
+        state_equation.gama = state_equation.m * state_equation.S;
     }
     
     /**
      * Method computes middle span for flat terrain "MSF".
      */
-    private void mid_span_flat(){
+    private static void mid_span_flat(){
         double cube = 0;
         double sum = 0;
         for (int i=0; i<state_equation.a.length; i++){
             cube = cube + Math.pow(state_equation.a[i],3);
             sum = sum + state_equation.a[i];
         }
-        this.MSF = Math.sqrt(cube/sum);
+        state_equation.MSF = Math.sqrt(cube/sum);
     }
     
     /**
      * Method computes middle span for non-flat terrain "MST".
      */
-    private void mid_span_terrain(){
+    private static void mid_span_terrain(){
         double upper = 0;
         double lower = 0;
         double temp;
@@ -193,30 +205,30 @@ public class state_equation {
             upper = upper + Math.sqrt(Math.pow(state_equation.a[i], 4)/temp);
             lower = lower + temp;
         }
-        this.MST = Math.sqrt(upper/lower);
+        state_equation.MST = Math.sqrt(upper/lower);
     }
     
     /**
      * Computes the cubic equation in the form: A*x^3 + B*x^2 + C*x + D = 0
      * Defined are only B,D coefficient -> sufficient to solve
      */
-    private void cubic_equation_solve(){
+    private static void cubic_equation_solve(){
         double part1;
         double part2;
         double part3;
         double condition;
         double result;
         
-        condition = Math.pow(-1*Math.pow(this.Bc, 2)/9, 3) + Math.pow(-1*(27*this.Dc+2*Math.pow(this.Bc, 3)/54),2);
+        condition = Math.pow(-1*Math.pow(state_equation.Bc, 2)/9, 3) + Math.pow(-1*(27*state_equation.Dc+2*Math.pow(state_equation.Bc, 3)/54),2);
         
         if (0 < condition) {
-            part1 = Math.cbrt((-1*(27*this.Dc+2*Math.pow(this.Bc, 3)/54)) - Math.sqrt(condition));
-            part2 = Math.cbrt((-1*(27*this.Dc+2*Math.pow(this.Bc, 3)/54)) + Math.sqrt(condition)) - this.Bc/3;
+            part1 = Math.cbrt((-1*(27*state_equation.Dc+2*Math.pow(state_equation.Bc, 3)/54)) - Math.sqrt(condition));
+            part2 = Math.cbrt((-1*(27*state_equation.Dc+2*Math.pow(state_equation.Bc, 3)/54)) + Math.sqrt(condition)) - state_equation.Bc/3;
             result = part1 + part2;
         } else {
-            part1 = Math.cbrt(-1*Math.pow(-1*Math.pow(this.Bc, 2)/9, 3));
-            part2 = Math.acos(-1*(27*this.Dc+2*Math.pow(this.Bc, 3)/54)/part1);
-            part3 = Math.cos(part2/3) - this.Bc/3;
+            part1 = Math.cbrt(-1*Math.pow(-1*Math.pow(state_equation.Bc, 2)/9, 3));
+            part2 = Math.acos(-1*(27*state_equation.Dc+2*Math.pow(state_equation.Bc, 3)/54)/part1);
+            part3 = Math.cos(part2/3) - state_equation.Bc/3;
             result = 2 * part1 * part3;
         }
         state_equation.sigma_h1 = result;
@@ -226,70 +238,70 @@ public class state_equation {
     /**
      * Computes the B coefficient which is input to the cubic equation
      */
-    private void cubic_equation_coef_B(){
+    private static void cubic_equation_coef_B(){
         double var;
-        if (this.ter == 1){
-            var = this.MSF;
+        if (state_equation.ter == 1){
+            var = state_equation.MSF;
         } else {
-            var = this.MST;
+            var = state_equation.MST;
         }
-        this.Bc =  Math.pow(this.gama,2) * this.E/24 * Math.pow(var*this.z_0/this.sigma_h0, 2) + this.alpha*this.E*(this.theta_1 - this.theta_0) - this.sigma_h0;
+        state_equation.Bc =  Math.pow(state_equation.gama,2) * state_equation.E/24 * Math.pow(var*state_equation.z_0/state_equation.sigma_h0, 2) + state_equation.alpha*state_equation.E*(state_equation.theta_1 - state_equation.theta_0) - state_equation.sigma_h0;
     }
-    
+   
     /**
-     * Computes the D coefficient which is input to the cubic equation
+     * Computes the D coefficient which is input to the cubic equation [also with imaginary temperatures (Dc_i == Dc)]
      */
-    private void cubic_equation_coef_D(){
+    private static void cubic_equation_coef_D(){
         double var;
-        if (this.ter == 1){
-            var = this.MSF;
+        if (state_equation.ter == 1){
+            var = state_equation.MSF;
         } else {
-            var = this.MST;
+            var = state_equation.MST;
         }
-        this.Dc = Math.pow(this.gama,2)*this.E/24 * Math.pow(var*this.z_1, 2);
+        state_equation.Dc = Math.pow(state_equation.gama,2)*state_equation.E/24 * Math.pow(var*state_equation.z_1, 2);
     }
     
     /**
      * Computes the pulling force based on the horizontal stress of the conductor "F_mH"
      */
-    private void pulling_force(){
-        state_equation.F_mH1 = state_equation.sigma_h1 * this.S;
+    private static void pulling_force(){
+        state_equation.F_mH1 = state_equation.sigma_h1 * state_equation.S;
     }
     
     /**
      * Computes the "c" parameter of the conductor shape /sag/
      */
-    private void c_parameter(){
-        state_equation.c = state_equation.sigma_h1 / (this.gama * this.z_1);
+    private static void c_parameter(){
+        state_equation.c = state_equation.sigma_h1 / (state_equation.gama * state_equation.z_1);
     }
     
     /**
      * Computes the maximum sag for ideal conditions
      */
-    private void sag_maximum(){
+    private static void sag_maximum(){
         double var;
-        if (this.ter == 1) {
-            var = this.MSF;
+        if (state_equation.ter == 1) {
+            var = state_equation.MSF;
         } else {
-            var = this.MST;
+            var = state_equation.MST;
         }
-        state_equation.sag_max = state_equation.c * (Math.cosh(var/(2*state_equation.c)) - 1);
+        state_equation.sag_max = state_equation.c* (Math.cosh(var/(2*state_equation.c)) - 1);
     }
     
     /**
      * Computes the array of all visible sags in one suspension section. 
      */
-    private void sag_visible(){
+    private static void sag_visible(){
         double part1;
         double part2;
         double part3;
         double part4[] = new double[state_equation.a.length];
         double var;
         
-        if (this.ter == 1) {
-            var = this.MSF;
+        if (state_equation.ter == 1) {
+            var = state_equation.MSF;
         } else {
-            var = this.MST;
+            var = state_equation.MST;
         } 
             
         for (int i=0; i<state_equation.a.length; i++) {
@@ -300,5 +312,46 @@ public class state_equation {
         }
         
         state_equation.sag_vis = part4;
+    }
+    
+     /**
+     * Computes the B coefficient which is input to the cubic equation with imaginary temperatures
+     */
+    private static void cubic_equation_coef_B_imaginary(double t0, double tp){
+        double var;
+        if (state_equation.ter == 1){
+            var = state_equation.MSF;
+        } else {
+            var = state_equation.MST;
+        }
+        state_equation.Bc_i =  Math.pow(state_equation.gama,2) * state_equation.E/24 * Math.pow(var*state_equation.z_0/state_equation.sigma_h0, 2) + state_equation.alpha*state_equation.E*(tp - t0) - state_equation.sigma_h0;
+    }
+    
+
+    /**
+     * Computes the cubic equation in the form: A*x^3 + B*x^2 + C*x + D = 0 with imaginary temperatures!!
+     * Defined are only B,D coefficient -> sufficient to solve
+     * Storing the result into the conductor_creeping variable!!
+     */
+    private static void cubic_equation_solve_imaginary(){
+        double part1;
+        double part2;
+        double part3;
+        double condition;
+        double result;
+        
+        condition = Math.pow(-1*Math.pow(state_equation.Bc_i, 2)/9, 3) + Math.pow(-1*(27*state_equation.Dc+2*Math.pow(state_equation.Bc_i, 3)/54),2);
+        
+        if (0 < condition) {
+            part1 = Math.cbrt((-1*(27*state_equation.Dc+2*Math.pow(state_equation.Bc_i, 3)/54)) - Math.sqrt(condition));
+            part2 = Math.cbrt((-1*(27*state_equation.Dc+2*Math.pow(state_equation.Bc_i, 3)/54)) + Math.sqrt(condition)) - state_equation.Bc_i/3;
+            result = part1 + part2;
+        } else {
+            part1 = Math.cbrt(-1*Math.pow(-1*Math.pow(state_equation.Bc_i, 2)/9, 3));
+            part2 = Math.acos(-1*(27*state_equation.Dc+2*Math.pow(state_equation.Bc_i, 3)/54)/part1);
+            part3 = Math.cos(part2/3) - state_equation.Bc_i/3;
+            result = 2 * part1 * part3;
+        }
+         conductor_creeping.sigma_HT = result;
     }
 }

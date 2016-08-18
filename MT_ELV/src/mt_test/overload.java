@@ -120,15 +120,73 @@ public class overload {
     
 // **************** PUBLIC METHODS **************** //
     public void set_variables(){
-        // need to be done
+        // local - results
+        this.h_c_mean = -1;
+        this.V_h = -1;
+        this.I_v = -1;
+        this.L_m = -1;
+        this.L = -1;
+        this.BB = -1;
+        this.G_c = -1;
+        
+        this.q_wc = -1;
+        this.q_p = -1;
+        this.q_h = -1;
+        this.I_50 = -1;
+        
+        this.I_T = -1;
+        this.q_wT = -1;
+        this.I_3 = -1;
+        this.q_wI3 = -1;
+        this.q_wIT = -1;
+        
+        this.D_I = -1;
+        this.D_i = -1;
+        
+        // public - results
+        overload.z_1 = -1;
+        overload.z_Iw = -1;
+        overload.z_w = -1;
+        overload.z_wI = -1;
+        
+        // mainframe - need to be done based on mainframe
+             
     }
     
     public void get_variables(){
-        // need to be done
+        // need to be done based on mainframe
     }
     
     public void compute(){
-        // need to be done
+        //basic check if variables are set
+        if (this.k_r == -1) {
+            set_variables();
+            System.out.println("Variables were set!");
+        } 
+        // #1 layer
+        mean_height();
+        mean_wind_speed();
+        height_coefficient();
+        turbulence_intensity();
+        response_coefficient_length();
+        specific_turbulence_length();
+        // #2 layer
+        response_coefficient();
+        construcion_coefficient();
+        mean_wind_pressure();
+        peak_wind_pressure();
+        characteristic_wind_load();
+        characteristic_ice_load();
+        // #3 layer
+        extreme_ice_load();
+        extreme_wind_load();
+        mild_ice_load();
+        equivalent_diameter_with_ice();
+        combined_load();
+        // results
+        overload_extreme_ice();
+        overload_extreme_wind();
+        overload_combined();
     }
     
 // **************** PRIVATE METHODS **************** //
