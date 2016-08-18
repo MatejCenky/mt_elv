@@ -45,20 +45,18 @@ public static String language_label(int X,int Y){
     
     String SlovoDaloSlovo = "empty";
     switch (X) {
-            case 1:  X = 1;
-                     SlovoDaloSlovo=language.SK.get(Y);
-                     break;
-            case 2:  X = 2;
-                     SlovoDaloSlovo=language.CZ.get(Y);
-                     break;
-            case 3:  X = 3;
-                     SlovoDaloSlovo=language.EN.get(Y);
-                     break;
+        case 1:  
+            SlovoDaloSlovo=language.SK.get(Y);
+            break;
+        case 2:
+            SlovoDaloSlovo=language.CZ.get(Y);
+            break;
+        case 3:
+            SlovoDaloSlovo=language.EN.get(Y);
+            break;
     }
-    
-    
     return SlovoDaloSlovo;
-    }    
+}    
 
 public static String language_label2(){
     

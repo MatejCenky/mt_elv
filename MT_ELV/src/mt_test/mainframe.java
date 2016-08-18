@@ -193,7 +193,7 @@ public class mainframe extends javax.swing.JFrame {
         // TODO add your handling code here:
         double m = Double.parseDouble(m_textfield.getText());
         double S = Double.parseDouble(S_textfield.getText());
-        gama_textfield.setText(String.valueOf(state_equation.gama(m,S)));
+        //gama_textfield.setText(String.valueOf(state_equation.gama(m,S)));
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**

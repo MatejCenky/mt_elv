@@ -15,43 +15,80 @@ package mt_test;
 public class overload {
     
     /**
-     * computes the height coefficient "K_h" (čl.4.5.1/SK.3) [-]
-     * @param h_c_mean mean height of the conductor above the ground [m]
-     * @return the height coefficient K_h 
+     * @param spans array containing all spans in the suspension section [n-1 dim]
+     * @param heights array containing all conductor catching points on towers [n dim]
      */
-    public double height_coefficient(double h_c_mean){
-        return Math.pow(h_c_mean/10,0.13);
+    public overload(double spans[], double heights[]){
+        state_equation.a = spans;
+        state_equation.dh = heights;
+    }
+    
+    /**
+     * default constructor with "-1" values for a[0] and dh[0]
+     */
+    public overload(){
+        state_equation.a[0] = -1;
+        state_equation.dh[0] = -1;
+    }
+    
+    // towers and conductors
+    private double d;
+    private double g_c;
+    // type of ice
+    private double ro_I;
+    private double C_cl;
+    // icing area
+    private double K_lc;
+    private double K_h;         // the height coefficient čl.4.5.1/SK.3) [-]
+    // terrain and wind area
+    private double k_r;         // terrain coefficient (čl. 4.3.2) [-]
+    private double z_0;         // length of the roughness (čl. 4.3.2) [-]
+    private double V_b0;        // base wind speed (čl. 4.3.1/SK.1) [m/s]
+    private double c_dir;       // wind direction coefficient [-]
+    private double c_0;         // orography coefficient [-]
+    private double C_c;
+    // directive constants
+    private double k_p;
+    private double RR;
+    // reliability coefficient
+    private double gama_w;
+    private double gama_I;
+    private double Psi_w;
+    private double Psi_I;
+    private double B_I;
+    // computed values
+    private double h_c_mean;    // mean height of the conductor above the ground [m]     
+    private double V_h;         // the mean wind speed [m/s]
+    
+    
+    
+    
+    /**
+     * computes the height coefficient "K_h" (čl.4.5.1/SK.3) [-]
+     */
+    private void height_coefficient(){
+        this.K_h = Math.pow(this.h_c_mean/10,0.13);
     }
     
     /**
      * Computes the mean height of the conductor "h_c_mean" above the ground [m]
-     * @param h array of the heights of the conductor placing on each tower across the suspension section
-     * @return mean height of the conductor above the ground [m]
      */
-    public double mean_height(double h[]){
+    private void mean_height(){
         double aux = 0;
         int i;
         
         // sum of the double array
-        for (i=0; i<h.length; i++){
-            aux += h[i];
+        for (i=0; i<state_equation.dh.length; i++){ //[n+1]
+            aux += state_equation.dh[i];
         }
-        
-        return aux/h.length;
+        this.h_c_mean = aux/state_equation.a.length; // [n]
     }
     
     /**
      * Computes the mean wind speed "V_h" using the values chosen from the user (from mainframe)
-     * @param V_b_0 base wind speed (čl. 4.3.1/SK.1) [m/s]
-     * @param c_dir wind direction coefficient [-]
-     * @param c_0 orography coefficient [-]
-     * @param k_r terrain coefficient (čl. 4.3.2) [-]
-     * @param h_c_mean mean height of the conductor above the ground [m]
-     * @param z_0 length of the roughness (čl. 4.3.2) [-]
-     * @return the mean wind speed [m/s]
      */
-    public double mean_wind_speed(double V_b_0, double c_dir, double c_0, double k_r, double h_c_mean, double z_0) {
-        return V_b_0*c_dir*c_0*k_r*Math.log(h_c_mean/z_0);
+    private void mean_wind_speed() {
+        this.V_h = this.V_b0*this.c_dir*this.c_0*this.k_r*Math.log(this.h_c_mean/this.z_0);
     }
     
     /**
