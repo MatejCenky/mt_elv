@@ -59,6 +59,7 @@ public class state_equation {
     private double theta_1;     // conductor temperature in state "1"
     private double theta_0;     // conductor temperature in state "0"
     private double sigma_h0;    // horizontal stress in conductor in state "0" [MPa]
+    // results
     private double sigma_h1;    // solution of a cubic equation == horizontal stress in conductor in state "1" [MPa]
     private double F_mH1;       // the pulling force based on the horizontal stress of the conductor [N]
     private double c;           // the "c" parameter [m]
