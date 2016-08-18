@@ -37,8 +37,10 @@ public class state_equation {
         state_equation.a = spans;
         state_equation.dh = heights;
     }
+
+ /* Defining variables */
     
-    // basic global variables
+// basic global variables
     public static double a[];         // array of the spans on the suspension section [m]
     public static double dh[];        // array of height differences of the suspension points of towers [m]
     public double gama;        // specific gravity of the conductor [N/m*mm^2]
@@ -46,26 +48,46 @@ public class state_equation {
     public double S;           // cross-section area of the conductor [mm^2]
     public double E;           // Young model of elasticity of conductor [MPa]
     public double alpha;       // linear expansion coefficient [1/degree_C]
-    // values for state equation
+    
+// values for state equation
     private final int ter;      // specify flat / non-flat terrain - in constructor !!!;
     private double MSF;         // /average/ span of flat suspension section [m] 
     private double MST;         // /average/ span of terrain suspension section [m] 
-    private double Ac;          // coefficient A in cubic equation
     private double Bc;          // coefficient B in cubic equation
-    private double Cc;          // coefficient C in cubic equation
     private double Dc;          // coefficient D in cubic equation
     private double z_0;         // conductor overload in state "0" [-]
     private double z_1;         // conductor overload in state "1" [-]
     private double theta_1;     // conductor temperature in state "1"
     private double theta_0;     // conductor temperature in state "0"
     private double sigma_h0;    // horizontal stress in conductor in state "0" [MPa]
-    // results
-    private double sigma_h1;    // solution of a cubic equation == horizontal stress in conductor in state "1" [MPa]
-    private double F_mH1;       // the pulling force based on the horizontal stress of the conductor [N]
-    private double c;           // the "c" parameter [m]
-    private double sag_max;     // maximum ideal sag [m]
-    private double sag_vis[];   // array of all visible sags in one suspension section [m]
     
+// results
+    /**
+     * solution of a cubic equation == horizontal stress in conductor in state "1" [MPa]
+     */
+    private static double sigma_h1;    
+    
+    /**
+     * the pulling force based on the horizontal stress of the conductor [N]
+     */
+    private static double F_mH1;      
+    
+    /**
+     * the "c" parameter [m]
+     */
+    private static double c;        
+    
+    /**
+     * maximum ideal sag [m]
+     */
+    private static double sag_max;    
+    
+    /**
+     * array of all visible sags in one suspension section [m]
+     */
+    private static double sag_vis[];  
+    
+// **************** PUBLIC METHODS **************** //    
     /**
      * Set all the variables needed for the computation of the state equation
      * from "mainframe" and also locally;
@@ -75,11 +97,11 @@ public class state_equation {
      */    
     public void set_variables(){
         // local - results
-        this.F_mH1 = -1;
-        this.sigma_h1 = -1;
-        this.c = -1;
-        this.sag_max = -1;
-        this.sag_vis[0] = -1;
+        state_equation.F_mH1 = -1;
+        state_equation.sigma_h1 = -1;
+        state_equation.c = -1;
+        state_equation.sag_max = -1;
+        state_equation.sag_vis[0] = -1;
         
         // local - sources
         this.gama = -1;
@@ -99,6 +121,10 @@ public class state_equation {
         this.theta_1 = -1;
         this.sigma_h0 = -1;
         //for example: this.m = mainframe.jText_m.getText();
+    }
+    
+    public void get_variables(){
+        // need to be done
     }
     
     /**
@@ -126,13 +152,12 @@ public class state_equation {
     }
     
     
+// **************** PRIVATE METHODS **************** //
     /**
-     * Set the cubic equation ABCD coefficients values
+     * Set the cubic equation B,D coefficients values
      */
     private void set_cubic_values(){
-        this.Ac = 1;
         cubic_equation_coef_B();
-        this.Cc = 0;
         cubic_equation_coef_D();
     }
     
@@ -173,6 +198,7 @@ public class state_equation {
     
     /**
      * Computes the cubic equation in the form: A*x^3 + B*x^2 + C*x + D = 0
+     * Defined are only B,D coefficient -> sufficient to solve
      */
     private void cubic_equation_solve(){
         double part1;
@@ -193,7 +219,7 @@ public class state_equation {
             part3 = Math.cos(part2/3) - this.Bc/3;
             result = 2 * part1 * part3;
         }
-        this.sigma_h1 = result;
+        state_equation.sigma_h1 = result;
     }
 
     
@@ -227,14 +253,14 @@ public class state_equation {
      * Computes the pulling force based on the horizontal stress of the conductor "F_mH"
      */
     private void pulling_force(){
-        this.F_mH1 = this.sigma_h1 * this.S;
+        state_equation.F_mH1 = state_equation.sigma_h1 * this.S;
     }
     
     /**
      * Computes the "c" parameter of the conductor shape /sag/
      */
     private void c_parameter(){
-        this.c = this.sigma_h1 / (this.gama * this.z_1);
+        state_equation.c = state_equation.sigma_h1 / (this.gama * this.z_1);
     }
     
     /**
@@ -247,7 +273,7 @@ public class state_equation {
         } else {
             var = this.MST;
         }
-        this.sag_max = this.c * (Math.cosh(var/(2*this.c)) - 1);
+        state_equation.sag_max = state_equation.c * (Math.cosh(var/(2*state_equation.c)) - 1);
     }
     
     /**
@@ -267,12 +293,12 @@ public class state_equation {
         } 
             
         for (int i=0; i<state_equation.a.length; i++) {
-            part1 = var/(2*this.c);
-            part2 = part1 + Math_Extended.asinh(state_equation.dh[i]/(2*this.c*Math.sinh(part1)));
-            part3 = Math_Extended.asinh(state_equation.dh[i]/this.a[i]);
-            part4[i] = this.c*(Math.cosh(part2) - Math.cosh(part3) - (state_equation.dh[i]/state_equation.a[i])*(part2 - part3));
+            part1 = var/(2*state_equation.c);
+            part2 = part1 + Math_Extended.asinh(state_equation.dh[i]/(2*state_equation.c*Math.sinh(part1)));
+            part3 = Math_Extended.asinh(state_equation.dh[i]/state_equation.a[i]);
+            part4[i] = state_equation.c*(Math.cosh(part2) - Math.cosh(part3) - (state_equation.dh[i]/state_equation.a[i])*(part2 - part3));
         }
         
-        this.sag_vis = part4;
+        state_equation.sag_vis = part4;
     }
 }

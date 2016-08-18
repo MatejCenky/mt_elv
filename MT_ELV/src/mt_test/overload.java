@@ -21,6 +21,10 @@ public class overload {
     public overload(double spans[], double heights[]){
         state_equation.a = spans;
         state_equation.dh = heights;
+        this.ro = 1.25;
+        this.RR = 0;
+        this.k_p = 3;
+        this.C_cl = 1.1;
     }
     
     /**
@@ -29,40 +33,105 @@ public class overload {
     public overload(){
         state_equation.a[0] = -1;
         state_equation.dh[0] = -1;
+        this.ro = 1.25;
+        this.RR = 0;
+        this.k_p = 3;
+        this.C_cl = 1.1;
     }
+   
+ /* Defining variables */
     
-    // towers and conductors
-    private double d;
-    private double g_c;
-    // type of ice
-    private double ro_I;
-    private double C_cl;
-    // icing area
-    private double K_lc;
+// towers and conductors
+    private double d;           // conductor diameter [m]
+    private double g_c;         // specific weight of conductor [N/m]
+    
+// type of ice
+    private double ro_I;        // density of the ice (= 500 kg/m3)
+    private final double C_cl; // aerodynamic resistance for conductor with ice coefficient (= 1,1) [-]
+    
+// icing area
+    private double K_lc;        // local conditions coefficient (čl.4.5.1/SK.3) [-]
     private double K_h;         // the height coefficient čl.4.5.1/SK.3) [-]
-    // terrain and wind area
+    private double I_R50;       // reference ice load -> chosen from local icing area (čl.4.5.1/SK.3)
+    
+// terrain and wind area
     private double k_r;         // terrain coefficient (čl. 4.3.2) [-]
     private double z_0;         // length of the roughness (čl. 4.3.2) [-]
     private double V_b0;        // base wind speed (čl. 4.3.1/SK.1) [m/s]
     private double c_dir;       // wind direction coefficient [-]
     private double c_0;         // orography coefficient [-]
-    private double C_c;
-    // directive constants
-    private double k_p;
-    private double RR;
-    // reliability coefficient
-    private double gama_w;
-    private double gama_I;
-    private double Psi_w;
-    private double Psi_I;
-    private double B_I;
-    // computed values
+    private double C_c;         // aerodynamic resistance of the conductor coefficient (čl. 4.4.1.3/SK.1) [-]
+    
+// directive constants -> defined as final -> set in constructor
+    private final double k_p;   // tip coefficient (= 3) (čl. 4.4.1.2)
+    private final double RR;    // resonance response coefficient (RR = R^2 = 0) (čl. 4.4.12)
+    private final double ro;    // density of the wind (= 1.25)
+
+// reliability coefficient
+    private double gama_w;      // partial wind load coefficient [-]
+    private double gama_I;      // partial ice load coefficient [-]
+    private double Psi_w;       // combination coefficient (čl. 4.6.6/SK/CZ) [-]
+    private double Psi_I;       // combination ice load coefficient [-]
+    private double B_I;         // combination coefficient (čl. 4.6.6/SK/CZ) [-]
+    
+// computed values
     private double h_c_mean;    // mean height of the conductor above the ground [m]     
     private double V_h;         // the mean wind speed [m/s]
+    private double I_v;         // turbulence intensity
+    private double L_m;         // length for response origin coefficient [m]
+    private double L;           // specific length of turbulence [m]
+    private double BB;          // response origin coefficient [m] (= B^2)
+    private double G_c;         // construction coefficient [-]
     
+    private double q_wc;        // characteristic wind load
+    private double q_p;         // peak wind pressure
+    private double q_h;         // mean wind pressure
+    private double I_50;        // characteristic ice load
     
+    private double I_T;         // extreme ice load
+    private double q_wT;        // extreme wind load
+    private double I_3;         // mild ice load
+    private double q_wI3;       // combined load for mild wind with extreme ice
+    private double q_wIT;       // combined load for extreme wind with mild ice
     
+    private double D_I;         // equivalent diameter for conductor with extreme ice [m]
+    private double D_i;         // equivalent diameter for conductor with mild ice [m]
     
+// results
+    /**
+     * extreme ice overload
+     */
+    public static double z_1;
+    
+    /**
+     * combined overload on the conductor with mild wind and extreme ice
+     */
+    public static double z_Iw;  
+    
+    /**
+     * combined overload on the conductor with mild ice and extreme wind
+     */
+    public static double z_wI;  
+    
+    /**
+     * extreme wind overload
+     */
+    public static double z_w;          
+    
+// **************** PUBLIC METHODS **************** //
+    public void set_variables(){
+        // need to be done
+    }
+    
+    public void get_variables(){
+        // need to be done
+    }
+    
+    public void compute(){
+        // need to be done
+    }
+    
+// **************** PRIVATE METHODS **************** //
     /**
      * computes the height coefficient "K_h" (čl.4.5.1/SK.3) [-]
      */
@@ -93,189 +162,137 @@ public class overload {
     
     /**
      * Computes the turbulence intensity "I_v"
-     * @param c_0 orography coefficient [-]
-     * @param h_c_mean mean height of the conductor above the ground [m]
-     * @param z_0 length of the roughness (čl. 4.3.2) [-]
-     * @return the turbulence intensity
      */
-    public double turbulence_intensity(double c_0, double h_c_mean, double z_0){
-        return 1 / (c_0*Math.log(h_c_mean/z_0));
+    private void turbulence_intensity(){
+        this.I_v = 1 / (this.c_0*Math.log(this.h_c_mean/this.z_0));
     }
-    
-    // !!!!!!!!!!! need to be checked
     
     /**
      * Computes the length for response origin coefficient "L_m" [m]
-     * @param a array of spans of the suspension section [m]
-     * @return the length for response origin coefficient [m]
      */
-    public double response_coefficient_length(double a[]){
+    private void response_coefficient_length(){
         double aux = 0;
-        for (int i=0; i<a.length; i++){
-            aux += a[i];
+        for (int i=0; i<state_equation.a.length; i++){
+            aux += state_equation.a[i];
         }
-        
         // max 3km = 3000m
         if (aux > 3000){
             aux = 3000;
         }
-        return aux;
+        this.L_m = aux;
     }
     
-    
-    // need to be checked !!!!!!!!!!!! L = ?????
+    /**
+     * Computes the specific length for turbulence "L" [m]
+     */
+    private void specific_turbulence_length(){
+        this.L = 300 * Math.pow(this.h_c_mean/200, 0.67 + 0.05*Math.log(this.z_0));
+    }
     
     /**
      * Computes the response origin coefficient "BB = B^2" [m]
-     * @param L_m length for response origin coefficient [m]
-     * @param L ???????
-     * @return response origin coefficient [m]
      */
-    public double response_coefficient (double L_m, double L){
-        return 1 / (1 + 3/2 * L_m/L);
+    private void response_coefficient (){
+        this.BB = 1 / (1 + 3/2 * this.L_m/this.L);
     }
     
     /**
      * Computes the construction coefficient "G_c"
-     * @param k_p tip coefficient (= 3) (čl. 4.4.1.2)
-     * @param I_v turbulence intensity
-     * @param BB response origin coefficient (BB = B^2)
-     * @param RR resonance response coefficient (RR = R^2 = 0) (čl. 4.4.12)
-     * @return construction coefficient
      */
-    public double construcion_coefficient(double k_p, double I_v, double BB, double RR){
-        return (1 + 2*k_p*I_v*Math.sqrt(BB + RR))/(1 + 7*I_v);
+    private void construcion_coefficient(){
+        this.G_c = (1 + 2*this.k_p*this.I_v*Math.sqrt(this.BB + this.RR))/(1 + 7*this.I_v);
     }
     
     /**
      * Computes characteristic wind load "q_wc"
-     * @param q_p peak wind pressure
-     * @param d conductor diameter [m]
-     * @param C_c aerodynamic resistance of the conductor coefficient (čl. 4.4.1.3/SK.1) [-]
-     * @param G_c construction coefficient
-     * @return characteristic wind load
      */
-    public double characteristic_wind_load(double q_p, double d, double C_c, double G_c){
-        return q_p*d*C_c*G_c;
+    private void characteristic_wind_load(){
+        this.q_wc = this.q_p* this.d* this.C_c* this.G_c;
     }
     
     /**
      * Computes the peak wind pressure "q_p"
-     * @param I_v turbulence intensity
-     * @param q_h mean wind pressure
-     * @return peak wind pressure
      */
-    public double peak_wind_pressure(double I_v, double q_h){
-        return (1 + 7*I_v)*q_h;
+    private void peak_wind_pressure(){
+        this.q_p = (1 + 7* this.I_v)* this.q_h;
     }
     
     /**
      * Computes the mean wind pressure "q_h"
-     * @param ro density of the wind (= 1.25)
-     * @param V_h mean wind speed
-     * @return mean wind pressure
      */
-    public double mean_wind_pressure(double ro, double V_h){
-        return 1/2 * ro * Math.pow(V_h, 2);
+    private void mean_wind_pressure(){
+        this.q_h = 1/2 * this.ro * Math.pow(this.V_h, 2);
     }
     
     /**
      * Computes the characteristic ice load "I_50"
-     * @param I_R50 reference ice load -> chosen from local icing area (čl.4.5.1/SK.3)
-     * @param K_lc local conditions coefficient (čl.4.5.1/SK.3) [-]
-     * @param K_h height coefficient (čl.4.5.1/SK.3) [-]
-     * @return characteristic ice load
      */
-    public double characteristic_ice_load(double I_R50, double K_lc, double K_h){
-        return I_R50*K_h*K_lc;
+    private void characteristic_ice_load(){
+        this.I_50 = this.I_R50* this.K_h* this.K_lc;
     }
     
     /**
      * Computes the extreme ice load "I_T"
-     * @param I_50 characteristic ice load
-     * @param gama_I partial ice load coefficient
-     * @return extreme ice load
      */
-    public double extreme_ice_load(double I_50, double gama_I){
-        return I_50*gama_I;
+    private void extreme_ice_load(){
+        this.I_T = this.I_50* this.gama_I;
     }
     
     /**
      * Computes the extreme wind load "q_wT"
-     * @param q_wc characteristic wind load
-     * @param gama_w partial wind load coefficient [-]
-     * @return extreme wind load
      */
-    public double extreme_wind_load(double q_wc, double gama_w){
-        return q_wc*gama_w;
+    private void extreme_wind_load(){
+        this.q_wT = this.q_wc* this.gama_w;
     }
     
     /**
      * Computes the mild ice load "I_3"
-     * @param I_50 characteristic ice load
-     * @param psi_I combination ice load coefficient
-     * @return mild ice load
      */
-    public double mild_ice_load(double I_50, double psi_I){
-        return I_50*psi_I;
+    private void mild_ice_load(){
+        this.I_3 = this.I_50* this.Psi_I;
     }
     
     /**
-     * Computes equivalent diameter for conductor with a)extreme [D_I] / b)mild [D_i] ice
-     * @param d diameter of the conductor [m]
-     * @param I a)extreme [I_T] / b)mild [I_3] ice load
-     * @param ro_I density of the ice (= 500 kg/m3)
-     * @return equivalent diameter for conductor with ice
+     * Computes equivalent diameter for conductor with: 
+     * - extreme ice "D_I" 
+     * - mild ice "D_i"
      */
-    public double equivalent_diameter_with_ice(double d, double I, double ro_I){
-        return Math.sqrt(d*d + (4*I)/(9.80665*Math.PI*ro_I));
+    private void equivalent_diameter_with_ice(){
+        this.D_I = Math.sqrt(this.d* this.d + (4*this.I_T)/(9.80665*Math.PI* this.ro_I));   // extreme
+        this.D_i = Math.sqrt(this.d* this.d + (4*this.I_3)/(9.80665*Math.PI* this.ro_I));   // mild
     }
     
     /**
      * Computes combined load for:
-     * a) mild wind with extreme ice "q_wI3"
-     * b) extreme wind with mild ice "q_wIT"
-     * @param q_p peak wind pressure
-     * @param D equivalent diameter a)[D_I] / b)[D_i]
-     * @param C_cl aerodynamic resistance for conductor with ice coefficient (= 1,1) [-]
-     * @param G_c aerodynamic resistance of the conductor coefficient (čl. 4.4.1.3/SK.1) [-]
-     * @param x combination coefficient a)[psi_w] / b)[(B_I)^2] (čl. 4.6.6/SK/CZ)
-     * @return combined load
+     * - mild wind with extreme ice "q_wI3"
+     * - extreme wind with mild ice "q_wIT"
      */
-    public double combined_load(double q_p, double D, double C_cl, double G_c, double x){
-        return q_p*D*C_cl*G_c*x;
+    private void combined_load(){
+        this.q_wI3 = this.q_p* this.D_I* this.C_cl* this.G_c* this.Psi_w;
+        this.q_wIT = this.q_p* this.D_i* this.C_cl* this.G_c* this.B_I* this.B_I;
     }
     
     /**
      * Computes extreme ice overload on the conductor "z_1"
-     * @param I_T extreme ice load
-     * @param g_c specific gravity of conductor [N/m]
-     * @return extreme ice overload
      */
-    public double overload_extreme_ice(double I_T, double g_c){
-        return (I_T + g_c) / g_c;
+    private void overload_extreme_ice(){
+        overload.z_1 = (this.I_T + this.g_c) / this.g_c;
     }
     
     /**
-     * Computes combined overload on the conductor for:
-     * a) mild wind with extreme ice "z_Iw"
-     * b) extreme wind with mild ice "z_Wi"
-     * @param I a)extreme [I_T] / b)mild [I_3] ice load
-     * @param g_c specific gravity of conductor [N/m]
-     * @param q a)[q_wI3] / b)[q_wIT]
-     * @return combined overload
+     * Computes combined overload on the conductor with:
+     * - mild wind with extreme ice "z_Iw"
+     * - extreme wind with mild ice "z_wI"
      */
-    public double overload_combined(double I, double g_c, double q){
-        return Math.sqrt((Math.pow(I + g_c,2) + q*q)) / g_c;
+    private void overload_combined(){
+        overload.z_Iw = Math.sqrt((Math.pow(this.I_T + this.g_c,2) + this.q_wI3*this.q_wI3)) / this.g_c;
+        overload.z_wI = Math.sqrt((Math.pow(this.I_3 + this.g_c,2) + this.q_wIT*this.q_wIT)) / this.g_c;
     }
     
     /**
      * Computes extreme wind overload in conductor "z_W"
-     * @param q_wT extreme wind load
-     * @param g_c specific gravity of conductor [N/m]
-     * @return extreme wind overload
      */
-    public double overload_extreme_wind(double q_wT, double g_c){
-        return Math.sqrt((q_wT*q_wT + g_c*g_c)) / g_c;
+    private void overload_extreme_wind(){
+        overload.z_w = Math.sqrt((this.q_wT* this.q_wT + this.g_c* this.g_c)) / this.g_c;
     }
 }

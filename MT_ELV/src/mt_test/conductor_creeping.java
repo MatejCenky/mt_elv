@@ -1,5 +1,4 @@
-/*
- * Copyright (c) 2016, Mattto
+/* * Copyright (c) 2016, Mattto
  * All rights reserved.
  * 
  * Any usage of the source code, program or any parts
@@ -15,83 +14,119 @@ package mt_test;
 public class conductor_creeping {
     
     /**
-     * Computes the weight of the steel in the conductor "g_Fe" (if not known)
-     * @param S_Fe cross-section of the steel in the conductor [mm^2]
-     * @param ro_Fe specific weight of steel [kg/m^3] (usually 7840-7870)
-     * @param g gravitational acceleration [m/s^2] (= 9.80655)
-     * @return weight of the steel in the conductor [N/m]
+     * - gravitational acceleration and fi is set
      */
-    public double steel_weight(double S_Fe, double ro_Fe, double g){
-        return S_Fe*ro_Fe*g;
+    public conductor_creeping(){
+        this.g = 9.80655;
+        this.fi = 28.2;
+    }
+    
+    /**
+     * - gravitational acceleration and fi is set
+     * @param steel_weight weight of the steel is set
+     */
+    public conductor_creeping(double steel_weight){
+        this.g = 9.80655;
+        this.g_Fe = steel_weight;
+        this.fi = 28.2;
+    }
+    
+/* Defining variables */
+    
+// local
+    private double g_Fe;        // weight of the steel in the conductor [N/m]
+    private double S_Fe;        // cross-section of steel in conductor [mm^2]
+    private double S;           // cross-section of conductor [mm^2]
+    private double ro_Fe;       // specific weight of steel [kg/m^3] (usually 7840-7870)
+    private final double g;     // gravitational acceleration [m/s^2] (= 9.80655)
+    private double g_c;         // specific weight of conductor [N/m]
+    private double sigma_HT;    // horizontal part of load in mean year temperature [MPa] -> computes through state equation using average year temperature
+    private double RTS;         // Rated Tensile Parameter [N]
+    private double T_EDT;       // average year temperature [degreeC]
+    private double alpha;       // linear expansion coefficient [1/degreeC]
+    private final double fi;    // specific creeping [mm/km*h] (= 28.2)
+    private double t_0;         // time to final state of conductor creeping [h] (usually 30y = 262800h)
+    private double t_p;         // time from the construction of the line - check various time stages on the line [h]
+    
+    
+// computed values
+    private double w_Fe;        // proportional weight of steel in the conductor [-]
+    private double k_w;         // conductor composition coefficient [-]
+    private double k_EDS;       // average year load influence coefficient [-]
+    private double k_EDT;       // average year temperature influence coefficient [-]
+    
+// results
+    /**
+     * initial thermal shift [d_degreeC]
+     */
+    public static double dT_0;
+    
+    /**
+     * transient thermal shift [d_degreeC]
+     */
+    public static double dT_p;
+   
+// **************** PUBLIC METHODS **************** //
+    public void set_variables(){
+        // need to be done
+    }
+    
+    public void get_variables(){
+        // need to be done
+    }
+    
+    public void compute(){
+        // need to be done
+    }
+    
+// **************** PRIVATE METHODS **************** //    
+    /**
+     * Computes the weight of the steel in the conductor "g_Fe" (if not known)
+     */
+    private void steel_weight(){
+        this.g_Fe = this.S_Fe* this.ro_Fe* this.g;
     }
     
     /**
      * Computes the proportional weight of steel in the conductor "w_Fe"
-     * @param g_Fe specific weight of steel part of conductor [N/m]
-     * @param g_c specific weight of conductor [N/m]
-     * @return proportional weight of steel in the conductor [-]
      */
-    public double proportional_steel_weight(double g_Fe, double g_c){
-        return g_Fe/g_c;
+    private void proportional_steel_weight(){
+        this.w_Fe = this.g_Fe/this.g_c;
     }
     
     /**
      * Computes the conductor composition coefficient "k_w"
-     * @param w_Fe proportional weight of steel in the conductor [-]
-     * @return conductor composition coefficient [-]
      */
-    public double conductor_composition_coefficient(double w_Fe){
-        return 1.212 - 1.06*w_Fe;
+    private void conductor_composition_coefficient(){
+        this.k_w = 1.212 - 1.06* this.w_Fe;
     }
     
     /**
      * Computes the average year load influence coefficient on the conductor "k_EDS"
-     * @param sigma_HT horizontal part of load in mean year temperature [MPa]
-     *                  -> computes through state equation using average year temperature
-     * @param S cross-section of a conductor [mm^2]
-     * @param RTS Rated Tensile Parameter [N]
-     * @return average year load influence coefficient [-]
      */
-    public double avg_load_coefficient(double sigma_HT, double S, double RTS){
-        return 0.0319 * Math.pow(100*sigma_HT*S / RTS, 1.15);
+     private void avg_load_coefficient(){
+        this.k_EDS = 0.0319 * Math.pow(100*this.sigma_HT* this.S / this.RTS, 1.15);
     }
     
     /**
      * Computes the average year temperature influence coefficient of the conductor "k_EDT"
-     * @param T_EDT average year temperature [degreeC]
-     * @return average year temperature influence coefficient [-]
      */
-    public double avg_temperature_coefficient(double T_EDT){
-        return 0.842 + 0.0079*T_EDT;
+     private void avg_temperature_coefficient(){
+        this.k_EDT = 0.842 + 0.0079* this.T_EDT;
     }
     
     /**
      * Computes the initial thermal shift "dT_0"
-     * @param alpha linear expansion coefficient [1/degreeC]
-     * @param k_EDS average year load influence coefficient [-]
-     * @param k_EDT average year temperature influence coefficient [-]
-     * @param k_w conductor composition coefficient [-]
-     * @param fi specific creeping [mm/km*h] (= 28.2)
-     * @param t_0 time to final state of conductor creeping [h] (usually 30y = 262800h)
-     * @return initial thermal shift [d_degreeC]
      */
-    public double thermal_shift_intitial(double alpha, double k_EDS, double k_EDT, double k_w, double fi, double t_0){
-        return (-1/(alpha*1e6)) * k_EDS * k_EDT * k_w * fi * t_0;
+     private void thermal_shift_intitial(){
+        conductor_creeping.dT_0 = (-1/(this.alpha*1e6))* this.k_EDS* this.k_EDT* this.k_w* this.fi* this.t_0;
     }
     
     /**
      * Computes the transient thermal shift "dT_0"
-     * @param alpha linear expansion coefficient [1/degreeC]
-     * @param k_EDS average year load influence coefficient [-]
-     * @param k_EDT average year temperature influence coefficient [-]
-     * @param k_w conductor composition coefficient [-]
-     * @param fi specific creeping [mm/km*h] (= 28.2)
-     * @param t_0 time to final state of conductor creeping [h] (usually 30y = 262800h)
-     * @param t_p time from the construction of the line - check various time stages on the line [h]
-     * @return 
      */
-    public double thermal_shift_transient(double alpha, double k_EDS, double k_EDT, double k_w, double fi, double t_0, double t_p){
-        return (-1/(alpha*1e6)) * k_EDS * k_EDT * k_w * fi * (t_0-t_p);
+     private void thermal_shift_transient(){
+        conductor_creeping.dT_p = (-1/(this.alpha*1e6))* this.k_EDS* this.k_EDT* this.k_w* this.fi* (this.t_0 - this.t_p);
     }
     
     
