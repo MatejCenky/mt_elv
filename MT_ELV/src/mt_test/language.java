@@ -22,12 +22,11 @@ public class language {
  */    
 public static void constructor(){
               /*SK*/                /*CZ*/              /*EN*/   
- /*0*/  language.SK.add("aaa");  language.CZ.add("aaa"); language.EN.add("aaa"); //language String value  at position 
- /*1*/  language.SK.add("aaa");  language.CZ.add("aaa"); language.EN.add("aaa"); //language String value  at position 
- /*2*/  language.SK.add("aaa");  language.CZ.add("aaa"); language.EN.add("aaa"); //language String value  at position 
- /*3*/  language.SK.add("aaa");  language.CZ.add("aaa"); language.EN.add("aaa"); //language String value  at position 
- /*4*/  language.SK.add("aaa");  language.CZ.add("aaa"); language.EN.add("aaa"); //language String value  at position 
- /*5*/  language.SK.add("aaa");  language.CZ.add("aaa"); language.EN.add("aaa"); //language String value  at position 
+ /*0*/  language.SK.add("aaa");  language.CZ.add("BBB"); language.EN.add("CCC"); //language String value  at position 
+ /*1*/  language.SK.add("aaa");  language.CZ.add("BBB"); language.EN.add("CCC"); //language String value  at position 
+ /*3*/  language.SK.add("aaa");  language.CZ.add("BBB"); language.EN.add("CCC"); //language String value  at position 
+ /*4*/  language.SK.add("aaa");  language.CZ.add("BBB"); language.EN.add("CCC"); //language String value  at position 
+ /*5*/  language.SK.add("aaa");  language.CZ.add("BBB"); language.EN.add("CCC"); //language String value  at position 
    
  
    inicializovane = true;

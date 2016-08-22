@@ -18,9 +18,8 @@ public class mainframe extends javax.swing.JFrame {
      * Creates new form mainframe
      */
     public mainframe() {
-        language lang = new language();
         
-        language.language_label2();
+        
         initComponents();
         
         
@@ -65,7 +64,7 @@ public class mainframe extends javax.swing.JFrame {
 
         gama_textfield.setText("answer");
 
-        jLabel1.setText(language.language_label(1,1));
+        jLabel1.setText(language.language_label(2,1));
 
         jLabel2.setText("gama [N/m*mm^2]");
 
