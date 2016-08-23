@@ -4,7 +4,7 @@
  * 
  * Any usage of the source code, program or any parts
  * of it must be consulted and the permission granted 
- * by the author Matej Cenky.
+ * by authors Ing. Matej Cenky and Ing. Jozef Bendik.
  */
 package mt_test;
 
@@ -18,24 +18,27 @@ public class language {
 
 /**
  * Function just add elements to the array list 
- * If once fuction runs and sets variable "inicializovane" true it never runs again
+ * If once function runs and sets variable "inicializovane" true it never runs again
  */    
 public static void constructor(){
               /*SK*/                /*CZ*/              /*EN*/   
- /*0*/  language.SK.add("MT3 software, SAG Elektrovod, autori Jozef Bendík & Matej Cenký 2016");  language.CZ.add("MT3 software, SAG Elektrovod, autoři Jozef Bendík & Matej Cenký 2016"); language.EN.add("MT3 software, SAG Elektrovod, created by Jozef Bendík & Matej Cenký 2016"); //language String value  at position 
- /*1*/  language.SK.add("Súbor");  language.CZ.add("Soubor"); language.EN.add("File"); //language String value  at position 
- /*2*/  language.SK.add("Nový");  language.CZ.add("Nový"); language.EN.add("New"); //language String value  at position 
- /*3*/  language.SK.add("Načítať");  language.CZ.add("Načítat"); language.EN.add("Load"); //language String value  at position 
- /*4*/  language.SK.add("verzia 1.0");  language.CZ.add("verze 1.0"); language.EN.add("verzion 1.0"); //language String value  at position 
-  /*5*/  language.SK.add("Nastavenia exportu");  language.CZ.add("Nastavení exportu"); language.EN.add("Export settings"); 
-  /*6*/  language.SK.add("Koniec");  language.CZ.add("Konec"); language.EN.add("Exit"); 
- /*7*/  language.SK.add("Knižnica");  language.CZ.add("Knihovna"); language.EN.add("Library");
- /*8*/  language.SK.add("Vodiče");  language.CZ.add("Vodiče"); language.EN.add("Conductors");
- /*9*/  language.SK.add("Help");  language.CZ.add("Help"); language.EN.add("Help");
- /*10*/  language.SK.add("MT3 Help");  language.CZ.add("MT3 Help"); language.EN.add("MT3 Help");
- /*11*/  language.SK.add("Normy");  language.CZ.add("Normy"); language.EN.add("Standards");
- /*12*/  language.SK.add("Matematika");  language.CZ.add("Matematika"); language.EN.add("Math");
- /*12*/  language.SK.add("O programe");  language.CZ.add("O programe"); language.EN.add("About");
+ /*0*/   language.SK.add("MT3 software, SAG Elektrovod, autori Jozef Bendík & Matej Cenký 2016");  
+         language.CZ.add("MT3 software, SAG Elektrovod, autoři Jozef Bendík & Matej Cenký 2016"); 
+         language.EN.add("MT3 software, SAG Elektrovod, created by Jozef Bendík & Matej Cenký 2016"); //language String value  at position 
+        
+ /*1*/   language.SK.add("Súbor");              language.CZ.add("Soubor");              language.EN.add("File"); //language String value  at position 
+ /*2*/   language.SK.add("Nový");               language.CZ.add("Nový");                language.EN.add("New"); //language String value  at position 
+ /*3*/   language.SK.add("Načítať");            language.CZ.add("Načítat");             language.EN.add("Load"); //language String value  at position 
+ /*4*/   language.SK.add("Verzia 1.0");         language.CZ.add("Verze 1.0");           language.EN.add("Version 1.0"); //language String value  at position 
+ /*5*/   language.SK.add("Nastavenia exportu"); language.CZ.add("Nastavení exportu");   language.EN.add("Export settings"); 
+ /*6*/   language.SK.add("Koniec");             language.CZ.add("Konec");               language.EN.add("Exit"); 
+ /*7*/   language.SK.add("Knižnica");           language.CZ.add("Knihovna");            language.EN.add("Library");
+ /*8*/   language.SK.add("Vodiče");             language.CZ.add("Vodiče");              language.EN.add("Conductors");
+ /*9*/   language.SK.add("Help");               language.CZ.add("Help");                language.EN.add("Help");
+ /*10*/  language.SK.add("MT3 Help");           language.CZ.add("MT3 Help");            language.EN.add("MT3 Help");
+ /*11*/  language.SK.add("Normy");              language.CZ.add("Normy");               language.EN.add("Standards");
+ /*12*/  language.SK.add("Matematika");         language.CZ.add("Matematika");          language.EN.add("Math");
+ /*12*/  language.SK.add("O programe");         language.CZ.add("O programe");          language.EN.add("About");
    inicializovane = true;
 }
  

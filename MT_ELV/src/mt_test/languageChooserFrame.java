@@ -4,11 +4,9 @@
  * 
  * Any usage of the source code, program or any parts
  * of it must be consulted and the permission granted 
- * by the author Matej Cenky.
+ * by authors Ing. Matej Cenky and Ing. Jozef Bendik.
  */
 package mt_test;
-
-import javax.swing.JFrame;
 
 /**
  *

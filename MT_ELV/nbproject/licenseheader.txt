@@ -6,7 +6,7 @@ ${licensePrefix}All rights reserved.
 ${licensePrefix}
 ${licensePrefix}Any usage of the source code, program or any parts
 ${licensePrefix}of it must be consulted and the permission granted 
-${licensePrefix}by the author Matej Cenky.
+${licensePrefix}by authors Ing. Matej Cenky and Ing. Jozef Bendik.
 <#if licenseLast??>
 ${licenseLast}
 </#if>
