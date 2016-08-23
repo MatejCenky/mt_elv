@@ -34,16 +34,106 @@ public class startPanel extends javax.swing.JFrame {
         jPopupMenu1 = new javax.swing.JPopupMenu();
         jPopupMenu2 = new javax.swing.JPopupMenu();
         jPopupMenu3 = new javax.swing.JPopupMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
+        jSeparator1 = new javax.swing.JSeparator();
+        textfieldBottomBasicAbout = new javax.swing.JLabel();
+        textLabelVerzia = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
-        jMenu2 = new javax.swing.JMenu();
+        JmenuFileMenu = new javax.swing.JMenu();
+        JmenuFIleNewBUtton = new javax.swing.JMenuItem();
+        jMenuFlneILoadbutton = new javax.swing.JMenuItem();
+        jMenuIFileexportSettingsButton = new javax.swing.JMenuItem();
+        jSeparator2 = new javax.swing.JPopupMenu.Separator();
+        jMenuIFileExitButton = new javax.swing.JMenuItem();
+        jMenuLibratyButton = new javax.swing.JMenu();
+        jMenuILibratyConductorsButton = new javax.swing.JMenuItem();
+        jMenuHelp = new javax.swing.JMenu();
+        jMenuIHelpHelpMT3BUtton = new javax.swing.JMenuItem();
+        jMenuIHelpStandardsButton = new javax.swing.JMenuItem();
+        jMenuIHelpMathButton = new javax.swing.JMenuItem();
+        jMenuIHelpAboutButton = new javax.swing.JMenuItem();
+
+        jMenuItem1.setText("jMenuItem1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        textfieldBottomBasicAbout.setText(language.language_label(languageOption,0));
+
+        textLabelVerzia.setText(language.language_label(languageOption,4));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mt_test/logo.png"))); // NOI18N
+
+        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\Jozef\\Documents\\_05_Elektrovod\\pi\\picbackStarframe.png")); // NOI18N
+
         jMenuBar1.add(jMenu1);
 
-        jMenu2.setText(language.language_label(languageOption,1));
-        jMenuBar1.add(jMenu2);
+        JmenuFileMenu.setText(language.language_label(languageOption,1));
+
+        JmenuFIleNewBUtton.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_N, java.awt.event.InputEvent.CTRL_MASK));
+        JmenuFIleNewBUtton.setText(language.language_label(languageOption,2));
+        JmenuFIleNewBUtton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JmenuFIleNewBUttonActionPerformed(evt);
+            }
+        });
+        JmenuFileMenu.add(JmenuFIleNewBUtton);
+
+        jMenuFlneILoadbutton.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_L, java.awt.event.InputEvent.CTRL_MASK));
+        jMenuFlneILoadbutton.setText(language.language_label(languageOption,3));
+        jMenuFlneILoadbutton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuFlneILoadbuttonActionPerformed(evt);
+            }
+        });
+        JmenuFileMenu.add(jMenuFlneILoadbutton);
+
+        jMenuIFileexportSettingsButton.setText(language.language_label(languageOption,5));
+        JmenuFileMenu.add(jMenuIFileexportSettingsButton);
+        JmenuFileMenu.add(jSeparator2);
+
+        jMenuIFileExitButton.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_E, java.awt.event.InputEvent.CTRL_MASK));
+        jMenuIFileExitButton.setText(language.language_label(languageOption,6));
+        jMenuIFileExitButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuIFileExitButtonActionPerformed(evt);
+            }
+        });
+        JmenuFileMenu.add(jMenuIFileExitButton);
+
+        jMenuBar1.add(JmenuFileMenu);
+
+        jMenuLibratyButton.setText(language.language_label(languageOption,7));
+
+        jMenuILibratyConductorsButton.setText(language.language_label(languageOption,8));
+        jMenuILibratyConductorsButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuILibratyConductorsButtonActionPerformed(evt);
+            }
+        });
+        jMenuLibratyButton.add(jMenuILibratyConductorsButton);
+
+        jMenuBar1.add(jMenuLibratyButton);
+
+        jMenuHelp.setText(language.language_label(languageOption,9));
+
+        jMenuIHelpHelpMT3BUtton.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_H, java.awt.event.InputEvent.CTRL_MASK));
+        jMenuIHelpHelpMT3BUtton.setText(language.language_label(languageOption,10));
+        jMenuHelp.add(jMenuIHelpHelpMT3BUtton);
+
+        jMenuIHelpStandardsButton.setText(language.language_label(languageOption,11));
+        jMenuHelp.add(jMenuIHelpStandardsButton);
+
+        jMenuIHelpMathButton.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_M, java.awt.event.InputEvent.CTRL_MASK));
+        jMenuIHelpMathButton.setText(language.language_label(languageOption,12));
+        jMenuHelp.add(jMenuIHelpMathButton);
+
+        jMenuIHelpAboutButton.setText(language.language_label(languageOption,13));
+        jMenuHelp.add(jMenuIHelpAboutButton);
+
+        jMenuBar1.add(jMenuHelp);
 
         setJMenuBar(jMenuBar1);
 
@@ -51,15 +141,56 @@ public class startPanel extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 672, Short.MAX_VALUE)
+            .addComponent(jSeparator1)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(textfieldBottomBasicAbout, javax.swing.GroupLayout.PREFERRED_SIZE, 438, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(textLabelVerzia, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel2)
+                        .addGap(0, 12, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 201, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jLabel1)))
+                .addGap(18, 18, 18)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 9, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(textfieldBottomBasicAbout)
+                    .addComponent(textLabelVerzia))
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void JmenuFIleNewBUttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JmenuFIleNewBUttonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_JmenuFIleNewBUttonActionPerformed
+
+    private void jMenuFlneILoadbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuFlneILoadbuttonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuFlneILoadbuttonActionPerformed
+
+    private void jMenuIFileExitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuIFileExitButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuIFileExitButtonActionPerformed
+
+    private void jMenuILibratyConductorsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuILibratyConductorsButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuILibratyConductorsButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -97,12 +228,30 @@ public class startPanel extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem JmenuFIleNewBUtton;
+    private javax.swing.JMenu JmenuFileMenu;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuFlneILoadbutton;
+    private javax.swing.JMenu jMenuHelp;
+    private javax.swing.JMenuItem jMenuIFileExitButton;
+    private javax.swing.JMenuItem jMenuIFileexportSettingsButton;
+    private javax.swing.JMenuItem jMenuIHelpAboutButton;
+    private javax.swing.JMenuItem jMenuIHelpHelpMT3BUtton;
+    private javax.swing.JMenuItem jMenuIHelpMathButton;
+    private javax.swing.JMenuItem jMenuIHelpStandardsButton;
+    private javax.swing.JMenuItem jMenuILibratyConductorsButton;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenu jMenuLibratyButton;
     private javax.swing.JPopupMenu jPopupMenu1;
     private javax.swing.JPopupMenu jPopupMenu2;
     private javax.swing.JPopupMenu jPopupMenu3;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JPopupMenu.Separator jSeparator2;
+    private javax.swing.JLabel textLabelVerzia;
+    private javax.swing.JLabel textfieldBottomBasicAbout;
     // End of variables declaration//GEN-END:variables
 public static Integer languageOption  ;
 }
