@@ -7,13 +7,13 @@
  * by authors Ing. Matej Cenky and Ing. Jozef Bendik.
  */
 
-package mt_test;
+package mt_main;
 
 /**
  *
  * @author Mattto
  */
-public class MT_Test {
+public class MT_Main {
 
     /**
      * @param args the command line arguments

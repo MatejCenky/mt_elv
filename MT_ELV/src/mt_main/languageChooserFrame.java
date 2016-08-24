@@ -6,7 +6,7 @@
  * of it must be consulted and the permission granted 
  * by authors Ing. Matej Cenky and Ing. Jozef Bendik.
  */
-package mt_test;
+package mt_main;
 
 /**
  *
@@ -64,9 +64,9 @@ public class languageChooserFrame extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mt_test/logo.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mt_graphic/logo.png"))); // NOI18N
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mt_test/SAGelvLogo.png"))); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mt_graphic/SAGelvLogo.png"))); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -75,19 +75,20 @@ public class languageChooserFrame extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(107, 107, 107)
+                        .addComponent(jLabel1))
+                    .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(SKButtom, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(CZButtom, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(ENButtom, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(83, 83, 83)
-                        .addComponent(jLabel2))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(107, 107, 107)
-                        .addComponent(jLabel1)))
+                        .addComponent(ENButtom, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jLabel2)
+                .addGap(82, 82, 82))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -95,12 +96,12 @@ public class languageChooserFrame extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel2)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(SKButtom)
                     .addComponent(CZButtom)
                     .addComponent(ENButtom))
-                .addGap(0, 24, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         pack();
@@ -109,19 +110,19 @@ public class languageChooserFrame extends javax.swing.JFrame {
     private void CZButtomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CZButtomActionPerformed
         languageOption = 2;
         setVisible(false);
-        Clicked=true;
+        Clicked = true;
     }//GEN-LAST:event_CZButtomActionPerformed
 
     private void SKButtomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SKButtomActionPerformed
         languageOption = 1;
         setVisible(false);
-        Clicked=true;
+        Clicked = true;
     }//GEN-LAST:event_SKButtomActionPerformed
-        
+
     private void ENButtomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ENButtomActionPerformed
         languageOption = 3;
         setVisible(false);
-        Clicked=true;
+        Clicked = true;
     }//GEN-LAST:event_ENButtomActionPerformed
 
     private void formWindowStateChanged(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowStateChanged
@@ -129,25 +130,23 @@ public class languageChooserFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowStateChanged
 
     /**
-     * Fuction return option of language 
+     * Fuction return option of language
+     *
      * @return 1 SLovak 2 Czech 3 English
      */
-    public static Integer getOption(){
+    public static Integer getOption() {
         return languageOption;
     }
-    
+
     /**
      * Method returs the information if user has choosen a language
+     *
      * @return false default true has choosen
      */
-    public static Boolean getStatus(){
+    public static Boolean getStatus() {
         return Clicked;
     }
-    
-    
-    
-   
-    
+
     /**
      * @param args the command line arguments
      */
@@ -190,6 +189,6 @@ public class languageChooserFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     // End of variables declaration//GEN-END:variables
-public static Integer languageOption  ;
-public static Boolean Clicked=false;
+public static Integer languageOption;
+    public static Boolean Clicked = false;
 }

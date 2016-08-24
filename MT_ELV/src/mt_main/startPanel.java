@@ -6,7 +6,7 @@
  * of it must be consulted and the permission granted 
  * by authors Ing. Matej Cenky and Ing. Jozef Bendik.
  */
-package mt_test;
+package mt_main;
 
 /**
  *
@@ -65,9 +65,9 @@ public class startPanel extends javax.swing.JFrame {
 
         textLabelVerzia.setText(language.language_label(languageOption,4));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mt_test/logo.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mt_graphic/logo.png"))); // NOI18N
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mt_test/picbackStarframe.png"))); // NOI18N
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mt_graphic/picbackStarframe.png"))); // NOI18N
         jLabel3.setText("jLabel3");
 
         jMenuBar1.add(jMenu1);
