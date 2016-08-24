@@ -57,7 +57,7 @@ public class languageChooserFrame extends javax.swing.JFrame {
             }
         });
 
-        ENButtom.setText("Angličtina");
+        ENButtom.setText("English");
         ENButtom.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ENButtomActionPerformed(evt);
