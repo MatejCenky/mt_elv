@@ -121,6 +121,9 @@
                   <Connection code="language.language_label(languageOption,10)" type="code"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuIHelpHelpMT3BUttonActionPerformed"/>
+              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuIHelpStandardsButton">
               <Properties>

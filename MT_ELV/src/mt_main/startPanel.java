@@ -8,6 +8,18 @@
  */
 package mt_main;
 
+import java.awt.Desktop;
+import java.awt.Toolkit;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.StandardCopyOption;
+
 /**
  *
  * @author Jozef
@@ -20,6 +32,7 @@ public class startPanel extends javax.swing.JFrame {
     public startPanel() {
         languageOption= languageChooserFrame.getOption();
         initComponents();
+        seticon();
     }
 
     /**
@@ -123,6 +136,11 @@ public class startPanel extends javax.swing.JFrame {
 
         jMenuIHelpHelpMT3BUtton.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_H, java.awt.event.InputEvent.CTRL_MASK));
         jMenuIHelpHelpMT3BUtton.setText(language.language_label(languageOption,10));
+        jMenuIHelpHelpMT3BUtton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuIHelpHelpMT3BUttonActionPerformed(evt);
+            }
+        });
         jMenuHelp.add(jMenuIHelpHelpMT3BUtton);
 
         jMenuIHelpStandardsButton.setText(language.language_label(languageOption,11));
@@ -199,6 +217,22 @@ public class startPanel extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuILibratyConductorsButtonActionPerformed
 
+    private void jMenuIHelpHelpMT3BUttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuIHelpHelpMT3BUttonActionPerformed
+      
+        if (Desktop.isDesktopSupported()) {
+    try {
+        String userhome = System.getProperty("user.dir");   // find home directory
+        File myFile = new File(userhome + "\\resources\\HelpMT3.pdf"); //access if and open
+        Desktop.getDesktop().open(myFile);
+    } catch (IOException ex) {
+        // no application registered for PDFs
+    }
+}
+        
+        
+        
+    }//GEN-LAST:event_jMenuIHelpHelpMT3BUttonActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -262,4 +296,8 @@ public class startPanel extends javax.swing.JFrame {
     private javax.swing.JLabel textfieldBottomBasicAbout;
     // End of variables declaration//GEN-END:variables
 public static Integer languageOption  ;
+
+    private void seticon() {
+     setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/mt_graphic/" + "icon.png")));
+    }
 }

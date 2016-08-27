@@ -8,6 +8,8 @@
  */
 package mt_main;
 
+import java.awt.Toolkit;
+
 /**
  *
  * @author Jozef
@@ -19,6 +21,7 @@ public class languageChooserFrame extends javax.swing.JFrame {
      */
     public languageChooserFrame() {
         initComponents();
+        seticon();
     }
 
     /**
@@ -146,6 +149,11 @@ public class languageChooserFrame extends javax.swing.JFrame {
     public static Boolean getStatus() {
         return Clicked;
     }
+    
+    private void seticon() {
+     setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/mt_graphic/" + "icon.png")));
+    }
+    
 
     /**
      * @param args the command line arguments
@@ -191,4 +199,6 @@ public class languageChooserFrame extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 public static Integer languageOption;
     public static Boolean Clicked = false;
+
+    
 }

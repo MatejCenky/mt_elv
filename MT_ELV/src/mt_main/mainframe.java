@@ -8,6 +8,8 @@
  */
 package mt_main;
 
+import java.awt.Toolkit;
+
 /**
  *
  * @author Mattto
@@ -21,6 +23,7 @@ public class mainframe extends javax.swing.JFrame {
         
         
         initComponents();
+        seticon();
         
         
     }
@@ -245,6 +248,10 @@ public class mainframe extends javax.swing.JFrame {
     private javax.swing.JTable jTable4;
     private javax.swing.JTextField m_textfield;
     // End of variables declaration//GEN-END:variables
+
+    private void seticon() {
+       setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/mt_graphic/" + "icon.png")));
+    }
     
 
 }
