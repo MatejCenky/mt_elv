@@ -155,12 +155,22 @@ public class state_equation {
     }
     
     /**
-     * Storing the result sigma_HT into the conductor_creeping variable!!
      * @param T_EDT average year temperature [degreeC] - act as theta_1
+     * @return sigma_HT
      */
-    public static void compute_sigma_HT(double T_EDT){
+    public static double compute_sigma_HT(double T_EDT){
         cubic_equation_coef_B_imaginary(theta_0, T_EDT);
-        cubic_equation_solve_imaginary();
+        return cubic_equation_solve_imaginary();
+    }
+    
+    /**
+     * @param T_x0 imaginary temperature == theta_0
+     * @param T_xp imaginary temperature == theta_1
+     * @return T_0 == sigma_H1
+     */
+    public static double compute_sigma_Hvib(double T_x0, double T_xp){
+        cubic_equation_coef_B_imaginary(T_x0, T_xp);
+        return cubic_equation_solve_imaginary();
     }
     
     
@@ -333,7 +343,7 @@ public class state_equation {
      * Defined are only B,D coefficient -> sufficient to solve
      * Storing the result into the conductor_creeping variable!!
      */
-    private static void cubic_equation_solve_imaginary(){
+    private static double cubic_equation_solve_imaginary(){
         double part1;
         double part2;
         double part3;
@@ -352,6 +362,6 @@ public class state_equation {
             part3 = Math.cos(part2/3) - state_equation.Bc_i/3;
             result = 2 * part1 * part3;
         }
-         conductor_creeping.sigma_HT = result;
+        return result;
     }
 }

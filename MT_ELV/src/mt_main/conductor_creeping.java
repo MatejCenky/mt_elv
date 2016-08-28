@@ -128,11 +128,30 @@ public class conductor_creeping {
         conductor_composition_coefficient();
         // k_EDS, k_EDT
         avg_temperature_coefficient();
-        state_equation.compute_sigma_HT(conductor_creeping.T_EDT);
+        conductor_creeping.sigma_HT = state_equation.compute_sigma_HT(conductor_creeping.T_EDT);
         avg_load_coefficient();
         // results
         thermal_shift_intitial();
         thermal_shift_transient();
+    }
+    
+    /**
+     * Computes the initial thermal shift with double variable return
+     * - NEED TO BE COMPUTED AFTER "COMPUTE_THERMAL_SHIFTS()"
+     * @return initial thermal shift [double]
+     */
+    public static double compute_initial_thermal_shift_value(){
+        return thermal_shift_initial_value();
+    }
+    
+    /**
+     * Computes the transient thermal shift with double variable return
+     * - NEED TO BE COMPUTED AFTER "COMPUTE_THERMAL_SHIFTS()"
+     * @param tp specify time after construction [h]
+     * @return transient thermal shift [double]
+     */
+    public static double compute_transient_thermal_shift_value(double tp){
+        return thermal_shift_transient_value(tp);
     }
     
     /**
@@ -195,10 +214,24 @@ public class conductor_creeping {
     }
     
     /**
-     * Computes the transient thermal shift "dT_0"
+     * Computes the transient thermal shift "dT_p"
      */
      private static void thermal_shift_transient(){
         conductor_creeping.dT_p = (-1/(conductor_creeping.alpha*1e6))* conductor_creeping.k_EDS* conductor_creeping.k_EDT* conductor_creeping.k_w* conductor_creeping.fi* (Math.pow(conductor_creeping.t_0, n) - Math.pow(conductor_creeping.t_p, n));
+    }
+     
+    /**
+     * Computes the initial thermal shift "dT_0"
+     */
+     private static double thermal_shift_initial_value(){
+        return (-1/(conductor_creeping.alpha*1e6))* conductor_creeping.k_EDS* conductor_creeping.k_EDT* conductor_creeping.k_w* conductor_creeping.fi* Math.pow(conductor_creeping.t_0, n);
+    }
+    
+    /**
+     * Computes the transient thermal shift "dT_p"
+     */
+     private static double thermal_shift_transient_value(double tp){
+        return (-1/(conductor_creeping.alpha*1e6))* conductor_creeping.k_EDS* conductor_creeping.k_EDT* conductor_creeping.k_w* conductor_creeping.fi* (Math.pow(conductor_creeping.t_0, n) - Math.pow(tp, n));
     }
     
     
