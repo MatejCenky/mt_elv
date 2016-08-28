@@ -26,20 +26,33 @@ public static void constructor(){
          language.CZ.add("MT3 software, SAG Elektrovod, autoři Jozef Bendík & Matej Cenký 2016"); 
          language.EN.add("MT3 software, SAG Elektrovod, created by Jozef Bendík & Matej Cenký 2016");                       //language String value  at position 
         
- /*1*/   language.SK.add("Súbor");              language.CZ.add("Soubor");              language.EN.add("File");            //language String value  at position 
- /*2*/   language.SK.add("Nový");               language.CZ.add("Nový");                language.EN.add("New");             //language String value  at position 
- /*3*/   language.SK.add("Načítať");            language.CZ.add("Načítat");             language.EN.add("Load");            //language String value  at position 
- /*4*/   language.SK.add("Verzia 1.0");         language.CZ.add("Verze 1.0");           language.EN.add("Version 1.0");     //language String value  at position 
- /*5*/   language.SK.add("Nastavenia exportu"); language.CZ.add("Nastavení exportu");   language.EN.add("Export settings"); 
- /*6*/   language.SK.add("Koniec");             language.CZ.add("Konec");               language.EN.add("Exit"); 
- /*7*/   language.SK.add("Knižnica");           language.CZ.add("Knihovna");            language.EN.add("Library");
- /*8*/   language.SK.add("Vodiče");             language.CZ.add("Vodiče");              language.EN.add("Conductors");
- /*9*/   language.SK.add("Help");               language.CZ.add("Help");                language.EN.add("Help");
- /*10*/  language.SK.add("MT3 Help");           language.CZ.add("MT3 Help");            language.EN.add("MT3 Help");
- /*11*/  language.SK.add("Normy");              language.CZ.add("Normy");               language.EN.add("Standards");
- /*12*/  language.SK.add("Matematika");         language.CZ.add("Matematika");          language.EN.add("Math");
- /*12*/  language.SK.add("O programe");         language.CZ.add("O programe");          language.EN.add("About");
-   inicializovane = true;
+ /*1*/   language.SK.add("Súbor");                       language.CZ.add("Soubor");              language.EN.add("File");            //language String value  at position 
+ /*2*/   language.SK.add("Nový");                        language.CZ.add("Nový");                language.EN.add("New");             //language String value  at position 
+ /*3*/   language.SK.add("Načítať");                     language.CZ.add("Načítat");             language.EN.add("Load");            //language String value  at position 
+ /*4*/   language.SK.add("Verzia 1.0");                  language.CZ.add("Verze 1.0");           language.EN.add("Version 1.0");     //language String value  at position 
+ /*5*/   language.SK.add("Nastavenia exportu");          language.CZ.add("Nastavení exportu");   language.EN.add("Export settings"); 
+ /*6*/   language.SK.add("Koniec");                      language.CZ.add("Konec");               language.EN.add("Exit"); 
+ /*7*/   language.SK.add("Knižnica");                    language.CZ.add("Knihovna");            language.EN.add("Library");
+ /*8*/   language.SK.add("Vodiče");                      language.CZ.add("Vodiče");              language.EN.add("Conductors");
+ /*9*/   language.SK.add("Help");                        language.CZ.add("Help");                language.EN.add("Help");
+ /*10*/  language.SK.add("MT3 Help");                    language.CZ.add("MT3 Help");            language.EN.add("MT3 Help");
+ /*11*/  language.SK.add("Normy");                       language.CZ.add("Normy");               language.EN.add("Standards");
+ /*12*/  language.SK.add("Matematika");                  language.CZ.add("Matematika");          language.EN.add("Math");
+ /*13*/  language.SK.add("O programe");                  language.CZ.add("O programe");          language.EN.add("About");
+ /*14*/  language.SK.add("Matematický výpočet");         language.CZ.add("Matematickej výpočet");language.EN.add("Math calculation");
+ /*15*/  language.SK.add("Stavová rovnica");             language.CZ.add("Stavová rovnice");     language.EN.add("State Equation");
+ /*16*/  language.SK.add("Zaťaženia");                   language.CZ.add("Zatížení");            language.EN.add("Overloads");
+ /*17*/  language.SK.add("Tečenie vodiča");              language.CZ.add("Tečení vodiče");       language.EN.add("Conductor creeping");
+ /*18*/  language.SK.add("Vibračná ochrana");            language.CZ.add("Vibrační ochrana");    language.EN.add("Vibration protection");
+ /*19*/  language.SK.add("O programe");                  language.CZ.add("O programe");          language.EN.add("About");
+ /*20*/  language.SK.add("Zavri");                       language.CZ.add("Zavři");               language.EN.add("Close");
+  
+ /*21*/  language.SK.add("Lorem ipsum bla bla bla teple slova zuzu po slovensky ahoj ideme si zašukat ? ok podme ju ju ju hu hu hu kert na dftr vdvvfvdf fgd er dsds cxcs erzzu dkdk dfsdf d d ddddd dfsdf sdf sdf sdfsdf sdfsdf sdfetrbtrb ddsfdg ");  
+         language.CZ.add("Lorem ipsum bla bla bla teple slova zuzu po cesky ahoj  vole to takle si zapichat ju ju ju hu hu hu kert na dftr vdvvfvdf fgd er dsds cxcs erzzu dkdk dfsdf d d ddddd dfsdf sdf sdf sdfsdf sdfsdf sdfetrbtrb ddsfdg "); 
+         language.EN.add("Lorem ipsum bla bla bla teple slova zuzu po anglcky hello mother fucker wana fuck today? ju ju ju hu hu hu kert na dftr vdvvfvdf fgd er dsds cxcs erzzu dkdk dfsdf d d ddddd dfsdf sdf sdf sdfsdf sdfsdf sdfetrbtrb ddsfdg ");
+ 
+
+ inicializovane = true;
 }
  
 /**

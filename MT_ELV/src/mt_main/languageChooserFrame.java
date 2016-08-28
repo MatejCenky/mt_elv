@@ -21,6 +21,7 @@ public class languageChooserFrame extends javax.swing.JFrame {
      */
     public languageChooserFrame() {
         initComponents();
+        setLocationRelativeTo(null); //center of window position
         seticon();
     }
 
@@ -40,6 +41,7 @@ public class languageChooserFrame extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
         addWindowStateListener(new java.awt.event.WindowStateListener() {
             public void windowStateChanged(java.awt.event.WindowEvent evt) {
                 formWindowStateChanged(evt);

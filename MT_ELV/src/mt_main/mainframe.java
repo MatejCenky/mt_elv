@@ -23,6 +23,7 @@ public class mainframe extends javax.swing.JFrame {
         
         
         initComponents();
+        setLocationRelativeTo(null);
         seticon();
         
         
@@ -55,6 +56,7 @@ public class mainframe extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(204, 204, 204));
+        setResizable(false);
 
         jButton1.setBackground(new java.awt.Color(0, 102, 0));
         jButton1.setForeground(new java.awt.Color(0, 0, 0));

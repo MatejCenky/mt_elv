@@ -32,6 +32,7 @@ public class startPanel extends javax.swing.JFrame {
     public startPanel() {
         languageOption= languageChooserFrame.getOption();
         initComponents();
+        setLocationRelativeTo(null); //center of window position
         seticon();
     }
 
@@ -73,6 +74,7 @@ public class startPanel extends javax.swing.JFrame {
         jMenuItem1.setText("jMenuItem1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         textfieldBottomBasicAbout.setText(language.language_label(languageOption,0));
 
@@ -144,13 +146,28 @@ public class startPanel extends javax.swing.JFrame {
         jMenuHelp.add(jMenuIHelpHelpMT3BUtton);
 
         jMenuIHelpStandardsButton.setText(language.language_label(languageOption,11));
+        jMenuIHelpStandardsButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuIHelpStandardsButtonActionPerformed(evt);
+            }
+        });
         jMenuHelp.add(jMenuIHelpStandardsButton);
 
         jMenuIHelpMathButton.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_M, java.awt.event.InputEvent.CTRL_MASK));
         jMenuIHelpMathButton.setText(language.language_label(languageOption,12));
+        jMenuIHelpMathButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuIHelpMathButtonActionPerformed(evt);
+            }
+        });
         jMenuHelp.add(jMenuIHelpMathButton);
 
         jMenuIHelpAboutButton.setText(language.language_label(languageOption,13));
+        jMenuIHelpAboutButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuIHelpAboutButtonActionPerformed(evt);
+            }
+        });
         jMenuHelp.add(jMenuIHelpAboutButton);
 
         jMenuBar1.add(jMenuHelp);
@@ -232,6 +249,33 @@ public class startPanel extends javax.swing.JFrame {
         
         
     }//GEN-LAST:event_jMenuIHelpHelpMT3BUttonActionPerformed
+
+    private void jMenuIHelpStandardsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuIHelpStandardsButtonActionPerformed
+       
+        if (Desktop.isDesktopSupported()) {
+    try {
+        String userhome = System.getProperty("user.dir");   // find home directory
+        File myFile = new File(userhome + "\\resources\\NormXyz.pdf"); //access if and open
+        Desktop.getDesktop().open(myFile);
+    } catch (IOException ex) {
+        // no application registered for PDFs
+    }
+}
+        
+        
+    }//GEN-LAST:event_jMenuIHelpStandardsButtonActionPerformed
+
+    private void jMenuIHelpMathButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuIHelpMathButtonActionPerformed
+        
+       Help_Math_JDialog help_math_dialog_window = new Help_Math_JDialog(this, rootPaneCheckingEnabled);
+       help_math_dialog_window.setVisible(true);   // opens dialog window 
+        
+    }//GEN-LAST:event_jMenuIHelpMathButtonActionPerformed
+
+    private void jMenuIHelpAboutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuIHelpAboutButtonActionPerformed
+        Help_About_JDialog help_about_dialog_window = new Help_About_JDialog(this, rootPaneCheckingEnabled);
+       help_about_dialog_window.setVisible(true);   // opens dialog window 
+    }//GEN-LAST:event_jMenuIHelpAboutButtonActionPerformed
 
     /**
      * @param args the command line arguments
