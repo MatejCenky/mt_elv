@@ -48,6 +48,7 @@ public class state_equation {
     public static double S;           // cross-section area of the conductor [mm^2]
     public static double E;           // Young model of elasticity of conductor [MPa]
     public static double alpha;       // linear expansion coefficient [1/degree_C]
+    public static double gravitatioweight= 9.80665; 
     
 // values for state equation
     private static int ter;      // specify flat / non-flat terrain - in constructor !!!;
@@ -187,7 +188,7 @@ public class state_equation {
      * Method computes the specific gravity of the conductor "gama".
      */
     private static void gama(){
-        state_equation.gama = state_equation.m * state_equation.S;
+        state_equation.gama = (state_equation.m *state_equation.gravitatioweight)/state_equation.S;
     }
     
     /**
