@@ -41,17 +41,49 @@ public class state_equation {
  /* Defining variables */
     
 // basic global variables
-    public static double a[];         // array of the spans on the suspension section [m]
-    public static double dh[];        // array of height differences of the suspension points of towers [m]
-    public static double gama;        // specific gravity of the conductor [N/m*mm^2]
-    public static double m;           // weight of the conductor per unit [kg/m]
-    public static double S;           // cross-section area of the conductor [mm^2]
-    public static double E;           // Young model of elasticity of conductor [MPa]
-    public static double alpha;       // linear expansion coefficient [1/degree_C]
-    public static double gravitatioweight= 9.80665; 
+    
+    /**
+     * array of the spans on the suspension section [m]
+     */
+    public static double a[]; 
+    
+    /**
+     * array of height differences of the suspension points of towers [m]
+     */
+    public static double dh[]; 
+    
+    /**
+     * specific gravity of the conductor [N/m*mm^2]
+     */
+    public static double gama;  
+    
+    /**
+     * weight of the conductor per unit [kg/m]
+     */
+    public static double m; 
+    
+    /**
+     * cross-section area of the conductor [mm^2]
+     */
+    public static double S;  
+    
+    /**
+     * Young model of elasticity of conductor [MPa]
+     */
+    public static double E;  
+    
+    /**
+     * linear expansion coefficient [1/degree_C]
+     */
+    public static double alpha;    
+    
+    /**
+     * gravitational acceleration [m.s^-2]
+     */
+    public static double g = 9.80665; 
     
 // values for state equation
-    private static int ter;      // specify flat / non-flat terrain - in constructor !!!;
+    private static int ter;            // specify flat / non-flat terrain - in constructor !!!;
     private static double MSF;         // /average/ span of flat suspension section [m] 
     private static double MST;         // /average/ span of terrain suspension section [m] 
     private static double Bc;          // coefficient B in cubic equation
@@ -188,7 +220,7 @@ public class state_equation {
      * Method computes the specific gravity of the conductor "gama".
      */
     private static void gama(){
-        state_equation.gama = (state_equation.m *state_equation.gravitatioweight)/state_equation.S;
+        state_equation.gama = (state_equation.m *state_equation.g)/state_equation.S;
     }
     
     /**
