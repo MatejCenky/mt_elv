@@ -219,7 +219,7 @@ public class startPanel extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void JmenuFIleNewBUttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JmenuFIleNewBUttonActionPerformed
-        // TODO add your handling code here:
+      Clicked_NEW = true;
     }//GEN-LAST:event_JmenuFIleNewBUttonActionPerformed
 
     private void jMenuFlneILoadbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuFlneILoadbuttonActionPerformed
@@ -277,6 +277,18 @@ public class startPanel extends javax.swing.JFrame {
        help_about_dialog_window.setVisible(true);   // opens dialog window 
     }//GEN-LAST:event_jMenuIHelpAboutButtonActionPerformed
 
+    //posiela status mainu aby odblokovalo vytvorenie noveho okna
+    public static Boolean getStatus_for_new_project() {
+        return Clicked_NEW;
+        
+    }
+    
+    //prijma status z Mainu aby nastavilo status na vytvaranie novych projektových oknien oknie na False
+    public static void setStatus_for_new_project(boolean X) {
+         Clicked_NEW =X;
+        
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -340,7 +352,7 @@ public class startPanel extends javax.swing.JFrame {
     private javax.swing.JLabel textfieldBottomBasicAbout;
     // End of variables declaration//GEN-END:variables
 public static Integer languageOption  ;
-
+ public static Boolean Clicked_NEW = false;
     private void seticon() {
      setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/mt_graphic/" + "icon.png")));
     }
