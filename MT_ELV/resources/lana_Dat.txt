@@ -1,2338 +1,2116 @@
+ÔªøDatabase file do not modify or I will hunt you and eat you alive. JB
 114-AL3/102-ST5E trud
- Priemer = 19.1  mm
- Prierez = 215.5  mm2
- Jednotkov· hmotnosù = 1.1128  kg/m
- Mern· tiaû = 0.0897  N/m.mm2
- Modul pruûnosti = 115000  MPa
- Koeficient tepelnej rozùaûnosti = 0.00001414  1/∞C
- Matematick· ˙nosnosù = 172850  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.5
+19.1  mm
+215.5  mm2
+1.1128  kg/m
+115000  MPa
+0.00001414  1/¬∞C
+172850  N
+0.5
 ........
 120 Alfe 3
- Priemer = 16.88  mm
- Prierez = 170.18  mm2
- Jednotkov· hmotnosù = 0.7043  kg/m
- Mern· tiaû = 0.04021  N/m.mm2
- Modul pruûnosti = 101989  MPa
- Koeficient tepelnej rozùaûnosti = 0.00001760  1/∞C
- Matematick· ˙nosnosù = 68700  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.5
+  16.88  mm
+170.18  mm2
+0.7043  kg/m
+101989  MPa
+0.00001760  1/¬∞C
+68700  N
+0.5
 ........
 120 Alfe 6
- Priemer = 16  mm
- Prierez = 149.62  mm2
- Jednotkov· hmotnosù = 0.5359  kg/m
- Mern· tiaû = 0.03472  N/m.mm2
- Modul pruûnosti = 88260  MPa
- Koeficient tepelnej rozùaûnosti = 0.00001975  1/∞C
- Matematick· ˙nosnosù = 44600  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.5
+  16  mm
+149.62  mm2
+0.5359  kg/m
+88260  MPa
+0.00001975  1/¬∞C
+44600  N
+0.5
 ........
 122-AL1/20-ST1A
- Priemer = 15.5  mm
- Prierez = 141.4  mm2
- Jednotkov· hmotnosù = 0.491  kg/m
- Mern· tiaû = 0.0340524  N/m.mm2
- Modul pruûnosti = 77000  MPa
- Koeficient tepelnej rozùaûnosti = 0.00001920  1/∞C
- Matematick· ˙nosnosù = 44500  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.5
+  15.5  mm
+141.4  mm2
+0.491  kg/m
+77000  MPa
+0.00001920  1/¬∞C
+44500  N
+0.5
 ........
 127-AL3/134-ST5E (Sveid)
- Priemer = 21  mm
- Prierez = 261.5  mm2
- Jednotkov· hmotnosù = 1.4063  kg/m
- Mern· tiaû = 0.0527  N/m.mm2
- Modul pruûnosti = 120170  MPa
- Koeficient tepelnej rozùaûnosti = 0.00001377  1/∞C
- Matematick· ˙nosnosù = 221530  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.5
+  21  mm
+261.5  mm2
+1.4063  kg/m
+120170  MPa
+0.00001377  1/¬∞C
+221530  N
+0.5
 ........
 150 AlFe 6
- Priemer = 16.96  mm
- Prierez = 168.1  mm2
- Jednotkov· hmotnosù = 0.6015  kg/m
- Mern· tiaû = 0.03472  N/m.mm2
- Modul pruûnosti = 88260  MPa
- Koeficient tepelnej rozùaûnosti = 0.00001975  1/∞C
- Matematick· ˙nosnosù = 48800  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.34
+  16.96  mm
+168.1  mm2
+0.6015  kg/m
+88260  MPa
+0.00001975  1/¬∞C
+48800  N
+0.34
 ........
 181-AL3 (ASH)
- Priemer = 17.4  mm
- Prierez = 180.7  mm2
- Jednotkov· hmotnosù = 0.4961  kg/m
- Mern· tiaû = 0.02692  N/m.mm2
- Modul pruûnosti = 57000  MPa
- Koeficient tepelnej rozùaûnosti = 0.00002300  1/∞C
- Matematick· ˙nosnosù = 53310  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.5
+  17.4  mm
+180.7  mm2
+0.4961  kg/m
+57000  MPa
+0.00002300  1/¬∞C
+53310  N
+0.5
 ........
 183-AL1/43-ST1A (LYNX)
- Priemer = 19.5  mm
- Prierez = 226.2  mm2
- Jednotkov· hmotnosù = 0.8416  kg/m
- Mern· tiaû = 0.0365  N/m.mm2
- Modul pruûnosti = 80500  MPa
- Koeficient tepelnej rozùaûnosti = 0.00001790  1/∞C
- Matematick· ˙nosnosù = 79970  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.5
+  19.5  mm
+226.2  mm2
+0.8416  kg/m
+80500  MPa
+0.00001790  1/¬∞C
+79970  N
+0.5
 ........
 183-AL1/43-ST1A LYNX
- Priemer = 21  mm
- Prierez = 235.5  mm2
- Jednotkov· hmotnosù = 0.9397  kg/m
- Mern· tiaû = 0.039144  N/m.mm2
- Modul pruûnosti = 90000  MPa
- Koeficient tepelnej rozùaûnosti = 0.00001880  1/∞C
- Matematick· ˙nosnosù = 112400  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.462
+  21  mm
+235.5  mm2
+0.9397  kg/m
+90000  MPa
+0.00001880  1/¬∞C
+112400  N
+0.462
 ........
 184-AL1/30-ST1A
- Priemer = 18.99  mm
- Prierez = 213.63  mm2
- Jednotkov· hmotnosù = 0.741  kg/m
- Mern· tiaû = 0.034015  N/m.mm2
- Modul pruûnosti = 73900  MPa
- Koeficient tepelnej rozùaûnosti = 0.00001890  1/∞C
- Matematick· ˙nosnosù = 58743  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.5
+  18.99  mm
+213.63  mm2
+0.741  kg/m
+73900  MPa
+0.00001890  1/¬∞C
+58743  N
+0.5
 ........
 184-AL1/31-ST1A
- Priemer = 18.99  mm
- Prierez = 214.63  mm2
- Jednotkov· hmotnosù = 0.747  kg/m
- Mern· tiaû = 0.034014  N/m.mm2
- Modul pruûnosti = 73900  MPa
- Koeficient tepelnej rozùaûnosti = 0.00001890  1/∞C
- Matematick· ˙nosnosù = 58743  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.5
+  18.99  mm
+214.63  mm2
+0.747  kg/m
+73900  MPa
+0.00001890  1/¬∞C
+58743  N
+0.5
 ........
 185 AlFe 3
- Priemer = 20.39  mm
- Prierez = 235.6  mm2
- Jednotkov· hmotnosù = 0.9746  kg/m
- Mern· tiaû = 0.04021  N/m.mm2
- Modul pruûnosti = 101989  MPa
- Koeficient tepelnej rozùaûnosti = 0.00001760  1/∞C
- Matematick· ˙nosnosù = 94300  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.5
+  20.39  mm
+235.6  mm2
+0.9746  kg/m
+101989  MPa
+0.00001760  1/¬∞C
+94300  N
+0.5
 ........
 185 AlFe 6
- Priemer = 19.08  mm
- Prierez = 214.41  mm2
- Jednotkov· hmotnosù = 0.7616  kg/m
- Mern· tiaû = 0.03472  N/m.mm2
- Modul pruûnosti = 88260  MPa
- Koeficient tepelnej rozùaûnosti = 0.00001975  1/∞C
- Matematick· ˙nosnosù = 61400  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.33
+  19.08  mm
+214.41  mm2
+0.7616  kg/m
+88260  MPa
+0.00001975  1/¬∞C
+61400  N
+0.33
 ........
 210 AlFe 6
- Priemer = 20.1  mm
- Prierez = 237  mm2
- Jednotkov· hmotnosù = 0.8442  kg/m
- Mern· tiaû = 0.03472  N/m.mm2
- Modul pruûnosti = 88260  MPa
- Koeficient tepelnej rozùaûnosti = 0.00001975  1/∞C
- Matematick· ˙nosnosù = 71100  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.33
+  20.1  mm
+237  mm2
+0.8442  kg/m
+88260  MPa
+0.00001975  1/¬∞C
+71100  N
+0.33
 ........
 211-AL3
- Priemer = 18.8  mm
- Prierez = 211  mm2
- Jednotkov· hmotnosù = 0.5792  kg/m
- Mern· tiaû = 0.02692  N/m.mm2
- Modul pruûnosti = 57000  MPa
- Koeficient tepelnej rozùaûnosti = 0.00002300  1/∞C
- Matematick· ˙nosnosù = 62240  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.5
+  18.8  mm
+211  mm2
+0.5792  kg/m
+57000  MPa
+0.00002300  1/¬∞C
+62240  N
+0.5
 ........
 24/36SMF OPGW (Furukawa)
- Priemer = 21.2  mm
- Prierez = 255  mm2
- Jednotkov· hmotnosù = 1.01  kg/m
- Mern· tiaû = 0.0388  N/m.mm2
- Modul pruûnosti = 90053  MPa
- Koeficient tepelnej rozùaûnosti = 0.00001795  1/∞C
- Matematick· ˙nosnosù = 145400  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.5
+  21.2  mm
+255  mm2
+1.01  kg/m
+90053  MPa
+0.00001795  1/¬∞C
+145400  N
+0.5
 ........
 240 AlFe 6
- Priemer = 21.35  mm
- Prierez = 267.77  mm2
- Jednotkov· hmotnosù = 0.9522  kg/m
- Mern· tiaû = 0.03472  N/m.mm2
- Modul pruûnosti = 88260  MPa
- Koeficient tepelnej rozùaûnosti = 0.00001975  1/∞C
- Matematick· ˙nosnosù = 75000  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.33
+  21.35  mm
+267.77  mm2
+0.9522  kg/m
+88260  MPa
+0.00001975  1/¬∞C
+75000  N
+0.33
 ........
 240 AlFe 6, r.1948
- Priemer = 21.7  mm
- Prierez = 276.14  mm2
- Jednotkov· hmotnosù = 0.9522  kg/m
- Mern· tiaû = 0.0345  N/m.mm2
- Modul pruûnosti = 75000  MPa
- Koeficient tepelnej rozùaûnosti = 0.00001950  1/∞C
- Matematick· ˙nosnosù = 78300  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.33
+  21.7  mm
+276.14  mm2
+0.9522  kg/m
+75000  MPa
+0.00001950  1/¬∞C
+78300  N
+0.33
 ........
 243-AL1/39-ST1A
- Priemer = 21.84  mm
- Prierez = 282.54  mm2
- Jednotkov· hmotnosù = 0.988  kg/m
- Mern· tiaû = 0.034304  N/m.mm2
- Modul pruûnosti = 75900  MPa
- Koeficient tepelnej rozùaûnosti = 0.00001890  1/∞C
- Matematick· ˙nosnosù = 84120  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.314
+  21.84  mm
+282.54  mm2
+0.988  kg/m
+75900  MPa
+0.00001890  1/¬∞C
+84120  N
+0.314
 ........
 264-AL1/34-ST1A
- Priemer = 22.4  mm
- Prierez = 297.7  mm2
- Jednotkov· hmotnosù = 0.9944  kg/m
- Mern· tiaû = 0.0332979  N/m.mm2
- Modul pruûnosti = 74000  MPa
- Koeficient tepelnej rozùaûnosti = 0.00001960  1/∞C
- Matematick· ˙nosnosù = 81040  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.269
+  22.4  mm
+297.7  mm2
+0.9944  kg/m
+74000  MPa
+0.00001960  1/¬∞C
+81040  N
+0.269
 ........
 299-AL3
- Priemer = 22.5  mm
- Prierez = 299.4  mm2
- Jednotkov· hmotnosù = 0.8275  kg/m
- Mern· tiaû = 0.0271  N/m.mm2
- Modul pruûnosti = 55000  MPa
- Koeficient tepelnej rozùaûnosti = 0.00002300  1/∞C
- Matematick· ˙nosnosù = 88330  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.2
+  22.5  mm
+299.4  mm2
+0.8275  kg/m
+55000  MPa
+0.00002300  1/¬∞C
+88330  N
+0.2
 ........
 305-AL1/39-ST1A
- Priemer = 24.1  mm
- Prierez = 344.1  mm2
- Jednotkov· hmotnosù = 1.1512  kg/m
- Mern· tiaû = 0.03111  N/m.mm2
- Modul pruûnosti = 70000  MPa
- Koeficient tepelnej rozùaûnosti = 0.00001930  1/∞C
- Matematick· ˙nosnosù = 96800  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.269
+  24.1  mm
+344.1  mm2
+1.1512  kg/m
+70000  MPa
+0.00001930  1/¬∞C
+96800  N
+0.269
 ........
 339-AL1/30-ST1A
- Priemer = 25  mm
- Prierez = 369.1  mm2
- Jednotkov· hmotnosù = 1.1712  kg/m
- Mern· tiaû = 0.03111  N/m.mm2
- Modul pruûnosti = 62000  MPa
- Koeficient tepelnej rozùaûnosti = 0.00002050  1/∞C
- Matematick· ˙nosnosù = 91710  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.2
+  25  mm
+369.1  mm2
+1.1712  kg/m
+62000  MPa
+0.00002050  1/¬∞C
+91710  N
+0.2
 ........
 350 AlFe 3
- Priemer = 28.2  mm
- Prierez = 473.4  mm2
- Jednotkov· hmotnosù = 1.949  kg/m
- Mern· tiaû = 0.04038  N/m.mm2
- Modul pruûnosti = 87408  MPa
- Koeficient tepelnej rozùaûnosti = 0.00001690  1/∞C
- Matematick· ˙nosnosù = 181800  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.5
+  28.2  mm
+473.4  mm2
+1.949  kg/m
+87408  MPa
+0.00001690  1/¬∞C
+181800  N
+0.5
 ........
 350 AlFe 4
- Priemer = 26.8  mm
- Prierez = 414.44  mm2
- Jednotkov· hmotnosù = 1.6052  kg/m
- Mern· tiaû = 0.03727  N/m.mm2
- Modul pruûnosti = 95713  MPa
- Koeficient tepelnej rozùaûnosti = 0.00001850  1/∞C
- Matematick· ˙nosnosù = 139700  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.43
+  26.8  mm
+414.44  mm2
+1.6052  kg/m
+95713  MPa
+0.00001850  1/¬∞C
+139700  N
+0.43
 ........
-350 AlFe 4 (ES» 178 1948)
- Priemer = 27.2  mm
- Prierez = 426.18  mm2
- Jednotkov· hmotnosù = 1.6368  kg/m
- Mern· tiaû = 0.03677  N/m.mm2
- Modul pruûnosti = 81423  MPa
- Koeficient tepelnej rozùaûnosti = 0.00001750  1/∞C
- Matematick· ˙nosnosù = 140600  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.43
+350 AlFe 4 (ESƒå 178 1948)
+  27.2  mm
+426.18  mm2
+1.6368  kg/m
+81423  MPa
+0.00001750  1/¬∞C
+140600  N
+0.43
 ........
-350 AlFe 4 podla ES» z r. 1948
- Priemer = 27.2  mm
- Prierez = 426.18  mm2
- Jednotkov· hmotnosù = 1.6388  kg/m
- Mern· tiaû = 0.03677  N/m.mm2
- Modul pruûnosti = 81395.2  MPa
- Koeficient tepelnej rozùaûnosti = 0.00001750  1/∞C
- Matematick· ˙nosnosù = 141000  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.42
+350 AlFe 4 podla ESƒå z r. 1948
+  27.2  mm
+426.18  mm2
+1.6388  kg/m
+81395.2  MPa
+0.00001750  1/¬∞C
+141000  N
+0.42
 ........
 350 AlFe 6
- Priemer = 26.5  mm
- Prierez = 410.7  mm2
- Jednotkov· hmotnosù = 1.4546  kg/m
- Mern· tiaû = 0.03472  N/m.mm2
- Modul pruûnosti = 88260  MPa
- Koeficient tepelnej rozùaûnosti = 0.00001975  1/∞C
- Matematick· ˙nosnosù = 114800  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.33
+  26.5  mm
+410.7  mm2
+1.4546  kg/m
+88260  MPa
+0.00001975  1/¬∞C
+114800  N
+0.33
 ........
-350 AlFe 6 podæa »SN 024210
- Priemer = 26.5  mm
- Prierez = 410.7  mm2
- Jednotkov· hmotnosù = 1.4546  kg/m
- Mern· tiaû = 0.0347  N/m.mm2
- Modul pruûnosti = 73575  MPa
- Koeficient tepelnej rozùaûnosti = 0.00001950  1/∞C
- Matematick· ˙nosnosù = 110800  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.33
+350 AlFe 6 podƒæa ƒåSN 024210
+  26.5  mm
+410.7  mm2
+1.4546  kg/m
+73575  MPa
+0.00001950  1/¬∞C
+110800  N
+0.33
 ........
 362-AL1-59-ST1A
- Priemer = 26.7  mm
- Prierez = 421.1  mm2
- Jednotkov· hmotnosù = 1.4739  kg/m
- Mern· tiaû = 0.034324  N/m.mm2
- Modul pruûnosti = 74200  MPa
- Koeficient tepelnej rozùaûnosti = 0.00001890  1/∞C
- Matematick· ˙nosnosù = 122970  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.32
+  26.7  mm
+421.1  mm2
+1.4739  kg/m
+74200  MPa
+0.00001890  1/¬∞C
+122970  N
+0.32
 ........
 362-AL1-59-ST1A (F.7)
- Priemer = 26.68  mm
- Prierez = 421.08  mm2
- Jednotkov· hmotnosù = 1.4622  kg/m
- Mern· tiaû = 0.034053  N/m.mm2
- Modul pruûnosti = 74277  MPa
- Koeficient tepelnej rozùaûnosti = 0.00001892  1/∞C
- Matematick· ˙nosnosù = 139530  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.32
+  26.68  mm
+421.08  mm2
+1.4622  kg/m
+74277  MPa
+0.00001892  1/¬∞C
+139530  N
+0.32
 ........
 362-AL1-59-ST1A nemaz
- Priemer = 26.7  mm
- Prierez = 421.1  mm2
- Jednotkov· hmotnosù = 1.4622  kg/m
- Mern· tiaû = 0.03406  N/m.mm2
- Modul pruûnosti = 74200  MPa
- Koeficient tepelnej rozùaûnosti = 0.00001890  1/∞C
- Matematick· ˙nosnosù = 122970  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.317
+  26.7  mm
+421.1  mm2
+1.4622  kg/m
+74200  MPa
+0.00001890  1/¬∞C
+122970  N
+0.317
 ........
 382-AL1/49-ST1A
- Priemer = 27  mm
- Prierez = 431.2  mm2
- Jednotkov· hmotnosù = 1.4523  kg/m
- Mern· tiaû = 0.033031  N/m.mm2
- Modul pruûnosti = 67100  MPa
- Koeficient tepelnej rozùaûnosti = 0.00001940  1/∞C
- Matematick· ˙nosnosù = 121300  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.266
+  27  mm
+431.2  mm2
+1.4523  kg/m
+67100  MPa
+0.00001940  1/¬∞C
+121300  N
+0.266
 ........
 382-AL1/49-ST1A (bazinal)
- Priemer = 27  mm
- Prierez = 431.2  mm2
- Jednotkov· hmotnosù = 1.4425  kg/m
- Mern· tiaû = 0.033031  N/m.mm2
- Modul pruûnosti = 67100  MPa
- Koeficient tepelnej rozùaûnosti = 0.00001940  1/∞C
- Matematick· ˙nosnosù = 121300  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.266
+  27  mm
+431.2  mm2
+1.4425  kg/m
+67100  MPa
+0.00001940  1/¬∞C
+121300  N
+0.266
 ........
 382-AL1/49-ST1A (BISON)
- Priemer = 27  mm
- Prierez = 431.2  mm2
- Jednotkov· hmotnosù = 1.4425  kg/m
- Mern· tiaû = 0.032806  N/m.mm2
- Modul pruûnosti = 70000  MPa
- Koeficient tepelnej rozùaûnosti = 0.00001930  1/∞C
- Matematick· ˙nosnosù = 121300  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.27
+  27  mm
+431.2  mm2
+1.4425  kg/m
+70000  MPa
+0.00001930  1/¬∞C
+121300  N
+0.27
 ........
 400-AL3
- Priemer = 26  mm
- Prierez = 400.1  mm2
- Jednotkov· hmotnosù = 1.1049  kg/m
- Mern· tiaû = 0.027  N/m.mm2
- Modul pruûnosti = 55000  MPa
- Koeficient tepelnej rozùaûnosti = 0.00002300  1/∞C
- Matematick· ˙nosnosù = 118040  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.2
+  26  mm
+400.1  mm2
+1.1049  kg/m
+55000  MPa
+0.00002300  1/¬∞C
+118040  N
+0.2
 ........
 430-AL1/100-ST1A  (Deer)
- Priemer = 29.9  mm
- Prierez = 529.8  mm2
- Jednotkov· hmotnosù = 1.9964  kg/m
- Mern· tiaû = 0.03695  N/m.mm2
- Modul pruûnosti = 80262.7  MPa
- Koeficient tepelnej rozùaûnosti = 0.00001791  1/∞C
- Matematick· ˙nosnosù = 179000  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.5
+  29.9  mm
+529.8  mm2
+1.9964  kg/m
+80262.7  MPa
+0.00001791  1/¬∞C
+179000  N
+0.5
 ........
 434-AL1/56-ST1A
- Priemer = 28.8  mm
- Prierez = 490.59  mm2
- Jednotkov· hmotnosù = 1.6413  kg/m
- Mern· tiaû = 0.032808  N/m.mm2
- Modul pruûnosti = 70500  MPa
- Koeficient tepelnej rozùaûnosti = 0.00001940  1/∞C
- Matematick· ˙nosnosù = 120231  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.269
+  28.8  mm
+490.59  mm2
+1.6413  kg/m
+70500  MPa
+0.00001940  1/¬∞C
+120231  N
+0.269
 ........
 450 AlFe 6
- Priemer = 29.76  mm
- Prierez = 519.2  mm2
- Jednotkov· hmotnosù = 1.8431  kg/m
- Mern· tiaû = 0.03472  N/m.mm2
- Modul pruûnosti = 88260  MPa
- Koeficient tepelnej rozùaûnosti = 0.00001975  1/∞C
- Matematick· ˙nosnosù = 140600  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.33
+  29.76  mm
+519.2  mm2
+1.8431  kg/m
+88260  MPa
+0.00001975  1/¬∞C
+140600  N
+0.33
 ........
 450 AlFe 8
- Priemer = 28.7  mm
- Prierez = 481.1  mm2
- Jednotkov· hmotnosù = 1.6236  kg/m
- Mern· tiaû = 0.03315  N/m.mm2
- Modul pruûnosti = 84337  MPa
- Koeficient tepelnej rozùaûnosti = 0.00002050  1/∞C
- Matematick· ˙nosnosù = 118500  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.27
+  28.7  mm
+481.1  mm2
+1.6236  kg/m
+84337  MPa
+0.00002050  1/¬∞C
+118500  N
+0.27
 ........
 476-AL1/62-ST1A (CAMEL)
- Priemer = 30.2  mm
- Prierez = 537.7  mm2
- Jednotkov· hmotnosù = 1.7988  kg/m
- Mern· tiaû = 0.032806  N/m.mm2
- Modul pruûnosti = 70000  MPa
- Koeficient tepelnej rozùaûnosti = 0.00001930  1/∞C
- Matematick· ˙nosnosù = 146400  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.27
+  30.2  mm
+537.7  mm2
+1.7988  kg/m
+70000  MPa
+0.00001930  1/¬∞C
+146400  N
+0.27
 ........
 490-AL1/64-ST1A
- Priemer = 30.6  mm
- Prierez = 553.8  mm2
- Jednotkov· hmotnosù = 1.8655  kg/m
- Mern· tiaû = 0.033034  N/m.mm2
- Modul pruûnosti = 67100  MPa
- Koeficient tepelnej rozùaûnosti = 0.00001940  1/∞C
- Matematick· ˙nosnosù = 150810  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.274
+  30.6  mm
+553.8  mm2
+1.8655  kg/m
+67100  MPa
+0.00001940  1/¬∞C
+150810  N
+0.274
 ........
 50 Fe
- Priemer = 9  mm
- Prierez = 49.48  mm2
- Jednotkov· hmotnosù = 0.4029  kg/m
- Mern· tiaû = 0.07976  N/m.mm2
- Modul pruûnosti = 192210  MPa
- Koeficient tepelnej rozùaûnosti = 0.00001100  1/∞C
- Matematick· ˙nosnosù = 48523  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.5
+  9  mm
+49.48  mm2
+0.4029  kg/m
+192210  MPa
+0.00001100  1/¬∞C
+48523  N
+0.5
 ........
 50 Fe (1540)
- Priemer = 9  mm
- Prierez = 48.32  mm2
- Jednotkov· hmotnosù = 0.402  kg/m
- Mern· tiaû = 0.0815868  N/m.mm2
- Modul pruûnosti = 175000  MPa
- Koeficient tepelnej rozùaûnosti = 0.00001260  1/∞C
- Matematick· ˙nosnosù = 74413  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 1
+  9  mm
+48.32  mm2
+0.402  kg/m
+175000  MPa
+0.00001260  1/¬∞C
+74413  N
+1
 ........
 500 AlFe 8
- Priemer = 30.74  mm
- Prierez = 549.7  mm2
- Jednotkov· hmotnosù = 1.8483  kg/m
- Mern· tiaû = 0.03315  N/m.mm2
- Modul pruûnosti = 84337  MPa
- Koeficient tepelnej rozùaûnosti = 0.00002050  1/∞C
- Matematick· ˙nosnosù = 134700  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.26
+  30.74  mm
+549.7  mm2
+1.8483  kg/m
+84337  MPa
+0.00002050  1/¬∞C
+134700  N
+0.26
 ........
 670 AlFe 8
- Priemer = 36.2  mm
- Prierez = 768.2  mm2
- Jednotkov· hmotnosù = 2.5936  kg/m
- Mern· tiaû = 0.03315  N/m.mm2
- Modul pruûnosti = 84337  MPa
- Koeficient tepelnej rozùaûnosti = 0.00002050  1/∞C
- Matematick· ˙nosnosù = 183300  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.27
+  36.2  mm
+768.2  mm2
+2.5936  kg/m
+84337  MPa
+0.00002050  1/¬∞C
+183300  N
+0.27
 ........
 6x19M (ocelove lano)
- Priemer = 24  mm
- Prierez = 240.77  mm2
- Jednotkov· hmotnosù = 2.195  kg/m
- Mern· tiaû = 0.0894  N/m.mm2
- Modul pruûnosti = 1960  MPa
- Koeficient tepelnej rozùaûnosti = 0.00001200  1/∞C
- Matematick· ˙nosnosù = 408680  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 1
+  24  mm
+240.77  mm2
+2.195  kg/m
+1960  MPa
+0.00001200  1/¬∞C
+408680  N
+1
 ........
 70 Fe (1270 MPa)
- Priemer = 11.2  mm
- Prierez = 74.88  mm2
- Jednotkov· hmotnosù = 0.6171  kg/m
- Mern· tiaû = 0.08083  N/m.mm2
- Modul pruûnosti = 192210  MPa
- Koeficient tepelnej rozùaûnosti = 0.00001100  1/∞C
- Matematick· ˙nosnosù = 95100  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.85
+  11.2  mm
+74.88  mm2
+0.6171  kg/m
+192210  MPa
+0.00001100  1/¬∞C
+95100  N
+0.85
 ........
 70 Fe (980 MPa)
- Priemer = 11.2  mm
- Prierez = 74.87  mm2
- Jednotkov· hmotnosù = 0.6171  kg/m
- Mern· tiaû = 0.08083  N/m.mm2
- Modul pruûnosti = 192210  MPa
- Koeficient tepelnej rozùaûnosti = 0.00001100  1/∞C
- Matematick· ˙nosnosù = 73422  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.5
+  11.2  mm
+74.87  mm2
+0.6171  kg/m
+192210  MPa
+0.00001100  1/¬∞C
+73422  N
+0.5
 ........
 70-St-IV
- Priemer = 10.5  mm
- Prierez = 65.81  mm2
- Jednotkov· hmotnosù = 0.522  kg/m
- Mern· tiaû = 0.0778  N/m.mm2
- Modul pruûnosti = 200000  MPa
- Koeficient tepelnej rozùaûnosti = 0.00001100  1/∞C
- Matematick· ˙nosnosù = 98160  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.2
+  10.5  mm
+65.81  mm2
+0.522  kg/m
+200000  MPa
+0.00001100  1/¬∞C
+98160  N
+0.2
 ........
 95 Cu
- Priemer = 12.5  mm
- Prierez = 93.27  mm2
- Jednotkov· hmotnosù = 0.852  kg/m
- Mern· tiaû = 0.08728  N/m.mm2
- Modul pruûnosti = 127486  MPa
- Koeficient tepelnej rozùaûnosti = 0.00001700  1/∞C
- Matematick· ˙nosnosù = 34765  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.5
+  12.5  mm
+93.27  mm2
+0.852  kg/m
+127486  MPa
+0.00001700  1/¬∞C
+34765  N
+0.5
 ........
 95 Fe
- Priemer = 12.5  mm
- Prierez = 93.27  mm2
- Jednotkov· hmotnosù = 0.76637  kg/m
- Mern· tiaû = 0.0078  N/m.mm2
- Modul pruûnosti = 19600  MPa
- Koeficient tepelnej rozùaûnosti = 0.00001100  1/∞C
- Matematick· ˙nosnosù = 86750  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.5
+  12.5  mm
+93.27  mm2
+0.76637  kg/m
+19600  MPa
+0.00001100  1/¬∞C
+86750  N
+0.5
 ........
 95/55 Al/St
- Priemer = 16  mm
- Prierez = 144.8  mm2
- Jednotkov· hmotnosù = 0.616  kg/m
- Mern· tiaû = 0.04172  N/m.mm2
- Modul pruûnosti = 92000  MPa
- Koeficient tepelnej rozùaûnosti = 0.00001720  1/∞C
- Matematick· ˙nosnosù = 75400  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.5
+  16  mm
+144.8  mm2
+0.616  kg/m
+92000  MPa
+0.00001720  1/¬∞C
+75400  N
+0.5
 ........
 AA/ACS 108/43-14,2
- Priemer = 16.9  mm
- Prierez = 150.6  mm2
- Jednotkov· hmotnosù = 0.621  kg/m
- Mern· tiaû = 0.04044  N/m.mm2
- Modul pruûnosti = 86800  MPa
- Koeficient tepelnej rozùaûnosti = 0.00001770  1/∞C
- Matematick· ˙nosnosù = 62453  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 1
+  16.9  mm
+150.6  mm2
+0.621  kg/m
+86800  MPa
+0.00001770  1/¬∞C
+62453  N
+1
 ........
- Priemer = 27  mm
- Prierez = 431.5  mm2
- Jednotkov· hmotnosù = 1.453  kg/m
- Mern· tiaû = 0.03302  N/m.mm2
- Modul pruûnosti = 71138  MPa
- Koeficient tepelnej rozùaûnosti = 0.00003013  1/∞C
- Matematick· ˙nosnosù = 170930  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.5
+No_Name1
+  27  mm
+431.5  mm2
+1.453  kg/m
+71138  MPa
+0.00003013  1/¬∞C
+170930  N
+0.5
 ........
 AACSR/AW 58/44
- Priemer = 14.9  mm
- Prierez = 102.6  mm2
- Jednotkov· hmotnosù = 0.507  kg/m
- Mern· tiaû = 0.04942  N/m.mm2
- Modul pruûnosti = 92000  MPa
- Koeficient tepelnej rozùaûnosti = 0.00001620  1/∞C
- Matematick· ˙nosnosù = 72000  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.5
+  14.9  mm
+102.6  mm2
+0.507  kg/m
+92000  MPa
+0.00001620  1/¬∞C
+72000  N
+0.5
 ........
 ACRR 565/42 Finch
- Priemer = 32.83  mm
- Prierez = 636.9  mm2
- Jednotkov· hmotnosù = 2.131  kg/m
- Mern· tiaû = 1  N/m.mm2
- Modul pruûnosti = 1  MPa
- Koeficient tepelnej rozùaûnosti = 1.00000000  1/∞C
- Matematick· ˙nosnosù = 1  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 1
+  32.83  mm
+636.9  mm2
+2.131  kg/m
+1  MPa
+1.00000000  1/¬∞C
+1  N
+1
 ........
 ACS 70
- Priemer = 10.5  mm
- Prierez = 65.81  mm2
- Jednotkov· hmotnosù = 0.441  kg/m
- Mern· tiaû = 0.065712  N/m.mm2
- Modul pruûnosti = 159000  MPa
- Koeficient tepelnej rozùaûnosti = 0.00001300  1/∞C
- Matematick· ˙nosnosù = 88180  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.5
+  10.5  mm
+65.81  mm2
+0.441  kg/m
+159000  MPa
+0.00001300  1/¬∞C
+88180  N
+0.5
 ........
 ACSR 240/40
- Priemer = 21.84  mm
- Prierez = 282.54  mm2
- Jednotkov· hmotnosù = 0.98762  kg/m
- Mern· tiaû = 0.03424  N/m.mm2
- Modul pruûnosti = 75510  MPa
- Koeficient tepelnej rozùaûnosti = 0.00001890  1/∞C
- Matematick· ˙nosnosù = 86460  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.5
+  21.84  mm
+282.54  mm2
+0.98762  kg/m
+75510  MPa
+0.00001890  1/¬∞C
+86460  N
+0.5
 ........
 ACSR 340/110
- Priemer = 27.7  mm
- Prierez = 450  mm2
- Jednotkov· hmotnosù = 1.799  kg/m
- Mern· tiaû = 0.03919  N/m.mm2
- Modul pruûnosti = 85222  MPa
- Koeficient tepelnej rozùaûnosti = 0.00001690  1/∞C
- Matematick· ˙nosnosù = 187600  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.5
+  27.7  mm
+450  mm2
+1.799  kg/m
+85222  MPa
+0.00001690  1/¬∞C
+187600  N
+0.5
 ........
 ACSR CROCUS 412
- Priemer = 26.4  mm
- Prierez = 411.7  mm2
- Jednotkov· hmotnosù = 1.593  kg/m
- Mern· tiaû = 0.03795  N/m.mm2
- Modul pruûnosti = 82684  MPa
- Koeficient tepelnej rozùaûnosti = 0.00001750  1/∞C
- Matematick· ˙nosnosù = 169600  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.5
+  26.4  mm
+411.7  mm2
+1.593  kg/m
+82684  MPa
+0.00001750  1/¬∞C
+169600  N
+0.5
 ........
 ACSR Deer_skuska_PLS
- Priemer = 29.9  mm
- Prierez = 529.8  mm2
- Jednotkov· hmotnosù = 1.9714  kg/m
- Mern· tiaû = 0.0374  N/m.mm2
- Modul pruûnosti = 80262.7  MPa
- Koeficient tepelnej rozùaûnosti = 0.00001791  1/∞C
- Matematick· ˙nosnosù = 179000  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.5
+  29.9  mm
+529.8  mm2
+1.9714  kg/m
+80262.7  MPa
+0.00001791  1/¬∞C
+179000  N
+0.5
 ........
 ACSR LYNX
- Priemer = 19.53  mm
- Prierez = 226.2  mm2
- Jednotkov· hmotnosù = 0.842  kg/m
- Mern· tiaû = 0.0365  N/m.mm2
- Modul pruûnosti = 80000  MPa
- Koeficient tepelnej rozùaûnosti = 0.00001780  1/∞C
- Matematick· ˙nosnosù = 79800  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.4
+  19.53  mm
+226.2  mm2
+0.842  kg/m
+80000  MPa
+0.00001780  1/¬∞C
+79800  N
+0.4
 ........
 ADSS-AE 288 HC031 CE3
- Priemer = 25.9  mm
- Prierez = 526.85  mm2
- Jednotkov· hmotnosù = 0.522  kg/m
- Mern· tiaû = 0.009735  N/m.mm2
- Modul pruûnosti = 6942  MPa
- Koeficient tepelnej rozùaûnosti = 0.00000969  1/∞C
- Matematick· ˙nosnosù = 59720  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.5
+  25.9  mm
+526.85  mm2
+0.522  kg/m
+6942  MPa
+0.00000969  1/¬∞C
+59720  N
+0.5
 ........
 ADSS-DF2Y(ZN) AT 6x12  E9/125 16kN
- Priemer = 15.2  mm
- Prierez = 28.7  mm2
- Jednotkov· hmotnosù = 0.2003  kg/m
- Mern· tiaû = 0.06844  N/m.mm2
- Modul pruûnosti = 86500  MPa
- Koeficient tepelnej rozùaûnosti = 0.00000300  1/∞C
- Matematick· ˙nosnosù = 41900  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.5
+  15.2  mm
+28.7  mm2
+0.2003  kg/m
+86500  MPa
+0.00000300  1/¬∞C
+41900  N
+0.5
 ........
 AFL AL4/A20SA 96/57 - 14,0, 48 vl.
- Priemer = 17.2  mm
- Prierez = 153  mm2
- Jednotkov· hmotnosù = 0.716  kg/m
- Mern· tiaû = 0.04589  N/m.mm2
- Modul pruûnosti = 96300  MPa
- Koeficient tepelnej rozùaûnosti = 0.00001670  1/∞C
- Matematick· ˙nosnosù = 100100  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.5
+  17.2  mm
+153  mm2
+0.716  kg/m
+96300  MPa
+0.00001670  1/¬∞C
+100100  N
+0.5
 ........
 Al/St 193/35-31,7
- Priemer = 20  mm
- Prierez = 227.8  mm2
- Jednotkov· hmotnosù = 0.842  kg/m
- Mern· tiaû = 0.036247  N/m.mm2
- Modul pruûnosti = 73900  MPa
- Koeficient tepelnej rozùaûnosti = 0.00001860  1/∞C
- Matematick· ˙nosnosù = 72900  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.5
+  20  mm
+227.8  mm2
+0.842  kg/m
+73900  MPa
+0.00001860  1/¬∞C
+72900  N
+0.5
 ........
 Al/St 210/50
- Priemer = 21  mm
- Prierez = 254.47  mm2
- Jednotkov· hmotnosù = 0.898  kg/m
- Mern· tiaû = 0.03462  N/m.mm2
- Modul pruûnosti = 74500  MPa
- Koeficient tepelnej rozùaûnosti = 0.00001951  1/∞C
- Matematick· ˙nosnosù = 88000  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.5
+  21  mm
+254.47  mm2
+0.898  kg/m
+74500  MPa
+0.00001951  1/¬∞C
+88000  N
+0.5
 ........
 AL3/A20SA 133/40 - 16,7
- Priemer = 17.6  mm
- Prierez = 172.2  mm2
- Jednotkov· hmotnosù = 0.675  kg/m
- Mern· tiaû = 0.0385  N/m.mm2
- Modul pruûnosti = 81200  MPa
- Koeficient tepelnej rozùaûnosti = 0.00001840  1/∞C
- Matematick· ˙nosnosù = 89600  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.5
+  17.6  mm
+172.2  mm2
+0.675  kg/m
+81200  MPa
+0.00001840  1/¬∞C
+89600  N
+0.5
 ........
 AL3/A20SA 184/72-24,2
- Priemer = 21.2  mm
- Prierez = 255.4  mm2
- Jednotkov· hmotnosù = 1.026  kg/m
- Mern· tiaû = 0.0394  N/m.mm2
- Modul pruûnosti = 86500  MPa
- Koeficient tepelnej rozùaûnosti = 0.00001770  1/∞C
- Matematick· ˙nosnosù = 145400  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.5
+  21.2  mm
+255.4  mm2
+1.026  kg/m
+86500  MPa
+0.00001770  1/¬∞C
+145400  N
+0.5
 ........
 AL3/A20SA 198/50 - 25,0
- Priemer = 21.1  mm
- Prierez = 247.9  mm2
- Jednotkov· hmotnosù = 0.938  kg/m
- Mern· tiaû = 0.0372  N/m.mm2
- Modul pruûnosti = 78200  MPa
- Koeficient tepelnej rozùaûnosti = 0.00001880  1/∞C
- Matematick· ˙nosnosù = 122000  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.5
+  21.1  mm
+247.9  mm2
+0.938  kg/m
+78200  MPa
+0.00001880  1/¬∞C
+122000  N
+0.5
 ........
 AL4/A20SA 96/57-14.0
- Priemer = 17.2  mm
- Prierez = 153  mm2
- Jednotkov· hmotnosù = 0.716  kg/m
- Mern· tiaû = 0.04595  N/m.mm2
- Modul pruûnosti = 96300  MPa
- Koeficient tepelnej rozùaûnosti = 0.00001670  1/∞C
- Matematick· ˙nosnosù = 100100  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.5
+  17.2  mm
+153  mm2
+0.716  kg/m
+96300  MPa
+0.00001670  1/¬∞C
+100100  N
+0.5
 ........
 AlFe 110/22
- Priemer = 14.96  mm
- Prierez = 132.33  mm2
- Jednotkov· hmotnosù = 0.4849  kg/m
- Mern· tiaû = 0.03593  N/m.mm2
- Modul pruûnosti = 77440  MPa
- Koeficient tepelnej rozùaûnosti = 0.00001836  1/∞C
- Matematick· ˙nosnosù = 42017  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.5
+  14.96  mm
+132.33  mm2
+0.4849  kg/m
+77440  MPa
+0.00001836  1/¬∞C
+42017  N
+0.5
 ........
 AlFe 150/25
- Priemer = 16.96  mm
- Prierez = 168.11  mm2
- Jednotkov· hmotnosù = 0.5978  kg/m
- Mern· tiaû = 0.03487  N/m.mm2
- Modul pruûnosti = 75079  MPa
- Koeficient tepelnej rozùaûnosti = 0.00001877  1/∞C
- Matematick· ˙nosnosù = 48893  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.5
+  16.96  mm
+168.11  mm2
+0.5978  kg/m
+75079  MPa
+0.00001877  1/¬∞C
+48893  N
+0.5
 ........
 AlFe 180/59
- Priemer = 20.39  mm
- Prierez = 235.61  mm2
- Jednotkov· hmotnosù = 0.9713  kg/m
- Mern· tiaû = 0.04043  N/m.mm2
- Modul pruûnosti = 87749  MPa
- Koeficient tepelnej rozùaûnosti = 0.00001685  1/∞C
- Matematick· ˙nosnosù = 104844  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.5
+  20.39  mm
+235.61  mm2
+0.9713  kg/m
+87749  MPa
+0.00001685  1/¬∞C
+104844  N
+0.5
 ........
 AlFe 185/31
- Priemer = 19.08  mm
- Prierez = 214.4  mm2
- Jednotkov· hmotnosù = 0.75678  kg/m
- Mern· tiaû = 0.03462  N/m.mm2
- Modul pruûnosti = 74567  MPa
- Koeficient tepelnej rozùaûnosti = 0.00001886  1/∞C
- Matematick· ˙nosnosù = 61463  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.49
+  19.08  mm
+214.4  mm2
+0.75678  kg/m
+74567  MPa
+0.00001886  1/¬∞C
+61463  N
+0.49
 ........
 AlFe 240/39
- Priemer = 21.75  mm
- Prierez = 281.66  mm2
- Jednotkov· hmotnosù = 0.9844  kg/m
- Mern· tiaû = 0.03427  N/m.mm2
- Modul pruûnosti = 73861  MPa
- Koeficient tepelnej rozùaûnosti = 0.00001899  1/∞C
- Matematick· ˙nosnosù = 76943  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.319
+  21.75  mm
+281.66  mm2
+0.9844  kg/m
+73861  MPa
+0.00001899  1/¬∞C
+76943  N
+0.319
 ........
 AlFe 350/59
- Priemer = 26.39  mm
- Prierez = 410.76  mm2
- Jednotkov· hmotnosù = 1.453  kg/m
- Mern· tiaû = 0.03469  N/m.mm2
- Modul pruûnosti = 74637  MPa
- Koeficient tepelnej rozùaûnosti = 0.00001885  1/∞C
- Matematick· ˙nosnosù = 127582  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.318
+  26.39  mm
+410.76  mm2
+1.453  kg/m
+74637  MPa
+0.00001885  1/¬∞C
+127582  N
+0.318
 ........
 AlFe 38/32
- Priemer = 10.8  mm
- Prierez = 69.84  mm2
- Jednotkov· hmotnosù = 0.364  kg/m
- Mern· tiaû = 0.05111  N/m.mm2
- Modul pruûnosti = 114422  MPa
- Koeficient tepelnej rozùaûnosti = 0.00001444  1/∞C
- Matematick· ˙nosnosù = 42380  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.5
+  10.8  mm
+69.84  mm2
+0.364  kg/m
+114422  MPa
+0.00001444  1/¬∞C
+42380  N
+0.5
 ........
 AlFe 42/25
- Priemer = 10.6  mm
- Prierez = 67.07  mm2
- Jednotkov· hmotnosù = 0.3193  kg/m
- Mern· tiaû = 0.04669  N/m.mm2
- Modul pruûnosti = 104215  MPa
- Koeficient tepelnej rozùaûnosti = 0.00001536  1/∞C
- Matematick· ˙nosnosù = 34721  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.5
+  10.6  mm
+67.07  mm2
+0.3193  kg/m
+104215  MPa
+0.00001536  1/¬∞C
+34721  N
+0.5
 ........
 AlFe 445/74
- Priemer = 29.63  mm
- Prierez = 519.21  mm2
- Jednotkov· hmotnosù = 1.8318  kg/m
- Mern· tiaû = 0.0346  N/m.mm2
- Modul pruûnosti = 74504  MPa
- Koeficient tepelnej rozùaûnosti = 0.00001887  1/∞C
- Matematick· ˙nosnosù = 156185  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.32
+  29.63  mm
+519.21  mm2
+1.8318  kg/m
+74504  MPa
+0.00001887  1/¬∞C
+156185  N
+0.32
 .........
 AlFe 450/52
- Priemer = 29.31  mm
- Prierez = 500.46  mm2
- Jednotkov· hmotnosù = 1.6674  kg/m
- Mern· tiaû = 0.03267  N/m.mm2
- Modul pruûnosti = 69901  MPa
- Koeficient tepelnej rozùaûnosti = 0.00001976  1/∞C
- Matematick· ˙nosnosù = 134000  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.5
+  29.31  mm
+500.46  mm2
+1.6674  kg/m
+69901  MPa
+0.00001976  1/¬∞C
+134000  N
+0.5
 ..........
 AlFe 680/83
- Priemer = 35.8  mm
- Prierez = 761.69  mm2
- Jednotkov· hmotnosù = 2.5561  kg/m
- Mern· tiaû = 0.03291  N/m.mm2
- Modul pruûnosti = 70421  MPa
- Koeficient tepelnej rozùaûnosti = 0.00001965  1/∞C
- Matematick· ˙nosnosù = 186603  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.5
+  35.8  mm
+761.69  mm2
+2.5561  kg/m
+70421  MPa
+0.00001965  1/¬∞C
+186603  N
+0.5
 ..........
 AlFe 750/43
- Priemer = 36.5  mm
- Prierez = 801.19  mm2
- Jednotkov· hmotnosù = 2.4167  kg/m
- Mern· tiaû = 0.02958  N/m.mm2
- Modul pruûnosti = 63617  MPa
- Koeficient tepelnej rozùaûnosti = 0.00002117  1/∞C
- Matematick· ˙nosnosù = 146616  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.5
+  36.5  mm
+801.19  mm2
+2.4167  kg/m
+63617  MPa
+0.00002117  1/¬∞C
+146616  N
+0.5
 ..........
 AlFe 85/83
- Priemer = 16.7  mm
- Prierez = 167.97  mm2
- Jednotkov· hmotnosù = 0.9188  kg/m
- Mern· tiaû = 0.05364  N/m.mm2
- Modul pruûnosti = 119375  MPa
- Koeficient tepelnej rozùaûnosti = 0.00001405  1/∞C
- Matematick· ˙nosnosù = 107930  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.5
+  16.7  mm
+167.97  mm2
+0.9188  kg/m
+119375  MPa
+0.00001405  1/¬∞C
+107930  N
+0.5
 ..........
 ASLH 2x24 (AL4/A20SA 210/35 - 25,0)
- Priemer = 21.1  mm
- Prierez = 245.8  mm2
- Jednotkov· hmotnosù = 0.877  kg/m
- Mern· tiaû = 0.0350015  N/m.mm2
- Modul pruûnosti = 72100  MPa
- Koeficient tepelnej rozùaûnosti = 0.00001980  1/∞C
- Matematick· ˙nosnosù = 112000  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.31
+  21.1  mm
+245.8  mm2
+0.877  kg/m
+72100  MPa
+0.00001980  1/¬∞C
+112000  N
+0.31
 ............
 ASLH-D(S)bb 2x24 SMF (AL4/A20SA 44/50 - 8,2)
- Priemer = 13.4  mm
- Prierez = 94  mm2
- Jednotkov· hmotnosù = 0.501  kg/m
- Mern· tiaû = 0.05227  N/m.mm2
- Modul pruûnosti = 112600  MPa
- Koeficient tepelnej rozùaûnosti = 0.00001540  1/∞C
- Matematick· ˙nosnosù = 77700  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.5
+  13.4  mm
+94  mm2
+0.501  kg/m
+112600  MPa
+0.00001540  1/¬∞C
+77700  N
+0.5
 .............
 ASLH-D(S)bb 2x24 SMF G657.A1 (AL4/A20SA 74/42 - 10,5)
-Priemer = 14.9  mm
- Prierez = 115.9  mm2
- Jednotkov· hmotnosù = 0.543  kg/m
- Mern· tiaû = 0.0469  N/m.mm2
- Modul pruûnosti = 95300  MPa
- Koeficient tepelnej rozùaûnosti = 0.00001680  1/∞C
- Matematick· ˙nosnosù = 77500  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.61
+ 14.9  mm
+115.9  mm2
+0.543  kg/m
+95300  MPa
+0.00001680  1/¬∞C
+77500  N
+0.61
 .....
 ASLH-D(S)bbb  3 x 24 SMF (AL3 255 - 25,1)
-Priemer = 21.7  mm
- Prierez = 255.1  mm2
- Jednotkov· hmotnosù = 0.78  kg/m
- Mern· tiaû = 0.02998  N/m.mm2
- Modul pruûnosti = 57000  MPa
- Koeficient tepelnej rozùaûnosti = 0.00002300  1/∞C
- Matematick· ˙nosnosù = 75254  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.5
+ 21.7  mm
+255.1  mm2
+0.78  kg/m
+57000  MPa
+0.00002300  1/¬∞C
+75254  N
+0.5
 .....
 BICC Fibral 313C11
-Priemer = 15.9  mm
- Prierez = 126  mm2
- Jednotkov· hmotnosù = 0.666  kg/m
- Mern· tiaû = 0.0518  N/m.mm2
- Modul pruûnosti = 114708  MPa
- Koeficient tepelnej rozùaûnosti = 0.00001470  1/∞C
- Matematick· ˙nosnosù = 96736  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.2
+ 15.9  mm
+126  mm2
+0.666  kg/m
+114708  MPa
+0.00001470  1/¬∞C
+96736  N
+0.2
 .....
 Diepa 24mm
-Priemer = 24  mm
- Prierez = 326.2  mm2
- Jednotkov· hmotnosù = 2.94  kg/m
- Mern· tiaû = 0.08839  N/m.mm2
- Modul pruûnosti = 190000  MPa
- Koeficient tepelnej rozùaûnosti = 0.00001100  1/∞C
- Matematick· ˙nosnosù = 229970  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.2
+ 24  mm
+326.2  mm2
+2.94  kg/m
+190000  MPa
+0.00001100  1/¬∞C
+229970  N
+0.2
 .....
 DNO 1570
-Priemer = 18.6  mm
- Prierez = 194.08  mm2
- Jednotkov· hmotnosù = 0.816  kg/m
- Mern· tiaû = 0.04122  N/m.mm2
- Modul pruûnosti = 100292  MPa
- Koeficient tepelnej rozùaûnosti = 0.00001730  1/∞C
- Matematick· ˙nosnosù = 109562  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.5
+ 18.6  mm
+194.08  mm2
+0.816  kg/m
+100292  MPa
+0.00001730  1/¬∞C
+109562  N
+0.5
 .....
 DOTTEREL
-Priemer = 15.42  mm
- Prierez = 141.94  mm2
- Jednotkov· hmotnosù = 0.6572  kg/m
- Mern· tiaû = 0.0454  N/m.mm2
- Modul pruûnosti = 104215  MPa
- Koeficient tepelnej rozùaûnosti = 0.00001536  1/∞C
- Matematick· ˙nosnosù = 69100  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.5
+ 15.42  mm
+141.94  mm2
+0.6572  kg/m
+104215  MPa
+0.00001536  1/¬∞C
+69100  N
+0.5
 .....
 Dotterel
-Priemer = 15.42  mm
- Prierez = 141.94  mm2
- Jednotkov· hmotnosù = 0.6572  kg/m
- Mern· tiaû = 0.0454  N/m.mm2
- Modul pruûnosti = 104215  MPa
- Koeficient tepelnej rozùaûnosti = 0.00001536  1/∞C
- Matematick· ˙nosnosù = 69100  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.5
+ 15.42  mm
+141.94  mm2
+0.6572  kg/m
+104215  MPa
+0.00001536  1/¬∞C
+69100  N
+0.5
 .....
 F 7438 EC -325T-024
-Priemer = 19.1  mm
- Prierez = 205.58  mm2
- Jednotkov· hmotnosù = 0.684  kg/m
- Mern· tiaû = 0.03263  N/m.mm2
- Modul pruûnosti = 80258  MPa
- Koeficient tepelnej rozùaûnosti = 0.00002040  1/∞C
- Matematick· ˙nosnosù = 76158  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.5
+ 19.1  mm
+205.58  mm2
+0.684  kg/m
+80258  MPa
+0.00002040  1/¬∞C
+76158  N
+0.5
 .....
 F 7438 EC-325T-024
-Priemer = 19.1  mm
- Prierez = 205.57  mm2
- Jednotkov· hmotnosù = 0.684  kg/m
- Mern· tiaû = 0.03263  N/m.mm2
- Modul pruûnosti = 80258  MPa
- Koeficient tepelnej rozùaûnosti = 0.00002040  1/∞C
- Matematick· ˙nosnosù = 76168  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.5
+ 19.1  mm
+205.57  mm2
+0.684  kg/m
+80258  MPa
+0.00002040  1/¬∞C
+76168  N
+0.5
 .....
-F-501-297Priemer = 12.73  mm
- Prierez = 93.33  mm2
- Jednotkov· hmotnosù = 0.525  kg/m
- Mern· tiaû = 0.05516  N/m.mm2
- Modul pruûnosti = 132037  MPa
- Koeficient tepelnej rozùaûnosti = 0.00001467  1/∞C
- Matematick· ˙nosnosù = 76518  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.5
+F-501-297 
+12.73  mm
+93.33  mm2
+0.525  kg/m
+132037  MPa
+0.00001467  1/¬∞C
+76518  N
+0.5
 .....
-F-501EC-297-12Priemer = 12.73  mm
- Prierez = 93.33  mm2
- Jednotkov· hmotnosù = 0.4  kg/m
- Mern· tiaû = 0.04203  N/m.mm2
- Modul pruûnosti = 100528  MPa
- Koeficient tepelnej rozùaûnosti = 0.00001754  1/∞C
- Matematick· ˙nosnosù = 43375  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.5
+F-501EC-297-12 
+12.73  mm
+93.33  mm2
+0.4  kg/m
+100528  MPa
+0.00001754  1/¬∞C
+43375  N
+0.5
 .....
 F-5064EC-325-024
-Priemer = 12.86  mm
- Prierez = 90.62  mm2
- Jednotkov· hmotnosù = 0.432  kg/m
- Mern· tiaû = 0.0467  N/m.mm2
- Modul pruûnosti = 111758  MPa
- Koeficient tepelnej rozùaûnosti = 0.00001632  1/∞C
- Matematick· ˙nosnosù = 53207  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.5
+ 12.86  mm
+90.62  mm2
+0.432  kg/m
+111758  MPa
+0.00001632  1/¬∞C
+53207  N
+0.5
 .....
 F-5068EC-319T-024
-Priemer = 12.86  mm
- Prierez = 87.39  mm2
- Jednotkov· hmotnosù = 0.359  kg/m
- Mern· tiaû = 0.040286  N/m.mm2
- Modul pruûnosti = 95583  MPa
- Koeficient tepelnej rozùaûnosti = 0.00001815  1/∞C
- Matematick· ˙nosnosù = 35833  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.5
+ 12.86  mm
+87.39  mm2
+0.359  kg/m
+95583  MPa
+0.00001815  1/¬∞C
+35833  N
+0.5
 .....
 F-506EC-325-024
-Priemer = 12.86  mm
- Prierez = 90.62  mm2
- Jednotkov· hmotnosù = 0.382  kg/m
- Mern· tiaû = 0.04134  N/m.mm2
- Modul pruûnosti = 98920  MPa
- Koeficient tepelnej rozùaûnosti = 0.00001772  1/∞C
- Matematick· ˙nosnosù = 40178  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.5
+ 12.86  mm
+90.62  mm2
+0.382  kg/m
+98920  MPa
+0.00001772  1/¬∞C
+40178  N
+0.5
 .....
 F-506EC-325T-024
-Priemer = 13  mm
- Prierez = 90.62  mm2
- Jednotkov· hmotnosù = 0.383  kg/m
- Mern· tiaû = 0.0414614  N/m.mm2
- Modul pruûnosti = 98855.4  MPa
- Koeficient tepelnej rozùaûnosti = 0.00001750  1/∞C
- Matematick· ˙nosnosù = 45685  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.5
+ 13  mm
+90.62  mm2
+0.383  kg/m
+98855.4  MPa
+0.00001750  1/¬∞C
+45685  N
+0.5
 .....
 F-514L-069-024
-Priemer = 13.06  mm
- Prierez = 90.62  mm2
- Jednotkov· hmotnosù = 0.448  kg/m
- Mern· tiaû = 0.04848  N/m.mm2
- Modul pruûnosti = 108981  MPa
- Koeficient tepelnej rozùaûnosti = 0.00001590  1/∞C
- Matematick· ˙nosnosù = 60830  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.5
+ 13.06  mm
+90.62  mm2
+0.448  kg/m
+108981  MPa
+0.00001590  1/¬∞C
+60830  N
+0.5
 .....
 F-537-297T-024
-Priemer = 13.64  mm
- Prierez = 105.57  mm2
- Jednotkov· hmotnosù = 0.599  kg/m
- Mern· tiaû = 0.055643  N/m.mm2
- Modul pruûnosti = 128173  MPa
- Koeficient tepelnej rozùaûnosti = 0.00001450  1/∞C
- Matematick· ˙nosnosù = 92670  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.5
+ 13.64  mm
+105.57  mm2
+0.599  kg/m
+128173  MPa
+0.00001450  1/¬∞C
+92670  N
+0.5
 .....
 F-537-348T-048
-Priemer = 13.64  mm
- Prierez = 100.77  mm2
- Jednotkov· hmotnosù = 0.544  kg/m
- Mern· tiaû = 0.05294  N/m.mm2
- Modul pruûnosti = 118865  MPa
- Koeficient tepelnej rozùaûnosti = 0.00001480  1/∞C
- Matematick· ˙nosnosù = 77560  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.5
+ 13.64  mm
+100.77  mm2
+0.544  kg/m
+118865  MPa
+0.00001480  1/¬∞C
+77560  N
+0.5
 .....
 F-547-325
-Priemer = 13.89  mm
- Prierez = 107.28  mm2
- Jednotkov· hmotnosù = 0.622  kg/m
- Mern· tiaû = 0.05686  N/m.mm2
- Modul pruûnosti = 134184  MPa
- Koeficient tepelnej rozùaûnosti = 0.00001452  1/∞C
- Matematick· ˙nosnosù = 90025  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.5
+ 13.89  mm
+107.28  mm2
+0.622  kg/m
+134184  MPa
+0.00001452  1/¬∞C
+90025  N
+0.5
 .....
 F-547-325T
-Priemer = 14.1  mm
- Prierez = 107.4  mm2
- Jednotkov· hmotnosù = 0.612  kg/m
- Mern· tiaû = 0.0558815  N/m.mm2
- Modul pruûnosti = 133910  MPa
- Koeficient tepelnej rozùaûnosti = 0.00001420  1/∞C
- Matematick· ˙nosnosù = 92506  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.5
+ 14.1  mm
+107.4  mm2
+0.612  kg/m
+133910  MPa
+0.00001420  1/¬∞C
+92506  N
+0.5
 .....
 F-547EC-325
-Priemer = 13.89  mm
- Prierez = 107.28  mm2
- Jednotkov· hmotnosù = 0.503  kg/m
- Mern· tiaû = 0.04598  N/m.mm2
- Modul pruûnosti = 101666  MPa
- Koeficient tepelnej rozùaûnosti = 0.00001741  1/∞C
- Matematick· ˙nosnosù = 50897  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.5
+ 13.89  mm
+107.28  mm2
+0.503  kg/m
+101666  MPa
+0.00001741  1/¬∞C
+50897  N
+0.5
 .....
 F-547EC-325T
-Priemer = 14.1  mm
- Prierez = 107.4  mm2
- Jednotkov· hmotnosù = 0.462  kg/m
- Mern· tiaû = 0.042185  N/m.mm2
- Modul pruûnosti = 101420  MPa
- Koeficient tepelnej rozùaûnosti = 0.00001720  1/∞C
- Matematick· ˙nosnosù = 58320  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.5
+ 14.1  mm
+107.4  mm2
+0.462  kg/m
+101420  MPa
+0.00001720  1/¬∞C
+58320  N
+0.5
 .....
 F-553-325T-024
-Priemer = 14.05  mm
- Prierez = 107.31  mm2
- Jednotkov· hmotnosù = 0.615  kg/m
- Mern· tiaû = 0.0562  N/m.mm2
- Modul pruûnosti = 134047  MPa
- Koeficient tepelnej rozùaûnosti = 0.00001452  1/∞C
- Matematick· ˙nosnosù = 90780  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.5
+ 14.05  mm
+107.31  mm2
+0.615  kg/m
+134047  MPa
+0.00001452  1/¬∞C
+90780  N
+0.5
 .....
 F-553EC-325T-024
-Priemer = 14.05  mm
- Prierez = 107.31  mm2
- Jednotkov· hmotnosù = 0.465  kg/m
- Mern· tiaû = 0.0424946  N/m.mm2
- Modul pruûnosti = 101499  MPa
- Koeficient tepelnej rozùaûnosti = 0.00001741  1/∞C
- Matematick· ˙nosnosù = 51328  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.5
+ 14.05  mm
+107.31  mm2
+0.465  kg/m
+101499  MPa
+0.00001741  1/¬∞C
+51328  N
+0.5
 .....
 F-554-297-012
-Priemer = 14.07  mm
- Prierez = 113.87  mm2
- Jednotkov· hmotnosù = 0.653  kg/m
- Mern· tiaû = 0.0562  N/m.mm2
- Modul pruûnosti = 137470  MPa
- Koeficient tepelnej rozùaûnosti = 0.00001430  1/∞C
- Matematick· ˙nosnosù = 111606  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.5
+ 14.07  mm
+113.87  mm2
+0.653  kg/m
+137470  MPa
+0.00001430  1/¬∞C
+111606  N
+0.5
 .....
 F-572-348T
-Priemer = 14.6  mm
- Prierez = 116.23  mm2
- Jednotkov· hmotnosù = 0.648  kg/m
- Mern· tiaû = 0.05467  N/m.mm2
- Modul pruûnosti = 125370  MPa
- Koeficient tepelnej rozùaûnosti = 0.00001440  1/∞C
- Matematick· ˙nosnosù = 96262  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.5
+ 14.6  mm
+116.23  mm2
+0.648  kg/m
+125370  MPa
+0.00001440  1/¬∞C
+96262  N
+0.5
 .....
-F-635-378Priemer = 16.13  mm
- Prierez = 150.85  mm2
- Jednotkov· hmotnosù = 0.849  kg/m
- Mern· tiaû = 0.0552  N/m.mm2
- Modul pruûnosti = 131836  MPa
- Koeficient tepelnej rozùaûnosti = 0.00001474  1/∞C
- Matematick· ˙nosnosù = 121750  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.5
+F-635-378 
+16.13  mm
+150.85  mm2
+0.849  kg/m
+131836  MPa
+0.00001474  1/¬∞C
+121750  N
+0.5
 .....
-F-635EC-378Priemer = 16.13  mm
- Prierez = 150.85  mm2
- Jednotkov· hmotnosù = 0.648  kg/m
- Mern· tiaû = 0.04213  N/m.mm2
- Modul pruûnosti = 100028  MPa
- Koeficient tepelnej rozùaûnosti = 0.00001760  1/∞C
- Matematick· ˙nosnosù = 68646  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.5
+F-635EC-378 
+16.13  mm
+150.85  mm2
+0.648  kg/m
+100028  MPa
+0.00001760  1/¬∞C
+68646  N
+0.5
 .....
 F-635EC-378T
-Priemer = 16.3  mm
- Prierez = 150.74  mm2
- Jednotkov· hmotnosù = 0.64  kg/m
- Mern· tiaû = 0.041636  N/m.mm2
- Modul pruûnosti = 99870  MPa
- Koeficient tepelnej rozùaûnosti = 0.00001740  1/∞C
- Matematick· ˙nosnosù = 78350  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.614
+ 16.3  mm
+150.74  mm2
+0.64  kg/m
+99870  MPa
+0.00001740  1/¬∞C
+78350  N
+0.614
 .....
 F-641EC-378T
-Priemer = 16.3  mm
- Prierez = 150.74  mm2
- Jednotkov· hmotnosù = 0.633  kg/m
- Mern· tiaû = 0.041181  N/m.mm2
- Modul pruûnosti = 94560  MPa
- Koeficient tepelnej rozùaûnosti = 0.00001740  1/∞C
- Matematick· ˙nosnosù = 76727  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.5
+ 16.3  mm
+150.74  mm2
+0.633  kg/m
+94560  MPa
+0.00001740  1/¬∞C
+76727  N
+0.5
 .....
 F-642-466T-072
-Priemer = 16.3  mm
- Prierez = 126.42  mm2
- Jednotkov· hmotnosù = 0.687  kg/m
- Mern· tiaû = 0.07656  N/m.mm2
- Modul pruûnosti = 114581  MPa
- Koeficient tepelnej rozùaûnosti = 0.00001510  1/∞C
- Matematick· ˙nosnosù = 90868  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.5
+ 16.3  mm
+126.42  mm2
+0.687  kg/m
+114581  MPa
+0.00001510  1/¬∞C
+90868  N
+0.5
 .....
-F-646-378T-024Priemer = 16.4  mm
- Prierez = 153.22  mm2
- Jednotkov· hmotnosù = 0.845  kg/m
- Mern· tiaû = 0.0540826  N/m.mm2
- Modul pruûnosti = 123582  MPa
- Koeficient tepelnej rozùaûnosti = 0.00001440  1/∞C
- Matematick· ˙nosnosù = 127014  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.5
+F-646-378T-024 
+16.4  mm
+153.22  mm2
+0.845  kg/m
+123582  MPa
+0.00001440  1/¬∞C
+127014  N
+0.5
 .....
 F-646L-196-024
-Priemer = 16.4  mm
- Prierez = 153.22  mm2
- Jednotkov· hmotnosù = 0.744  kg/m
- Mern· tiaû = 0.0478  N/m.mm2
- Modul pruûnosti = 109396  MPa
- Koeficient tepelnej rozùaûnosti = 0.00001570  1/∞C
- Matematick· ˙nosnosù = 83090  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.2
+ 16.4  mm
+153.22  mm2
+0.744  kg/m
+109396  MPa
+0.00001570  1/¬∞C
+83090  N
+0.2
 .....
 F-658-325-024
-Priemer = 16.71  mm
- Prierez = 159  mm2
- Jednotkov· hmotnosù = 0.64  kg/m
- Mern· tiaû = 0.03972  N/m.mm2
- Modul pruûnosti = 100165  MPa
- Koeficient tepelnej rozùaûnosti = 0.00001760  1/∞C
- Matematick· ˙nosnosù = 85000  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.5
+ 16.71  mm
+159  mm2
+0.64  kg/m
+100165  MPa
+0.00001760  1/¬∞C
+85000  N
+0.5
 .....
-F-658-325T-024Priemer = 17  mm
- Prierez = 163.15  mm2
- Jednotkov· hmotnosù = 0.681  kg/m
- Mern· tiaû = 0.040934  N/m.mm2
- Modul pruûnosti = 100018  MPa
- Koeficient tepelnej rozùaûnosti = 0.00001740  1/∞C
- Matematick· ˙nosnosù = 90417  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.5
+F-658-325T-024 
+17  mm
+163.15  mm2
+0.681  kg/m
+100018  MPa
+0.00001740  1/¬∞C
+90417  N
+0.5
 .....
 F-6896EC-423-048
-Priemer = 17.5  mm
- Prierez = 159.13  mm2
- Jednotkov· hmotnosù = 0.713  kg/m
- Mern· tiaû = 0.043939  N/m.mm2
- Modul pruûnosti = 97047  MPa
- Koeficient tepelnej rozùaûnosti = 0.00001690  1/∞C
- Matematick· ˙nosnosù = 86897  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.5
+ 17.5  mm
+159.13  mm2
+0.713  kg/m
+97047  MPa
+0.00001690  1/¬∞C
+86897  N
+0.5
 .....
 F-707EC-325-024
-Priemer = 17.96  mm
- Prierez = 186  mm2
- Jednotkov· hmotnosù = 0.718  kg/m
- Mern· tiaû = 0.0897  N/m.mm2
- Modul pruûnosti = 88026  MPa
- Koeficient tepelnej rozùaûnosti = 0.00001927  1/∞C
- Matematick· ˙nosnosù = 65420  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.5
+ 17.96  mm
+186  mm2
+0.718  kg/m
+88026  MPa
+0.00001927  1/¬∞C
+65420  N
+0.5
 .....
 F-724-325-024
-Priemer = 18.39  mm
- Prierez = 193.6  mm2
- Jednotkov· hmotnosù = 0.712  kg/m
- Mern· tiaû = 0.036066  N/m.mm2
- Modul pruûnosti = 100361  MPa
- Koeficient tepelnej rozùaûnosti = 0.00001756  1/∞C
- Matematick· ˙nosnosù = 106579  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.5
+ 18.39  mm
+193.6  mm2
+0.712  kg/m
+100361  MPa
+0.00001756  1/¬∞C
+106579  N
+0.5
 .....
 F-724-325T-024
-Priemer = 18.6  mm
- Prierez = 194.08  mm2
- Jednotkov· hmotnosù = 0.816  kg/m
- Mern· tiaû = 0.04122  N/m.mm2
- Modul pruûnosti = 100292  MPa
- Koeficient tepelnej rozùaûnosti = 0.00001730  1/∞C
- Matematick· ˙nosnosù = 109562  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.5
+ 18.6  mm
+194.08  mm2
+0.816  kg/m
+100292  MPa
+0.00001730  1/¬∞C
+109562  N
+0.5
 .....
 F-730-348T-024
-Priemer = 18.5  mm
- Prierez = 194.65  mm2
- Jednotkov· hmotnosù = 0.828  kg/m
- Mern· tiaû = 0.04172  N/m.mm2
- Modul pruûnosti = 95255  MPa
- Koeficient tepelnej rozùaûnosti = 0.00001720  1/∞C
- Matematick· ˙nosnosù = 86867  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.5
+ 18.5  mm
+194.65  mm2
+0.828  kg/m
+95255  MPa
+0.00001720  1/¬∞C
+86867  N
+0.5
 .....
 F-735-373T-072
-Priemer = 18.7  mm
- Prierez = 187.8  mm2
- Jednotkov· hmotnosù = 0.8  kg/m
- Mern· tiaû = 0.0426  N/m.mm2
- Modul pruûnosti = 93715  MPa
- Koeficient tepelnej rozùaûnosti = 0.00001730  1/∞C
- Matematick· ˙nosnosù = 102308  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.5
+ 18.7  mm
+187.8  mm2
+0.8  kg/m
+93715  MPa
+0.00001730  1/¬∞C
+102308  N
+0.5
 .....
 F-735R-320-072
-Priemer = 18.7  mm
- Prierez = 187.8  mm2
- Jednotkov· hmotnosù = 0.8  kg/m
- Mern· tiaû = 0.04278  N/m.mm2
- Modul pruûnosti = 93519  MPa
- Koeficient tepelnej rozùaûnosti = 0.00001730  1/∞C
- Matematick· ˙nosnosù = 102308  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.5
+ 18.7  mm
+187.8  mm2
+0.8  kg/m
+93519  MPa
+0.00001730  1/¬∞C
+102308  N
+0.5
 .....
 F-743-325-024
-Priemer = 18.88  mm
- Prierez = 204.64  mm2
- Jednotkov· hmotnosù = 0.88  kg/m
- Mern· tiaû = 0.04212  N/m.mm2
- Modul pruûnosti = 103086  MPa
- Koeficient tepelnej rozùaûnosti = 0.00001723  1/∞C
- Matematick· ˙nosnosù = 122130  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.5
+ 18.88  mm
+204.64  mm2
+0.88  kg/m
+103086  MPa
+0.00001723  1/¬∞C
+122130  N
+0.5
 .....
 F-7438EC-325-024
-Priemer = 18.88  mm
- Prierez = 204.64  mm2
- Jednotkov· hmotnosù = 0.679  kg/m
- Mern· tiaû = 0.03254  N/m.mm2
- Modul pruûnosti = 80325  MPa
- Koeficient tepelnej rozùaûnosti = 0.00002055  1/∞C
- Matematick· ˙nosnosù = 74137  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.5
+ 18.88  mm
+204.64  mm2
+0.679  kg/m
+80325  MPa
+0.00002055  1/¬∞C
+74137  N
+0.5
 .....
 F-7438EC-325-036
-Priemer = 19.1  mm
- Prierez = 205.57  mm2
- Jednotkov· hmotnosù = 0.683  kg/m
- Mern· tiaû = 0.0325823  N/m.mm2
- Modul pruûnosti = 75090  MPa
- Koeficient tepelnej rozùaûnosti = 0.00002040  1/∞C
- Matematick· ˙nosnosù = 71402  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.5
+ 19.1  mm
+205.57  mm2
+0.683  kg/m
+75090  MPa
+0.00002040  1/¬∞C
+71402  N
+0.5
 .....
-F-7439EC-325-024Priemer = 18.87  mm
- Prierez = 204.5  mm2
- Jednotkov· hmotnosù = 0.655  kg/m
- Mern· tiaû = 0.03141  N/m.mm2
- Modul pruûnosti = 77580  MPa
- Koeficient tepelnej rozùaûnosti = 0.00002111  1/∞C
- Matematick· ˙nosnosù = 66450  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.5
+F-7439EC-325-024 
+18.87  mm
+204.5  mm2
+0.655  kg/m
+77580  MPa
+0.00002111  1/¬∞C
+66450  N
+0.5
 .....
 F-7507EC-348T-024
-Priemer = 19  mm
- Prierez = 205.35  mm2
- Jednotkov· hmotnosù = 0.721  kg/m
- Mern· tiaû = 0.03443  N/m.mm2
- Modul pruûnosti = 79159  MPa
- Koeficient tepelnej rozùaûnosti = 0.00001970  1/∞C
- Matematick· ˙nosnosù = 78944  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.5
+ 19  mm
+205.35  mm2
+0.721  kg/m
+79159  MPa
+0.00001970  1/¬∞C
+78944  N
+0.5
 .....
 F-750R-371-048
-Priemer = 19.04  mm
- Prierez = 205.35  mm2
- Jednotkov· hmotnosù = 0.896  kg/m
- Mern· tiaû = 0.0428  N/m.mm2
- Modul pruûnosti = 97835  MPa
- Koeficient tepelnej rozùaûnosti = 0.00001710  1/∞C
- Matematick· ˙nosnosù = 98835  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.5
+ 19.04  mm
+205.35  mm2
+0.896  kg/m
+97835  MPa
+0.00001710  1/¬∞C
+98835  N
+0.5
 .....
 F-764-378
-Priemer = 19.41  mm
- Prierez = 210.77  mm2
- Jednotkov· hmotnosù = 0.89  kg/m
- Mern· tiaû = 0.0414097  N/m.mm2
- Modul pruûnosti = 100204  MPa
- Koeficient tepelnej rozùaûnosti = 0.00001557  1/∞C
- Matematick· ˙nosnosù = 115120  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.5
+ 19.41  mm
+210.77  mm2
+0.89  kg/m
+100204  MPa
+0.00001557  1/¬∞C
+115120  N
+0.5
 .....
 F-780R-468-024
-Priemer = 19.8  mm
- Prierez = 227.29  mm2
- Jednotkov· hmotnosù = 0.935  kg/m
- Mern· tiaû = 0.04034  N/m.mm2
- Modul pruûnosti = 92691  MPa
- Koeficient tepelnej rozùaûnosti = 0.00001770  1/∞C
- Matematick· ˙nosnosù = 98104  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.5
+ 19.8  mm
+227.29  mm2
+0.935  kg/m
+92691  MPa
+0.00001770  1/¬∞C
+98104  N
+0.5
 .....
 F-799X
-Priemer = 20.1  mm
- Prierez = 234.45  mm2
- Jednotkov· hmotnosù = 1.057  kg/m
- Mern· tiaû = 0.04421  N/m.mm2
- Modul pruûnosti = 100852  MPa
- Koeficient tepelnej rozùaûnosti = 0.00001600  1/∞C
- Matematick· ˙nosnosù = 177010  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.5
+ 20.1  mm
+234.45  mm2
+1.057  kg/m
+100852  MPa
+0.00001600  1/¬∞C
+177010  N
+0.5
 .....
 F-818-372T-072
-Priemer = 20.8  mm
- Prierez = 237.18  mm2
- Jednotkov· hmotnosù = 1.138  kg/m
- Mern· tiaû = 0.047053  N/m.mm2
- Modul pruûnosti = 107098  MPa
- Koeficient tepelnej rozùaûnosti = 0.00001580  1/∞C
- Matematick· ˙nosnosù = 162261  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.5
+ 20.8  mm
+237.18  mm2
+1.138  kg/m
+107098  MPa
+0.00001580  1/¬∞C
+162261  N
+0.5
 .....
 F-818-378-024-H19
-Priemer = 20.78  mm
- Prierez = 253  mm2
- Jednotkov· hmotnosù = 1.134  kg/m
- Mern· tiaû = 0.043952  N/m.mm2
- Modul pruûnosti = 108130  MPa
- Koeficient tepelnej rozùaûnosti = 0.00001692  1/∞C
- Matematick· ˙nosnosù = 141270  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.5
+ 20.78  mm
+253  mm2
+1.134  kg/m
+108130  MPa
+0.00001692  1/¬∞C
+141270  N
+0.5
 .....
 F-827-378-024
-Priemer = 21  mm
- Prierez = 256.2  mm2
- Jednotkov· hmotnosù = 1.085  kg/m
- Mern· tiaû = 0.04153  N/m.mm2
- Modul pruûnosti = 101891  MPa
- Koeficient tepelnej rozùaûnosti = 0.00001710  1/∞C
- Matematick· ˙nosnosù = 146776  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.5
+ 21  mm
+256.2  mm2
+1.085  kg/m
+101891  MPa
+0.00001710  1/¬∞C
+146776  N
+0.5
 .....
 F-834-348T-024
-Priemer = 21.2  mm
- Prierez = 257.63  mm2
- Jednotkov· hmotnosù = 1.075  kg/m
- Mern· tiaû = 0.04092  N/m.mm2
- Modul pruûnosti = 94566  MPa
- Koeficient tepelnej rozùaûnosti = 0.00001730  1/∞C
- Matematick· ˙nosnosù = 114542  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.5
+ 21.2  mm
+257.63  mm2
+1.075  kg/m
+94566  MPa
+0.00001730  1/¬∞C
+114542  N
+0.5
 .....
-F-834-378-024Priemer = 21.2  mm
- Prierez = 257.63  mm2
- Jednotkov· hmotnosù = 1.075  kg/m
- Mern· tiaû = 0.04092  N/m.mm2
- Modul pruûnosti = 94566  MPa
- Koeficient tepelnej rozùaûnosti = 0.00001730  1/∞C
- Matematick· ˙nosnosù = 114542  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.5
+F-834-378-024 
+21.2  mm
+257.63  mm2
+1.075  kg/m
+94566  MPa
+0.00001730  1/¬∞C
+114542  N
+0.5
 .....
 FD-2743-48HA1 (SOK)
-Priemer = 15.8  mm
- Prierez = 196.07  mm2
- Jednotkov· hmotnosù = 0.194  kg/m
- Mern· tiaû = 0.009703  N/m.mm2
- Modul pruûnosti = 20600  MPa
- Koeficient tepelnej rozùaûnosti = 0.00000083  1/∞C
- Matematick· ˙nosnosù = 63000  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.2
+ 15.8  mm
+196.07  mm2
+0.194  kg/m
+20600  MPa
+0.00000083  1/¬∞C
+63000  N
+0.2
 .....
 HAWK
-Priemer = 21.79  mm
- Prierez = 280.9  mm2
- Jednotkov· hmotnosù = 0.9765  kg/m
- Mern· tiaû = 0.034081  N/m.mm2
- Modul pruûnosti = 74515  MPa
- Koeficient tepelnej rozùaûnosti = 0.00001882  1/∞C
- Matematick· ˙nosnosù = 86740  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.3147
+ 21.79  mm
+280.9  mm2
+0.9765  kg/m
+74515  MPa
+0.00001882  1/¬∞C
+86740  N
+0.3147
 .....
-OC99/59/24Priemer = 17.6  mm
- Prierez = 158.5  mm2
- Jednotkov· hmotnosù = 0.7896  kg/m
- Mern· tiaû = 0.04145  N/m.mm2
- Modul pruûnosti = 10500  MPa
- Koeficient tepelnej rozùaûnosti = 0.00001530  1/∞C
- Matematick· ˙nosnosù = 83100  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.5
+OC99/59/24 
+17.6  mm
+158.5  mm2
+0.7896  kg/m
+10500  MPa
+0.00001530  1/¬∞C
+83100  N
+0.5
 .....
 OPGW  184/72 - 21,9
-Priemer = 21  mm
- Prierez = 255.4  mm2
- Jednotkov· hmotnosù = 1.03  kg/m
- Mern· tiaû = 0.0395  N/m.mm2
- Modul pruûnosti = 90000  MPa
- Koeficient tepelnej rozùaûnosti = 0.00001800  1/∞C
- Matematick· ˙nosnosù = 102492  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.5
+ 21  mm
+255.4  mm2
+1.03  kg/m
+90000  MPa
+0.00001800  1/¬∞C
+102492  N
+0.5
 .....
-OPGW  184/72 - 21,9 + vyhr.kabelPriemer = 21  mm
- Prierez = 255.4  mm2
- Jednotkov· hmotnosù = 1.213  kg/m
- Mern· tiaû = 0.0466  N/m.mm2
- Modul pruûnosti = 90000  MPa
- Koeficient tepelnej rozùaûnosti = 0.00001800  1/∞C
- Matematick· ˙nosnosù = 102492  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.2
+OPGW  184/72 - 21,9 + vyhr.kabel 
+21  mm
+255.4  mm2
+1.213  kg/m
+90000  MPa
+0.00001800  1/¬∞C
+102492  N
+0.2
 .....
 OPGW 106-AL3/7-A20SA
-Priemer = 15  mm
- Prierez = 113  mm2
- Jednotkov· hmotnosù = 0.399  kg/m
- Mern· tiaû = 0.03463  N/m.mm2
- Modul pruûnosti = 74000  MPa
- Koeficient tepelnej rozùaûnosti = 0.00002160  1/∞C
- Matematick· ˙nosnosù = 40000  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.1
+ 15  mm
+113  mm2
+0.399  kg/m
+74000  MPa
+0.00002160  1/¬∞C
+40000  N
+0.1
 .....
 OPGW 109/109
-Priemer = 16.8  mm
- Prierez = 109  mm2
- Jednotkov· hmotnosù = 0.89  kg/m
- Mern· tiaû = 0.0801  N/m.mm2
- Modul pruûnosti = 188800  MPa
- Koeficient tepelnej rozùaûnosti = 0.00001470  1/∞C
- Matematick· ˙nosnosù = 131400  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.5
+ 16.8  mm
+109  mm2
+0.89  kg/m
+188800  MPa
+0.00001470  1/¬∞C
+131400  N
+0.5
 .....
 OPGW 118-AL4/37-A20SA
-Priemer = 17.1  mm
- Prierez = 154.9  mm2
- Jednotkov· hmotnosù = 0.632  kg/m
- Mern· tiaû = 0.040011  N/m.mm2
- Modul pruûnosti = 82000  MPa
- Koeficient tepelnej rozùaûnosti = 0.00001830  1/∞C
- Matematick· ˙nosnosù = 83900  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.2
+ 17.1  mm
+154.9  mm2
+0.632  kg/m
+82000  MPa
+0.00001830  1/¬∞C
+83900  N
+0.2
 .....
 OPGW 133-AL3/39-A20SA
-Priemer = 17.5  mm
- Prierez = 172  mm2
- Jednotkov· hmotnosù = 0.664  kg/m
- Mern· tiaû = 0.0378582  N/m.mm2
- Modul pruûnosti = 89000  MPa
- Koeficient tepelnej rozùaûnosti = 0.00001890  1/∞C
- Matematick· ˙nosnosù = 86000  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.2
+ 17.5  mm
+172  mm2
+0.664  kg/m
+89000  MPa
+0.00001890  1/¬∞C
+86000  N
+0.2
 .....
-OPGW 133-AL3/39-A20SA +vyhrievacÌ k·belPriemer = 17.5  mm
- Prierez = 172  mm2
- Jednotkov· hmotnosù = 0.834  kg/m
- Mern· tiaû = 0.0475494  N/m.mm2
- Modul pruûnosti = 89000  MPa
- Koeficient tepelnej rozùaûnosti = 0.00001890  1/∞C
- Matematick· ˙nosnosù = 86000  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.2
+OPGW 133-AL3/39-A20SA +vyhrievac√≠ k√°bel 
+17.5  mm
+172  mm2
+0.834  kg/m
+89000  MPa
+0.00001890  1/¬∞C
+86000  N
+0.2
 .....
 OPGW 137-AL3/57-A20SA
-Priemer = 18.9  mm
- Prierez = 195  mm2
- Jednotkov· hmotnosù = 0.834  kg/m
- Mern· tiaû = 0.04194  N/m.mm2
- Modul pruûnosti = 109600  MPa
- Koeficient tepelnej rozùaûnosti = 0.00001800  1/∞C
- Matematick· ˙nosnosù = 110000  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.65
+ 18.9  mm
+195  mm2
+0.834  kg/m
+109600  MPa
+0.00001800  1/¬∞C
+110000  N
+0.65
 .....
 OPGW 147/59
-Priemer = 17.3  mm
- Prierez = 147.3  mm2
- Jednotkov· hmotnosù = 0.72  kg/m
- Mern· tiaû = 0.04793  N/m.mm2
- Modul pruûnosti = 97770  MPa
- Koeficient tepelnej rozùaûnosti = 0.00001840  1/∞C
- Matematick· ˙nosnosù = 89500  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.5
+ 17.3  mm
+147.3  mm2
+0.72  kg/m
+97770  MPa
+0.00001840  1/¬∞C
+89500  N
+0.5
 .....
 OPGW 157T/57
-Priemer = 19.2  mm
- Prierez = 157.4  mm2
- Jednotkov· hmotnosù = 0.82  kg/m
- Mern· tiaû = 0.05109  N/m.mm2
- Modul pruûnosti = 118300  MPa
- Koeficient tepelnej rozùaûnosti = 0.00001820  1/∞C
- Matematick· ˙nosnosù = 101000  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.5
+ 19.2  mm
+157.4  mm2
+0.82  kg/m
+118300  MPa
+0.00001820  1/¬∞C
+101000  N
+0.5
 .....
 OPGW 160-AL3/34-A20SA
-Priemer = 18.9  mm
- Prierez = 195  mm2
- Jednotkov· hmotnosù = 0.743  kg/m
- Mern· tiaû = 0.03737  N/m.mm2
- Modul pruûnosti = 89000  MPa
- Koeficient tepelnej rozùaûnosti = 0.00001960  1/∞C
- Matematick· ˙nosnosù = 89000  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.35
+ 18.9  mm
+195  mm2
+0.743  kg/m
+89000  MPa
+0.00001960  1/¬∞C
+89000  N
+0.35
 .....
 OPGW 170-AL3/71-A20SA
-Priemer = 21  mm
- Prierez = 240  mm2
- Jednotkov· hmotnosù = 1.025  kg/m
- Mern· tiaû = 0.04188  N/m.mm2
- Modul pruûnosti = 96000  MPa
- Koeficient tepelnej rozùaûnosti = 0.00001800  1/∞C
- Matematick· ˙nosnosù = 135000  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.7
+ 21  mm
+240  mm2
+1.025  kg/m
+96000  MPa
+0.00001800  1/¬∞C
+135000  N
+0.7
 .....
 OPGW 180-AL3/55-A20SA, 48 G.657 A1
-Priemer = 21  mm
- Prierez = 235.5  mm2
- Jednotkov· hmotnosù = 0.9397  kg/m
- Mern· tiaû = 0.03663  N/m.mm2
- Modul pruûnosti = 90000  MPa
- Koeficient tepelnej rozùaûnosti = 0.00001880  1/∞C
- Matematick· ˙nosnosù = 112400  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.46296
+ 21  mm
+235.5  mm2
+0.9397  kg/m
+90000  MPa
+0.00001880  1/¬∞C
+112400  N
+0.46296
 .....
 OPGW 185-AL3/40-A20SA
-Priemer = 20.3  mm
- Prierez = 225  mm2
- Jednotkov· hmotnosù = 0.853  kg/m
- Mern· tiaû = 0.03718  N/m.mm2
- Modul pruûnosti = 85000  MPa
- Koeficient tepelnej rozùaûnosti = 0.00001960  1/∞C
- Matematick· ˙nosnosù = 102000  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.35
+ 20.3  mm
+225  mm2
+0.853  kg/m
+85000  MPa
+0.00001960  1/¬∞C
+102000  N
+0.35
 .....
 OPGW 189-AL3/6-A20SA
-Priemer = 18.9  mm
- Prierez = 195  mm2
- Jednotkov· hmotnosù = 0.62  kg/m
- Mern· tiaû = 0.03118  N/m.mm2
- Modul pruûnosti = 71000  MPa
- Koeficient tepelnej rozùaûnosti = 0.00002230  1/∞C
- Matematick· ˙nosnosù = 63000  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.1
+ 18.9  mm
+195  mm2
+0.62  kg/m
+71000  MPa
+0.00002230  1/¬∞C
+63000  N
+0.1
 .....
 OPGW 191-AL2/57-A20SA
-Priemer = 21  mm
- Prierez = 247  mm2
- Jednotkov· hmotnosù = 0.961  kg/m
- Mern· tiaû = 0.0381546  N/m.mm2
- Modul pruûnosti = 89000  MPa
- Koeficient tepelnej rozùaûnosti = 0.00001890  1/∞C
- Matematick· ˙nosnosù = 130000  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.2
+ 21  mm
+247  mm2
+0.961  kg/m
+89000  MPa
+0.00001890  1/¬∞C
+130000  N
+0.2
 .....
 OPGW 205-AL3/86-A20SA
-Priemer = 23.1  mm
- Prierez = 291  mm2
- Jednotkov· hmotnosù = 1.233  kg/m
- Mern· tiaû = 0.04155  N/m.mm2
- Modul pruûnosti = 96000  MPa
- Koeficient tepelnej rozùaûnosti = 0.00001800  1/∞C
- Matematick· ˙nosnosù = 164000  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.7
+ 23.1  mm
+291  mm2
+1.233  kg/m
+96000  MPa
+0.00001800  1/¬∞C
+164000  N
+0.7
 .....
 OPGW 218-AL3/7-A20SA
-Priemer = 20.3  mm
- Prierez = 225  mm2
- Jednotkov· hmotnosù = 0.702  kg/m
- Mern· tiaû = 0.0306  N/m.mm2
- Modul pruûnosti = 71000  MPa
- Koeficient tepelnej rozùaûnosti = 0.00002230  1/∞C
- Matematick· ˙nosnosù = 72000  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.1
+ 20.3  mm
+225  mm2
+0.702  kg/m
+71000  MPa
+0.00002230  1/¬∞C
+72000  N
+0.1
 .....
 OPGW 226-AL2/28-A20SA
-Priemer = 21  mm
- Prierez = 254  mm2
- Jednotkov· hmotnosù = 0.843  kg/m
- Mern· tiaû = 0.03255  N/m.mm2
- Modul pruûnosti = 78000  MPa
- Koeficient tepelnej rozùaûnosti = 0.00002070  1/∞C
- Matematick· ˙nosnosù = 108000  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.1
+ 21  mm
+254  mm2
+0.843  kg/m
+78000  MPa
+0.00002070  1/¬∞C
+108000  N
+0.1
 .....
 OPGW 226-AL2/38-A20SA
-Priemer = 21.7  mm
- Prierez = 264  mm2
- Jednotkov· hmotnosù = 0.922  kg/m
- Mern· tiaû = 0.03425  N/m.mm2
- Modul pruûnosti = 81000  MPa
- Koeficient tepelnej rozùaûnosti = 0.00002020  1/∞C
- Matematick· ˙nosnosù = 119000  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.3
+ 21.7  mm
+264  mm2
+0.922  kg/m
+81000  MPa
+0.00002020  1/¬∞C
+119000  N
+0.3
 .....
 OPGW 239-AL3/51-A20SA
-Priemer = 23.1  mm
- Prierez = 291  mm2
- Jednotkov· hmotnosù = 1.096  kg/m
- Mern· tiaû = 0.03694  N/m.mm2
- Modul pruûnosti = 85000  MPa
- Koeficient tepelnej rozùaûnosti = 0.00001960  1/∞C
- Matematick· ˙nosnosù = 133000  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.35
+ 23.1  mm
+291  mm2
+1.096  kg/m
+85000  MPa
+0.00001960  1/¬∞C
+133000  N
+0.35
 .....
 OPGW 241-AL3/40-A20SA, 48 G.657 A1
-Priemer = 22.4  mm
- Prierez = 281.5  mm2
- Jednotkov· hmotnosù = 0.9859  kg/m
- Mern· tiaû = 0.03435  N/m.mm2
- Modul pruûnosti = 81000  MPa
- Koeficient tepelnej rozùaûnosti = 0.00002020  1/∞C
- Matematick· ˙nosnosù = 119400  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.32016
+ 22.4  mm
+281.5  mm2
+0.9859  kg/m
+81000  MPa
+0.00002020  1/¬∞C
+119400  N
+0.32016
 .....
 OPGW 257-AL3/34-A20SA
-Priemer = 23.1  mm
- Prierez = 291  mm2
- Jednotkov· hmotnosù = 1.003  kg/m
- Mern· tiaû = 0.0338  N/m.mm2
- Modul pruûnosti = 79000  MPa
- Koeficient tepelnej rozùaûnosti = 0.00002060  1/∞C
- Matematick· ˙nosnosù = 117000  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.3
+ 23.1  mm
+291  mm2
+1.003  kg/m
+79000  MPa
+0.00002060  1/¬∞C
+117000  N
+0.3
 .....
 OPGW 258-AL3/108-A20SA
-Priemer = 25.9  mm
- Prierez = 366  mm2
- Jednotkov· hmotnosù = 1.543  kg/m
- Mern· tiaû = 0.04134  N/m.mm2
- Modul pruûnosti = 96000  MPa
- Koeficient tepelnej rozùaûnosti = 0.00001800  1/∞C
- Matematick· ˙nosnosù = 206000  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.65
+ 25.9  mm
+366  mm2
+1.543  kg/m
+96000  MPa
+0.00001800  1/¬∞C
+206000  N
+0.65
 .....
 OPGW 265-AL3/8-A20SA
-Priemer = 22.4  mm
- Prierez = 273  mm2
- Jednotkov· hmotnosù = 0.85  kg/m
- Mern· tiaû = 0.03053  N/m.mm2
- Modul pruûnosti = 71000  MPa
- Koeficient tepelnej rozùaûnosti = 0.00002230  1/∞C
- Matematick· ˙nosnosù = 88000  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.1
+ 22.4  mm
+273  mm2
+0.85  kg/m
+71000  MPa
+0.00002230  1/¬∞C
+88000  N
+0.1
 .....
 OPGW 291-AL3
-Priemer = 23.1  mm
- Prierez = 291  mm2
- Jednotkov· hmotnosù = 0.855  kg/m
- Mern· tiaû = 0.02881  N/m.mm2
- Modul pruûnosti = 57000  MPa
- Koeficient tepelnej rozùaûnosti = 0.00002300  1/∞C
- Matematick· ˙nosnosù = 81000  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.01
+ 23.1  mm
+291  mm2
+0.855  kg/m
+57000  MPa
+0.00002300  1/¬∞C
+81000  N
+0.01
 .....
 OPGW 299-AL2
-Priemer = 23.1  mm
- Prierez = 299  mm2
- Jednotkov· hmotnosù = 0.874  kg/m
- Mern· tiaû = 0.02867  N/m.mm2
- Modul pruûnosti = 68000  MPa
- Koeficient tepelnej rozùaûnosti = 0.00002300  1/∞C
- Matematick· ˙nosnosù = 92000  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.2
+ 23.1  mm
+299  mm2
+0.874  kg/m
+68000  MPa
+0.00002300  1/¬∞C
+92000  N
+0.2
 .....
 OPGW 301-AL3/65-A20SA
-Priemer = 25.9  mm
- Prierez = 366  mm2
- Jednotkov· hmotnosù = 1.372  kg/m
- Mern· tiaû = 0.03676  N/m.mm2
- Modul pruûnosti = 85000  MPa
- Koeficient tepelnej rozùaûnosti = 0.00001960  1/∞C
- Matematick· ˙nosnosù = 167000  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.3
+ 25.9  mm
+366  mm2
+1.372  kg/m
+85000  MPa
+0.00001960  1/¬∞C
+167000  N
+0.3
 .....
 OPGW 308-AL2
-Priemer = 23.1  mm
- Prierez = 308  mm2
- Jednotkov· hmotnosù = 0.881  kg/m
- Mern· tiaû = 0.02805  N/m.mm2
- Modul pruûnosti = 57000  MPa
- Koeficient tepelnej rozùaûnosti = 0.00002300  1/∞C
- Matematick· ˙nosnosù = 95000  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.05
+ 23.1  mm
+308  mm2
+0.881  kg/m
+57000  MPa
+0.00002300  1/¬∞C
+95000  N
+0.05
 .....
 OPGW 326-AL3/20-A20SA
-Priemer = 25.2  mm
- Prierez = 346  mm2
- Jednotkov· hmotnosù = 1.11  kg/m
- Mern· tiaû = 0.03146  N/m.mm2
- Modul pruûnosti = 74000  MPa
- Koeficient tepelnej rozùaûnosti = 0.00002170  1/∞C
- Matematick· ˙nosnosù = 121000  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.2
+ 25.2  mm
+346  mm2
+1.11  kg/m
+74000  MPa
+0.00002170  1/¬∞C
+121000  N
+0.2
 .....
-OPGW 336-AL3/10-A20SAPriemer = 25.2  mm
- Prierez = 346  mm2
- Jednotkov· hmotnosù = 1.07  kg/m
- Mern· tiaû = 0.03033  N/m.mm2
- Modul pruûnosti = 71000  MPa
- Koeficient tepelnej rozùaûnosti = 0.00002230  1/∞C
- Matematick· ˙nosnosù = 111000  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.1
+OPGW 336-AL3/10-A20SA 
+25.2  mm
+346  mm2
+1.07  kg/m
+71000  MPa
+0.00002230  1/¬∞C
+111000  N
+0.1
 .....
 OPGW 33B49z (Pry) 7231
-Priemer = 13.3  mm
- Prierez = 85.2  mm2
- Jednotkov· hmotnosù = 0.493  kg/m
- Mern· tiaû = 0.05674  N/m.mm2
- Modul pruûnosti = 119600  MPa
- Koeficient tepelnej rozùaûnosti = 0.00001420  1/∞C
- Matematick· ˙nosnosù = 63360  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.5
+ 13.3  mm
+85.2  mm2
+0.493  kg/m
+119600  MPa
+0.00001420  1/¬∞C
+63360  N
+0.5
 .....
 OPGW 346-AL3
-Priemer = 25.2  mm
- Prierez = 346  mm2
- Jednotkov· hmotnosù = 1.015  kg/m
- Mern· tiaû = 0.02877  N/m.mm2
- Modul pruûnosti = 57000  MPa
- Koeficient tepelnej rozùaûnosti = 0.00002300  1/∞C
- Matematick· ˙nosnosù = 97000  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.01
+ 25.2  mm
+346  mm2
+1.015  kg/m
+57000  MPa
+0.00002300  1/¬∞C
+97000  N
+0.01
 .....
 OPGW 370-AL3/79-A20SA
-Priemer = 28.7  mm
- Prierez = 449  mm2
- Jednotkov· hmotnosù = 1.678  kg/m
- Mern· tiaû = 0.03665  N/m.mm2
- Modul pruûnosti = 85000  MPa
- Koeficient tepelnej rozùaûnosti = 0.00001960  1/∞C
- Matematick· ˙nosnosù = 205000  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.5
+ 28.7  mm
+449  mm2
+1.678  kg/m
+85000  MPa
+0.00001960  1/¬∞C
+205000  N
+0.5
 .....
 OPGW 402-AL3/62-A20SA
-Priemer = 28  mm
- Prierez = 427  mm2
- Jednotkov· hmotnosù = 1.36  kg/m
- Mern· tiaû = 0.03123  N/m.mm2
- Modul pruûnosti = 74000  MPa
- Koeficient tepelnej rozùaûnosti = 0.00002170  1/∞C
- Matematick· ˙nosnosù = 149000  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.4
+ 28  mm
+427  mm2
+1.36  kg/m
+74000  MPa
+0.00002170  1/¬∞C
+149000  N
+0.4
 .....
 OPGW 41D61DzG (9632)
-Priemer = 14.1  mm
- Prierez = 101.2  mm2
- Jednotkov· hmotnosù = 0.618  kg/m
- Mern· tiaû = 0.0598858  N/m.mm2
- Modul pruûnosti = 129400  MPa
- Koeficient tepelnej rozùaûnosti = 0.00001420  1/∞C
- Matematick· ˙nosnosù = 96400  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.2
+ 14.1  mm
+101.2  mm2
+0.618  kg/m
+129400  MPa
+0.00001420  1/¬∞C
+96400  N
+0.2
 .....
 OPGW 41E47DzG (9631)
-Priemer = 14.1  mm
- Prierez = 101.2  mm2
- Jednotkov· hmotnosù = 0.477  kg/m
- Mern· tiaû = 0.0462226  N/m.mm2
- Modul pruûnosti = 96600  MPa
- Koeficient tepelnej rozùaûnosti = 0.00001690  1/∞C
- Matematick· ˙nosnosù = 65000  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.2
+ 14.1  mm
+101.2  mm2
+0.477  kg/m
+96600  MPa
+0.00001690  1/¬∞C
+65000  N
+0.2
 .....
 OPGW 41F41DzG (9630)
-Priemer = 14.1  mm
- Prierez = 101.2  mm2
- Jednotkov· hmotnosù = 0.42  kg/m
- Mern· tiaû = 0.040699  N/m.mm2
- Modul pruûnosti = 83600  MPa
- Koeficient tepelnej rozùaûnosti = 0.00001860  1/∞C
- Matematick· ˙nosnosù = 52500  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.2
+ 14.1  mm
+101.2  mm2
+0.42  kg/m
+83600  MPa
+0.00001860  1/¬∞C
+52500  N
+0.2
 .....
 OPGW 427-AL3
-Priemer = 28  mm
- Prierez = 427  mm2
- Jednotkov· hmotnosù = 1.242  kg/m
- Mern· tiaû = 0.02852  N/m.mm2
- Modul pruûnosti = 57000  MPa
- Koeficient tepelnej rozùaûnosti = 0.00002300  1/∞C
- Matematick· ˙nosnosù = 120000  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.01
+ 28  mm
+427  mm2
+1.242  kg/m
+57000  MPa
+0.00002300  1/¬∞C
+120000  N
+0.01
 .....
 OPGW 51-AL3/86-A20SA
-Priemer = 16.5  mm
- Prierez = 137  mm2
- Jednotkov· hmotnosù = 0.782  kg/m
- Mern· tiaû = 0.05598  N/m.mm2
- Modul pruûnosti = 127000  MPa
- Koeficient tepelnej rozùaûnosti = 0.00001500  1/∞C
- Matematick· ˙nosnosù = 118000  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.8
+ 16.5  mm
+137  mm2
+0.782  kg/m
+127000  MPa
+0.00001500  1/¬∞C
+118000  N
+0.8
 .....
 OPGW 56J42DzG (9633)
-Priemer = 15.6  mm
- Prierez = 123.9  mm2
- Jednotkov· hmotnosù = 0.437  kg/m
- Mern· tiaû = 0.0345881  N/m.mm2
- Modul pruûnosti = 68400  MPa
- Koeficient tepelnej rozùaûnosti = 0.00002120  1/∞C
- Matematick· ˙nosnosù = 47000  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.2
+ 15.6  mm
+123.9  mm2
+0.437  kg/m
+68400  MPa
+0.00002120  1/¬∞C
+47000  N
+0.2
 .....
 OPGW 56J48DzG (9634)
-Priemer = 15.6  mm
- Prierez = 123.9  mm2
- Jednotkov· hmotnosù = 0.491  kg/m
- Mern· tiaû = 0.0388621  N/m.mm2
- Modul pruûnosti = 79100  MPa
- Koeficient tepelnej rozùaûnosti = 0.00001930  1/∞C
- Matematick· ˙nosnosù = 59000  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.2
+ 15.6  mm
+123.9  mm2
+0.491  kg/m
+79100  MPa
+0.00001930  1/¬∞C
+59000  N
+0.2
 .....
 OPGW 59J59DzG (9635)
-Priemer = 15.9  mm
- Prierez = 129.7  mm2
- Jednotkov· hmotnosù = 0.604  kg/m
- Mern· tiaû = 0.045668  N/m.mm2
- Modul pruûnosti = 96600  MPa
- Koeficient tepelnej rozùaûnosti = 0.00001690  1/∞C
- Matematick· ˙nosnosù = 83000  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.2
+ 15.9  mm
+129.7  mm2
+0.604  kg/m
+96600  MPa
+0.00001690  1/¬∞C
+83000  N
+0.2
 .....
 OPGW 67L55z (Pry) 7242
-Priemer = 16.7  mm
- Prierez = 149.3  mm2
- Jednotkov· hmotnosù = 0.549  kg/m
- Mern· tiaû = 0.03606  N/m.mm2
- Modul pruûnosti = 76200  MPa
- Koeficient tepelnej rozùaûnosti = 0.00001930  1/∞C
- Matematick· ˙nosnosù = 58400  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.5
+ 16.7  mm
+149.3  mm2
+0.549  kg/m
+76200  MPa
+0.00001930  1/¬∞C
+58400  N
+0.5
 .....
 OPGW 70L76z (Pry) 7253
-Priemer = 17  mm
- Prierez = 157.8  mm2
- Jednotkov· hmotnosù = 0.757  kg/m
- Mern· tiaû = 0.004704  N/m.mm2
- Modul pruûnosti = 101700  MPa
- Koeficient tepelnej rozùaûnosti = 0.00001580  1/∞C
- Matematick· ˙nosnosù = 102000  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.5
+ 17  mm
+157.8  mm2
+0.757  kg/m
+101700  MPa
+0.00001580  1/¬∞C
+102000  N
+0.5
 .......
 OPGW 76N53DzG (9636)
-Priemer = 17.6  mm
- Prierez = 123.9  mm2
- Jednotkov· hmotnosù = 0.548  kg/m
- Mern· tiaû = 0.0433736  N/m.mm2
- Modul pruûnosti = 68500  MPa
- Koeficient tepelnej rozùaûnosti = 0.00002130  1/∞C
- Matematick· ˙nosnosù = 58000  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.2
+ 17.6  mm
+123.9  mm2
+0.548  kg/m
+68500  MPa
+0.00002130  1/¬∞C
+58000  N
+0.2
 .......
 OPGW 83-AL3/38-A20SA
-Priemer = 15.5  mm
- Prierez = 121  mm2
- Jednotkov· hmotnosù = 0.543  kg/m
- Mern· tiaû = 0.04401  N/m.mm2
- Modul pruûnosti = 97000  MPa
- Koeficient tepelnej rozùaûnosti = 0.00001780  1/∞C
- Matematick· ˙nosnosù = 70000  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.8
+ 15.5  mm
+121  mm2
+0.543  kg/m
+97000  MPa
+0.00001780  1/¬∞C
+70000  N
+0.8
 .......
 OPGW 83P69z (Pry) 7247
-Priemer = 18.3  mm
- Prierez = 186.5  mm2
- Jednotkov· hmotnosù = 0.694  kg/m
- Mern· tiaû = 0.03649  N/m.mm2
- Modul pruûnosti = 77900  MPa
- Koeficient tepelnej rozùaûnosti = 0.00001890  1/∞C
- Matematick· ˙nosnosù = 73200  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.5
+ 18.3  mm
+186.5  mm2
+0.694  kg/m
+77900  MPa
+0.00001890  1/¬∞C
+73200  N
+0.5
 .......
 OPGW 91-AL3/64-A20SA, 48 G.657 A1
-Priemer = 17  mm
- Prierez = 154.3  mm2
- Jednotkov· hmotnosù = 0.7305  kg/m
- Mern· tiaû = 0.04346  N/m.mm2
- Modul pruûnosti = 107000  MPa
- Koeficient tepelnej rozùaûnosti = 0.00001670  1/∞C
- Matematick· ˙nosnosù = 101800  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.682
+ 17  mm
+154.3  mm2
+0.7305  kg/m
+107000  MPa
+0.00001670  1/¬∞C
+101800  N
+0.682
 .......
 OPGW 92-AL3/21-A20SA
-Priemer = 15  mm
- Prierez = 113  mm2
- Jednotkov· hmotnosù = 0.455  kg/m
- Mern· tiaû = 0.03949  N/m.mm2
- Modul pruûnosti = 86000  MPa
- Koeficient tepelnej rozùaûnosti = 0.00001950  1/∞C
- Matematick· ˙nosnosù = 53000  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.5
+ 15  mm
+113  mm2
+0.455  kg/m
+86000  MPa
+0.00001950  1/¬∞C
+53000  N
+0.5
 .......
 OPGW 97-AL3/40-A20SA, 48 G.652D
-Priemer = 16  mm
- Prierez = 136.7  mm2
- Jednotkov· hmotnosù = 0.584  kg/m
- Mern· tiaû = 0.0419  N/m.mm2
- Modul pruûnosti = 96000  MPa
- Koeficient tepelnej rozùaûnosti = 0.00001800  1/∞C
- Matematick· ˙nosnosù = 76700  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.5
+ 16  mm
+136.7  mm2
+0.584  kg/m
+96000  MPa
+0.00001800  1/¬∞C
+76700  N
+0.5
 .......
 OPGW 97-AL3/45-A20SA, 48 G.657 A1
-Priemer = 16.4  mm
- Prierez = 142.9  mm2
- Jednotkov· hmotnosù = 0.625  kg/m
- Mern· tiaû = 0.04289  N/m.mm2
- Modul pruûnosti = 98000  MPa
- Koeficient tepelnej rozùaûnosti = 0.00001770  1/∞C
- Matematick· ˙nosnosù = 82300  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.5
+ 16.4  mm
+142.9  mm2
+0.625  kg/m
+98000  MPa
+0.00001770  1/¬∞C
+82300  N
+0.5
 .......
 OPGW AACSR/ACS 109/136 1C
-Priemer = 20.8  mm
- Prierez = 244.65  mm2
- Jednotkov· hmotnosù = 1.253  kg/m
- Mern· tiaû = 0.0502258  N/m.mm2
- Modul pruûnosti = 116670  MPa
- Koeficient tepelnej rozùaûnosti = 0.00001530  1/∞C
- Matematick· ˙nosnosù = 177510  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.73
+ 20.8  mm
+244.65  mm2
+1.253  kg/m
+116670  MPa
+0.00001530  1/¬∞C
+177510  N
+0.73
 .......
 OPGW AACSR/ACS 140/111 1C
-Priemer = 20.91  mm
- Prierez = 251.27  mm2
- Jednotkov· hmotnosù = 1.138  kg/m
- Mern· tiaû = 0.0444142  N/m.mm2
- Modul pruûnosti = 104930  MPa
- Koeficient tepelnej rozùaûnosti = 0.00001580  1/∞C
- Matematick· ˙nosnosù = 178250  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.64
+ 20.91  mm
+251.27  mm2
+1.138  kg/m
+104930  MPa
+0.00001580  1/¬∞C
+178250  N
+0.64
 .......
 OPGW AL3/A20SA 108/59-14,0
-Priemer = 17.3  mm
- Prierez = 167  mm2
- Jednotkov· hmotnosù = 0.735  kg/m
- Mern· tiaû = 0.0431  N/m.mm2
- Modul pruûnosti = 94200  MPa
- Koeficient tepelnej rozùaûnosti = 0.00001690  1/∞C
- Matematick· ˙nosnosù = 101100  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.5
+ 17.3  mm
+167  mm2
+0.735  kg/m
+94200  MPa
+0.00001690  1/¬∞C
+101100  N
+0.5
 .......
 OPGW AL3/A20SA 133/40-16,7
-Priemer = 17.6  mm
- Prierez = 172.2  mm2
- Jednotkov· hmotnosù = 0.675  kg/m
- Mern· tiaû = 0.0384  N/m.mm2
- Modul pruûnosti = 81200  MPa
- Koeficient tepelnej rozùaûnosti = 0.00001840  1/∞C
- Matematick· ˙nosnosù = 89600  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.5
+ 17.6  mm
+172.2  mm2
+0.675  kg/m
+81200  MPa
+0.00001840  1/¬∞C
+89600  N
+0.5
 .......
 OPGW AL3/A20SA 137/66-17,3
-Priemer = 19.2  mm
- Prierez = 203.2  mm2
- Jednotkov· hmotnosù = 0.878  kg/m
- Mern· tiaû = 0.0424  N/m.mm2
- Modul pruûnosti = 91000  MPa
- Koeficient tepelnej rozùaûnosti = 0.00001720  1/∞C
- Matematick· ˙nosnosù = 119900  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.5
+ 19.2  mm
+203.2  mm2
+0.878  kg/m
+91000  MPa
+0.00001720  1/¬∞C
+119900  N
+0.5
 .......
 OPGW AL3/A20SA 178/53-22,5
-Priemer = 20.4  mm
- Prierez = 231.6  mm2
- Jednotkov· hmotnosù = 0.896  kg/m
- Mern· tiaû = 0.037939  N/m.mm2
- Modul pruûnosti = 81200  MPa
- Koeficient tepelnej rozùaûnosti = 0.00001840  1/∞C
- Matematick· ˙nosnosù = 120500  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.5
+ 20.4  mm
+231.6  mm2
+0.896  kg/m
+81200  MPa
+0.00001840  1/¬∞C
+120500  N
+0.5
 .......
 OPGW AL3/A20SA 198/50-25.0
-Priemer = 21.1  mm
- Prierez = 247.9  mm2
- Jednotkov· hmotnosù = 0.938  kg/m
- Mern· tiaû = 0.0371  N/m.mm2
- Modul pruûnosti = 78200  MPa
- Koeficient tepelnej rozùaûnosti = 0.00001880  1/∞C
- Matematick· ˙nosnosù = 122000  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.5
+ 21.1  mm
+247.9  mm2
+0.938  kg/m
+78200  MPa
+0.00001880  1/¬∞C
+122000  N
+0.5
 .......
 OPGW AL3/A20SA 290/10-31,8
-Priemer = 23  mm
- Prierez = 300  mm2
- Jednotkov· hmotnosù = 0.907  kg/m
- Mern· tiaû = 0.0296  N/m.mm2
- Modul pruûnosti = 60400  MPa
- Koeficient tepelnej rozùaûnosti = 0.00002210  1/∞C
- Matematick· ˙nosnosù = 96700  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.2
+ 23  mm
+300  mm2
+0.907  kg/m
+60400  MPa
+0.00002210  1/¬∞C
+96700  N
+0.2
 .......
 OPGW AL3/A20SA 64/30-8,0
-Priemer = 13.4  mm
- Prierez = 94  mm2
- Jednotkov· hmotnosù = 0.422  kg/m
- Mern· tiaû = 0.044  N/m.mm2
- Modul pruûnosti = 90700  MPa
- Koeficient tepelnej rozùaûnosti = 0.00001730  1/∞C
- Matematick· ˙nosnosù = 55200  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.5
+ 13.4  mm
+94  mm2
+0.422  kg/m
+90700  MPa
+0.00001730  1/¬∞C
+55200  N
+0.5
 .......
 OPGW AL4/A20SA 121/66-17,1
-Priemer = 18.2  mm
- Prierez = 187.2  mm2
- Jednotkov· hmotnosù = 0.815  kg/m
- Mern· tiaû = 0.042694  N/m.mm2
- Modul pruûnosti = 93900  MPa
- Koeficient tepelnej rozùaûnosti = 0.00001690  1/∞C
- Matematick· ˙nosnosù = 123200  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.5
+ 18.2  mm
+187.2  mm2
+0.815  kg/m
+93900  MPa
+0.00001690  1/¬∞C
+123200  N
+0.5
 .......
 OPGW AL4/A20SA 147/30-17,7
-Priemer = 17.6  mm
- Prierez = 177.1  mm2
- Jednotkov· hmotnosù = 0.634  kg/m
- Mern· tiaû = 0.0351  N/m.mm2
- Modul pruûnosti = 74700  MPa
- Koeficient tepelnej rozùaûnosti = 0.00001930  1/∞C
- Matematick· ˙nosnosù = 61800  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.5
+ 17.6  mm
+177.1  mm2
+0.634  kg/m
+74700  MPa
+0.00001930  1/¬∞C
+61800  N
+0.5
 .......
 OPGW AL4/A20SA 177/49-22,0
-Priemer = 20.1  mm
- Prierez = 225.3  mm2
- Jednotkov· hmotnosù = 0.87  kg/m
- Mern· tiaû = 0.03787  N/m.mm2
- Modul pruûnosti = 79600  MPa
- Koeficient tepelnej rozùaûnosti = 0.00001860  1/∞C
- Matematick· ˙nosnosù = 117600  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.5
+ 20.1  mm
+225.3  mm2
+0.87  kg/m
+79600  MPa
+0.00001860  1/¬∞C
+117600  N
+0.5
 .......
 OPGW ASLH-D 177/56
-Priemer = 20.1  mm
- Prierez = 232.3  mm2
- Jednotkov· hmotnosù = 0.898  kg/m
- Mern· tiaû = 0.037909  N/m.mm2
- Modul pruûnosti = 82100  MPa
- Koeficient tepelnej rozùaûnosti = 0.00001830  1/∞C
- Matematick· ˙nosnosù = 121300  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.5
+ 20.1  mm
+232.3  mm2
+0.898  kg/m
+82100  MPa
+0.00001830  1/¬∞C
+121300  N
+0.5
 .......
 OPGW Prysmian 87P80DzG
-Priemer = 18.7  mm
- Prierez = 184.6  mm2
- Jednotkov· hmotnosù = 0.813  kg/m
- Mern· tiaû = 0.04344  N/m.mm2
- Modul pruûnosti = 93300  MPa
- Koeficient tepelnej rozùaûnosti = 0.00001710  1/∞C
- Matematick· ˙nosnosù = 103600  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.5
+ 18.7  mm
+184.6  mm2
+0.813  kg/m
+93300  MPa
+0.00001710  1/¬∞C
+103600  N
+0.5
 .......
 OZ 88/50
-Priemer = 18  mm
- Prierez = 138.62  mm2
- Jednotkov· hmotnosù = 0.716  kg/m
- Mern· tiaû = 0.05065  N/m.mm2
- Modul pruûnosti = 102000  MPa
- Koeficient tepelnej rozùaûnosti = 0.00001550  1/∞C
- Matematick· ˙nosnosù = 80020  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.5
+ 18  mm
+138.62  mm2
+0.716  kg/m
+102000  MPa
+0.00001550  1/¬∞C
+80020  N
+0.5
 .......
 PASTEL
-Priemer = 19.6  mm
- Prierez = 228  mm2
- Jednotkov· hmotnosù = 0.868  kg/m
- Mern· tiaû = 0.037334  N/m.mm2
- Modul pruûnosti = 84000  MPa
- Koeficient tepelnej rozùaûnosti = 0.00001810  1/∞C
- Matematick· ˙nosnosù = 108720  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.5
+ 19.6  mm
+228  mm2
+0.868  kg/m
+84000  MPa
+0.00001810  1/¬∞C
+108720  N
+0.5
 .......
 PASTEL 228
-Priemer = 19.6  mm
- Prierez = 227.82  mm2
- Jednotkov· hmotnosù = 0.848  kg/m
- Mern· tiaû = 0.0365023  N/m.mm2
- Modul pruûnosti = 84000  MPa
- Koeficient tepelnej rozùaûnosti = 0.00001810  1/∞C
- Matematick· ˙nosnosù = 118463  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.5
+ 19.6  mm
+227.82  mm2
+0.848  kg/m
+84000  MPa
+0.00001810  1/¬∞C
+118463  N
+0.5
 .......
 POPLAR (239,4-AL3)
-Priemer = 20.1  mm
- Prierez = 239.4  mm2
- Jednotkov· hmotnosù = 0.6594  kg/m
- Mern· tiaû = 0.02695  N/m.mm2
- Modul pruûnosti = 68000  MPa
- Koeficient tepelnej rozùaûnosti = 0.00002300  1/∞C
- Matematick· ˙nosnosù = 70610  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.001
+ 20.1  mm
+239.4  mm2
+0.6594  kg/m
+68000  MPa
+0.00002300  1/¬∞C
+70610  N
+0.001
 .......
 RUBUS
-Priemer = 31.5  mm
- Prierez = 586.6  mm2
- Jednotkov· hmotnosù = 1.72  kg/m
- Mern· tiaû = 0.028805  N/m.mm2
- Modul pruûnosti = 52956  MPa
- Koeficient tepelnej rozùaûnosti = 0.00002300  1/∞C
- Matematick· ˙nosnosù = 156000  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.5
+ 31.5  mm
+586.6  mm2
+1.72  kg/m
+52956  MPa
+0.00002300  1/¬∞C
+156000  N
+0.5
 .......
 SAMSUNG
-Priemer = 19.8  mm
- Prierez = 220  mm2
- Jednotkov· hmotnosù = 0.94  kg/m
- Mern· tiaû = 0.0419  N/m.mm2
- Modul pruûnosti = 85000  MPa
- Koeficient tepelnej rozùaûnosti = 0.00001800  1/∞C
- Matematick· ˙nosnosù = 115000  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.5
+ 19.8  mm
+220  mm2
+0.94  kg/m
+85000  MPa
+0.00001800  1/¬∞C
+115000  N
+0.5
 .......
 SAX120
-Priemer = 17.5  mm
- Prierez = 120  mm2
- Jednotkov· hmotnosù = 0.425  kg/m
- Mern· tiaû = 0.035417  N/m.mm2
- Modul pruûnosti = 62500  MPa
- Koeficient tepelnej rozùaûnosti = 0.00002300  1/∞C
- Matematick· ˙nosnosù = 80000  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.5
+ 17.5  mm
+120  mm2
+0.425  kg/m
+62500  MPa
+0.00002300  1/¬∞C
+80000  N
+0.5
 .......
 SOK 96J
-Priemer = 17.8  mm
- Prierez = 249  mm2
- Jednotkov· hmotnosù = 0.26  kg/m
- Mern· tiaû = 0.01024  N/m.mm2
- Modul pruûnosti = 12300  MPa
- Koeficient tepelnej rozùaûnosti = 0.00000120  1/∞C
- Matematick· ˙nosnosù = 61300  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.5
+ 17.8  mm
+249  mm2
+0.26  kg/m
+12300  MPa
+0.00000120  1/¬∞C
+61300  N
+0.5
 .......
 SOK-LD-24DJ6/3.5
-Priemer = 12  mm
- Prierez = 113  mm2
- Jednotkov· hmotnosù = 0.1223  kg/m
- Mern· tiaû = 0.010796  N/m.mm2
- Modul pruûnosti = 4500  MPa
- Koeficient tepelnej rozùaûnosti = 0.00000995  1/∞C
- Matematick· ˙nosnosù = 9800  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.1
+ 12  mm
+113  mm2
+0.1223  kg/m
+4500  MPa
+0.00000995  1/¬∞C
+9800  N
+0.1
 .......
 SOK-LD-48DJ6/15
-Priemer = 14  mm
- Prierez = 154  mm2
- Jednotkov· hmotnosù = 0.173  kg/m
- Mern· tiaû = 0.01104  N/m.mm2
- Modul pruûnosti = 14500  MPa
- Koeficient tepelnej rozùaûnosti = 0.00000076  1/∞C
- Matematick· ˙nosnosù = 42000  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.2
+ 14  mm
+154  mm2
+0.173  kg/m
+14500  MPa
+0.00000076  1/¬∞C
+42000  N
+0.2
 .......
 SOK-OFA-AT-5BE17DT-024-CMEA
-Priemer = 11.8  mm
- Prierez = 109.4  mm2
- Jednotkov· hmotnosù = 0.101  kg/m
- Mern· tiaû = 0.00905  N/m.mm2
- Modul pruûnosti = 4472.76  MPa
- Koeficient tepelnej rozùaûnosti = 0.00001313  1/∞C
- Matematick· ˙nosnosù = 7286  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.01
+ 11.8  mm
+109.4  mm2
+0.101  kg/m
+4472.76  MPa
+0.00001313  1/¬∞C
+7286  N
+0.01
 .......
 SOK-SD-12DJ6/09
-Priemer = 13.3  mm
- Prierez = 139  mm2
- Jednotkov· hmotnosù = 0.153  kg/m
- Mern· tiaû = 0.010794  N/m.mm2
- Modul pruûnosti = 9400  MPa
- Koeficient tepelnej rozùaûnosti = 0.00000400  1/∞C
- Matematick· ˙nosnosù = 25200  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.1
+ 13.3  mm
+139  mm2
+0.153  kg/m
+9400  MPa
+0.00000400  1/¬∞C
+25200  N
+0.1
 .......
 SOK-SD-12DJ6/12
-Priemer = 14.3  mm
- Prierez = 161  mm2
- Jednotkov· hmotnosù = 0.163  kg/m
- Mern· tiaû = 0.009938  N/m.mm2
- Modul pruûnosti = 12100  MPa
- Koeficient tepelnej rozùaûnosti = 0.00000250  1/∞C
- Matematick· ˙nosnosù = 33600  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.1
+ 14.3  mm
+161  mm2
+0.163  kg/m
+12100  MPa
+0.00000250  1/¬∞C
+33600  N
+0.1
 .......
 SOK-SD-48DJ6/15
-Priemer = 14.3  mm
- Prierez = 161  mm2
- Jednotkov· hmotnosù = 0.163  kg/m
- Mern· tiaû = 0.00993  N/m.mm2
- Modul pruûnosti = 14200  MPa
- Koeficient tepelnej rozùaûnosti = 0.00000180  1/∞C
- Matematick· ˙nosnosù = 42000  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.1
+ 14.3  mm
+161  mm2
+0.163  kg/m
+14200  MPa
+0.00000180  1/¬∞C
+42000  N
+0.1
 .......
 SOK-SD-72DJ6/15
-Priemer = 14.3  mm
- Prierez = 161  mm2
- Jednotkov· hmotnosù = 0.163  kg/m
- Mern· tiaû = 0.009928  N/m.mm2
- Modul pruûnosti = 14200  MPa
- Koeficient tepelnej rozùaûnosti = 0.00000180  1/∞C
- Matematick· ˙nosnosù = 42000  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.1
+ 14.3  mm
+161  mm2
+0.163  kg/m
+14200  MPa
+0.00000180  1/¬∞C
+42000  N
+0.1
 .......
 SOK-SD-96DJ8/15
-Priemer = 16.3  mm
- Prierez = 209  mm2
- Jednotkov· hmotnosù = 0.2  kg/m
- Mern· tiaû = 0.009384  N/m.mm2
- Modul pruûnosti = 11000  MPa
- Koeficient tepelnej rozùaûnosti = 0.00000260  1/∞C
- Matematick· ˙nosnosù = 42000  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.5
+ 16.3  mm
+209  mm2
+0.2  kg/m
+11000  MPa
+0.00000260  1/¬∞C
+42000  N
+0.5
 .......
 ST/AL=67/44
-Priemer = 15  mm
- Prierez = 111.3  mm2
- Jednotkov· hmotnosù = 0.697  kg/m
- Mern· tiaû = 0.0626  N/m.mm2
- Modul pruûnosti = 132380  MPa
- Koeficient tepelnej rozùaûnosti = 0.00001320  1/∞C
- Matematick· ˙nosnosù = 64397  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.5
+ 15  mm
+111.3  mm2
+0.697  kg/m
+132380  MPa
+0.00001320  1/¬∞C
+64397  N
+0.5
 .......
 STARLING
-Priemer = 26.68  mm
- Prierez = 420.87  mm2
- Jednotkov· hmotnosù = 1.466  kg/m
- Mern· tiaû = 0.03416  N/m.mm2
- Modul pruûnosti = 74278  MPa
- Koeficient tepelnej rozùaûnosti = 0.00001892  1/∞C
- Matematick· ˙nosnosù = 113000  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.5
+ 26.68  mm
+420.87  mm2
+1.466  kg/m
+74278  MPa
+0.00001892  1/¬∞C
+113000  N
+0.5
 .......
 TAL/STALUM 120/70
-Priemer = 18  mm
- Prierez = 193.4  mm2
- Jednotkov· hmotnosù = 0.804  kg/m
- Mern· tiaû = 0.0408  N/m.mm2
- Modul pruûnosti = 98680  MPa
- Koeficient tepelnej rozùaûnosti = 0.00001684  1/∞C
- Matematick· ˙nosnosù = 99570  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.5
+ 18  mm
+193.4  mm2
+0.804  kg/m
+98680  MPa
+0.00001684  1/¬∞C
+99570  N
+0.5
 .......
 TAL/STALUM 125/30
-Priemer = 16.31  mm
- Prierez = 157.76  mm2
- Jednotkov· hmotnosù = 0.547  kg/m
- Mern· tiaû = 0.034  N/m.mm2
- Modul pruûnosti = 78343  MPa
- Koeficient tepelnej rozùaûnosti = 0.00001900  1/∞C
- Matematick· ˙nosnosù = 59740  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.5
+ 16.31  mm
+157.76  mm2
+0.547  kg/m
+78343  MPa
+0.00001900  1/¬∞C
+59740  N
+0.5
 .......
 TAL/STALUM 210/35
-Priemer = 20.27  mm
- Prierez = 243.19  mm2
- Jednotkov· hmotnosù = 0.797  kg/m
- Mern· tiaû = 0.03214  N/m.mm2
- Modul pruûnosti = 73275  MPa
- Koeficient tepelnej rozùaûnosti = 0.00001990  1/∞C
- Matematick· ˙nosnosù = 75776  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.5
+ 20.27  mm
+243.19  mm2
+0.797  kg/m
+73275  MPa
+0.00001990  1/¬∞C
+75776  N
+0.5
 .......
 XOTKtd 2Dx 72J
-Priemer = 15.9  mm
- Prierez = 198  mm2
- Jednotkov· hmotnosù = 0.19  kg/m
- Mern· tiaû = 0.00941  N/m.mm2
- Modul pruûnosti = 20000  MPa
- Koeficient tepelnej rozùaûnosti = 0.00000270  1/∞C
- Matematick· ˙nosnosù = 48000  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.5
+ 15.9  mm
+198  mm2
+0.19  kg/m
+20000  MPa
+0.00000270  1/¬∞C
+48000  N
+0.5
 .......
 XOTKtd 2Dx25-48J
-Priemer = 14.9  mm
- Prierez = 174  mm2
- Jednotkov· hmotnosù = 0.175  kg/m
- Mern· tiaû = 0.009863  N/m.mm2
- Modul pruûnosti = 20000  MPa
- Koeficient tepelnej rozùaûnosti = 0.00000260  1/∞C
- Matematick· ˙nosnosù = 48000  N
- Pomer hmotnosti oceæovej duöe k celkovej hmotnosti lana = 0.5
-
-
+ 14.9  mm
+174  mm2
+0.175  kg/m
+20000  MPa
+0.00000260  1/¬∞C
+48000  N
+0.5
+END_OF_FILE
