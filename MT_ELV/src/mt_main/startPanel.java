@@ -231,7 +231,10 @@ public class startPanel extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuIFileExitButtonActionPerformed
 
     private void jMenuILibratyConductorsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuILibratyConductorsButtonActionPerformed
-        // TODO add your handling code here:
+       
+        Conductors_main_JDialog Conductors_main_JDialog_window = new Conductors_main_JDialog(this, rootPaneCheckingEnabled);
+       Conductors_main_JDialog_window.setVisible(true);   // opens dialog window 
+        
     }//GEN-LAST:event_jMenuILibratyConductorsButtonActionPerformed
 
     private void jMenuIHelpHelpMT3BUttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuIHelpHelpMT3BUttonActionPerformed

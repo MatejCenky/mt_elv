@@ -39,17 +39,29 @@ public static void constructor(){
  /*11*/  language.SK.add("Normy");                       language.CZ.add("Normy");               language.EN.add("Standards");
  /*12*/  language.SK.add("Matematika");                  language.CZ.add("Matematika");          language.EN.add("Math");
  /*13*/  language.SK.add("O programe");                  language.CZ.add("O programe");          language.EN.add("About");
+//Help_Jdialog_Math
  /*14*/  language.SK.add("Matematický výpočet");         language.CZ.add("Matematickej výpočet");language.EN.add("Math calculation");
  /*15*/  language.SK.add("Stavová rovnica");             language.CZ.add("Stavová rovnice");     language.EN.add("State Equation");
  /*16*/  language.SK.add("Zaťaženia");                   language.CZ.add("Zatížení");            language.EN.add("Overloads");
  /*17*/  language.SK.add("Tečenie vodiča");              language.CZ.add("Tečení vodiče");       language.EN.add("Conductor creeping");
  /*18*/  language.SK.add("Vibračná ochrana");            language.CZ.add("Vibrační ochrana");    language.EN.add("Vibration protection");
+//Help_Jdialog_About
  /*19*/  language.SK.add("O programe");                  language.CZ.add("O programe");          language.EN.add("About");
  /*20*/  language.SK.add("Zavri");                       language.CZ.add("Zavři");               language.EN.add("Close");
   
  /*21*/  language.SK.add("Lorem ipsum bla bla bla teple slova zuzu po slovensky ahoj ideme si zašukat ? ok podme ju ju ju hu hu hu kert na dftr vdvvfvdf fgd er dsds cxcs erzzu dkdk dfsdf d d ddddd dfsdf sdf sdf sdfsdf sdfsdf sdfetrbtrb ddsfdg ");  
          language.CZ.add("Lorem ipsum bla bla bla teple slova zuzu po cesky ahoj  vole to takle si zapichat ju ju ju hu hu hu kert na dftr vdvvfvdf fgd er dsds cxcs erzzu dkdk dfsdf d d ddddd dfsdf sdf sdf sdfsdf sdfsdf sdfetrbtrb ddsfdg "); 
          language.EN.add("Lorem ipsum bla bla bla teple slova zuzu po anglcky hello mother fucker wana fuck today? ju ju ju hu hu hu kert na dftr vdvvfvdf fgd er dsds cxcs erzzu dkdk dfsdf d d ddddd dfsdf sdf sdf sdfsdf sdfsdf sdfetrbtrb ddsfdg ");
+//Conductors_Jdialog_main
+ /*22*/  language.SK.add("Knižnica vodičov");            language.CZ.add("O programe");          language.EN.add("About");
+ /*23*/  language.SK.add("Vodiče");                      language.CZ.add("Zavři");               language.EN.add("Close");
+ /*24*/  language.SK.add("Nový");                        language.CZ.add("O programe");          language.EN.add("About");
+ /*25*/  language.SK.add("Upraviť");                     language.CZ.add("Zavři");               language.EN.add("Close");
+ /*26*/  language.SK.add("Odstrániť");                   language.CZ.add("O programe");          language.EN.add("About");
+ /*27*/  language.SK.add("Odomknúť úpravy");             language.CZ.add("Zavři");               language.EN.add("Close");
+ /*28*/  language.SK.add("Potvrdiť");                    language.CZ.add("Zavři");               language.EN.add("Close");
+ /*29*/  language.SK.add("Databáza");                    language.CZ.add("O programe");          language.EN.add("About");
+ /*30*/  language.SK.add("Načítať");                     language.CZ.add("Zavři");               language.EN.add("Close");
  
 
  inicializovane = true;
