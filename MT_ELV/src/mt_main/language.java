@@ -62,7 +62,18 @@ public static void constructor(){
  /*28*/  language.SK.add("Potvrdiť");                    language.CZ.add("Zavři");               language.EN.add("Close");
  /*29*/  language.SK.add("Databáza");                    language.CZ.add("O programe");          language.EN.add("About");
  /*30*/  language.SK.add("Načítať");                     language.CZ.add("Zavři");               language.EN.add("Close");
+ /*31*/  language.SK.add("Vyberte súbor s databázou");   language.CZ.add("Zavři");               language.EN.add("Close");
+ /*32*/  language.SK.add("txt subor (*.txt)");           language.CZ.add("txt soubor (*.txt)");               language.EN.add("txt files (*.txt)");
  
+ //Conductors_Jdialog_main_JtextArea
+ 
+ /*33*/  language.SK.add("Priemer = ");            language.CZ.add("O programe");          language.EN.add("About");
+ /*34*/  language.SK.add("Prierez = ");                      language.CZ.add("Zavři");               language.EN.add("Close");
+ /*35*/  language.SK.add("Jednotková hmotnosť = ");                        language.CZ.add("O programe");          language.EN.add("About");
+ /*36*/  language.SK.add("Modul pružnosti = ");                     language.CZ.add("Zavři");               language.EN.add("Close");
+ /*37*/  language.SK.add("Koeficient tepelnej rozťažnosti = ");                   language.CZ.add("O programe");          language.EN.add("About");
+ /*38*/  language.SK.add("Matematická únosnosť = ");             language.CZ.add("Zavři");               language.EN.add("Close");
+ /*39*/  language.SK.add("Pomer hmotnosti oceľovej duše k celkovej hmotnosti lana = ");             language.CZ.add("Zavři");               language.EN.add("Close");
 
  inicializovane = true;
 }
