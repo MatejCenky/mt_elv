@@ -286,9 +286,19 @@ public class startPanel extends javax.swing.JFrame {
         
     }
     
+    public static Boolean getStatus_conductor_password() {
+        return conductor_password_set;
+        
+    }
+    
     //prijma status z Mainu aby nastavilo status na vytvaranie novych projektových oknien oknie na False
     public static void setStatus_for_new_project(boolean X) {
          Clicked_NEW =X;
+        
+    }
+    
+    public static void setStatus_conductor_password(boolean X) {
+         conductor_password_set =X;
         
     }
     
@@ -356,6 +366,8 @@ public class startPanel extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 public static Integer languageOption  ;
  public static Boolean Clicked_NEW = false;
+ public static Boolean conductor_password_set = false;
+ 
     private void seticon() {
      setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/mt_graphic/" + "icon.png")));
     }

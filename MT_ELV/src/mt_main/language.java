@@ -65,15 +65,30 @@ public static void constructor(){
  /*31*/  language.SK.add("Vyberte súbor s databázou");   language.CZ.add("Zavři");               language.EN.add("Close");
  /*32*/  language.SK.add("txt subor (*.txt)");           language.CZ.add("txt soubor (*.txt)");               language.EN.add("txt files (*.txt)");
  
- //Conductors_Jdialog_main_JtextArea
+ //Conductors_Jdialog_main_JtextArea ( conductor info )
  
- /*33*/  language.SK.add("Priemer = ");            language.CZ.add("O programe");          language.EN.add("About");
- /*34*/  language.SK.add("Prierez = ");                      language.CZ.add("Zavři");               language.EN.add("Close");
- /*35*/  language.SK.add("Jednotková hmotnosť = ");                        language.CZ.add("O programe");          language.EN.add("About");
- /*36*/  language.SK.add("Modul pružnosti = ");                     language.CZ.add("Zavři");               language.EN.add("Close");
- /*37*/  language.SK.add("Koeficient tepelnej rozťažnosti = ");                   language.CZ.add("O programe");          language.EN.add("About");
- /*38*/  language.SK.add("Matematická únosnosť = ");             language.CZ.add("Zavři");               language.EN.add("Close");
- /*39*/  language.SK.add("Pomer hmotnosti oceľovej duše k celkovej hmotnosti lana = ");             language.CZ.add("Zavři");               language.EN.add("Close");
+ /*33*/  language.SK.add("Priemer = ");                                                 language.CZ.add("O programe");          language.EN.add("About");
+ /*34*/  language.SK.add("Prierez = ");                                                 language.CZ.add("Zavři");               language.EN.add("Close");
+ /*35*/  language.SK.add("Jednotková hmotnosť = ");                                     language.CZ.add("O programe");          language.EN.add("About");
+ /*36*/  language.SK.add("Modul pružnosti = ");                                         language.CZ.add("Zavři");               language.EN.add("Close");
+ /*37*/  language.SK.add("Koeficient tepelnej rozťažnosti = ");                         language.CZ.add("O programe");          language.EN.add("About");
+ /*38*/  language.SK.add("Matematická únosnosť = ");                                    language.CZ.add("Zavři");               language.EN.add("Close");
+ /*39*/  language.SK.add("Pomer hmotnosti oceľovej duše k celkovej hmotnosti lana = "); language.CZ.add("Zavři");               language.EN.add("Close");
+ 
+//Conductors_Jdialog_main_PASSWORD FOR EDITATION SAME EVERY LANGUAGE
+
+/*40*/  language.SK.add("elektrovodMT3");               language.CZ.add("elektrovodMT3");               language.EN.add("elektrovodMT3");
+/*41*/  language.SK.add("Správne heslo");                     language.CZ.add("Spravne");                     language.EN.add("elektrovodMT3");
+/*42*/  language.SK.add("Nesprávne heslo");                     language.CZ.add("Spravne");                     language.EN.add("elektrovodMT3");
+/*43*/  language.SK.add("Zadajte heslo");                     language.CZ.add("Spravne");                     language.EN.add("elektrovodMT3");
+
+//Conductors_Jdialog_new conductor
+
+/*44*/  language.SK.add("Nový vodič");               language.CZ.add("elektrovodMT3");               language.EN.add("elektrovodMT3");
+/*45*/  language.SK.add("Vytvoriť");                     language.CZ.add("Spravne");                     language.EN.add("elektrovodMT3");
+/*46*/  language.SK.add("Názov vodiča :");                     language.CZ.add("Spravne");                     language.EN.add("elektrovodMT3");
+/*47*/  language.SK.add("Zadajte heslo");                     language.CZ.add("Spravne");                     language.EN.add("elektrovodMT3");
+
 
  inicializovane = true;
 }

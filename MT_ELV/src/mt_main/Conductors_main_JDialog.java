@@ -67,7 +67,15 @@ public class Conductors_main_JDialog extends javax.swing.JDialog {
 
         });  //selection listener fot text area to show data
 
+        if (startPanel.getStatus_conductor_password().equals(true)) {
+            Button_new_conductor.setEnabled(true);
+            BUtton_change_conductor.setEnabled(true);
+            BUtton_delete_conductor.setEnabled(true);
 
+            textfiled_password_status_nonEditable.setText(language.language_label(languageOption, 41));
+        } else {
+            textfiled_password_status_nonEditable.setText(language.language_label(languageOption, 43));
+        }
         
     }
 
@@ -102,6 +110,11 @@ public class Conductors_main_JDialog extends javax.swing.JDialog {
         setResizable(false);
 
         Button_set_password.setText(language.language_label(languageOption,28));
+        Button_set_password.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Button_set_passwordActionPerformed(evt);
+            }
+        });
 
         jLabel2.setText(language.language_label(languageOption,27));
 
@@ -161,6 +174,7 @@ public class Conductors_main_JDialog extends javax.swing.JDialog {
         jLabel1.setText(language.language_label(languageOption,22));
 
         BUtton_delete_conductor.setText(language.language_label(languageOption,26));
+        BUtton_delete_conductor.setEnabled(false);
         BUtton_delete_conductor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BUtton_delete_conductorActionPerformed(evt);
@@ -168,6 +182,7 @@ public class Conductors_main_JDialog extends javax.swing.JDialog {
         });
 
         Button_new_conductor.setText(language.language_label(languageOption,24));
+        Button_new_conductor.setEnabled(false);
         Button_new_conductor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Button_new_conductorActionPerformed(evt);
@@ -175,6 +190,7 @@ public class Conductors_main_JDialog extends javax.swing.JDialog {
         });
 
         BUtton_change_conductor.setText(language.language_label(languageOption,25));
+        BUtton_change_conductor.setEnabled(false);
 
         textAreaConductorInfo.setColumns(20);
         textAreaConductorInfo.setLineWrap(true);
@@ -267,11 +283,30 @@ public class Conductors_main_JDialog extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void Button_new_conductorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button_new_conductorActionPerformed
-        // TODO add your handling code here:
+         Conductors_main_new_conductor_JDialog  Conductors_main_new_conducor_JDialog_window = new Conductors_main_new_conductor_JDialog(this, rootPaneCheckingEnabled);
+       Conductors_main_new_conducor_JDialog_window.setVisible(true); 
     }//GEN-LAST:event_Button_new_conductorActionPerformed
 
     private void BUtton_delete_conductorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BUtton_delete_conductorActionPerformed
-        // TODO add your handling code here:
+
+            int numberofElements = Databaza.size();
+
+//        int rowCount = jTable.getRowCount();
+////Remove rows one by one from the end of the table
+//        for (int i = rowCount - 1; i >= 0; i--) {
+//            modelTable.removeRow(i);
+//        }
+
+        Databaza.remove(jTable.getSelectedRow());
+
+
+        arralist_sort(Databaza);
+        for (int i = 0; i <= numberofElements - 1; i++) {
+            Object[] Conductor = new Object[7];
+            Conductor = Databaza.get(i);
+            modelTable.addRow(new Object[]{(String) Conductor[0]});
+        }
+
     }//GEN-LAST:event_BUtton_delete_conductorActionPerformed
 
     private void BUtton_load_databaseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BUtton_load_databaseActionPerformed
@@ -346,6 +381,42 @@ public class Conductors_main_JDialog extends javax.swing.JDialog {
         
     }//GEN-LAST:event_BUtton_load_databaseActionPerformed
 
+    private ArrayList<Object[]> arralist_sort (ArrayList<Object[]> X){
+        
+        int numberofElements = X.size();        
+        String S1;
+        String S2;
+         Object[] Conductor1 = new Object[7];
+         Object[] Conductor2 = new Object[7];
+         
+         
+         while(true){
+         int breakcounter=0;
+         for (int i = 0; i < numberofElements-1; i++) {
+
+             Conductor1 = Databaza.get(i);
+             S1 = String.valueOf(Conductor1[0]);
+             
+             Conductor2 = Databaza.get(i+1);
+             S2 = String.valueOf(Conductor2[0]);
+             
+             int compareValue = S1.compareTo(S2);
+             
+             if (compareValue < 0 || compareValue == 0){
+             
+             }else{
+                 breakcounter=breakcounter+1;
+                 Databaza.set(i, Conductor2);
+                 Databaza.set(i+1, Conductor1);
+             }
+                 
+        }
+         if (breakcounter ==0 ){ break;}
+         }
+        
+        return Databaza;
+    }
+    
     private void Textfiled_nameofLoadedfileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Textfiled_nameofLoadedfileActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_Textfiled_nameofLoadedfileActionPerformed
@@ -354,6 +425,23 @@ public class Conductors_main_JDialog extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_textfiled_password_status_nonEditableActionPerformed
 
+    private void Button_set_passwordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button_set_passwordActionPerformed
+        String passwordTaken = textfiled_password_typeing.getText();
+        
+        if (passwordTaken.equals(language.language_label(languageOption,40))){
+            Button_new_conductor.setEnabled(true);
+            BUtton_change_conductor.setEnabled(true);
+            BUtton_delete_conductor.setEnabled(true);
+            
+            textfiled_password_status_nonEditable.setText(language.language_label(languageOption,41));
+            startPanel.setStatus_conductor_password(true);
+        }else{
+            textfiled_password_status_nonEditable.setText(language.language_label(languageOption,42));
+        }
+        
+    }//GEN-LAST:event_Button_set_passwordActionPerformed
+    
+    
     /**
      * @param args the command line arguments
      */
@@ -423,6 +511,7 @@ public class Conductors_main_JDialog extends javax.swing.JDialog {
     private String filename = "new_file";
     private String filenamePath;
     private final ArrayList<Object[]> Databaza = new ArrayList<>();
+    private final ArrayList<Object[]> Databaza_help_sort = new ArrayList<>();
     
     DefaultTableModel modelTable;
 }
