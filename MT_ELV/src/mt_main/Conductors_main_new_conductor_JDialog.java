@@ -57,6 +57,20 @@ public class Conductors_main_new_conductor_JDialog extends javax.swing.JDialog {
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
+        jTextField2 = new javax.swing.JTextField();
+        jTextField3 = new javax.swing.JTextField();
+        jTextField4 = new javax.swing.JTextField();
+        jTextField5 = new javax.swing.JTextField();
+        jTextField6 = new javax.swing.JTextField();
+        jTextField7 = new javax.swing.JTextField();
+        jTextField8 = new javax.swing.JTextField();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
@@ -64,7 +78,6 @@ public class Conductors_main_new_conductor_JDialog extends javax.swing.JDialog {
         jLabel1.setText(language.language_label(languageOption,44));
 
         Button_create.setText(language.language_label(languageOption,45));
-        Button_create.setEnabled(false);
         Button_create.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Button_createActionPerformed(evt);
@@ -86,6 +99,36 @@ public class Conductors_main_new_conductor_JDialog extends javax.swing.JDialog {
         jLabel8.setText(language.language_label(languageOption,38));
 
         jLabel9.setText(language.language_label(languageOption,46));
+
+        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField1ActionPerformed(evt);
+            }
+        });
+
+        jTextField6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField6ActionPerformed(evt);
+            }
+        });
+
+        jTextField8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField8ActionPerformed(evt);
+            }
+        });
+
+        jLabel10.setText("mm");
+
+        jLabel11.setText("mm2");
+
+        jLabel12.setText("kg/m");
+
+        jLabel13.setText("MPa");
+
+        jLabel14.setText("1/°C");
+
+        jLabel15.setText("N");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -109,7 +152,25 @@ public class Conductors_main_new_conductor_JDialog extends javax.swing.JDialog {
                     .addComponent(jLabel5)
                     .addComponent(jLabel4)
                     .addComponent(jLabel3))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jTextField8, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 248, Short.MAX_VALUE)
+                    .addComponent(jTextField5, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jTextField6, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jTextField3, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jTextField4, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jTextField2, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jTextField1, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jTextField7))
+                .addGap(4, 4, 4)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel10)
+                    .addComponent(jLabel11)
+                    .addComponent(jLabel12)
+                    .addComponent(jLabel13)
+                    .addComponent(jLabel14)
+                    .addComponent(jLabel15))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -120,31 +181,141 @@ public class Conductors_main_new_conductor_JDialog extends javax.swing.JDialog {
                     .addComponent(jLabel1))
                 .addGap(12, 12, 12)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel9)
+                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(jLabel9)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
-                .addComponent(jLabel2)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel10))
                 .addGap(18, 18, 18)
-                .addComponent(jLabel3)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel11))
                 .addGap(18, 18, 18)
-                .addComponent(jLabel4)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel12))
                 .addGap(18, 18, 18)
-                .addComponent(jLabel5)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
+                    .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel13))
                 .addGap(18, 18, 18)
-                .addComponent(jLabel6)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6)
+                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel14))
                 .addGap(18, 18, 18)
-                .addComponent(jLabel8)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel8)
+                    .addComponent(jLabel15)
+                    .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(jLabel7)
-                .addGap(22, 22, 22))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel7)
+                    .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(20, 20, 20))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void Button_createActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button_createActionPerformed
-        // TODO add your handling code here:
+      Object[] Conductor = new Object[7];                                //create object ONE conductor with above parameters
+            
+           String nameOfConductor=jTextField1.getText();
+         
+           Double Diameter = doubleChecker(jTextField2.getText()); 
+           if (Diameter == 123456789.987654321 ) {
+            jTextField2.setText(language.language_label(languageOption, 46));
+            checker.add(false);
+        } else {
+            checker.add(true);
+        }
+           
+                   
+           Double CrossSection = doubleChecker(jTextField3.getText()); 
+           if (CrossSection == 123456789.987654321) {
+            jTextField3.setText(language.language_label(languageOption, 46));
+            checker.add(false);
+        } else {
+            checker.add(true);
+        }
+           
+           Double unitWeight = doubleChecker(jTextField4.getText()); 
+           if (unitWeight == 123456789.987654321) {
+            jTextField4.setText(language.language_label(languageOption, 46));
+            checker.add(false);
+        } else {
+            checker.add(true);
+        }
+           
+           Double modulofFlexibility = doubleChecker(jTextField5.getText()); 
+           if (modulofFlexibility == 123456789.987654321) {
+            jTextField5.setText(language.language_label(languageOption, 46));
+            checker.add(false);
+        } else {
+            checker.add(true);
+        }
+           Double koeficientOfTermalExpension = doubleChecker(jTextField6.getText());
+           if (koeficientOfTermalExpension == 123456789.987654321) {
+            jTextField6.setText(language.language_label(languageOption, 46));
+            checker.add(false);
+        } else {
+            checker.add(true);
+        }
+           Double MathematicalCarringCapacity = doubleChecker(jTextField7.getText());
+           if (MathematicalCarringCapacity == 123456789.987654321) {
+            jTextField7.setText(language.language_label(languageOption, 46));
+            checker.add(false);
+        } else {
+            checker.add(true);
+        }
+           Double WeightRationCoreAndConductor = doubleChecker(jTextField8.getText());            
+           if (WeightRationCoreAndConductor == 123456789.987654321) {
+            jTextField8.setText(language.language_label(languageOption, 46));
+            checker.add(false);
+        } else {
+            checker.add(true);
+        }
+            
+            if(checker.toString().equals("[true, true, true, true, true, true, true]")){
+             Conductor = new Object[]{(String)nameOfConductor,(double)Diameter,(double)CrossSection,(double)unitWeight,(double)modulofFlexibility,(double)koeficientOfTermalExpension,(double)MathematicalCarringCapacity,(double)WeightRationCoreAndConductor};
+             Conductors_main_JDialog.newConductorgetter(Conductor);
+             Conductors_main_JDialog.newConductorstatus(true);
+             setVisible(false);
+            }else{
+            checker.removeAll(checker); 
+            }
     }//GEN-LAST:event_Button_createActionPerformed
+
+    private void jTextField6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField6ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField6ActionPerformed
+
+    private double doubleChecker (String X){
+       Double value;
+        try{
+        value = Double.parseDouble(X);
+        }catch(NumberFormatException | NullPointerException e){       
+        value = 123456789.987654321;            
+        }
+        
+        return value;
+    }
+    
+    private void jTextField8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField8ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField8ActionPerformed
+
+    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField1ActionPerformed
 
       
     
@@ -200,6 +371,12 @@ public class Conductors_main_new_conductor_JDialog extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Button_create;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -209,10 +386,18 @@ public class Conductors_main_new_conductor_JDialog extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField jTextField3;
+    private javax.swing.JTextField jTextField4;
+    private javax.swing.JTextField jTextField5;
+    private javax.swing.JTextField jTextField6;
+    private javax.swing.JTextField jTextField7;
+    private javax.swing.JTextField jTextField8;
     // End of variables declaration//GEN-END:variables
 
     private final ArrayList<Object[]> Databaza = new ArrayList<>();
     private final ArrayList<Object[]> Databaza_help_sort = new ArrayList<>();
-    
+    private final ArrayList<Boolean> checker = new ArrayList<>();
    
 }

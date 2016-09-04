@@ -284,7 +284,13 @@ public class Conductors_main_JDialog extends javax.swing.JDialog {
 
     private void Button_new_conductorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button_new_conductorActionPerformed
          Conductors_main_new_conductor_JDialog  Conductors_main_new_conducor_JDialog_window = new Conductors_main_new_conductor_JDialog(this, rootPaneCheckingEnabled);
-       Conductors_main_new_conducor_JDialog_window.setVisible(true); 
+       Conductors_main_new_conducor_JDialog_window.setVisible(true);
+       
+       if (existnewConductor=true){
+           
+       }
+       
+       
     }//GEN-LAST:event_Button_new_conductorActionPerformed
 
     private void BUtton_delete_conductorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BUtton_delete_conductorActionPerformed
@@ -425,6 +431,17 @@ public class Conductors_main_JDialog extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_textfiled_password_status_nonEditableActionPerformed
 
+    public static  void newConductorgetter (Object[] X){
+        newConductor=X;
+        
+    }
+    
+    public static  boolean newConductorstatus (boolean X){
+        existnewConductor = X;
+        return existnewConductor;
+    }
+    
+    
     private void Button_set_passwordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button_set_passwordActionPerformed
         String passwordTaken = textfiled_password_typeing.getText();
         
@@ -512,6 +529,8 @@ public class Conductors_main_JDialog extends javax.swing.JDialog {
     private String filenamePath;
     private final ArrayList<Object[]> Databaza = new ArrayList<>();
     private final ArrayList<Object[]> Databaza_help_sort = new ArrayList<>();
-    
+    private boolean oknewConductor=false;
+    public static Object[] newConductor = new Object[7];
+    public static boolean existnewConductor=false;
     DefaultTableModel modelTable;
 }
