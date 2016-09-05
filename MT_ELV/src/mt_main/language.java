@@ -87,7 +87,12 @@ public static void constructor(){
 /*44*/  language.SK.add("Nový vodič");               language.CZ.add("elektrovodMT3");               language.EN.add("elektrovodMT3");
 /*45*/  language.SK.add("Vytvoriť");                     language.CZ.add("Spravne");                     language.EN.add("elektrovodMT3");
 /*46*/  language.SK.add("Názov vodiča :");                     language.CZ.add("Spravne");                     language.EN.add("elektrovodMT3");
-/*48*/  language.SK.add("Zlý vstup");                     language.CZ.add("Spravne");                     language.EN.add("elektrovodMT3");
+/*47*/  language.SK.add("Zlá vstupná hodnota");                     language.CZ.add("Spravne");                     language.EN.add("elektrovodMT3");
+
+//Conductors_Jdialog_change conductor
+
+/*48*/  language.SK.add("Upraviť vodič");                     language.CZ.add("Spravne");                     language.EN.add("elektrovodMT3");
+/*49*/  language.SK.add("Upraviť");                     language.CZ.add("Spravne");                     language.EN.add("elektrovodMT3");
 
 
  inicializovane = true;

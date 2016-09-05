@@ -8,10 +8,10 @@
  */
 package mt_main;
 
-
 import java.awt.Toolkit;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.logging.Level;
@@ -40,29 +40,32 @@ public class Conductors_main_JDialog extends javax.swing.JDialog {
         setLocationRelativeTo(null); //center of window position
         setIcon();
         //jTable.getModel().removeTableModelListener(jTable);         //remove first table lister, active avter table is loaded
-        
+
         this.modelTable = (DefaultTableModel) jTable.getModel();    //inicialize table in default model table model (copy from EMFTsim )
-              
+
         jTable.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
 
             @Override
             public void valueChanged(ListSelectionEvent e) {
+                if (tableListenerswitch == true) {
+                    int rowNumber = jTable.getSelectedRow(); //- (e.getFirstIndex()-e.getLastIndex());
 
-                int rowNumber = e.getFirstIndex();
-                Object[] Conductor = new Object[7];
-                Conductor = Databaza.get(rowNumber);
+                    //  int rowNumber2 = e.getLastIndex();
+                    //  if(rowNumber > rowNumber2) {rowNumber=rowNumber2;}
+                    Object[] Conductor = new Object[7];
+                    Conductor = Databaza.get(rowNumber);
 
-                textAreaConductorInfo.setText(
-                        
-                        language.language_label(languageOption,33) + String.valueOf(Conductor[1]) +" mm"+ "\r\n" +
-                        language.language_label(languageOption,34) + String.valueOf(Conductor[2]) +" mm2"+ "\r\n" +
-                        language.language_label(languageOption,35) + String.valueOf(Conductor[3]) +" kg/m"+ "\r\n" +
-                        language.language_label(languageOption,36) + String.valueOf(Conductor[4]) +" MPa"+ "\r\n" +
-                        language.language_label(languageOption,37) + String.valueOf(Conductor[5]) +" 1/°C"+ "\r\n" +
-                        language.language_label(languageOption,38) + String.valueOf(Conductor[6]) +" N"+ "\r\n"+      
-                        language.language_label(languageOption,39) + String.valueOf(Conductor[7]) +" "+ "\r\n"                   
-                );
+                    textAreaConductorInfo.setText(
+                            language.language_label(languageOption, 33) + String.valueOf(Conductor[1]) + " mm" + "\r\n"
+                            + language.language_label(languageOption, 34) + String.valueOf(Conductor[2]) + " mm2" + "\r\n"
+                            + language.language_label(languageOption, 35) + String.valueOf(Conductor[3]) + " kg/m" + "\r\n"
+                            + language.language_label(languageOption, 36) + String.valueOf(Conductor[4]) + " MPa" + "\r\n"
+                            + language.language_label(languageOption, 37) + String.valueOf(Conductor[5]) + " 1/°C" + "\r\n"
+                            + language.language_label(languageOption, 38) + String.valueOf(Conductor[6]) + " N" + "\r\n"
+                            + language.language_label(languageOption, 39) + String.valueOf(Conductor[7]) + " " + "\r\n"
+                    );
 
+                }
             }
 
         });  //selection listener fot text area to show data
@@ -76,7 +79,7 @@ public class Conductors_main_JDialog extends javax.swing.JDialog {
         } else {
             textfiled_password_status_nonEditable.setText(language.language_label(languageOption, 43));
         }
-        
+
     }
 
     /**
@@ -191,6 +194,11 @@ public class Conductors_main_JDialog extends javax.swing.JDialog {
 
         BUtton_change_conductor.setText(language.language_label(languageOption,25));
         BUtton_change_conductor.setEnabled(false);
+        BUtton_change_conductor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BUtton_change_conductorActionPerformed(evt);
+            }
+        });
 
         textAreaConductorInfo.setColumns(20);
         textAreaConductorInfo.setLineWrap(true);
@@ -283,146 +291,213 @@ public class Conductors_main_JDialog extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void Button_new_conductorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button_new_conductorActionPerformed
-         Conductors_main_new_conductor_JDialog  Conductors_main_new_conducor_JDialog_window = new Conductors_main_new_conductor_JDialog(this, rootPaneCheckingEnabled);
-       Conductors_main_new_conducor_JDialog_window.setVisible(true);
-       
-       if (existnewConductor=true){
-           
-       }
-       
-       
+
+        tableListenerswitch = false;
+
+        Conductors_main_new_conductor_JDialog Conductors_main_new_conducor_JDialog_window = new Conductors_main_new_conductor_JDialog(this, rootPaneCheckingEnabled);
+        Conductors_main_new_conducor_JDialog_window.setVisible(true);
+
+        if (existnewConductor == true) {
+
+            Databaza.add(newConductor);
+            arralist_sort(Databaza);
+
+            int rowCount = jTable.getRowCount();
+            //Remove rows one by one from the end of the table
+            for (int i = rowCount - 1; i >= 0; i--) {
+                modelTable.removeRow(i);
+            }
+
+            int numberofElements = Databaza.size();             //pregeneruj tabulku a nakresli ju
+            for (int i = 0; i <= numberofElements - 1; i++) {
+                Object[] Conductor = new Object[7];
+                Conductor = Databaza.get(i);
+                modelTable.addRow(new Object[]{(String) Conductor[0]});
+
+            }
+            existnewConductor = false;
+        }
+        SaveDatabase(Databaza);
+        tableListenerswitch = true;
     }//GEN-LAST:event_Button_new_conductorActionPerformed
 
     private void BUtton_delete_conductorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BUtton_delete_conductorActionPerformed
+        tableListenerswitch = false;
 
-            int numberofElements = Databaza.size();
+        Databaza.remove(jTable.getSelectedRow());       //    odstran z databazy
 
-//        int rowCount = jTable.getRowCount();
-////Remove rows one by one from the end of the table
-//        for (int i = rowCount - 1; i >= 0; i--) {
-//            modelTable.removeRow(i);
-//        }
+        int rowCount = jTable.getRowCount();            //odstran tabulku
+        //Remove rows one by one from the end of the table
+        for (int i = rowCount - 1; i >= 0; i--) {
+            modelTable.removeRow(i);
+        }
 
-        Databaza.remove(jTable.getSelectedRow());
+        arralist_sort(Databaza);                        // sortuj databazu
 
-
-        arralist_sort(Databaza);
+        int numberofElements = Databaza.size();             //pregeneruj tabulku a nakresli ju
         for (int i = 0; i <= numberofElements - 1; i++) {
             Object[] Conductor = new Object[7];
             Conductor = Databaza.get(i);
             modelTable.addRow(new Object[]{(String) Conductor[0]});
         }
-
+        SaveDatabase(Databaza);
+        tableListenerswitch = true;
     }//GEN-LAST:event_BUtton_delete_conductorActionPerformed
 
     private void BUtton_load_databaseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BUtton_load_databaseActionPerformed
-       
-      
+
         String userhome = System.getProperty("user.dir");          //userhome is home folder of program
         JFileChooser chooser = new JFileChooser(userhome + "\\resources");  //key files are stored in resources
         FileNameExtensionFilter txtfilter = new FileNameExtensionFilter(
-                language.language_label(languageOption,32), "txt");                                // whitch type of files are we looking for
-        chooser.setDialogTitle(language.language_label(languageOption,31));   // title for Jfile chooser window
+                language.language_label(languageOption, 32), "txt");                                // whitch type of files are we looking for
+        chooser.setDialogTitle(language.language_label(languageOption, 31));   // title for Jfile chooser window
         chooser.setFileFilter(txtfilter);                                   // Txt filter for choosing file
 
         chooser.showOpenDialog(null);
-        File f = chooser.getSelectedFile();                                
+        File f = chooser.getSelectedFile();
         this.filenamePath = f.getParent();                                      //get full path of selected file
 
         this.filename = f.getName();                                            // get full name of selected file
 
         Textfiled_nameofLoadedfile.setText(this.filename);                      //set nname of loaded file intext field
-        
+
         File subor = new File(this.filenamePath + "\\" + this.filename);        // load entire file into table and memory of  proram
         try {
             Scanner input = new Scanner(subor);                                 // reading the file
-            
-          
-            
-          
-            
-            String nameOfConductor="empty";                                             //define readind variables
-            Double Diameter =0.;
-            Double CrossSection=0.;
-            Double unitWeight=0.;
-            Double modulofFlexibility=0.;
-            Double koeficientOfTermalExpension=0.;
-            Double MathematicalCarringCapacity=0.;
-            Double WeightRationCoreAndConductor=0.;    
+
+            String nameOfConductor = "empty";                                             //define readind variables
+            Double Diameter = 0.;
+            Double CrossSection = 0.;
+            Double unitWeight = 0.;
+            Double modulofFlexibility = 0.;
+            Double koeficientOfTermalExpension = 0.;
+            Double MathematicalCarringCapacity = 0.;
+            Double WeightRationCoreAndConductor = 0.;
             String EmptyLine;
-            
-            EmptyLine = input.nextLine();                              // read first line and unlock the input.hasnext
+
+            EmptyLine = input.nextLine();
+            EmptyLine = input.nextLine(); // read first line and unlock the input.hasnext
             Integer counter = 0;
             while (input.hasNext()) {
-            Object[] Conductor = new Object[7];                                //create object ONE conductor with above parameters
-            
-            nameOfConductor=input.nextLine();
-         
-            Diameter = Double.valueOf(input.next()); EmptyLine = input.nextLine();
-            CrossSection = Double.valueOf(input.next()); EmptyLine = input.nextLine();
-            unitWeight = Double.valueOf(input.next()); EmptyLine = input.nextLine();
-            modulofFlexibility = Double.valueOf(input.next()); EmptyLine = input.nextLine();
-            koeficientOfTermalExpension = Double.valueOf(input.next()); EmptyLine = input.nextLine();
-            MathematicalCarringCapacity = Double.valueOf(input.next()); EmptyLine = input.nextLine();
-            WeightRationCoreAndConductor = Double.valueOf(input.next()); EmptyLine = input.nextLine();            
-            EmptyLine = input.nextLine();
-           
-            //vytvorim objekt Conductor a do neho vložim data    
-             Conductor = new Object[]{(String)nameOfConductor,(double)Diameter,(double)CrossSection,(double)unitWeight,(double)modulofFlexibility,(double)koeficientOfTermalExpension,(double)MathematicalCarringCapacity,(double)WeightRationCoreAndConductor};
-            //vložim od konečnej array           
-            this.Databaza.add(Conductor);    
-            modelTable.addRow(new Object[]{(String) nameOfConductor});
-            if(EmptyLine.equals("EMD_OF_FILE")){
-                break;
+                Object[] Conductor = new Object[7];                                //create object ONE conductor with above parameters
+
+                nameOfConductor = input.nextLine();
+
+                Diameter = Double.valueOf(input.next());
+                EmptyLine = input.nextLine();
+                CrossSection = Double.valueOf(input.next());
+                EmptyLine = input.nextLine();
+                unitWeight = Double.valueOf(input.next());
+                EmptyLine = input.nextLine();
+                modulofFlexibility = Double.valueOf(input.next());
+                EmptyLine = input.nextLine();
+                koeficientOfTermalExpension = Double.valueOf(input.next());
+                EmptyLine = input.nextLine();
+                MathematicalCarringCapacity = Double.valueOf(input.next());
+                EmptyLine = input.nextLine();
+                WeightRationCoreAndConductor = Double.valueOf(input.next());
+                EmptyLine = input.nextLine();
+                EmptyLine = input.nextLine();
+
+                //vytvorim objekt Conductor a do neho vložim data    
+                Conductor = new Object[]{(String) nameOfConductor, (double) Diameter, (double) CrossSection, (double) unitWeight, (double) modulofFlexibility, (double) koeficientOfTermalExpension, (double) MathematicalCarringCapacity, (double) WeightRationCoreAndConductor};
+                //vložim od konečnej array           
+                this.Databaza.add(Conductor);
+
+                if (EmptyLine.equals("EMD_OF_FILE")) {
+                    break;
+                }
+
             }
-            
-           }
-           //jTable.getModel().addTableModelListener(jTable); 
-           
-            
-            
+            arralist_sort(Databaza);
+
+            int numberofElements = Databaza.size();             //pregeneruj tabulku a nakresli ju
+            for (int i = 0; i <= numberofElements - 1; i++) {
+                Object[] Conductor = new Object[7];
+                Conductor = Databaza.get(i);
+                modelTable.addRow(new Object[]{(String) Conductor[0]});
+            }
+
         } catch (FileNotFoundException ex) {
 
         }
-        
+
     }//GEN-LAST:event_BUtton_load_databaseActionPerformed
 
-    private ArrayList<Object[]> arralist_sort (ArrayList<Object[]> X){
-        
-        int numberofElements = X.size();        
+    private ArrayList<Object[]> arralist_sort(ArrayList<Object[]> X) {
+
+        int numberofElements = X.size();
         String S1;
         String S2;
-         Object[] Conductor1 = new Object[7];
-         Object[] Conductor2 = new Object[7];
-         
-         
-         while(true){
-         int breakcounter=0;
-         for (int i = 0; i < numberofElements-1; i++) {
+        Object[] Conductor1 = new Object[7];
+        Object[] Conductor2 = new Object[7];
 
-             Conductor1 = Databaza.get(i);
-             S1 = String.valueOf(Conductor1[0]);
-             
-             Conductor2 = Databaza.get(i+1);
-             S2 = String.valueOf(Conductor2[0]);
-             
-             int compareValue = S1.compareTo(S2);
-             
-             if (compareValue < 0 || compareValue == 0){
-             
-             }else{
-                 breakcounter=breakcounter+1;
-                 Databaza.set(i, Conductor2);
-                 Databaza.set(i+1, Conductor1);
-             }
-                 
+        while (true) {
+            int breakcounter = 0;
+            for (int i = 0; i < numberofElements - 1; i++) {
+
+                Conductor1 = Databaza.get(i);
+                S1 = String.valueOf(Conductor1[0]);
+
+                Conductor2 = Databaza.get(i + 1);
+                S2 = String.valueOf(Conductor2[0]);
+
+                int compareValue = S1.compareTo(S2);
+
+                if (compareValue < 0 || compareValue == 0) {
+
+                } else {
+                    breakcounter = breakcounter + 1;
+                    Databaza.set(i, Conductor2);
+                    Databaza.set(i + 1, Conductor1);
+                }
+
+            }
+            if (breakcounter == 0) {
+                break;
+            }
         }
-         if (breakcounter ==0 ){ break;}
-         }
-        
+
         return Databaza;
     }
-    
+
+    private void SaveDatabase(ArrayList<Object[]> X) {
+
+        try {
+            File ulozenieSubor = new File(this.filenamePath + "\\" + this.filename);
+            PrintWriter fw = new PrintWriter(ulozenieSubor);
+            fw.println("....next conductor....");
+            fw.println("Database file do not modify or I will hunt you and eat you alive. JB");
+
+            int numberofElements = Databaza.size();             //pregeneruj tabulku a nakresli ju
+            for (int i = 0; i <= numberofElements - 1; i++) {
+                Object[] Conductor = new Object[7];
+                Conductor = Databaza.get(i);
+
+                fw.println(String.valueOf(Conductor[0]) + "");
+                fw.println(String.valueOf(Conductor[1]) + " mm");
+                fw.println(String.valueOf(Conductor[2]) + " mm2");
+                fw.println(String.valueOf(Conductor[3]) + " kg/m");
+                fw.println(String.valueOf(Conductor[4]) + " MPa");
+                fw.println(String.valueOf(Conductor[5]) + " 1/°C");
+                fw.println(String.valueOf(Conductor[6]) + " N");
+                fw.println(String.valueOf(Conductor[7]));
+
+                if (i == ((numberofElements - 1))) {
+                    fw.println("END_OF_FILE");
+                } else {
+                    fw.println("....next conductor....");
+                }
+
+            }
+
+            fw.close();
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(Conductors_main_JDialog.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
+
     private void Textfiled_nameofLoadedfileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Textfiled_nameofLoadedfileActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_Textfiled_nameofLoadedfileActionPerformed
@@ -431,34 +506,69 @@ public class Conductors_main_JDialog extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_textfiled_password_status_nonEditableActionPerformed
 
-    public static  void newConductorgetter (Object[] X){
-        newConductor=X;
-        
+    public static void newConductorsetter(Object[] X) {
+        newConductor = X;
+
     }
-    
-    public static  boolean newConductorstatus (boolean X){
+
+    public static boolean newConductorstatus(boolean X) {
         existnewConductor = X;
         return existnewConductor;
     }
-    
-    
+
+
     private void Button_set_passwordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button_set_passwordActionPerformed
         String passwordTaken = textfiled_password_typeing.getText();
-        
-        if (passwordTaken.equals(language.language_label(languageOption,40))){
+
+        if (passwordTaken.equals(language.language_label(languageOption, 40))) {
             Button_new_conductor.setEnabled(true);
             BUtton_change_conductor.setEnabled(true);
             BUtton_delete_conductor.setEnabled(true);
-            
-            textfiled_password_status_nonEditable.setText(language.language_label(languageOption,41));
+
+            textfiled_password_status_nonEditable.setText(language.language_label(languageOption, 41));
             startPanel.setStatus_conductor_password(true);
-        }else{
-            textfiled_password_status_nonEditable.setText(language.language_label(languageOption,42));
+        } else {
+            textfiled_password_status_nonEditable.setText(language.language_label(languageOption, 42));
         }
-        
+
     }//GEN-LAST:event_Button_set_passwordActionPerformed
-    
-    
+
+    private void BUtton_change_conductorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BUtton_change_conductorActionPerformed
+        //jTable.getSelectionModel().removeListSelectionListener(jTable);
+        tableListenerswitch = false;
+        try {
+            Conductors_main_change_conductor_JDialog.newConductorsetter(Databaza.get(jTable.getSelectedRow())); // musi byt redtym lebo inač ked sa spusti Jdialog toto okno sa blokne na dalšiu pracu kym neskoni J Dialog
+
+            Conductors_main_change_conductor_JDialog Conductors_main_change_conducor_JDialog_window = new Conductors_main_change_conductor_JDialog(this, rootPaneCheckingEnabled);
+            Conductors_main_change_conducor_JDialog_window.setVisible(true);
+
+            if (existnewConductor == true) {
+
+                Databaza.set(jTable.getSelectedRow(), newConductor);  // vymen prvok v databaze
+                arralist_sort(Databaza);                                // sortuj databazu
+
+                int rowCount = jTable.getRowCount();                         // premaž
+                //Remove rows one by one from the end of the table
+                for (int i = rowCount - 1; i >= 0; i--) {
+                    modelTable.removeRow(i);
+                }
+
+                int numberofElements = Databaza.size();             //pregeneruj tabulku a nakresli ju
+                for (int i = 0; i <= numberofElements - 1; i++) {
+                    Object[] Conductor = new Object[7];
+                    Conductor = Databaza.get(i);
+                    modelTable.addRow(new Object[]{(String) Conductor[0]});
+
+                }
+                existnewConductor = false;
+            }
+        } catch (NullPointerException e) {
+        }   // catch ak nie je selectute nič v tabulke
+
+        SaveDatabase(Databaza);
+        tableListenerswitch = true;
+    }//GEN-LAST:event_BUtton_change_conductorActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -503,7 +613,7 @@ public class Conductors_main_JDialog extends javax.swing.JDialog {
     }
 
     private void setIcon() {
-      setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/mt_graphic/" + "icon.png")));
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/mt_graphic/" + "icon.png")));
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -529,8 +639,8 @@ public class Conductors_main_JDialog extends javax.swing.JDialog {
     private String filenamePath;
     private final ArrayList<Object[]> Databaza = new ArrayList<>();
     private final ArrayList<Object[]> Databaza_help_sort = new ArrayList<>();
-    private boolean oknewConductor=false;
+    private boolean tableListenerswitch = true;
     public static Object[] newConductor = new Object[7];
-    public static boolean existnewConductor=false;
+    public static boolean existnewConductor = false;
     DefaultTableModel modelTable;
 }

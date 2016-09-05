@@ -18,16 +18,27 @@ import static mt_main.startPanel.languageOption;
  *
  * @author Jozef
  */
-public class Conductors_main_new_conductor_JDialog extends javax.swing.JDialog {
+public class Conductors_main_change_conductor_JDialog extends javax.swing.JDialog {
 
     /**
      * Creates new form Help_Math_JDialog
      */
-    public Conductors_main_new_conductor_JDialog(java.awt.Dialog parent, boolean modal) {
+    public Conductors_main_change_conductor_JDialog(java.awt.Dialog parent, boolean modal) {
         super(parent, modal);
         initComponents();
         setLocationRelativeTo(null); //center of window position
         setIcon();
+        
+       jTextField1.setText(String.valueOf(newConductor[0]));   // nacitanie do  do poli na editaciu
+       jTextField2.setText(String.valueOf(newConductor[1]));
+       jTextField3.setText(String.valueOf(newConductor[2]));
+       jTextField4.setText(String.valueOf(newConductor[3]));
+       jTextField5.setText(String.valueOf(newConductor[4]));
+       jTextField6.setText(String.valueOf(newConductor[5]));
+       jTextField7.setText(String.valueOf(newConductor[6]));
+       jTextField8.setText(String.valueOf(newConductor[7]));
+      
+        
               
       
     }
@@ -70,9 +81,9 @@ public class Conductors_main_new_conductor_JDialog extends javax.swing.JDialog {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
 
-        jLabel1.setText(language.language_label(languageOption,44));
+        jLabel1.setText(language.language_label(languageOption,48));
 
-        Button_create.setText(language.language_label(languageOption,45));
+        Button_create.setText(language.language_label(languageOption,49));
         Button_create.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Button_createActionPerformed(evt);
@@ -202,17 +213,15 @@ public class Conductors_main_new_conductor_JDialog extends javax.swing.JDialog {
                     .addComponent(jLabel12)
                     .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel5)
-                            .addComponent(jLabel13)
-                            .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel6)
-                            .addComponent(jLabel14)))
-                    .addComponent(jTextField6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
+                    .addComponent(jLabel13)
+                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6)
+                    .addComponent(jLabel14)
+                    .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
@@ -324,6 +333,10 @@ public class Conductors_main_new_conductor_JDialog extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField3ActionPerformed
 
+    public static  void newConductorsetter (Object[] X){
+        newConductor=X;
+        
+    }
       
     
     /**
@@ -343,14 +356,18 @@ public class Conductors_main_new_conductor_JDialog extends javax.swing.JDialog {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Conductors_main_new_conductor_JDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Conductors_main_change_conductor_JDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Conductors_main_new_conductor_JDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Conductors_main_change_conductor_JDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Conductors_main_new_conductor_JDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Conductors_main_change_conductor_JDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Conductors_main_new_conductor_JDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Conductors_main_change_conductor_JDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -359,7 +376,7 @@ public class Conductors_main_new_conductor_JDialog extends javax.swing.JDialog {
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                Conductors_main_new_conductor_JDialog dialog = new Conductors_main_new_conductor_JDialog(new javax.swing.JDialog(), true);
+                Conductors_main_change_conductor_JDialog dialog = new Conductors_main_change_conductor_JDialog(new javax.swing.JDialog(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
@@ -403,8 +420,8 @@ public class Conductors_main_new_conductor_JDialog extends javax.swing.JDialog {
     private javax.swing.JTextField jTextField8;
     // End of variables declaration//GEN-END:variables
 
-    private final ArrayList<Object[]> Databaza = new ArrayList<>();
-    private final ArrayList<Object[]> Databaza_help_sort = new ArrayList<>();
+  
     private final ArrayList<Boolean> checker = new ArrayList<>();
+    public static Object[] newConductor = new Object[7];
    
 }
