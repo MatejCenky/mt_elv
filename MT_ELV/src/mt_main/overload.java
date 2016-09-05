@@ -19,8 +19,8 @@ public class overload {
      * @param heights array containing all conductor catching points on towers [n dim]
      */
     public overload(double spans[], double heights[]){
-        state_equation.a = spans;
-        state_equation.dh = heights;
+        overload.a = spans;
+        overload.dh = heights;
         overload.ro = 1.25;
         overload.RR = 0;
         overload.k_p = 3;
@@ -31,8 +31,8 @@ public class overload {
      * default constructor with "-1" values for a[0] and dh[0]
      */
     public overload(){
-        state_equation.a[0] = -1;
-        state_equation.dh[0] = -1;
+        overload.a[0] = -1;
+        overload.dh[0] = -1;
         overload.ro = 1.25;
         overload.RR = 0;
         overload.k_p = 3;
@@ -40,6 +40,18 @@ public class overload {
     }
    
  /* Defining variables */
+  
+// basic variables
+    
+    /**
+     * array of the spans on the suspension section [m]
+     */
+    private static double a[]; 
+    
+    /**
+     * array of height differences of the suspension points of towers [m]
+     */
+    private static double dh[]; 
     
 // towers and conductors
     private static double d;           // conductor diameter [m]
@@ -205,10 +217,10 @@ public class overload {
         int i;
         
         // sum of the double array
-        for (i=0; i<state_equation.dh.length; i++){ //[n+1]
-            aux += state_equation.dh[i];
+        for (i=0; i<overload.dh.length; i++){ //[n+1]
+            aux += overload.dh[i];
         }
-        overload.h_c_mean = aux/state_equation.a.length; // [n]
+        overload.h_c_mean = aux/overload.a.length; // [n]
     }
     
     /**
@@ -230,8 +242,8 @@ public class overload {
      */
     private void response_coefficient_length(){
         double aux = 0;
-        for (int i=0; i<state_equation.a.length; i++){
-            aux += state_equation.a[i];
+        for (int i=0; i<overload.a.length; i++){
+            aux += overload.a[i];
         }
         // max 3km = 3000m
         if (aux > 3000){

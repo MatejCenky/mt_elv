@@ -40,47 +40,47 @@ public class state_equation {
 
  /* Defining variables */
     
-// basic global variables
+// basic variables
     
     /**
      * array of the spans on the suspension section [m]
      */
-    public static double a[]; 
+    private static double a[]; 
     
     /**
      * array of height differences of the suspension points of towers [m]
      */
-    public static double dh[]; 
+    private static double dh[]; 
     
     /**
      * specific gravity of the conductor [N/m*mm^2]
      */
-    public static double gama;  
+    private static double gama;  
     
     /**
      * weight of the conductor per unit [kg/m]
      */
-    public static double m; 
+    private static double m; 
     
     /**
      * cross-section area of the conductor [mm^2]
      */
-    public static double S;  
+    private static double S;  
     
     /**
      * Young model of elasticity of conductor [MPa]
      */
-    public static double E;  
+    private static double E;  
     
     /**
      * linear expansion coefficient [1/degree_C]
      */
-    public static double alpha;    
+    private static double alpha;    
     
     /**
      * gravitational acceleration [m.s^-2]
      */
-    public static double g = 9.80665; 
+    private static double g = 9.80665; 
     
 // values for state equation
     private static int ter;            // specify flat / non-flat terrain - in constructor !!!;
@@ -101,27 +101,27 @@ public class state_equation {
     /**
      * solution of a cubic equation == horizontal stress in conductor in state "1" [MPa]
      */
-    private static double sigma_h1;    
+    public static double sigma_h1;    
     
     /**
      * the pulling force based on the horizontal stress of the conductor [N]
      */
-    private static double F_mH1;      
+    public static double F_mH1;      
     
     /**
      * the "c" parameter [m]
      */
-    private static double c;        
+    public static double c;        
     
     /**
      * maximum ideal sag [m]
      */
-    private static double sag_max;    
+    public static double sag_max[];    
     
     /**
      * array of all visible sags in one suspension section [m]
      */
-    private static double sag_vis[];  
+    public static double sag_vis[];  
     
 // **************** PUBLIC METHODS **************** //    
     /**
@@ -136,7 +136,7 @@ public class state_equation {
         state_equation.F_mH1 = -1;
         state_equation.sigma_h1 = -1;
         state_equation.c = -1;
-        state_equation.sag_max = -1;
+        state_equation.sag_max[0] = -1;
         state_equation.sag_vis[0] = -1;
         
         // local - results
@@ -244,8 +244,8 @@ public class state_equation {
         double lower = 0;
         double temp;
         for (int i=0; i<state_equation.a.length; i++){
-            temp = Math.sqrt(Math.pow(state_equation.a[i],2)+Math.pow(state_equation.dh[i], 2));
-            upper = upper + Math.sqrt(Math.pow(state_equation.a[i], 4)/temp);
+            temp = Math.sqrt(Math.pow(state_equation.a[i],2)+ Math.pow(state_equation.dh[i], 2));
+            upper = upper + Math.pow(state_equation.a[i], 4)/temp;
             lower = lower + temp;
         }
         state_equation.MST = Math.sqrt(upper/lower);
@@ -262,15 +262,15 @@ public class state_equation {
         double condition;
         double result;
         
-        condition = Math.pow(-1*Math.pow(state_equation.Bc, 2)/9, 3) + Math.pow(-1*(27*state_equation.Dc+2*Math.pow(state_equation.Bc, 3)/54),2);
+        condition = Math.pow(-1* Math.pow(state_equation.Bc, 2)/9, 3) + Math.pow(-1* (27* state_equation.Dc + 2* Math.pow(state_equation.Bc, 3)) /54, 2);
         
         if (0 < condition) {
-            part1 = Math.cbrt((-1*(27*state_equation.Dc+2*Math.pow(state_equation.Bc, 3)/54)) - Math.sqrt(condition));
-            part2 = Math.cbrt((-1*(27*state_equation.Dc+2*Math.pow(state_equation.Bc, 3)/54)) + Math.sqrt(condition)) - state_equation.Bc/3;
+            part1 = Math.cbrt((-1*(27*state_equation.Dc+2*Math.pow(state_equation.Bc, 3))/54) - Math.sqrt(condition));
+            part2 = Math.cbrt((-1*(27*state_equation.Dc+2*Math.pow(state_equation.Bc, 3))/54) + Math.sqrt(condition)) - state_equation.Bc/3;
             result = part1 + part2;
         } else {
             part1 = Math.cbrt(-1*Math.pow(-1*Math.pow(state_equation.Bc, 2)/9, 3));
-            part2 = Math.acos(-1*(27*state_equation.Dc+2*Math.pow(state_equation.Bc, 3)/54)/part1);
+            part2 = Math.acos(-1*(27*state_equation.Dc+2*Math.pow(state_equation.Bc, 3))/54/part1);
             part3 = Math.cos(part2/3) - state_equation.Bc/3;
             result = 2 * part1 * part3;
         }
@@ -319,42 +319,28 @@ public class state_equation {
     }
     
     /**
-     * Computes the maximum sag for ideal conditions
+     * Computes the maximum sag for ideal conditions in one suspension section
      */
     private static void sag_maximum(){
-        double var;
-        if (state_equation.ter == 1) {
-            var = state_equation.MSF;
-        } else {
-            var = state_equation.MST;
+        for (int i=0; i<state_equation.a.length; i++) {
+        state_equation.sag_max[i] = state_equation.c* (Math.cosh(state_equation.a[i]/(2*state_equation.c)) - 1);
         }
-        state_equation.sag_max = state_equation.c* (Math.cosh(var/(2*state_equation.c)) - 1);
     }
     
     /**
      * Computes the array of all visible sags in one suspension section. 
      */
     private static void sag_visible(){
-        double part1;
+        double part1[] = new double[state_equation.a.length];
         double part2;
         double part3;
-        double part4[] = new double[state_equation.a.length];
-        double var;
-        
-        if (state_equation.ter == 1) {
-            var = state_equation.MSF;
-        } else {
-            var = state_equation.MST;
-        } 
-            
+
         for (int i=0; i<state_equation.a.length; i++) {
-            part1 = var/(2*state_equation.c);
-            part2 = part1 + Math_Extended.asinh(state_equation.dh[i]/(2*state_equation.c*Math.sinh(part1)));
+            part1[i] = state_equation.a[i]/(2*state_equation.c);
+            part2 = part1[i] + Math_Extended.asinh(state_equation.dh[i]/(2*state_equation.c*Math.sinh(part1[i])));
             part3 = Math_Extended.asinh(state_equation.dh[i]/state_equation.a[i]);
-            part4[i] = state_equation.c*(Math.cosh(part2) - Math.cosh(part3) - (state_equation.dh[i]/state_equation.a[i])*(part2 - part3));
+            state_equation.sag_vis[i] = state_equation.c*(Math.cosh(part2) - Math.cosh(part3) - (state_equation.dh[i]/state_equation.a[i])*(part2 - part3));
         }
-        
-        state_equation.sag_vis = part4;
     }
     
      /**
@@ -383,15 +369,15 @@ public class state_equation {
         double condition;
         double result;
         
-        condition = Math.pow(-1*Math.pow(state_equation.Bc_i, 2)/9, 3) + Math.pow(-1*(27*state_equation.Dc+2*Math.pow(state_equation.Bc_i, 3)/54),2);
+        condition = Math.pow(-1*Math.pow(state_equation.Bc_i, 2)/9, 3) + Math.pow(-1*(27*state_equation.Dc+2*Math.pow(state_equation.Bc_i, 3))/54,2);
         
         if (0 < condition) {
-            part1 = Math.cbrt((-1*(27*state_equation.Dc+2*Math.pow(state_equation.Bc_i, 3)/54)) - Math.sqrt(condition));
-            part2 = Math.cbrt((-1*(27*state_equation.Dc+2*Math.pow(state_equation.Bc_i, 3)/54)) + Math.sqrt(condition)) - state_equation.Bc_i/3;
+            part1 = Math.cbrt((-1*(27*state_equation.Dc+2*Math.pow(state_equation.Bc_i, 3))/54) - Math.sqrt(condition));
+            part2 = Math.cbrt((-1*(27*state_equation.Dc+2*Math.pow(state_equation.Bc_i, 3))/54) + Math.sqrt(condition)) - state_equation.Bc_i/3;
             result = part1 + part2;
         } else {
             part1 = Math.cbrt(-1*Math.pow(-1*Math.pow(state_equation.Bc_i, 2)/9, 3));
-            part2 = Math.acos(-1*(27*state_equation.Dc+2*Math.pow(state_equation.Bc_i, 3)/54)/part1);
+            part2 = Math.acos(-1*(27*state_equation.Dc+2*Math.pow(state_equation.Bc_i, 3))/54/part1);
             part3 = Math.cos(part2/3) - state_equation.Bc_i/3;
             result = 2 * part1 * part3;
         }
