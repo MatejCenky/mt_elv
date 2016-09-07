@@ -534,7 +534,8 @@ public class Conductors_main_JDialog extends javax.swing.JDialog {
             textfiled_password_status_nonEditable.setText(language.language_label(languageOption, 41));
             startPanel.setStatus_conductor_password(true);
         } else {
-            textfiled_password_status_nonEditable.setText(language.language_label(languageOption, 42));
+            textfiled_password_status_nonEditable.setText(language.language_label(languageOption, 42)); 
+            
         }
 
     }//GEN-LAST:event_Button_set_passwordActionPerformed
