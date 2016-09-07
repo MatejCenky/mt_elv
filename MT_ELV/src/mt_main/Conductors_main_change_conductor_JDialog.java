@@ -9,6 +9,7 @@
 package mt_main;
 
 
+import java.awt.Color;
 import java.awt.Toolkit;
 
 import java.util.ArrayList;
@@ -244,55 +245,70 @@ public class Conductors_main_change_conductor_JDialog extends javax.swing.JDialo
          
            Double Diameter = doubleChecker(jTextField2.getText()); 
            if (Diameter == 123456789.987654321 ) {
+            jTextField2.setForeground(Color.red);
             jTextField2.setText(language.language_label(languageOption, 47));
+            
             checker.add(false);
         } else {
+            jTextField2.setForeground(Color.black);   
             checker.add(true);
         }
            
                    
            Double CrossSection = doubleChecker(jTextField3.getText()); 
            if (CrossSection == 123456789.987654321) {
+            jTextField3.setForeground(Color.red);
             jTextField3.setText(language.language_label(languageOption, 47));
             checker.add(false);
         } else {
+               jTextField3.setForeground(Color.black);
             checker.add(true);
         }
            
            Double unitWeight = doubleChecker(jTextField4.getText()); 
            if (unitWeight == 123456789.987654321) {
+               jTextField4.setForeground(Color.red);
             jTextField4.setText(language.language_label(languageOption, 47));
             checker.add(false);
         } else {
+               jTextField4.setForeground(Color.black);
             checker.add(true);
         }
            
            Double modulofFlexibility = doubleChecker(jTextField5.getText()); 
            if (modulofFlexibility == 123456789.987654321) {
+               jTextField5.setForeground(Color.red);
             jTextField5.setText(language.language_label(languageOption, 47));
             checker.add(false);
         } else {
+               jTextField5.setForeground(Color.black);
             checker.add(true);
         }
            Double koeficientOfTermalExpension = doubleChecker(jTextField6.getText());
            if (koeficientOfTermalExpension == 123456789.987654321) {
+               jTextField6.setForeground(Color.red);
             jTextField6.setText(language.language_label(languageOption, 47));
             checker.add(false);
         } else {
+               jTextField6.setForeground(Color.black);
             checker.add(true);
         }
            Double MathematicalCarringCapacity = doubleChecker(jTextField7.getText());
            if (MathematicalCarringCapacity == 123456789.987654321) {
+               jTextField7.setForeground(Color.red);
             jTextField7.setText(language.language_label(languageOption, 47));
             checker.add(false);
         } else {
+               jTextField7.setForeground(Color.black);
             checker.add(true);
         }
            Double WeightRationCoreAndConductor = doubleChecker(jTextField8.getText());            
            if (WeightRationCoreAndConductor == 123456789.987654321) {
+               jTextField8.setForeground(Color.red);
             jTextField8.setText(language.language_label(languageOption, 47));
             checker.add(false);
         } else {
+               jTextField8.setForeground(Color.black);
             checker.add(true);
         }
             

@@ -48,12 +48,12 @@ public class Conductors_main_JDialog extends javax.swing.JDialog {
             @Override
             public void valueChanged(ListSelectionEvent e) {
                 if (tableListenerswitch == true) {
-                    int rowNumber = jTable.getSelectedRow(); //- (e.getFirstIndex()-e.getLastIndex());
+                    int rowNumber =  jTable.getSelectedRow(); //- (e.getFirstIndex()-e.getLastIndex());
 
                     //  int rowNumber2 = e.getLastIndex();
                     //  if(rowNumber > rowNumber2) {rowNumber=rowNumber2;}
                     Object[] Conductor = new Object[7];
-                    Conductor = Databaza.get(rowNumber);
+                     Conductor = Databaza.get(rowNumber);
 
                     textAreaConductorInfo.setText(
                             language.language_label(languageOption, 33) + String.valueOf(Conductor[1]) + " mm" + "\r\n"
@@ -116,6 +116,12 @@ public class Conductors_main_JDialog extends javax.swing.JDialog {
         Button_set_password.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Button_set_passwordActionPerformed(evt);
+            }
+        });
+
+        textfiled_password_typeing.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                textfiled_password_typeingKeyPressed(evt);
             }
         });
 
@@ -568,6 +574,16 @@ public class Conductors_main_JDialog extends javax.swing.JDialog {
         SaveDatabase(Databaza);
         tableListenerswitch = true;
     }//GEN-LAST:event_BUtton_change_conductorActionPerformed
+
+    private void textfiled_password_typeingKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textfiled_password_typeingKeyPressed
+        int key = evt.getKeyCode();
+        
+        if(key == 10) 
+        {Button_set_password.doClick();}
+        else{
+        
+        }
+    }//GEN-LAST:event_textfiled_password_typeingKeyPressed
 
     /**
      * @param args the command line arguments

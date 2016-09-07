@@ -53,46 +53,49 @@ public static void constructor(){
          language.CZ.add("Lorem ipsum bla bla bla teple slova zuzu po cesky ahoj  vole to takle si zapichat ju ju ju hu hu hu kert na dftr vdvvfvdf fgd er dsds cxcs erzzu dkdk dfsdf d d ddddd dfsdf sdf sdf sdfsdf sdfsdf sdfetrbtrb ddsfdg "); 
          language.EN.add("Lorem ipsum bla bla bla teple slova zuzu po anglcky hello mother fucker wana fuck today? ju ju ju hu hu hu kert na dftr vdvvfvdf fgd er dsds cxcs erzzu dkdk dfsdf d d ddddd dfsdf sdf sdf sdfsdf sdfsdf sdfetrbtrb ddsfdg ");
 //Conductors_Jdialog_main
- /*22*/  language.SK.add("Knižnica vodičov");            language.CZ.add("O programe");          language.EN.add("About");
- /*23*/  language.SK.add("Vodiče");                      language.CZ.add("Zavři");               language.EN.add("Close");
- /*24*/  language.SK.add("Nový");                        language.CZ.add("O programe");          language.EN.add("About");
- /*25*/  language.SK.add("Upraviť");                     language.CZ.add("Zavři");               language.EN.add("Close");
- /*26*/  language.SK.add("Odstrániť");                   language.CZ.add("O programe");          language.EN.add("About");
- /*27*/  language.SK.add("Odomknúť úpravy");             language.CZ.add("Zavři");               language.EN.add("Close");
- /*28*/  language.SK.add("Potvrdiť");                    language.CZ.add("Zavři");               language.EN.add("Close");
- /*29*/  language.SK.add("Databáza");                    language.CZ.add("O programe");          language.EN.add("About");
- /*30*/  language.SK.add("Načítať");                     language.CZ.add("Zavři");               language.EN.add("Close");
- /*31*/  language.SK.add("Vyberte súbor s databázou");   language.CZ.add("Zavři");               language.EN.add("Close");
- /*32*/  language.SK.add("txt subor (*.txt)");           language.CZ.add("txt soubor (*.txt)");               language.EN.add("txt files (*.txt)");
+ /*22*/  language.SK.add("Knižnica vodičov");            language.CZ.add("Knižnice vodičú");                language.EN.add("Conductor library");
+ /*23*/  language.SK.add("Vodiče");                      language.CZ.add("Vodiče");                         language.EN.add("Conductors");
+ /*24*/  language.SK.add("Nový");                        language.CZ.add("Nový");                           language.EN.add("New");
+ /*25*/  language.SK.add("Upraviť");                     language.CZ.add("Upravit");                        language.EN.add("Change");
+ /*26*/  language.SK.add("Odstrániť");                   language.CZ.add("Vodstránit");                     language.EN.add("Delete");
+ /*27*/  language.SK.add("Odomknúť úpravy");             language.CZ.add("Vodomknout úpravy");              language.EN.add("Unlock changes");
+ /*28*/  language.SK.add("Potvrdiť");                    language.CZ.add("Potrvdit");                       language.EN.add("Set");
+ /*29*/  language.SK.add("Databáza");                    language.CZ.add("Databáze");                       language.EN.add("Database");
+ /*30*/  language.SK.add("Načítať");                     language.CZ.add("Načítat");                        language.EN.add("Load");
+ /*31*/  language.SK.add("Vyberte súbor s databázou");   language.CZ.add("Vyběrte soubor s databazí");      language.EN.add("Choose database file");
+ /*32*/  language.SK.add("txt subor (*.txt)");           language.CZ.add("txt soubor (*.txt)");             language.EN.add("txt files (*.txt)");
  
  //Conductors_Jdialog_main_JtextArea ( conductor info )
  
- /*33*/  language.SK.add("Priemer = ");                                                 language.CZ.add("O programe");          language.EN.add("About");
- /*34*/  language.SK.add("Prierez = ");                                                 language.CZ.add("Zavři");               language.EN.add("Close");
- /*35*/  language.SK.add("Jednotková hmotnosť = ");                                     language.CZ.add("O programe");          language.EN.add("About");
- /*36*/  language.SK.add("Modul pružnosti = ");                                         language.CZ.add("Zavři");               language.EN.add("Close");
- /*37*/  language.SK.add("Koeficient tepelnej rozťažnosti = ");                         language.CZ.add("O programe");          language.EN.add("About");
- /*38*/  language.SK.add("Matematická únosnosť = ");                                    language.CZ.add("Zavři");               language.EN.add("Close");
- /*39*/  language.SK.add("Pomer hmotnosti oceľovej duše k celkovej hmotnosti lana = "); language.CZ.add("Zavři");               language.EN.add("Close");
+ /*33*/  language.SK.add("Priemer = ");                                                 language.CZ.add("Prúměr = ");                         language.EN.add("Diameter = ");
+ /*34*/  language.SK.add("Prierez = ");                                                 language.CZ.add("Prúrez = ");                         language.EN.add("Cross section = ");
+ /*35*/  language.SK.add("Jednotková hmotnosť = ");                                     language.CZ.add("Jednotková hmotnost = ");            language.EN.add("Unit weight = ");
+ /*36*/  language.SK.add("Modul pružnosti = ");                                         language.CZ.add("Modul pružnosti = ");                language.EN.add("Modul of flexibility = ");
+ /*37*/  language.SK.add("Koeficient tepelnej rozťažnosti = ");                         language.CZ.add("Koeficient tepelní roztažnosti = "); language.EN.add("Koeficient of termal expension = ");
+ /*38*/  language.SK.add("Matematická únosnosť = ");                                    language.CZ.add("Matematická únosnosť = ");           language.EN.add("Mathematical carring capacity = ");
+ 
+ /*39*/  language.SK.add("Pomer hmotnosti oceľovej duše k celkovej hmotnosti lana = "); 
+         language.CZ.add("Poměr hmotnosti oceľovej duše k celkové hmotnosti lana = ");               
+         language.EN.add("Weight ratio of conductor steel core to whole conductor = ");
  
 //Conductors_Jdialog_main_PASSWORD FOR EDITATION SAME EVERY LANGUAGE
 
 /*40*/  language.SK.add("elektrovodMT3");               language.CZ.add("elektrovodMT3");               language.EN.add("elektrovodMT3");
-/*41*/  language.SK.add("Správne heslo");                     language.CZ.add("Spravne");                     language.EN.add("elektrovodMT3");
-/*42*/  language.SK.add("Nesprávne heslo");                     language.CZ.add("Spravne");                     language.EN.add("elektrovodMT3");
-/*43*/  language.SK.add("Zadajte heslo");                     language.CZ.add("Spravne");                     language.EN.add("elektrovodMT3");
+/*41*/  language.SK.add("Správne heslo");               language.CZ.add("Správni heslo");               language.EN.add("Correct password");
+/*42*/  language.SK.add("Nesprávne heslo");             language.CZ.add("Nesprávni heslo");             language.EN.add("Incorrect password");
+/*43*/  language.SK.add("Zadajte heslo");               language.CZ.add("Zadejte heslo");               language.EN.add("Please set the password");
 
 //Conductors_Jdialog_new conductor
 
-/*44*/  language.SK.add("Nový vodič");               language.CZ.add("elektrovodMT3");               language.EN.add("elektrovodMT3");
-/*45*/  language.SK.add("Vytvoriť");                     language.CZ.add("Spravne");                     language.EN.add("elektrovodMT3");
-/*46*/  language.SK.add("Názov vodiča :");                     language.CZ.add("Spravne");                     language.EN.add("elektrovodMT3");
-/*47*/  language.SK.add("Zlá vstupná hodnota");                     language.CZ.add("Spravne");                     language.EN.add("elektrovodMT3");
+/*44*/  language.SK.add("Nový vodič");               language.CZ.add("Novej vodič");               language.EN.add("New conductor");
+/*45*/  language.SK.add("Vytvoriť");                 language.CZ.add("Vytvořit");                  language.EN.add("Create");
+/*46*/  language.SK.add("Názov vodiča :");           language.CZ.add("Jméno vodiče :");            language.EN.add("Name of the conductor :");
+/*47*/  language.SK.add("Zlá vstupná hodnota");      language.CZ.add("Zlá vstupní hodnota");       language.EN.add("Incorrect input");
 
 //Conductors_Jdialog_change conductor
 
-/*48*/  language.SK.add("Upraviť vodič");                     language.CZ.add("Spravne");                     language.EN.add("elektrovodMT3");
-/*49*/  language.SK.add("Upraviť");                     language.CZ.add("Spravne");                     language.EN.add("elektrovodMT3");
+/*48*/  language.SK.add("Upraviť vodič");               language.CZ.add("Upravit vodič");               language.EN.add("Change conductor");
+/*49*/  language.SK.add("Upraviť");                     language.CZ.add("Upravit");                     language.EN.add("Change");
 
 
  inicializovane = true;
