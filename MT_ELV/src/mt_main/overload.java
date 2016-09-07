@@ -54,7 +54,7 @@ public class overload {
     private static double dh[]; 
     
 // towers and conductors
-    private static double d;           // conductor diameter [m]
+    private static double d;           // conductor diameter !!!!!! [m] !!!!!!
     private static double g_c;         // specific weight of conductor [N/m]
     
 // type of ice
@@ -113,7 +113,7 @@ public class overload {
     /**
      * extreme ice overload
      */
-    public static double z_1;
+    public static double z_I;
     
     /**
      * combined overload on the conductor with mild wind and extreme ice
@@ -123,12 +123,12 @@ public class overload {
     /**
      * combined overload on the conductor with mild ice and extreme wind
      */
-    public static double z_wI;  
+    public static double z_iW;  
     
     /**
      * extreme wind overload
      */
-    public static double z_w;          
+    public static double z_W;          
     
 // **************** PUBLIC METHODS **************** //
     public void set_variables(){
@@ -156,10 +156,10 @@ public class overload {
         overload.D_i = -1;
         
         // public - results
-        overload.z_1 = -1;
+        overload.z_I = -1;
         overload.z_Iw = -1;
-        overload.z_w = -1;
-        overload.z_wI = -1;
+        overload.z_W = -1;
+        overload.z_iW = -1;
         
         // mainframe - need to be done based on mainframe
              
@@ -263,7 +263,7 @@ public class overload {
      * Computes the response origin coefficient "BB = B^2" [m]
      */
     private void response_coefficient (){
-        overload.BB = 1 / (1 + 3/2 * overload.L_m/overload.L);
+        overload.BB = 1 / (1 + 1.5*(overload.L_m/overload.L));
     }
     
     /**
@@ -343,26 +343,26 @@ public class overload {
     }
     
     /**
-     * Computes extreme ice overload on the conductor "z_1"
+     * Computes extreme ice overload on the conductor "z_I"
      */
     private void overload_extreme_ice(){
-        overload.z_1 = (overload.I_T + overload.g_c) / overload.g_c;
+        overload.z_I = (overload.I_T + overload.g_c) / overload.g_c;
     }
     
     /**
      * Computes combined overload on the conductor with:
      * - mild wind with extreme ice "z_Iw"
-     * - extreme wind with mild ice "z_wI"
+     * - extreme wind with mild ice "z_iW"
      */
     private void overload_combined(){
         overload.z_Iw = Math.sqrt((Math.pow(overload.I_T + overload.g_c,2) + overload.q_wI3*overload.q_wI3)) / overload.g_c;
-        overload.z_wI = Math.sqrt((Math.pow(overload.I_3 + overload.g_c,2) + overload.q_wIT*overload.q_wIT)) / overload.g_c;
+        overload.z_iW = Math.sqrt((Math.pow(overload.I_3 + overload.g_c,2) + overload.q_wIT*overload.q_wIT)) / overload.g_c;
     }
     
     /**
      * Computes extreme wind overload in conductor "z_W"
      */
     private void overload_extreme_wind(){
-        overload.z_w = Math.sqrt((overload.q_wT* overload.q_wT + overload.g_c* overload.g_c)) / overload.g_c;
+        overload.z_W = Math.sqrt((overload.q_wT* overload.q_wT + overload.g_c* overload.g_c)) / overload.g_c;
     }
 }

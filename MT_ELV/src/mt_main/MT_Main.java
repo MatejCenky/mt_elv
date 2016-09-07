@@ -33,7 +33,10 @@ public class MT_Main {
             }
 
         }
-
+        
+        //System.out.println("Overload class testing...");
+        //overload_test.compute();
+        
         startPanel.main(args);
 
         while (true) { //wait for information that user has choosen a language
