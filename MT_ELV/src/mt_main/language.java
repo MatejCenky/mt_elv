@@ -97,6 +97,9 @@ public static void constructor(){
 /*48*/  language.SK.add("Upraviť vodič");               language.CZ.add("Upravit vodič");               language.EN.add("Change conductor");
 /*49*/  language.SK.add("Upraviť");                     language.CZ.add("Upravit");                     language.EN.add("Change");
 
+//Conductors_Jdialog_main_save memory button 
+
+/*50*/  language.SK.add("Uložiť cestu");                     language.CZ.add("Ulozit cestu");                     language.EN.add("Save path");
 
  inicializovane = true;
 }

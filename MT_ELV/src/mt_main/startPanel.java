@@ -11,6 +11,7 @@ package mt_main;
 import java.awt.Desktop;
 import java.awt.Toolkit;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -19,6 +20,7 @@ import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.StandardCopyOption;
+import java.util.Scanner;
 
 /**
  *
@@ -34,6 +36,22 @@ public class startPanel extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null); //center of window position
         seticon();
+        
+     String userhome = System.getProperty("user.dir");
+     File subor = new File(userhome + "\\resources\\" + "memory.txt");
+     try {
+         Scanner input = new Scanner(subor);
+         String EmptyLine;
+         
+         EmptyLine= input.nextLine(); // first empty line info line
+         conductor_memory_path_plus_filename=input.nextLine();
+         
+         
+          } catch (FileNotFoundException ex) {
+
+        }
+     
+        
     }
 
     /**
@@ -301,6 +319,11 @@ public class startPanel extends javax.swing.JFrame {
          conductor_password_set =X;
         
     }
+    //posiela prikaz či existuje subor s lanovou databazou tam kde ma podla memory file
+    public static String set_memory_path_conductor() {
+         return conductor_memory_path_plus_filename;
+        
+    }
     
     /**
      * @param args the command line arguments
@@ -367,6 +390,7 @@ public class startPanel extends javax.swing.JFrame {
 public static Integer languageOption  ;
  public static Boolean Clicked_NEW = false;
  public static Boolean conductor_password_set = false;
+ public static String conductor_memory_path_plus_filename="none";
  
     private void seticon() {
      setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/mt_graphic/" + "icon.png")));
