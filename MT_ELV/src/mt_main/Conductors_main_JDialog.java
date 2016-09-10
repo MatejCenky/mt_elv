@@ -118,7 +118,7 @@ public class Conductors_main_JDialog extends javax.swing.JDialog {
         BUtton_change_conductor = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         textAreaConductorInfo = new javax.swing.JTextArea();
-        BUtton_load_database1 = new javax.swing.JButton();
+        BUtton_save_path_database = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
@@ -222,10 +222,10 @@ public class Conductors_main_JDialog extends javax.swing.JDialog {
         textAreaConductorInfo.setRows(5);
         jScrollPane2.setViewportView(textAreaConductorInfo);
 
-        BUtton_load_database1.setText(language.language_label(languageOption,50));
-        BUtton_load_database1.addActionListener(new java.awt.event.ActionListener() {
+        BUtton_save_path_database.setText(language.language_label(languageOption,50));
+        BUtton_save_path_database.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BUtton_load_database1ActionPerformed(evt);
+                BUtton_save_path_databaseActionPerformed(evt);
             }
         });
 
@@ -252,7 +252,7 @@ public class Conductors_main_JDialog extends javax.swing.JDialog {
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(24, 24, 24)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(BUtton_load_database1, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(BUtton_save_path_database, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(jLabel3)
                                         .addGroup(layout.createSequentialGroup()
@@ -311,7 +311,7 @@ public class Conductors_main_JDialog extends javax.swing.JDialog {
                     .addComponent(Textfiled_nameofLoadedfile, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(BUtton_load_database))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(BUtton_load_database1)
+                .addComponent(BUtton_save_path_database)
                 .addGap(26, 26, 26))
         );
 
@@ -509,7 +509,7 @@ public class Conductors_main_JDialog extends javax.swing.JDialog {
     private void SaveDatabase(ArrayList<Object[]> X) {
 
         try {
-            File ulozenieSubor = new File(this.filenamePath + "\\" + this.filename);
+            File ulozenieSubor = new File(filenamePath_plus_filename);
             PrintWriter fw = new PrintWriter(ulozenieSubor);
             fw.println("....next conductor....");
             fw.println("Database file do not modify or I will hunt you and eat you alive. JB");
@@ -537,6 +537,7 @@ public class Conductors_main_JDialog extends javax.swing.JDialog {
             }
 
             fw.close();
+            mainframe.lanochangeinDatabaze();
         } catch (FileNotFoundException ex) {
             Logger.getLogger(Conductors_main_JDialog.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -625,9 +626,23 @@ public class Conductors_main_JDialog extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_textfiled_password_typeingKeyPressed
 
-    private void BUtton_load_database1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BUtton_load_database1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_BUtton_load_database1ActionPerformed
+    private void BUtton_save_path_databaseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BUtton_save_path_databaseActionPerformed
+        
+         String userhome = System.getProperty("user.dir");
+     File subor = new File(userhome + "\\resources\\" + "memory.txt");
+     try {
+         PrintWriter fw = new PrintWriter(subor);
+         fw.println("Memory file do not edit");
+         fw.println(filenamePath_plus_filename);
+        fw.close();
+         
+          } catch (FileNotFoundException ex) {
+
+        }
+        
+        
+        
+    }//GEN-LAST:event_BUtton_save_path_databaseActionPerformed
 
     /**
      * @param args the command line arguments
@@ -680,7 +695,7 @@ public class Conductors_main_JDialog extends javax.swing.JDialog {
     private javax.swing.JButton BUtton_change_conductor;
     private javax.swing.JButton BUtton_delete_conductor;
     private javax.swing.JButton BUtton_load_database;
-    private javax.swing.JButton BUtton_load_database1;
+    private javax.swing.JButton BUtton_save_path_database;
     private javax.swing.JButton Button_new_conductor;
     private javax.swing.JButton Button_set_password;
     private javax.swing.JTextField Textfiled_nameofLoadedfile;
@@ -700,7 +715,7 @@ public class Conductors_main_JDialog extends javax.swing.JDialog {
     private String filenamePath;
     private String filenamePath_plus_filename;
     private String memory_path_plus_filename_here;
-    public static boolean memory_path_plus_filename_existence = false;
+    private boolean memory_path_plus_filename_existence = false;
     
     private final ArrayList<Object[]> Databaza = new ArrayList<>();
     private final ArrayList<Object[]> Databaza_help_sort = new ArrayList<>();

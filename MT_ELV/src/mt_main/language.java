@@ -101,6 +101,37 @@ public static void constructor(){
 
 /*50*/  language.SK.add("Uložiť cestu");                     language.CZ.add("Ulozit cestu");                     language.EN.add("Save path");
 
+
+// Main_frame
+
+/*51*/  language.SK.add("Zoznam kotevných úsekov");                            language.CZ.add("Ulozit cestu");                     language.EN.add("Save path");
+/*52*/  language.SK.add("Kotevný úsek");                     language.CZ.add("Ulozit cestu");                     language.EN.add("Save path");
+
+// Main_frame_tool_tip
+
+/*53*/  language.SK.add("Uložiť projekt");                     language.CZ.add("Ulozit cestu");                     language.EN.add("Save path");
+/*54*/  language.SK.add("Uložiť projekt ako");                     language.CZ.add("Ulozit cestu");                     language.EN.add("Save path");
+/*55*/  language.SK.add("Uložiť výsledky projektu");                     language.CZ.add("Ulozit cestu");                     language.EN.add("Save path");
+/*56*/  language.SK.add("Nový koťevný úsek");                     language.CZ.add("Ulozit cestu");                     language.EN.add("Save path");
+/*57*/  language.SK.add("Zmazať koťevný úsek");                     language.CZ.add("Ulozit cestu");                     language.EN.add("Save path");
+/*58*/  language.SK.add("Spustiť výpočet");                     language.CZ.add("Ulozit cestu");                     language.EN.add("Save path");
+/*59*/  language.SK.add("Tlač do PDF");                     language.CZ.add("Ulozit cestu");                     language.EN.add("Save path");
+
+// Main_frame_jdialog_create_kotevny_usek
+/*60*/  language.SK.add("Nový koťevný úsek");                     language.CZ.add("Ulozit cestu");                     language.EN.add("Save path");
+/*61*/  language.SK.add("Vytvoriť");                     language.CZ.add("Ulozit cestu");                     language.EN.add("Save path");
+/*62*/  language.SK.add("Názov");                     language.CZ.add("Ulozit cestu");                     language.EN.add("Save path");
+
+// Main_frame_tool_tip2
+
+/*63*/  language.SK.add("Označiť všetky kotevné úseky");                     language.CZ.add("Ulozit cestu");                     language.EN.add("Save path");
+/*64*/  language.SK.add("Odznačiť všetky kotevné úseky");                     language.CZ.add("Ulozit cestu");                     language.EN.add("Save path");
+
+// main_frame
+
+/*65*/  language.SK.add("Lano");                     language.CZ.add("Ulozit cestu");                     language.EN.add("Save path");
+
+
  inicializovane = true;
 }
  

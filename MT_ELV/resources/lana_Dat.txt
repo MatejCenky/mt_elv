@@ -1,13 +1,13 @@
 ....next conductor....
 Database file do not modify or I will hunt you and eat you alive. JB
-1111111111JEBAK_DO OKA_TEST 
-123.0 mm
-234.0 mm2
-345.0 kg/m
-456.0 MPa
-789.0 1/°C
-66.0 N
-778.0
+111111111332
+1.0 mm
+1.0 mm2
+1.0 kg/m
+1.0 MPa
+1.0 1/°C
+1.0 N
+1.0
 ....next conductor....
 114-AL3/102-ST5E trud
 19.1 mm

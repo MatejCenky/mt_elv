@@ -9,6 +9,14 @@
 package mt_main;
 
 import java.awt.Toolkit;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.ArrayList;
+import java.util.Scanner;
+import javax.swing.JFileChooser;
+import javax.swing.filechooser.FileNameExtensionFilter;
+import javax.swing.table.DefaultTableModel;
+import static mt_main.startPanel.languageOption;
 
 /**
  *
@@ -25,6 +33,10 @@ public class mainframe extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
         seticon();
+        this.modelTable = (DefaultTableModel) Table_kotevne_useky.getModel();
+        nacitatDatabazuLan();
+        
+        
         
         
     }
@@ -39,17 +51,22 @@ public class mainframe extends javax.swing.JFrame {
     private void initComponents() {
 
         jRadioButtonMenuItem1 = new javax.swing.JRadioButtonMenuItem();
-        jButton1 = new javax.swing.JButton();
-        m_textfield = new javax.swing.JTextField();
-        S_textfield = new javax.swing.JTextField();
-        gama_textfield = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jScrollPane4 = new javax.swing.JScrollPane();
-        jTable3 = new javax.swing.JTable();
-        jScrollPane5 = new javax.swing.JScrollPane();
-        jTable4 = new javax.swing.JTable();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        Table_kotevne_useky = new javax.swing.JTable();
+        Label_kotevne_useky = new javax.swing.JLabel();
+        jToolBar1 = new javax.swing.JToolBar();
+        jPanel1 = new javax.swing.JPanel();
+        Button_Icon_save = new javax.swing.JButton();
+        Button_Icon_save_as = new javax.swing.JButton();
+        Button_Icon_save_results = new javax.swing.JButton();
+        Button_Icon_delete_row_table_kotevny_usek = new javax.swing.JButton();
+        Button_Icon_arr_row_table_kotevny_usek = new javax.swing.JButton();
+        Button_Icon_calculate = new javax.swing.JButton();
+        Button_Icon_export_PDF = new javax.swing.JButton();
+        Button_Icon_select_all_kotevny_usek = new javax.swing.JButton();
+        Button_Icon_deselect_all_kotevny_usek = new javax.swing.JButton();
+        Label_kotevne_useky1 = new javax.swing.JLabel();
+        jComboBox_conductor_chooser = new javax.swing.JComboBox<>();
 
         jRadioButtonMenuItem1.setSelected(true);
         jRadioButtonMenuItem1.setText("jRadioButtonMenuItem1");
@@ -58,148 +75,303 @@ public class mainframe extends javax.swing.JFrame {
         setBackground(new java.awt.Color(204, 204, 204));
         setResizable(false);
 
-        jButton1.setBackground(new java.awt.Color(0, 102, 0));
-        jButton1.setForeground(new java.awt.Color(0, 0, 0));
-        jButton1.setText("Compute!");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+        Table_kotevne_useky.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "", ""
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Boolean.class, java.lang.String.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
             }
         });
+        Table_kotevne_useky.setRowSelectionAllowed(false);
+        Table_kotevne_useky.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        jScrollPane1.setViewportView(Table_kotevne_useky);
+        if (Table_kotevne_useky.getColumnModel().getColumnCount() > 0) {
+            Table_kotevne_useky.getColumnModel().getColumn(0).setResizable(false);
+            Table_kotevne_useky.getColumnModel().getColumn(0).setPreferredWidth(5);
+            Table_kotevne_useky.getColumnModel().getColumn(1).setResizable(false);
+            Table_kotevne_useky.getColumnModel().getColumn(1).setPreferredWidth(200);
+            Table_kotevne_useky.getColumnModel().getColumn(1).setHeaderValue(language.language_label(languageOption,51));
+        }
 
-        gama_textfield.setText("answer");
+        Label_kotevne_useky.setText(language.language_label(languageOption, 51));
 
-        jLabel1.setText(language.language_label(2,1));
+        jToolBar1.setRollover(true);
 
-        jLabel2.setText("gama [N/m*mm^2]");
-
-        jLabel3.setText("S [mm^2]");
-
-        jTable3.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null}
-            },
-            new String [] {
-                "Title 1"
+        Button_Icon_save.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mt_graphic/Save-24.png"))); // NOI18N
+        Button_Icon_save.setFocusable(false);
+        Button_Icon_save.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        Button_Icon_save.setPreferredSize(new java.awt.Dimension(48, 48));
+        Button_Icon_save.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        Button_Icon_save.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Button_Icon_saveActionPerformed(evt);
             }
-        ));
-        jScrollPane4.setViewportView(jTable3);
+        });
+        Button_Icon_save.setToolTipText(language.language_label(languageOption, 53));
 
-        jTable4.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null}
-            },
-            new String [] {
-                "Title 1"
+        Button_Icon_save_as.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mt_graphic/Save-as-24.png"))); // NOI18N
+        Button_Icon_save_as.setFocusable(false);
+        Button_Icon_save_as.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        Button_Icon_save_as.setPreferredSize(new java.awt.Dimension(48, 48));
+        Button_Icon_save_as.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        Button_Icon_save_as.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Button_Icon_save_asActionPerformed(evt);
             }
-        ));
-        jScrollPane5.setViewportView(jTable4);
+        });
+        Button_Icon_save_as.setToolTipText(language.language_label(languageOption, 54));
+
+        Button_Icon_save_results.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mt_graphic/Save-results-24.png"))); // NOI18N
+        Button_Icon_save_results.setFocusable(false);
+        Button_Icon_save_results.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        Button_Icon_save_results.setPreferredSize(new java.awt.Dimension(48, 48));
+        Button_Icon_save_results.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        Button_Icon_save_results.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Button_Icon_save_resultsActionPerformed(evt);
+            }
+        });
+        Button_Icon_save_results.setToolTipText(language.language_label(languageOption, 55));
+
+        Button_Icon_delete_row_table_kotevny_usek.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mt_graphic/Delete Row-24.png"))); // NOI18N
+        Button_Icon_delete_row_table_kotevny_usek.setFocusable(false);
+        Button_Icon_delete_row_table_kotevny_usek.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        Button_Icon_delete_row_table_kotevny_usek.setPreferredSize(new java.awt.Dimension(48, 48));
+        Button_Icon_delete_row_table_kotevny_usek.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        Button_Icon_delete_row_table_kotevny_usek.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Button_Icon_delete_row_table_kotevny_usekActionPerformed(evt);
+            }
+        });
+        Button_Icon_delete_row_table_kotevny_usek.setToolTipText(language.language_label(languageOption, 57));
+
+        Button_Icon_arr_row_table_kotevny_usek.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mt_graphic/Add Row-24.png"))); // NOI18N
+        Button_Icon_arr_row_table_kotevny_usek.setFocusable(false);
+        Button_Icon_arr_row_table_kotevny_usek.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        Button_Icon_arr_row_table_kotevny_usek.setPreferredSize(new java.awt.Dimension(48, 48));
+        Button_Icon_arr_row_table_kotevny_usek.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        Button_Icon_arr_row_table_kotevny_usek.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Button_Icon_arr_row_table_kotevny_usekActionPerformed(evt);
+            }
+        });
+        Button_Icon_arr_row_table_kotevny_usek.setToolTipText(language.language_label(languageOption, 56));
+
+        Button_Icon_calculate.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mt_graphic/Calculator-24.png"))); // NOI18N
+        Button_Icon_calculate.setFocusable(false);
+        Button_Icon_calculate.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        Button_Icon_calculate.setPreferredSize(new java.awt.Dimension(48, 48));
+        Button_Icon_calculate.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        Button_Icon_calculate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Button_Icon_calculateActionPerformed(evt);
+            }
+        });
+        Button_Icon_calculate.setToolTipText(language.language_label(languageOption, 58));
+
+        Button_Icon_export_PDF.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mt_graphic/PDF-24.png"))); // NOI18N
+        Button_Icon_export_PDF.setFocusable(false);
+        Button_Icon_export_PDF.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        Button_Icon_export_PDF.setPreferredSize(new java.awt.Dimension(48, 48));
+        Button_Icon_export_PDF.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        Button_Icon_export_PDF.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Button_Icon_export_PDFActionPerformed(evt);
+            }
+        });
+        Button_Icon_export_PDF.setToolTipText(language.language_label(languageOption, 59));
+
+        Button_Icon_select_all_kotevny_usek.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mt_graphic/Checked Checkbox-24.png"))); // NOI18N
+        Button_Icon_select_all_kotevny_usek.setFocusable(false);
+        Button_Icon_select_all_kotevny_usek.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        Button_Icon_select_all_kotevny_usek.setPreferredSize(new java.awt.Dimension(48, 48));
+        Button_Icon_select_all_kotevny_usek.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        Button_Icon_select_all_kotevny_usek.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Button_Icon_select_all_kotevny_usekActionPerformed(evt);
+            }
+        });
+        Button_Icon_select_all_kotevny_usek.setToolTipText(language.language_label(languageOption, 63));
+
+        Button_Icon_deselect_all_kotevny_usek.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mt_graphic/Close Window-24.png"))); // NOI18N
+        Button_Icon_deselect_all_kotevny_usek.setFocusable(false);
+        Button_Icon_deselect_all_kotevny_usek.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        Button_Icon_deselect_all_kotevny_usek.setPreferredSize(new java.awt.Dimension(48, 48));
+        Button_Icon_deselect_all_kotevny_usek.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        Button_Icon_deselect_all_kotevny_usek.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Button_Icon_deselect_all_kotevny_usekActionPerformed(evt);
+            }
+        });
+        Button_Icon_deselect_all_kotevny_usek.setToolTipText(language.language_label(languageOption, 64));
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(Button_Icon_save, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(Button_Icon_save_as, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(Button_Icon_save_results, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(46, 46, 46)
+                .addComponent(Button_Icon_arr_row_table_kotevny_usek, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(Button_Icon_delete_row_table_kotevny_usek, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(Button_Icon_select_all_kotevny_usek, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(Button_Icon_deselect_all_kotevny_usek, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(53, 53, 53)
+                .addComponent(Button_Icon_calculate, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(Button_Icon_export_PDF, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(638, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(Button_Icon_save, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Button_Icon_save_as, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Button_Icon_save_results, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Button_Icon_delete_row_table_kotevny_usek, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Button_Icon_arr_row_table_kotevny_usek, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Button_Icon_calculate, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Button_Icon_export_PDF, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(16, 16, 16))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(Button_Icon_select_all_kotevny_usek, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Button_Icon_deselect_all_kotevny_usek, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jToolBar1.add(jPanel1);
+
+        Label_kotevne_useky1.setText(language.language_label(languageOption, 65));
+
+        jComboBox_conductor_chooser.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox_conductor_chooser.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox_conductor_chooserActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(24, 24, 24)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButton1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(gama_textfield, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(m_textfield, javax.swing.GroupLayout.DEFAULT_SIZE, 78, Short.MAX_VALUE)
-                                .addComponent(S_textfield))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(673, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Label_kotevne_useky))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(Label_kotevne_useky1)
+                    .addComponent(jComboBox_conductor_chooser, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(jToolBar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(24, 24, 24)
+                .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Label_kotevne_useky)
+                    .addComponent(Label_kotevne_useky1))
+                .addGap(7, 7, 7)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 343, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(m_textfield, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel1))
-                                .addGap(11, 11, 11)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(S_textfield, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(2, 2, 2)
-                                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(11, 11, 11)
-                                .addComponent(gama_textfield, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(11, 11, 11)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jButton1)
-                                    .addComponent(jLabel2)))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 343, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(47, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jComboBox_conductor_chooser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(283, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void Button_Icon_saveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button_Icon_saveActionPerformed
         // TODO add your handling code here:
-        double m = Double.parseDouble(m_textfield.getText());
-        double S = Double.parseDouble(S_textfield.getText());
-        //gama_textfield.setText(String.valueOf(state_equation.gama(m,S)));
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_Button_Icon_saveActionPerformed
 
+    private void Button_Icon_save_asActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button_Icon_save_asActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Button_Icon_save_asActionPerformed
+
+    private void Button_Icon_save_resultsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button_Icon_save_resultsActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Button_Icon_save_resultsActionPerformed
+
+    private void Button_Icon_arr_row_table_kotevny_usekActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button_Icon_arr_row_table_kotevny_usekActionPerformed
+     mainframe_new_kotevny_usek mainframe_new_kotevny_usek_JDialog_window = new mainframe_new_kotevny_usek(this, rootPaneCheckingEnabled);
+        mainframe_new_kotevny_usek_JDialog_window.setVisible(true);
+
+       if (existnewkotevnyusek == true){  // ak pride že vytvorit od Jdialog tak vytvor ak uzivatel zavie Jdilog križiok tam nie
+       modelTable.addRow(new Object[]{(Boolean) false,(String) new_kotevny_usek_name});
+       existnewkotevnyusek = false;
+       }
+        
+    }//GEN-LAST:event_Button_Icon_arr_row_table_kotevny_usekActionPerformed
+
+    private void Button_Icon_delete_row_table_kotevny_usekActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button_Icon_delete_row_table_kotevny_usekActionPerformed
+       
+     int selectedRow = Table_kotevne_useky.getSelectedRow();
+     
+     if ( selectedRow != -1){
+        modelTable.removeRow(selectedRow); 
+     }
+        
+    }//GEN-LAST:event_Button_Icon_delete_row_table_kotevny_usekActionPerformed
+
+    private void Button_Icon_calculateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button_Icon_calculateActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Button_Icon_calculateActionPerformed
+
+    private void Button_Icon_export_PDFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button_Icon_export_PDFActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Button_Icon_export_PDFActionPerformed
+
+    private void Button_Icon_select_all_kotevny_usekActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button_Icon_select_all_kotevny_usekActionPerformed
+        int rowCount = Table_kotevne_useky.getRowCount();
+            //Remove rows one by one from the end of the table
+            for (int i = rowCount - 1; i >= 0; i--) {
+                Table_kotevne_useky.setValueAt(true, i, 0);
+            }
+    }//GEN-LAST:event_Button_Icon_select_all_kotevny_usekActionPerformed
+
+    private void Button_Icon_deselect_all_kotevny_usekActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button_Icon_deselect_all_kotevny_usekActionPerformed
+         int rowCount = Table_kotevne_useky.getRowCount();
+            //Remove rows one by one from the end of the table
+            for (int i = rowCount - 1; i >= 0; i--) {
+                Table_kotevne_useky.setValueAt(false, i, 0);
+            }
+    }//GEN-LAST:event_Button_Icon_deselect_all_kotevny_usekActionPerformed
+
+    private void jComboBox_conductor_chooserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox_conductor_chooserActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox_conductor_chooserActionPerformed
+
+ 
+  
+  public static void lanochangeinDatabaze() {
+  nacitatDatabazuLan();      
+        
+    }
     /**
      * @param args the command line arguments
      */
@@ -237,23 +409,151 @@ public class mainframe extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField S_textfield;
-    private javax.swing.JTextField gama_textfield;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
+    private javax.swing.JButton Button_Icon_arr_row_table_kotevny_usek;
+    private javax.swing.JButton Button_Icon_calculate;
+    private javax.swing.JButton Button_Icon_delete_row_table_kotevny_usek;
+    private javax.swing.JButton Button_Icon_deselect_all_kotevny_usek;
+    private javax.swing.JButton Button_Icon_export_PDF;
+    private javax.swing.JButton Button_Icon_save;
+    private javax.swing.JButton Button_Icon_save_as;
+    private javax.swing.JButton Button_Icon_save_results;
+    private javax.swing.JButton Button_Icon_select_all_kotevny_usek;
+    private javax.swing.JLabel Label_kotevne_useky;
+    private static javax.swing.JLabel Label_kotevne_useky1;
+    private javax.swing.JTable Table_kotevne_useky;
+    private static javax.swing.JComboBox<String> jComboBox_conductor_chooser;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem1;
-    private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JScrollPane jScrollPane5;
-    private javax.swing.JTable jTable3;
-    private javax.swing.JTable jTable4;
-    private javax.swing.JTextField m_textfield;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JToolBar jToolBar1;
     // End of variables declaration//GEN-END:variables
+DefaultTableModel modelTable;
+public static String new_kotevny_usek_name;
+public static boolean existnewkotevnyusek = false;
+private static String filename = "new_file";
+    private static String filenamePath;
+    private static String filenamePath_plus_filename;
+    private static String memory_path_plus_filename_here;
+    private static boolean memory_path_plus_filename_existence = false;
+
+    private static final ArrayList<Object[]> Databaza = new ArrayList<>();
+public static javax.swing.JLabel Lano_listener_JLabel_Maska;
+
 
     private void seticon() {
        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/mt_graphic/" + "icon.png")));
     }
     
+    public static void  new_kotevny_usek_jdialog (String X){
+        new_kotevny_usek_name = X;
+        
+    }
+    
+    public static boolean newkotevnyusekstatus(boolean X) {
+        existnewkotevnyusek = X;
+        return existnewkotevnyusek;
+    }
+    
+    private static void nacitatDatabazuLan(){
+        
+    String  memory_path_plus_filename  = startPanel.set_memory_path_conductor();
+        
+        if(memory_path_plus_filename.equals("none")){}
+        else{
+         memory_path_plus_filename_here  = startPanel.set_memory_path_conductor();
+         memory_path_plus_filename_existence=true;
+         
+        }
+        
+    if ( memory_path_plus_filename_existence == false){
+        
+        
+        
+        String userhome = System.getProperty("user.dir");          //userhome is home folder of program
+        JFileChooser chooser = new JFileChooser(userhome + "\\resources");  //key files are stored in resources
+        FileNameExtensionFilter txtfilter = new FileNameExtensionFilter(
+                language.language_label(languageOption, 32), "txt");                                // whitch type of files are we looking for
+        chooser.setDialogTitle(language.language_label(languageOption, 31));   // title for Jfile chooser window
+        chooser.setFileFilter(txtfilter);                                   // Txt filter for choosing file
+
+        chooser.showOpenDialog(null);
+        File f = chooser.getSelectedFile();
+        filenamePath = f.getParent();                                      //get full path of selected file
+
+        filename = f.getName();                                            // get full name of selected file
+
+                          //set nname of loaded file intext field
+
+        filenamePath_plus_filename= filenamePath + "\\" + filename;        // load entire file into table and memory of  proram
+       }else{
+        filenamePath_plus_filename = memory_path_plus_filename_here;
+        memory_path_plus_filename_existence = false;
+       }
+        File subor = new File(filenamePath_plus_filename);
+        try {
+            Scanner input = new Scanner(subor);                                 // reading the file
+
+            String nameOfConductor = "empty";                                             //define readind variables
+            Double Diameter = 0.;
+            Double CrossSection = 0.;
+            Double unitWeight = 0.;
+            Double modulofFlexibility = 0.;
+            Double koeficientOfTermalExpension = 0.;
+            Double MathematicalCarringCapacity = 0.;
+            Double WeightRationCoreAndConductor = 0.;
+            String EmptyLine;
+
+            EmptyLine = input.nextLine();
+            EmptyLine = input.nextLine(); // read first line and unlock the input.hasnext
+            Integer counter = 0;
+            // ochrana pred dualnym nacitavanim
+                        jComboBox_conductor_chooser.removeAllItems();
+                             Databaza.removeAll(Databaza);
+            
+             while (input.hasNext()) {
+                Object[] Conductor = new Object[7];                                //create object ONE conductor with above parameters
+
+                nameOfConductor = input.nextLine();
+
+                Diameter = Double.valueOf(input.next());
+                EmptyLine = input.nextLine();
+                CrossSection = Double.valueOf(input.next());
+                EmptyLine = input.nextLine();
+                unitWeight = Double.valueOf(input.next());
+                EmptyLine = input.nextLine();
+                modulofFlexibility = Double.valueOf(input.next());
+                EmptyLine = input.nextLine();
+                koeficientOfTermalExpension = Double.valueOf(input.next());
+                EmptyLine = input.nextLine();
+                MathematicalCarringCapacity = Double.valueOf(input.next());
+                EmptyLine = input.nextLine();
+                WeightRationCoreAndConductor = Double.valueOf(input.next());
+                EmptyLine = input.nextLine();
+                EmptyLine = input.nextLine();
+
+                //vytvorim objekt Conductor a do neho vložim data    
+                Conductor = new Object[]{(String) nameOfConductor, (double) Diameter, (double) CrossSection, (double) unitWeight, (double) modulofFlexibility, (double) koeficientOfTermalExpension, (double) MathematicalCarringCapacity, (double) WeightRationCoreAndConductor};
+                //vložim od konečnej array           
+                Databaza.add(Conductor);
+
+                if (EmptyLine.equals("EMD_OF_FILE")) {
+                    break;
+                }
+
+            }
+            
+
+            int numberofElements = Databaza.size();             //pregeneruj tabulku a nakresli ju
+            for (int i = 0; i <= numberofElements - 1; i++) {
+                Object[] Conductor = new Object[7];
+                Conductor = Databaza.get(i);
+                jComboBox_conductor_chooser.addItem((String) Conductor[0]); 
+            }
+
+        } catch (FileNotFoundException ex) {
+
+        }
+    
+    }
 
 }
