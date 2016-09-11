@@ -35,7 +35,7 @@ public class mainframe extends javax.swing.JFrame {
         seticon();
         this.modelTable = (DefaultTableModel) Table_kotevne_useky.getModel();
         nacitatDatabazuLan();
-        
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         
         
         
@@ -66,7 +66,7 @@ public class mainframe extends javax.swing.JFrame {
         Button_Icon_select_all_kotevny_usek = new javax.swing.JButton();
         Button_Icon_deselect_all_kotevny_usek = new javax.swing.JButton();
         Label_kotevne_useky1 = new javax.swing.JLabel();
-        jComboBox_conductor_chooser = new javax.swing.JComboBox<>();
+        Button_Icon_deselect_all_kotevny_usek1 = new javax.swing.JButton();
 
         jRadioButtonMenuItem1.setSelected(true);
         jRadioButtonMenuItem1.setText("jRadioButtonMenuItem1");
@@ -270,6 +270,18 @@ public class mainframe extends javax.swing.JFrame {
             }
         });
 
+        Button_Icon_deselect_all_kotevny_usek1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mt_graphic/Close Window-24.png"))); // NOI18N
+        Button_Icon_deselect_all_kotevny_usek1.setFocusable(false);
+        Button_Icon_deselect_all_kotevny_usek1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        Button_Icon_deselect_all_kotevny_usek1.setPreferredSize(new java.awt.Dimension(48, 48));
+        Button_Icon_deselect_all_kotevny_usek1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        Button_Icon_deselect_all_kotevny_usek1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Button_Icon_deselect_all_kotevny_usek1ActionPerformed(evt);
+            }
+        });
+        Button_Icon_deselect_all_kotevny_usek.setToolTipText(language.language_label(languageOption, 64));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -283,6 +295,8 @@ public class mainframe extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(Label_kotevne_useky1)
                     .addComponent(jComboBox_conductor_chooser, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(41, 41, 41)
+                .addComponent(Button_Icon_deselect_all_kotevny_usek1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addComponent(jToolBar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
@@ -292,13 +306,16 @@ public class mainframe extends javax.swing.JFrame {
                 .addGap(24, 24, 24)
                 .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Label_kotevne_useky)
-                    .addComponent(Label_kotevne_useky1))
-                .addGap(7, 7, 7)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBox_conductor_chooser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(Label_kotevne_useky)
+                            .addComponent(Label_kotevne_useky1))
+                        .addGap(7, 7, 7)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jComboBox_conductor_chooser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(Button_Icon_deselect_all_kotevny_usek1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(283, Short.MAX_VALUE))
         );
 
@@ -366,6 +383,10 @@ public class mainframe extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBox_conductor_chooserActionPerformed
 
+    private void Button_Icon_deselect_all_kotevny_usek1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button_Icon_deselect_all_kotevny_usek1ActionPerformed
+        nacitatDatabazuLan();   
+    }//GEN-LAST:event_Button_Icon_deselect_all_kotevny_usek1ActionPerformed
+
  
   
   public static void lanochangeinDatabaze() {
@@ -413,6 +434,7 @@ public class mainframe extends javax.swing.JFrame {
     private javax.swing.JButton Button_Icon_calculate;
     private javax.swing.JButton Button_Icon_delete_row_table_kotevny_usek;
     private javax.swing.JButton Button_Icon_deselect_all_kotevny_usek;
+    private javax.swing.JButton Button_Icon_deselect_all_kotevny_usek1;
     private javax.swing.JButton Button_Icon_export_PDF;
     private javax.swing.JButton Button_Icon_save;
     private javax.swing.JButton Button_Icon_save_as;
@@ -421,7 +443,7 @@ public class mainframe extends javax.swing.JFrame {
     private javax.swing.JLabel Label_kotevne_useky;
     private static javax.swing.JLabel Label_kotevne_useky1;
     private javax.swing.JTable Table_kotevne_useky;
-    private static javax.swing.JComboBox<String> jComboBox_conductor_chooser;
+    private static final javax.swing.JComboBox<String> jComboBox_conductor_chooser = new javax.swing.JComboBox<>();
     private javax.swing.JPanel jPanel1;
     private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem1;
     private javax.swing.JScrollPane jScrollPane1;
