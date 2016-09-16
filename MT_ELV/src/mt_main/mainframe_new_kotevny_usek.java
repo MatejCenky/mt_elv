@@ -64,6 +64,11 @@ public class mainframe_new_kotevny_usek extends javax.swing.JDialog {
                 jTextField1ActionPerformed(evt);
             }
         });
+        jTextField1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTextField1KeyReleased(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -105,6 +110,17 @@ public class mainframe_new_kotevny_usek extends javax.swing.JDialog {
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
+
+    private void jTextField1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyReleased
+     
+        int key = evt.getKeyCode();
+        
+        if(key == 10) 
+        {createButton.doClick();}
+        else{
+        
+        }
+    }//GEN-LAST:event_jTextField1KeyReleased
 
     /**
      * closing function

@@ -9,19 +9,10 @@
 package mt_main;
 
 import java.awt.Toolkit;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.PrintWriter;
 import java.util.ArrayList;
-import java.util.Scanner;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.JFileChooser;
+import javax.swing.JDialog;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
-import javax.swing.event.TableModelEvent;
-import javax.swing.event.TableModelListener;
-import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableModel;
 import static mt_main.startPanel.languageOption;
 
@@ -49,19 +40,23 @@ public class mainframe_namrazova_oblast_jDialog extends javax.swing.JDialog {
                 if (tableListenerswitch == true) {
                     int rowNumber =  jTable.getSelectedRow(); //- (e.getFirstIndex()-e.getLastIndex());
 
+                    if ( rowNumber == 8){
+                        
+                    run_vlastne_hodnoty();
+                        
+                    
+                    }
+                    
                     //  int rowNumber2 = e.getLastIndex();
                     //  if(rowNumber > rowNumber2) {rowNumber=rowNumber2;}
-                    Object[] Conductor = new Object[7];
-                     Conductor = Databaza_namrazova_oblast.get(rowNumber);
+                    Object[] oblast = new Object[3];
+                     oblast = Databaza_namrazova_oblast.get(rowNumber);
 
                     textAreaConductorInfo.setText(
-                            language.language_label(languageOption, 33) + String.valueOf(Conductor[1]) + " mm" + "\r\n"
-                            + language.language_label(languageOption, 34) + String.valueOf(Conductor[2]) + " mm2" + "\r\n"
-                            + language.language_label(languageOption, 35) + String.valueOf(Conductor[3]) + " kg/m" + "\r\n"
-                            + language.language_label(languageOption, 36) + String.valueOf(Conductor[4]) + " MPa" + "\r\n"
-                            + language.language_label(languageOption, 37) + String.valueOf(Conductor[5]) + " 1/°C" + "\r\n"
-                            + language.language_label(languageOption, 38) + String.valueOf(Conductor[6]) + " N" + "\r\n"
-                            + language.language_label(languageOption, 39) + String.valueOf(Conductor[7]) + " " + "\r\n"
+                            language.language_label(languageOption, 67) + "  " + String.valueOf(jTable.getValueAt(rowNumber, 0)) + "  - NORMA XYZ -  " + "\r\n"
+                            +"\r\n"
+                            + language.language_label(languageOption, 70) + " d£ 30 mm , Ir = " + String.valueOf(oblast[0]) + " + " + String.valueOf(oblast[1]) + "×d" +  "\r\n"
+                            + language.language_label(languageOption, 70) + " d> 30 mm , Ir = " + String.valueOf(oblast[2]) + " + " + String.valueOf(oblast[3]) + "×d" +  "\r\n"
                     );
 
                 }
@@ -77,7 +72,7 @@ public class mainframe_namrazova_oblast_jDialog extends javax.swing.JDialog {
          modelTable.addRow(new Object[]{(String) "I-8"});
          modelTable.addRow(new Object[]{(String) "I-12"});
          modelTable.addRow(new Object[]{(String) "I-18"});
-         modelTable.addRow(new Object[]{(String) "I-K " + language.language_label(languageOption,69)});
+         modelTable.addRow(new Object[]{(String) "I-K " + language.language_label(languageOption,71)});
          
                Object[] oblast_hodnoty = new Object[3];
      /*I-0*/   oblast_hodnoty = new Object[]{(double) 1.064, (double) 0.1280,(double) 3.963, (double) 0.0314};this.Databaza_namrazova_oblast.add(oblast_hodnoty);
@@ -87,8 +82,8 @@ public class mainframe_namrazova_oblast_jDialog extends javax.swing.JDialog {
      /*I-5*/   oblast_hodnoty = new Object[]{(double) 29.00, (double) 0.668,(double) 43.84, (double) 0.174};this.Databaza_namrazova_oblast.add(oblast_hodnoty);
      /*I-8*/   oblast_hodnoty = new Object[]{(double) 51.70, (double) 0.893,(double) 73.89, (double) 0.153};this.Databaza_namrazova_oblast.add(oblast_hodnoty);
      /*I-12*/  oblast_hodnoty = new Object[]{(double) 83.66, (double) 1.135,(double) 107.8, (double) 0.330};this.Databaza_namrazova_oblast.add(oblast_hodnoty);
-     /*I-18*/  oblast_hodnoty = new Object[]{(double) 133.53, (double) 1.435,(double) 176.58, (double) 0};this.Databaza_namrazova_oblast.add(oblast_hodnoty);
-     /*I-K*/   oblast_hodnoty = new Object[]{(double) 0, (double) 0,(double) 0, (double) 0};
+     /*I-18*/  oblast_hodnoty = new Object[]{(double) 133.53, (double) 1.435,(double) 176.58, (double) 0.0};this.Databaza_namrazova_oblast.add(oblast_hodnoty);
+     /*I-K*/   oblast_hodnoty = new Object[]{(double) 0.0, (double) 0.0,(double) 0.0, (double) 0.0}; this.Databaza_namrazova_oblast.add(oblast_hodnoty);
         //vložim od konečnej array           
         
 
@@ -109,6 +104,7 @@ public class mainframe_namrazova_oblast_jDialog extends javax.swing.JDialog {
         jLabel1 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         textAreaConductorInfo = new javax.swing.JTextArea();
+        button_set = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
@@ -140,7 +136,7 @@ public class mainframe_namrazova_oblast_jDialog extends javax.swing.JDialog {
         jScrollPane1.setViewportView(jTable);
         if (jTable.getColumnModel().getColumnCount() > 0) {
             jTable.getColumnModel().getColumn(0).setResizable(false);
-            jTable.getColumnModel().getColumn(0).setHeaderValue(language.language_label(languageOption,23));
+            jTable.getColumnModel().getColumn(0).setHeaderValue(language.language_label(languageOption,69));
         }
 
         jLabel1.setText(language.language_label(languageOption,68));
@@ -150,21 +146,27 @@ public class mainframe_namrazova_oblast_jDialog extends javax.swing.JDialog {
         textAreaConductorInfo.setRows(5);
         jScrollPane2.setViewportView(textAreaConductorInfo);
 
+        button_set.setText(language.language_label(languageOption, 75));
+        button_set.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                button_setActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(21, 21, 21)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 412, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel1)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                        .addGap(128, 128, 128))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap(21, Short.MAX_VALUE))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(button_set, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 332, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -172,25 +174,60 @@ public class mainframe_namrazova_oblast_jDialog extends javax.swing.JDialog {
                 .addGap(21, 21, 21)
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(button_set))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(24, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void button_setActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_setActionPerformed
+       
+        int rowNumber =  jTable.getSelectedRow();
+       
+        if( rowNumber >= 0 && rowNumber <= 8){
+           Object[] hodnoty = new Object[3];
+           hodnoty = Databaza_namrazova_oblast.get(rowNumber);
+        mainframe.hodnoty_namrazove_oblasti = hodnoty;
+        
+        if (rowNumber == 8){
+        mainframe.namrazove_oblasti_názov_oblasti = "I-K";    
+        }else{
+        mainframe.namrazove_oblasti_názov_oblasti = String.valueOf(jTable.getValueAt(rowNumber, 0));
+        }
+        mainframe.is_namrazove_oblasti_setted=true;
+        disinit();
+       }else{
    
-    public static void newConductorsetter(Object[] X) {
-        newConductor = X;
+        
+       }
+        
+        
+    }//GEN-LAST:event_button_setActionPerformed
+
+   
+    public static void getvlastnehodnoty(Object[] X) {
+        vlastnehodnoty = X;
+        Databaza_namrazova_oblast.set(8, X);
+        
+
+    }
+    public void disinit(){    
+        setVisible(false);
+       setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+    }
+    
+    public  void run_vlastne_hodnoty(){
+         mainframe_namrazova_oblast_vlastna_hodnota_jDialog mainframe_namrazova_oblast_vlastna_hodnota_jDialog_window = new  mainframe_namrazova_oblast_vlastna_hodnota_jDialog(this, rootPaneCheckingEnabled);
+                    mainframe_namrazova_oblast_vlastna_hodnota_jDialog_window.setVisible(true);
 
     }
 
-    public static boolean newConductorstatus(boolean X) {
-        existnewConductor = X;
-        return existnewConductor;
-    }
+
 
 
     /**
@@ -243,6 +280,7 @@ public class mainframe_namrazova_oblast_jDialog extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton button_set;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
@@ -250,10 +288,9 @@ public class mainframe_namrazova_oblast_jDialog extends javax.swing.JDialog {
     private javax.swing.JTextArea textAreaConductorInfo;
     // End of variables declaration//GEN-END:variables
   
-    private String filenamePath_plus_filename;
-    private final ArrayList<Object[]> Databaza_namrazova_oblast = new ArrayList<>();
+    private static final ArrayList<Object[]> Databaza_namrazova_oblast = new ArrayList<>();
     private boolean tableListenerswitch = true;
-    public static Object[] newConductor = new Object[7];
-    public static boolean existnewConductor = false;
+    public static Object[] vlastnehodnoty = new Object[1];
+
     DefaultTableModel modelTable;
 }

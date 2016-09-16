@@ -133,6 +133,18 @@ public static void constructor(){
 /*66*/  language.SK.add("RTS");                     language.CZ.add("Ulozit cestu");                     language.EN.add("Save path");
 /*67*/  language.SK.add("Námrazová oblasť");                     language.CZ.add("Ulozit cestu");                     language.EN.add("Save path");
 
+// main_frame namrazova oblast
+
+/*68*/  language.SK.add("Námrazová oblasť");                     language.CZ.add("Ulozit cestu");                     language.EN.add("Save path");
+/*69*/  language.SK.add("Označenie");                     language.CZ.add("Ulozit cestu");                     language.EN.add("Save path");
+/*70*/  language.SK.add("Ak");                     language.CZ.add("Ulozit cestu");                     language.EN.add("Save path");
+/*71*/  language.SK.add("Vlastná hodnota");                     language.CZ.add("Ulozit cestu");                     language.EN.add("Save path");
+/*72*/  language.SK.add("Vlastná definovanie námrazovej oblasti");                     language.CZ.add("Ulozit cestu");                     language.EN.add("Save path");
+/*73*/  language.SK.add("Použi");                     language.CZ.add("Ulozit cestu");                     language.EN.add("Save path");
+/*74*/  language.SK.add("Zrušiť");                     language.CZ.add("Ulozit cestu");                     language.EN.add("Save path");
+
+/*75*/  language.SK.add("Použiť");                     language.CZ.add("Ulozit cestu");                     language.EN.add("Save path");
+
 
  inicializovane = true;
 }

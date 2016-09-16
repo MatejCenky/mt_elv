@@ -11,6 +11,7 @@ package mt_main;
 import java.awt.Toolkit;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Scanner;
 import javax.swing.JFileChooser;
@@ -37,8 +38,16 @@ public class mainframe extends javax.swing.JFrame {
         nacitatDatabazuLan(); 
         mainframeLodaed=true;// fisrt load oc conductr databaze
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE); // if ju exit window app will not close
+          
+        // setiing importt Variables manually in code
+        Variable_Kh =  1;
+        Variable_Klc = 1;
         
-        
+          
+          
+          
+        // nulovanie   
+        hodnoty_namrazove_oblasti = new Object[]{(double) 0.0,(double) 0.0, (double) 0.0,(double) 0.0};  
         
     }
 
@@ -72,6 +81,8 @@ public class mainframe extends javax.swing.JFrame {
         jSeparator1 = new javax.swing.JSeparator();
         Button_namrazova_oblast = new javax.swing.JButton();
         Label_RTS_velicina = new javax.swing.JLabel();
+        Label_vybrana_namrazova_oblast = new javax.swing.JLabel();
+        jSeparator2 = new javax.swing.JSeparator();
 
         jRadioButtonMenuItem1.setSelected(true);
         jRadioButtonMenuItem1.setText("jRadioButtonMenuItem1");
@@ -285,13 +296,21 @@ public class mainframe extends javax.swing.JFrame {
         });
 
         Button_namrazova_oblast.setText(language.language_label(languageOption, 67));
+        Button_namrazova_oblast.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Button_namrazova_oblastActionPerformed(evt);
+            }
+        });
 
         Label_RTS_velicina.setText("MPa");
+
+        Label_vybrana_namrazova_oblast.setText(namrazove_oblasti_názov_oblasti);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jToolBar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addGap(24, 24, 24)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -299,18 +318,24 @@ public class mainframe extends javax.swing.JFrame {
                     .addComponent(Label_kotevne_useky))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(Label_kotevne_useky1)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(Label_RTS)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(TextField_RTS)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(Label_RTS_velicina))
-                    .addComponent(jComboBox_conductor_chooser, 0, 251, Short.MAX_VALUE)
-                    .addComponent(jSeparator1)
-                    .addComponent(Button_namrazova_oblast, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(Label_kotevne_useky1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jComboBox_conductor_chooser, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jSeparator2)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(Label_vybrana_namrazova_oblast)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jSeparator1)
+                            .addComponent(Button_namrazova_oblast, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addComponent(jToolBar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -318,23 +343,27 @@ public class mainframe extends javax.swing.JFrame {
                 .addGap(24, 24, 24)
                 .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Label_kotevne_useky)
-                    .addComponent(Label_kotevne_useky1))
+                .addComponent(Label_kotevne_useky)
                 .addGap(7, 7, 7)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jComboBox_conductor_chooser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jComboBox_conductor_chooser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Label_kotevne_useky1))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(Label_RTS)
                             .addComponent(TextField_RTS, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(Label_RTS_velicina))
-                        .addGap(3, 3, 3)
-                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 2, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(Button_namrazova_oblast)))
+                        .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 4, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(Label_vybrana_namrazova_oblast)
+                            .addComponent(Button_namrazova_oblast))))
                 .addContainerGap(283, Short.MAX_VALUE))
         );
 
@@ -382,7 +411,7 @@ public class mainframe extends javax.swing.JFrame {
             Object[] Conductor = new Object[7];
             Conductor = Databaza.get(selected_conductor_index_from_JComboBox);
             //vlož 4 premene do state equation 
-            state_equation.get_variables_of_conductor(Conductor);
+            state_equation.set_variables_from_conductor(Conductor);
             
             
             
@@ -417,12 +446,43 @@ public class mainframe extends javax.swing.JFrame {
 
     //listening for conductor option
     private void jComboBox_conductor_chooserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox_conductor_chooserActionPerformed
+       
+        if (mainframeLodaed == true) {
+            
+            //nacitajvodič z jombo box
+            int selected_conductor_index_from_JComboBox = jComboBox_conductor_chooser.getSelectedIndex();
+            Object[] Conductor = new Object[7];
+            Conductor = Databaza.get(selected_conductor_index_from_JComboBox);
+            Variable_RTS = Double.parseDouble(String.valueOf(Conductor[6]))/Double.parseDouble(String.valueOf(Conductor[2]));
+           
+            DecimalFormat df = new DecimalFormat("###.###");  // definovany počet desatinnych miest
+            TextField_RTS.setText(df.format(Variable_RTS));
+            
+            if (is_namrazove_oblasti_setted == true){   //  ak už je zvolena namrazova oblast tk spusti vypocet             
+                Variable_Ir50=vypocet_IR50_namrazove_oblasti();
+            }
+            
+        }  
+        
         
     }//GEN-LAST:event_jComboBox_conductor_chooserActionPerformed
 
     private void TextField_RTSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextField_RTSActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_TextField_RTSActionPerformed
+
+    private void Button_namrazova_oblastActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button_namrazova_oblastActionPerformed
+      
+        mainframe_namrazova_oblast_jDialog mainframe_namrazova_oblast_jDialog_window = new mainframe_namrazova_oblast_jDialog(this, rootPaneCheckingEnabled);
+        mainframe_namrazova_oblast_jDialog_window.setVisible(true);
+
+        if(is_namrazove_oblasti_setted== true){
+        
+        Label_vybrana_namrazova_oblast.setText(namrazove_oblasti_názov_oblasti);
+        Variable_Ir50=vypocet_IR50_namrazove_oblasti();
+        }
+        
+    }//GEN-LAST:event_Button_namrazova_oblastActionPerformed
 
  
   
@@ -481,6 +541,7 @@ public class mainframe extends javax.swing.JFrame {
     private javax.swing.JLabel Label_RTS_velicina;
     private javax.swing.JLabel Label_kotevne_useky;
     private static javax.swing.JLabel Label_kotevne_useky1;
+    private javax.swing.JLabel Label_vybrana_namrazova_oblast;
     private javax.swing.JTable Table_kotevne_useky;
     private javax.swing.JTextField TextField_RTS;
     private static final javax.swing.JComboBox<String> jComboBox_conductor_chooser = new javax.swing.JComboBox<>();
@@ -488,26 +549,40 @@ public class mainframe extends javax.swing.JFrame {
     private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
     private javax.swing.JToolBar jToolBar1;
     // End of variables declaration//GEN-END:variables
 DefaultTableModel modelTable;
 public static String new_kotevny_usek_name;
 public static boolean existnewkotevnyusek = false;
 private static boolean mainframeLodaed = false;
-private static String filename = "new_file";
-    private static String filenamePath;
-    private static String filenamePath_plus_filename;
-    private static String memory_path_plus_filename_here;
-    private static boolean memory_path_plus_filename_existence = false;
 
-    private static final ArrayList<Object[]> Databaza = new ArrayList<>();
+//namrazove oblasti premene
+public static Object[] hodnoty_namrazove_oblasti = new Object[3];
+public static String namrazove_oblasti_názov_oblasti = "----";
+public static boolean is_namrazove_oblasti_setted = false;
+// general variables
+private static String filename = "new_file";
+private static String filenamePath;
+private static String filenamePath_plus_filename;
+private static String memory_path_plus_filename_here;
+private static boolean memory_path_plus_filename_existence = false;
+
+// importnt variables
+private static double  Variable_RTS;
+private static double  Variable_Ir50;
+private static double  Variable_Klc;
+private static double  Variable_Kh;
+    
+// conductor variables
+private static final ArrayList<Object[]> Databaza = new ArrayList<>();
 public static javax.swing.JLabel Lano_listener_JLabel_Maska;
 
-
-    private void seticon() {
+// nastav rohovu ikonu
+private void seticon() {
        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/mt_graphic/" + "icon.png")));
     }
-    
+// zober meno noveho kotevneho useku   
     public static void  new_kotevny_usek_jdialog (String X){
         new_kotevny_usek_name = X;
         
@@ -618,6 +693,32 @@ public static javax.swing.JLabel Lano_listener_JLabel_Maska;
 
         }
     
+    }
+    
+    private static double vypocet_IR50_namrazove_oblasti(){
+        double Ir50 = 0.0;
+        int selected_conductor_index_from_JComboBox = jComboBox_conductor_chooser.getSelectedIndex();
+        Object[] Conductor = new Object[7];
+        Conductor = Databaza.get(selected_conductor_index_from_JComboBox);
+        
+        double diameter = Double.parseDouble(String.valueOf(Conductor[1]));
+        
+        if(diameter <= 30){
+           
+            double hodnota1 = Double.parseDouble(String.valueOf(hodnoty_namrazove_oblasti[0]));
+            double hodnota2 = Double.parseDouble(String.valueOf(hodnoty_namrazove_oblasti[1]));
+            
+            Ir50 = hodnota1 + hodnota2*diameter;
+        }else{
+            
+            double hodnota1 = Double.parseDouble(String.valueOf(hodnoty_namrazove_oblasti[2]));
+            double hodnota2 = Double.parseDouble(String.valueOf(hodnoty_namrazove_oblasti[3]));
+            
+            Ir50 = hodnota1 + hodnota2*diameter;
+        }
+            
+        //System.out.println(Ir50);
+        return Ir50;
     }
 
 }
