@@ -130,6 +130,8 @@ public static void constructor(){
 // main_frame
 
 /*65*/  language.SK.add("Lano");                     language.CZ.add("Ulozit cestu");                     language.EN.add("Save path");
+/*66*/  language.SK.add("RTS");                     language.CZ.add("Ulozit cestu");                     language.EN.add("Save path");
+/*67*/  language.SK.add("Námrazová oblasť");                     language.CZ.add("Ulozit cestu");                     language.EN.add("Save path");
 
 
  inicializovane = true;

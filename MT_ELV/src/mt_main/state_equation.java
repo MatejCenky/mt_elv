@@ -158,9 +158,19 @@ public class state_equation {
         state_equation.sigma_h0 = -1;
         //for example: state_equation.m = mainframe.jText_m.getText();
     }
-    
-    public static void get_variables(){
-        // need to be done based on mainframe
+    /**
+     * get variables of conductor from main frame
+     * @param X conductor object
+     */
+    public static void get_variables_of_conductor(Object[] X){
+       Object[] Conductor = new Object[7];
+       Conductor = X;
+       state_equation.S=Double.valueOf(String.valueOf(Conductor[2])); //cross-section area of the conductor [mm^2]      
+       state_equation.m=Double.valueOf(String.valueOf(Conductor[3])); //weight of the conductor per unit [kg/m]
+       state_equation.E=Double.valueOf(String.valueOf(Conductor[4])); //Young model of elasticity of conductor [MPa]
+       state_equation.alpha=Double.valueOf(String.valueOf(Conductor[5])); //linear expansion coefficient [1/degree_C]
+       //chýbaju premenná diameter , matematická unostnosť, pomer duše FE ku ALFE  
+        
     }
     
     /**

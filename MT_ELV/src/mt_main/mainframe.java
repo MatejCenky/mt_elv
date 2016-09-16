@@ -34,8 +34,9 @@ public class mainframe extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         seticon();
         this.modelTable = (DefaultTableModel) Table_kotevne_useky.getModel();
-        nacitatDatabazuLan();
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        nacitatDatabazuLan(); 
+        mainframeLodaed=true;// fisrt load oc conductr databaze
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE); // if ju exit window app will not close
         
         
         
@@ -66,7 +67,11 @@ public class mainframe extends javax.swing.JFrame {
         Button_Icon_select_all_kotevny_usek = new javax.swing.JButton();
         Button_Icon_deselect_all_kotevny_usek = new javax.swing.JButton();
         Label_kotevne_useky1 = new javax.swing.JLabel();
-        Button_Icon_deselect_all_kotevny_usek1 = new javax.swing.JButton();
+        Label_RTS = new javax.swing.JLabel();
+        TextField_RTS = new javax.swing.JTextField();
+        jSeparator1 = new javax.swing.JSeparator();
+        Button_namrazova_oblast = new javax.swing.JButton();
+        Label_RTS_velicina = new javax.swing.JLabel();
 
         jRadioButtonMenuItem1.setSelected(true);
         jRadioButtonMenuItem1.setText("jRadioButtonMenuItem1");
@@ -270,17 +275,18 @@ public class mainframe extends javax.swing.JFrame {
             }
         });
 
-        Button_Icon_deselect_all_kotevny_usek1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mt_graphic/Close Window-24.png"))); // NOI18N
-        Button_Icon_deselect_all_kotevny_usek1.setFocusable(false);
-        Button_Icon_deselect_all_kotevny_usek1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        Button_Icon_deselect_all_kotevny_usek1.setPreferredSize(new java.awt.Dimension(48, 48));
-        Button_Icon_deselect_all_kotevny_usek1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        Button_Icon_deselect_all_kotevny_usek1.addActionListener(new java.awt.event.ActionListener() {
+        Label_RTS.setText(language.language_label(languageOption, 66));
+
+        TextField_RTS.setEnabled(false);
+        TextField_RTS.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Button_Icon_deselect_all_kotevny_usek1ActionPerformed(evt);
+                TextField_RTSActionPerformed(evt);
             }
         });
-        Button_Icon_deselect_all_kotevny_usek.setToolTipText(language.language_label(languageOption, 64));
+
+        Button_namrazova_oblast.setText(language.language_label(languageOption, 67));
+
+        Label_RTS_velicina.setText("MPa");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -292,11 +298,17 @@ public class mainframe extends javax.swing.JFrame {
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Label_kotevne_useky))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(Label_kotevne_useky1)
-                    .addComponent(jComboBox_conductor_chooser, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(41, 41, 41)
-                .addComponent(Button_Icon_deselect_all_kotevny_usek1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(Label_RTS)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(TextField_RTS)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(Label_RTS_velicina))
+                    .addComponent(jComboBox_conductor_chooser, 0, 251, Short.MAX_VALUE)
+                    .addComponent(jSeparator1)
+                    .addComponent(Button_namrazova_oblast, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addComponent(jToolBar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
@@ -306,16 +318,23 @@ public class mainframe extends javax.swing.JFrame {
                 .addGap(24, 24, 24)
                 .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Label_kotevne_useky)
+                    .addComponent(Label_kotevne_useky1))
+                .addGap(7, 7, 7)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
+                        .addComponent(jComboBox_conductor_chooser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(Label_kotevne_useky)
-                            .addComponent(Label_kotevne_useky1))
-                        .addGap(7, 7, 7)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jComboBox_conductor_chooser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(Button_Icon_deselect_all_kotevny_usek1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(Label_RTS)
+                            .addComponent(TextField_RTS, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Label_RTS_velicina))
+                        .addGap(3, 3, 3)
+                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 2, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(Button_namrazova_oblast)))
                 .addContainerGap(283, Short.MAX_VALUE))
         );
 
@@ -356,7 +375,24 @@ public class mainframe extends javax.swing.JFrame {
     }//GEN-LAST:event_Button_Icon_delete_row_table_kotevny_usekActionPerformed
 
     private void Button_Icon_calculateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button_Icon_calculateActionPerformed
-        // TODO add your handling code here:
+        if (mainframeLodaed == true) {
+            
+            //nacitajvodič z jombo box
+            int selected_conductor_index_from_JComboBox = jComboBox_conductor_chooser.getSelectedIndex();
+            Object[] Conductor = new Object[7];
+            Conductor = Databaza.get(selected_conductor_index_from_JComboBox);
+            //vlož 4 premene do state equation 
+            state_equation.get_variables_of_conductor(Conductor);
+            
+            
+            
+            
+            
+            
+            
+            
+            
+        }   
     }//GEN-LAST:event_Button_Icon_calculateActionPerformed
 
     private void Button_Icon_export_PDFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button_Icon_export_PDFActionPerformed
@@ -379,13 +415,14 @@ public class mainframe extends javax.swing.JFrame {
             }
     }//GEN-LAST:event_Button_Icon_deselect_all_kotevny_usekActionPerformed
 
+    //listening for conductor option
     private void jComboBox_conductor_chooserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox_conductor_chooserActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_jComboBox_conductor_chooserActionPerformed
 
-    private void Button_Icon_deselect_all_kotevny_usek1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button_Icon_deselect_all_kotevny_usek1ActionPerformed
-        nacitatDatabazuLan();   
-    }//GEN-LAST:event_Button_Icon_deselect_all_kotevny_usek1ActionPerformed
+    private void TextField_RTSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextField_RTSActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TextField_RTSActionPerformed
 
  
   
@@ -434,24 +471,29 @@ public class mainframe extends javax.swing.JFrame {
     private javax.swing.JButton Button_Icon_calculate;
     private javax.swing.JButton Button_Icon_delete_row_table_kotevny_usek;
     private javax.swing.JButton Button_Icon_deselect_all_kotevny_usek;
-    private javax.swing.JButton Button_Icon_deselect_all_kotevny_usek1;
     private javax.swing.JButton Button_Icon_export_PDF;
     private javax.swing.JButton Button_Icon_save;
     private javax.swing.JButton Button_Icon_save_as;
     private javax.swing.JButton Button_Icon_save_results;
     private javax.swing.JButton Button_Icon_select_all_kotevny_usek;
+    private javax.swing.JButton Button_namrazova_oblast;
+    private javax.swing.JLabel Label_RTS;
+    private javax.swing.JLabel Label_RTS_velicina;
     private javax.swing.JLabel Label_kotevne_useky;
     private static javax.swing.JLabel Label_kotevne_useky1;
     private javax.swing.JTable Table_kotevne_useky;
+    private javax.swing.JTextField TextField_RTS;
     private static final javax.swing.JComboBox<String> jComboBox_conductor_chooser = new javax.swing.JComboBox<>();
     private javax.swing.JPanel jPanel1;
     private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JToolBar jToolBar1;
     // End of variables declaration//GEN-END:variables
 DefaultTableModel modelTable;
 public static String new_kotevny_usek_name;
 public static boolean existnewkotevnyusek = false;
+private static boolean mainframeLodaed = false;
 private static String filename = "new_file";
     private static String filenamePath;
     private static String filenamePath_plus_filename;
