@@ -34,8 +34,11 @@ public class MT_Main {
 
         }
         
-        //System.out.println("Overload class testing...");
+        //System.out.println("Overload class testing ...");
         //overload_test.compute();
+        
+        //System.out.println("State_equation class testing ...");
+        //state_equation_test.compute_sigma_H1();
         
         startPanel.main(args);
 

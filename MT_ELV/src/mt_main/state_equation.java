@@ -88,7 +88,7 @@ public class state_equation {
     private static double MST;         // /average/ span of terrain suspension section [m] 
     private static double Bc;          // coefficient B in cubic equation
     private static double Dc;          // coefficient D in cubic equation
-    private static double z_0;         // conductor overload in state "0" [-]
+    private static double z_0 = 1;     // conductor overload in state "0" [-]
     private static double z_1;         // conductor overload in state "1" [-]
     private static double theta_1;     // conductor temperature in state "1"
     private static double theta_0;     // conductor temperature in state "0"
@@ -124,69 +124,94 @@ public class state_equation {
     public static double sag_vis[];  
     
 // **************** PUBLIC METHODS **************** //    
-    /**
-     * Set all the variables needed for the computation of the state equation
-     * from "mainframe" and also locally;
-     * 
-     * Not known values set to "-1" as a default value when error checking;
-     * 
-     */    
-    public static void set_variables(){
-        // public - results
-        state_equation.F_mH1 = -1;
-        state_equation.sigma_h1 = -1;
-        state_equation.c = -1;
-        state_equation.sag_max[0] = -1;
-        state_equation.sag_vis[0] = -1;
-        
-        // local - results
-        state_equation.gama = -1;
-        state_equation.MSF = -1;
-        state_equation.MST = -1;
-        
-        // mainframe - need to be done based on mainframe
-        state_equation.m = -1;
-        state_equation.S = -1;
-        state_equation.a[0] = -1;
-        state_equation.dh[0] = -1;
-        state_equation.E = -1;
-        state_equation.z_0 = -1;
-        state_equation.z_1 = -1;
-        state_equation.alpha = -1;
-        state_equation.theta_0 = -1;
-        state_equation.theta_1 = -1;
-        state_equation.sigma_h0 = -1;
-        //for example: state_equation.m = mainframe.jText_m.getText();
-    }
+
     /**
      * get variables of conductor from main frame
      * @param X conductor object
      */
-    public static void get_variables_of_conductor(Object[] X){
+    public static void set_variables_from_conductor(Object[] X){
        Object[] Conductor = new Object[7];
        Conductor = X;
+       //=Double.valueOf(String.valueOf(Conductor[1])); // diameter of conductor
        state_equation.S=Double.valueOf(String.valueOf(Conductor[2])); //cross-section area of the conductor [mm^2]      
        state_equation.m=Double.valueOf(String.valueOf(Conductor[3])); //weight of the conductor per unit [kg/m]
        state_equation.E=Double.valueOf(String.valueOf(Conductor[4])); //Young model of elasticity of conductor [MPa]
        state_equation.alpha=Double.valueOf(String.valueOf(Conductor[5])); //linear expansion coefficient [1/degree_C]
-       //chýbaju premenná diameter , matematická unostnosť, pomer duše FE ku ALFE  
-        
+       //=Double.valueOf(String.valueOf(Conductor[6])); // RTS
+       //=Double.valueOf(String.valueOf(Conductor[7])); // Fe/AlFe
+    }
+    
+    /**
+     * checks if all variables /inputs/ are set correctly from mainframe
+     */
+    public static void check_variables(){
+        try {
+            if (state_equation.m == -1111.0000){
+                System.out.println(state_equation.m + "not set");
+                throw new MyException("Variable set error in state equation class");
+            } else if (state_equation.S == -1111.0000){
+                System.out.println(state_equation.S + "not set");
+                throw new MyException("Variable set error in state equation class");
+            } else if (state_equation.E == -1111.0000){
+                System.out.println(state_equation.E + "not set");
+                throw new MyException("Variable set error in state equation class");
+            } else if (state_equation.alpha == -1111.0000){
+                System.out.println(state_equation.alpha + "not set");
+                throw new MyException("Variable set error in state equation class");
+            } else if (state_equation.theta_1 == -1111.0000){
+                System.out.println(state_equation.theta_1 + "not set");
+                throw new MyException("Variable set error in state equation class");
+            } else if (state_equation.theta_0 == -1111.0000){
+                System.out.println(state_equation.theta_0 + "not set");
+                throw new MyException("Variable set error in state equation class");
+            } else if (state_equation.sigma_h0 == -1111.0000){
+                System.out.println(state_equation.sigma_h0 + "not set");
+                throw new MyException("Variable set error in state equation class");
+            } else if (state_equation.gama == -1111.0000){
+                System.out.println(state_equation.gama + "not set");
+                throw new MyException("Variable set error in state equation class");
+            } else if (state_equation.z_1 == -1111.0000){
+                System.out.println(state_equation.gama + "not set");
+                throw new MyException("Variable set error in state equation class");
+            }
+        } catch (MyException e){}
+    }
+    
+    /**
+     * null the variables /inputs/ from mainframe and partial results 
+     * - final results remain untouched
+     */
+    public static void null_variables(){
+        state_equation.gama = -1111.0000;
+        state_equation.m = -1111.0000;
+        state_equation.S = -1111.0000;
+        state_equation.E = -1111.0000;
+        state_equation.alpha = -1111.0000;
+        state_equation.MSF = -1111.0000;
+        state_equation.MST = -1111.0000;
+        state_equation.Bc = -1111.0000;
+        state_equation.Dc = -1111.0000;
+        state_equation.z_1 = -1111.0000;
+        state_equation.theta_1 = -1111.0000;
+        state_equation.theta_0 = -1111.0000;
+        state_equation.sigma_h0 = -1111.0000;
     }
     
     /**
      * Computes the state equation using set variables; 
      * Variables need to be set BEFORE computation;
+     * @param load 1/2/3/4/5 for overload setting of the conductor
+     *  1 - z_1
+     *  2 - z_W
+     *  3 - z_I
+     *  4 - z_iW
+     *  5 - z_Iw
      */
-    public static void compute_sigma_H1(){
-        //basic check if variables are set
-        if (state_equation.m == -1) {
-            set_variables();
-            System.out.println("Variables were set!");
-        } 
+    public static void compute_sigma_H1(int load){
         //preparing
         gama();
-        mid_span_flat();
-        mid_span_terrain();
+        z_1(load);
+        check_variables();
         //cubic equation
         set_cubic_values();
         cubic_equation_solve();
@@ -195,24 +220,52 @@ public class state_equation {
         c_parameter();
         sag_maximum();
         sag_visible();
+        // null variables and partial results
+        null_variables();
     }
     
     /**
      * @param T_EDT average year temperature [degreeC] - act as theta_1
+     * @param load 1/2/3/4/5 for overload setting of the conductor
+     *  1 - z_1
+     *  2 - z_W
+     *  3 - z_I
+     *  4 - z_iW
+     *  5 - z_Iw
      * @return sigma_HT
      */
-    public static double compute_sigma_HT(double T_EDT){
+    public static double compute_sigma_HT(double T_EDT, int load){
+        //preparing
+        gama();
+        z_1(load);
+        check_variables();
+        //cubic equation
+        set_cubic_values();
         cubic_equation_coef_B_imaginary(theta_0, T_EDT);
+        // results - variables are nulled before return statement
         return cubic_equation_solve_imaginary();
     }
     
     /**
      * @param T_x0 imaginary temperature == theta_0
      * @param T_xp imaginary temperature == theta_1
+     * @param load 1/2/3/4/5 for overload setting of the conductor
+     *  1 - z_1
+     *  2 - z_W
+     *  3 - z_I
+     *  4 - z_iW
+     *  5 - z_Iw
      * @return T_0 == sigma_H1
      */
-    public static double compute_sigma_Hvib(double T_x0, double T_xp){
+    public static double compute_sigma_Hvib(double T_x0, double T_xp, int load){
+        //preparing
+        gama();
+        z_1(load);
+        check_variables();
+        //cubic equation
+        set_cubic_values();
         cubic_equation_coef_B_imaginary(T_x0, T_xp);
+        // results - variables are nulled before return statement
         return cubic_equation_solve_imaginary();
     }
     
@@ -231,6 +284,45 @@ public class state_equation {
      */
     private static void gama(){
         state_equation.gama = (state_equation.m *state_equation.g)/state_equation.S;
+    }
+    
+    /**
+     * Set the overload factor from the overload class
+     * @param load type of load on the conductor
+     *  1 - z_1
+     *  2 - z_W
+     *  3 - z_I
+     *  4 - z_iW
+     *  5 - z_Iw
+     */
+    private static void z_1(int load){
+        
+        try {
+            if (load < 1 || load > 5){
+                throw new MyException("Load parameter must be 1 <= x <= 5");
+            }
+        } catch (MyException e) {
+        }
+        
+        switch (load){
+            case 1: 
+                state_equation.z_1 = 1;
+                break;
+            case 2: 
+                state_equation.z_1 = overload.z_W;
+                break;
+            case 3: 
+                state_equation.z_1 = overload.z_I;
+                break;
+            case 4: 
+                state_equation.z_1 = overload.z_iW;
+                break;
+            case 5: 
+                state_equation.z_1 = overload.z_Iw;
+                break;
+        }
+        
+                
     }
     
     /**
@@ -311,7 +403,7 @@ public class state_equation {
         } else {
             var = state_equation.MST;
         }
-        state_equation.Dc = Math.pow(state_equation.gama,2)*state_equation.E/24 * Math.pow(var*state_equation.z_1, 2);
+        state_equation.Dc = (-1)*Math.pow(state_equation.gama,2)*state_equation.E/24 * Math.pow(var*state_equation.z_1, 2);
     }
     
     /**
@@ -391,6 +483,7 @@ public class state_equation {
             part3 = Math.cos(part2/3) - state_equation.Bc_i/3;
             result = 2 * part1 * part3;
         }
+        null_variables();
         return result;
     }
 }

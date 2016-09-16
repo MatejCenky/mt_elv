@@ -70,16 +70,25 @@ public class vibration_protection {
     
 // **************** PUBLIC METHODS **************** //    
     
-    public static void set_variables(){
+    public static void check_variables(){
         // need to be done
     }
     
-    public static void get_variables(){
+    public static void null_variables(){
         // need to be done
     }
     
-    public static void compute(){
-        imaginary_horizontal_stress();
+    /**
+     * Computes the vibration protection area 
+     * @param load 1/2/3/4/5 for overload setting of the conductor
+     *  1 - z_1
+     *  2 - z_W
+     *  3 - z_I
+     *  4 - z_iW
+     *  5 - z_Iw
+     */
+    public static void compute(int load){
+        imaginary_horizontal_stress(load);
         axis_x();
         axis_y();
         set_EQvib(vibration_protection.ter);
@@ -103,14 +112,20 @@ public class vibration_protection {
     
     /**
      * Computes T_0 using theory of conductor creeping and state equation
+     * @param load 1/2/3/4/5 for overload setting of the conductor
+     *  1 - z_1
+     *  2 - z_W
+     *  3 - z_I
+     *  4 - z_iW
+     *  5 - z_Iw
      */
-    private static void imaginary_horizontal_stress(){
+    private static void imaginary_horizontal_stress(int load){
         // setting variables - with help of theory #3
         double T_x0 = -5 + conductor_creeping.compute_initial_thermal_shift_value();
         double T_xp = -5 + conductor_creeping.compute_transient_thermal_shift_value(8760);
         
         // computing state equation using specific initial conditions
-        vibration_protection.T_0 = state_equation.compute_sigma_Hvib(T_x0, T_xp);
+        vibration_protection.T_0 = state_equation.compute_sigma_Hvib(T_x0, T_xp, load);
     }
     
     /**

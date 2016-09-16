@@ -53,15 +53,15 @@ public class conductor_creeping {
     private static double S_Fe;        // cross-section of steel in conductor [mm^2]
     private static double S;           // cross-section of conductor [mm^2]
     private static double ro_Fe;       // specific weight of steel [kg/m^3] (usually 7840-7870)
-    private static double g;           // gravitational acceleration [m/s^2] (= 9.80655)
+    private static double g = 9.80655;           // gravitational acceleration [m/s^2] (= 9.80655)
     private static double g_c;         // specific weight of conductor [N/m]
     private static double RTS;         // Rated Tensile Parameter [N]
     private static double T_EDT;       // average year temperature [degreeC]
     private static double alpha;       // linear expansion coefficient [1/degreeC]
-    private static double fi;          // specific creeping [mm/km*h] (= 28.2)
+    private static double fi = 28.2;          // specific creeping [mm/km*h] (= 28.2)
     private static double t_0;         // time to final state of conductor creeping [h] (usually 30y = 262800h)
     private static double t_p;         // time from the construction of the line - check various time stages on the line [h]
-    private static double n;           // load function steepness [-] (= 0.263)
+    private static double n = 0.263;           // load function steepness [-] (= 0.263)
     
 // computed values
     private static double w_Fe;        // proportional weight of steel in the conductor [-]
@@ -98,41 +98,92 @@ public class conductor_creeping {
     
    
 // **************** PUBLIC METHODS **************** //
-    public static void set_variables(){
-        // local - results
-        conductor_creeping.w_Fe = -1;
-        conductor_creeping.k_w = -1;
-        conductor_creeping.k_EDS = -1;
-        conductor_creeping.k_EDT = -1;
-        
-        // public - results
-        conductor_creeping.T_x0 = -1;
-        conductor_creeping.T_xp = -1;
-        conductor_creeping.dT_0 = -1;
-        conductor_creeping.dT_p = -1;
-        conductor_creeping.sigma_HT = -1;
-        
-        // mainframe - need to be done based on mainframe
+    /**
+     * null the variables /inputs/ from mainframe and partial results 
+     * - final results remain untouched
+     */
+    public static void null_variables(){
+        conductor_creeping.w_Fe = -1111.0000;
+        conductor_creeping.k_w = -1111.0000;
+        conductor_creeping.k_EDS = -1111.0000;
+        conductor_creeping.k_EDT = -1111.0000;
+        conductor_creeping.g_Fe = -1111.0000;
+        conductor_creeping.S_Fe = -1111.0000;
+        conductor_creeping.S = -1111.0000;
+        conductor_creeping.ro_Fe = -1111.0000;
+        conductor_creeping.g_c = -1111.0000;
+        conductor_creeping.RTS = -1111.0000;
+        conductor_creeping.T_EDT = -1111.0000;
+        conductor_creeping.alpha = -1111.0000;
+        conductor_creeping.t_0 = -1111.0000;
+        conductor_creeping.t_p = -1111.0000;
     }
     
-    public static void get_variables(){
-        // need to be done based on mainframe
-    }
-    
-    public static void compute_thermal_shifts(){
-        // preparations
-        if (conductor_creeping.w_Fe == -1) {
-            steel_weight();
+    /**
+     * checks if all variables /inputs/ are set correctly from mainframe
+     */
+    public static void check_variables(){
+        try {
+            if (conductor_creeping.g_Fe == -1111.0000){
+                System.out.println(conductor_creeping.g_Fe + "not set");
+                throw new MyException("Variable set error in conductor creeping class");
+            } else if (conductor_creeping.S_Fe == -1111.0000){
+                System.out.println(conductor_creeping.S_Fe + "not set");
+                throw new MyException("Variable set error in conductor creeping class");
+            } else if (conductor_creeping.S == -1111.0000){
+                System.out.println(conductor_creeping.S + "not set");
+                throw new MyException("Variable set error in conductor creeping class");
+            } else if (conductor_creeping.ro_Fe == -1111.0000){
+                System.out.println(conductor_creeping.ro_Fe + "not set");
+                throw new MyException("Variable set error in conductor creeping class");
+            } else if (conductor_creeping.g_c == -1111.0000){
+                System.out.println(conductor_creeping.g_c + "not set");
+                throw new MyException("Variable set error in conductor creeping class");
+            } else if (conductor_creeping.RTS == -1111.0000){
+                System.out.println(conductor_creeping.RTS + "not set");
+                throw new MyException("Variable set error in conductor creeping class");
+            } else if (conductor_creeping.T_EDT == -1111.0000){
+                System.out.println(conductor_creeping.T_EDT + "not set");
+                throw new MyException("Variable set error in conductor creeping class");
+            } else if (conductor_creeping.alpha == -1111.0000){
+                System.out.println(conductor_creeping.alpha + "not set");
+                throw new MyException("Variable set error in conductor creeping class");
+            } else if (conductor_creeping.t_0 == -1111.0000){
+                System.out.println(conductor_creeping.t_0 + "not set");
+                throw new MyException("Variable set error in conductor creeping class");
+            } else if (conductor_creeping.t_p == -1111.0000){
+                System.out.println(conductor_creeping.t_p + "not set");
+                throw new MyException("Variable set error in conductor creeping class");
+            } 
+        } catch (MyException e) {
         }
+    }
+    
+    /**
+     * Computes the thermal shift; 
+     * Variables need to be set BEFORE computation;
+     * @param load 1/2/3/4/5 for overload setting of the conductor
+     *  1 - z_1
+     *  2 - z_W
+     *  3 - z_I
+     *  4 - z_iW
+     *  5 - z_Iw
+     */
+    public static void compute_thermal_shifts(int load){
+        // preparations
+        check_variables();
+        // #1 layer
         proportional_steel_weight();
         conductor_composition_coefficient();
-        // k_EDS, k_EDT
+        // k_EDS, k_EDT - #2 layer
         avg_temperature_coefficient();
-        conductor_creeping.sigma_HT = state_equation.compute_sigma_HT(conductor_creeping.T_EDT);
+        conductor_creeping.sigma_HT = state_equation.compute_sigma_HT(conductor_creeping.T_EDT, load);
         avg_load_coefficient();
         // results
         thermal_shift_intitial();
         thermal_shift_transient();
+        // null variables
+        null_variables();
     }
     
     /**

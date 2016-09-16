@@ -54,37 +54,38 @@ public class overload {
     private static double dh[]; 
     
 // towers and conductors
-    private static double d;           // conductor diameter !!!!!! [m] !!!!!!
-    private static double g_c;         // specific weight of conductor [N/m]
+    private static double d     ;           // conductor diameter !!!!!! [m] !!!!!!
+    private static double g_c   ;         // specific weight of conductor [N/m]
     
 // type of ice
-    private static double ro_I;        // density of the ice (= 500 kg/m3)
-    private static double C_cl; // aerodynamic resistance for conductor with ice coefficient (= 1,1) [-]
+    private static double ro_I   ;        // density of the ice (= 500 kg/m3)
     
 // icing area
-    private static double K_lc;        // local conditions coefficient (čl.4.5.1/SK.3) [-]
-    private static double K_h;         // the height coefficient čl.4.5.1/SK.3) [-]
-    private static double I_R50;       // reference ice load -> chosen from local icing area (čl.4.5.1/SK.3)
+    private static double K_lc   ;        // local conditions coefficient (čl.4.5.1/SK.3) [-]
+    private static double K_h    ;         // the height coefficient čl.4.5.1/SK.3) [-]
+    private static double I_R50  ;       // reference ice load -> chosen from local icing area (čl.4.5.1/SK.3)
     
 // terrain and wind area
-    private static double k_r;         // terrain coefficient (čl. 4.3.2) [-]
-    private static double z_0;         // length of the roughness (čl. 4.3.2) [-]
-    private static double V_b0;        // base wind speed (čl. 4.3.1/SK.1) [m/s]
-    private static double c_dir;       // wind direction coefficient [-]
-    private static double c_0;         // orography coefficient [-]
-    private static double C_c;         // aerodynamic resistance of the conductor coefficient (čl. 4.4.1.3/SK.1) [-]
+    private static double k_r    ;         // terrain coefficient (čl. 4.3.2) [-]
+    private static double z_0    ;         // length of the roughness (čl. 4.3.2) [-]
+    private static double V_b0   ;        // base wind speed (čl. 4.3.1/SK.1) [m/s]
+    private static double c_dir  ;       // wind direction coefficient [-]
+    private static double c_0    ;         // orography coefficient [-]
+    private static double C_c   ;         // aerodynamic resistance of the conductor coefficient (čl. 4.4.1.3/SK.1) [-]
     
-// directive constants -> defined as final -> set in constructor
-    private static double k_p;   // tip coefficient (= 3) (čl. 4.4.1.2)
-    private static double RR;    // resonance response coefficient (RR = R^2 = 0) (čl. 4.4.12)
-    private static double ro;    // density of the wind (= 1.25)
+// directive constants 
+    private static double k_p = 3;   // tip coefficient (= 3) (čl. 4.4.1.2)
+    private static double RR = 0;    // resonance response coefficient (RR = R^2 = 0) (čl. 4.4.12)
+    private static double ro = 1.25;    // density of the wind (= 1.25)
+    private static double C_cl  = 1.1;        // aerodynamic resistance for conductor with ice coefficient (= 1,1) [-]
+
 
 // reliability coefficient
-    private static double gama_w;      // partial wind load coefficient [-]
-    private static double gama_I;      // partial ice load coefficient [-]
-    private static double Psi_w;       // combination coefficient (čl. 4.6.6/SK/CZ) [-]
-    private static double Psi_I;       // combination ice load coefficient [-]
-    private static double B_I;         // combination coefficient (čl. 4.6.6/SK/CZ) [-]
+    private static double gama_w     ;      // partial wind load coefficient [-]
+    private static double gama_I     ;      // partial ice load coefficient [-]
+    private static double Psi_w      ;       // combination coefficient (čl. 4.6.6/SK/CZ) [-]
+    private static double Psi_I      ;       // combination ice load coefficient [-]
+    private static double B_I        ;         // combination coefficient (čl. 4.6.6/SK/CZ) [-]
     
 // computed values
     private static double h_c_mean;    // mean height of the conductor above the ground [m]     
@@ -131,50 +132,93 @@ public class overload {
     public static double z_W;          
     
 // **************** PUBLIC METHODS **************** //
-    public void set_variables(){
-        // local - results
-        overload.h_c_mean = -1;
-        overload.V_h = -1;
-        overload.I_v = -1;
-        overload.L_m = -1;
-        overload.L = -1;
-        overload.BB = -1;
-        overload.G_c = -1;
-        
-        overload.q_wc = -1;
-        overload.q_p = -1;
-        overload.q_h = -1;
-        overload.I_50 = -1;
-        
-        overload.I_T = -1;
-        overload.q_wT = -1;
-        overload.I_3 = -1;
-        overload.q_wI3 = -1;
-        overload.q_wIT = -1;
-        
-        overload.D_I = -1;
-        overload.D_i = -1;
-        
-        // public - results
-        overload.z_I = -1;
-        overload.z_Iw = -1;
-        overload.z_W = -1;
-        overload.z_iW = -1;
-        
-        // mainframe - need to be done based on mainframe
-             
+    
+    /**
+     * checks if all variables /inputs/ are set correctly from mainframe
+     */
+    public void check_variables(){
+        try {
+            if (overload.d == -1111.0000){
+                System.out.println(overload.d + "not set");
+                throw new MyException("Variable set error");
+            } else if (overload.g_c == -1111.0000){
+                System.out.println(overload.g_c + "not set");
+                throw new MyException("Variable set error");
+            } else if (overload.ro_I == -1111.0000){
+                System.out.println(overload.ro_I + "not set");
+                throw new MyException("Variable set error");
+            } else if (overload.K_lc == -1111.0000){
+                System.out.println(overload.K_lc + "not set");
+                throw new MyException("Variable set error");
+            } else if (overload.K_h == -1111.0000){
+                System.out.println(overload.K_h + "not set");
+                throw new MyException("Variable set error");
+            } else if (overload.I_R50 == -1111.0000){
+                System.out.println(overload.I_R50 + "not set");
+                throw new MyException("Variable set error");
+            } else if (overload.k_r == -1111.0000){
+                System.out.println(overload.k_r + "not set");
+                throw new MyException("Variable set error");
+            } else if (overload.z_0 == -1111.0000){
+                System.out.println(overload.z_0 + "not set");
+                throw new MyException("Variable set error");
+            } else if (overload.V_b0 == -1111.0000){
+                System.out.println(overload.V_b0 + "not set");
+                throw new MyException("Variable set error");
+            } else if (overload.c_dir == -1111.0000){
+                System.out.println(overload.c_dir + "not set");
+                throw new MyException("Variable set error");
+            } else if (overload.c_0 == -1111.0000){
+                System.out.println(overload.c_0 + "not set");
+                throw new MyException("Variable set error");
+            } else if (overload.C_c == -1111.0000){
+                System.out.println(overload.C_c + "not set");
+                throw new MyException("Variable set error");
+            } else if (overload.gama_w == -1111.0000){
+                System.out.println(overload.gama_w + "not set");
+                throw new MyException("Variable set error");
+            } else if (overload.gama_I == -1111.0000){
+                System.out.println(overload.gama_I + "not set");
+                throw new MyException("Variable set error");
+            } else if (overload.Psi_I == -1111.0000){
+                System.out.println(overload.Psi_I + "not set");
+                throw new MyException("Variable set error");
+            } else if (overload.Psi_w == -1111.0000){
+                System.out.println(overload.Psi_w + "not set");
+                throw new MyException("Variable set error");
+            } else if (overload.B_I == -1111.0000){
+                System.out.println(overload.B_I + "not set");
+                throw new MyException("Variable set error");
+            }
+        } catch (MyException e){}
     }
     
-    public void get_variables(){
-        // need to be done based on mainframe
+    /**
+     * null the variables /inputs/ from mainframe - results remain untouched
+     */
+    public void null_variables(){
+        overload.d = -1111.0000;
+        overload.g_c = -1111.0000;
+        overload.ro_I = -1111.0000;
+        overload.K_lc = -1111.0000;
+        overload.K_h = -1111.0000;
+        overload.I_R50 = -1111.0000;
+        overload.k_r = -1111.0000;
+        overload.z_0 = -1111.0000;
+        overload.V_b0 = -1111.0000;
+        overload.c_dir = -1111.0000;
+        overload.c_0 = -1111.0000;
+        overload.C_c = -1111.0000;
+        overload.gama_w = -1111.0000;
+        overload.gama_I = -1111.0000;
+        overload.Psi_I = -1111.0000;
+        overload.Psi_w = -1111.0000;
+        overload.B_I = -1111.0000;
     }
     
     public void compute(){
-        //basic check if variables are set
-        if (overload.k_r == -1) {
-            set_variables();
-            System.out.println("Variables were set!");
-        } 
+        // check if variables are set
+        check_variables();
         // #1 layer
         mean_height();
         mean_wind_speed();
@@ -199,6 +243,8 @@ public class overload {
         overload_extreme_ice();
         overload_extreme_wind();
         overload_combined();
+        // null inputs
+        null_variables();
     }
     
 // **************** PRIVATE METHODS **************** //
