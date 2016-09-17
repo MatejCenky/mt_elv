@@ -12,59 +12,27 @@ package mt_main;
  * @author Mattto
  */
 public class conductor_creeping {
-    
-    /**
-     * - gravitational acceleration, n and fi is set
-     */
-    public conductor_creeping(){
-        conductor_creeping.g = 9.80655;
-        conductor_creeping.fi = 28.2;
-        conductor_creeping.n = 0.263;
-    }
-    
-    /**
-     * - gravitational acceleration, n and fi is set
-     * @param steel_weight weight of the steel is set
-     */
-    public conductor_creeping(double steel_weight){
-        conductor_creeping.g = 9.80655;
-        conductor_creeping.g_Fe = steel_weight;
-        conductor_creeping.fi = 28.2;
-        conductor_creeping.n = 0.263;
-    }
-    
-    /**
-     * - gravitational acceleration, n and fi is set
-     * @param steel_weight weight of the steel is set "g_Fe"
-     * @param temperature imaginary temperature WITHOUT thermal shift is set "T_x"
-     */
-    public conductor_creeping(double steel_weight, double temperature){
-        conductor_creeping.g = 9.80655;
-        conductor_creeping.g_Fe = steel_weight;
-        conductor_creeping.T_EDT = temperature;
-        conductor_creeping.fi = 28.2;
-        conductor_creeping.n = 0.263;
-    }
-    
+
+
 /* Defining variables */
     
-// local
-    private static double g_Fe;        // weight of the steel in the conductor [N/m]
-    private static double S_Fe;        // cross-section of steel in conductor [mm^2]
+// conductor
     private static double S;           // cross-section of conductor [mm^2]
-    private static double ro_Fe;       // specific weight of steel [kg/m^3] (usually 7840-7870)
-    private static double g = 9.80655;           // gravitational acceleration [m/s^2] (= 9.80655)
     private static double g_c;         // specific weight of conductor [N/m]
     private static double RTS;         // Rated Tensile Parameter [N]
-    private static double T_EDT;       // average year temperature [degreeC]
     private static double alpha;       // linear expansion coefficient [1/degreeC]
-    private static double fi = 28.2;          // specific creeping [mm/km*h] (= 28.2)
+    private static double w_Fe;        // proportional weight of steel in the conductor [-]
+    
+// temperatures and times
+    private static double T_EDT;       // average year temperature [degreeC]
     private static double t_0;         // time to final state of conductor creeping [h] (usually 30y = 262800h)
     private static double t_p;         // time from the construction of the line - check various time stages on the line [h]
-    private static double n = 0.263;           // load function steepness [-] (= 0.263)
+    
+// constants
+    private static final double fi = 28.2;          // specific creeping [mm/km*h] (= 28.2)
+    private static final double n = 0.263;           // load function steepness [-] (= 0.263)
     
 // computed values
-    private static double w_Fe;        // proportional weight of steel in the conductor [-]
     private static double k_w;         // conductor composition coefficient [-]
     private static double k_EDS;       // average year load influence coefficient [-]
     private static double k_EDT;       // average year temperature influence coefficient [-]
@@ -98,6 +66,21 @@ public class conductor_creeping {
     
    
 // **************** PUBLIC METHODS **************** //
+    
+    /**
+     * set variables of conductor from main frame
+     * @param X conductor object
+     */
+    public static void set_variables_from_conductor(Object[] X){
+       //=Double.valueOf(String.valueOf(X[1])); // diameter of conductor
+       conductor_creeping.S=Double.valueOf(String.valueOf(X[2])); //cross-section area of the conductor [mm^2]      
+       conductor_creeping.g_c=Double.valueOf(String.valueOf(X[3]))*9.80655; //weight of the conductor per unit [kg/m] -> converting into g_c [N/m]
+       //state_equation.E=Double.valueOf(String.valueOf(X[4])); //Young model of elasticity of conductor [MPa]
+       conductor_creeping.alpha=Double.valueOf(String.valueOf(X[5])); //linear expansion coefficient [1/degree_C]
+       conductor_creeping.RTS=Double.valueOf(String.valueOf(X[6])); // RTS
+       conductor_creeping.w_Fe=Double.valueOf(String.valueOf(X[7])); // Fe/AlFe -> w_Fe
+    }
+    
     /**
      * null the variables /inputs/ from mainframe and partial results 
      * - final results remain untouched
@@ -107,10 +90,7 @@ public class conductor_creeping {
         conductor_creeping.k_w = -1111.0000;
         conductor_creeping.k_EDS = -1111.0000;
         conductor_creeping.k_EDT = -1111.0000;
-        conductor_creeping.g_Fe = -1111.0000;
-        conductor_creeping.S_Fe = -1111.0000;
         conductor_creeping.S = -1111.0000;
-        conductor_creeping.ro_Fe = -1111.0000;
         conductor_creeping.g_c = -1111.0000;
         conductor_creeping.RTS = -1111.0000;
         conductor_creeping.T_EDT = -1111.0000;
@@ -124,17 +104,8 @@ public class conductor_creeping {
      */
     public static void check_variables(){
         try {
-            if (conductor_creeping.g_Fe == -1111.0000){
-                System.out.println(conductor_creeping.g_Fe + "not set");
-                throw new MyException("Variable set error in conductor creeping class");
-            } else if (conductor_creeping.S_Fe == -1111.0000){
-                System.out.println(conductor_creeping.S_Fe + "not set");
-                throw new MyException("Variable set error in conductor creeping class");
-            } else if (conductor_creeping.S == -1111.0000){
+            if (conductor_creeping.S == -1111.0000){
                 System.out.println(conductor_creeping.S + "not set");
-                throw new MyException("Variable set error in conductor creeping class");
-            } else if (conductor_creeping.ro_Fe == -1111.0000){
-                System.out.println(conductor_creeping.ro_Fe + "not set");
                 throw new MyException("Variable set error in conductor creeping class");
             } else if (conductor_creeping.g_c == -1111.0000){
                 System.out.println(conductor_creeping.g_c + "not set");
@@ -168,16 +139,17 @@ public class conductor_creeping {
      *  3 - z_I
      *  4 - z_iW
      *  5 - z_Iw
+     * @param ter 1 == flat [MSF] // else == terrain [MST]
      */
-    public static void compute_thermal_shifts(int load){
+    public static void compute_thermal_shifts(int load, int ter){
         // preparations
         check_variables();
         // #1 layer
-        proportional_steel_weight();
+        //proportional_steel_weight();
         conductor_composition_coefficient();
         // k_EDS, k_EDT - #2 layer
         avg_temperature_coefficient();
-        conductor_creeping.sigma_HT = state_equation.compute_sigma_HT(conductor_creeping.T_EDT, load);
+        conductor_creeping.sigma_HT = state_equation.compute_sigma_HT(conductor_creeping.T_EDT, load, ter);
         avg_load_coefficient();
         // results
         thermal_shift_intitial();
@@ -222,19 +194,19 @@ public class conductor_creeping {
     }
     
 // **************** PRIVATE METHODS **************** //    
-    /**
-     * Computes the weight of the steel in the conductor "g_Fe" (if not known)
-     */
-    private static void steel_weight(){
-        conductor_creeping.g_Fe = conductor_creeping.S_Fe* conductor_creeping.ro_Fe* conductor_creeping.g;
-    }
+//    /**
+//     * Computes the weight of the steel in the conductor "g_Fe" (if not known)
+//     */
+//    private static void steel_weight(){
+//        conductor_creeping.g_Fe = conductor_creeping.S_Fe* conductor_creeping.ro_Fe* conductor_creeping.g;
+//    }
     
-    /**
-     * Computes the proportional weight of steel in the conductor "w_Fe"
-     */
-    private static void proportional_steel_weight(){
-        conductor_creeping.w_Fe = conductor_creeping.g_Fe/conductor_creeping.g_c;
-    }
+//    /**
+//     * Computes the proportional weight of steel in the conductor "w_Fe"
+//     */
+//    private static void proportional_steel_weight(){
+//        conductor_creeping.w_Fe = conductor_creeping.g_Fe/conductor_creeping.g_c;
+//    }
     
     /**
      * Computes the conductor composition coefficient "k_w"

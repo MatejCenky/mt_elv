@@ -9,7 +9,7 @@
 package mt_main;
 
 /**
- *
+ * Custom exception
  * @author Mattto
  */
 public class MyException extends Exception{

@@ -14,30 +14,30 @@ package mt_main;
  */
 public class overload {
     
-    /**
-     * @param spans array containing all spans in the suspension section [n-1 dim]
-     * @param heights array containing all conductor catching points on towers [n dim]
-     */
-    public overload(double spans[], double heights[]){
-        overload.a = spans;
-        overload.dh = heights;
-        overload.ro = 1.25;
-        overload.RR = 0;
-        overload.k_p = 3;
-        overload.C_cl = 1.1;
-    }
-    
-    /**
-     * default constructor with "-1" values for a[0] and dh[0]
-     */
-    public overload(){
-        overload.a[0] = -1;
-        overload.dh[0] = -1;
-        overload.ro = 1.25;
-        overload.RR = 0;
-        overload.k_p = 3;
-        overload.C_cl = 1.1;
-    }
+//    /**
+//     * @param spans array containing all spans in the suspension section [n-1 dim]
+//     * @param heights array containing all conductor catching points on towers [n dim]
+//     */
+//    public overload(double spans[], double heights[]){
+//        overload.a = spans;
+//        overload.dh = heights;
+//        overload.ro = 1.25;
+//        overload.RR = 0;
+//        overload.k_p = 3;
+//        overload.C_cl = 1.1;
+//    }
+//    
+//    /**
+//     * default constructor with "-1" values for a[0] and dh[0]
+//     */
+//    public overload(){
+//        overload.a[0] = -1;
+//        overload.dh[0] = -1;
+//        overload.ro = 1.25;
+//        overload.RR = 0;
+//        overload.k_p = 3;
+//        overload.C_cl = 1.1;
+//    }
    
  /* Defining variables */
   
@@ -74,10 +74,10 @@ public class overload {
     private static double C_c   ;         // aerodynamic resistance of the conductor coefficient (čl. 4.4.1.3/SK.1) [-]
     
 // directive constants 
-    private static double k_p = 3;   // tip coefficient (= 3) (čl. 4.4.1.2)
-    private static double RR = 0;    // resonance response coefficient (RR = R^2 = 0) (čl. 4.4.12)
-    private static double ro = 1.25;    // density of the wind (= 1.25)
-    private static double C_cl  = 1.1;        // aerodynamic resistance for conductor with ice coefficient (= 1,1) [-]
+    private static final double k_p = 3;   // tip coefficient (= 3) (čl. 4.4.1.2)
+    private static final double RR = 0;    // resonance response coefficient (RR = R^2 = 0) (čl. 4.4.12)
+    private static final double ro = 1.25;    // density of the wind (= 1.25)
+    private static final double C_cl  = 1.1;        // aerodynamic resistance for conductor with ice coefficient (= 1,1) [-]
 
 
 // reliability coefficient
@@ -132,6 +132,20 @@ public class overload {
     public static double z_W;          
     
 // **************** PUBLIC METHODS **************** //
+    
+    /**
+     * set variables of conductor from main frame
+     * @param X conductor object
+     */
+    public static void set_variables_from_conductor(Object[] X){
+       overload.d=Double.valueOf(String.valueOf(X[1])); // diameter of conductor
+       //=Double.valueOf(String.valueOf(X[2])); //cross-section area of the conductor [mm^2]      
+       overload.g_c=Double.valueOf(String.valueOf(X[3]))*9.80655; //weight of the conductor per unit [kg/m] -> converted into g_c [N/m]
+       //=Double.valueOf(String.valueOf(X[4])); //Young model of elasticity of conductor [MPa]
+       //=Double.valueOf(String.valueOf(X[5])); //linear expansion coefficient [1/degree_C]
+       //=Double.valueOf(String.valueOf(X[6])); // RTS
+       //=Double.valueOf(String.valueOf(X[7])); // Fe/AlFe
+    }
     
     /**
      * checks if all variables /inputs/ are set correctly from mainframe

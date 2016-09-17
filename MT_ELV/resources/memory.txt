@@ -1,2 +1,2 @@
 Memory file do not edit
-C:\Users\Jozef\Documents\NetBeansProjects\mt_elv\MT_ELV\resources\lana_Dat.txt
+C:\Users\Mattto\Documents\NetBeansProjects\MT_ELV\resources\lana_Dat.txt

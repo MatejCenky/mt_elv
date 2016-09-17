@@ -16,27 +16,24 @@ import mt_math.Math_Extended;
  */
 public class state_equation {
 
-    /** 
-     * @param terrain 1 == flat [MSF] // else == terrain [MST]
-     * 
-     * Values a[0] and dh[0] set to "-1" as default;
-     */
-    public state_equation(int terrain){
-        state_equation.ter = terrain;
-        state_equation.a[0] = -1;
-        state_equation.dh[0] = -1;
-    }
-    
-    /** 
-     * @param terrain 1 == flat [MSF] // else == terrain [MST]
-     * @param spans array containing all spans in the suspension section [n-1 dim]
-     * @param heights array containing all conductor catching points on towers [n dim]
-     */
-    public state_equation(int terrain, double spans[], double heights[]){
-        state_equation.ter = terrain;
-        state_equation.a = spans;
-        state_equation.dh = heights;
-    }
+//    /** 
+//     * @param terrain 1 == flat [MSF] // else == terrain [MST]
+//     * 
+//     */
+//    public state_equation(int terrain){
+//        state_equation.ter = terrain;
+//    }
+//    
+//    /** 
+//     * @param terrain 1 == flat [MSF] // else == terrain [MST]
+//     * @param spans array containing all spans in the suspension section [n-1 dim]
+//     * @param heights array containing all conductor catching points on towers [n dim]
+//     */
+//    public state_equation(int terrain, double spans[], double heights[]){
+//        state_equation.ter = terrain;
+//        state_equation.a = spans;
+//        state_equation.dh = heights;
+//    }
 
  /* Defining variables */
     
@@ -80,15 +77,15 @@ public class state_equation {
     /**
      * gravitational acceleration [m.s^-2]
      */
-    private static double g = 9.80665; 
+    private static final double g = 9.80665; 
     
 // values for state equation
-    private static int ter;            // specify flat / non-flat terrain - in constructor !!!;
+    private static int ter;            // specify flat / non-flat terrain;
     private static double MSF;         // /average/ span of flat suspension section [m] 
     private static double MST;         // /average/ span of terrain suspension section [m] 
     private static double Bc;          // coefficient B in cubic equation
     private static double Dc;          // coefficient D in cubic equation
-    private static double z_0 = 1;     // conductor overload in state "0" [-]
+    private static final double z_0 = 1;     // conductor overload in state "0" [-]
     private static double z_1;         // conductor overload in state "1" [-]
     private static double theta_1;     // conductor temperature in state "1"
     private static double theta_0;     // conductor temperature in state "0"
@@ -126,19 +123,17 @@ public class state_equation {
 // **************** PUBLIC METHODS **************** //    
 
     /**
-     * get variables of conductor from main frame
+     * set variables of conductor from main frame
      * @param X conductor object
      */
     public static void set_variables_from_conductor(Object[] X){
-       Object[] Conductor = new Object[7];
-       Conductor = X;
-       //=Double.valueOf(String.valueOf(Conductor[1])); // diameter of conductor
-       state_equation.S=Double.valueOf(String.valueOf(Conductor[2])); //cross-section area of the conductor [mm^2]      
-       state_equation.m=Double.valueOf(String.valueOf(Conductor[3])); //weight of the conductor per unit [kg/m]
-       state_equation.E=Double.valueOf(String.valueOf(Conductor[4])); //Young model of elasticity of conductor [MPa]
-       state_equation.alpha=Double.valueOf(String.valueOf(Conductor[5])); //linear expansion coefficient [1/degree_C]
-       //=Double.valueOf(String.valueOf(Conductor[6])); // RTS
-       //=Double.valueOf(String.valueOf(Conductor[7])); // Fe/AlFe
+       //=Double.valueOf(String.valueOf(X[1])); // diameter of conductor
+       state_equation.S=Double.valueOf(String.valueOf(X[2])); //cross-section area of the conductor [mm^2]      
+       state_equation.m=Double.valueOf(String.valueOf(X[3])); //weight of the conductor per unit [kg/m]
+       state_equation.E=Double.valueOf(String.valueOf(X[4])); //Young model of elasticity of conductor [MPa]
+       state_equation.alpha=Double.valueOf(String.valueOf(X[5])); //linear expansion coefficient [1/degree_C]
+       //=Double.valueOf(String.valueOf(X[6])); // RTS
+       //=Double.valueOf(String.valueOf(X[7])); // Fe/AlFe
     }
     
     /**
@@ -206,9 +201,11 @@ public class state_equation {
      *  3 - z_I
      *  4 - z_iW
      *  5 - z_Iw
+     * @param ter 1 == flat [MSF] // else == terrain [MST]
      */
-    public static void compute_sigma_H1(int load){
+    public static void compute_sigma_H1(int load, int ter){
         //preparing
+        mid_span(ter);
         gama();
         z_1(load);
         check_variables();
@@ -232,10 +229,12 @@ public class state_equation {
      *  3 - z_I
      *  4 - z_iW
      *  5 - z_Iw
+     * @param ter 1 == flat [MSF] // else == terrain [MST]
      * @return sigma_HT
      */
-    public static double compute_sigma_HT(double T_EDT, int load){
+    public static double compute_sigma_HT(double T_EDT, int load, int ter){
         //preparing
+        mid_span(ter);
         gama();
         z_1(load);
         check_variables();
@@ -255,10 +254,12 @@ public class state_equation {
      *  3 - z_I
      *  4 - z_iW
      *  5 - z_Iw
+     * @param ter 1 == flat [MSF] // else == terrain [MST]
      * @return T_0 == sigma_H1
      */
-    public static double compute_sigma_Hvib(double T_x0, double T_xp, int load){
+    public static double compute_sigma_Hvib(double T_x0, double T_xp, int load, int ter){
         //preparing
+        mid_span(ter);
         gama();
         z_1(load);
         check_variables();
@@ -277,6 +278,18 @@ public class state_equation {
     private static void set_cubic_values(){
         cubic_equation_coef_B();
         cubic_equation_coef_D();
+    }
+    
+    /**
+     * Computes the mid span based on terrain type
+     * @param ter 1 == flat [MSF] // else == terrain [MST]
+     */
+    private static void mid_span(int ter){
+        if (ter == 1){
+            mid_span_flat();
+        } else {
+            mid_span_terrain();
+        }
     }
     
     /**
