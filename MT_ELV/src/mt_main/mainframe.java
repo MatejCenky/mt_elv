@@ -8,9 +8,11 @@
  */
 package mt_main;
 
+import java.awt.Color;
 import java.awt.Toolkit;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.PrintWriter;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -38,12 +40,32 @@ public class mainframe extends javax.swing.JFrame {
         nacitatDatabazuLan(); 
         mainframeLodaed=true;// fisrt load oc conductr databaze
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE); // if ju exit window app will not close
-          
+        
+        //vloz prvu hodnotu do RTS nulty index v tabulke
+        Object[] Conductor = new Object[7];
+            Conductor = Databaza.get(0);
+            Variable_RTS = Double.parseDouble(String.valueOf(Conductor[6]))/Double.parseDouble(String.valueOf(Conductor[2]));
+           
+            DecimalFormat df = new DecimalFormat("###.###");  // definovany počet desatinnych miest
+            TextField_RTS.setText(df.format(Variable_RTS));                    
+            Variable_Ir50=123456789.987654321;
+        
+        // vloz defaultne hodnoty do zakladny-mech napatie lana a maximalne zataženie podiel z RTS    
+           Variable_zakladne_mech_napatie_lana_pre_minus5=Double.parseDouble(TextField_zakladne_mech_lana_minus5.getText());
+           Variable_maximalne_zataz_lana_podiel_z_RTS=Variable_RTS*(Double.parseDouble(TextField_zakladne_mech_lana_minus5.getText())/100);
+        
         // setiing importt Variables manually in code
         Variable_Kh =  1;
         Variable_Klc = 1;
+        // inicializacia_ vyber druhu namrazy
         
-          
+        jComboBox_druh_namrazy.removeAllItems();  // ymaz povodne itemy
+        jComboBox_druh_namrazy.addItem(language.language_label(languageOption, 77));
+        jComboBox_druh_namrazy.addItem(language.language_label(languageOption, 78));
+        jComboBox_druh_namrazy.addItem(language.language_label(languageOption, 79));
+        jComboBox_druh_namrazy.addItem(language.language_label(languageOption, 80));
+        jComboBox_druh_namrazy.addItem(language.language_label(languageOption, 81));
+        jComboBox_druh_namrazy.addItem(language.language_label(languageOption, 82));
           
           
         // nulovanie   
@@ -83,6 +105,19 @@ public class mainframe extends javax.swing.JFrame {
         Label_RTS_velicina = new javax.swing.JLabel();
         Label_vybrana_namrazova_oblast = new javax.swing.JLabel();
         jSeparator2 = new javax.swing.JSeparator();
+        Label_typ_namrazy = new javax.swing.JLabel();
+        Label__typ_namrazy_Ccl = new javax.swing.JLabel();
+        TextField_Ccl = new javax.swing.JTextField();
+        Label_hustota_namrazy = new javax.swing.JLabel();
+        TextField_hustota_namrazy = new javax.swing.JTextField();
+        Label_RTS_velicina1 = new javax.swing.JLabel();
+        jSeparator3 = new javax.swing.JSeparator();
+        Label_zakladne_mech_napatie_minis5 = new javax.swing.JLabel();
+        Label_max_zataz_lana = new javax.swing.JLabel();
+        TextField_zakladne_mech_lana_minus5 = new javax.swing.JTextField();
+        TextField_max_mech_podiel_z_RTS = new javax.swing.JTextField();
+        Label_RTS_velicina2 = new javax.swing.JLabel();
+        Label_RTS_velicina3 = new javax.swing.JLabel();
 
         jRadioButtonMenuItem1.setSelected(true);
         jRadioButtonMenuItem1.setText("jRadioButtonMenuItem1");
@@ -306,6 +341,77 @@ public class mainframe extends javax.swing.JFrame {
 
         Label_vybrana_namrazova_oblast.setText(namrazove_oblasti_názov_oblasti);
 
+        Label_typ_namrazy.setText(language.language_label(languageOption, 76));
+
+        jComboBox_druh_namrazy.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox_druh_namrazy.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox_druh_namrazyActionPerformed(evt);
+            }
+        });
+
+        Label__typ_namrazy_Ccl.setText(language.language_label(languageOption, 83));
+
+        TextField_Ccl.setEnabled(false);
+        TextField_Ccl.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TextField_CclActionPerformed(evt);
+            }
+        });
+        TextField_Ccl.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                TextField_CclKeyReleased(evt);
+            }
+        });
+
+        Label_hustota_namrazy.setText(language.language_label(languageOption, 84));
+
+        TextField_hustota_namrazy.setEnabled(false);
+        TextField_hustota_namrazy.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TextField_hustota_namrazyActionPerformed(evt);
+            }
+        });
+        TextField_hustota_namrazy.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                TextField_hustota_namrazyKeyReleased(evt);
+            }
+        });
+
+        Label_RTS_velicina1.setText("kg/m3");
+
+        Label_zakladne_mech_napatie_minis5.setText(language.language_label(languageOption, 86));
+
+        Label_max_zataz_lana.setText(language.language_label(languageOption, 87));
+
+        TextField_zakladne_mech_lana_minus5.setText("50.0");
+        TextField_zakladne_mech_lana_minus5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TextField_zakladne_mech_lana_minus5ActionPerformed(evt);
+            }
+        });
+        TextField_zakladne_mech_lana_minus5.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                TextField_zakladne_mech_lana_minus5KeyReleased(evt);
+            }
+        });
+
+        TextField_max_mech_podiel_z_RTS.setText("50.0");
+        TextField_max_mech_podiel_z_RTS.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TextField_max_mech_podiel_z_RTSActionPerformed(evt);
+            }
+        });
+        TextField_max_mech_podiel_z_RTS.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                TextField_max_mech_podiel_z_RTSKeyReleased(evt);
+            }
+        });
+
+        Label_RTS_velicina2.setText("MPa");
+
+        Label_RTS_velicina3.setText("% RTS");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -317,24 +423,58 @@ public class mainframe extends javax.swing.JFrame {
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Label_kotevne_useky))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(Label_RTS)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(TextField_RTS)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(Label_RTS_velicina))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(Label_kotevne_useky1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jComboBox_conductor_chooser, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jSeparator2)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(Label_vybrana_namrazova_oblast)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jSeparator1)
-                            .addComponent(Button_namrazova_oblast, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                            .addComponent(Label_RTS)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(TextField_RTS)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(Label_RTS_velicina))
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(Label_kotevne_useky1)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(jComboBox_conductor_chooser, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jSeparator2)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(Label_vybrana_namrazova_oblast)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jSeparator1)
+                                .addComponent(Button_namrazova_oblast, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(Label_typ_namrazy, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                    .addGap(0, 0, Short.MAX_VALUE)
+                                    .addComponent(Label__typ_namrazy_Ccl, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(3, 3, 3)))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(TextField_Ccl, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(6, 6, 6)
+                                    .addComponent(Label_hustota_namrazy, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(3, 3, 3)
+                                    .addComponent(TextField_hustota_namrazy, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(Label_RTS_velicina1))
+                                .addComponent(jComboBox_druh_namrazy, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(Label_zakladne_mech_napatie_minis5, javax.swing.GroupLayout.DEFAULT_SIZE, 216, Short.MAX_VALUE)
+                                .addComponent(Label_max_zataz_lana, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(TextField_zakladne_mech_lana_minus5)
+                                .addComponent(TextField_max_mech_podiel_z_RTS))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(Label_RTS_velicina3, javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(Label_RTS_velicina2, javax.swing.GroupLayout.Alignment.TRAILING)))
+                        .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -363,7 +503,30 @@ public class mainframe extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(Label_vybrana_namrazova_oblast)
-                            .addComponent(Button_namrazova_oblast))))
+                            .addComponent(Button_namrazova_oblast))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jComboBox_druh_namrazy, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Label_typ_namrazy))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(Label__typ_namrazy_Ccl)
+                            .addComponent(TextField_Ccl, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Label_hustota_namrazy)
+                            .addComponent(TextField_hustota_namrazy, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Label_RTS_velicina1))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 2, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(Label_zakladne_mech_napatie_minis5)
+                            .addComponent(TextField_zakladne_mech_lana_minus5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Label_RTS_velicina2))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(Label_max_zataz_lana)
+                            .addComponent(TextField_max_mech_podiel_z_RTS, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Label_RTS_velicina3))))
                 .addContainerGap(283, Short.MAX_VALUE))
         );
 
@@ -484,6 +647,97 @@ public class mainframe extends javax.swing.JFrame {
         
     }//GEN-LAST:event_Button_namrazova_oblastActionPerformed
 
+    private void jComboBox_druh_namrazyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox_druh_namrazyActionPerformed
+        if (mainframeLodaed == true) {
+            
+          int selected_index_from_JComboBox = jComboBox_druh_namrazy.getSelectedIndex();
+          
+          switch (selected_index_from_JComboBox) {
+            case 0:  TextField_Ccl.setEnabled(false);
+                     TextField_hustota_namrazy.setEnabled(false);
+                     Variable_Ccl = 1.1;
+                     Variable_hustota_namrazy= 500.0;
+                     
+                     break;
+            case 1:  TextField_Ccl.setEnabled(false);
+                     TextField_hustota_namrazy.setEnabled(false);
+                     Variable_Ccl = 1.1;
+                     Variable_hustota_namrazy= 900.0;
+                     break;
+            case 2:  TextField_Ccl.setEnabled(false);
+                     TextField_hustota_namrazy.setEnabled(false);
+                     Variable_Ccl = 1.1;
+                     Variable_hustota_namrazy= 300.0;
+                     break;
+            case 3:  TextField_Ccl.setEnabled(false);
+                     TextField_hustota_namrazy.setEnabled(false);
+                     Variable_Ccl = 1.1;
+                     Variable_hustota_namrazy= 700.0;
+                     break;
+            case 4:  TextField_Ccl.setEnabled(false);
+                     TextField_hustota_namrazy.setEnabled(false);
+                     Variable_Ccl = 1.1;
+                     Variable_hustota_namrazy= 500.0;
+                     break;
+            case 5:  TextField_Ccl.setEnabled(true);
+                     TextField_hustota_namrazy.setEnabled(true);
+                     Variable_Ccl = 1.1;
+                     Variable_hustota_namrazy= 500.0; 
+                     TextField_Ccl.setForeground(Color.black);
+                     TextField_hustota_namrazy.setForeground(Color.black);
+                     break;                    
+        }
+            TextField_Ccl.setText(String.valueOf(Variable_Ccl));
+            TextField_hustota_namrazy.setText(String.valueOf(Variable_hustota_namrazy));
+            
+            
+            
+        }
+    }//GEN-LAST:event_jComboBox_druh_namrazyActionPerformed
+
+    private void TextField_CclActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextField_CclActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TextField_CclActionPerformed
+
+    private void TextField_hustota_namrazyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextField_hustota_namrazyActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TextField_hustota_namrazyActionPerformed
+
+    private void TextField_CclKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextField_CclKeyReleased
+          
+        if (TextField_Ccl.isEditable() == true){
+          
+         Variable_Ccl=doubleChecker_short_answer(TextField_Ccl);
+            
+        }
+        
+        
+    }//GEN-LAST:event_TextField_CclKeyReleased
+
+    private void TextField_hustota_namrazyKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextField_hustota_namrazyKeyReleased
+       if (TextField_hustota_namrazy.isEditable() == true){
+          
+         Variable_hustota_namrazy=doubleChecker_short_answer(TextField_hustota_namrazy);
+            
+        }
+    }//GEN-LAST:event_TextField_hustota_namrazyKeyReleased
+
+    private void TextField_zakladne_mech_lana_minus5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextField_zakladne_mech_lana_minus5ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TextField_zakladne_mech_lana_minus5ActionPerformed
+
+    private void TextField_zakladne_mech_lana_minus5KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextField_zakladne_mech_lana_minus5KeyReleased
+        Variable_zakladne_mech_napatie_lana_pre_minus5=doubleChecker_short_answer(TextField_zakladne_mech_lana_minus5);
+    }//GEN-LAST:event_TextField_zakladne_mech_lana_minus5KeyReleased
+
+    private void TextField_max_mech_podiel_z_RTSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextField_max_mech_podiel_z_RTSActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TextField_max_mech_podiel_z_RTSActionPerformed
+
+    private void TextField_max_mech_podiel_z_RTSKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextField_max_mech_podiel_z_RTSKeyReleased
+          Variable_maximalne_zataz_lana_podiel_z_RTS=Variable_RTS*(doubleChecker_short_answer(TextField_zakladne_mech_lana_minus5)/100);
+    }//GEN-LAST:event_TextField_max_mech_podiel_z_RTSKeyReleased
+
  
   
   public static void lanochangeinDatabaze() {
@@ -539,17 +793,31 @@ public class mainframe extends javax.swing.JFrame {
     private javax.swing.JButton Button_namrazova_oblast;
     private javax.swing.JLabel Label_RTS;
     private javax.swing.JLabel Label_RTS_velicina;
+    private javax.swing.JLabel Label_RTS_velicina1;
+    private javax.swing.JLabel Label_RTS_velicina2;
+    private javax.swing.JLabel Label_RTS_velicina3;
+    private javax.swing.JLabel Label__typ_namrazy_Ccl;
+    private javax.swing.JLabel Label_hustota_namrazy;
     private javax.swing.JLabel Label_kotevne_useky;
     private static javax.swing.JLabel Label_kotevne_useky1;
+    private javax.swing.JLabel Label_max_zataz_lana;
+    private javax.swing.JLabel Label_typ_namrazy;
     private javax.swing.JLabel Label_vybrana_namrazova_oblast;
+    private javax.swing.JLabel Label_zakladne_mech_napatie_minis5;
     private javax.swing.JTable Table_kotevne_useky;
+    private javax.swing.JTextField TextField_Ccl;
     private javax.swing.JTextField TextField_RTS;
+    private javax.swing.JTextField TextField_hustota_namrazy;
+    private javax.swing.JTextField TextField_max_mech_podiel_z_RTS;
+    private javax.swing.JTextField TextField_zakladne_mech_lana_minus5;
     private static final javax.swing.JComboBox<String> jComboBox_conductor_chooser = new javax.swing.JComboBox<>();
+    private static final javax.swing.JComboBox<String> jComboBox_druh_namrazy = new javax.swing.JComboBox<>();
     private javax.swing.JPanel jPanel1;
     private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JSeparator jSeparator3;
     private javax.swing.JToolBar jToolBar1;
     // End of variables declaration//GEN-END:variables
 DefaultTableModel modelTable;
@@ -573,6 +841,10 @@ private static double  Variable_RTS;
 private static double  Variable_Ir50;
 private static double  Variable_Klc;
 private static double  Variable_Kh;
+private static double  Variable_Ccl;
+private static double  Variable_hustota_namrazy;
+private static double  Variable_zakladne_mech_napatie_lana_pre_minus5;
+private static double  Variable_maximalne_zataz_lana_podiel_z_RTS;
     
 // conductor variables
 private static final ArrayList<Object[]> Databaza = new ArrayList<>();
@@ -594,13 +866,21 @@ private void seticon() {
     }
     
     private static void nacitatDatabazuLan(){
-        
+    mainframeLodaed = false;    
     String  memory_path_plus_filename  = startPanel.set_memory_path_conductor();
         
         if(memory_path_plus_filename.equals("none")){}
         else{
          memory_path_plus_filename_here  = startPanel.set_memory_path_conductor();
-         memory_path_plus_filename_existence=true;
+         
+         File test = new File(memory_path_plus_filename_here); // test či existuje subor ak nie tak potom požiadaj uživatela o cestu 
+         boolean file_teste =test.exists();
+         if ( file_teste == true) {
+           memory_path_plus_filename_existence=true;  
+         }else{
+           memory_path_plus_filename_existence=false;  
+         }
+         
          
         }
         
@@ -624,7 +904,20 @@ private void seticon() {
                           //set nname of loaded file intext field
 
         filenamePath_plus_filename= filenamePath + "\\" + filename;        // load entire file into table and memory of  proram
-       }else{
+        startPanel.conductor_memory_path_plus_filename=filenamePath_plus_filename;  
+        File subor = new File(userhome + "\\resources\\" + "memory.txt");  // ak kanita tak si zapametaj cestu kde to bolo resources, memory
+        try {
+            PrintWriter fw = new PrintWriter(subor);
+            fw.println("Memory file do not edit");
+            fw.println(filenamePath_plus_filename);
+            fw.close();
+
+        } catch (FileNotFoundException ex) {
+
+        }
+        
+        
+    }else{
         filenamePath_plus_filename = memory_path_plus_filename_here;
         memory_path_plus_filename_existence = false;
        }
@@ -646,7 +939,8 @@ private void seticon() {
             EmptyLine = input.nextLine(); // read first line and unlock the input.hasnext
             Integer counter = 0;
             // ochrana pred dualnym nacitavanim
-                        jComboBox_conductor_chooser.removeAllItems();
+           
+                      jComboBox_conductor_chooser.removeAllItems();
                              Databaza.removeAll(Databaza);
             
              while (input.hasNext()) {
@@ -720,5 +1014,30 @@ private void seticon() {
         //System.out.println(Ir50);
         return Ir50;
     }
-
+    
+     private double doubleChecker_short_answer (javax.swing.JTextField Y){
+       Double value ;
+        try{
+        value = Double.parseDouble(Y.getText());
+        Y.setForeground(Color.black);
+        return value;
+        }catch(NumberFormatException | NullPointerException e){
+         Y.setForeground(Color.red);
+         Y.setText(language.language_label(languageOption, 85));
+        return value = 123456789.987654321;            
+        }
+     }
+     
+     private double doubleChecker (javax.swing.JTextField Y){
+       Double value ;
+        try{
+        value = Double.parseDouble(Y.getText());
+        Y.setForeground(Color.black);
+        return value;
+        }catch(NumberFormatException | NullPointerException e){
+         Y.setForeground(Color.red);
+         Y.setText(language.language_label(languageOption, 47));
+        return value = 123456789.987654321;            
+        }
+     }
 }

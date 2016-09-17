@@ -62,7 +62,7 @@ public static void constructor(){
  /*28*/  language.SK.add("Potvrdiť");                    language.CZ.add("Potrvdit");                       language.EN.add("Set");
  /*29*/  language.SK.add("Databáza");                    language.CZ.add("Databáze");                       language.EN.add("Database");
  /*30*/  language.SK.add("Načítať");                     language.CZ.add("Načítat");                        language.EN.add("Load");
- /*31*/  language.SK.add("Vyberte súbor s databázou");   language.CZ.add("Vyběrte soubor s databazí");      language.EN.add("Choose database file");
+ /*31*/  language.SK.add("Vyberte súbor s databázou vodičou");   language.CZ.add("Vyběrte soubor s databazí vodičú");      language.EN.add("Choose database file of conductors");
  /*32*/  language.SK.add("txt subor (*.txt)");           language.CZ.add("txt soubor (*.txt)");             language.EN.add("txt files (*.txt)");
  
  //Conductors_Jdialog_main_JtextArea ( conductor info )
@@ -144,6 +144,25 @@ public static void constructor(){
 /*74*/  language.SK.add("Zrušiť");                     language.CZ.add("Ulozit cestu");                     language.EN.add("Save path");
 
 /*75*/  language.SK.add("Použiť");                     language.CZ.add("Ulozit cestu");                     language.EN.add("Save path");
+
+// main_frame druh námrazy
+
+/*76*/  language.SK.add("Typ námrazy");                     language.CZ.add("Ulozit cestu");                     language.EN.add("Save path");
+/*77*/  language.SK.add("Mokrý sneh");                     language.CZ.add("Ulozit cestu");                     language.EN.add("Save path");
+/*78*/  language.SK.add("Ľadovica");                     language.CZ.add("Ulozit cestu");                     language.EN.add("Save path");
+/*79*/  language.SK.add("Ľahká inovať");                     language.CZ.add("Ulozit cestu");                     language.EN.add("Save path");
+/*80*/  language.SK.add("Ťažká inovať");                     language.CZ.add("Ulozit cestu");                     language.EN.add("Save path");
+/*81*/  language.SK.add("NNA-SK");                     language.CZ.add("Ulozit cestu");                     language.EN.add("Save path");
+/*82*/  language.SK.add("Voliteľná");                     language.CZ.add("Ulozit cestu");                     language.EN.add("Save path");
+
+/*83*/  language.SK.add("Ccl = ");                     language.CZ.add("Ulozit cestu");                     language.EN.add("Save path");
+/*84*/  language.SK.add("\u03C1 = ");                     language.CZ.add("Ulozit cestu");                     language.EN.add("Save path");
+/*85*/  language.SK.add("-");                     language.CZ.add("-");                     language.EN.add("-");
+
+// main_frame mech napatia a podiel z RTS
+
+/*86*/  language.SK.add("Záklané mech. napätie lana pri -5°C");                     language.CZ.add("Ulozit cestu");                     language.EN.add("Save path");
+/*87*/  language.SK.add("Maximálne zaťaženie pre vodič");                     language.CZ.add("-");                     language.EN.add("-");
 
 
  inicializovane = true;
