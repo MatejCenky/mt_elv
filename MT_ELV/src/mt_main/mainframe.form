@@ -2,11 +2,7 @@
 
 <Form version="1.6" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <NonVisualComponents>
-    <Component class="javax.swing.JRadioButtonMenuItem" name="jRadioButtonMenuItem1">
-      <Properties>
-        <Property name="selected" type="boolean" value="true"/>
-        <Property name="text" type="java.lang.String" value="jRadioButtonMenuItem1"/>
-      </Properties>
+    <Component class="javax.swing.ButtonGroup" name="buttonGroup1">
     </Component>
   </NonVisualComponents>
   <Properties>
@@ -41,9 +37,22 @@
           <Component id="jToolBar1" alignment="0" max="32767" attributes="0"/>
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jScrollPane1" alignment="0" min="-2" pref="226" max="-2" attributes="0"/>
-                  <Component id="Label_kotevne_useky" alignment="0" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Group type="102" attributes="0">
+                      <Component id="jRadioButton_with_label_vlastna" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace pref="60" max="32767" attributes="0"/>
+                      <Component id="TextField_hcmean_vlastna" min="-2" pref="78" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="jRadioButton_with_label_vypoctana" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Component id="TextField_hcmean_vpocitana" min="-2" pref="78" max="-2" attributes="0"/>
+                      </Group>
+                      <Component id="jScrollPane1" alignment="0" pref="226" max="32767" attributes="0"/>
+                      <Component id="Label_kotevne_useky" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="Label_stredna_vyska_vodicov_nad_terenom" alignment="0" max="32767" attributes="0"/>
+                  </Group>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
@@ -130,7 +139,21 @@
               <Component id="Label_kotevne_useky" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="7" pref="7" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jScrollPane1" alignment="0" min="-2" pref="261" max="-2" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="jScrollPane1" min="-2" pref="261" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="Label_stredna_vyska_vodicov_nad_terenom" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jRadioButton_with_label_vypoctana" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="TextField_hcmean_vpocitana" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jRadioButton_with_label_vlastna" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="TextField_hcmean_vlastna" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jComboBox_conductor_chooser" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -772,5 +795,42 @@
         </Container>
       </SubComponents>
     </Container>
+    <Component class="javax.swing.JLabel" name="Label_stredna_vyska_vodicov_nad_terenom">
+      <Properties>
+        <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+          <Connection code="language.language_label(languageOption, 94)" type="code"/>
+        </Property>
+      </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="10"/>
+      </AuxValues>
+    </Component>
+    <Component class="javax.swing.JRadioButton" name="jRadioButton_with_label_vypoctana">
+      <Properties>
+        <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+          <ComponentRef name="buttonGroup1"/>
+        </Property>
+        <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+          <Connection code="language.language_label(languageOption, 95)" type="code"/>
+        </Property>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JRadioButton" name="jRadioButton_with_label_vlastna">
+      <Properties>
+        <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+          <ComponentRef name="buttonGroup1"/>
+        </Property>
+        <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+          <Connection code="language.language_label(languageOption, 96)" type="code"/>
+        </Property>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jRadioButton_with_label_vlastnaActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JTextField" name="TextField_hcmean_vpocitana">
+    </Component>
+    <Component class="javax.swing.JTextField" name="TextField_hcmean_vlastna">
+    </Component>
   </SubComponents>
 </Form>

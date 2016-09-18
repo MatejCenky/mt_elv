@@ -176,6 +176,11 @@ public static void constructor(){
 /*92*/  language.SK.add("Výška m.n.m. [m]");                     language.CZ.add("-");                     language.EN.add("-");
 /*93*/  language.SK.add("Výška stožiara [m]");                     language.CZ.add("Ulozit cestu");                     language.EN.add("Save path");
 
+// main_frame BigTable for rozpatia and so on
+
+/*94*/  language.SK.add("Stredná výška vodičov nad terénom");                     language.CZ.add("Ulozit cestu");                     language.EN.add("Save path");
+/*95*/  language.SK.add("Vypočítana");                     language.CZ.add("Ulozit cestu");                     language.EN.add("Save path");
+/*96*/  language.SK.add("Vlastná");                     language.CZ.add("Ulozit cestu");                     language.EN.add("Save path");
 
  inicializovane = true;
 }

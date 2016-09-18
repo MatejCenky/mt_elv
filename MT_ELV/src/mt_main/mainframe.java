@@ -92,6 +92,11 @@ public class mainframe extends javax.swing.JFrame {
         modeltable_rozpatia_nadm_vysky.addRow(new Object[1]);
         Table_rozpatia.setRowHeight(1,16);
         
+        // inicializacia_ ARRAZLISTOV?NULOVANIE
+        Variable_Ai_dlzka_rozpatia.removeAll(Variable_Ai_dlzka_rozpatia);
+        Variable_hi2_nadmorska_vyska_stoziarov.removeAll(Variable_hi2_nadmorska_vyska_stoziarov);
+        Variable_hi_vyska_stoziarov.removeAll(Variable_hi_vyska_stoziarov);
+        
         Variable_Ai_dlzka_rozpatia.add(0.0);
         Variable_hi_vyska_stoziarov.add(0.0);
         Variable_hi2_nadmorska_vyska_stoziarov.add(0.0);
@@ -156,7 +161,34 @@ public class mainframe extends javax.swing.JFrame {
                 tablemodellistener_rozpatia=true;
                 tablemodellistener_nad_vysky=true;
                 Table_rozpatia.getModel().addTableModelListener(this);
-            }
+                
+                
+                System.out.println(Variable_Ai_dlzka_rozpatia);
+                System.out.println(Variable_hi_vyska_stoziarov);
+                System.out.println(Variable_hi2_nadmorska_vyska_stoziarov);
+                
+                int odcitacac_rozpati=0;
+                for(int i = 0; i< Variable_Ai_dlzka_rozpatia.size();i++){           //odstranuje chybne zapisi alebo prazdne hodnoty pre rozpatia
+                    
+                    if(Variable_Ai_dlzka_rozpatia.get(i) == 0.0 || Variable_Ai_dlzka_rozpatia.get(i) == 123456789.987654321 ){
+                    odcitacac_rozpati=odcitacac_rozpati+1;
+                }
+                }
+                
+                Variable_n_pocet_rozpati = (Variable_Ai_dlzka_rozpatia.size()-odcitacac_rozpati);
+                
+                double Sumar_scitavac=0;
+                for(int i = 0; i< Variable_n_pocet_rozpati+1;i++){           //pocita len tam kde je zadana dlka zorpatia ine stožiare bdue ignotrovat plus jedna preto lebo pocet stožiarov je vždy rozpatia plus 1
+                    
+                    Sumar_scitavac=Sumar_scitavac + Variable_hi_vyska_stoziarov.get(i);
+                    
+                }
+
+               Variable_Hc_mean_medzikrok= Sumar_scitavac/Variable_n_pocet_rozpati;    // vypocitaj Hcmena
+               TextField_hcmean_vpocitana.setText(String.valueOf(Variable_Hc_mean_medzikrok)); // vloz do text field pri radio buttne
+               // System.out.println(Variable_n_pocet_rozpati);
+            }   
+            
 
             
         }
@@ -174,8 +206,8 @@ public class mainframe extends javax.swing.JFrame {
                 int column = e.getColumn();
                   
                     //prepisuje row -1 lebo tam sa nachadza hodnota  kedže nulty riadok je prazdny vždy
-                Variable_hi_vyska_stoziarov.set(row, doubleChecker_tableinput(String.valueOf(Table_rozpatia_nadm_vysky.getValueAt(row, 0))) );
-                Variable_hi2_nadmorska_vyska_stoziarov.set(row, doubleChecker_tableinput(String.valueOf(Table_rozpatia_nadm_vysky.getValueAt(row, 1))) );
+                Variable_hi_vyska_stoziarov.set(row, doubleChecker_tableinput(String.valueOf(Table_rozpatia_nadm_vysky.getValueAt(row, 1))) );
+                Variable_hi2_nadmorska_vyska_stoziarov.set(row, doubleChecker_tableinput(String.valueOf(Table_rozpatia_nadm_vysky.getValueAt(row, 0))) );
                 
                 if(row == Table_rozpatia_nadm_vysky.getRowCount()-1){ // ak klinuty posledny riadok tak
                 Variable_Ai_dlzka_rozpatia.add(0.0);
@@ -191,6 +223,17 @@ public class mainframe extends javax.swing.JFrame {
                  tablemodellistener_rozpatia=true;
                 tablemodellistener_nad_vysky=true;
                 Table_rozpatia_nadm_vysky.getModel().addTableModelListener(this);
+                
+                 double Sumar_scitavac=0;
+                for(int i = 0; i< Variable_n_pocet_rozpati+1;i++){           //pocita len tam kde je zadana dlka zorpatia ine stožiare bdue ignotrovat plus jedna preto lebo pocet stožiarov je vždy rozpatia plus 1
+                    
+                    Sumar_scitavac=Sumar_scitavac + Variable_hi_vyska_stoziarov.get(i);
+                    
+                }
+
+               Variable_Hc_mean_medzikrok= Sumar_scitavac/Variable_n_pocet_rozpati;    // vypocitaj Hcmena
+               TextField_hcmean_vpocitana.setText(String.valueOf(Variable_Hc_mean_medzikrok)); // vloz do text field pri radio buttne
+               
             }
             
             
@@ -213,7 +256,7 @@ public class mainframe extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jRadioButtonMenuItem1 = new javax.swing.JRadioButtonMenuItem();
+        buttonGroup1 = new javax.swing.ButtonGroup();
         jScrollPane1 = new javax.swing.JScrollPane();
         Table_kotevne_useky = new javax.swing.JTable();
         Label_kotevne_useky = new javax.swing.JLabel();
@@ -254,9 +297,11 @@ public class mainframe extends javax.swing.JFrame {
         Table_rozpatia = new javax.swing.JTable();
         jScrollPane2 = new javax.swing.JScrollPane();
         Table_rozpatia_nadm_vysky = new javax.swing.JTable();
-
-        jRadioButtonMenuItem1.setSelected(true);
-        jRadioButtonMenuItem1.setText("jRadioButtonMenuItem1");
+        Label_stredna_vyska_vodicov_nad_terenom = new javax.swing.JLabel();
+        jRadioButton_with_label_vypoctana = new javax.swing.JRadioButton();
+        jRadioButton_with_label_vlastna = new javax.swing.JRadioButton();
+        TextField_hcmean_vpocitana = new javax.swing.JTextField();
+        TextField_hcmean_vlastna = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(204, 204, 204));
@@ -635,6 +680,19 @@ public class mainframe extends javax.swing.JFrame {
             .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
+        Label_stredna_vyska_vodicov_nad_terenom.setText(language.language_label(languageOption, 94));
+
+        buttonGroup1.add(jRadioButton_with_label_vypoctana);
+        jRadioButton_with_label_vypoctana.setText(language.language_label(languageOption, 95));
+
+        buttonGroup1.add(jRadioButton_with_label_vlastna);
+        jRadioButton_with_label_vlastna.setText(language.language_label(languageOption, 96));
+        jRadioButton_with_label_vlastna.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButton_with_label_vlastnaActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -642,9 +700,19 @@ public class mainframe extends javax.swing.JFrame {
             .addComponent(jToolBar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addGap(24, 24, 24)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Label_kotevne_useky))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jRadioButton_with_label_vlastna)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 60, Short.MAX_VALUE)
+                        .addComponent(TextField_hcmean_vlastna, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                            .addComponent(jRadioButton_with_label_vypoctana)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(TextField_hcmean_vpocitana, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 226, Short.MAX_VALUE)
+                        .addComponent(Label_kotevne_useky, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(Label_stredna_vyska_vodicov_nad_terenom, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
@@ -711,7 +779,18 @@ public class mainframe extends javax.swing.JFrame {
                 .addComponent(Label_kotevne_useky)
                 .addGap(7, 7, 7)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(Label_stredna_vyska_vodicov_nad_terenom)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jRadioButton_with_label_vypoctana)
+                            .addComponent(TextField_hcmean_vpocitana, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jRadioButton_with_label_vlastna)
+                            .addComponent(TextField_hcmean_vlastna, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jComboBox_conductor_chooser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -974,6 +1053,10 @@ public class mainframe extends javax.swing.JFrame {
         
     }//GEN-LAST:event_Table_rozpatiaKeyReleased
 
+    private void jRadioButton_with_label_vlastnaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton_with_label_vlastnaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jRadioButton_with_label_vlastnaActionPerformed
+
  
   
   public static void lanochangeinDatabaze() {
@@ -1037,6 +1120,7 @@ public class mainframe extends javax.swing.JFrame {
     private javax.swing.JLabel Label_kotevne_useky;
     private static javax.swing.JLabel Label_kotevne_useky1;
     private javax.swing.JLabel Label_max_zataz_lana;
+    private static javax.swing.JLabel Label_stredna_vyska_vodicov_nad_terenom;
     private javax.swing.JLabel Label_typ_namrazy;
     private javax.swing.JLabel Label_vybrana_namrazova_oblast;
     private javax.swing.JLabel Label_zakladne_mech_napatie_minis5;
@@ -1045,14 +1129,18 @@ public class mainframe extends javax.swing.JFrame {
     private javax.swing.JTable Table_rozpatia_nadm_vysky;
     private javax.swing.JTextField TextField_Ccl;
     private javax.swing.JTextField TextField_RTS;
+    private javax.swing.JTextField TextField_hcmean_vlastna;
+    private javax.swing.JTextField TextField_hcmean_vpocitana;
     private javax.swing.JTextField TextField_hustota_namrazy;
     private javax.swing.JTextField TextField_max_mech_podiel_z_RTS;
     private javax.swing.JTextField TextField_zakladne_mech_lana_minus5;
+    private javax.swing.ButtonGroup buttonGroup1;
     private static final javax.swing.JComboBox<String> jComboBox_conductor_chooser = new javax.swing.JComboBox<>();
     private static final javax.swing.JComboBox<String> jComboBox_druh_namrazy = new javax.swing.JComboBox<>();
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem1;
+    private javax.swing.JRadioButton jRadioButton_with_label_vlastna;
+    private javax.swing.JRadioButton jRadioButton_with_label_vypoctana;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
@@ -1093,7 +1181,9 @@ private static double  Variable_maximalne_zataz_lana_podiel_z_RTS;
 private static ArrayList<Double>  Variable_Ai_dlzka_rozpatia = new ArrayList<>();
 private static ArrayList<Double>  Variable_hi_vyska_stoziarov = new ArrayList<>();
 private static ArrayList<Double>  Variable_hi2_nadmorska_vyska_stoziarov = new ArrayList<>();
-
+private static double  Variable_Hc_mean;
+private static double  Variable_Hc_mean_medzikrok;
+private static double  Variable_n_pocet_rozpati;
 // conductor variables
 private static final ArrayList<Object[]> Databaza = new ArrayList<>();
 public static javax.swing.JLabel Lano_listener_JLabel_Maska;
