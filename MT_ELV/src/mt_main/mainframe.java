@@ -8,6 +8,7 @@
  */
 package mt_main;
 
+import com.jidesoft.grid.DefaultSpanTableModel;
 import java.awt.Color;
 import java.awt.Toolkit;
 import java.io.File;
@@ -17,6 +18,10 @@ import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Scanner;
 import javax.swing.JFileChooser;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
+import javax.swing.event.TableModelEvent;
+import javax.swing.event.TableModelListener;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableModel;
 import static mt_main.startPanel.languageOption;
@@ -37,6 +42,11 @@ public class mainframe extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         seticon();
         this.modelTable = (DefaultTableModel) Table_kotevne_useky.getModel();
+        this.modeltable_rozpatia = (DefaultTableModel) Table_rozpatia.getModel();
+        this.modeltable_rozpatia_nadm_vysky = (DefaultTableModel) Table_rozpatia_nadm_vysky.getModel();
+        
+        Table_rozpatia.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        
         nacitatDatabazuLan(); 
         mainframeLodaed=true;// fisrt load oc conductr databaze
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE); // if ju exit window app will not close
@@ -70,6 +80,127 @@ public class mainframe extends javax.swing.JFrame {
           
         // nulovanie   
         hodnoty_namrazove_oblasti = new Object[]{(double) 0.0,(double) 0.0, (double) 0.0,(double) 0.0};  
+        
+        //testing Jtable
+        
+        modeltable_rozpatia.addRow(new Object[]{(String) "-----------------------------------------"});    // nulty riedok
+        Table_rozpatia.setRowHeight(0,8);
+        
+        
+        modeltable_rozpatia.addRow(new Object[0]);
+        modeltable_rozpatia_nadm_vysky.addRow(new Object[1]);
+        modeltable_rozpatia_nadm_vysky.addRow(new Object[1]);
+        Table_rozpatia.setRowHeight(1,16);
+        
+        Variable_Ai_dlzka_rozpatia.add(0.0);
+        Variable_hi_vyska_stoziarov.add(0.0);
+        Variable_hi2_nadmorska_vyska_stoziarov.add(0.0);
+        Variable_hi_vyska_stoziarov.add(0.0);
+        Variable_hi2_nadmorska_vyska_stoziarov.add(0.0);
+        
+//        for(int i = 0; i<23 ; i++){
+//        modeltable_rozpatia.addRow(new Object[0]);
+//        modeltable_rozpatia_nadm_vysky.addRow(new Object[1]);
+//        Table_rozpatia.setRowHeight(i+2,16);
+//        }
+       
+         Table_rozpatia.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
+
+            @Override
+            public void valueChanged(ListSelectionEvent e) {
+                
+                    int rowNumber =  Table_rozpatia.getSelectedRow(); //- (e.getFirstIndex()-e.getLastIndex());
+
+                    if(rowNumber != 0){
+                      
+                      Table_rozpatia_nadm_vysky.removeRowSelectionInterval(0, Table_rozpatia_nadm_vysky.getRowCount()-1);
+                      Table_rozpatia_nadm_vysky.addColumnSelectionInterval(0, 1);
+                      Table_rozpatia_nadm_vysky.addRowSelectionInterval(rowNumber-1, rowNumber);
+                    }
+                    
+
+                    
+                    
+
+                
+            }
+
+        });  //selection listener fot text area to show data
+
+         Table_rozpatia.getModel().addTableModelListener(new TableModelListener()  {
+
+            @Override
+            public void tableChanged(TableModelEvent e) {
+                Table_rozpatia.getModel().removeTableModelListener(this);
+                if(tablemodellistener_rozpatia == true){
+                tablemodellistener_rozpatia=false;
+                tablemodellistener_nad_vysky=false;
+                
+                int row = e.getFirstRow();
+                int column = e.getColumn();
+               
+                if(row != 0){   // pre nulu nie lebo t je nulty riadok a tam je medzera
+                    //prepisuje row -1 lebo tam sa nachadza hodnota  kedže nulty riadok je prazdny vždy
+                Variable_Ai_dlzka_rozpatia.set(row-1, doubleChecker_tableinput(String.valueOf(Table_rozpatia.getValueAt(row, column))) );
+                
+                if(row == Table_rozpatia.getRowCount()-1){ // ak klinuty posledny riadok tak
+                Variable_Ai_dlzka_rozpatia.add(0.0);
+                Variable_hi_vyska_stoziarov.add(0.0);
+                Variable_hi2_nadmorska_vyska_stoziarov.add(0.0);//pridar row vsšade do každe arraylist               
+                modeltable_rozpatia_nadm_vysky.addRow(new Object[1]);
+                modeltable_rozpatia.addRow(new Object[0]);
+                }
+                
+                }
+                }
+                tablemodellistener_rozpatia=true;
+                tablemodellistener_nad_vysky=true;
+                Table_rozpatia.getModel().addTableModelListener(this);
+            }
+
+            
+        }
+        );
+          Table_rozpatia_nadm_vysky.getModel().addTableModelListener(new TableModelListener() {
+
+            @Override
+            public void tableChanged(TableModelEvent e) {
+                Table_rozpatia_nadm_vysky.getModel().removeTableModelListener(this);
+                 if(tablemodellistener_nad_vysky == true){
+                tablemodellistener_rozpatia=false;
+                tablemodellistener_nad_vysky=false;
+                
+                int row = e.getFirstRow();
+                int column = e.getColumn();
+                  
+                    //prepisuje row -1 lebo tam sa nachadza hodnota  kedže nulty riadok je prazdny vždy
+                Variable_hi_vyska_stoziarov.set(row, doubleChecker_tableinput(String.valueOf(Table_rozpatia_nadm_vysky.getValueAt(row, 0))) );
+                Variable_hi2_nadmorska_vyska_stoziarov.set(row, doubleChecker_tableinput(String.valueOf(Table_rozpatia_nadm_vysky.getValueAt(row, 1))) );
+                
+                if(row == Table_rozpatia_nadm_vysky.getRowCount()-1){ // ak klinuty posledny riadok tak
+                Variable_Ai_dlzka_rozpatia.add(0.0);
+                Variable_hi_vyska_stoziarov.add(0.0);
+                Variable_hi2_nadmorska_vyska_stoziarov.add(0.0);//pridar row vsšade do každe arraylist
+                modeltable_rozpatia.addRow(new Object[0]);
+                modeltable_rozpatia_nadm_vysky.addRow(new Object[1]);
+                }
+                
+                
+                
+            }
+                 tablemodellistener_rozpatia=true;
+                tablemodellistener_nad_vysky=true;
+                Table_rozpatia_nadm_vysky.getModel().addTableModelListener(this);
+            }
+            
+            
+        }
+        );
+         
+         
+        
+       // modeltable2.isCellSpanOn();
+       /// modeltable2.getCellSpanAt(0, 1);
         
     }
 
@@ -118,6 +249,11 @@ public class mainframe extends javax.swing.JFrame {
         TextField_max_mech_podiel_z_RTS = new javax.swing.JTextField();
         Label_RTS_velicina2 = new javax.swing.JLabel();
         Label_RTS_velicina3 = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        Table_rozpatia = new javax.swing.JTable();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        Table_rozpatia_nadm_vysky = new javax.swing.JTable();
 
         jRadioButtonMenuItem1.setSelected(true);
         jRadioButtonMenuItem1.setText("jRadioButtonMenuItem1");
@@ -125,6 +261,7 @@ public class mainframe extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(204, 204, 204));
         setResizable(false);
+        setSize(new java.awt.Dimension(0, 0));
 
         Table_kotevne_useky.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -288,7 +425,7 @@ public class mainframe extends javax.swing.JFrame {
                 .addComponent(Button_Icon_calculate, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(Button_Icon_export_PDF, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(638, Short.MAX_VALUE))
+                .addContainerGap(1018, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -322,6 +459,7 @@ public class mainframe extends javax.swing.JFrame {
         });
 
         Label_RTS.setText(language.language_label(languageOption, 66));
+        Label_RTS.setToolTipText(language.language_label(languageOption, 90));
 
         TextField_RTS.setEnabled(false);
         TextField_RTS.addActionListener(new java.awt.event.ActionListener() {
@@ -351,6 +489,7 @@ public class mainframe extends javax.swing.JFrame {
         });
 
         Label__typ_namrazy_Ccl.setText(language.language_label(languageOption, 83));
+        Label__typ_namrazy_Ccl.setToolTipText(language.language_label(languageOption, 88));
 
         TextField_Ccl.setEnabled(false);
         TextField_Ccl.addActionListener(new java.awt.event.ActionListener() {
@@ -365,6 +504,7 @@ public class mainframe extends javax.swing.JFrame {
         });
 
         Label_hustota_namrazy.setText(language.language_label(languageOption, 84));
+        Label_hustota_namrazy.setToolTipText(language.language_label(languageOption, 89));
 
         TextField_hustota_namrazy.setEnabled(false);
         TextField_hustota_namrazy.addActionListener(new java.awt.event.ActionListener() {
@@ -412,6 +552,89 @@ public class mainframe extends javax.swing.JFrame {
 
         Label_RTS_velicina3.setText("% RTS");
 
+        jPanel2.setAlignmentX(0.0F);
+        jPanel2.setAlignmentY(0.0F);
+        jPanel2.setMinimumSize(new java.awt.Dimension(0, 0));
+
+        Table_rozpatia.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                ""
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        Table_rozpatia.setRowMargin(2);
+        Table_rozpatia.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                Table_rozpatiaKeyReleased(evt);
+            }
+        });
+        jScrollPane3.setViewportView(Table_rozpatia);
+        Table_rozpatia.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        if (Table_rozpatia.getColumnModel().getColumnCount() > 0) {
+            Table_rozpatia.getColumnModel().getColumn(0).setResizable(false);
+            Table_rozpatia.getColumnModel().getColumn(0).setHeaderValue(language.language_label(languageOption, 91)
+            );
+        }
+
+        jScrollPane2.setPreferredSize(new java.awt.Dimension(4593, 403));
+
+        Table_rozpatia_nadm_vysky.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "", ""
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        Table_rozpatia_nadm_vysky.setRowMargin(2);
+        Table_rozpatia_nadm_vysky.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                Table_rozpatia_nadm_vyskyKeyReleased(evt);
+            }
+        });
+        jScrollPane2.setViewportView(Table_rozpatia_nadm_vysky);
+        if (Table_rozpatia_nadm_vysky.getColumnModel().getColumnCount() > 0) {
+            Table_rozpatia_nadm_vysky.getColumnModel().getColumn(0).setResizable(false);
+            Table_rozpatia_nadm_vysky.getColumnModel().getColumn(0).setHeaderValue(language.language_label(languageOption, 92)
+            );
+            Table_rozpatia_nadm_vysky.getColumnModel().getColumn(1).setResizable(false);
+            Table_rozpatia_nadm_vysky.getColumnModel().getColumn(1).setHeaderValue(language.language_label(languageOption, 93)
+            );
+        }
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 237, Short.MAX_VALUE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane3)
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -424,6 +647,20 @@ public class mainframe extends javax.swing.JFrame {
                     .addComponent(Label_kotevne_useky))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(Label_zakladne_mech_napatie_minis5, javax.swing.GroupLayout.DEFAULT_SIZE, 216, Short.MAX_VALUE)
+                                .addComponent(Label_max_zataz_lana, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(TextField_zakladne_mech_lana_minus5)
+                                .addComponent(TextField_max_mech_podiel_z_RTS))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(Label_RTS_velicina3, javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(Label_RTS_velicina2, javax.swing.GroupLayout.Alignment.TRAILING)))
+                        .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                             .addComponent(Label_RTS)
@@ -460,21 +697,9 @@ public class mainframe extends javax.swing.JFrame {
                                     .addComponent(TextField_hustota_namrazy, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                     .addComponent(Label_RTS_velicina1))
-                                .addComponent(jComboBox_druh_namrazy, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(Label_zakladne_mech_napatie_minis5, javax.swing.GroupLayout.DEFAULT_SIZE, 216, Short.MAX_VALUE)
-                                .addComponent(Label_max_zataz_lana, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(TextField_zakladne_mech_lana_minus5)
-                                .addComponent(TextField_max_mech_podiel_z_RTS))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(Label_RTS_velicina3, javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(Label_RTS_velicina2, javax.swing.GroupLayout.Alignment.TRAILING)))
-                        .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(jComboBox_druh_namrazy, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -526,8 +751,9 @@ public class mainframe extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(Label_max_zataz_lana)
                             .addComponent(TextField_max_mech_podiel_z_RTS, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(Label_RTS_velicina3))))
-                .addContainerGap(283, Short.MAX_VALUE))
+                            .addComponent(Label_RTS_velicina3)))
+                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(137, Short.MAX_VALUE))
         );
 
         pack();
@@ -738,6 +964,16 @@ public class mainframe extends javax.swing.JFrame {
           Variable_maximalne_zataz_lana_podiel_z_RTS=Variable_RTS*(doubleChecker_short_answer(TextField_zakladne_mech_lana_minus5)/100);
     }//GEN-LAST:event_TextField_max_mech_podiel_z_RTSKeyReleased
 
+    private void Table_rozpatia_nadm_vyskyKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Table_rozpatia_nadm_vyskyKeyReleased
+        
+        
+        
+    }//GEN-LAST:event_Table_rozpatia_nadm_vyskyKeyReleased
+
+    private void Table_rozpatiaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Table_rozpatiaKeyReleased
+        
+    }//GEN-LAST:event_Table_rozpatiaKeyReleased
+
  
   
   public static void lanochangeinDatabaze() {
@@ -805,6 +1041,8 @@ public class mainframe extends javax.swing.JFrame {
     private javax.swing.JLabel Label_vybrana_namrazova_oblast;
     private javax.swing.JLabel Label_zakladne_mech_napatie_minis5;
     private javax.swing.JTable Table_kotevne_useky;
+    private javax.swing.JTable Table_rozpatia;
+    private javax.swing.JTable Table_rozpatia_nadm_vysky;
     private javax.swing.JTextField TextField_Ccl;
     private javax.swing.JTextField TextField_RTS;
     private javax.swing.JTextField TextField_hustota_namrazy;
@@ -813,14 +1051,19 @@ public class mainframe extends javax.swing.JFrame {
     private static final javax.swing.JComboBox<String> jComboBox_conductor_chooser = new javax.swing.JComboBox<>();
     private static final javax.swing.JComboBox<String> jComboBox_druh_namrazy = new javax.swing.JComboBox<>();
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JToolBar jToolBar1;
     // End of variables declaration//GEN-END:variables
 DefaultTableModel modelTable;
+DefaultTableModel modeltable_rozpatia;
+DefaultTableModel modeltable_rozpatia_nadm_vysky;
 public static String new_kotevny_usek_name;
 public static boolean existnewkotevnyusek = false;
 private static boolean mainframeLodaed = false;
@@ -829,6 +1072,8 @@ private static boolean mainframeLodaed = false;
 public static Object[] hodnoty_namrazove_oblasti = new Object[3];
 public static String namrazove_oblasti_názov_oblasti = "----";
 public static boolean is_namrazove_oblasti_setted = false;
+private static boolean tablemodellistener_rozpatia = true;
+private static boolean tablemodellistener_nad_vysky = true;
 // general variables
 private static String filename = "new_file";
 private static String filenamePath;
@@ -845,7 +1090,10 @@ private static double  Variable_Ccl;
 private static double  Variable_hustota_namrazy;
 private static double  Variable_zakladne_mech_napatie_lana_pre_minus5;
 private static double  Variable_maximalne_zataz_lana_podiel_z_RTS;
-    
+private static ArrayList<Double>  Variable_Ai_dlzka_rozpatia = new ArrayList<>();
+private static ArrayList<Double>  Variable_hi_vyska_stoziarov = new ArrayList<>();
+private static ArrayList<Double>  Variable_hi2_nadmorska_vyska_stoziarov = new ArrayList<>();
+
 // conductor variables
 private static final ArrayList<Object[]> Databaza = new ArrayList<>();
 public static javax.swing.JLabel Lano_listener_JLabel_Maska;
@@ -1038,6 +1286,16 @@ private void seticon() {
          Y.setForeground(Color.red);
          Y.setText(language.language_label(languageOption, 47));
         return value = 123456789.987654321;            
+        }
+     }
+     
+      private double doubleChecker_tableinput (String Y){
+       Double value ;
+        try{
+        value = Double.parseDouble(Y);      
+        return value;
+        }catch(NumberFormatException | NullPointerException e){ 
+       return value = 123456789.987654321;            
         }
      }
 }

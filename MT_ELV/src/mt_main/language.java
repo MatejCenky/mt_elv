@@ -164,6 +164,18 @@ public static void constructor(){
 /*86*/  language.SK.add("Záklané mech. napätie lana pri -5°C");                     language.CZ.add("Ulozit cestu");                     language.EN.add("Save path");
 /*87*/  language.SK.add("Maximálne zaťaženie pre vodič");                     language.CZ.add("-");                     language.EN.add("-");
 
+// main_frame amrazy tool tips
+
+/*88*/  language.SK.add("Súčiniteľ aerodynamického odporu vodiča s námrazou");                     language.CZ.add("Ulozit cestu");                     language.EN.add("Save path");
+/*89*/  language.SK.add("Hustota námrazy");                     language.CZ.add("-");                     language.EN.add("-");
+/*90*/  language.SK.add("Rated Tensile Strength (Matematická únosnost)");                     language.CZ.add("Ulozit cestu");                     language.EN.add("Save path");
+
+// main_frame BigTable for rozpatia and so on
+
+/*91*/  language.SK.add("Rozpätia [m]");                     language.CZ.add("Ulozit cestu");                     language.EN.add("Save path");
+/*92*/  language.SK.add("Výška m.n.m. [m]");                     language.CZ.add("-");                     language.EN.add("-");
+/*93*/  language.SK.add("Výška stožiara [m]");                     language.CZ.add("Ulozit cestu");                     language.EN.add("Save path");
+
 
  inicializovane = true;
 }
