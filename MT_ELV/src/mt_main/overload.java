@@ -48,10 +48,10 @@ public class overload {
      */
     private static double a[]; 
     
-    /**
-     * array of height differences of the suspension points of towers [m]
-     */
-    private static double dh[]; 
+//    /**
+//     * array of height above the sea level of the suspension points of towers [m]
+//     */
+//    private static double h[]; 
     
 // towers and conductors
     private static double d     ;           // conductor diameter !!!!!! [m] !!!!!!
@@ -234,7 +234,7 @@ public class overload {
         // check if variables are set
         check_variables();
         // #1 layer
-        mean_height();
+//        mean_height();
         mean_wind_speed();
         height_coefficient();
         turbulence_intensity();
@@ -269,19 +269,19 @@ public class overload {
         overload.K_h = Math.pow(overload.h_c_mean/10,0.13);
     }
     
-    /**
-     * Computes the mean height of the conductor "h_c_mean" above the ground [m]
-     */
-    private void mean_height(){
-        double aux = 0;
-        int i;
-        
-        // sum of the double array
-        for (i=0; i<overload.dh.length; i++){ //[n+1]
-            aux += overload.dh[i];
-        }
-        overload.h_c_mean = aux/overload.a.length; // [n]
-    }
+//    /**
+//     * Computes the mean height of the conductor "h_c_mean" above the ground [m]
+//     */
+//    private void mean_height(){
+//        double aux = 0;
+//        int i;
+//        
+//        // sum of the double array
+//        for (i=0; i<overload.h.length; i++){
+//            aux += overload.h[i];
+//        }
+//        overload.h_c_mean = aux/overload.h.length;
+//    }
     
     /**
      * Computes the mean wind speed "V_h" using the values chosen from the user (from mainframe)
