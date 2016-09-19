@@ -15,6 +15,7 @@ import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Scanner;
 import javax.swing.JFileChooser;
 import javax.swing.event.ListSelectionEvent;
@@ -162,9 +163,9 @@ public class mainframe extends javax.swing.JFrame {
                 Table_rozpatia.getModel().addTableModelListener(this);
                 
                 
-                System.out.println(Variable_Ai_dlzka_rozpatia);
-                System.out.println(Variable_hi_vyska_stoziarov);
-                System.out.println(Variable_hi2_nadmorska_vyska_stoziarov);
+//                System.out.println(Variable_Ai_dlzka_rozpatia);
+//                System.out.println(Variable_hi_vyska_stoziarov);
+//                System.out.println(Variable_hi2_nadmorska_vyska_stoziarov);
                 
                 int odcitacac_rozpati=0;
                 for(int i = 0; i< Variable_Ai_dlzka_rozpatia.size();i++){           //odstranuje chybne zapisi alebo prazdne hodnoty pre rozpatia
@@ -176,6 +177,25 @@ public class mainframe extends javax.swing.JFrame {
                 
                 Variable_n_pocet_rozpati = (Variable_Ai_dlzka_rozpatia.size()-odcitacac_rozpati);
                 
+                // naplnenie AI array rozpatia na zaklade postu rozpati a deltaHi ktore ma rovnaky rozmer ako Ai
+                Variable_Ai_array = new double[(int) Variable_n_pocet_rozpati];  
+                Variable_DeltaHi_array = new double[(int) Variable_n_pocet_rozpati];
+                Variable_Hi_array = new double[(int) Variable_n_pocet_rozpati+1];
+                for (int i = 0; i < Variable_Ai_array.length; i++) {
+                   
+                Variable_Ai_array[i] = Variable_Ai_dlzka_rozpatia.get(i);
+                Variable_Hi_array[i] = Variable_hi_vyska_stoziarov.get(i);
+                
+                double prvavyska_stoziar_plus_zem = Variable_hi2_nadmorska_vyska_stoziarov.get(i) + Variable_hi_vyska_stoziarov.get(i);
+                double druhavyska_stoziar_plus_zem= Variable_hi2_nadmorska_vyska_stoziarov.get(i+1) + Variable_hi_vyska_stoziarov.get(i+1);
+                Variable_DeltaHi_array[i]= druhavyska_stoziar_plus_zem - prvavyska_stoziar_plus_zem;
+                
+                }
+                Variable_Hi_array[Variable_Ai_array.length] = Variable_hi_vyska_stoziarov.get(Variable_Ai_array.length);
+                
+                
+                
+                // Hcmean pocitac
                 double Sumar_scitavac=0;
                 for(int i = 0; i< Variable_n_pocet_rozpati+1;i++){           //pocita len tam kde je zadana dlka zorpatia ine stožiare bdue ignotrovat plus jedna preto lebo pocet stožiarov je vždy rozpatia plus 1
                     
@@ -185,7 +205,9 @@ public class mainframe extends javax.swing.JFrame {
 
                Variable_Hc_mean_medzikrok= Sumar_scitavac/Variable_n_pocet_rozpati;    // vypocitaj Hcmena
                TextField_hcmean_vpocitana.setText(String.valueOf(Variable_Hc_mean_medzikrok)); // vloz do text field pri radio buttne
-               // System.out.println(Variable_n_pocet_rozpati);
+               
+               
+               
             }   
             
 
@@ -223,6 +245,7 @@ public class mainframe extends javax.swing.JFrame {
                 tablemodellistener_nad_vysky=true;
                 Table_rozpatia_nadm_vysky.getModel().addTableModelListener(this);
                 
+                 // Hcmean pocitac
                  double Sumar_scitavac=0;
                 for(int i = 0; i< Variable_n_pocet_rozpati+1;i++){           //pocita len tam kde je zadana dlka zorpatia ine stožiare bdue ignotrovat plus jedna preto lebo pocet stožiarov je vždy rozpatia plus 1
                     
@@ -232,6 +255,27 @@ public class mainframe extends javax.swing.JFrame {
 
                Variable_Hc_mean_medzikrok= Sumar_scitavac/Variable_n_pocet_rozpati;    // vypocitaj Hcmena
                TextField_hcmean_vpocitana.setText(String.valueOf(Variable_Hc_mean_medzikrok)); // vloz do text field pri radio buttne
+               
+                // naplnenie AI array rozpatia na zaklade postu rozpati a deltaHi ktore ma rovnaky rozmer ako Ai
+                Variable_Ai_array = new double[(int) Variable_n_pocet_rozpati];  
+                Variable_DeltaHi_array = new double[(int) Variable_n_pocet_rozpati];
+                Variable_Hi_array = new double[(int) Variable_n_pocet_rozpati+1];
+                
+                for (int i = 0; i < Variable_Ai_array.length; i++) {
+                   
+                Variable_Ai_array[i] = Variable_Ai_dlzka_rozpatia.get(i);
+                Variable_Hi_array[i] = Variable_hi_vyska_stoziarov.get(i);
+                
+                double prvavyska_stoziar_plus_zem = Variable_hi2_nadmorska_vyska_stoziarov.get(i) + Variable_hi_vyska_stoziarov.get(i);
+                double druhavyska_stoziar_plus_zem= Variable_hi2_nadmorska_vyska_stoziarov.get(i+1) + Variable_hi_vyska_stoziarov.get(i+1);
+                Variable_DeltaHi_array[i]= druhavyska_stoziar_plus_zem - prvavyska_stoziar_plus_zem;
+                }
+                Variable_Hi_array[Variable_Ai_array.length] = Variable_hi_vyska_stoziarov.get(Variable_Ai_array.length);
+                
+                System.out.println("-------------");
+                System.out.println(Arrays.toString(Variable_Ai_array));
+                System.out.println(Arrays.toString(Variable_DeltaHi_array));
+                System.out.println(Arrays.toString(Variable_Hi_array));
                
             }
             
@@ -1183,6 +1227,9 @@ private static ArrayList<Double>  Variable_hi2_nadmorska_vyska_stoziarov = new A
 private static double  Variable_Hc_mean;
 private static double  Variable_Hc_mean_medzikrok;
 private static double  Variable_n_pocet_rozpati;
+private static double[] Variable_Ai_array;
+private static double[] Variable_DeltaHi_array;
+private static double[] Variable_Hi_array;
 // conductor variables
 private static final ArrayList<Object[]> Databaza = new ArrayList<>();
 public static javax.swing.JLabel Lano_listener_JLabel_Maska;
