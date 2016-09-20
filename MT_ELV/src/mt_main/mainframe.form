@@ -43,16 +43,14 @@
                       <EmptySpace pref="60" max="32767" attributes="0"/>
                       <Component id="TextField_hcmean_vlastna" min="-2" pref="78" max="-2" attributes="0"/>
                   </Group>
-                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <Component id="jRadioButton_with_label_vypoctana" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
-                          <Component id="TextField_hcmean_vpocitana" min="-2" pref="78" max="-2" attributes="0"/>
-                      </Group>
-                      <Component id="jScrollPane1" alignment="0" pref="226" max="32767" attributes="0"/>
-                      <Component id="Label_kotevne_useky" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="Label_stredna_vyska_vodicov_nad_terenom" alignment="0" max="32767" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="jRadioButton_with_label_vypoctana" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Component id="TextField_hcmean_vpocitana" min="-2" pref="78" max="-2" attributes="0"/>
                   </Group>
+                  <Component id="jScrollPane1" alignment="0" pref="226" max="32767" attributes="0"/>
+                  <Component id="Label_kotevne_useky" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="Label_stredna_vyska_vodicov_nad_terenom" alignment="0" max="32767" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
@@ -814,6 +812,9 @@
           <Connection code="language.language_label(languageOption, 95)" type="code"/>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jRadioButton_with_label_vypoctanaActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JRadioButton" name="jRadioButton_with_label_vlastna">
       <Properties>
@@ -829,8 +830,15 @@
       </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="TextField_hcmean_vpocitana">
+      <Properties>
+        <Property name="editable" type="boolean" value="false"/>
+      </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="TextField_hcmean_vlastna">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="TextField_hcmean_vlastnaActionPerformed"/>
+        <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="TextField_hcmean_vlastnaKeyReleased"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

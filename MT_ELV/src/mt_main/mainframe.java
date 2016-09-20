@@ -67,6 +67,8 @@ public class mainframe extends javax.swing.JFrame {
         // setiing importt Variables manually in code
         Variable_Kh =  1;
         Variable_Klc = 1;
+        Variable_Hc_mean_medzikrok= 0.0;
+        TextField_hcmean_vpocitana.setText("0.0");
         // inicializacia_ vyber druhu namrazy
         
         jComboBox_druh_namrazy.removeAllItems();  // ymaz povodne itemy
@@ -76,7 +78,9 @@ public class mainframe extends javax.swing.JFrame {
         jComboBox_druh_namrazy.addItem(language.language_label(languageOption, 80));
         jComboBox_druh_namrazy.addItem(language.language_label(languageOption, 81));
         jComboBox_druh_namrazy.addItem(language.language_label(languageOption, 82));
-          
+         
+        //
+        jRadioButton_with_label_vypoctana.doClick();
           
         // nulovanie   
         hodnoty_namrazove_oblasti = new Object[]{(double) 0.0,(double) 0.0, (double) 0.0,(double) 0.0};  
@@ -203,7 +207,11 @@ public class mainframe extends javax.swing.JFrame {
                     
                 }
 
-               Variable_Hc_mean_medzikrok= Sumar_scitavac/Variable_n_pocet_rozpati;    // vypocitaj Hcmena
+               Variable_Hc_mean_medzikrok= Sumar_scitavac/Variable_n_pocet_rozpati;
+               if(jRadioButton_with_label_vypoctana.isSelected() == true){
+               Variable_Hc_mean=Variable_Hc_mean_medzikrok;
+               }
+                  
                TextField_hcmean_vpocitana.setText(String.valueOf(Variable_Hc_mean_medzikrok)); // vloz do text field pri radio buttne
                
                
@@ -727,12 +735,30 @@ public class mainframe extends javax.swing.JFrame {
 
         buttonGroup1.add(jRadioButton_with_label_vypoctana);
         jRadioButton_with_label_vypoctana.setText(language.language_label(languageOption, 95));
+        jRadioButton_with_label_vypoctana.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButton_with_label_vypoctanaActionPerformed(evt);
+            }
+        });
 
         buttonGroup1.add(jRadioButton_with_label_vlastna);
         jRadioButton_with_label_vlastna.setText(language.language_label(languageOption, 96));
         jRadioButton_with_label_vlastna.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jRadioButton_with_label_vlastnaActionPerformed(evt);
+            }
+        });
+
+        TextField_hcmean_vpocitana.setEditable(false);
+
+        TextField_hcmean_vlastna.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TextField_hcmean_vlastnaActionPerformed(evt);
+            }
+        });
+        TextField_hcmean_vlastna.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                TextField_hcmean_vlastnaKeyReleased(evt);
             }
         });
 
@@ -748,14 +774,13 @@ public class mainframe extends javax.swing.JFrame {
                         .addComponent(jRadioButton_with_label_vlastna)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 60, Short.MAX_VALUE)
                         .addComponent(TextField_hcmean_vlastna, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                            .addComponent(jRadioButton_with_label_vypoctana)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(TextField_hcmean_vpocitana, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 226, Short.MAX_VALUE)
-                        .addComponent(Label_kotevne_useky, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(Label_stredna_vyska_vodicov_nad_terenom, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jRadioButton_with_label_vypoctana)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(TextField_hcmean_vpocitana, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 226, Short.MAX_VALUE)
+                    .addComponent(Label_kotevne_useky)
+                    .addComponent(Label_stredna_vyska_vodicov_nad_terenom, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
@@ -1097,8 +1122,27 @@ public class mainframe extends javax.swing.JFrame {
     }//GEN-LAST:event_Table_rozpatiaKeyReleased
 
     private void jRadioButton_with_label_vlastnaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton_with_label_vlastnaActionPerformed
-        // TODO add your handling code here:
+        TextField_hcmean_vlastna.setEnabled(true);
+        Variable_Hc_mean=doubleChecker_short_answer(TextField_hcmean_vlastna);
+        
     }//GEN-LAST:event_jRadioButton_with_label_vlastnaActionPerformed
+
+    private void jRadioButton_with_label_vypoctanaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton_with_label_vypoctanaActionPerformed
+        TextField_hcmean_vlastna.setEnabled(false);
+        Variable_Hc_mean=Variable_Hc_mean_medzikrok;
+    }//GEN-LAST:event_jRadioButton_with_label_vypoctanaActionPerformed
+
+    private void TextField_hcmean_vlastnaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextField_hcmean_vlastnaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TextField_hcmean_vlastnaActionPerformed
+
+    private void TextField_hcmean_vlastnaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextField_hcmean_vlastnaKeyReleased
+        if(TextField_hcmean_vlastna.isEditable() == true){
+          Variable_Hc_mean=doubleChecker_short_answer(TextField_hcmean_vlastna);           
+        }
+        
+        
+    }//GEN-LAST:event_TextField_hcmean_vlastnaKeyReleased
 
  
   
