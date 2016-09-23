@@ -182,6 +182,78 @@ public static void constructor(){
 /*95*/  language.SK.add("Vypočítana");                     language.CZ.add("Ulozit cestu");                     language.EN.add("Save path");
 /*96*/  language.SK.add("Vlastná");                     language.CZ.add("Ulozit cestu");                     language.EN.add("Save path");
 
+// main_frame tabulky cas
+
+/*97*/  language.SK.add("Tabuľky");                     language.CZ.add("Ulozit cestu");                     language.EN.add("Save path");
+/*98*/  language.SK.add("Počiatočné");                     language.CZ.add("Ulozit cestu");                     language.EN.add("Save path");
+/*99*/  language.SK.add("Prechodné");                     language.CZ.add("Ulozit cestu");                     language.EN.add("Save path");
+/*100*/  language.SK.add("Konečné");                     language.CZ.add("Ulozit cestu");                     language.EN.add("Save path");
+/*101*/  language.SK.add("Roky");                     language.CZ.add("Ulozit cestu");                     language.EN.add("Save path");
+
+// main_frame Klc, Kh, BI
+
+/*102*/  language.SK.add("Klc =");                     language.CZ.add("Klc =");                     language.EN.add("Klc =");
+/*103*/  language.SK.add("súčiniteľ miestnych podmienok (čl.4.5.1/SK.3)");                     language.CZ.add("Ulozit cestu");                     language.EN.add("Save path");
+/*104*/  language.SK.add("Kh =");                     language.CZ.add("Kh =");                     language.EN.add("Kh =");
+/*105*/  language.SK.add("súčiniteľ výšky (čl.4.5.1/SK.3)");                     language.CZ.add("Ulozit cestu");                     language.EN.add("Save path");
+/*106*/  language.SK.add("Bl =");                     language.CZ.add("Bl =");                     language.EN.add("Bl =");
+/*107*/  language.SK.add("súčiniteľ pre spolupôsobenie vetra a námrazy (čl. 4.6.6/SK/CZ)");                     language.CZ.add("Ulozit cestu");                     language.EN.add("Save path");
+
+// main_frame vetrova oblast
+
+/*108*/  language.SK.add("Vetrová oblasť");                     language.CZ.add("Klc =");                     language.EN.add("Klc =");
+/*109*/  language.SK.add("Základná rýchlosť vetra");                     language.CZ.add("Ulozit cestu");                     language.EN.add("Save path");
+/*110*/  language.SK.add("Cdir =");                     language.CZ.add("Kh =");                     language.EN.add("Kh =");
+/*111*/  language.SK.add("Súčiniteľ smerovosti vetra");                     language.CZ.add("Ulozit cestu");                     language.EN.add("Save path");
+/*112*/  language.SK.add("Co =");                     language.CZ.add("Bl =");                     language.EN.add("Bl =");
+/*113*/  language.SK.add("Súčiniteľ orografie");                     language.CZ.add("Ulozit cestu");                     language.EN.add("Save path");
+
+/*114*/  language.SK.add("I-SK");                     language.CZ.add("I-SK");                     language.EN.add("I-SK");
+/*115*/  language.SK.add("II-SK");                     language.CZ.add("I-SK");                     language.EN.add("I-SK");
+/*116*/  language.SK.add("III-SK");                     language.CZ.add("I-SK");                     language.EN.add("I-SK");
+/*117*/  language.SK.add("IV-SK");                     language.CZ.add("I-SK");                     language.EN.add("I-SK");
+/*118*/  language.SK.add("I-CZ");                     language.CZ.add("I-SK");                     language.EN.add("I-SK");
+/*119*/  language.SK.add("II-CZ");                     language.CZ.add("I-SK");                     language.EN.add("I-SK");
+/*120*/  language.SK.add("III-CZ");                     language.CZ.add("I-SK");                     language.EN.add("I-SK");
+/*121*/  language.SK.add("IV-CZ");                     language.CZ.add("I-SK");                     language.EN.add("I-SK");
+/*122*/  language.SK.add("V-CZ");                     language.CZ.add("I-SK");                     language.EN.add("I-SK");
+/*123*/  language.SK.add("Volitelné");                     language.CZ.add("I-SK");                     language.EN.add("I-SK");
+
+/*124*/  language.SK.add("Vmean_O =");                     language.CZ.add("Vmean_O =");                     language.EN.add("Vmean_O =");
+
+// main_frame Charakt_terenu
+/*125*/  language.SK.add("Charakteristika terénu");                     language.CZ.add("Klc =");                     language.EN.add("Klc =");
+/*126*/  language.SK.add("kr =");                     language.CZ.add("Ulozit cestu");                     language.EN.add("Save path");
+/*127*/  language.SK.add("z0 =");                     language.CZ.add("Kh =");                     language.EN.add("Kh =");
+/*128*/  language.SK.add("Súčiniteľ terénu");                     language.CZ.add("Ulozit cestu");                     language.EN.add("Save path");
+/*129*/  language.SK.add("Dĺžka drsnosti");                     language.CZ.add("Bl =");                     language.EN.add("Bl =");
+
+/*130*/  language.SK.add("Kategória I");                     language.CZ.add("I-SK");                     language.EN.add("I-SK");
+/*131*/  language.SK.add("Kategória II");                     language.CZ.add("I-SK");                     language.EN.add("I-SK");
+/*132*/  language.SK.add("Kategória III");                     language.CZ.add("I-SK");                     language.EN.add("I-SK");
+/*133*/  language.SK.add("Kategória IV");                     language.CZ.add("I-SK");                     language.EN.add("I-SK");
+/*134*/  language.SK.add("Kategória V");                     language.CZ.add("I-SK");                     language.EN.add("I-SK");
+
+/*135*/  language.SK.add("Kategória I\n\rBúrlivé otvorené more, jazerá do vzdialenosti najmenej 5 km proti smeru vetra a rovná ");                    
+         language.CZ.add("Kategória I_blablablablablabl");                    
+         language.EN.add("Kategória I_blablablablablabl");
+         
+/*136*/  language.SK.add("Kategória II\n\rPoľnohospodárska pôda s deliacimi živými plotmi, rozptýlené malé ");                    
+         language.CZ.add("Kategória II_blablablablablabl");                    
+         language.EN.add("Kategória II_blablablablablabl");
+         
+/*137*/  language.SK.add("Kategória III\n\rPredmestské alebo priemyselné oblasti a trvale zalesnené územia");                    
+         language.CZ.add("Kategória III_blablablablablabl");                    
+         language.EN.add("Kategória III_blablablablablabl");
+         
+/*138*/  language.SK.add("Kategória IV\n\rMestské oblasti, v ktorých je aspoň 15% povrchu pokrytého pozemnými stavbami s ");                    
+         language.CZ.add("Kategória IV_blablablablablabl");                    
+         language.EN.add("Kategória IV_blablablablablabl");
+         
+/*139*/  language.SK.add("Kategória V\n\rHornatý a viac členitý terén, kde sa vietor môže lokálne zosilňovať alebo zoslabovať");                    
+         language.CZ.add("Kategória V_blablablablablabl");                    
+         language.EN.add("Kategória V_blablablablablabl");
+
  inicializovane = true;
 }
  
