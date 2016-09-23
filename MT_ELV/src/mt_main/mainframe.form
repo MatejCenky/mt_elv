@@ -16,6 +16,8 @@
     </Component>
     <Component class="javax.swing.ButtonGroup" name="buttonGroup_C0">
     </Component>
+    <Component class="javax.swing.ButtonGroup" name="buttonGroup_stredne_rozpatia">
+    </Component>
   </NonVisualComponents>
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
@@ -174,26 +176,46 @@
                       </Group>
                   </Group>
                   <Group type="103" alignment="0" groupAlignment="1" attributes="0">
-                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                          <Group type="102" attributes="0">
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="Label_zakladne_mech_napatie_minis5" pref="216" max="32767" attributes="0"/>
-                                  <Component id="Label_max_zataz_lana" max="32767" attributes="0"/>
+                      <Component id="jComboBox_druh_namrazy" alignment="1" min="-2" pref="253" max="-2" attributes="0"/>
+                      <Group type="103" alignment="1" groupAlignment="0" attributes="0">
+                          <Component id="Label_stredne_rozpatie" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Component id="Label_zakladne_mech_napatie_minis5" pref="216" max="32767" attributes="0"/>
+                                      <Component id="Label_max_zataz_lana" max="32767" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="TextField_zakladne_mech_lana_minus5" max="32767" attributes="0"/>
+                                      <Component id="TextField_max_mech_podiel_z_RTS" max="32767" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="Label_RTS_velicina3" alignment="1" min="-2" max="-2" attributes="0"/>
+                                      <Component id="Label_RTS_velicina2" alignment="1" min="-2" max="-2" attributes="0"/>
+                                  </Group>
                               </Group>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="TextField_zakladne_mech_lana_minus5" max="32767" attributes="0"/>
-                                  <Component id="TextField_max_mech_podiel_z_RTS" max="32767" attributes="0"/>
+                              <Component id="jSeparator3" alignment="0" max="32767" attributes="0"/>
+                              <Component id="jSeparator7" alignment="0" min="-2" pref="320" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Group type="103" groupAlignment="1" attributes="0">
+                                  <Component id="jRadioButton_with_label_rozpate_previsenia" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jRadioButton_with_label_rozpatie_klasicky" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="101" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="1" attributes="0">
+                                  <Component id="TextField_STRrozpatie_klasicky" min="-2" pref="78" max="-2" attributes="0"/>
+                                  <Component id="TextField_STRrozpatie_sPrevisenim" min="-2" pref="78" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="Label_RTS_velicina3" alignment="1" min="-2" max="-2" attributes="0"/>
-                                  <Component id="Label_RTS_velicina2" alignment="1" min="-2" max="-2" attributes="0"/>
+                                  <Component id="Label_RTS_velicina5" min="-2" max="-2" attributes="0"/>
+                                  <Component id="Label_RTS_velicina6" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                          <Component id="jSeparator3" min="-2" pref="320" max="-2" attributes="0"/>
                       </Group>
-                      <Component id="jComboBox_druh_namrazy" alignment="1" min="-2" pref="253" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
@@ -277,174 +299,197 @@
               <EmptySpace min="2" pref="2" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Group type="102" attributes="0">
-                              <Component id="jScrollPane1" min="-2" pref="261" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="Label_stredna_vyska_vodicov_nad_terenom" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="Label_vetrova_oblast" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jComboBox_vetrova_oblast" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="jRadioButton_with_label_vypoctana" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="TextField_hcmean_vpocitana" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="jRadioButton_with_label_vlastna" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="TextField_hcmean_vlastna" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
-                          <Group type="102" attributes="0">
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="jComboBox_conductor_chooser" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="Label_kotevne_useky1" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="Label_RTS" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="TextField_RTS" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="Label_RTS_velicina" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jSeparator2" min="-2" pref="4" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="jSeparator1" min="-2" pref="0" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="Label_vybrana_namrazova_oblast" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="Button_namrazova_oblast" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="Label_základna_rychlost_vetra" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="TextField_Vmean_0" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="Label_RTS_velicina4" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="1" attributes="0">
-                                  <Component id="TextField_Kcl" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jRadioButton_Klc_vlastna" min="-2" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="Label__Klc" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jRadioButton_Klc_1" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                              </Group>
-                              <EmptySpace min="-2" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="1" attributes="0">
+                                  <Component id="TextField_vetrova_oblast_Cdir" alignment="1" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jRadioButton_vetrova_oblast_Cdir_vlastna" alignment="1" min="-2" max="-2" attributes="0"/>
                                   <Group type="103" alignment="1" groupAlignment="3" attributes="0">
-                                      <Component id="jRadioButton_Kh_1" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="Label__Kh" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jRadioButton_vetrova_oblast_Cdir_1" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="Label_vetrova_oblast_Cdir" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <Component id="jRadioButton_Kh_vlastna" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="TextField_Kh" alignment="0" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="1" attributes="0">
+                                  <Component id="TextField_vetrova_oblast_C0" alignment="1" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jRadioButton_vetrova_oblast_C0_vlastna" alignment="1" min="-2" max="-2" attributes="0"/>
+                                  <Group type="103" alignment="1" groupAlignment="3" attributes="0">
+                                      <Component id="jRadioButton_vetrova_oblast_C0_1" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="Label_vetrova_oblast_C0" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="jSeparator5" min="-2" pref="10" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="Label_char_terenu" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jComboBox_char_terenu" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="Label__Bi" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jRadioButton_Bi_2" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jRadioButton_Bi_1" min="-2" max="-2" attributes="0"/>
-                                  <Component id="TextField_Bi2" min="-2" max="-2" attributes="0"/>
-                                  <Component id="TextField_Bi_1" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace max="32767" attributes="0"/>
+                              <Component id="jScrollPane5" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="jComboBox_druh_namrazy" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="Label_typ_namrazy" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="Label__char_terenu_kr" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="TextField_Kr" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="Label_char_terenu_zo" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="TextField_dlzka_drsnjosti_zo" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="Label__typ_namrazy_Ccl" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="TextField_Ccl" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="Label_hustota_namrazy" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="TextField_hustota_namrazy" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="Label_RTS_velicina1" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="jSeparator3" min="-2" pref="2" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="Label_zakladne_mech_napatie_minis5" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="TextField_zakladne_mech_lana_minus5" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="Label_RTS_velicina2" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="Label_max_zataz_lana" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="TextField_max_mech_podiel_z_RTS" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="Label_RTS_velicina3" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
+                              <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
+                              <Component id="jSeparator6" min="-2" pref="10" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="Label_uroven_spolahlivosti" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="jComboBox_uroven_splahlivosti" min="-2" max="-2" attributes="0"/>
                           </Group>
+                          <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jRadioButton_with_label_prechodne" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="TextField_tabulky_prechodna" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jRadioButton_with_label_konecne" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="TextField_tabulky_konecna" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <Component id="jScrollPane1" min="-2" pref="261" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="Label_stredna_vyska_vodicov_nad_terenom" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="jRadioButton_with_label_vypoctana" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="TextField_hcmean_vpocitana" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="jRadioButton_with_label_vlastna" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="TextField_hcmean_vlastna" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                                  <Group type="102" attributes="0">
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="jComboBox_conductor_chooser" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="Label_kotevne_useky1" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="Label_RTS" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="TextField_RTS" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="Label_RTS_velicina" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="jSeparator2" min="-2" pref="4" max="-2" attributes="0"/>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                      <Component id="jSeparator1" min="-2" pref="0" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="Label_vybrana_namrazova_oblast" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="Button_namrazova_oblast" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="1" attributes="0">
+                                          <Component id="TextField_Kcl" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jRadioButton_Klc_vlastna" min="-2" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="3" attributes="0">
+                                              <Component id="Label__Klc" alignment="3" min="-2" max="-2" attributes="0"/>
+                                              <Component id="jRadioButton_Klc_1" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                      <EmptySpace min="-2" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="1" attributes="0">
+                                          <Group type="103" alignment="1" groupAlignment="3" attributes="0">
+                                              <Component id="jRadioButton_Kh_1" alignment="3" min="-2" max="-2" attributes="0"/>
+                                              <Component id="Label__Kh" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Component id="jRadioButton_Kh_vlastna" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="TextField_Kh" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="Label__Bi" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jRadioButton_Bi_2" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jRadioButton_Bi_1" min="-2" max="-2" attributes="0"/>
+                                          <Component id="TextField_Bi2" min="-2" max="-2" attributes="0"/>
+                                          <Component id="TextField_Bi_1" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace max="32767" attributes="0"/>
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="jComboBox_druh_namrazy" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="Label_typ_namrazy" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="Label__typ_namrazy_Ccl" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="TextField_Ccl" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="Label_hustota_namrazy" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="TextField_hustota_namrazy" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="Label_RTS_velicina1" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                      <Component id="jSeparator3" min="-2" pref="2" max="-2" attributes="0"/>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="Label_zakladne_mech_napatie_minis5" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="TextField_zakladne_mech_lana_minus5" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="Label_RTS_velicina2" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="Label_max_zataz_lana" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="TextField_max_mech_podiel_z_RTS" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="Label_RTS_velicina3" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="jSeparator4" min="-2" pref="10" max="-2" attributes="0"/>
+                          </Group>
+                          <Component id="jSeparator7" min="-2" pref="10" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jSeparator4" min="-2" pref="10" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="Label_tabulky" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="Label_tabulky" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="Label_stredne_rozpatie" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" attributes="0">
                           <Component id="jRadioButton_with_label_pociatocne" min="-2" max="-2" attributes="0"/>
                           <Component id="Label_tabulky1" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
-                  <Group type="103" alignment="0" groupAlignment="1" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="Label_vetrova_oblast" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jComboBox_vetrova_oblast" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="Label_základna_rychlost_vetra" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="TextField_Vmean_0" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="Label_RTS_velicina4" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="1" attributes="0">
-                              <Component id="TextField_vetrova_oblast_Cdir" alignment="1" min="-2" max="-2" attributes="0"/>
-                              <Component id="jRadioButton_vetrova_oblast_Cdir_vlastna" alignment="1" min="-2" max="-2" attributes="0"/>
-                              <Group type="103" alignment="1" groupAlignment="3" attributes="0">
-                                  <Component id="jRadioButton_vetrova_oblast_Cdir_1" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="Label_vetrova_oblast_Cdir" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="jRadioButton_with_label_rozpatie_klasicky" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="TextField_STRrozpatie_klasicky" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="Label_RTS_velicina5" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="jRadioButton_with_label_rozpate_previsenia" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="TextField_STRrozpatie_sPrevisenim" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="Label_RTS_velicina6" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="1" attributes="0">
-                              <Component id="TextField_vetrova_oblast_C0" alignment="1" min="-2" max="-2" attributes="0"/>
-                              <Component id="jRadioButton_vetrova_oblast_C0_vlastna" alignment="1" min="-2" max="-2" attributes="0"/>
-                              <Group type="103" alignment="1" groupAlignment="3" attributes="0">
-                                  <Component id="jRadioButton_vetrova_oblast_C0_1" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="Label_vetrova_oblast_C0" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="jSeparator5" min="-2" pref="10" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="Label_char_terenu" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jComboBox_char_terenu" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jScrollPane5" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="Label__char_terenu_kr" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="TextField_Kr" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="Label_char_terenu_zo" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="TextField_dlzka_drsnjosti_zo" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
-                          <Component id="jSeparator6" min="-2" pref="10" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="Label_uroven_spolahlivosti" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jComboBox_uroven_splahlivosti" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jRadioButton_with_label_prechodne" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="TextField_tabulky_prechodna" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jRadioButton_with_label_konecne" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="TextField_tabulky_konecna" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace pref="76" max="32767" attributes="0"/>
+              <EmptySpace pref="130" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -1075,6 +1120,9 @@
       <Properties>
         <Property name="editable" type="boolean" value="false"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="TextField_hcmean_vpocitanaActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="TextField_hcmean_vlastna">
       <Events>
@@ -1525,6 +1573,70 @@
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
         <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="26"/>
       </AuxValues>
+    </Component>
+    <Component class="javax.swing.JSeparator" name="jSeparator7">
+    </Component>
+    <Component class="javax.swing.JLabel" name="Label_stredne_rozpatie">
+      <Properties>
+        <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+          <Connection code="language.language_label(languageOption, 154)" type="code"/>
+        </Property>
+      </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="10"/>
+      </AuxValues>
+    </Component>
+    <Component class="javax.swing.JRadioButton" name="jRadioButton_with_label_rozpatie_klasicky">
+      <Properties>
+        <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+          <ComponentRef name="buttonGroup_stredne_rozpatia"/>
+        </Property>
+        <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+          <Connection code="language.language_label(languageOption, 155)" type="code"/>
+        </Property>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jRadioButton_with_label_rozpatie_klasickyActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JRadioButton" name="jRadioButton_with_label_rozpate_previsenia">
+      <Properties>
+        <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+          <ComponentRef name="buttonGroup_stredne_rozpatia"/>
+        </Property>
+        <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+          <Connection code="language.language_label(languageOption, 156)" type="code"/>
+        </Property>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jRadioButton_with_label_rozpate_previseniaActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JTextField" name="TextField_STRrozpatie_klasicky">
+      <Properties>
+        <Property name="editable" type="boolean" value="false"/>
+        <Property name="text" type="java.lang.String" value="0.0"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="TextField_STRrozpatie_sPrevisenim">
+      <Properties>
+        <Property name="editable" type="boolean" value="false"/>
+        <Property name="text" type="java.lang.String" value="0.0"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="TextField_STRrozpatie_sPrevisenimActionPerformed"/>
+        <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="TextField_STRrozpatie_sPrevisenimKeyReleased"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="Label_RTS_velicina5">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="m"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="Label_RTS_velicina6">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="m"/>
+      </Properties>
     </Component>
   </SubComponents>
 </Form>

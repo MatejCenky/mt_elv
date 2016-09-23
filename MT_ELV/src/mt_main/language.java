@@ -271,6 +271,9 @@ public static void constructor(){
 /*152*/  language.SK.add("Parc. faktor. pre komb. vietor    [-]  Ww =");                     language.CZ.add("I-SK");                     language.EN.add("I-SK");
 /*153*/  language.SK.add("Parc. faktor. pre. komb. námrazu  [-]  Wi =");                     language.CZ.add("I-SK");                     language.EN.add("I-SK");
 
+/*154*/  language.SK.add("Stredné rozpätie");                     language.CZ.add("I-SK");                     language.EN.add("I-SK");
+/*155*/  language.SK.add("Klasicky bez prevíšení");                     language.CZ.add("I-SK");                     language.EN.add("I-SK");
+/*156*/  language.SK.add("S prevíšeniami");                     language.CZ.add("I-SK");                     language.EN.add("I-SK");
          
          
  inicializovane = true;
