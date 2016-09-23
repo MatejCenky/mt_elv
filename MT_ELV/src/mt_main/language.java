@@ -254,6 +254,25 @@ public static void constructor(){
          language.CZ.add("Kategória V_blablablablablabl");                    
          language.EN.add("Kategória V_blablablablablabl");
 
+/*140*/  language.SK.add("Úroveň spoľahlivosti");                     language.CZ.add("I-SK");                     language.EN.add("I-SK");
+/*141*/  language.SK.add("1 (50 rokov)");                     language.CZ.add("I-SK");                     language.EN.add("I-SK");
+/*142*/  language.SK.add("2 (150 rokov)");                     language.CZ.add("I-SK");                     language.EN.add("I-SK");
+/*143*/  language.SK.add("3 (500 rokov)");                     language.CZ.add("I-SK");                     language.EN.add("I-SK");
+/*144*/  language.SK.add("Dočasná stavba do 3 dní");                     language.CZ.add("I-SK");                     language.EN.add("I-SK");
+/*145*/  language.SK.add("Dočasná stavba do 3 mesiacov");                     language.CZ.add("I-SK");                     language.EN.add("I-SK");
+/*146*/  language.SK.add("Dočasná stavba do 1 roka");                     language.CZ.add("I-SK");                     language.EN.add("I-SK");
+/*147*/  language.SK.add("Vlastné hodnoty");                     language.CZ.add("I-SK");                     language.EN.add("I-SK");
+
+/*148*/  language.SK.add("Úroveň spoľahlivosti vlastné hodnoty");     language.CZ.add("I-SK");                     language.EN.add("I-SK");
+
+/*149*/  language.SK.add("Čas návratu klimatickej udalosti  [rok] t =");                     language.CZ.add("I-SK");                     language.EN.add("I-SK");
+/*150*/  language.SK.add("Parc. faktor. pre extrémny vietor [-]  Yw =");                     language.CZ.add("I-SK");                     language.EN.add("I-SK");
+/*151*/  language.SK.add("Parc. faktor. pre extrémnu námrazu[-]  Yi =");                     language.CZ.add("I-SK");                     language.EN.add("I-SK");
+/*152*/  language.SK.add("Parc. faktor. pre komb. vietor    [-]  Ww =");                     language.CZ.add("I-SK");                     language.EN.add("I-SK");
+/*153*/  language.SK.add("Parc. faktor. pre. komb. námrazu  [-]  Wi =");                     language.CZ.add("I-SK");                     language.EN.add("I-SK");
+
+         
+         
  inicializovane = true;
 }
  

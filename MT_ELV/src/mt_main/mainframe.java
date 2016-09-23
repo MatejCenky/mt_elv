@@ -79,7 +79,7 @@ public class mainframe extends javax.swing.JFrame {
         jComboBox_druh_namrazy.addItem(language.language_label(languageOption, 80));
         jComboBox_druh_namrazy.addItem(language.language_label(languageOption, 81));
         jComboBox_druh_namrazy.addItem(language.language_label(languageOption, 82));
-         
+        jComboBox_druh_namrazy.setSelectedIndex(4); 
         // inicializacia Hcmean
         jRadioButton_with_label_vypoctana.doClick();
         Variable_Hc_mean_medzikrok= 0.0;
@@ -103,6 +103,13 @@ public class mainframe extends javax.swing.JFrame {
             jComboBox_char_terenu.addItem(language.language_label(languageOption, 130+i));
         }
         jComboBox_char_terenu.setSelectedIndex(0);
+        
+        //uroven spolahlivosti
+        jComboBox_uroven_splahlivosti.removeAllItems();
+        for (int i = 0; i < 7; i++) { // nacitanie prvkov do JCombo
+            jComboBox_uroven_splahlivosti.addItem(language.language_label(languageOption, 141+i));
+        }
+        jComboBox_uroven_splahlivosti.setSelectedIndex(0);
         
         // nulovanie   
         hodnoty_namrazove_oblasti = new Object[]{(double) 0.0,(double) 0.0, (double) 0.0,(double) 0.0};  
@@ -426,6 +433,7 @@ public class mainframe extends javax.swing.JFrame {
         jSeparator6 = new javax.swing.JSeparator();
         jScrollPane5 = new javax.swing.JScrollPane();
         jTextPane_char_terenu = new javax.swing.JTextArea();
+        Label_uroven_spolahlivosti = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(204, 204, 204));
@@ -1095,6 +1103,15 @@ public class mainframe extends javax.swing.JFrame {
         jTextPane_char_terenu.setRows(5);
         jScrollPane5.setViewportView(jTextPane_char_terenu);
 
+        Label_uroven_spolahlivosti.setText(language.language_label(languageOption, 140));
+
+        jComboBox_uroven_splahlivosti.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox_uroven_splahlivosti.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox_uroven_splahlivostiActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -1238,31 +1255,34 @@ public class mainframe extends javax.swing.JFrame {
                             .addComponent(jComboBox_vetrova_oblast, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(381, 381, 381))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jSeparator5, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(Label_vetrova_oblast_C0)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jRadioButton_vetrova_oblast_C0_1)
-                                .addGap(18, 18, 18)
-                                .addComponent(jRadioButton_vetrova_oblast_C0_vlastna)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(TextField_vetrova_oblast_C0, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(Label__char_terenu_kr, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(Label_char_terenu, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jComboBox_char_terenu, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(TextField_Kr)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(Label_char_terenu_zo, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(TextField_dlzka_drsnjosti_zo, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                            .addComponent(jSeparator6, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(jSeparator5, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(Label_vetrova_oblast_C0)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(jRadioButton_vetrova_oblast_C0_1)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(jRadioButton_vetrova_oblast_C0_vlastna)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(TextField_vetrova_oblast_C0, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(Label__char_terenu_kr, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(Label_char_terenu, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jComboBox_char_terenu, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addComponent(TextField_Kr)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                            .addComponent(Label_char_terenu_zo, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addComponent(TextField_dlzka_drsnjosti_zo, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(jSeparator6, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jComboBox_uroven_splahlivosti, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Label_uroven_spolahlivosti, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
@@ -1396,7 +1416,11 @@ public class mainframe extends javax.swing.JFrame {
                                 .addComponent(Label_char_terenu_zo)
                                 .addComponent(TextField_dlzka_drsnjosti_zo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGap(4, 4, 4)
-                            .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(Label_uroven_spolahlivosti)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(jComboBox_uroven_splahlivosti, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -1892,6 +1916,78 @@ public class mainframe extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jComboBox_char_terenuActionPerformed
 
+    private void jComboBox_uroven_splahlivostiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox_uroven_splahlivostiActionPerformed
+        
+        if (mainframeLodaed == true) {
+            
+          int selected_index_from_JComboBox = jComboBox_uroven_splahlivosti.getSelectedIndex();
+          
+          switch (selected_index_from_JComboBox) {
+            case 0:  //50 rokov
+                     Variable_uroven_spolahlivosti_cas_navratu_klim_udalosti = 50;
+                     Variable_uroven_spolahlivosti_Yw=1;
+                     Variable_uroven_spolahlivosti_Yi=1;
+                     Variable_uroven_spolahlivosti_Ww=0.25;
+                     Variable_uroven_spolahlivosti_Wi=0.35;
+                     break;
+            case 1:  //150 rokov
+                     Variable_uroven_spolahlivosti_cas_navratu_klim_udalosti = 150;
+                     Variable_uroven_spolahlivosti_Yw=1.2;
+                     Variable_uroven_spolahlivosti_Yi=1.25;
+                     Variable_uroven_spolahlivosti_Ww=0.25;
+                     Variable_uroven_spolahlivosti_Wi=0.35;
+                     break;
+            case 2:  //500 rokov
+                     Variable_uroven_spolahlivosti_cas_navratu_klim_udalosti = 500;
+                     Variable_uroven_spolahlivosti_Yw=1.4;
+                     Variable_uroven_spolahlivosti_Yi=1.5;
+                     Variable_uroven_spolahlivosti_Ww=0.25;
+                     Variable_uroven_spolahlivosti_Wi=0.35;
+                     break;
+            case 3:  //3 dni
+                     Variable_uroven_spolahlivosti_cas_navratu_klim_udalosti = 2;
+                     Variable_uroven_spolahlivosti_Yw=0.52;
+                     Variable_uroven_spolahlivosti_Yi=0.26;
+                     Variable_uroven_spolahlivosti_Ww=0.22;
+                     Variable_uroven_spolahlivosti_Wi=0.35;
+                     break;
+            case 4:  //3 mesiace
+                     Variable_uroven_spolahlivosti_cas_navratu_klim_udalosti = 5;
+                     Variable_uroven_spolahlivosti_Yw=0.66;
+                     Variable_uroven_spolahlivosti_Yi=0.5;
+                     Variable_uroven_spolahlivosti_Ww=0.25;
+                     Variable_uroven_spolahlivosti_Wi=0.35;
+                     break;
+            case 5:  //1 rok
+                     Variable_uroven_spolahlivosti_cas_navratu_klim_udalosti = 10;
+                     Variable_uroven_spolahlivosti_Yw=0.75;
+                     Variable_uroven_spolahlivosti_Yi=0.65;
+                     Variable_uroven_spolahlivosti_Ww=0.25;
+                     Variable_uroven_spolahlivosti_Wi=0.35;
+                     break;
+            case 6:  //50 rokov
+                    mainframe_uroven_spolahlivosti_vlastna_hodnota.setValues(Variable_uroven_spolahlivosti_cas_navratu_klim_udalosti, Variable_uroven_spolahlivosti_Yw, Variable_uroven_spolahlivosti_Yi, Variable_uroven_spolahlivosti_Ww, Variable_uroven_spolahlivosti_Wi);
+                    mainframe_uroven_spolahlivosti_vlastna_hodnota mainframe_uroven_spolahlivosti_vlastna_hodnota_jDialog_window = new  mainframe_uroven_spolahlivosti_vlastna_hodnota(this, rootPaneCheckingEnabled);
+                    mainframe_uroven_spolahlivosti_vlastna_hodnota_jDialog_window.setVisible(true);
+                    
+                
+                     Variable_uroven_spolahlivosti_cas_navratu_klim_udalosti = Double.valueOf( vlastnehodnoty_uroven_splahlivosti[0].toString());
+                     Variable_uroven_spolahlivosti_Yw=Double.valueOf( vlastnehodnoty_uroven_splahlivosti[1].toString());
+                     Variable_uroven_spolahlivosti_Yi=Double.valueOf( vlastnehodnoty_uroven_splahlivosti[2].toString());
+                     Variable_uroven_spolahlivosti_Ww=Double.valueOf( vlastnehodnoty_uroven_splahlivosti[3].toString());
+                     Variable_uroven_spolahlivosti_Wi=Double.valueOf( vlastnehodnoty_uroven_splahlivosti[4].toString());
+                     
+                     break;
+        }
+            
+                     
+            
+            
+        }
+        
+        
+    }//GEN-LAST:event_jComboBox_uroven_splahlivostiActionPerformed
+
  
   
   public static void lanochangeinDatabaze() {
@@ -1966,6 +2062,7 @@ public class mainframe extends javax.swing.JFrame {
     private static javax.swing.JLabel Label_tabulky;
     private static javax.swing.JLabel Label_tabulky1;
     private javax.swing.JLabel Label_typ_namrazy;
+    private javax.swing.JLabel Label_uroven_spolahlivosti;
     private javax.swing.JLabel Label_vetrova_oblast;
     private javax.swing.JLabel Label_vetrova_oblast_C0;
     private javax.swing.JLabel Label_vetrova_oblast_Cdir;
@@ -2003,6 +2100,7 @@ public class mainframe extends javax.swing.JFrame {
     private static final javax.swing.JComboBox<String> jComboBox_char_terenu = new javax.swing.JComboBox<>();
     private static final javax.swing.JComboBox<String> jComboBox_conductor_chooser = new javax.swing.JComboBox<>();
     private static final javax.swing.JComboBox<String> jComboBox_druh_namrazy = new javax.swing.JComboBox<>();
+    private static final javax.swing.JComboBox<String> jComboBox_uroven_splahlivosti = new javax.swing.JComboBox<>();
     private static final javax.swing.JComboBox<String> jComboBox_vetrova_oblast = new javax.swing.JComboBox<>();
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
@@ -2053,6 +2151,7 @@ private static String filenamePath;
 private static String filenamePath_plus_filename;
 private static String memory_path_plus_filename_here;
 private static boolean memory_path_plus_filename_existence = false;
+public static Object[] vlastnehodnoty_uroven_splahlivosti = new Object[4];
 
 // importnt variables
 private static double  Variable_RTS;
@@ -2080,6 +2179,11 @@ private static double Variable_Cdir;
 private static double Variable_Co;
 private static double Variable_char_terenu_Kr;
 private static double Variable_char_terenu_Zo;
+private static double Variable_uroven_spolahlivosti_cas_navratu_klim_udalosti;
+private static double Variable_uroven_spolahlivosti_Yw;
+private static double Variable_uroven_spolahlivosti_Yi;
+private static double Variable_uroven_spolahlivosti_Ww;
+private static double Variable_uroven_spolahlivosti_Wi;
 // conductor variables
 private static final ArrayList<Object[]> Databaza = new ArrayList<>();
 public static javax.swing.JLabel Lano_listener_JLabel_Maska;
@@ -2284,4 +2388,11 @@ private void seticon() {
        return value = 123456789.987654321;            
         }
      }
+      
+      public static void getvlastnehodnoty_uroven_splahlivosti(Object[] X) {
+        vlastnehodnoty_uroven_splahlivosti = X;
+       
+        
+
+    }
 }
