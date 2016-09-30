@@ -254,6 +254,8 @@ public static void constructor(){
          language.CZ.add("Kategória V_blablablablablabl");                    
          language.EN.add("Kategória V_blablablablablabl");
 
+         // main_frame uroven spolahlivosti
+         
 /*140*/  language.SK.add("Úroveň spoľahlivosti");                     language.CZ.add("I-SK");                     language.EN.add("I-SK");
 /*141*/  language.SK.add("1 (50 rokov)");                     language.CZ.add("I-SK");                     language.EN.add("I-SK");
 /*142*/  language.SK.add("2 (150 rokov)");                     language.CZ.add("I-SK");                     language.EN.add("I-SK");
@@ -271,11 +273,61 @@ public static void constructor(){
 /*152*/  language.SK.add("Parc. faktor. pre komb. vietor    [-]  Ww =");                     language.CZ.add("I-SK");                     language.EN.add("I-SK");
 /*153*/  language.SK.add("Parc. faktor. pre. komb. námrazu  [-]  Wi =");                     language.CZ.add("I-SK");                     language.EN.add("I-SK");
 
+// main_frame str rozpatie
+
 /*154*/  language.SK.add("Stredné rozpätie");                     language.CZ.add("I-SK");                     language.EN.add("I-SK");
 /*155*/  language.SK.add("Klasicky bez prevíšení");                     language.CZ.add("I-SK");                     language.EN.add("I-SK");
 /*156*/  language.SK.add("S prevíšeniami");                     language.CZ.add("I-SK");                     language.EN.add("I-SK");
          
+// main_frame _status: teploty
+/*157*/  language.SK.add("Teploty [°C]");                     language.CZ.add("I-SK");                     language.EN.add("I-SK");
+/*158*/  language.SK.add("Preťaženia");                       language.CZ.add("I-SK");                     language.EN.add("I-SK");
+/*159*/  language.SK.add("Vypočítane");                       language.CZ.add("I-SK");                     language.EN.add("I-SK");
+/*160*/  language.SK.add("Vlastné");                          language.CZ.add("I-SK");                     language.EN.add("I-SK");
+/*161*/  language.SK.add("Stredná ročná teplota [°C]");       language.CZ.add("I-SK");                     language.EN.add("I-SK");
+/*162*/  language.SK.add("Stav");       language.CZ.add("I-SK");                     language.EN.add("I-SK");
+  
+ // kontrola pracovného bodu
+/*163*/  language.SK.add("Kontrola pracovného bodu");       language.CZ.add("I-SK");                     language.EN.add("I-SK");
+/*164*/  language.SK.add("Typ terénu");       language.CZ.add("I-SK");                     language.EN.add("I-SK");
+  
+/*165*/  language.SK.add("Typ I");       language.CZ.add("I-SK");                     language.EN.add("I-SK");
+/*166*/  language.SK.add("Typ II");       language.CZ.add("I-SK");                     language.EN.add("I-SK");
+/*167*/  language.SK.add("Typ III");       language.CZ.add("I-SK");                     language.EN.add("I-SK");
+/*168*/  language.SK.add("Typ IV");       language.CZ.add("I-SK");                     language.EN.add("I-SK");
+        
+/*169*/  language.SK.add("Otvorený plochý terén bez stromov, bez prekážok, so snehovou prikrývkou, blízko vodných plôch alebo cez ne");                    
+         language.CZ.add("Kategória II_blablablablablabl");                    
+         language.EN.add("Kategória II_blablablablablabl");
          
+/*170*/  language.SK.add("Otvorený plochý terén bez prekážok, bez snehu, napr. poľnohospodárska pôda bez akýchkoľvek prekážok");                    
+         language.CZ.add("Kategória III_blablablablablabl");                    
+         language.EN.add("Kategória III_blablablablablabl");
+         
+/*171*/  language.SK.add("Otvorený plochý alebo zvlnený terén s ojedinelými prekážkami, napr. otvorené pastviny alebo poľnohospodárska pôda s málo stromami, živými plotmi a inými bariérami");                    
+         language.CZ.add("Kategória IV_blablablablablabl");                    
+         language.EN.add("Kategória IV_blablablablablabl");
+         
+/*172*/  language.SK.add("Zastavaný terén so streomami a stavbami, napr. predmestia, malé mestá, zalesnené oblasti s krovinami, malé polia s krovinami, stromami a živými plotmi");                    
+         language.CZ.add("Kategória V_blablablablablabl");                    
+         language.EN.add("Kategória V_blablablablablabl");
+
+/*173*/  language.SK.add("V čase rok po montáži");       language.CZ.add("I-SK");                     language.EN.add("I-SK");
+/*174*/  language.SK.add("V rovnakom čase ako prechodné tabuľky");       language.CZ.add("I-SK");                     language.EN.add("I-SK");
+             
+// main_frame texty do pdf 
+
+/*175*/  language.SK.add("Hlavička dokumentu");       language.CZ.add("I-SK");                     language.EN.add("I-SK");
+/*176*/  language.SK.add("Výpočet podľa normy");       language.CZ.add("I-SK");                     language.EN.add("I-SK");
+/*177*/  language.SK.add("Nadpis pre prechodné");       language.CZ.add("I-SK");                     language.EN.add("I-SK");
+/*178*/  language.SK.add("Stavba");       language.CZ.add("I-SK");                     language.EN.add("I-SK");
+/*179*/  language.SK.add("SO-PS");       language.CZ.add("I-SK");                     language.EN.add("I-SK");
+/*180*/  language.SK.add("Archívne číslo");       language.CZ.add("I-SK");                     language.EN.add("I-SK");
+/*181*/  language.SK.add("Číslovanie strán od");       language.CZ.add("I-SK");                     language.EN.add("I-SK");
+/*182*/  language.SK.add("Vypracoval");       language.CZ.add("I-SK");                     language.EN.add("I-SK");
+/*183*/  language.SK.add("Dátum");       language.CZ.add("I-SK");                     language.EN.add("I-SK");
+
+
  inicializovane = true;
 }
  
