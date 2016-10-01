@@ -284,7 +284,7 @@ public static void constructor(){
 /*158*/  language.SK.add("Preťaženia");                       language.CZ.add("I-SK");                     language.EN.add("I-SK");
 /*159*/  language.SK.add("Vypočítane");                       language.CZ.add("I-SK");                     language.EN.add("I-SK");
 /*160*/  language.SK.add("Vlastné");                          language.CZ.add("I-SK");                     language.EN.add("I-SK");
-/*161*/  language.SK.add("Stredná ročná teplota [°C]");       language.CZ.add("I-SK");                     language.EN.add("I-SK");
+/*161*/  language.SK.add("Stredná ročná teplota");       language.CZ.add("I-SK");                     language.EN.add("I-SK");
 /*162*/  language.SK.add("Stav");       language.CZ.add("I-SK");                     language.EN.add("I-SK");
   
  // kontrola pracovného bodu
