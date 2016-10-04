@@ -8,16 +8,23 @@
  */
 package mt_main;
 
+import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.pdf.PdfWriter;
 import java.awt.Color;
 import java.awt.Toolkit;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.PrintWriter;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
 import java.util.function.ToDoubleFunction;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFileChooser;
 import javax.swing.JScrollPane;
 import javax.swing.event.ListSelectionEvent;
@@ -435,7 +442,6 @@ public class mainframe extends javax.swing.JFrame {
         Label_vybrana_namrazova_oblast = new javax.swing.JLabel();
         Button_namrazova_oblast = new javax.swing.JButton();
         Label_typ_namrazy = new javax.swing.JLabel();
-        jComboBox_druh_namrazy = new javax.swing.JComboBox<>();
         Label__typ_namrazy_Ccl = new javax.swing.JLabel();
         TextField_Ccl = new javax.swing.JTextField();
         Label_hustota_namrazy = new javax.swing.JLabel();
@@ -491,16 +497,13 @@ public class mainframe extends javax.swing.JFrame {
         Label_RTS_velicina3 = new javax.swing.JLabel();
         jPanel11 = new javax.swing.JPanel();
         Label_uroven_spolahlivosti = new javax.swing.JLabel();
-        jComboBox_uroven_splahlivosti = new javax.swing.JComboBox<>();
         Label__stredna_rocna_teplota = new javax.swing.JLabel();
         TextField_srt_roc_teplota = new javax.swing.JTextField();
         Label_RTS_velicina7 = new javax.swing.JLabel();
         Label__stav_KPB = new javax.swing.JLabel();
-        jComboBox_stav_KPB = new javax.swing.JComboBox<>();
         jPanel13 = new javax.swing.JPanel();
         Label_KPB = new javax.swing.JLabel();
         Label_KPB_typ_terenu = new javax.swing.JLabel();
-        jComboBox_KPB_typ_terenu = new javax.swing.JComboBox<>();
         jScrollPane6 = new javax.swing.JScrollPane();
         jTextPane_KPB_typ_terenu = new javax.swing.JTextArea();
         jRadioButton_KPB_cas_vypoctu_1_rok = new javax.swing.JRadioButton();
@@ -2331,8 +2334,8 @@ public class mainframe extends javax.swing.JFrame {
                         .addComponent(Label_RTS_velicina4)))
                 .addGap(7, 7, 7)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jRadioButton_vetrova_oblast_Cdir_1)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jRadioButton_vetrova_oblast_Cdir_1, javax.swing.GroupLayout.Alignment.TRAILING)
                         .addComponent(Label_vetrova_oblast_Cdir))
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(TextField_vetrova_oblast_Cdir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -2494,12 +2497,13 @@ public class mainframe extends javax.swing.JFrame {
                     .addComponent(Label_hlavicka_cislo_strany)
                     .addComponent(jTextField_nazov_cislo_strany, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Label_hlavicka_vypracoval)
-                    .addComponent(jTextField_vypracoval, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(Label_hlavicka_datum)
-                        .addComponent(jTextField_datum, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jTextField_datum, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(Label_hlavicka_vypracoval)
+                        .addComponent(jTextField_vypracoval, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -2885,7 +2889,21 @@ public class mainframe extends javax.swing.JFrame {
     }//GEN-LAST:event_Button_Icon_select_all_kotevny_usekActionPerformed
 
     private void Button_Icon_export_PDFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button_Icon_export_PDFActionPerformed
-        // TODO add your handling code here:
+        
+        Document doc = new Document();
+        try {
+            PdfWriter.getInstance (doc, new FileOutputStream("test.pdf"));
+            doc.open();
+            doc.add(new Paragraph("test test etste ste ste"));
+            doc.close();
+            
+            
+            
+        } catch (DocumentException | FileNotFoundException ex) {
+            Logger.getLogger(mainframe.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        
     }//GEN-LAST:event_Button_Icon_export_PDFActionPerformed
 
     private void Button_Icon_calculateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button_Icon_calculateActionPerformed
@@ -3638,8 +3656,8 @@ public class mainframe extends javax.swing.JFrame {
     private javax.swing.JButton Button_Icon_save_results;
     private javax.swing.JButton Button_Icon_select_all_kotevny_usek;
     private javax.swing.JButton Button_namrazova_oblast;
-    private javax.swing.JLabel Label_KPB;
-    private javax.swing.JLabel Label_KPB_typ_terenu;
+    private static javax.swing.JLabel Label_KPB;
+    private static javax.swing.JLabel Label_KPB_typ_terenu;
     private javax.swing.JLabel Label_RTS;
     private javax.swing.JLabel Label_RTS_velicina;
     private javax.swing.JLabel Label_RTS_velicina1;
@@ -3669,7 +3687,7 @@ public class mainframe extends javax.swing.JFrame {
     private static javax.swing.JLabel Label_hlavicka_vypracoval;
     private javax.swing.JLabel Label_hustota_namrazy;
     private javax.swing.JLabel Label_kotevne_useky;
-    private javax.swing.JLabel Label_kotevne_useky1;
+    private static javax.swing.JLabel Label_kotevne_useky1;
     private javax.swing.JLabel Label_max_zataz_lana;
     private static javax.swing.JLabel Label_pretazenia;
     private static javax.swing.JLabel Label_stredna_vyska_vodicov_nad_terenom;
@@ -3748,12 +3766,12 @@ public class mainframe extends javax.swing.JFrame {
     private javax.swing.ButtonGroup buttonGroup_pretazenia_vlystne_vypocitane;
     private javax.swing.ButtonGroup buttonGroup_stredne_rozpatia;
     private javax.swing.ButtonGroup buttonGroup_tabulka;
-    private javax.swing.JComboBox<String> jComboBox_KPB_typ_terenu;
+    private static final javax.swing.JComboBox<String> jComboBox_KPB_typ_terenu = new javax.swing.JComboBox<>();
     private static final javax.swing.JComboBox<String> jComboBox_char_terenu = new javax.swing.JComboBox<>();
     public static final javax.swing.JComboBox<String> jComboBox_conductor_chooser = new javax.swing.JComboBox<>();
-    private javax.swing.JComboBox<String> jComboBox_druh_namrazy;
-    private javax.swing.JComboBox<String> jComboBox_stav_KPB;
-    private javax.swing.JComboBox<String> jComboBox_uroven_splahlivosti;
+    private static final javax.swing.JComboBox<String> jComboBox_druh_namrazy = new javax.swing.JComboBox<>();
+    private static final javax.swing.JComboBox<String> jComboBox_stav_KPB = new javax.swing.JComboBox<>();
+    private static final javax.swing.JComboBox<String> jComboBox_uroven_splahlivosti = new javax.swing.JComboBox<>();
     private static final javax.swing.JComboBox<String> jComboBox_vetrova_oblast = new javax.swing.JComboBox<>();
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;

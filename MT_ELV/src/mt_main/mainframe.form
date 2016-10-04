@@ -1326,9 +1326,9 @@
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
                               <Component id="TextField_Bi_1" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
+                      <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
                   </Group>
                   <Component id="jRadioButton_Bi_2" alignment="0" min="-2" max="-2" attributes="0"/>
                   <Component id="TextField_Bi2" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -2364,7 +2364,7 @@
                   </Group>
                   <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="1" attributes="0">
-                      <Group type="103" alignment="1" groupAlignment="3" attributes="0">
+                      <Group type="103" alignment="1" groupAlignment="0" attributes="0">
                           <Component id="jRadioButton_vetrova_oblast_Cdir_1" alignment="1" min="-2" max="-2" attributes="0"/>
                           <Component id="Label_vetrova_oblast_Cdir" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
@@ -2702,12 +2702,14 @@
                       <Component id="jTextField_nazov_cislo_strany" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="Label_hlavicka_vypracoval" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jTextField_vypracoval" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Group type="103" alignment="3" groupAlignment="3" attributes="0">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="103" alignment="0" groupAlignment="3" attributes="0">
                           <Component id="Label_hlavicka_datum" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jTextField_datum" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="Label_hlavicka_vypracoval" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jTextField_vypracoval" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
