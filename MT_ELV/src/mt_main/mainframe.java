@@ -72,7 +72,7 @@ public class mainframe extends javax.swing.JFrame {
             DecimalFormat df = new DecimalFormat("###.###");  // definovany počet desatinnych miest
             TextField_RTS.setText(df.format(Variable_RTS));                    
             Variable_Ir50=123456789.987654321;
-        
+               
         // vloz defaultne hodnoty do zakladny-mech napatie lana a maximalne zataženie podiel z RTS    
            Variable_zakladne_mech_napatie_lana_pre_minus5=Double.parseDouble(TextField_zakladne_mech_lana_minus5.getText());
            Variable_maximalne_zataz_lana_podiel_z_RTS=Variable_RTS*(Double.parseDouble(TextField_zakladne_mech_lana_minus5.getText())/100);
