@@ -327,6 +327,11 @@ public static void constructor(){
 /*182*/  language.SK.add("Vypracoval");       language.CZ.add("I-SK");                     language.EN.add("I-SK");
 /*183*/  language.SK.add("Dátum");       language.CZ.add("I-SK");                     language.EN.add("I-SK");
 
+// main_frame_pdf
+/*184*/  language.SK.add("Počiatočné tabuľky");       language.CZ.add("I-SK");                     language.EN.add("I-SK");
+/*185*/  language.SK.add("Prechodné tabuľky");       language.CZ.add("I-SK");                     language.EN.add("I-SK");
+/*186*/  language.SK.add("Konečné tabuľky");       language.CZ.add("I-SK");                     language.EN.add("I-SK");
+
 
  inicializovane = true;
 }
