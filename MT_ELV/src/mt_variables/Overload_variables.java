@@ -36,6 +36,7 @@ public class Overload_variables {
     private static double RR_over;
     private static double ro_over;
     private static double C_cl_over;
+    private static double h_c_mean_over;
     
     /**
      * constructor for overload computation variables
@@ -60,6 +61,7 @@ public class Overload_variables {
      * @param RR resonance response coefficient (RR = R^2 = 0) (čl. 4.4.12)
      * @param ro density of the wind (= 1.25)
      * @param C_cl aerodynamic resistance for conductor with ice coefficient (= 1,1) [-]
+     * @param h_c_mean mean wind speed
      */
     public Overload_variables(  Conductor_variables Conductor, 
                                 double g_c, 
@@ -81,7 +83,8 @@ public class Overload_variables {
                                 double k_p,
                                 double RR,
                                 double ro,
-                                double C_cl){
+                                double C_cl,
+                                double h_c_mean){
         
         Overload_variables.d_over = Conductor.get_d();
         Overload_variables.g_c_over = g_c;
@@ -104,6 +107,7 @@ public class Overload_variables {
         Overload_variables.RR_over = RR;
         Overload_variables.ro_over = ro;
         Overload_variables.C_cl_over = C_cl;
+        Overload_variables.h_c_mean_over = h_c_mean;
     }
     
     /**
@@ -129,6 +133,7 @@ public class Overload_variables {
      * @param RR resonance response coefficient (RR = R^2 = 0) (čl. 4.4.12)
      * @param ro density of the wind (= 1.25)
      * @param C_cl aerodynamic resistance for conductor with ice coefficient (= 1,1) [-]
+     * @param h_c_mean mean wind speed
      */
     public static void set_variables(   Conductor_variables Conductor, 
                                         double g_c, 
@@ -150,7 +155,8 @@ public class Overload_variables {
                                         double k_p,
                                         double RR,
                                         double ro,
-                                        double C_cl){
+                                        double C_cl,
+                                        double h_c_mean){
         
         Overload_variables.d_over = Conductor.get_d();
         Overload_variables.g_c_over = g_c;
@@ -173,6 +179,7 @@ public class Overload_variables {
         Overload_variables.RR_over = RR;
         Overload_variables.ro_over = ro;
         Overload_variables.C_cl_over = C_cl;
+        Overload_variables.h_c_mean_over = h_c_mean;
     }
     
     public double get_d(){
@@ -257,5 +264,9 @@ public class Overload_variables {
     
     public double get_C_cl(){
         return Overload_variables.C_cl_over;
+    }
+    
+    public double get_h_c_mean(){
+        return Overload_variables.h_c_mean_over;
     }
 }

@@ -3105,7 +3105,8 @@ public class mainframe extends javax.swing.JFrame {
                                                                 3, 
                                                                 0, 
                                                                 1.25,
-                                                                Variable_Ccl);
+                                                                Variable_Ccl,
+                                                                Variable_Hc_mean);
 
             
            overload.set_all_variables(Overload,Variable_Ai_array);

@@ -57,6 +57,7 @@ public class overload {
     private static double I_R50  ;       // reference ice load -> chosen from local icing area (čl.4.5.1/SK.3)
     
 // terrain and wind area [#3]
+    private static double h_c_mean;    // mean height of the conductor above the ground [m] 
     private static double k_r    ;         // terrain coefficient (čl. 4.3.2) [-]
     private static double z_0    ;         // length of the roughness (čl. 4.3.2) [-]
     private static double V_b0   ;        // base wind speed (čl. 4.3.1/SK.1) [m/s]
@@ -79,7 +80,7 @@ public class overload {
     private static double B_I        ;         // combination coefficient (čl. 4.6.6/SK/CZ) [-]
     
 // computed values [computed - not set]
-    private static double h_c_mean;    // mean height of the conductor above the ground [m]     
+        
     private static double V_h;         // the mean wind speed [m/s]
     private static double I_v;         // turbulence intensity
     private static double L_m;         // length for response origin coefficient [m]
