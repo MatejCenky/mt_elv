@@ -9,6 +9,7 @@
 package mt_main;
 
 import mt_math.Math_Extended;
+import mt_variables.State_equation_variables;
 
 /**
  *
@@ -80,12 +81,10 @@ public class state_equation {
     private static final double g = 9.80665; 
     
 // values for state equation
-    private static int ter;            // specify flat / non-flat terrain;
-    private static double MSF;         // /average/ span of flat suspension section [m] 
-    private static double MST;         // /average/ span of terrain suspension section [m] 
+    private static double mid_span;    // /average/ span of suspension section [m] 
     private static double Bc;          // coefficient B in cubic equation
     private static double Dc;          // coefficient D in cubic equation
-    private static final double z_0 = 1;     // conductor overload in state "0" [-]
+    private static double z_0;         // conductor overload in state "0" [-]
     private static double z_1;         // conductor overload in state "1" [-]
     private static double theta_1;     // conductor temperature in state "1"
     private static double theta_0;     // conductor temperature in state "0"
@@ -121,21 +120,15 @@ public class state_equation {
     public static double sag_vis[];  
     
 // **************** PUBLIC METHODS **************** //    
-
-    /**
-     * set variables of conductor from main frame
-     * @param X conductor object
-     */
-    public static void set_variables_from_conductor(Object[] X){
-       //=Double.valueOf(String.valueOf(X[1])); // diameter of conductor
-       state_equation.S=Double.valueOf(String.valueOf(X[2])); //cross-section area of the conductor [mm^2]      
-       state_equation.m=Double.valueOf(String.valueOf(X[3])); //weight of the conductor per unit [kg/m]
-       state_equation.E=Double.valueOf(String.valueOf(X[4])); //Young model of elasticity of conductor [MPa]
-       state_equation.alpha=Double.valueOf(String.valueOf(X[5])); //linear expansion coefficient [1/degree_C]
-       //=Double.valueOf(String.valueOf(X[6])); // RTS
-       //=Double.valueOf(String.valueOf(X[7])); // Fe/AlFe
-    }
     
+    public static void set_all_variables(   State_equation_variables Variables,
+                                            Double[] spans,
+                                            Double[] heights){
+        set_variables(Variables);
+        set_variables_spans(spans);
+        set_variables_heights(heights);
+    }
+
     /**
      * checks if all variables /inputs/ are set correctly from mainframe
      */
@@ -182,8 +175,7 @@ public class state_equation {
         state_equation.S = -1111.0000;
         state_equation.E = -1111.0000;
         state_equation.alpha = -1111.0000;
-        state_equation.MSF = -1111.0000;
-        state_equation.MST = -1111.0000;
+        state_equation.mid_span = -1111.0000;
         state_equation.Bc = -1111.0000;
         state_equation.Dc = -1111.0000;
         state_equation.z_1 = -1111.0000;
@@ -195,19 +187,15 @@ public class state_equation {
     /**
      * Computes the state equation using set variables; 
      * Variables need to be set BEFORE computation;
-     * @param load 1/2/3/4/5 for overload setting of the conductor
-     *  1 - z_1
-     *  2 - z_W
-     *  3 - z_I
-     *  4 - z_iW
-     *  5 - z_Iw
-     * @param ter 1 == flat [MSF] // else == terrain [MST]
+     * @param load overload z_1 on the conductor
+     * @param mid_span /average/ span of suspension section [m] 
      */
-    public static void compute_sigma_H1(int load, int ter){
+    public static void compute_sigma_H( double load, 
+                                        double mid_span){
         //preparing
-        mid_span(ter);
+        state_equation.mid_span = mid_span;
+        state_equation.z_1 = load;
         gama();
-        z_1(load);
         check_variables();
         //cubic equation
         set_cubic_values();
@@ -223,20 +211,17 @@ public class state_equation {
     
     /**
      * @param T_EDT average year temperature [degreeC] - act as theta_1
-     * @param load 1/2/3/4/5 for overload setting of the conductor
-     *  1 - z_1
-     *  2 - z_W
-     *  3 - z_I
-     *  4 - z_iW
-     *  5 - z_Iw
-     * @param ter 1 == flat [MSF] // else == terrain [MST]
+     * @param load overload z_1 on the conductor
+     * @param mid_span /average/ span of suspension section [m] 
      * @return sigma_HT
      */
-    public static double compute_sigma_HT(double T_EDT, int load, int ter){
+    public static double compute_sigma_H(   double load, 
+                                            double mid_span,
+                                            double T_EDT){
         //preparing
-        mid_span(ter);
+        state_equation.mid_span = mid_span;
+        state_equation.z_1 = load;
         gama();
-        z_1(load);
         check_variables();
         //cubic equation
         set_cubic_values();
@@ -248,20 +233,18 @@ public class state_equation {
     /**
      * @param T_x0 imaginary temperature == theta_0
      * @param T_xp imaginary temperature == theta_1
-     * @param load 1/2/3/4/5 for overload setting of the conductor
-     *  1 - z_1
-     *  2 - z_W
-     *  3 - z_I
-     *  4 - z_iW
-     *  5 - z_Iw
-     * @param ter 1 == flat [MSF] // else == terrain [MST]
+     * @param load overload z_1 on the conductor
+     * @param mid_span /average/ span of suspension section [m] 
      * @return T_0 == sigma_H1
      */
-    public static double compute_sigma_Hvib(double T_x0, double T_xp, int load, int ter){
+    public static double compute_sigma_H(   double load, 
+                                            double mid_span,
+                                            double T_x0, 
+                                            double T_xp){
         //preparing
-        mid_span(ter);
+        state_equation.mid_span = mid_span;
+        state_equation.z_1 = load;
         gama();
-        z_1(load);
         check_variables();
         //cubic equation
         set_cubic_values();
@@ -270,8 +253,60 @@ public class state_equation {
         return cubic_equation_solve_imaginary();
     }
     
+    /**
+     * Computes the maximum and visible SAGs for every span
+     * in the suspension section. Spans array a[] need to be defined!
+     * Public results in sag_max[] and sag_vis[] in this class
+     */
+    public static void compute_sags(){
+        sag_maximum();
+        sag_visible();
+    }
+    
     
 // **************** PRIVATE METHODS **************** //
+    
+    
+    // **************** SETTERS **************** //
+    /**
+     *
+     * @param var
+     */
+    private static void set_variables(State_equation_variables var){
+        state_equation.m = var.get_m();
+        state_equation.S = var.get_S();
+        state_equation.E = var.get_E();
+        state_equation.alpha = var.get_alpha();
+        state_equation.theta_1 = var.get_theta_1();
+        state_equation.theta_0 = var.get_theta_0();
+        state_equation.sigma_h0 = var.get_sigma_h0();
+        state_equation.z_0 = var.get_z_0();
+    }
+    
+    /**
+     * set the spans
+     * @param X - double[] array of spans
+     */
+    private static void set_variables_spans(Double[] X){                         
+        // assign a[] from mainframe
+        for (int i=0; i<X.length; i++){
+            state_equation.a[i] = X[i];
+        }
+    }
+    
+    /**
+     * set the difference of heights
+     * @param X - double[] array of spans
+     */
+    private static void set_variables_heights(Double[] X){                         
+        // assign a[] from mainframe
+        for (int i=0; i<X.length; i++){
+            state_equation.dh[i] = X[i];
+        }
+    }
+    
+    // **************** OTHER METHODS **************** //
+    
     /**
      * Set the cubic equation B,D coefficients values
      */
@@ -280,17 +315,17 @@ public class state_equation {
         cubic_equation_coef_D();
     }
     
-    /**
-     * Computes the mid span based on terrain type
-     * @param ter 1 == flat [MSF] // else == terrain [MST]
-     */
-    private static void mid_span(int ter){
-        if (ter == 1){
-            mid_span_flat();
-        } else {
-            mid_span_terrain();
-        }
-    }
+//    /**
+//     * Computes the mid span based on terrain type
+//     * @param ter 1 == flat [MSF] // else == terrain [MST]
+//     */
+//    private static void mid_span(int ter){
+//        if (ter == 1){
+//            mid_span_flat();
+//        } else {
+//            mid_span_terrain();
+//        }
+//    }
     
     /**
      * Method computes the specific gravity of the conductor "gama".
@@ -299,72 +334,72 @@ public class state_equation {
         state_equation.gama = (state_equation.m *state_equation.g)/state_equation.S;
     }
     
-    /**
-     * Set the overload factor from the overload class
-     * @param load type of load on the conductor
-     *  1 - z_1
-     *  2 - z_W
-     *  3 - z_I
-     *  4 - z_iW
-     *  5 - z_Iw
-     */
-    private static void z_1(int load){
-        
-        try {
-            if (load < 1 || load > 5){
-                throw new MyException("Load parameter must be 1 <= x <= 5");
-            }
-        } catch (MyException e) {
-        }
-        
-        switch (load){
-            case 1: 
-                state_equation.z_1 = 1;
-                break;
-            case 2: 
-                state_equation.z_1 = overload.z_W;
-                break;
-            case 3: 
-                state_equation.z_1 = overload.z_I;
-                break;
-            case 4: 
-                state_equation.z_1 = overload.z_iW;
-                break;
-            case 5: 
-                state_equation.z_1 = overload.z_Iw;
-                break;
-        }
-        
-                
-    }
+//    /**
+//     * Set the overload factor from the overload class
+//     * @param load type of load on the conductor
+//     *  1 - z_1
+//     *  2 - z_W
+//     *  3 - z_I
+//     *  4 - z_iW
+//     *  5 - z_Iw
+//     */
+//    private static void z_1(int load){
+//        
+//        try {
+//            if (load < 1 || load > 5){
+//                throw new MyException("Load parameter must be 1 <= x <= 5");
+//            }
+//        } catch (MyException e) {
+//        }
+//        
+//        switch (load){
+//            case 1: 
+//                state_equation.z_1 = 1;
+//                break;
+//            case 2: 
+//                state_equation.z_1 = overload.z_W;
+//                break;
+//            case 3: 
+//                state_equation.z_1 = overload.z_I;
+//                break;
+//            case 4: 
+//                state_equation.z_1 = overload.z_iW;
+//                break;
+//            case 5: 
+//                state_equation.z_1 = overload.z_Iw;
+//                break;
+//        }
+//        
+//                
+//    }
     
-    /**
-     * Method computes middle span for flat terrain "MSF".
-     */
-    private static void mid_span_flat(){
-        double cube = 0;
-        double sum = 0;
-        for (int i=0; i<state_equation.a.length; i++){
-            cube = cube + Math.pow(state_equation.a[i],3);
-            sum = sum + state_equation.a[i];
-        }
-        state_equation.MSF = Math.sqrt(cube/sum);
-    }
-    
-    /**
-     * Method computes middle span for non-flat terrain "MST".
-     */
-    private static void mid_span_terrain(){
-        double upper = 0;
-        double lower = 0;
-        double temp;
-        for (int i=0; i<state_equation.a.length; i++){
-            temp = Math.sqrt(Math.pow(state_equation.a[i],2)+ Math.pow(state_equation.dh[i], 2));
-            upper = upper + Math.pow(state_equation.a[i], 4)/temp;
-            lower = lower + temp;
-        }
-        state_equation.MST = Math.sqrt(upper/lower);
-    }
+//    /**
+//     * Method computes middle span for flat terrain "MSF".
+//     */
+//    private static void mid_span_flat(){
+//        double cube = 0;
+//        double sum = 0;
+//        for (int i=0; i<state_equation.a.length; i++){
+//            cube = cube + Math.pow(state_equation.a[i],3);
+//            sum = sum + state_equation.a[i];
+//        }
+//        state_equation.MSF = Math.sqrt(cube/sum);
+//    }
+//    
+//    /**
+//     * Method computes middle span for non-flat terrain "MST".
+//     */
+//    private static void mid_span_terrain(){
+//        double upper = 0;
+//        double lower = 0;
+//        double temp;
+//        for (int i=0; i<state_equation.a.length; i++){
+//            temp = Math.sqrt(Math.pow(state_equation.a[i],2)+ Math.pow(state_equation.dh[i], 2));
+//            upper = upper + Math.pow(state_equation.a[i], 4)/temp;
+//            lower = lower + temp;
+//        }
+//        state_equation.MST = Math.sqrt(upper/lower);
+//    }
     
     /**
      * Computes the cubic equation in the form: A*x^3 + B*x^2 + C*x + D = 0
@@ -397,12 +432,12 @@ public class state_equation {
      * Computes the B coefficient which is input to the cubic equation
      */
     private static void cubic_equation_coef_B(){
-        double var;
-        if (state_equation.ter == 1){
-            var = state_equation.MSF;
-        } else {
-            var = state_equation.MST;
-        }
+        double var = mid_span;
+//        if (state_equation.ter == 1){
+//            var = state_equation.MSF;
+//        } else {
+//            var = state_equation.MST;
+//        }
         state_equation.Bc =  Math.pow(state_equation.gama,2) * state_equation.E/24 * Math.pow(var*state_equation.z_0/state_equation.sigma_h0, 2) + state_equation.alpha*state_equation.E*(state_equation.theta_1 - state_equation.theta_0) - state_equation.sigma_h0;
     }
    
@@ -410,12 +445,12 @@ public class state_equation {
      * Computes the D coefficient which is input to the cubic equation [also with imaginary temperatures (Dc_i == Dc)]
      */
     private static void cubic_equation_coef_D(){
-        double var;
-        if (state_equation.ter == 1){
-            var = state_equation.MSF;
-        } else {
-            var = state_equation.MST;
-        }
+        double var = mid_span;
+//        if (state_equation.ter == 1){
+//            var = state_equation.MSF;
+//        } else {
+//            var = state_equation.MST;
+//        }
         state_equation.Dc = (-1)*Math.pow(state_equation.gama,2)*state_equation.E/24 * Math.pow(var*state_equation.z_1, 2);
     }
     
@@ -462,12 +497,12 @@ public class state_equation {
      * Computes the B coefficient which is input to the cubic equation with imaginary temperatures
      */
     private static void cubic_equation_coef_B_imaginary(double t0, double tp){
-        double var;
-        if (state_equation.ter == 1){
-            var = state_equation.MSF;
-        } else {
-            var = state_equation.MST;
-        }
+        double var = mid_span;
+//        if (state_equation.ter == 1){
+//            var = state_equation.MSF;
+//        } else {
+//            var = state_equation.MST;
+//        }
         state_equation.Bc_i =  Math.pow(state_equation.gama,2) * state_equation.E/24 * Math.pow(var*state_equation.z_0/state_equation.sigma_h0, 2) + state_equation.alpha*state_equation.E*(tp - t0) - state_equation.sigma_h0;
     }
     

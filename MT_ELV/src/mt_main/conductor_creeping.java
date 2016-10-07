@@ -7,6 +7,8 @@
  */
 package mt_main;
 
+import mt_variables.Conductor_creeping_variables;
+
 /**
  *
  * @author Mattto
@@ -67,18 +69,8 @@ public class conductor_creeping {
    
 // **************** PUBLIC METHODS **************** //
     
-    /**
-     * set variables of conductor from main frame
-     * @param X conductor object
-     */
-    public static void set_variables_from_conductor(Object[] X){
-       //=Double.valueOf(String.valueOf(X[1])); // diameter of conductor
-       conductor_creeping.S=Double.valueOf(String.valueOf(X[2])); //cross-section area of the conductor [mm^2]      
-       conductor_creeping.g_c=Double.valueOf(String.valueOf(X[3]))*9.80655; //weight of the conductor per unit [kg/m] -> converting into g_c [N/m]
-       //state_equation.E=Double.valueOf(String.valueOf(X[4])); //Young model of elasticity of conductor [MPa]
-       conductor_creeping.alpha=Double.valueOf(String.valueOf(X[5])); //linear expansion coefficient [1/degree_C]
-       conductor_creeping.RTS=Double.valueOf(String.valueOf(X[6])); // RTS
-       conductor_creeping.w_Fe=Double.valueOf(String.valueOf(X[7])); // Fe/AlFe -> w_Fe
+    public static void set_all_variables(Conductor_creeping_variables var){
+        set_variables(var);
     }
     
     /**
@@ -133,15 +125,10 @@ public class conductor_creeping {
     /**
      * Computes the thermal shift; 
      * Variables need to be set BEFORE computation;
-     * @param load 1/2/3/4/5 for overload setting of the conductor
-     *  1 - z_1
-     *  2 - z_W
-     *  3 - z_I
-     *  4 - z_iW
-     *  5 - z_Iw
-     * @param ter 1 == flat [MSF] // else == terrain [MST]
+     * @param load overload z_1 on the conductor
+     * @param mid_span /average/ span of suspension section [m] 
      */
-    public static void compute_thermal_shifts(int load, int ter){
+    public static void compute_thermal_shifts(double load, double mid_span){
         // preparations
         check_variables();
         // #1 layer
@@ -149,7 +136,7 @@ public class conductor_creeping {
         conductor_composition_coefficient();
         // k_EDS, k_EDT - #2 layer
         avg_temperature_coefficient();
-        conductor_creeping.sigma_HT = state_equation.compute_sigma_HT(conductor_creeping.T_EDT, load, ter);
+        conductor_creeping.sigma_HT = state_equation.compute_sigma_H(load, mid_span, conductor_creeping.T_EDT);
         avg_load_coefficient();
         // results
         thermal_shift_intitial();
@@ -194,6 +181,23 @@ public class conductor_creeping {
     }
     
 // **************** PRIVATE METHODS **************** //    
+    
+        // **************** SETTERS **************** //
+    private static void set_variables(Conductor_creeping_variables var){
+        conductor_creeping.S = var.get_S();
+        conductor_creeping.RTS = var.get_RTS();
+        conductor_creeping.alpha = var.get_alpha();
+        conductor_creeping.w_Fe = var.get_w_Fe();
+        conductor_creeping.k_w = var.get_k_w();
+        conductor_creeping.k_EDS = var.get_k_EDS();
+        conductor_creeping.k_EDT = var.get_k_EDT();
+        conductor_creeping.g_c = var.get_g_c();
+        conductor_creeping.T_EDT = var.get_T_EDT();
+        conductor_creeping.t_0 = var.get_t_0();
+        conductor_creeping.t_p = var.get_t_p();
+    }
+    
+    
 //    /**
 //     * Computes the weight of the steel in the conductor "g_Fe" (if not known)
 //     */

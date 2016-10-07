@@ -3085,7 +3085,7 @@ public class mainframe extends javax.swing.JFrame {
             Object[] Conductor = new Object[7];
             Conductor = Databaza.get(selected_conductor_index_from_JComboBox);
             //vlož 4 premene do state equation
-            state_equation.set_variables_from_conductor(Conductor);
+//            state_equation.set_variables_from_conductor(Conductor);
 
         }
     }//GEN-LAST:event_Button_Icon_calculateActionPerformed

@@ -8,6 +8,8 @@
  */
 package mt_main;
 
+import mt_variables.Overload_variables;
+
 /**
  *
  * @author Mattto
@@ -40,32 +42,21 @@ public class overload {
 //    }
    
  /* Defining variables */
-  
-// basic variables
     
-    /**
-     * array of the spans on the suspension section [m]
-     */
-    private static double a[]; 
-    
-//    /**
-//     * array of height above the sea level of the suspension points of towers [m]
-//     */
-//    private static double h[]; 
-    
-// towers and conductors
+// towers and conductors [#1]
     private static double d     ;           // conductor diameter !!!!!! [m] !!!!!!
     private static double g_c   ;         // specific weight of conductor [N/m]
+    private static double a[];              // array of the spans on the suspension section [m]
     
-// type of ice
+// type of ice [#2]
     private static double ro_I   ;        // density of the ice (= 500 kg/m3)
     
-// icing area
+// icing area [#2]
     private static double K_lc   ;        // local conditions coefficient (čl.4.5.1/SK.3) [-]
     private static double K_h    ;         // the height coefficient čl.4.5.1/SK.3) [-]
     private static double I_R50  ;       // reference ice load -> chosen from local icing area (čl.4.5.1/SK.3)
     
-// terrain and wind area
+// terrain and wind area [#3]
     private static double k_r    ;         // terrain coefficient (čl. 4.3.2) [-]
     private static double z_0    ;         // length of the roughness (čl. 4.3.2) [-]
     private static double V_b0   ;        // base wind speed (čl. 4.3.1/SK.1) [m/s]
@@ -73,21 +64,21 @@ public class overload {
     private static double c_0    ;         // orography coefficient [-]
     private static double C_c   ;         // aerodynamic resistance of the conductor coefficient (čl. 4.4.1.3/SK.1) [-]
     
-// directive constants 
-    private static final double k_p = 3;   // tip coefficient (= 3) (čl. 4.4.1.2)
-    private static final double RR = 0;    // resonance response coefficient (RR = R^2 = 0) (čl. 4.4.12)
-    private static final double ro = 1.25;    // density of the wind (= 1.25)
-    private static final double C_cl  = 1.1;        // aerodynamic resistance for conductor with ice coefficient (= 1,1) [-]
+// directive constants [set by user !!!!! - or manually in code !!!!!!]
+    private static double k_p;   // tip coefficient (= 3) (čl. 4.4.1.2)
+    private static double RR;    // resonance response coefficient (RR = R^2 = 0) (čl. 4.4.12)
+    private static double ro;    // density of the wind (= 1.25)
+    private static double C_cl;        // aerodynamic resistance for conductor with ice coefficient (= 1,1) [-]
 
 
-// reliability coefficient
+// reliability coefficient [#3]
     private static double gama_w     ;      // partial wind load coefficient [-]
     private static double gama_I     ;      // partial ice load coefficient [-]
     private static double Psi_w      ;       // combination coefficient (čl. 4.6.6/SK/CZ) [-]
     private static double Psi_I      ;       // combination ice load coefficient [-]
     private static double B_I        ;         // combination coefficient (čl. 4.6.6/SK/CZ) [-]
     
-// computed values
+// computed values [computed - not set]
     private static double h_c_mean;    // mean height of the conductor above the ground [m]     
     private static double V_h;         // the mean wind speed [m/s]
     private static double I_v;         // turbulence intensity
@@ -132,21 +123,12 @@ public class overload {
     public static double z_W;          
     
 // **************** PUBLIC METHODS **************** //
-    
-    /**
-     * set variables of conductor from main frame
-     * @param X conductor object
-     */
-    public static void set_variables_from_conductor(Object[] X){
-       overload.d=Double.valueOf(String.valueOf(X[1])); // diameter of conductor
-       //=Double.valueOf(String.valueOf(X[2])); //cross-section area of the conductor [mm^2]      
-       overload.g_c=Double.valueOf(String.valueOf(X[3]))*9.80655; //weight of the conductor per unit [kg/m] -> converted into g_c [N/m]
-       //=Double.valueOf(String.valueOf(X[4])); //Young model of elasticity of conductor [MPa]
-       //=Double.valueOf(String.valueOf(X[5])); //linear expansion coefficient [1/degree_C]
-       //=Double.valueOf(String.valueOf(X[6])); // RTS
-       //=Double.valueOf(String.valueOf(X[7])); // Fe/AlFe
+
+    public static void set_all_variables(Overload_variables Variables, Double[] Spans){
+        set_variables_spans(Spans);
+        set_variables(Variables);
     }
-    
+      
     /**
      * checks if all variables /inputs/ are set correctly from mainframe
      */
@@ -262,6 +244,54 @@ public class overload {
     }
     
 // **************** PRIVATE METHODS **************** //
+    
+        // **************** SETTERS **************** //
+
+    /**
+     * set the spans [#1]
+     * @param X - double[] array of spans
+     */
+    private static void set_variables_spans(Double[] X){                         
+        // assign a[] from mainframe
+        for (int i=0; i<X.length; i++){
+            overload.a[i] = X[i];
+        }
+    }
+    
+    /**
+     * set all other variables connected with overload class
+     * @param var overload_variables class object
+     */
+    private static void set_variables(Overload_variables var){
+        overload.ro_I = var.get_ro_I();         // density of the ice (= 500 kg/m3)
+        overload.K_lc = var.get_K_lc();         // local conditions coefficient (čl.4.5.1/SK.3) [-]
+        overload.K_h = var.get_K_h();          // the height coefficient čl.4.5.1/SK.3) [-]
+        overload.I_R50 = var.get_I_R50();        // reference ice load -> chosen from local icing area (čl.4.5.1/SK.3)
+        
+        overload.k_r = var.get_k_r();         // terrain coefficient (čl. 4.3.2) [-]
+        overload.z_0 = var.get_z_0();         // length of the roughness (čl. 4.3.2) [-]
+        overload.V_b0 = var.get_V_b0();        // base wind speed (čl. 4.3.1/SK.1) [m/s]
+        overload.c_dir = var.get_c_dir();       // wind direction coefficient [-]
+        overload.c_0 = var.get_c_0();         // orography coefficient [-]
+        overload.C_c = var.get_C_c();        // aerodynamic resistance of the conductor coefficient (čl. 4.4.1.3/SK.1) [-] 
+        
+        overload.gama_w = var.get_gama_w();     // partial wind load coefficient [-]
+        overload.gama_I = var.get_gama_I();     // partial ice load coefficient [-]
+        overload.Psi_I = var.get_Psi_I();      // combination ice load coefficient [-]
+        overload.Psi_w = var.get_Psi_w();      // combination wind load coefficient (čl. 4.6.6/SK/CZ) [-]
+        overload.B_I = var.get_B_I();        // combination coefficient (čl. 4.6.6/SK/CZ) [-]
+        
+        overload.k_p = var.get_k_p();           // tip coefficient (= 3) (čl. 4.4.1.2)
+        overload.RR = var.get_RR();             // resonance response coefficient (RR = R^2 = 0) (čl. 4.4.12)
+        overload.ro = var.get_ro();             // density of the wind (= 1.25)
+        overload.C_cl = var.get_C_cl();         // aerodynamic resistance for conductor with ice coefficient (= 1,1) [-]
+       
+    } 
+    
+    
+        // **************** OTHER METHODS **************** //
+
+    
     /**
      * computes the height coefficient "K_h" (čl.4.5.1/SK.3) [-]
      */

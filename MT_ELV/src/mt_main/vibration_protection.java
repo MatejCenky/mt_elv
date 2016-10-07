@@ -105,22 +105,16 @@ public class vibration_protection {
     
     /**
      * Computes the vibration protection area 
-     * @param load 1/2/3/4/5 for overload setting of the conductor
-     *      1 - z_1
-     *      2 - z_W
-     *      3 - z_I
-     *      4 - z_iW
-     *      5 - z_Iw
+     * @param load overload z_1 on the conductor
      * @param ter [1-4] - define the terrain
      *      1 - open flat terrain, without trees, with snow, near / over water areas
      *      2 - open flat terrain, without trees, without snow
      *      3 - open flat / rough terrain, few trees, occasional breaks / barriers
      *      4 - built-up terrain with trees and buildings, forests, fields with bushes
-     * @param ter2
-     *      1 == flat [MSF] // else == terrain [MST]
+     * @param mid_span /average/ span of suspension section [m]
      */
-    public static void compute(int load, int ter, int ter2){
-        imaginary_horizontal_stress(load, ter2);
+    public static void compute(double load, int ter, double mid_span){
+        imaginary_horizontal_stress(load, mid_span);
         axis_x();
         axis_y();
         set_c_vib(ter);
@@ -167,21 +161,16 @@ public class vibration_protection {
     
     /**
      * Computes T_0 using theory of conductor creeping and state equation
-     * @param load 1/2/3/4/5 for overload setting of the conductor
-     *  1 - z_1
-     *  2 - z_W
-     *  3 - z_I
-     *  4 - z_iW
-     *  5 - z_Iw
-     * @param ter 1 == flat [MSF] // else == terrain [MST]
+     * @param load overload z_1 on the conductor
+     * @param mid_span /average/ span of suspension section [m] 
      */
-    private static void imaginary_horizontal_stress(int load, int ter){
+    private static void imaginary_horizontal_stress(double load, double mid_span){
         // setting variables - with help of theory #3
         double T_x0 = -5 + conductor_creeping.compute_initial_thermal_shift_value();
         double T_xp = -5 + conductor_creeping.compute_transient_thermal_shift_value(8760);
         
         // computing state equation using specific initial conditions
-        vibration_protection.T_0 = state_equation.compute_sigma_Hvib(T_x0, T_xp, load, ter);
+        vibration_protection.T_0 = state_equation.compute_sigma_H(load, mid_span, T_x0, T_xp);
     }
     
     /**
