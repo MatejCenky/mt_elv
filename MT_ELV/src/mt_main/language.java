@@ -332,6 +332,15 @@ public static void constructor(){
 /*185*/  language.SK.add("Prechodné tabuľky");       language.CZ.add("I-SK");                     language.EN.add("I-SK");
 /*186*/  language.SK.add("Konečné tabuľky");       language.CZ.add("I-SK");                     language.EN.add("I-SK");
 
+/*187*/  language.SK.add("Výpočet podľa normy");       language.CZ.add("I-SK");                     language.EN.add("I-SK");
+/*188*/  language.SK.add("Stavba");       language.CZ.add("I-SK");                     language.EN.add("I-SK");
+/*189*/  language.SK.add("Dátum");       language.CZ.add("I-SK");                     language.EN.add("I-SK");
+/*190*/  language.SK.add("Archívne číslo");       language.CZ.add("I-SK");                     language.EN.add("I-SK");
+
+/*191*/  language.SK.add("PS-SO");       language.CZ.add("I-SK");                     language.EN.add("I-SK");
+/*192*/  language.SK.add("Vypracoval");       language.CZ.add("I-SK");                     language.EN.add("I-SK");
+/*193*/  language.SK.add("Strana");       language.CZ.add("I-SK");                     language.EN.add("I-SK");
+
 
  inicializovane = true;
 }

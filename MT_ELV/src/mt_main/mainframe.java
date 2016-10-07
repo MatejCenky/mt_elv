@@ -8,12 +8,19 @@
  */
 package mt_main;
 
+import com.itextpdf.text.BaseColor;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Element;
 import com.itextpdf.text.Font;
 import com.itextpdf.text.Image;
 import com.itextpdf.text.PageSize;
 import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.Phrase;
+import com.itextpdf.text.Rectangle;
+import com.itextpdf.text.pdf.BaseFont;
+import com.itextpdf.text.pdf.PdfPCell;
+import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 import com.itextpdf.text.pdf.draw.DottedLineSeparator;
 import com.itextpdf.text.pdf.draw.LineSeparator;
@@ -1193,11 +1200,12 @@ public class mainframe extends javax.swing.JFrame {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(5, 5, 5)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Label_pretazenia)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jRadioButton_with_pretazenia_vypocitana)
-                        .addComponent(jRadioButton_with_pretazenia_vlastna)))
+                        .addComponent(jRadioButton_with_pretazenia_vlastna))
+                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(Label_pretazenia)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(TextField_pretazenia_stav1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -2907,13 +2915,15 @@ public class mainframe extends javax.swing.JFrame {
             
            
             PdfWriter writer = PdfWriter.getInstance(doc, new FileOutputStream("HeaderFooter.pdf"));
+            BaseFont bf = BaseFont.createFont("/mt_graphic/arial.ttf", BaseFont.IDENTITY_H, BaseFont.EMBEDDED); // pridanie našeho kodovanie pre slovensko vranci fontu 
+            //BaseFont mojFOnt = BaseFont.createFont(BaseFont.HELVETICA, BaseFont.IDENTITY_H, BaseFont.EMBEDDED);
+
             
-            
-            Font fontHeader = new Font(Font.FontFamily.COURIER, 18,
+            Font fontHeader = new Font(bf, 18,
                       Font.NORMAL | Font.BOLD);
-            Font fontText = new Font(Font.FontFamily.COURIER, 12,
+            Font fontText = new Font(bf, 12,
                       Font.NORMAL );
-            Font fontTable = new Font(Font.FontFamily.COURIER, 8,
+            Font fontTable = new Font(bf, 8,
                       Font.NORMAL );
             doc.open();
            Image headerLogo = Image.getInstance(getClass().getResource("/mt_graphic/header.png"));
@@ -2924,23 +2934,136 @@ public class mainframe extends javax.swing.JFrame {
            doc.add(headerLogo);
 
            LineSeparator line = new LineSeparator();
-           line.setOffset(-0); 
+           //line.setOffset(); 
            doc.add(line);
+         
+            
            
+            header_pdf hlavicka = new header_pdf(jTextField_nazov_normi.getText(),
+                                         jTextField_nadpis_pre_prechodna.getText(),
+                                         jTextField_nazov_nazov_stavby.getText(),
+                                         jTextField_nazov_SOPS.getText(),
+                                         jTextField_nazov_arch_cislo.getText(),
+                                         jTextField_vypracoval.getText(),
+                                         jTextField_datum.getText(),
+                                         intChecker_short_answer(jTextField_nazov_cislo_strany)
+                                         );
+            // riadok 1 typ tabulky
             switch ((int) PDF_VAR_typ_tabulky) {
                 case 1:
                     text=language.language_label(languageOption, 184);
                     break;
                 case 2:
-                    text=language.language_label(languageOption, 185);
+                    text=language.language_label(languageOption, 185)+hlavicka.nadpis_pre_prechodne();
                     break;
                 case 3:
                     text=language.language_label(languageOption, 186);
                     break;
-            }
-           
-            doc.add(new Paragraph(text));
+            }            
+        
+    
             
+            float[] columnWidths1 = {511f};
+            PdfPTable table1 = new PdfPTable(columnWidths1);
+
+                table1.setTotalWidth(511f); 
+                table1.setLockedWidth(true);      
+                table1.setHorizontalAlignment(Element.ALIGN_LEFT);
+                
+                PdfPCell c1 = new PdfPCell(new Phrase(" "+text,fontText));
+                c1.setHorizontalAlignment(Element.ALIGN_LEFT); 
+                c1.setBorder(Rectangle.NO_BORDER);
+                table1.addCell(c1);
+
+                c1= new PdfPCell(new Phrase(" "+language.language_label(languageOption, 187) + " - " + hlavicka.vypocet_podla_normy_getter(),fontText)); 
+                c1.setBorder(Rectangle.NO_BORDER);
+                table1.addCell(c1);     
+                table1.setSpacingBefore(1);
+                table1.setSpacingAfter(3);
+                doc.add(table1);
+            
+            
+            doc.add(line);
+            float[] columnWidths = {80f, 270f,20f, 60f,81f};
+            PdfPTable table = new PdfPTable(columnWidths);
+
+                table.setTotalWidth(511f); 
+                table.setLockedWidth(true);
+                
+                table.setHorizontalAlignment(Element.ALIGN_LEFT);
+               
+                // t.setPadding(4);
+                // t.setSpacing(4);
+                // t.setBorderWidth(1);
+
+                c1 = new PdfPCell(new Phrase(" "+language.language_label(languageOption, 188),fontText));
+                c1.setHorizontalAlignment(Element.ALIGN_LEFT); 
+                c1.setBorder(Rectangle.NO_BORDER);
+               
+                table.addCell(c1);
+
+                c1= new PdfPCell(new Phrase(hlavicka.Stavba(),fontText)); 
+                c1.setBorder(Rectangle.NO_BORDER);
+                table.addCell(c1);
+                c1= new PdfPCell(new Phrase(""));  // emptycell
+                c1.setBorder(Rectangle.NO_BORDER);
+                table.addCell(c1);
+
+                c1 = new PdfPCell(new Phrase(language.language_label(languageOption, 189) +"\n\r"+language.language_label(languageOption, 190),fontTable));
+                c1.setVerticalAlignment(Element.ALIGN_BOTTOM); 
+                c1.setBorder(Rectangle.NO_BORDER);
+                table.addCell(c1);
+                
+                c1 = new PdfPCell(new Phrase(hlavicka.dátum() + "\n\r" + hlavicka.Archivne_cislo(),fontTable));
+                c1.setVerticalAlignment(Element.ALIGN_BOTTOM); 
+                c1.setBorder(Rectangle.NO_BORDER);
+                table.addCell(c1);
+
+                table.setSpacingBefore(1);
+                table.setSpacingAfter(3);
+            doc.add(table);
+            doc.add(line);
+            
+           
+            
+                table = new PdfPTable(columnWidths);
+                table.setTotalWidth(511f); 
+                table.setLockedWidth(true);
+                
+                table.setHorizontalAlignment(Element.ALIGN_LEFT);
+               
+                // t.setPadding(4);
+                // t.setSpacing(4);
+                // t.setBorderWidth(1);
+
+                c1 = new PdfPCell(new Phrase(" "+language.language_label(languageOption, 191),fontText));
+                c1.setHorizontalAlignment(Element.ALIGN_LEFT); 
+                c1.setBorder(Rectangle.NO_BORDER);
+               
+                table.addCell(c1);
+
+                c1= new PdfPCell(new Phrase(hlavicka.SO_PS(),fontText)); 
+                c1.setBorder(Rectangle.NO_BORDER);
+                table.addCell(c1);
+                c1= new PdfPCell(new Phrase(""));  // emptycell
+                c1.setBorder(Rectangle.NO_BORDER);
+                table.addCell(c1);
+
+                c1 = new PdfPCell(new Phrase(language.language_label(languageOption, 192) +"\n\r"+language.language_label(languageOption, 193),fontTable));
+                c1.setVerticalAlignment(Element.ALIGN_BOTTOM); 
+                c1.setBorder(Rectangle.NO_BORDER);
+                table.addCell(c1);
+                
+                c1 = new PdfPCell(new Phrase(hlavicka.vypracoval() + "\n\r" + String.valueOf(hlavicka.cislovanie_stran_od()),fontTable));
+                c1.setVerticalAlignment(Element.ALIGN_BOTTOM); 
+                c1.setBorder(Rectangle.NO_BORDER);
+                table.addCell(c1);
+
+                table.setSpacingBefore(1);
+                table.setSpacingAfter(3);
+            
+            doc.add(table);
+            doc.add(line);
             doc.close();
             
             
@@ -3943,14 +4066,7 @@ private static final ArrayList<Object[]> Databaza = new ArrayList<>();
 public static javax.swing.JLabel Lano_listener_JLabel_Maska;
 // variables for PDF
 private static double PDF_VAR_typ_tabulky = 3; // 3 konecne , 2prechodne , pociatocne
-private static String PDF_VAR_vypocet_podla_normy = "";
-private static String PDF_VAR_nadpis_pre_prechodne = "";
-private static String PDF_VAR_Stavba = "";
-private static String PDF_VAR_SO_PS = "";
-private static String PDF_VAR_Archivne_cislo = "";
-private static String PDF_VAR_vypracoval = "";
-private static String PDF_VAR_dátum = "";
-private static int PDF_VAR_cislovanie_stran_od = 1;
+
 // nastav rohovu ikonu
 private void seticon() {
        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/mt_graphic/" + "icon.png")));
@@ -4125,6 +4241,19 @@ private void seticon() {
         }
      }
      
+      private int intChecker_short_answer (javax.swing.JTextField Y){
+       int value ;
+        try{
+        value = Integer.parseInt(Y.getText());
+        Y.setForeground(Color.black);
+        return value;
+        }catch(NumberFormatException | NullPointerException e){
+         Y.setForeground(Color.red);
+         Y.setText(language.language_label(languageOption, 85));
+        return value = -1;            
+        }
+     }
+     
      private double doubleChecker (javax.swing.JTextField Y){
        Double value ;
         try{
@@ -4219,7 +4348,7 @@ private void seticon() {
     Variable_teploty_stav_rovnica[13]=doubleChecker_short_answer(TextField_teploha_stav14); 
     }
     
-     private  void array_pretaezenia_stav_rovnica_loader_setter(){
+    private  void array_pretaezenia_stav_rovnica_loader_setter(){
     Variable_pretazenia_stav_rovnica[0]=doubleChecker_short_answer(TextField_pretazenia_stav1);
     Variable_pretazenia_stav_rovnica[1]=doubleChecker_short_answer(TextField_pretazenia_stav2);
     Variable_pretazenia_stav_rovnica[2]=doubleChecker_short_answer(TextField_pretazenia_stav3);
@@ -4236,7 +4365,7 @@ private void seticon() {
     Variable_pretazenia_stav_rovnica[13]=doubleChecker_short_answer(TextField_pretazenia_stav14); 
     }
      
-      private  void Jcombo_stav_KPB_setter(){
+    private  void Jcombo_stav_KPB_setter(){
           jComboBox_stav_KPB.removeAllItems();
           jComboBox_stav_KPB.addItem((String) TextField_teploha_stav1.getText());
           jComboBox_stav_KPB.addItem((String) TextField_teploha_stav2.getText());
@@ -4254,6 +4383,94 @@ private void seticon() {
           jComboBox_stav_KPB.addItem((String) TextField_teploha_stav14.getText());   
       }
       
-      
+    
      
+}
+class header_pdf extends javax.swing.JFrame{
+    private static String PDF_VAR_vypocet_podla_normy = "";
+    private static String PDF_VAR_nadpis_pre_prechodne = "";
+    private static String PDF_VAR_Stavba = "";
+    private static String PDF_VAR_SO_PS = "";
+    private static String PDF_VAR_Archivne_cislo = "";
+    private static String PDF_VAR_vypracoval = "";
+    private static String PDF_VAR_dátum = "";
+    private static int PDF_VAR_cislovanie_stran_od = 1;
+    //constructor
+    /**
+     * Create header for PDf file
+     * @param a PDF_VAR_vypocet_podla_normy (string)
+     * @param b PDF_VAR_nadpis_pre_prechodne (string)
+     * @param c PDF_VAR_Stavba (string)
+     * @param d PDF_VAR_SO_PS (string)
+     * @param e PDF_VAR_Archivne_cisl (string)
+     * @param f PDF_VAR_vypracoval (string)
+     * @param g PDF_VAR_dátum (string)
+     * @param h PDF_VAR_cislovanie_stran_od (int)
+     */
+    header_pdf(String a, String b,String c, String d,String e,String f,String g, int h) {
+        PDF_VAR_vypocet_podla_normy = a;
+        PDF_VAR_nadpis_pre_prechodne = b;
+        PDF_VAR_Stavba=c;
+        PDF_VAR_SO_PS=d;
+        PDF_VAR_Archivne_cislo=e;
+        PDF_VAR_vypracoval=f;
+        PDF_VAR_dátum=g;
+        PDF_VAR_cislovanie_stran_od=h;
+    }
+    /**
+     * 
+     * @return string PDF_VAR_vypocet_podla_normy
+     */
+     String vypocet_podla_normy_getter(){
+        return PDF_VAR_vypocet_podla_normy;
+    }   
+    /**
+     * 
+     * @return string PDF_VAR_nadpis_pre_prechodne
+     */
+     String nadpis_pre_prechodne(){
+        return PDF_VAR_nadpis_pre_prechodne;
+    }   
+    /**
+     * 
+     * @return string PDF_VAR_Stavba
+     */
+     String Stavba(){
+        return PDF_VAR_Stavba;
+    }   
+    /**
+     * 
+     * @return string PDF_VAR_SO_PS
+     */
+     String SO_PS(){
+        return PDF_VAR_SO_PS;
+    }  
+    /**
+     * 
+     * @return string PDF_VAR_Archivne_cislo
+     */
+     String Archivne_cislo(){
+        return PDF_VAR_Archivne_cislo;
+    }   
+    /**
+     * 
+     * @return string PDF_VAR_vypracoval
+     */
+     String vypracoval(){
+        return PDF_VAR_vypracoval;
+    }   
+     /**
+     * 
+     * @return string PDF_VAR_dátum
+     */
+     String dátum(){
+        return PDF_VAR_dátum;
+    }   
+     /**
+     * 
+     * @return int PDF_VAR_cislovanie_stran_od
+     */
+     int cislovanie_stran_od(){
+        return PDF_VAR_cislovanie_stran_od;
+    }
 }
