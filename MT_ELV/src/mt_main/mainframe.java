@@ -109,7 +109,7 @@ public class mainframe extends javax.swing.JFrame {
         jComboBox_KPB_typ_terenu.addItem(language.language_label(languageOption, 166));
         jComboBox_KPB_typ_terenu.addItem(language.language_label(languageOption, 167));
         jComboBox_KPB_typ_terenu.addItem(language.language_label(languageOption, 168));
-        jComboBox_druh_namrazy.setSelectedIndex(1);
+        jComboBox_KPB_typ_terenu.setSelectedIndex(1);
         jRadioButton_KPB_cas_vypoctu_1_rok.doClick();
         // inicializacia Hcmean
         jRadioButton_with_label_vypoctana.doClick();
@@ -135,7 +135,7 @@ public class mainframe extends javax.swing.JFrame {
         for (int i = 0; i < 5; i++) { // nacitanie prvkov do JCombo
             jComboBox_char_terenu.addItem(language.language_label(languageOption, 130+i));
         }
-        jComboBox_char_terenu.setSelectedIndex(0);
+        jComboBox_char_terenu.setSelectedIndex(1);
         
         //uroven spolahlivosti
         jComboBox_uroven_splahlivosti.removeAllItems();
@@ -1203,8 +1203,7 @@ public class mainframe extends javax.swing.JFrame {
                     .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jRadioButton_with_pretazenia_vypocitana)
                         .addComponent(jRadioButton_with_pretazenia_vlastna))
-                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(Label_pretazenia)))
+                    .addComponent(Label_pretazenia))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(TextField_pretazenia_stav1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1609,9 +1608,16 @@ public class mainframe extends javax.swing.JFrame {
 
         TextField_STRrozpatie_klasicky.setEditable(false);
         TextField_STRrozpatie_klasicky.setText("0.0");
+        TextField_STRrozpatie_klasicky.setEnabled(false);
+        TextField_STRrozpatie_klasicky.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TextField_STRrozpatie_klasickyActionPerformed(evt);
+            }
+        });
 
         TextField_STRrozpatie_sPrevisenim.setEditable(false);
         TextField_STRrozpatie_sPrevisenim.setText("0.0");
+        TextField_STRrozpatie_sPrevisenim.setEnabled(false);
         TextField_STRrozpatie_sPrevisenim.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 TextField_STRrozpatie_sPrevisenimActionPerformed(evt);
@@ -2532,12 +2538,9 @@ public class mainframe extends javax.swing.JFrame {
                         .addComponent(jPanel5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jPanel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
+                            .addComponent(jPanel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -3809,6 +3812,10 @@ public class mainframe extends javax.swing.JFrame {
     private void TextField_KclActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextField_KclActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_TextField_KclActionPerformed
+
+    private void TextField_STRrozpatie_klasickyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextField_STRrozpatie_klasickyActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TextField_STRrozpatie_klasickyActionPerformed
 
   public static void lanochangeinDatabaze() {
   nacitatDatabazuLan();      
