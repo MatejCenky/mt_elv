@@ -124,7 +124,7 @@ public class overload {
     
 // **************** PUBLIC METHODS **************** //
 
-    public static void set_all_variables(Overload_variables Variables, Double[] Spans){
+    public static void set_all_variables(Overload_variables Variables, double[] Spans){
         set_variables_spans(Spans);
         set_variables(Variables);
     }
@@ -132,7 +132,7 @@ public class overload {
     /**
      * checks if all variables /inputs/ are set correctly from mainframe
      */
-    public void check_variables(){
+    public static void check_variables(){
         try {
             if (overload.d == -1111.0000){
                 System.out.println(overload.d + "not set");
@@ -192,7 +192,7 @@ public class overload {
     /**
      * null the variables /inputs/ from mainframe - results remain untouched
      */
-    public void null_variables(){
+    public static void null_variables(){
         overload.d = -1111.0000;
         overload.g_c = -1111.0000;
         overload.ro_I = -1111.0000;
@@ -212,7 +212,7 @@ public class overload {
         overload.B_I = -1111.0000;
     }
     
-    public void compute(){
+    public static void compute(){
         // check if variables are set
         check_variables();
         // #1 layer
@@ -251,11 +251,10 @@ public class overload {
      * set the spans [#1]
      * @param X - double[] array of spans
      */
-    private static void set_variables_spans(Double[] X){                         
+    private static void set_variables_spans(double[] X){                         
         // assign a[] from mainframe
-        for (int i=0; i<X.length; i++){
-            overload.a[i] = X[i];
-        }
+       
+         overload.a = X;
     }
     
     /**
@@ -295,7 +294,7 @@ public class overload {
     /**
      * computes the height coefficient "K_h" (čl.4.5.1/SK.3) [-]
      */
-    private void height_coefficient(){
+    private static void height_coefficient(){
         overload.K_h = Math.pow(overload.h_c_mean/10,0.13);
     }
     
@@ -316,21 +315,21 @@ public class overload {
     /**
      * Computes the mean wind speed "V_h" using the values chosen from the user (from mainframe)
      */
-    private void mean_wind_speed() {
+    private static void mean_wind_speed() {
         overload.V_h = overload.V_b0*overload.c_dir*overload.c_0*overload.k_r*Math.log(overload.h_c_mean/overload.z_0);
     }
     
     /**
      * Computes the turbulence intensity "I_v"
      */
-    private void turbulence_intensity(){
+    private static void turbulence_intensity(){
         overload.I_v = 1 / (overload.c_0*Math.log(overload.h_c_mean/overload.z_0));
     }
     
     /**
      * Computes the length for response origin coefficient "L_m" [m]
      */
-    private void response_coefficient_length(){
+    private static void response_coefficient_length(){
         double aux = 0;
         for (int i=0; i<overload.a.length; i++){
             aux += overload.a[i];
@@ -345,70 +344,70 @@ public class overload {
     /**
      * Computes the specific length for turbulence "L" [m]
      */
-    private void specific_turbulence_length(){
+    private static void specific_turbulence_length(){
         overload.L = 300 * Math.pow(overload.h_c_mean/200, 0.67 + 0.05*Math.log(overload.z_0));
     }
     
     /**
      * Computes the response origin coefficient "BB = B^2" [m]
      */
-    private void response_coefficient (){
+    private static void response_coefficient (){
         overload.BB = 1 / (1 + 1.5*(overload.L_m/overload.L));
     }
     
     /**
      * Computes the construction coefficient "G_c"
      */
-    private void construcion_coefficient(){
+    private static void construcion_coefficient(){
         overload.G_c = (1 + 2*overload.k_p*overload.I_v*Math.sqrt(overload.BB + overload.RR))/(1 + 7*overload.I_v);
     }
     
     /**
      * Computes characteristic wind load "q_wc"
      */
-    private void characteristic_wind_load(){
+    private static void characteristic_wind_load(){
         overload.q_wc = overload.q_p* overload.d* overload.C_c* overload.G_c;
     }
     
     /**
      * Computes the peak wind pressure "q_p"
      */
-    private void peak_wind_pressure(){
+    private static void peak_wind_pressure(){
         overload.q_p = (1 + 7* overload.I_v)* overload.q_h;
     }
     
     /**
      * Computes the mean wind pressure "q_h"
      */
-    private void mean_wind_pressure(){
+    private static void mean_wind_pressure(){
         overload.q_h = 1/2 * overload.ro * Math.pow(overload.V_h, 2);
     }
     
     /**
      * Computes the characteristic ice load "I_50"
      */
-    private void characteristic_ice_load(){
+    private static void characteristic_ice_load(){
         overload.I_50 = overload.I_R50* overload.K_h* overload.K_lc;
     }
     
     /**
      * Computes the extreme ice load "I_T"
      */
-    private void extreme_ice_load(){
+    private static void extreme_ice_load(){
         overload.I_T = overload.I_50* overload.gama_I;
     }
     
     /**
      * Computes the extreme wind load "q_wT"
      */
-    private void extreme_wind_load(){
+    private static void extreme_wind_load(){
         overload.q_wT = overload.q_wc* overload.gama_w;
     }
     
     /**
      * Computes the mild ice load "I_3"
      */
-    private void mild_ice_load(){
+    private static void mild_ice_load(){
         overload.I_3 = overload.I_50* overload.Psi_I;
     }
     
@@ -417,7 +416,7 @@ public class overload {
      * - extreme ice "D_I" 
      * - mild ice "D_i"
      */
-    private void equivalent_diameter_with_ice(){
+    private static void equivalent_diameter_with_ice(){
         overload.D_I = Math.sqrt(overload.d* overload.d + (4*overload.I_T)/(9.80665*Math.PI* overload.ro_I));   // extreme
         overload.D_i = Math.sqrt(overload.d* overload.d + (4*overload.I_3)/(9.80665*Math.PI* overload.ro_I));   // mild
     }
@@ -427,7 +426,7 @@ public class overload {
      * - mild wind with extreme ice "q_wI3"
      * - extreme wind with mild ice "q_wIT"
      */
-    private void combined_load(){
+    private static void combined_load(){
         overload.q_wI3 = overload.q_p* overload.D_I* overload.C_cl* overload.G_c* overload.Psi_w;
         overload.q_wIT = overload.q_p* overload.D_i* overload.C_cl* overload.G_c* overload.B_I* overload.B_I;
     }
@@ -435,7 +434,7 @@ public class overload {
     /**
      * Computes extreme ice overload on the conductor "z_I"
      */
-    private void overload_extreme_ice(){
+    private static void overload_extreme_ice(){
         overload.z_I = (overload.I_T + overload.g_c) / overload.g_c;
     }
     
@@ -444,7 +443,7 @@ public class overload {
      * - mild wind with extreme ice "z_Iw"
      * - extreme wind with mild ice "z_iW"
      */
-    private void overload_combined(){
+    private static void overload_combined(){
         overload.z_Iw = Math.sqrt((Math.pow(overload.I_T + overload.g_c,2) + overload.q_wI3*overload.q_wI3)) / overload.g_c;
         overload.z_iW = Math.sqrt((Math.pow(overload.I_3 + overload.g_c,2) + overload.q_wIT*overload.q_wIT)) / overload.g_c;
     }
@@ -452,7 +451,7 @@ public class overload {
     /**
      * Computes extreme wind overload in conductor "z_W"
      */
-    private void overload_extreme_wind(){
+    private static void overload_extreme_wind(){
         overload.z_W = Math.sqrt((overload.q_wT* overload.q_wT + overload.g_c* overload.g_c)) / overload.g_c;
     }
 }

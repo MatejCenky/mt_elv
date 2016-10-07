@@ -56,7 +56,7 @@ public class Overload_variables {
      * @param Psi_I combination coefficient (čl. 4.6.6/SK/CZ) [-]
      * @param Psi_w combination ice load coefficient [-]
      * @param B_I combination coefficient (čl. 4.6.6/SK/CZ) [-]
-     * @param k_p tip coefficient (= 3) (čl. 4.4.1.2)
+     * @param k_p tip coefficint (= 3) (čl. 4.4.1.2)
      * @param RR resonance response coefficient (RR = R^2 = 0) (čl. 4.4.12)
      * @param ro density of the wind (= 1.25)
      * @param C_cl aerodynamic resistance for conductor with ice coefficient (= 1,1) [-]

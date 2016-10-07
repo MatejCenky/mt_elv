@@ -8,21 +8,18 @@
  */
 package mt_main;
 
-import com.itextpdf.text.BaseColor;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Element;
 import com.itextpdf.text.Font;
 import com.itextpdf.text.Image;
 import com.itextpdf.text.PageSize;
-import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.Phrase;
 import com.itextpdf.text.Rectangle;
 import com.itextpdf.text.pdf.BaseFont;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
-import com.itextpdf.text.pdf.draw.DottedLineSeparator;
 import com.itextpdf.text.pdf.draw.LineSeparator;
 import java.awt.Color;
 import java.awt.Toolkit;
@@ -44,6 +41,8 @@ import javax.swing.event.TableModelListener;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableModel;
 import static mt_main.startPanel.languageOption;
+import mt_variables.Conductor_variables;
+import mt_variables.Overload_variables;
 
 /**
  *
@@ -3080,12 +3079,46 @@ public class mainframe extends javax.swing.JFrame {
     private void Button_Icon_calculateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button_Icon_calculateActionPerformed
         if (mainframeLodaed == true) {
 
-            //nacitajvodič z jombo box
+            
             int selected_conductor_index_from_JComboBox = jComboBox_conductor_chooser.getSelectedIndex();
-            Object[] Conductor = new Object[7];
-            Conductor = Databaza.get(selected_conductor_index_from_JComboBox);
-            //vlož 4 premene do state equation
-//            state_equation.set_variables_from_conductor(Conductor);
+            
+            Conductor_variables Conductor =  new  Conductor_variables (Databaza.get(selected_conductor_index_from_JComboBox));            
+            System.out.println(Conductor.get_E());
+            
+            Overload_variables Overload = new Overload_variables(Conductor,
+                                                                Conductor.get_m()*9.80665,
+                                                                Variable_hustota_namrazy,
+                                                                Variable_Klc, 
+                                                                Variable_Kh, 
+                                                                Variable_Ir50,
+                                                                Variable_char_terenu_Kr, 
+                                                                Variable_char_terenu_Zo,
+                                                                Variable_V_mean_0, 
+                                                                Variable_Cdir, 
+                                                                Variable_Co, 
+                                                                1.,
+                                                                Variable_uroven_spolahlivosti_Yw, 
+                                                                Variable_uroven_spolahlivosti_Yi,
+                                                                Variable_uroven_spolahlivosti_Wi, 
+                                                                Variable_uroven_spolahlivosti_Ww, 
+                                                                Variable_Bi,
+                                                                3, 
+                                                                0, 
+                                                                1.25,
+                                                                Variable_Ccl);
+
+            
+           overload.set_all_variables(Overload,Variable_Ai_array);
+           overload.compute();
+           System.out.println(overload.z_I);
+           System.out.println(overload.z_Iw);
+           System.out.println(overload.z_W);
+           System.out.println(overload.z_iW);
+            
+//            Object[] Conductor = new Object[7];
+//            Conductor = Databaza.get(selected_conductor_index_from_JComboBox);
+//            //vlož 4 premene do state equation
+////            state_equation.set_variables_from_conductor(Conductor);
 
         }
     }//GEN-LAST:event_Button_Icon_calculateActionPerformed
