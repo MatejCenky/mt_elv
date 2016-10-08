@@ -4464,7 +4464,56 @@ private void seticon() {
           jComboBox_stav_KPB.addItem((String) TextField_teploha_stav13.getText());
           jComboBox_stav_KPB.addItem((String) TextField_teploha_stav14.getText());   
       }
-      
+    
+    private void kotevn_usek_setter(kotevnyUsek X){
+        //vloz prave označeny kotevny usek
+        try{
+        X.set_name(String.valueOf(Table_kotevne_useky.getValueAt(Table_kotevne_useky.getSelectedRow(), 1)));
+        }catch(NullPointerException s){
+        
+        }
+        X.set_conductor_number(jComboBox_conductor_chooser.getSelectedIndex());
+        X.set_vetrova_oblast_porcislo(jComboBox_vetrova_oblast.getSelectedIndex());
+        X.set_char_terenu_porcislo(jComboBox_char_terenu.getSelectedIndex());
+        X.set_uroven_spolahlivosti_porcislo(jComboBox_uroven_splahlivosti.getSelectedIndex());
+        X.set_uroven_spolahlivosti_stav_porcislo(jComboBox_stav_KPB.getSelectedIndex());
+        X.set_namrazova_oblast_string(Label_vybrana_namrazova_oblast.getText());
+        X.set_typ_namrazy_porcislo(jComboBox_druh_namrazy.getSelectedIndex());
+        X.set_RTS_over(Variable_RTS);
+        X.set_zakladne_mech_napatie_lana_pre_minus5_over(Variable_zakladne_mech_napatie_lana_pre_minus5);
+        X.set_maximalne_zataz_lana_podiel_z_RTS_over(Variable_maximalne_zataz_lana_podiel_z_RTS);
+        X.set_c_dir(Variable_Cdir);
+        X.set_g_c(1.);
+        X.set_ro_I(Variable_hustota_namrazy);
+        X.set_K_lc(Variable_Klc);
+        X.set_K_h(Variable_Kh);
+        X.set_I_R50(Variable_Ir50);
+        X.set_k_r(Variable_char_terenu_Kr);
+        X.set_z_0(Variable_char_terenu_Zo);
+        X.set_V_mean(Variable_V_mean_0);
+        X.set_c_0(Variable_Co);
+        X.set_C_c(1.);
+        X.set_gama_w(Variable_uroven_spolahlivosti_Yw);
+        X.set_gama_I(Variable_uroven_spolahlivosti_Yi);
+        X.set_Psi_w(Variable_uroven_spolahlivosti_Ww);
+        X.set_Psi_I(Variable_uroven_spolahlivosti_Wi);
+        X.set_B_I(Variable_Bi);
+        X.set_k_p(3);
+        X.set_RR(0);
+        X.set_ro(1.25);
+        X.set_C_cl(Variable_Ccl);
+        X.set_h_c_mean(Variable_Hc_mean);
+        X.set_str_vys_vodicov_radio(jRadioButton_with_label_vypoctana.isSelected());
+        X.set_CDIR_radio(jRadioButton_vetrova_oblast_Cdir_1.isSelected());
+        X.set_CO_radio(jRadioButton_vetrova_oblast_C0_1.isSelected());
+        X.set_Kcl_radio(jRadioButton_Klc_1.isSelected());
+        X.set_Kh_radio(jRadioButton_Kh_1.isSelected());
+        X.set_Bi_radio(jRadioButton_Bi_1.isSelected());
+        X.set_Ai_array(Variable_Ai_array);
+        X.set_DeltaHi_array(Variable_DeltaHi_array);
+        X.set_Hi_array(Variable_Hi_array); 
+        
+        }
     
      
 }
@@ -4737,13 +4786,13 @@ class kotevnyUsek extends javax.swing.JFrame{
     public int get_typ_namrazy_porcislo(){
         return typ_namrazy_porcislo;
     }
-    public double RTS_over(){
+    public double get_RTS_over(){
         return RTS_over;
     }
     public double get_zakladne_mech_napatie_lana_pre_minus5_over(){
         return zakladne_mech_napatie_lana_pre_minus5_over;
     }
-    public double maximalne_zataz_lana_podiel_z_RTS_over(){
+    public double get_maximalne_zataz_lana_podiel_z_RTS_over(){
         return maximalne_zataz_lana_podiel_z_RTS_over;
     }
     public double get_c_dir(){
@@ -4778,7 +4827,7 @@ class kotevnyUsek extends javax.swing.JFrame{
         return z_0_over;
     }
     
-    public double get_V_b0(){
+    public double get_V_mean(){
         return V_mean_over;
     }
     
@@ -4879,6 +4928,176 @@ class kotevnyUsek extends javax.swing.JFrame{
     }
     public double[] get_Hi_array(){
         return Hi_array_over;
+    }
+    
+    public void set_name(String name_kot_useku){
+        name=name_kot_useku;
+    }
+    
+    public void set_conductor_number(int conductor){
+        conductor_porcislo=conductor;
+    }
+    
+    public void set_vetrova_oblast_porcislo(int vetrova_oblast_porC){
+        vetrova_oblast_porcislo=vetrova_oblast_porC;
+    }
+    public void set_char_terenu_porcislo(int char_terenu_porC){
+        char_terenu_porcislo=char_terenu_porC;
+    }
+    public void set_uroven_spolahlivosti_porcislo(int uroven_spolahlivosti_porC){
+        uroven_spolahlivosti_porcislo=uroven_spolahlivosti_porC;
+    }
+    public void set_uroven_spolahlivosti_stav_porcislo(int uroven_spolahlivosti_stav_porC){
+        uroven_spolahlivosti_stav_porcislo=uroven_spolahlivosti_stav_porC;
+    }
+    public void set_namrazova_oblast_string(String namrazova_oblst){
+        namrazova_oblast=namrazova_oblst;
+    }
+    public void set_typ_namrazy_porcislo(int typ_namrazy_porC){
+        typ_namrazy_porcislo=typ_namrazy_porC;
+    }
+    public void set_RTS_over(double RTS){
+        RTS_over=RTS;
+    }
+    public void set_zakladne_mech_napatie_lana_pre_minus5_over(double zakl_mech_minus_5){
+         zakladne_mech_napatie_lana_pre_minus5_over= zakl_mech_minus_5;
+    }
+    public void set_maximalne_zataz_lana_podiel_z_RTS_over(double max_zataz_lana_podiel_z_RTS){
+        maximalne_zataz_lana_podiel_z_RTS_over = max_zataz_lana_podiel_z_RTS;
+    }
+    public void set_c_dir(double c_dir){
+        c_dir_over = c_dir;
+    }
+    
+    public void set_g_c(double g_c){
+        g_c_over = g_c;
+    }
+    
+    public void set_ro_I(double ro_I){
+        ro_I_over = ro_I;
+    }
+    
+    public void set_K_lc(double K_lc){
+        K_lc_over = K_lc;
+    }
+    
+    public void set_K_h(double K_h){
+       K_h_over = K_h;
+    }
+    
+    public void set_I_R50(double I_R50){
+        I_R50_over = I_R50;
+    }
+    
+    public void set_k_r(double k_r){
+        k_r_over = k_r;
+    }
+    
+    public void set_z_0(double z_0){
+        z_0_over = z_0;
+    }
+    
+    public void set_V_mean(double V_mean){
+        V_mean_over = V_mean;
+    }
+    
+    public void set_c_0(double c_0){
+        c_0_over = c_0;
+    }
+    
+    public void set_C_c(double C_c){
+        C_c_over = C_c;
+    }
+    
+    public void set_gama_w(double gama_w){
+        gama_w_over = gama_w;
+    }
+    
+    public void set_gama_I(double gama_I){
+        gama_I_over = gama_I;
+    }
+    
+    public void set_Psi_I(double Psi_I){
+        Psi_I_over = Psi_I;
+    }
+    
+    public void set_Psi_w(double Psi_w){
+        Psi_w_over = Psi_w;
+    }
+    
+    public void set_B_I(double B_I){
+        B_I_over = B_I;
+    }
+    
+    public void set_k_p(double k_p){
+        k_p_over = k_p;
+    }
+    
+    public void set_RR(double RR){
+        RR_over = RR;
+    }
+    
+    public void set_ro(double ro){
+        ro_over = ro;
+    }
+    
+    public void set_C_cl(double C_cl){
+        C_cl_over = C_cl;
+    }
+   
+    public void set_h_c_mean(double h_c_mean){
+        h_c_mean_over = h_c_mean;
+    }
+     /**
+     * 
+     * @return True vypocitana / False Vlastna
+     */
+    public void set_str_vys_vodicov_radio(boolean str_vys_vodicov_radio){
+        str_vys_vodicov_radio_over = str_vys_vodicov_radio;
+    }
+     /**
+     * 
+     * @return True 1 / False Vlastna
+     */
+    public void set_CDIR_radio(boolean CDIR_radio){
+        CDIR_radio_over=CDIR_radio;
+    }
+     /**
+     * 
+     * @return True 1 / False Vlastna
+     */
+    public void set_CO_radio(boolean CO_radio){
+        CO_radio_over=CO_radio;
+    }
+     /**
+     * 
+     * @return True 1 / False Vlastna
+     */
+    public void set_Kcl_radio(boolean  Kcl_radio){
+        Kcl_radio_over=Kcl_radio;
+    }
+     /**
+     * 
+     * @return True 1 / False Vlastna
+     */
+    public void set_Kh_radio(boolean Kh_radio){
+        Kh_radio_over= Kh_radio;
+    }
+     /**
+     * 
+     * @return True 0.656 / False Vlastna basic 0.707
+     */
+    public void set_Bi_radio(boolean Bi_radio){
+        Bi_radio_over=Bi_radio;
+    }
+    public void set_Ai_array(double[] A1_array){
+        Ai_array_over=A1_array;
+    }
+    public void set_DeltaHi_array(double[] Delta_Hi_array){
+        DeltaHi_array_over= Delta_Hi_array;
+    }
+    public void set_Hi_array(double[] H1_array){
+        Hi_array_over= H1_array;
     }
     
     
