@@ -555,6 +555,8 @@ public class mainframe extends javax.swing.JFrame {
         jTextField_vypracoval = new javax.swing.JTextField();
         jTextField_datum = new javax.swing.JTextField();
         Label_hlavicka_datum = new javax.swing.JLabel();
+        jTextField_nazov_nazov_stavby1 = new javax.swing.JTextField();
+        jTextField_nazov_SOPS1 = new javax.swing.JTextField();
 
         javax.swing.GroupLayout jPanel15Layout = new javax.swing.GroupLayout(jPanel15);
         jPanel15.setLayout(jPanel15Layout);
@@ -2445,6 +2447,18 @@ public class mainframe extends javax.swing.JFrame {
 
         Label_hlavicka_datum.setText(language.language_label(languageOption, 183));
 
+        jTextField_nazov_nazov_stavby1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField_nazov_nazov_stavby1ActionPerformed(evt);
+            }
+        });
+
+        jTextField_nazov_SOPS1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField_nazov_SOPS1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
@@ -2460,14 +2474,6 @@ public class mainframe extends javax.swing.JFrame {
                         .addComponent(Label_hlavicka_nadpis_pre_prechodne, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jTextField_nadpis_pre_prechodna, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addComponent(Label_hlavicka_stavba, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField_nazov_nazov_stavby))
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addComponent(Label_hlavicka_SOPS, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField_nazov_SOPS))
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(Label_hlavicka_arch_cislo, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -2486,7 +2492,21 @@ public class mainframe extends javax.swing.JFrame {
                                 .addComponent(Label_hlavicka_datum)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jTextField_datum))))
-                    .addComponent(Label_hlavicka_nazov, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(Label_hlavicka_nazov, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel5Layout.createSequentialGroup()
+                                .addComponent(Label_hlavicka_SOPS, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jTextField_nazov_SOPS))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel5Layout.createSequentialGroup()
+                                .addComponent(Label_hlavicka_stavba, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jTextField_nazov_nazov_stavby, javax.swing.GroupLayout.PREFERRED_SIZE, 312, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jTextField_nazov_nazov_stavby1)
+                            .addComponent(jTextField_nazov_SOPS1))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
@@ -2503,11 +2523,13 @@ public class mainframe extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Label_hlavicka_stavba)
-                    .addComponent(jTextField_nazov_nazov_stavby, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextField_nazov_nazov_stavby, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField_nazov_nazov_stavby1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Label_hlavicka_SOPS)
-                    .addComponent(jTextField_nazov_SOPS, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextField_nazov_SOPS, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField_nazov_SOPS1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Label_hlavicka_arch_cislo)
@@ -2944,7 +2966,9 @@ public class mainframe extends javax.swing.JFrame {
             header_pdf hlavicka = new header_pdf(jTextField_nazov_normi.getText(),
                                          jTextField_nadpis_pre_prechodna.getText(),
                                          jTextField_nazov_nazov_stavby.getText(),
+                                         jTextField_nazov_nazov_stavby1.getText(),
                                          jTextField_nazov_SOPS.getText(),
+                                         jTextField_nazov_SOPS1.getText(),
                                          jTextField_nazov_arch_cislo.getText(),
                                          jTextField_vypracoval.getText(),
                                          jTextField_datum.getText(),
@@ -3004,7 +3028,7 @@ public class mainframe extends javax.swing.JFrame {
                
                 table.addCell(c1);
 
-                c1= new PdfPCell(new Phrase(hlavicka.Stavba(),fontText)); 
+                c1= new PdfPCell(new Phrase(hlavicka.Stavba() + "\n\r" + hlavicka.Stavba1() ,fontText)); 
                 c1.setBorder(Rectangle.NO_BORDER);
                 table.addCell(c1);
                 c1= new PdfPCell(new Phrase(""));  // emptycell
@@ -3044,7 +3068,7 @@ public class mainframe extends javax.swing.JFrame {
                
                 table.addCell(c1);
 
-                c1= new PdfPCell(new Phrase(hlavicka.SO_PS(),fontText)); 
+                c1= new PdfPCell(new Phrase(hlavicka.SO_PS()+ "\n\r" + hlavicka.SO_PS1(),fontText)); 
                 c1.setBorder(Rectangle.NO_BORDER);
                 table.addCell(c1);
                 c1= new PdfPCell(new Phrase(""));  // emptycell
@@ -3817,6 +3841,14 @@ public class mainframe extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_TextField_STRrozpatie_klasickyActionPerformed
 
+    private void jTextField_nazov_nazov_stavby1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_nazov_nazov_stavby1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField_nazov_nazov_stavby1ActionPerformed
+
+    private void jTextField_nazov_SOPS1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_nazov_SOPS1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField_nazov_SOPS1ActionPerformed
+
   public static void lanochangeinDatabaze() {
   nacitatDatabazuLan();      
         
@@ -4030,9 +4062,11 @@ public class mainframe extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField_datum;
     private javax.swing.JTextField jTextField_nadpis_pre_prechodna;
     private javax.swing.JTextField jTextField_nazov_SOPS;
+    private javax.swing.JTextField jTextField_nazov_SOPS1;
     private javax.swing.JTextField jTextField_nazov_arch_cislo;
     private javax.swing.JTextField jTextField_nazov_cislo_strany;
     private javax.swing.JTextField jTextField_nazov_nazov_stavby;
+    private javax.swing.JTextField jTextField_nazov_nazov_stavby1;
     private javax.swing.JTextField jTextField_nazov_normi;
     private javax.swing.JTextField jTextField_vypracoval;
     private javax.swing.JTextArea jTextPane_KPB_typ_terenu;
@@ -4431,7 +4465,9 @@ class header_pdf extends javax.swing.JFrame{
     private static String PDF_VAR_vypocet_podla_normy = "";
     private static String PDF_VAR_nadpis_pre_prechodne = "";
     private static String PDF_VAR_Stavba = "";
+    private static String PDF_VAR_Stavba1 = "";
     private static String PDF_VAR_SO_PS = "";
+    private static String PDF_VAR_SO_PS1 = "";
     private static String PDF_VAR_Archivne_cislo = "";
     private static String PDF_VAR_vypracoval = "";
     private static String PDF_VAR_dátum = "";
@@ -4442,21 +4478,25 @@ class header_pdf extends javax.swing.JFrame{
      * @param a PDF_VAR_vypocet_podla_normy (string)
      * @param b PDF_VAR_nadpis_pre_prechodne (string)
      * @param c PDF_VAR_Stavba (string)
-     * @param d PDF_VAR_SO_PS (string)
-     * @param e PDF_VAR_Archivne_cisl (string)
-     * @param f PDF_VAR_vypracoval (string)
-     * @param g PDF_VAR_dátum (string)
-     * @param h PDF_VAR_cislovanie_stran_od (int)
+     * @param d PDF_VAR_Stavba (string)
+     * @param e PDF_VAR_SO_PS (string)
+     * @param f PDF_VAR_SO_PS (string)
+     * @param g PDF_VAR_Archivne_cisl (string)
+     * @param h PDF_VAR_vypracoval (string)
+     * @param i PDF_VAR_dátum (string)
+     * @param j PDF_VAR_cislovanie_stran_od (int)
      */
-    header_pdf(String a, String b,String c, String d,String e,String f,String g, int h) {
+    header_pdf(String a, String b,String c, String d,String e,String f,String g,String h,String i, int j) {
         PDF_VAR_vypocet_podla_normy = a;
         PDF_VAR_nadpis_pre_prechodne = b;
         PDF_VAR_Stavba=c;
-        PDF_VAR_SO_PS=d;
-        PDF_VAR_Archivne_cislo=e;
-        PDF_VAR_vypracoval=f;
-        PDF_VAR_dátum=g;
-        PDF_VAR_cislovanie_stran_od=h;
+        PDF_VAR_Stavba1=d;
+        PDF_VAR_SO_PS=e;
+        PDF_VAR_SO_PS1=f;
+        PDF_VAR_Archivne_cislo=g;
+        PDF_VAR_vypracoval=h;
+        PDF_VAR_dátum=i;
+        PDF_VAR_cislovanie_stran_od=j;
     }
     /**
      * 
@@ -4478,14 +4518,28 @@ class header_pdf extends javax.swing.JFrame{
      */
      String Stavba(){
         return PDF_VAR_Stavba;
-    }   
+    }  
+      /**
+     * 
+     * @return string PDF_VAR_Stavba1
+     */
+     String Stavba1(){
+        return PDF_VAR_Stavba1;
+    }  
     /**
      * 
      * @return string PDF_VAR_SO_PS
      */
      String SO_PS(){
         return PDF_VAR_SO_PS;
-    }  
+    }
+    /**
+     * 
+     * @return string PDF_VAR_SO_PS1
+     */
+     String SO_PS1(){
+        return PDF_VAR_SO_PS1;
+    }   
     /**
      * 
      * @return string PDF_VAR_Archivne_cislo
