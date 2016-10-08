@@ -2648,16 +2648,6 @@
                           <Component id="jTextField_nadpis_pre_prechodna" min="-2" pref="264" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
-                          <Component id="Label_hlavicka_stavba" min="-2" pref="109" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jTextField_nazov_nazov_stavby" max="32767" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <Component id="Label_hlavicka_SOPS" min="-2" pref="109" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jTextField_nazov_SOPS" max="32767" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="Label_hlavicka_arch_cislo" alignment="0" min="-2" pref="109" max="-2" attributes="0"/>
                               <Component id="Label_hlavicka_vypracoval" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -2681,6 +2671,25 @@
                           </Group>
                       </Group>
                       <Component id="Label_hlavicka_nazov" alignment="0" min="-2" pref="154" max="-2" attributes="0"/>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="Label_hlavicka_SOPS" min="-2" pref="109" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="jTextField_nazov_SOPS" max="32767" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="Label_hlavicka_stavba" min="-2" pref="109" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="jTextField_nazov_nazov_stavby" min="-2" pref="312" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="jTextField_nazov_nazov_stavby1" max="32767" attributes="0"/>
+                              <Component id="jTextField_nazov_SOPS1" max="32767" attributes="0"/>
+                          </Group>
+                      </Group>
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
@@ -2702,11 +2711,13 @@
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="Label_hlavicka_stavba" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jTextField_nazov_nazov_stavby" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jTextField_nazov_nazov_stavby1" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="Label_hlavicka_SOPS" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jTextField_nazov_SOPS" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jTextField_nazov_SOPS1" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
@@ -2861,6 +2872,16 @@
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="10"/>
           </AuxValues>
+        </Component>
+        <Component class="javax.swing.JTextField" name="jTextField_nazov_nazov_stavby1">
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextField_nazov_nazov_stavby1ActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JTextField" name="jTextField_nazov_SOPS1">
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextField_nazov_SOPS1ActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
