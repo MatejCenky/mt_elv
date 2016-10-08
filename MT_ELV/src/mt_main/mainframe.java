@@ -3739,7 +3739,7 @@ public class mainframe extends javax.swing.JFrame {
 
     private void jComboBox_uroven_splahlivostiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox_uroven_splahlivostiActionPerformed
 
-        if (mainframeLodaed == true) {
+        if (mainframeLodaed == true || urovenspolahlivostiblocker == true) {
 
             int selected_index_from_JComboBox = jComboBox_uroven_splahlivosti.getSelectedIndex();
 
@@ -4086,6 +4086,7 @@ public static String new_kotevny_usek_name;
 public static boolean existnewkotevnyusek = false;
 private static boolean mainframeLodaed = false;
 private static boolean teplotyser = false;
+private static boolean urovenspolahlivostiblocker = true;
 
 //namrazove oblasti premene
 public static Object[] hodnoty_namrazove_oblasti = new Object[3];
@@ -4465,7 +4466,7 @@ private void seticon() {
           jComboBox_stav_KPB.addItem((String) TextField_teploha_stav14.getText());   
       }
     
-    private void kotevn_usek_setter(kotevnyUsek X){
+    private void mainframe_to_kotevny_usek(kotevnyUsek X){
         //vloz prave označeny kotevny usek
         try{
         X.set_name(String.valueOf(Table_kotevne_useky.getValueAt(Table_kotevne_useky.getSelectedRow(), 1)));
@@ -4514,7 +4515,63 @@ private void seticon() {
         X.set_Hi_array(Variable_Hi_array); 
         
         }
-    
+   
+    private void kotevn_usek_to_mainframe(kotevnyUsek X){
+        //vybrany kotevny usek jebne do mainframe
+//        try{
+//        X.set_name(String.valueOf(Table_kotevne_useky.getValueAt(Table_kotevne_useky.getSelectedRow(), 1)));
+//        }catch(NullPointerException s){       
+//        }
+
+       jComboBox_conductor_chooser.setSelectedIndex(X.get_conductor_number());
+       jComboBox_vetrova_oblast.setSelectedIndex(X.get_vetrova_oblast_porcislo());
+       jComboBox_char_terenu.setSelectedIndex(X.get_char_terenu_porcislo()); 
+       
+       urovenspolahlivostiblocker =false;
+       jComboBox_uroven_splahlivosti.setSelectedIndex(X.get_uroven_spolahlivosti_porcislo());
+       urovenspolahlivostiblocker =true;
+        
+       jComboBox_stav_KPB.setSelectedIndex(X.get_uroven_spolahlivosti_stav_porcislo());
+        
+       // TU SOM SKONCIL
+        X.set_namrazova_oblast_string(Label_vybrana_namrazova_oblast.getText());
+        X.set_typ_namrazy_porcislo(jComboBox_druh_namrazy.getSelectedIndex());
+        X.set_RTS_over(Variable_RTS);
+        X.set_zakladne_mech_napatie_lana_pre_minus5_over(Variable_zakladne_mech_napatie_lana_pre_minus5);
+        X.set_maximalne_zataz_lana_podiel_z_RTS_over(Variable_maximalne_zataz_lana_podiel_z_RTS);
+        X.set_c_dir(Variable_Cdir);
+        X.set_g_c(1.);
+        X.set_ro_I(Variable_hustota_namrazy);
+        X.set_K_lc(Variable_Klc);
+        X.set_K_h(Variable_Kh);
+        X.set_I_R50(Variable_Ir50);
+        X.set_k_r(Variable_char_terenu_Kr);
+        X.set_z_0(Variable_char_terenu_Zo);
+        X.set_V_mean(Variable_V_mean_0);
+        X.set_c_0(Variable_Co);
+        X.set_C_c(1.);
+        X.set_gama_w(Variable_uroven_spolahlivosti_Yw);
+        X.set_gama_I(Variable_uroven_spolahlivosti_Yi);
+        X.set_Psi_w(Variable_uroven_spolahlivosti_Ww);
+        X.set_Psi_I(Variable_uroven_spolahlivosti_Wi);
+        X.set_B_I(Variable_Bi);
+        X.set_k_p(3);
+        X.set_RR(0);
+        X.set_ro(1.25);
+        X.set_C_cl(Variable_Ccl);
+        X.set_h_c_mean(Variable_Hc_mean);
+        X.set_str_vys_vodicov_radio(jRadioButton_with_label_vypoctana.isSelected());
+        X.set_CDIR_radio(jRadioButton_vetrova_oblast_Cdir_1.isSelected());
+        X.set_CO_radio(jRadioButton_vetrova_oblast_C0_1.isSelected());
+        X.set_Kcl_radio(jRadioButton_Klc_1.isSelected());
+        X.set_Kh_radio(jRadioButton_Kh_1.isSelected());
+        X.set_Bi_radio(jRadioButton_Bi_1.isSelected());
+        X.set_Ai_array(Variable_Ai_array);
+        X.set_DeltaHi_array(Variable_DeltaHi_array);
+        X.set_Hi_array(Variable_Hi_array); 
+        
+        }
+   
      
 }
 class header_pdf extends javax.swing.JFrame{
