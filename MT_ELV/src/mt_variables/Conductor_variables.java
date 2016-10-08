@@ -34,7 +34,7 @@ public class Conductor_variables {
         * @param Conductor - object[] containing conductor variables
         */
        public Conductor_variables(Object[] Conductor){
-           Conductor_variables.d_conductor = Double.valueOf(String.valueOf(Conductor[1]));
+           Conductor_variables.d_conductor = Double.valueOf(String.valueOf(Conductor[1]))/1000; // conversion to [m] from [mm] !!!!!
            Conductor_variables.S_conductor = Double.valueOf(String.valueOf(Conductor[2]));
            Conductor_variables.m_conductor = Double.valueOf(String.valueOf(Conductor[3]));
            Conductor_variables.E_conductor = Double.valueOf(String.valueOf(Conductor[4]));

@@ -41,6 +41,7 @@ import javax.swing.event.TableModelListener;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableModel;
 import static mt_main.startPanel.languageOption;
+import mt_math.overload;
 import mt_variables.Conductor_variables;
 import mt_variables.Overload_variables;
 
@@ -1673,13 +1674,14 @@ public class mainframe extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel9Layout.createSequentialGroup()
-                        .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(TextField_STRrozpatie_klasicky, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(Label_RTS_velicina5)
+                        .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(TextField_STRrozpatie_sPrevisenim, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(Label_RTS_velicina6)
-                                .addComponent(jRadioButton_with_label_rozpate_previsenia)))
+                                .addComponent(jRadioButton_with_label_rozpate_previsenia))
+                            .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(TextField_STRrozpatie_klasicky, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(Label_RTS_velicina5)))
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel9Layout.createSequentialGroup()
                         .addComponent(jRadioButton_with_label_rozpatie_klasicky)
@@ -4576,7 +4578,18 @@ class header_pdf extends javax.swing.JFrame{
 }
 
 class kotevnyUsek extends javax.swing.JFrame{
-    private static double conductor_porcislo;
+    
+    private static String name;  
+    private static int conductor_porcislo;   
+    private static int vetrova_oblast_porcislo;
+    private static int char_terenu_porcislo;
+    private static int uroven_spolahlivosti_porcislo;
+    private static int uroven_spolahlivosti_stav_porcislo;
+    private static String namrazova_oblast;
+    private static int typ_namrazy_porcislo;   
+    private static double RTS_over;
+    private static double zakladne_mech_napatie_lana_pre_minus5_over;
+    private static double maximalne_zataz_lana_podiel_z_RTS_over;
     private static double g_c_over;
     private static double ro_I_over;
     private static double K_lc_over;
@@ -4598,12 +4611,32 @@ class kotevnyUsek extends javax.swing.JFrame{
     private static double ro_over;
     private static double C_cl_over;
     private static double h_c_mean_over;
-    private static boolean str_vys_vodicov_over;
+    
+    private static boolean str_vys_vodicov_radio_over;
+    private static boolean CDIR_radio_over;
+    private static boolean CO_radio_over;
+    private static boolean Kcl_radio_over;
+    private static boolean Kh_radio_over;
+    private static boolean Bi_radio_over;
+    
+    private static double[] Ai_array_over;
+    private static double[] DeltaHi_array_over;
+    private static double[] Hi_array_over;
     //constructor
     
     
     
-    kotevnyUsek(                int conductor, 
+    kotevnyUsek(                String name_kot_useku,
+                                int conductor,
+                                int vetrova_oblast_porC,
+                                int char_terenu_porC, 
+                                int uroven_spolahlivosti_porC,
+                                int uroven_spolahlivosti_stav_porC,
+                                String namrazova_oblst,
+                                int typ_namrazy_porC,
+                                double RTS,
+                                double zakl_mech_minus_5,
+                                double max_zataz_lana_podiel_z_RTS,
                                 double g_c, 
                                 double ro_I, 
                                 double K_lc,
@@ -4625,9 +4658,27 @@ class kotevnyUsek extends javax.swing.JFrame{
                                 double ro,
                                 double C_cl,
                                 double h_c_mean,
-                                boolean str_vys_vodicov){
+                                boolean str_vys_vodicov_radio,
+                                boolean CDIR_radio,
+                                boolean CO_radio,
+                                boolean  Kcl_radio,
+                                boolean Kh_radio,
+                                boolean Bi_radio,
+                                double[] A1_array,
+                                double[] Delta_Hi_array,
+                                double[] H1_array){
         
+        name=name_kot_useku;
         conductor_porcislo = conductor;
+        vetrova_oblast_porcislo=vetrova_oblast_porC;
+        char_terenu_porcislo=char_terenu_porC;
+        uroven_spolahlivosti_porcislo=uroven_spolahlivosti_porC;
+        uroven_spolahlivosti_stav_porcislo=uroven_spolahlivosti_stav_porC;
+        namrazova_oblast=namrazova_oblst;
+        typ_namrazy_porcislo=typ_namrazy_porC;
+        RTS_over=RTS;
+        zakladne_mech_napatie_lana_pre_minus5_over= zakl_mech_minus_5;
+        maximalne_zataz_lana_podiel_z_RTS_over = max_zataz_lana_podiel_z_RTS;
         g_c_over = g_c;
         ro_I_over = ro_I;
         K_lc_over = K_lc;
@@ -4649,7 +4700,186 @@ class kotevnyUsek extends javax.swing.JFrame{
         ro_over = ro;
         C_cl_over = C_cl;
         h_c_mean_over = h_c_mean;
-        str_vys_vodicov_over = str_vys_vodicov;
+        str_vys_vodicov_radio_over = str_vys_vodicov_radio;
+        CDIR_radio_over=CDIR_radio;
+        CO_radio_over=CO_radio;
+        Kcl_radio_over=Kcl_radio;
+        Kh_radio_over= Kh_radio;
+        Bi_radio_over=Bi_radio;
+        Ai_array_over=A1_array;
+        DeltaHi_array_over= Delta_Hi_array;
+        Hi_array_over= H1_array;
     }
+    
+    public String get_name(){
+        return name;
+    }
+    
+    public int get_conductor_number(){
+        return conductor_porcislo;
+    }
+    
+    public int get_vetrova_oblast_porcislo(){
+        return vetrova_oblast_porcislo;
+    }
+    public int get_char_terenu_porcislo(){
+        return char_terenu_porcislo;
+    }
+    public int get_uroven_spolahlivosti_porcislo(){
+        return uroven_spolahlivosti_porcislo;
+    }
+    public int get_uroven_spolahlivosti_stav_porcislo(){
+        return uroven_spolahlivosti_stav_porcislo;
+    }
+    public String get_namrazova_oblast_string(){
+        return namrazova_oblast;
+    }
+    public int get_typ_namrazy_porcislo(){
+        return typ_namrazy_porcislo;
+    }
+    public double RTS_over(){
+        return RTS_over;
+    }
+    public double get_zakladne_mech_napatie_lana_pre_minus5_over(){
+        return zakladne_mech_napatie_lana_pre_minus5_over;
+    }
+    public double maximalne_zataz_lana_podiel_z_RTS_over(){
+        return maximalne_zataz_lana_podiel_z_RTS_over;
+    }
+    public double get_c_dir(){
+        return c_dir_over;
+    }
+    
+    public double get_g_c(){
+        return g_c_over;
+    }
+    
+    public double get_ro_I(){
+        return ro_I_over;
+    }
+    
+    public double get_K_lc(){
+        return K_lc_over;
+    }
+    
+    public double get_K_h(){
+        return K_h_over;
+    }
+    
+    public double get_I_R50(){
+        return I_R50_over;
+    }
+    
+    public double get_k_r(){
+        return k_r_over;
+    }
+    
+    public double get_z_0(){
+        return z_0_over;
+    }
+    
+    public double get_V_b0(){
+        return V_mean_over;
+    }
+    
+    public double get_c_0(){
+        return c_0_over;
+    }
+    
+    public double get_C_c(){
+        return C_c_over;
+    }
+    
+    public double get_gama_w(){
+        return gama_w_over;
+    }
+    
+    public double get_gama_I(){
+        return gama_I_over;
+    }
+    
+    public double get_Psi_I(){
+        return Psi_I_over;
+    }
+    
+    public double get_Psi_w(){
+        return Psi_w_over;
+    }
+    
+    public double get_B_I(){
+        return B_I_over;
+    }
+    
+    public double get_k_p(){
+        return k_p_over;
+    }
+    
+    public double get_RR(){
+        return RR_over;
+    }
+    
+    public double get_ro(){
+        return ro_over;
+    }
+    
+    public double get_C_cl(){
+        return C_cl_over;
+    }
+   
+    public double get_h_c_mean(){
+        return h_c_mean_over;
+    }
+     /**
+     * 
+     * @return True vypocitana / False Vlastna
+     */
+    public boolean get_str_vys_vodicov_radio(){
+        return str_vys_vodicov_radio_over;
+    }
+     /**
+     * 
+     * @return True 1 / False Vlastna
+     */
+    public boolean get_CDIR_radio(){
+        return CDIR_radio_over;
+    }
+     /**
+     * 
+     * @return True 1 / False Vlastna
+     */
+    public boolean get_CO_radio(){
+        return CO_radio_over;
+    }
+     /**
+     * 
+     * @return True 1 / False Vlastna
+     */
+    public boolean get_Kcl_radio(){
+        return Kcl_radio_over;
+    }
+     /**
+     * 
+     * @return True 1 / False Vlastna
+     */
+    public boolean get_Kh_radio(){
+        return Kh_radio_over;
+    }
+     /**
+     * 
+     * @return True 0.656 / False Vlastna basic 0.707
+     */
+    public boolean get_Bi_radio(){
+        return Bi_radio_over;
+    }
+    public double[] get_Ai_array(){
+        return Ai_array_over;
+    }
+    public double[] get_DeltaHi_array(){
+        return DeltaHi_array_over;
+    }
+    public double[] get_Hi_array(){
+        return Hi_array_over;
+    }
+    
     
 }
