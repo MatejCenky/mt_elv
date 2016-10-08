@@ -6,7 +6,9 @@
  * of it must be consulted and the permission granted 
  * by authors Ing. Matej Cenky and Ing. Jozef Bendik.
  */
-package mt_main;
+package mt_math;
+
+import mt_main.MyException;
 
 /**
  * Protection of the conductor from the vibration induced by wind (STN EN 50341-1, cl. 9.2.4/SK.2)

@@ -6,8 +6,9 @@
  * of it must be consulted and the permission granted 
  * by authors Ing. Matej Cenky and Ing. Jozef Bendik.
  */
-package mt_main;
+package mt_math;
 
+import mt_main.MyException;
 import mt_variables.Overload_variables;
 
 /**
@@ -16,31 +17,6 @@ import mt_variables.Overload_variables;
  */
 public class overload {
     
-//    /**
-//     * @param spans array containing all spans in the suspension section [n-1 dim]
-//     * @param heights array containing all conductor catching points on towers [n dim]
-//     */
-//    public overload(double spans[], double heights[]){
-//        overload.a = spans;
-//        overload.dh = heights;
-//        overload.ro = 1.25;
-//        overload.RR = 0;
-//        overload.k_p = 3;
-//        overload.C_cl = 1.1;
-//    }
-//    
-//    /**
-//     * default constructor with "-1" values for a[0] and dh[0]
-//     */
-//    public overload(){
-//        overload.a[0] = -1;
-//        overload.dh[0] = -1;
-//        overload.ro = 1.25;
-//        overload.RR = 0;
-//        overload.k_p = 3;
-//        overload.C_cl = 1.1;
-//    }
-   
  /* Defining variables */
     
 // towers and conductors [#1]
@@ -214,8 +190,6 @@ public class overload {
     }
     
     public static void compute(){
-        // check if variables are set
-        check_variables();
         // #1 layer
 //        mean_height();
         mean_wind_speed();
@@ -254,7 +228,6 @@ public class overload {
      */
     private static void set_variables_spans(double[] X){                         
         // assign a[] from mainframe
-       
          overload.a = X;
     }
     
@@ -263,6 +236,10 @@ public class overload {
      * @param var overload_variables class object
      */
     private static void set_variables(Overload_variables var){
+        overload.d = var.get_d();               // conductor diameter !!!!!! [m] !!!!!!
+        overload.g_c = var.get_g_c();           // specific weight of conductor [N/m]
+        overload.h_c_mean = var.get_h_c_mean();
+        
         overload.ro_I = var.get_ro_I();         // density of the ice (= 500 kg/m3)
         overload.K_lc = var.get_K_lc();         // local conditions coefficient (čl.4.5.1/SK.3) [-]
         overload.K_h = var.get_K_h();          // the height coefficient čl.4.5.1/SK.3) [-]
@@ -298,20 +275,6 @@ public class overload {
     private static void height_coefficient(){
         overload.K_h = Math.pow(overload.h_c_mean/10,0.13);
     }
-    
-//    /**
-//     * Computes the mean height of the conductor "h_c_mean" above the ground [m]
-//     */
-//    private void mean_height(){
-//        double aux = 0;
-//        int i;
-//        
-//        // sum of the double array
-//        for (i=0; i<overload.h.length; i++){
-//            aux += overload.h[i];
-//        }
-//        overload.h_c_mean = aux/overload.h.length;
-//    }
     
     /**
      * Computes the mean wind speed "V_h" using the values chosen from the user (from mainframe)
@@ -381,7 +344,10 @@ public class overload {
      * Computes the mean wind pressure "q_h"
      */
     private static void mean_wind_pressure(){
-        overload.q_h = 1/2 * overload.ro * Math.pow(overload.V_h, 2);
+        double tmp = overload.ro;
+        double tmp2 = Math.pow(overload.V_h, 2);
+        overload.q_h = (tmp* tmp2)/2;
+        //overload.q_h = ((1/2)* overload.ro* Math.pow(overload.V_h, 2));
     }
     
     /**

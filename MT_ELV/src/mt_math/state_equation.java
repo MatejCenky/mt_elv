@@ -6,9 +6,9 @@
  * of it must be consulted and the permission granted 
  * by authors Ing. Matej Cenky and Ing. Jozef Bendik.
  */
-package mt_main;
+package mt_math;
 
-import mt_math.Math_Extended;
+import mt_main.MyException;
 import mt_variables.State_equation_variables;
 
 /**
