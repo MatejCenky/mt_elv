@@ -4532,40 +4532,91 @@ private void seticon() {
        urovenspolahlivostiblocker =true;
         
        jComboBox_stav_KPB.setSelectedIndex(X.get_uroven_spolahlivosti_stav_porcislo());
+       
+       Label_vybrana_namrazova_oblast.setText(X.get_namrazova_oblast_string());
+       jComboBox_druh_namrazy.setSelectedIndex(X.get_typ_namrazy_porcislo());
+       Variable_RTS=X.get_RTS_over(); TextField_RTS.setText(String.valueOf(Variable_RTS));
+      
+       Variable_zakladne_mech_napatie_lana_pre_minus5=X.get_zakladne_mech_napatie_lana_pre_minus5_over();
+       TextField_zakladne_mech_lana_minus5.setText(String.valueOf(Variable_zakladne_mech_napatie_lana_pre_minus5));
+       
+       Variable_maximalne_zataz_lana_podiel_z_RTS=X.get_maximalne_zataz_lana_podiel_z_RTS_over();
+       TextField_max_mech_podiel_z_RTS.setText(String.valueOf(Variable_maximalne_zataz_lana_podiel_z_RTS));
+       
+       
+       if (X.get_CDIR_radio() == true )
+       {jRadioButton_vetrova_oblast_Cdir_1.doClick();
+       Variable_Cdir=X.get_c_dir();} 
+       else{
+       jRadioButton_vetrova_oblast_Cdir_vlastna.doClick();
+       TextField_vetrova_oblast_Cdir.setText(String.valueOf(X.get_c_dir()));
+       Variable_Cdir=X.get_c_dir();
+       }
+       
+      Variable_hustota_namrazy=X.get_ro_I();
+       TextField_hustota_namrazy.setText(String.valueOf(Variable_hustota_namrazy));
+       
+       if (X.get_Kcl_radio() == true )
+       {jRadioButton_Klc_1.doClick();
+        Variable_Klc=X.get_K_lc();} 
+       else{
+       jRadioButton_Klc_vlastna.doClick();
+       TextField_Kcl.setText(String.valueOf(X.get_K_lc()));
+       Variable_Klc=X.get_K_lc();
+       }
         
-       // TU SOM SKONCIL
-        X.set_namrazova_oblast_string(Label_vybrana_namrazova_oblast.getText());
-        X.set_typ_namrazy_porcislo(jComboBox_druh_namrazy.getSelectedIndex());
-        X.set_RTS_over(Variable_RTS);
-        X.set_zakladne_mech_napatie_lana_pre_minus5_over(Variable_zakladne_mech_napatie_lana_pre_minus5);
-        X.set_maximalne_zataz_lana_podiel_z_RTS_over(Variable_maximalne_zataz_lana_podiel_z_RTS);
-        X.set_c_dir(Variable_Cdir);
-        X.set_g_c(1.);
-        X.set_ro_I(Variable_hustota_namrazy);
-        X.set_K_lc(Variable_Klc);
-        X.set_K_h(Variable_Kh);
-        X.set_I_R50(Variable_Ir50);
-        X.set_k_r(Variable_char_terenu_Kr);
-        X.set_z_0(Variable_char_terenu_Zo);
-        X.set_V_mean(Variable_V_mean_0);
-        X.set_c_0(Variable_Co);
-        X.set_C_c(1.);
-        X.set_gama_w(Variable_uroven_spolahlivosti_Yw);
-        X.set_gama_I(Variable_uroven_spolahlivosti_Yi);
-        X.set_Psi_w(Variable_uroven_spolahlivosti_Ww);
-        X.set_Psi_I(Variable_uroven_spolahlivosti_Wi);
-        X.set_B_I(Variable_Bi);
-        X.set_k_p(3);
-        X.set_RR(0);
-        X.set_ro(1.25);
-        X.set_C_cl(Variable_Ccl);
+       if (X.get_Kh_radio()== true )
+       {jRadioButton_Kh_1.doClick();
+        Variable_Kh=X.get_K_h();} 
+       else{
+       jRadioButton_Kh_vlastna.doClick();
+       TextField_Kh.setText(String.valueOf(X.get_K_h()));
+       Variable_Kh=X.get_K_h();
+       }
+        
+       Variable_Ir50=X.get_I_R50();
+       
+       Variable_char_terenu_Kr=X.get_k_r();
+       TextField_Kr.setText(String.valueOf(Variable_char_terenu_Kr));
+      
+       Variable_char_terenu_Zo=X.get_z_0();
+       TextField_dlzka_drsnjosti_zo.setText(String.valueOf(Variable_char_terenu_Zo));
+      
+       Variable_V_mean_0=X.get_V_mean();
+       TextField_Vmean_0.setText(String.valueOf(Variable_V_mean_0));
+      
+       if (X.get_CO_radio()== true )
+       {jRadioButton_vetrova_oblast_C0_1.doClick();
+        Variable_Co=X.get_c_0();} 
+       else{
+       jRadioButton_vetrova_oblast_C0_vlastna.doClick();
+       TextField_vetrova_oblast_C0.setText(String.valueOf(X.get_c_0()));
+       Variable_Co=X.get_c_0();;
+       }
+       
+       if (X.get_Bi_radio()== true )
+       {jRadioButton_Bi_1.doClick();
+        Variable_Bi=X.get_B_I();} 
+       else{
+       jRadioButton_Bi_2.doClick();
+       TextField_Bi2.setText(String.valueOf(X.get_B_I()));
+       Variable_Bi=X.get_B_I();
+       }
+       
+       Variable_Ccl=X.get_C_cl();
+       TextField_Ccl.setText(String.valueOf(Variable_Ccl));
+      
+       Variable_uroven_spolahlivosti_Yw=X.get_gama_w();
+       Variable_uroven_spolahlivosti_Yi=X.get_gama_I();
+       Variable_uroven_spolahlivosti_Ww=X.get_Psi_w();
+       Variable_uroven_spolahlivosti_Wi=X.get_Psi_I();
+        
+      
+       //Tu som skončil
         X.set_h_c_mean(Variable_Hc_mean);
         X.set_str_vys_vodicov_radio(jRadioButton_with_label_vypoctana.isSelected());
-        X.set_CDIR_radio(jRadioButton_vetrova_oblast_Cdir_1.isSelected());
-        X.set_CO_radio(jRadioButton_vetrova_oblast_C0_1.isSelected());
-        X.set_Kcl_radio(jRadioButton_Klc_1.isSelected());
-        X.set_Kh_radio(jRadioButton_Kh_1.isSelected());
-        X.set_Bi_radio(jRadioButton_Bi_1.isSelected());
+        
+       
         X.set_Ai_array(Variable_Ai_array);
         X.set_DeltaHi_array(Variable_DeltaHi_array);
         X.set_Hi_array(Variable_Hi_array); 
