@@ -161,7 +161,7 @@ public static void constructor(){
 
 // main_frame mech napatia a podiel z RTS
 
-/*86*/  language.SK.add("Záklané mech. napätie lana pri -5°C");                     language.CZ.add("Ulozit cestu");                     language.EN.add("Save path");
+/*86*/  language.SK.add("Zákl. mech. napätie lana pri -5°C");                 language.CZ.add("Ulozit cestu");          language.EN.add("Save path");
 /*87*/  language.SK.add("Maximálne zaťaženie pre vodič");                     language.CZ.add("-");                     language.EN.add("-");
 
 // main_frame amrazy tool tips
@@ -234,23 +234,23 @@ public static void constructor(){
 /*133*/  language.SK.add("Kategória IV");                     language.CZ.add("I-SK");                     language.EN.add("I-SK");
 /*134*/  language.SK.add("Kategória V");                     language.CZ.add("I-SK");                     language.EN.add("I-SK");
 
-/*135*/  language.SK.add("Kategória I\n\rBúrlivé otvorené more, jazerá do vzdialenosti najmenej 5 km proti smeru vetra a rovná ");                    
+/*135*/  language.SK.add("Kategória I\n\rBúrlivé otvorené more, jazerá do vzdialenosti najmenej 5 km proti smeru vetra a rovná krajina bez prekážok.");                    
          language.CZ.add("Kategória I_blablablablablabl");                    
          language.EN.add("Kategória I_blablablablablabl");
          
-/*136*/  language.SK.add("Kategória II\n\rPoľnohospodárska pôda s deliacimi živými plotmi, rozptýlené malé ");                    
+/*136*/  language.SK.add("Kategória II\n\rPoľnohospodárska pôda s deliacimi živými plotmi, rozptýlené malé poľnohospodárske sídla, domy a stromy");                    
          language.CZ.add("Kategória II_blablablablablabl");                    
          language.EN.add("Kategória II_blablablablablabl");
          
-/*137*/  language.SK.add("Kategória III\n\rPredmestské alebo priemyselné oblasti a trvale zalesnené územia");                    
+/*137*/  language.SK.add("Kategória III\n\rPredmestské alebo priemyselné oblasti a trvale zalesnené územia.");                    
          language.CZ.add("Kategória III_blablablablablabl");                    
          language.EN.add("Kategória III_blablablablablabl");
          
-/*138*/  language.SK.add("Kategória IV\n\rMestské oblasti, v ktorých je aspoň 15% povrchu pokrytého pozemnými stavbami s ");                    
+/*138*/  language.SK.add("Kategória IV\n\rMestské oblasti, v ktorých je aspoň 15% povrchu pokrytého pozemnými stavbami s priemernou výškou > 15 m.");                    
          language.CZ.add("Kategória IV_blablablablablabl");                    
          language.EN.add("Kategória IV_blablablablablabl");
          
-/*139*/  language.SK.add("Kategória V\n\rHornatý a viac členitý terén, kde sa vietor môže lokálne zosilňovať alebo zoslabovať");                    
+/*139*/  language.SK.add("Kategória V\n\rHornatý a viac členitý terén, kde sa vietor môže lokálne zosilňovať alebo zoslabovať.");                    
          language.CZ.add("Kategória V_blablablablablabl");                    
          language.EN.add("Kategória V_blablablablablabl");
 
