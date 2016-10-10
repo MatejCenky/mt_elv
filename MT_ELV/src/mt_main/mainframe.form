@@ -1851,17 +1851,17 @@
                   <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="Label_zakladne_mech_napatie_minis5" pref="195" max="32767" attributes="0"/>
+                          <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                              <Component id="Label_zakladne_mech_napatie_minis5" alignment="0" pref="177" max="32767" attributes="0"/>
                               <Component id="Label_RTS" alignment="0" max="32767" attributes="0"/>
-                              <Component id="Label_max_zataz_lana" alignment="0" max="32767" attributes="0"/>
+                              <Component id="Label_max_zataz_lana" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="TextField_max_mech_podiel_z_RTS" min="-2" pref="40" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="TextField_zakladne_mech_lana_minus5" alignment="0" min="-2" pref="40" max="-2" attributes="0"/>
-                                  <Component id="TextField_RTS" alignment="1" min="-2" pref="40" max="-2" attributes="0"/>
+                              <Component id="TextField_RTS" min="-2" pref="58" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="TextField_zakladne_mech_lana_minus5" pref="58" max="32767" attributes="0"/>
+                                  <Component id="TextField_max_mech_podiel_z_RTS" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
