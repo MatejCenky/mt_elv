@@ -49,12 +49,14 @@ import mt_variables.Overload_variables;
  *
  * @author Mattto
  */
-public class mainframe extends javax.swing.JFrame {
+   class mainframe extends javax.swing.JFrame {
+
+    private static final long serialVersionUID = 1L;
 
     /**
      * Creates new form mainframe
      */
-    public mainframe() {
+    public  mainframe() {
         
         
         initComponents();
@@ -65,7 +67,7 @@ public class mainframe extends javax.swing.JFrame {
         this.modeltable_rozpatia = (DefaultTableModel) Table_rozpatia.getModel();
         this.modeltable_rozpatia_nadm_vysky = (DefaultTableModel) Table_rozpatia_nadm_vysky.getModel();
         
-        Table_rozpatia.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        
         
         nacitatDatabazuLan(); 
         mainframeLodaed=true;// fisrt load oc conductr databaze
@@ -183,6 +185,33 @@ public class mainframe extends javax.swing.JFrame {
 //        Table_rozpatia.setRowHeight(i+2,16);
 //        }
        
+         
+            Table_kotevne_useky.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
+
+            @Override
+            public void valueChanged(ListSelectionEvent e) {
+            if( selection_kotevny_usek==false){    
+                    
+                                   
+                    int rowNumber =  Table_kotevne_useky.getSelectedRow(); //- (e.getFirstIndex()-e.getLastIndex());
+                    if(povodna_hodnota_selekcie != rowNumber){
+                      
+                      kotevnyUsek docasny_kot_usek = new kotevnyUsek(new_kotevny_usek_name, 0, 0, 0, 0, 0, filename, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, teplotyser, first_Start, teplotyser, teplotyser, teplotyser, first_Start, Variable_Ai_array, Variable_Hi_array, Variable_Hi_array);                      
+                      mainframe_to_kotevny_usek(docasny_kot_usek);                        
+                      Variable_globeal_kotevny_usek.set(povodna_hodnota_selekcie, docasny_kot_usek); 
+                     
+                      kotevn_usek_to_mainframe(Variable_globeal_kotevny_usek.get(rowNumber));
+                      
+                    
+                    }
+                     
+                     povodna_hodnota_selekcie=rowNumber;
+            }}
+
+        });  //selection listener fot text area to show data
+
+
+
          Table_rozpatia.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
 
             @Override
@@ -369,8 +398,7 @@ public class mainframe extends javax.swing.JFrame {
         }
         );
         
-       // modeltable2.isCellSpanOn();
-       /// modeltable2.getCellSpanAt(0, 1);
+      Button_Icon_arr_row_table_kotevny_usek.doClick();
         
     }
 
@@ -1707,6 +1735,7 @@ public class mainframe extends javax.swing.JFrame {
                 return types [columnIndex];
             }
         });
+        Table_rozpatia.setColumnSelectionAllowed(true);
         Table_rozpatia.setRowMargin(2);
         Table_rozpatia.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
@@ -1771,9 +1800,11 @@ public class mainframe extends javax.swing.JFrame {
                 return types [columnIndex];
             }
         });
-        Table_kotevne_useky.setRowSelectionAllowed(false);
+        Table_kotevne_useky.setCellSelectionEnabled(true);
         Table_kotevne_useky.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        Table_kotevne_useky.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(Table_kotevne_useky);
+        Table_kotevne_useky.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         if (Table_kotevne_useky.getColumnModel().getColumnCount() > 0) {
             Table_kotevne_useky.getColumnModel().getColumn(0).setResizable(false);
             Table_kotevne_useky.getColumnModel().getColumn(0).setPreferredWidth(5);
@@ -3158,13 +3189,37 @@ public class mainframe extends javax.swing.JFrame {
     }//GEN-LAST:event_Button_Icon_calculateActionPerformed
 
     private void Button_Icon_arr_row_table_kotevny_usekActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button_Icon_arr_row_table_kotevny_usekActionPerformed
+        selection_kotevny_usek=true;
+        if ( first_Start==true){
+        
+           new_kotevny_usek_name=language.language_label(languageOption, 60);
+           
+            modelTable.addRow(new Object[]{(Boolean) false,(String) new_kotevny_usek_name});
+            
+            kotevnyUsek novy_usek =  new kotevnyUsek(new_kotevny_usek_name, 0, 0, 0, 0, 0, language.language_label(languageOption, 60), 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, teplotyser, teplotyser, teplotyser, teplotyser, teplotyser, teplotyser, Variable_Ai_array, Variable_Hi_array, Variable_Hi_array);    
+            Variable_globeal_kotevny_usek.add(novy_usek);
+            mainframe_to_kotevny_usek(novy_usek);
+            Table_kotevne_useky.changeSelection(0, 1, false, false);
+           
+           
+           first_Start=false;
+           
+               }else{     
         mainframe_new_kotevny_usek mainframe_new_kotevny_usek_JDialog_window = new mainframe_new_kotevny_usek(this, rootPaneCheckingEnabled);
-        mainframe_new_kotevny_usek_JDialog_window.setVisible(true);
-
+        mainframe_new_kotevny_usek_JDialog_window.setVisible(true);               
+                       }
+        
+        
         if (existnewkotevnyusek == true){  // ak pride že vytvorit od Jdialog tak vytvor ak uzivatel zavie Jdilog križiok tam nie
             modelTable.addRow(new Object[]{(Boolean) false,(String) new_kotevny_usek_name});
+            
+            kotevnyUsek novy_usek =  new kotevnyUsek(new_kotevny_usek_name, 0, 0, 1, 0, 0, "KOKOT", 4,0.0, 50, 50, 1, 500, 1, 1, 123456789.987654321, 0.189, 0.05, 24.0, 1, 1, 1, 1, 1, 0.35, 0.25, 0.656, 3, 0, 1.25, 1.1, 0.0, true, true, true, true, true, true, Variable_Ai_array, Variable_DeltaHi_array, Variable_Hi_array);    
+            Variable_globeal_kotevny_usek.add(novy_usek);
+            //mainframe_to_kotevny_usek(novy_usek);
+            
             existnewkotevnyusek = false;
         }
+        selection_kotevny_usek=false;
     }//GEN-LAST:event_Button_Icon_arr_row_table_kotevny_usekActionPerformed
     private void Button_Icon_delete_row_table_kotevny_usekActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button_Icon_delete_row_table_kotevny_usekActionPerformed
 
@@ -3172,6 +3227,7 @@ public class mainframe extends javax.swing.JFrame {
 
         if ( selectedRow != -1){
             modelTable.removeRow(selectedRow);
+            Variable_globeal_kotevny_usek.remove(selectedRow);
         }
     }//GEN-LAST:event_Button_Icon_delete_row_table_kotevny_usekActionPerformed
 
@@ -3662,7 +3718,7 @@ public class mainframe extends javax.swing.JFrame {
     }//GEN-LAST:event_Button_namrazova_oblastActionPerformed
 
     private void TextField_max_mech_podiel_z_RTSKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextField_max_mech_podiel_z_RTSKeyReleased
-        Variable_maximalne_zataz_lana_podiel_z_RTS=Variable_RTS*(doubleChecker_short_answer(TextField_zakladne_mech_lana_minus5)/100);
+        Variable_maximalne_zataz_lana_podiel_z_RTS=Variable_RTS*((doubleChecker_short_answer(TextField_zakladne_mech_lana_minus5))/(100));
     }//GEN-LAST:event_TextField_max_mech_podiel_z_RTSKeyReleased
 
     private void TextField_max_mech_podiel_z_RTSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextField_max_mech_podiel_z_RTSActionPerformed
@@ -4018,7 +4074,7 @@ public class mainframe extends javax.swing.JFrame {
     private javax.swing.ButtonGroup buttonGroup_tabulka;
     private static final javax.swing.JComboBox<String> jComboBox_KPB_typ_terenu = new javax.swing.JComboBox<>();
     private static final javax.swing.JComboBox<String> jComboBox_char_terenu = new javax.swing.JComboBox<>();
-    public static final javax.swing.JComboBox<String> jComboBox_conductor_chooser = new javax.swing.JComboBox<>();
+    private static final javax.swing.JComboBox<String> jComboBox_conductor_chooser = new javax.swing.JComboBox<>();
     private static final javax.swing.JComboBox<String> jComboBox_druh_namrazy = new javax.swing.JComboBox<>();
     private static final javax.swing.JComboBox<String> jComboBox_stav_KPB = new javax.swing.JComboBox<>();
     private static final javax.swing.JComboBox<String> jComboBox_uroven_splahlivosti = new javax.swing.JComboBox<>();
@@ -4087,6 +4143,9 @@ public static boolean existnewkotevnyusek = false;
 private static boolean mainframeLodaed = false;
 private static boolean teplotyser = false;
 private static boolean urovenspolahlivostiblocker = true;
+private static boolean first_Start= true;
+private static boolean selection_kotevny_usek= true;
+private static int povodna_hodnota_selekcie=0;
 
 //namrazove oblasti premene
 public static Object[] hodnoty_namrazove_oblasti = new Object[3];
@@ -4470,7 +4529,7 @@ private void seticon() {
         //vloz prave označeny kotevny usek
         try{
         X.set_name(String.valueOf(Table_kotevne_useky.getValueAt(Table_kotevne_useky.getSelectedRow(), 1)));
-        }catch(NullPointerException s){
+        }catch(Exception s){
         
         }
         X.set_conductor_number(jComboBox_conductor_chooser.getSelectedIndex());
@@ -4482,7 +4541,7 @@ private void seticon() {
         X.set_typ_namrazy_porcislo(jComboBox_druh_namrazy.getSelectedIndex());
         X.set_RTS_over(Variable_RTS);
         X.set_zakladne_mech_napatie_lana_pre_minus5_over(Variable_zakladne_mech_napatie_lana_pre_minus5);
-        X.set_maximalne_zataz_lana_podiel_z_RTS_over(Variable_maximalne_zataz_lana_podiel_z_RTS);
+        X.set_maximalne_zataz_lana_podiel_z_RTS_over(Double.parseDouble(TextField_max_mech_podiel_z_RTS.getText()));
         X.set_c_dir(Variable_Cdir);
         X.set_g_c(1.);
         X.set_ro_I(Variable_hustota_namrazy);
@@ -4522,7 +4581,7 @@ private void seticon() {
 //        X.set_name(String.valueOf(Table_kotevne_useky.getValueAt(Table_kotevne_useky.getSelectedRow(), 1)));
 //        }catch(NullPointerException s){       
 //        }
-
+       DecimalFormat df = new DecimalFormat("###.###");
        jComboBox_conductor_chooser.setSelectedIndex(X.get_conductor_number());
        jComboBox_vetrova_oblast.setSelectedIndex(X.get_vetrova_oblast_porcislo());
        jComboBox_char_terenu.setSelectedIndex(X.get_char_terenu_porcislo()); 
@@ -4535,20 +4594,21 @@ private void seticon() {
        
        Label_vybrana_namrazova_oblast.setText(X.get_namrazova_oblast_string());
        jComboBox_druh_namrazy.setSelectedIndex(X.get_typ_namrazy_porcislo());
-       Variable_RTS=X.get_RTS_over(); TextField_RTS.setText(String.valueOf(Variable_RTS));
+       
+       Variable_RTS=X.get_RTS_over(); TextField_RTS.setText(df.format(Variable_RTS));
       
        Variable_zakladne_mech_napatie_lana_pre_minus5=X.get_zakladne_mech_napatie_lana_pre_minus5_over();
-       TextField_zakladne_mech_lana_minus5.setText(String.valueOf(Variable_zakladne_mech_napatie_lana_pre_minus5));
+       TextField_zakladne_mech_lana_minus5.setText(df.format(Variable_zakladne_mech_napatie_lana_pre_minus5));
        
        Variable_maximalne_zataz_lana_podiel_z_RTS=X.get_maximalne_zataz_lana_podiel_z_RTS_over();
-       TextField_max_mech_podiel_z_RTS.setText(String.valueOf(Variable_maximalne_zataz_lana_podiel_z_RTS));
-       
+       TextField_max_mech_podiel_z_RTS.setText(df.format(Variable_maximalne_zataz_lana_podiel_z_RTS));
+       Variable_maximalne_zataz_lana_podiel_z_RTS=Variable_RTS*((doubleChecker_short_answer(TextField_zakladne_mech_lana_minus5))/(100));
        
        if (X.get_CDIR_radio() == true )
-       {jRadioButton_vetrova_oblast_Cdir_1.doClick();
+       {jRadioButton_vetrova_oblast_Cdir_1.setSelected(true);
        Variable_Cdir=X.get_c_dir();} 
        else{
-       jRadioButton_vetrova_oblast_Cdir_vlastna.doClick();
+       jRadioButton_vetrova_oblast_Cdir_vlastna.setSelected(true);
        TextField_vetrova_oblast_Cdir.setText(String.valueOf(X.get_c_dir()));
        Variable_Cdir=X.get_c_dir();
        }
@@ -4557,19 +4617,19 @@ private void seticon() {
        TextField_hustota_namrazy.setText(String.valueOf(Variable_hustota_namrazy));
        
        if (X.get_Kcl_radio() == true )
-       {jRadioButton_Klc_1.doClick();
+       {jRadioButton_Klc_1.setSelected(true);
         Variable_Klc=X.get_K_lc();} 
        else{
-       jRadioButton_Klc_vlastna.doClick();
+       jRadioButton_Klc_vlastna.setSelected(true);
        TextField_Kcl.setText(String.valueOf(X.get_K_lc()));
        Variable_Klc=X.get_K_lc();
        }
         
        if (X.get_Kh_radio()== true )
-       {jRadioButton_Kh_1.doClick();
+       {jRadioButton_Kh_1.setSelected(true);
         Variable_Kh=X.get_K_h();} 
        else{
-       jRadioButton_Kh_vlastna.doClick();
+       jRadioButton_Kh_vlastna.setSelected(true);
        TextField_Kh.setText(String.valueOf(X.get_K_h()));
        Variable_Kh=X.get_K_h();
        }
@@ -4586,19 +4646,19 @@ private void seticon() {
        TextField_Vmean_0.setText(String.valueOf(Variable_V_mean_0));
       
        if (X.get_CO_radio()== true )
-       {jRadioButton_vetrova_oblast_C0_1.doClick();
+       {jRadioButton_vetrova_oblast_C0_1.setSelected(true);
         Variable_Co=X.get_c_0();} 
        else{
-       jRadioButton_vetrova_oblast_C0_vlastna.doClick();
+       jRadioButton_vetrova_oblast_C0_vlastna.setSelected(true);
        TextField_vetrova_oblast_C0.setText(String.valueOf(X.get_c_0()));
        Variable_Co=X.get_c_0();;
        }
        
        if (X.get_Bi_radio()== true )
-       {jRadioButton_Bi_1.doClick();
+       {jRadioButton_Bi_1.setSelected(true);
         Variable_Bi=X.get_B_I();} 
        else{
-       jRadioButton_Bi_2.doClick();
+       jRadioButton_Bi_2.setSelected(true);
        TextField_Bi2.setText(String.valueOf(X.get_B_I()));
        Variable_Bi=X.get_B_I();
        }
@@ -4611,18 +4671,20 @@ private void seticon() {
        Variable_uroven_spolahlivosti_Ww=X.get_Psi_w();
        Variable_uroven_spolahlivosti_Wi=X.get_Psi_I();
         
-//       do(int i =0; i< X.get_Ai_array().length;i++){
+//       for(int i =0; i< X.get_Ai_array().length;i++){
+//       
+//       Table_rozpatia.setValueAt(X.get_Ai_array()[i], i+1, 0);
 //        
 //       }
-      
+    
        //Tu som skončil
-        X.set_h_c_mean(Variable_Hc_mean);
-        X.set_str_vys_vodicov_radio(jRadioButton_with_label_vypoctana.isSelected());
+        //X.set_h_c_mean(Variable_Hc_mean);
+       // X.set_str_vys_vodicov_radio(jRadioButton_with_label_vypoctana.isSelected());
         
        
-        X.set_Ai_array(Variable_Ai_array);
-        X.set_DeltaHi_array(Variable_DeltaHi_array);
-        X.set_Hi_array(Variable_Hi_array); 
+      //  X.set_Ai_array(Variable_Ai_array);
+      //  X.set_DeltaHi_array(Variable_DeltaHi_array);
+      //  X.set_Hi_array(Variable_Hi_array); 
         
         }
    
@@ -4739,49 +4801,50 @@ class header_pdf extends javax.swing.JFrame{
 
 class kotevnyUsek extends javax.swing.JFrame{
     
-    private static String name;  
-    private static int conductor_porcislo;   
-    private static int vetrova_oblast_porcislo;
-    private static int char_terenu_porcislo;
-    private static int uroven_spolahlivosti_porcislo;
-    private static int uroven_spolahlivosti_stav_porcislo;
-    private static String namrazova_oblast;
-    private static int typ_namrazy_porcislo;   
-    private static double RTS_over;
-    private static double zakladne_mech_napatie_lana_pre_minus5_over;
-    private static double maximalne_zataz_lana_podiel_z_RTS_over;
-    private static double g_c_over;
-    private static double ro_I_over;
-    private static double K_lc_over;
-    private static double K_h_over;
-    private static double I_R50_over;
-    private static double k_r_over;
-    private static double z_0_over;
-    private static double V_mean_over;
-    private static double c_dir_over;
-    private static double c_0_over;
-    private static double C_c_over;
-    private static double gama_w_over;
-    private static double gama_I_over;
-    private static double Psi_I_over;
-    private static double Psi_w_over;
-    private static double B_I_over;
-    private static double k_p_over;
-    private static double RR_over;
-    private static double ro_over;
-    private static double C_cl_over;
-    private static double h_c_mean_over;
+    private  String name;  
+    private  int conductor_porcislo;   
+    private  int vetrova_oblast_porcislo;
+    private  int char_terenu_porcislo;
+    private  int uroven_spolahlivosti_porcislo;
+    private  int uroven_spolahlivosti_stav_porcislo;
+    private  String namrazova_oblast;
+    private  int typ_namrazy_porcislo;   
+    private  double RTS_over;
+    private  double zakladne_mech_napatie_lana_pre_minus5_over;
+    private  double maximalne_zataz_lana_podiel_z_RTS_over;
+    private  double g_c_over;
+    private  double ro_I_over;
+    private  double K_lc_over;
+    private  double K_h_over;
+    private  double I_R50_over;
+    private  double k_r_over;
+    private  double z_0_over;
+    private  double V_mean_over;
+    private  double c_dir_over;
+    private  double c_0_over;
+    private  double C_c_over;
+    private  double gama_w_over;
+    private  double gama_I_over;
+    private  double Psi_I_over;
+    private  double Psi_w_over;
+    private  double B_I_over;
+    private  double k_p_over;
+    private  double RR_over;
+    private  double ro_over;
+    private  double C_cl_over;
+    private  double h_c_mean_over;
     
-    private static boolean str_vys_vodicov_radio_over;
-    private static boolean CDIR_radio_over;
-    private static boolean CO_radio_over;
-    private static boolean Kcl_radio_over;
-    private static boolean Kh_radio_over;
-    private static boolean Bi_radio_over;
     
-    private static double[] Ai_array_over;
-    private static double[] DeltaHi_array_over;
-    private static double[] Hi_array_over;
+    private  boolean str_vys_vodicov_radio_over;
+    private  boolean CDIR_radio_over;
+    private  boolean CO_radio_over;
+    private  boolean Kcl_radio_over;
+    private  boolean Kh_radio_over;
+    private  boolean Bi_radio_over;
+    
+    private  double[] Ai_array_over;
+    private  double[] DeltaHi_array_over;
+    private  double[] Hi_array_over;
     //constructor
     
     
