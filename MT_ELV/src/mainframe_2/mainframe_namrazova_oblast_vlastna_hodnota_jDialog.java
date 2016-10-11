@@ -6,11 +6,13 @@
  * of it must be consulted and the permission granted 
  * by authors Ing. Matej Cenky and Ing. Jozef Bendik.
  */
-package mt_main;
+package mainframe_2;
 
+import mainframe_1.*;
 import java.awt.Color;
 import java.awt.Toolkit;
 import javax.swing.JDialog;
+import mt_main.language;
 import static mt_main.startPanel.languageOption;
 
 /**
@@ -211,6 +213,7 @@ public class mainframe_namrazova_oblast_vlastna_hodnota_jDialog extends javax.sw
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(mainframe_namrazova_oblast_vlastna_hodnota_jDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the dialog */

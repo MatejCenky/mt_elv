@@ -8,6 +8,8 @@
  */
 package mt_main;
 
+import mainframe_1.mainframe;
+import mainframe_2.mainframe_2;
 import java.awt.Toolkit;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -23,6 +25,7 @@ import javax.swing.event.TableModelEvent;
 import javax.swing.event.TableModelListener;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableModel;
+
 import static mt_main.startPanel.languageOption;
 
 /**
@@ -538,6 +541,7 @@ public class Conductors_main_JDialog extends javax.swing.JDialog {
 
             fw.close();
             mainframe.lanochangeinDatabaze();
+           // mainframe_2.lanochangeinDatabaze();
         } catch (FileNotFoundException ex) {
             Logger.getLogger(Conductors_main_JDialog.class.getName()).log(Level.SEVERE, null, ex);
         }

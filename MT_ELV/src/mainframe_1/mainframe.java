@@ -6,7 +6,7 @@
  * of it must be consulted and the permission granted 
  * by authors Ing. Matej Cenky and Ing. Jozef Bendik.
  */
-package mt_main;
+package mainframe_1;
 
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
@@ -40,6 +40,8 @@ import javax.swing.event.TableModelEvent;
 import javax.swing.event.TableModelListener;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableModel;
+import mt_main.language;
+import mt_main.startPanel;
 import static mt_main.startPanel.languageOption;
 import mt_math.overload;
 import mt_variables.Conductor_variables;
@@ -49,7 +51,7 @@ import mt_variables.Overload_variables;
  *
  * @author Mattto
  */
-   class mainframe extends javax.swing.JFrame {
+  public class mainframe extends javax.swing.JFrame {
 
     private static final long serialVersionUID = 1L;
 
@@ -211,12 +213,17 @@ import mt_variables.Overload_variables;
         });  //selection listener fot text area to show data
 
 
-
+//         ListSelectionListener listSelectionListener = new ListSelectionListener() {
+//            @Override
+//            public void valueChanged(ListSelectionEvent e) {
+//                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+//            }
+//        };
          Table_rozpatia.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
 
             @Override
             public void valueChanged(ListSelectionEvent e) {
-                
+            if (tablemodellistener_selection==true){    
                     int rowNumber =  Table_rozpatia.getSelectedRow(); //- (e.getFirstIndex()-e.getLastIndex());
 
                     if(rowNumber != 0){
@@ -226,7 +233,7 @@ import mt_variables.Overload_variables;
                       Table_rozpatia_nadm_vysky.addRowSelectionInterval(rowNumber-1, rowNumber);
                     }
                 
-            }
+            }}
 
         });  //selection listener fot text area to show data
 
@@ -524,6 +531,7 @@ import mt_variables.Overload_variables;
         Label_stredna_vyska_vodicov_nad_terenom = new javax.swing.JLabel();
         jPanel10 = new javax.swing.JPanel();
         Label_kotevne_useky1 = new javax.swing.JLabel();
+        jComboBox_conductor_chooser = new javax.swing.JComboBox<>();
         Label_RTS = new javax.swing.JLabel();
         TextField_RTS = new javax.swing.JTextField();
         Label_RTS_velicina = new javax.swing.JLabel();
@@ -2600,13 +2608,13 @@ import mt_variables.Overload_variables;
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jPanel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, 572, Short.MAX_VALUE))
+                            .addComponent(jPanel9, javax.swing.GroupLayout.DEFAULT_SIZE, 572, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 309, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                                    .addComponent(jPanel10, javax.swing.GroupLayout.DEFAULT_SIZE, 0, Short.MAX_VALUE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                     .addComponent(jPanel11, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -2634,7 +2642,7 @@ import mt_variables.Overload_variables;
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                        .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, 0, Short.MAX_VALUE))
                     .addComponent(jPanel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -4074,11 +4082,11 @@ import mt_variables.Overload_variables;
     private javax.swing.ButtonGroup buttonGroup_tabulka;
     private static final javax.swing.JComboBox<String> jComboBox_KPB_typ_terenu = new javax.swing.JComboBox<>();
     private static final javax.swing.JComboBox<String> jComboBox_char_terenu = new javax.swing.JComboBox<>();
-    private static final javax.swing.JComboBox<String> jComboBox_conductor_chooser = new javax.swing.JComboBox<>();
+    private static javax.swing.JComboBox<String> jComboBox_conductor_chooser;
     private static final javax.swing.JComboBox<String> jComboBox_druh_namrazy = new javax.swing.JComboBox<>();
     private static final javax.swing.JComboBox<String> jComboBox_stav_KPB = new javax.swing.JComboBox<>();
     private static final javax.swing.JComboBox<String> jComboBox_uroven_splahlivosti = new javax.swing.JComboBox<>();
-    private static final javax.swing.JComboBox<String> jComboBox_vetrova_oblast = new javax.swing.JComboBox<>();
+    private final javax.swing.JComboBox<String> jComboBox_vetrova_oblast = new javax.swing.JComboBox<>();
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel11;
@@ -4153,6 +4161,7 @@ public static String namrazove_oblasti_názov_oblasti = "----";
 public static boolean is_namrazove_oblasti_setted = false;
 private static boolean tablemodellistener_rozpatia = true;
 private static boolean tablemodellistener_nad_vysky = true;
+private static boolean tablemodellistener_selection = true;
 // general variables
 private static String filename = "new_file";
 private static String filenamePath;
@@ -4671,6 +4680,22 @@ private void seticon() {
        Variable_uroven_spolahlivosti_Ww=X.get_Psi_w();
        Variable_uroven_spolahlivosti_Wi=X.get_Psi_I();
         
+       
+       //Remove rows one by one from the end of the table
+       tablemodellistener_rozpatia =false;  // vypnutie listenerov pri praci s taulkami
+       tablemodellistener_nad_vysky=false;
+       tablemodellistener_selection=false;
+       Table_rozpatia.getSelectionModel().removeListSelectionListener(Table_rozpatia);
+                         int rowCount = Table_rozpatia.getRowCount();
+                         for (int i = rowCount - 1; i > 0; i--) {
+                            
+                             modeltable_rozpatia.removeRow(i);
+       tablemodellistener_rozpatia =false;
+       tablemodellistener_nad_vysky=false;
+                                   }
+       tablemodellistener_rozpatia =true;
+       tablemodellistener_nad_vysky=true;
+       tablemodellistener_selection=true;
 //       for(int i =0; i< X.get_Ai_array().length;i++){
 //       
 //       Table_rozpatia.setValueAt(X.get_Ai_array()[i], i+1, 0);

@@ -6,7 +6,8 @@
  * of it must be consulted and the permission granted 
  * by authors Ing. Matej Cenky and Ing. Jozef Bendik.
  */
-package mt_main;
+package mainframe_2;
+
 
 import java.awt.Toolkit;
 import java.util.ArrayList;
@@ -14,6 +15,7 @@ import javax.swing.JDialog;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
+import mt_main.language;
 import static mt_main.startPanel.languageOption;
 
 /**
@@ -192,14 +194,14 @@ public class mainframe_namrazova_oblast_jDialog extends javax.swing.JDialog {
         if( rowNumber >= 0 && rowNumber <= 8){
            Object[] hodnoty = new Object[3];
            hodnoty = Databaza_namrazova_oblast.get(rowNumber);
-        mainframe.hodnoty_namrazove_oblasti = hodnoty;
+        mainframe_2.hodnoty_namrazove_oblasti = hodnoty;
         
         if (rowNumber == 8){
-        mainframe.namrazove_oblasti_názov_oblasti = "I-K";    
+        mainframe_2.namrazove_oblasti_názov_oblasti = "I-K";    
         }else{
-        mainframe.namrazove_oblasti_názov_oblasti = String.valueOf(jTable.getValueAt(rowNumber, 0));
+        mainframe_2.namrazove_oblasti_názov_oblasti = String.valueOf(jTable.getValueAt(rowNumber, 0));
         }
-        mainframe.is_namrazove_oblasti_setted=true;
+        mainframe_2.is_namrazove_oblasti_setted=true;
         disinit();
        }else{
    
@@ -233,7 +235,7 @@ public class mainframe_namrazova_oblast_jDialog extends javax.swing.JDialog {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
+    public void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -255,6 +257,10 @@ public class mainframe_namrazova_oblast_jDialog extends javax.swing.JDialog {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(mainframe_namrazova_oblast_jDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>

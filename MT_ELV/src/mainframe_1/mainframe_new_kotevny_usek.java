@@ -6,7 +6,7 @@
  * of it must be consulted and the permission granted 
  * by authors Ing. Matej Cenky and Ing. Jozef Bendik.
  */
-package mt_main;
+package mainframe_1;
 
 import java.awt.Desktop;
 import java.awt.Toolkit;
@@ -15,6 +15,7 @@ import java.io.IOException;
 import javax.swing.JFrame;
 import javax.swing.text.SimpleAttributeSet;
 import javax.swing.text.StyleConstants;
+import mt_main.language;
 import static mt_main.startPanel.languageOption;
 
 /**
@@ -134,7 +135,7 @@ public class mainframe_new_kotevny_usek extends javax.swing.JDialog {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
+    public  void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
