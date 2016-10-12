@@ -14,6 +14,7 @@ import com.itextpdf.text.Element;
 import com.itextpdf.text.Font;
 import com.itextpdf.text.Image;
 import com.itextpdf.text.PageSize;
+import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.Phrase;
 import com.itextpdf.text.Rectangle;
 import com.itextpdf.text.pdf.BaseFont;
@@ -2993,7 +2994,13 @@ import mt_variables.Overload_variables;
 
     private void Button_Icon_export_PDFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button_Icon_export_PDFActionPerformed
         
+        // RESAVE actual window
         
+        int rowNumber =  Table_kotevne_useky.getSelectedRow(); //- (e.getFirstIndex()-e.getLastIndex()); 
+             kotevnyUsek docasny_kot_usek = new kotevnyUsek(new_kotevny_usek_name, 0, 0, 0, 0, 0, filename, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, teplotyser, first_Start, teplotyser, teplotyser, teplotyser, first_Start, Variable_Ai_array, Variable_Hi_array, Variable_Hi_array,Variable_Hi_array_nmv,0,0,0);                      
+             mainframe_to_kotevny_usek(docasny_kot_usek);                        
+             Variable_globeal_kotevny_usek.set(rowNumber, docasny_kot_usek);  
+             
         
         String text="No mama dont cry";
         Document doc = new Document(PageSize.A4, 56, 28, 28, 28);
@@ -3001,7 +3008,19 @@ import mt_variables.Overload_variables;
             
             // tu sa vlozi chooser kd ktory urči nazov a kde a kokotiny podobne
             
-           
+            
+            header_pdf hlavicka = new header_pdf(jTextField_nazov_normi.getText(),
+                                         jTextField_nadpis_pre_prechodna.getText(),
+                                         jTextField_nazov_nazov_stavby.getText(),
+                                         jTextField_nazov_nazov_stavby1.getText(),
+                                         jTextField_nazov_SOPS.getText(),
+                                         jTextField_nazov_SOPS1.getText(),
+                                         jTextField_nazov_arch_cislo.getText(),
+                                         jTextField_vypracoval.getText(),
+                                         jTextField_datum.getText(),
+                                         intChecker_short_answer(jTextField_nazov_cislo_strany)
+                                         );
+            
             PdfWriter writer = PdfWriter.getInstance(doc, new FileOutputStream("HeaderFooter.pdf"));
             BaseFont bf = BaseFont.createFont("/mt_graphic/arial.ttf", BaseFont.IDENTITY_H, BaseFont.EMBEDDED); // pridanie našeho kodovanie pre slovensko vranci fontu 
             //BaseFont mojFOnt = BaseFont.createFont(BaseFont.HELVETICA, BaseFont.IDENTITY_H, BaseFont.EMBEDDED);
@@ -3013,7 +3032,12 @@ import mt_variables.Overload_variables;
                       Font.NORMAL );
             Font fontTable = new Font(bf, 8,
                       Font.NORMAL );
-            doc.open();
+            doc.open(); 
+            
+        for(int i =0;i<Variable_globeal_kotevny_usek.size();i++ ){  // cyklus pre všetky existujuce
+        if(Table_kotevne_useky.getValueAt(i, 0).equals(true)){     
+           
+            
            Image headerLogo = Image.getInstance(getClass().getResource("/mt_graphic/header.png"));
            //headerLogo.se setAbsolutePosition(50, 150);
            headerLogo.scaleAbsolute( 511f,55f);
@@ -3027,17 +3051,7 @@ import mt_variables.Overload_variables;
          
             
            
-            header_pdf hlavicka = new header_pdf(jTextField_nazov_normi.getText(),
-                                         jTextField_nadpis_pre_prechodna.getText(),
-                                         jTextField_nazov_nazov_stavby.getText(),
-                                         jTextField_nazov_nazov_stavby1.getText(),
-                                         jTextField_nazov_SOPS.getText(),
-                                         jTextField_nazov_SOPS1.getText(),
-                                         jTextField_nazov_arch_cislo.getText(),
-                                         jTextField_vypracoval.getText(),
-                                         jTextField_datum.getText(),
-                                         intChecker_short_answer(jTextField_nazov_cislo_strany)
-                                         );
+            
             // riadok 1 typ tabulky
             switch ((int) PDF_VAR_typ_tabulky) {
                 case 1:
@@ -3138,7 +3152,7 @@ import mt_variables.Overload_variables;
                 c1.setBorder(Rectangle.NO_BORDER);
                 table.addCell(c1);
                 
-                c1 = new PdfPCell(new Phrase(hlavicka.vypracoval() + "\n\r" + String.valueOf(hlavicka.cislovanie_stran_od()),fontTable));
+                c1 = new PdfPCell(new Phrase(hlavicka.vypracoval() + "\n\r" + String.valueOf(hlavicka.cislovanie_stran_od()+i),fontTable));
                 c1.setVerticalAlignment(Element.ALIGN_BOTTOM); 
                 c1.setBorder(Rectangle.NO_BORDER);
                 table.addCell(c1);
@@ -3149,11 +3163,18 @@ import mt_variables.Overload_variables;
             doc.add(table);
             doc.add(line);
             
+            doc.add(new Paragraph(" "));
+            doc.add(new Phrase(Variable_globeal_kotevny_usek.get(i).get_name(),fontHeader)); // nadpis kotevneho useku
+            doc.add(new Paragraph(" "));
             
-            doc.close();
+            doc.newPage();
             
-            
-            
+        } // if check box enabled
+        } // do  pocet kotevnych usekov  
+         doc.close();
+        
+        }catch(NullPointerException e){  // catch for cycle and kotevny usek data
+           warning_sign(warning_text);     
         } catch (DocumentException | FileNotFoundException ex) {
             Logger.getLogger(mainframe.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
@@ -3177,7 +3198,7 @@ import mt_variables.Overload_variables;
         try{
             
         for(int i =0;i<Variable_globeal_kotevny_usek.size();i++ ){  // cyklus pre všetky existujuce
-        if(Table_kotevne_useky.getValueAt(i, 0).equals(true)){   
+        if(Table_kotevne_useky.getValueAt(i, 0).equals(true)){      // cyklus či je zaskrtnuty kot usek
             
         /// WARNINGOVAC AND TESTER ZONE 
         kotevnyUsek Kot_usek = Variable_globeal_kotevny_usek.get(i);
