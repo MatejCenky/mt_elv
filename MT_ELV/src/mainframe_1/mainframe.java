@@ -3183,6 +3183,7 @@ import mt_variables.Overload_variables;
         kotevnyUsek Kot_usek = Variable_globeal_kotevny_usek.get(i);
         warning_text ="Array Ai neni vyplneni";            if (Kot_usek.get_Ai_array().length == 1){}  // warning neni array A1 vyplneni a nebude to fungovať
         warning_text ="Námazová oblast nie je vybraná ";  if (Kot_usek.get_I_R50() == 123456789.987654321){throw new NullPointerException();}
+        warning_text ="Hcmean = 0 ";  if (Kot_usek.get_h_c_mean() == 123456789.987654321 || Kot_usek.get_h_c_mean() == 0){throw new NullPointerException();}
         
         
         ///MAIN CALCULATION
