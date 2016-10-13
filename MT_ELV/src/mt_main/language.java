@@ -341,6 +341,9 @@ public static void constructor(){
 /*192*/  language.SK.add("Vypracoval");       language.CZ.add("I-SK");                     language.EN.add("I-SK");
 /*193*/  language.SK.add("Strana");       language.CZ.add("I-SK");                     language.EN.add("I-SK");
 
+/*194*/  language.SK.add("Typ lana");       language.CZ.add("I-SK");                     language.EN.add("I-SK");
+/*195*/  language.SK.add("Parametre Lana");       language.CZ.add("I-SK");                     language.EN.add("I-SK");
+
 
  inicializovane = true;
 }

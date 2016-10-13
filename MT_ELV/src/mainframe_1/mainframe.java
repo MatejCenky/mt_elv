@@ -186,242 +186,249 @@ import mt_variables.Overload_variables;
         Variable_hi_vyska_stoziarov.add(0.0);
         Variable_hi2_nadmorska_vyska_stoziarov.add(0.0);
         
-//        for(int i = 0; i<23 ; i++){
-//        modeltable_rozpatia.addRow(new Object[0]);
-//        modeltable_rozpatia_nadm_vysky.addRow(new Object[1]);
-//        Table_rozpatia.setRowHeight(i+2,16);
-//        }
-       
-         
-            Table_kotevne_useky.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
+        //Listeneers
+ 
+        Table_kotevne_useky.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
 
             @Override
             public void valueChanged(ListSelectionEvent e) {
-            if( selection_kotevny_usek==false){    
-                    
-                                   
-                    int rowNumber =  Table_kotevne_useky.getSelectedRow(); //- (e.getFirstIndex()-e.getLastIndex());
-                    if(povodna_hodnota_selekcie != rowNumber){
-                      
-                      kotevnyUsek docasny_kot_usek = new kotevnyUsek(new_kotevny_usek_name, 0, 0, 0, 0, 0, filename, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, teplotyser, first_Start, teplotyser, teplotyser, teplotyser, first_Start, Variable_Ai_array, Variable_Hi_array, Variable_Hi_array,Variable_Hi_array_nmv,0,0,0);                      
-                      mainframe_to_kotevny_usek(docasny_kot_usek);                        
-                      Variable_globeal_kotevny_usek.set(povodna_hodnota_selekcie, docasny_kot_usek); 
-                     
-                      kotevn_usek_to_mainframe(Variable_globeal_kotevny_usek.get(rowNumber));
-                      
-                    
+                if (selection_kotevny_usek == false) {
+
+                    int rowNumber = Table_kotevne_useky.getSelectedRow(); //- (e.getFirstIndex()-e.getLastIndex());
+                    if (povodna_hodnota_selekcie != rowNumber) {
+
+                        kotevnyUsek docasny_kot_usek = new kotevnyUsek(new_kotevny_usek_name, 0, 0, 0, 0, 0, filename, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, teplotyser, first_Start, teplotyser, teplotyser, teplotyser, first_Start, Variable_Ai_array, Variable_Hi_array, Variable_Hi_array, Variable_Hi_array_nmv, 0, 0, 0);
+                        mainframe_to_kotevny_usek(docasny_kot_usek,povodna_hodnota_selekcie);
+                        Variable_globeal_kotevny_usek.set(povodna_hodnota_selekcie, docasny_kot_usek);
+
+                        kotevn_usek_to_mainframe(Variable_globeal_kotevny_usek.get(rowNumber));
+
                     }
-                     
-                     povodna_hodnota_selekcie=rowNumber;
-            }}
 
-        });  //selection listener fot text area to show data
-
-
-//         ListSelectionListener listSelectionListener = new ListSelectionListener() {
-//            @Override
-//            public void valueChanged(ListSelectionEvent e) {
-//                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-//            }
-//        };
-         Table_rozpatia.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
-
-            @Override
-            public void valueChanged(ListSelectionEvent e) {
-            if (tablemodellistener_total==true){    
-                    int rowNumber =  Table_rozpatia.getSelectedRow(); //- (e.getFirstIndex()-e.getLastIndex());
-
-                    if(rowNumber != 0){
-                      
-                      Table_rozpatia_nadm_vysky.removeRowSelectionInterval(0, Table_rozpatia_nadm_vysky.getRowCount()-1);
-                      Table_rozpatia_nadm_vysky.addColumnSelectionInterval(0, 1);
-                      Table_rozpatia_nadm_vysky.addRowSelectionInterval(rowNumber-1, rowNumber);
-                    }
+                    povodna_hodnota_selekcie = rowNumber;
+                }
+//                for( int i=0;i<Variable_globeal_kotevny_usek.size();i++){              
+//                    Iwriter(i);
+//                    Swriter(Variable_globeal_kotevny_usek.get(i).get_name());
+//                    Dwriter(Variable_globeal_kotevny_usek.get(i).get_conductor_number());
+//                    Swriter("----------------");
+//                }
+//                Swriter("---------cycle end---------");
                 
-            }}
+            }
 
         });  //selection listener fot text area to show data
 
-         Table_rozpatia.getModel().addTableModelListener(new TableModelListener()  {
-           
+        Table_rozpatia.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
+
+            @Override
+            public void valueChanged(ListSelectionEvent e) {
+                if (tablemodellistener_total == true) {
+                    int rowNumber = Table_rozpatia.getSelectedRow(); //- (e.getFirstIndex()-e.getLastIndex());
+
+                    if (rowNumber != 0) {
+
+                        Table_rozpatia_nadm_vysky.removeRowSelectionInterval(0, Table_rozpatia_nadm_vysky.getRowCount() - 1);
+                        Table_rozpatia_nadm_vysky.addColumnSelectionInterval(0, 1);
+                        Table_rozpatia_nadm_vysky.addRowSelectionInterval(rowNumber - 1, rowNumber);
+                    }
+
+                }
+            }
+
+        });  //selection listener fot text area to show data
+
+        Table_rozpatia.getModel().addTableModelListener(new TableModelListener() {
+
             @Override
             public void tableChanged(TableModelEvent e) {
-              if (tablemodellistener_total==true){   
-                Table_rozpatia.getModel().removeTableModelListener(this);
-                if(tablemodellistener_rozpatia == true){
-                tablemodellistener_rozpatia=false;
-                tablemodellistener_nad_vysky=false;
-                
-                int row = e.getFirstRow();
-                int column = e.getColumn();
-               
-                if(row != 0){   // pre nulu nie lebo t je nulty riadok a tam je medzera
-                    //prepisuje row -1 lebo tam sa nachadza hodnota  kedže nulty riadok je prazdny vždy
-                Variable_Ai_dlzka_rozpatia.set(row-1, doubleChecker_tableinput(String.valueOf(Table_rozpatia.getValueAt(row, column))) );
-                
-                if(row == Table_rozpatia.getRowCount()-1){ // ak klinuty posledny riadok tak
-                Variable_Ai_dlzka_rozpatia.add(0.0);
-                Variable_hi_vyska_stoziarov.add(0.0);
-                Variable_hi2_nadmorska_vyska_stoziarov.add(0.0);//pridar row vsšade do každe arraylist               
-                modeltable_rozpatia_nadm_vysky.addRow(new Object[1]);
-                modeltable_rozpatia.addRow(new Object[0]);
-                }
-                
-                }
-                }
-                tablemodellistener_rozpatia=true;
-                tablemodellistener_nad_vysky=true;
-                Table_rozpatia.getModel().addTableModelListener(this);
-                
+                if (tablemodellistener_total == true) {
+                    Table_rozpatia.getModel().removeTableModelListener(this);
+                    if (tablemodellistener_rozpatia == true) {
+                        tablemodellistener_rozpatia = false;
+                        tablemodellistener_nad_vysky = false;
+
+                        int row = e.getFirstRow();
+                        int column = e.getColumn();
+
+                        if (row != 0) {   // pre nulu nie lebo t je nulty riadok a tam je medzera
+                            //prepisuje row -1 lebo tam sa nachadza hodnota  kedže nulty riadok je prazdny vždy
+                            Variable_Ai_dlzka_rozpatia.set(row - 1, doubleChecker_tableinput(String.valueOf(Table_rozpatia.getValueAt(row, column))));
+
+                            if (row == Table_rozpatia.getRowCount() - 1) { // ak klinuty posledny riadok tak
+                                Variable_Ai_dlzka_rozpatia.add(0.0);
+                                Variable_hi_vyska_stoziarov.add(0.0);
+                                Variable_hi2_nadmorska_vyska_stoziarov.add(0.0);//pridar row vsšade do každe arraylist               
+                                modeltable_rozpatia_nadm_vysky.addRow(new Object[1]);
+                                modeltable_rozpatia.addRow(new Object[0]);
+                            }
+
+                        }
+                    }
+                    tablemodellistener_rozpatia = true;
+                    tablemodellistener_nad_vysky = true;
+                    Table_rozpatia.getModel().addTableModelListener(this);
+
 //                System.out.println(Variable_Ai_dlzka_rozpatia);
 //                System.out.println(Variable_hi_vyska_stoziarov);
 //                System.out.println(Variable_hi2_nadmorska_vyska_stoziarov);
-                
-                int odcitacac_rozpati=0;
-                for(int i = 0; i< Variable_Ai_dlzka_rozpatia.size();i++){           //odstranuje chybne zapisi alebo prazdne hodnoty pre rozpatia
-                    
-                    if(Variable_Ai_dlzka_rozpatia.get(i) == 0.0 || Variable_Ai_dlzka_rozpatia.get(i) == 123456789.987654321 ){
-                    odcitacac_rozpati=odcitacac_rozpati+1;
-                }
-                }
-                
-                Variable_n_pocet_rozpati = (Variable_Ai_dlzka_rozpatia.size()-odcitacac_rozpati);
-                
-                // naplnenie AI array rozpatia na zaklade postu rozpati a deltaHi ktore ma rovnaky rozmer ako Ai
-                Variable_Ai_array = new double[(int) Variable_n_pocet_rozpati];  
-                Variable_DeltaHi_array = new double[(int) Variable_n_pocet_rozpati];
-                Variable_Hi_array = new double[(int) Variable_n_pocet_rozpati+1];
-                Variable_Hi_array_nmv = new double[(int) Variable_n_pocet_rozpati+1];
-                for (int i = 0; i < Variable_Ai_array.length; i++) {
-                   
-                Variable_Ai_array[i] = Variable_Ai_dlzka_rozpatia.get(i);
-                Variable_Hi_array[i] = Variable_hi_vyska_stoziarov.get(i);
-                Variable_Hi_array_nmv[i] = Variable_hi2_nadmorska_vyska_stoziarov.get(i);
-                        
-                double prvavyska_stoziar_plus_zem = Variable_hi2_nadmorska_vyska_stoziarov.get(i) + Variable_hi_vyska_stoziarov.get(i);
-                double druhavyska_stoziar_plus_zem= Variable_hi2_nadmorska_vyska_stoziarov.get(i+1) + Variable_hi_vyska_stoziarov.get(i+1);
-                Variable_DeltaHi_array[i]= druhavyska_stoziar_plus_zem - prvavyska_stoziar_plus_zem;
-                }
-                Variable_Hi_array[Variable_Ai_array.length] = Variable_hi_vyska_stoziarov.get(Variable_Ai_array.length);
-                Variable_Hi_array_nmv[Variable_Ai_array.length] = Variable_hi2_nadmorska_vyska_stoziarov.get(Variable_Ai_array.length);
+                    int odcitacac_rozpati = 0;
+                    for (int i = 0; i < Variable_Ai_dlzka_rozpatia.size(); i++) {           //odstranuje chybne zapisi alebo prazdne hodnoty pre rozpatia
 
-                // Hcmean pocitac
-                double Sumar_scitavac=0;
-                for(int i = 0; i< Variable_n_pocet_rozpati+1;i++){           //pocita len tam kde je zadana dlka zorpatia ine stožiare bdue ignotrovat plus jedna preto lebo pocet stožiarov je vždy rozpatia plus 1
-                    
-                    Sumar_scitavac=Sumar_scitavac + Variable_hi_vyska_stoziarov.get(i);
-                    
+                        if (Variable_Ai_dlzka_rozpatia.get(i) == 0.0 || Variable_Ai_dlzka_rozpatia.get(i) == 123456789.987654321) {
+                            odcitacac_rozpati = odcitacac_rozpati + 1;
+                        }
+                    }
+
+                    Variable_n_pocet_rozpati = (Variable_Ai_dlzka_rozpatia.size() - odcitacac_rozpati);
+
+                    // naplnenie AI array rozpatia na zaklade postu rozpati a deltaHi ktore ma rovnaky rozmer ako Ai
+                    Variable_Ai_array = new double[(int) Variable_n_pocet_rozpati];
+                    Variable_DeltaHi_array = new double[(int) Variable_n_pocet_rozpati];
+                    Variable_Hi_array = new double[(int) Variable_n_pocet_rozpati + 1];
+                    Variable_Hi_array_nmv = new double[(int) Variable_n_pocet_rozpati + 1];
+                    for (int i = 0; i < Variable_Ai_array.length; i++) {
+
+                        Variable_Ai_array[i] = Variable_Ai_dlzka_rozpatia.get(i);
+                        Variable_Hi_array[i] = Variable_hi_vyska_stoziarov.get(i);
+                        Variable_Hi_array_nmv[i] = Variable_hi2_nadmorska_vyska_stoziarov.get(i);
+
+                        double prvavyska_stoziar_plus_zem = Variable_hi2_nadmorska_vyska_stoziarov.get(i) + Variable_hi_vyska_stoziarov.get(i);
+                        double druhavyska_stoziar_plus_zem = Variable_hi2_nadmorska_vyska_stoziarov.get(i + 1) + Variable_hi_vyska_stoziarov.get(i + 1);
+                        Variable_DeltaHi_array[i] = druhavyska_stoziar_plus_zem - prvavyska_stoziar_plus_zem;
+                    }
+                    Variable_Hi_array[Variable_Ai_array.length] = Variable_hi_vyska_stoziarov.get(Variable_Ai_array.length);
+                    Variable_Hi_array_nmv[Variable_Ai_array.length] = Variable_hi2_nadmorska_vyska_stoziarov.get(Variable_Ai_array.length);
+
+                    // Hcmean pocitac
+                    double Sumar_scitavac = 0;
+                    for (int i = 0; i < Variable_n_pocet_rozpati + 1; i++) {           //pocita len tam kde je zadana dlka zorpatia ine stožiare bdue ignotrovat plus jedna preto lebo pocet stožiarov je vždy rozpatia plus 1
+
+                        Sumar_scitavac = Sumar_scitavac + Variable_hi_vyska_stoziarov.get(i);
+
+                    }
+
+                    Variable_Hc_mean_medzikrok = Sumar_scitavac / (Variable_n_pocet_rozpati + 1);
+                    if (jRadioButton_with_label_vypoctana.isSelected() == true) {
+                        Variable_Hc_mean = Variable_Hc_mean_medzikrok;
+                    }
+                    DecimalFormatSymbols otherSymbols = new DecimalFormatSymbols();
+                    otherSymbols.setDecimalSeparator('.');
+                    DecimalFormat df = new DecimalFormat("###.###", otherSymbols);
+                    TextField_hcmean_vpocitana.setText(String.valueOf(df.format(Variable_Hc_mean_medzikrok))); // vloz do text field pri radio buttne
+                    //Stredne rozpatie
+                    if (Variable_Ai_array.length != 0 || Variable_DeltaHi_array.length != 0) {
+                        mid_span_flat();
+                        mid_span_terrain();
+
+                        TextField_STRrozpatie_klasicky.setText(String.valueOf(df.format(Variable_mid_span_docasna)));
+                        TextField_STRrozpatie_sPrevisenim.setText(String.valueOf(df.format(Variable_mid_span_terrain_docasna)));
+                        if (jRadioButton_with_label_rozpatie_klasicky.isSelected() == true) {
+                            Variable_mid_span = Variable_mid_span_docasna;
+                        }
+                        if (jRadioButton_with_label_rozpate_previsenia.isSelected() == true) {
+                            Variable_mid_span = Variable_mid_span_terrain_docasna;
+                        }
+                    }
+
                 }
 
-               Variable_Hc_mean_medzikrok= Sumar_scitavac/(Variable_n_pocet_rozpati+1);
-               if(jRadioButton_with_label_vypoctana.isSelected() == true){
-               Variable_Hc_mean=Variable_Hc_mean_medzikrok;
-               }
-               DecimalFormatSymbols otherSymbols = new DecimalFormatSymbols();
-               otherSymbols.setDecimalSeparator('.');
-               DecimalFormat df = new DecimalFormat("###.###",otherSymbols);  
-               TextField_hcmean_vpocitana.setText(String.valueOf(df.format(Variable_Hc_mean_medzikrok))); // vloz do text field pri radio buttne
-               //Stredne rozpatie
-               if(Variable_Ai_array.length != 0 || Variable_DeltaHi_array.length != 0){
-                  mid_span_flat();
-                  mid_span_terrain();
-                  
-                  TextField_STRrozpatie_klasicky.setText(String.valueOf(df.format(Variable_mid_span_docasna)));
-                  TextField_STRrozpatie_sPrevisenim.setText(String.valueOf(df.format(Variable_mid_span_terrain_docasna)));
-                  if(jRadioButton_with_label_rozpatie_klasicky.isSelected() == true){Variable_mid_span=Variable_mid_span_docasna;}
-                  if(jRadioButton_with_label_rozpate_previsenia.isSelected() == true){Variable_mid_span=Variable_mid_span_terrain_docasna;}
-                }
-               
-            }   
-            
-        }}
-        );
-          Table_rozpatia_nadm_vysky.getModel().addTableModelListener(new TableModelListener() {
-          
+            }
+        });
+        
+        Table_rozpatia_nadm_vysky.getModel().addTableModelListener(new TableModelListener() {
+
             @Override
             public void tableChanged(TableModelEvent e) {
-                if (tablemodellistener_total==true){ 
-                Table_rozpatia_nadm_vysky.getModel().removeTableModelListener(this);
-                 if(tablemodellistener_nad_vysky == true){
-                tablemodellistener_rozpatia=false;
-                tablemodellistener_nad_vysky=false;
-                
-                int row = e.getFirstRow();
-                int column = e.getColumn();
-                  
-                    //prepisuje row -1 lebo tam sa nachadza hodnota  kedže nulty riadok je prazdny vždy
-                Variable_hi_vyska_stoziarov.set(row, doubleChecker_tableinput(String.valueOf(Table_rozpatia_nadm_vysky.getValueAt(row, 1))) );
-                Variable_hi2_nadmorska_vyska_stoziarov.set(row, doubleChecker_tableinput(String.valueOf(Table_rozpatia_nadm_vysky.getValueAt(row, 0))) );
-                
-                if(row == Table_rozpatia_nadm_vysky.getRowCount()-1){ // ak klinuty posledny riadok tak
-                Variable_Ai_dlzka_rozpatia.add(0.0);
-                Variable_hi_vyska_stoziarov.add(0.0);
-                Variable_hi2_nadmorska_vyska_stoziarov.add(0.0);//pridar row vsšade do každe arraylist
-                modeltable_rozpatia.addRow(new Object[0]);
-                modeltable_rozpatia_nadm_vysky.addRow(new Object[1]);
-                }
-                
-            }
-                 tablemodellistener_rozpatia=true;
-                tablemodellistener_nad_vysky=true;
-                Table_rozpatia_nadm_vysky.getModel().addTableModelListener(this);
-                
-                 // Hcmean pocitac
-                 double Sumar_scitavac=0;
-                for(int i = 0; i< Variable_n_pocet_rozpati+1;i++){           //pocita len tam kde je zadana dlka zorpatia ine stožiare bdue ignotrovat plus jedna preto lebo pocet stožiarov je vždy rozpatia plus 1
-                    
-                    Sumar_scitavac=Sumar_scitavac + Variable_hi_vyska_stoziarov.get(i);
-                    
-                }
-               DecimalFormatSymbols otherSymbols = new DecimalFormatSymbols();
-               otherSymbols.setDecimalSeparator('.');
-               DecimalFormat df = new DecimalFormat("###.###",otherSymbols);
-               Variable_Hc_mean_medzikrok= Sumar_scitavac/(Variable_n_pocet_rozpati+1);    // vypocitaj Hcmena
-               TextField_hcmean_vpocitana.setText(String.valueOf(df.format(Variable_Hc_mean_medzikrok))); // vloz do text field pri radio buttne
-               
-               if(jRadioButton_with_label_vypoctana.isSelected() == true){
-               Variable_Hc_mean=Variable_Hc_mean_medzikrok;
-               }
-                // naplnenie AI array rozpatia na zaklade postu rozpati a deltaHi ktore ma rovnaky rozmer ako Ai
-                Variable_Ai_array = new double[(int) Variable_n_pocet_rozpati];  
-                Variable_DeltaHi_array = new double[(int) Variable_n_pocet_rozpati];
-                Variable_Hi_array = new double[(int) Variable_n_pocet_rozpati+1];
-                Variable_Hi_array_nmv = new double[(int) Variable_n_pocet_rozpati+1];
-                for (int i = 0; i < Variable_Ai_array.length; i++) {
-                   
-                Variable_Ai_array[i] = Variable_Ai_dlzka_rozpatia.get(i);
-                Variable_Hi_array[i] = Variable_hi_vyska_stoziarov.get(i);
-                Variable_Hi_array_nmv[i] = Variable_hi2_nadmorska_vyska_stoziarov.get(i);
-                        
-                double prvavyska_stoziar_plus_zem = Variable_hi2_nadmorska_vyska_stoziarov.get(i) + Variable_hi_vyska_stoziarov.get(i);
-                double druhavyska_stoziar_plus_zem= Variable_hi2_nadmorska_vyska_stoziarov.get(i+1) + Variable_hi_vyska_stoziarov.get(i+1);
-                Variable_DeltaHi_array[i]= druhavyska_stoziar_plus_zem - prvavyska_stoziar_plus_zem;
-                }
-                Variable_Hi_array[Variable_Ai_array.length] = Variable_hi_vyska_stoziarov.get(Variable_Ai_array.length);
-                Variable_Hi_array_nmv[Variable_Ai_array.length] = Variable_hi2_nadmorska_vyska_stoziarov.get(Variable_Ai_array.length);
+                if (tablemodellistener_total == true) {
+                    Table_rozpatia_nadm_vysky.getModel().removeTableModelListener(this);
+                    if (tablemodellistener_nad_vysky == true) {
+                        tablemodellistener_rozpatia = false;
+                        tablemodellistener_nad_vysky = false;
 
-                //ak niesu array nulove vypočitaj vyšlu
-                if(Variable_Ai_array.length != 0 || Variable_DeltaHi_array.length != 0){
-                  mid_span_flat();
-                  mid_span_terrain();
-                 
-                  TextField_STRrozpatie_klasicky.setText(String.valueOf(df.format(Variable_mid_span_docasna)));
-                  TextField_STRrozpatie_sPrevisenim.setText(String.valueOf(df.format(Variable_mid_span_terrain_docasna)));
-                  if(jRadioButton_with_label_rozpatie_klasicky.isSelected() == true){Variable_mid_span=Variable_mid_span_docasna;}
-                  if(jRadioButton_with_label_rozpate_previsenia.isSelected() == true){Variable_mid_span=Variable_mid_span_terrain_docasna;}
-                }
+                        int row = e.getFirstRow();
+                        int column = e.getColumn();
+
+                        //prepisuje row -1 lebo tam sa nachadza hodnota  kedže nulty riadok je prazdny vždy
+                        Variable_hi_vyska_stoziarov.set(row, doubleChecker_tableinput(String.valueOf(Table_rozpatia_nadm_vysky.getValueAt(row, 1))));
+                        Variable_hi2_nadmorska_vyska_stoziarov.set(row, doubleChecker_tableinput(String.valueOf(Table_rozpatia_nadm_vysky.getValueAt(row, 0))));
+
+                        if (row == Table_rozpatia_nadm_vysky.getRowCount() - 1) { // ak klinuty posledny riadok tak
+                            Variable_Ai_dlzka_rozpatia.add(0.0);
+                            Variable_hi_vyska_stoziarov.add(0.0);
+                            Variable_hi2_nadmorska_vyska_stoziarov.add(0.0);//pridar row vsšade do každe arraylist
+                            modeltable_rozpatia.addRow(new Object[0]);
+                            modeltable_rozpatia_nadm_vysky.addRow(new Object[1]);
+                        }
+
+                    }
+                    tablemodellistener_rozpatia = true;
+                    tablemodellistener_nad_vysky = true;
+                    Table_rozpatia_nadm_vysky.getModel().addTableModelListener(this);
+
+                    // Hcmean pocitac
+                    double Sumar_scitavac = 0;
+                    for (int i = 0; i < Variable_n_pocet_rozpati + 1; i++) {           //pocita len tam kde je zadana dlka zorpatia ine stožiare bdue ignotrovat plus jedna preto lebo pocet stožiarov je vždy rozpatia plus 1
+
+                        Sumar_scitavac = Sumar_scitavac + Variable_hi_vyska_stoziarov.get(i);
+
+                    }
+                    DecimalFormatSymbols otherSymbols = new DecimalFormatSymbols();
+                    otherSymbols.setDecimalSeparator('.');
+                    DecimalFormat df = new DecimalFormat("###.###", otherSymbols);
+                    Variable_Hc_mean_medzikrok = Sumar_scitavac / (Variable_n_pocet_rozpati + 1);    // vypocitaj Hcmena
+                    TextField_hcmean_vpocitana.setText(String.valueOf(df.format(Variable_Hc_mean_medzikrok))); // vloz do text field pri radio buttne
+
+                    if (jRadioButton_with_label_vypoctana.isSelected() == true) {
+                        Variable_Hc_mean = Variable_Hc_mean_medzikrok;
+                    }
+                    // naplnenie AI array rozpatia na zaklade postu rozpati a deltaHi ktore ma rovnaky rozmer ako Ai
+                    Variable_Ai_array = new double[(int) Variable_n_pocet_rozpati];
+                    Variable_DeltaHi_array = new double[(int) Variable_n_pocet_rozpati];
+                    Variable_Hi_array = new double[(int) Variable_n_pocet_rozpati + 1];
+                    Variable_Hi_array_nmv = new double[(int) Variable_n_pocet_rozpati + 1];
+                    for (int i = 0; i < Variable_Ai_array.length; i++) {
+
+                        Variable_Ai_array[i] = Variable_Ai_dlzka_rozpatia.get(i);
+                        Variable_Hi_array[i] = Variable_hi_vyska_stoziarov.get(i);
+                        Variable_Hi_array_nmv[i] = Variable_hi2_nadmorska_vyska_stoziarov.get(i);
+
+                        double prvavyska_stoziar_plus_zem = Variable_hi2_nadmorska_vyska_stoziarov.get(i) + Variable_hi_vyska_stoziarov.get(i);
+                        double druhavyska_stoziar_plus_zem = Variable_hi2_nadmorska_vyska_stoziarov.get(i + 1) + Variable_hi_vyska_stoziarov.get(i + 1);
+                        Variable_DeltaHi_array[i] = druhavyska_stoziar_plus_zem - prvavyska_stoziar_plus_zem;
+                    }
+                    Variable_Hi_array[Variable_Ai_array.length] = Variable_hi_vyska_stoziarov.get(Variable_Ai_array.length);
+                    Variable_Hi_array_nmv[Variable_Ai_array.length] = Variable_hi2_nadmorska_vyska_stoziarov.get(Variable_Ai_array.length);
+
+                    //ak niesu array nulove vypočitaj vyšlu
+                    if (Variable_Ai_array.length != 0 || Variable_DeltaHi_array.length != 0) {
+                        mid_span_flat();
+                        mid_span_terrain();
+
+                        TextField_STRrozpatie_klasicky.setText(String.valueOf(df.format(Variable_mid_span_docasna)));
+                        TextField_STRrozpatie_sPrevisenim.setText(String.valueOf(df.format(Variable_mid_span_terrain_docasna)));
+                        if (jRadioButton_with_label_rozpatie_klasicky.isSelected() == true) {
+                            Variable_mid_span = Variable_mid_span_docasna;
+                        }
+                        if (jRadioButton_with_label_rozpate_previsenia.isSelected() == true) {
+                            Variable_mid_span = Variable_mid_span_terrain_docasna;
+                        }
+                    }
 //                System.out.println("-------------");
 //                System.out.println(Arrays.toString(Variable_Ai_array));
 //                System.out.println(Arrays.toString(Variable_DeltaHi_array));
 //                System.out.println(Arrays.toString(Variable_Hi_array));
 //                System.out.println(Variable_Hc_mean);
-               
+
+                }
+
             }
-            
-        }
-          });
+        });
+
         
-      Button_Icon_arr_row_table_kotevny_usek.doClick();
+        // add first row
+        
+        Button_Icon_arr_row_table_kotevny_usek.doClick();
         
     }
 
@@ -2998,7 +3005,7 @@ import mt_variables.Overload_variables;
         
         int rowNumber =  Table_kotevne_useky.getSelectedRow(); //- (e.getFirstIndex()-e.getLastIndex()); 
              kotevnyUsek docasny_kot_usek = new kotevnyUsek(new_kotevny_usek_name, 0, 0, 0, 0, 0, filename, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, teplotyser, first_Start, teplotyser, teplotyser, teplotyser, first_Start, Variable_Ai_array, Variable_Hi_array, Variable_Hi_array,Variable_Hi_array_nmv,0,0,0);                      
-             mainframe_to_kotevny_usek(docasny_kot_usek);                        
+             mainframe_to_kotevny_usek(docasny_kot_usek,rowNumber);                        
              Variable_globeal_kotevny_usek.set(rowNumber, docasny_kot_usek);  
              
         
@@ -3028,9 +3035,9 @@ import mt_variables.Overload_variables;
             
             Font fontHeader = new Font(bf, 18,
                       Font.NORMAL | Font.BOLD);
-            Font fontText = new Font(bf, 12,
+            Font fontText = new Font(bf, 10,
                       Font.NORMAL );
-            Font fontTable = new Font(bf, 8,
+            Font fontTable = new Font(bf, 6,
                       Font.NORMAL );
             doc.open(); 
             
@@ -3038,15 +3045,12 @@ import mt_variables.Overload_variables;
         if(Table_kotevne_useky.getValueAt(i, 0).equals(true)){     
            
             
-           Image headerLogo = Image.getInstance(getClass().getResource("/mt_graphic/header.png"));
-           //headerLogo.se setAbsolutePosition(50, 150);
+           Image headerLogo = Image.getInstance(getClass().getResource("/mt_graphic/header.png"));          
            headerLogo.scaleAbsolute( 511f,55f);
            headerLogo.setAlignment(Image.RIGHT);
-         //  headerLogo.scaleAbsoluteWidth(520f);
            doc.add(headerLogo);
 
            LineSeparator line = new LineSeparator();
-           //line.setOffset(); 
            doc.add(line);
          
             
@@ -3164,8 +3168,10 @@ import mt_variables.Overload_variables;
             doc.add(line);
             
             doc.add(new Paragraph(" "));
-            doc.add(new Phrase(Variable_globeal_kotevny_usek.get(i).get_name(),fontHeader)); // nadpis kotevneho useku
-            doc.add(new Paragraph(" "));
+            doc.add(new Phrase(" " + Variable_globeal_kotevny_usek.get(i).get_name(),fontHeader)); // nadpis kotevneho useku
+            
+            doc.add(new Phrase("\n\r " + language.language_label(languageOption, 194) + " : " + Databaza.get(Variable_globeal_kotevny_usek.get(i).get_conductor_number())[0] ,fontText)); 
+            
             
             doc.newPage();
             
@@ -3192,7 +3198,7 @@ import mt_variables.Overload_variables;
         
          int rowNumber =  Table_kotevne_useky.getSelectedRow(); //- (e.getFirstIndex()-e.getLastIndex()); 
              kotevnyUsek docasny_kot_usek = new kotevnyUsek(new_kotevny_usek_name, 0, 0, 0, 0, 0, filename, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, teplotyser, first_Start, teplotyser, teplotyser, teplotyser, first_Start, Variable_Ai_array, Variable_Hi_array, Variable_Hi_array,Variable_Hi_array_nmv,0,0,0);                      
-             mainframe_to_kotevny_usek(docasny_kot_usek);                        
+             mainframe_to_kotevny_usek(docasny_kot_usek,rowNumber);                        
              Variable_globeal_kotevny_usek.set(rowNumber, docasny_kot_usek);  
                        
         try{
@@ -3269,7 +3275,7 @@ import mt_variables.Overload_variables;
             
             kotevnyUsek novy_usek =  new kotevnyUsek(new_kotevny_usek_name, 0, 0, 0, 0, 0, language.language_label(languageOption, 60), 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, teplotyser, teplotyser, teplotyser, teplotyser, teplotyser, teplotyser, Variable_Ai_array, Variable_Hi_array, Variable_Hi_array,Variable_Hi_array_nmv,0,0,0);    
             Variable_globeal_kotevny_usek.add(novy_usek);
-            mainframe_to_kotevny_usek(novy_usek);
+            mainframe_to_kotevny_usek(novy_usek,0);
             Table_kotevne_useky.changeSelection(0, 1, false, false);
            
            
@@ -3286,7 +3292,7 @@ import mt_variables.Overload_variables;
             double[] empty = null;
             kotevnyUsek novy_usek =  new kotevnyUsek(new_kotevny_usek_name, 0, 0, 1, 0, 0, "KOKOT", 4,0.0, 50, 50, 1, 500, 1, 1, 123456789.987654321, 0.189, 0.05, 24.0, 1, 1, 1, 1, 1, 0.35, 0.25, 0.656, 3, 0, 1.25, 1.1, 0.0, true, true, true, true, true, true, empty, empty, empty,empty,0,0,0);    
             Variable_globeal_kotevny_usek.add(novy_usek);
-            //mainframe_to_kotevny_usek(novy_usek);
+            
             
             existnewkotevnyusek = false;
         }
@@ -4305,6 +4311,18 @@ private void seticon() {
         mainframe_warning.setVisible(true);      
     }
     
+    public void Swriter (String S){
+        System.out.println(S);
+    }
+    
+    public void Iwriter (int S){
+        System.out.println(S);
+    }
+     
+    public void Dwriter (double S){
+        System.out.println(S);
+    }
+    
     public static boolean newkotevnyusekstatus(boolean X) {
         existnewkotevnyusek = X;
         return existnewkotevnyusek;
@@ -4621,11 +4639,19 @@ private void seticon() {
           jComboBox_stav_KPB.addItem((String) TextField_teploha_stav13.getText());
           jComboBox_stav_KPB.addItem((String) TextField_teploha_stav14.getText());   
       }
-    
-    private void mainframe_to_kotevny_usek(kotevnyUsek X){
+    /**
+     * 
+     * @param X        input of kotevny usek
+     * @param number   number of selected row if no change in table kotevny usek or number of row before change if change in table_kotevny usek_has beenn made
+     */
+    private void mainframe_to_kotevny_usek(kotevnyUsek X,int number){
         //vloz prave označeny kotevny usek
+        
+        int selekcia_for_name=number;
         try{
-        X.set_name(String.valueOf(Table_kotevne_useky.getValueAt(Table_kotevne_useky.getSelectedRow(), 1)));
+            Swriter("****row");
+        X.set_name(String.valueOf(Table_kotevne_useky.getValueAt(selekcia_for_name, 1)));
+             
         }catch(Exception s){
         
         }
@@ -4677,10 +4703,12 @@ private void seticon() {
    
     private void kotevn_usek_to_mainframe(kotevnyUsek X){
         //vybrany kotevny usek jebne do mainframe
-//        try{
-//        X.set_name(String.valueOf(Table_kotevne_useky.getValueAt(Table_kotevne_useky.getSelectedRow(), 1)));
-//        }catch(NullPointerException s){       
-//        }
+        try{
+     
+        Table_kotevne_useky.setValueAt( X.get_name(), Table_kotevne_useky.getSelectedRow() ,1 );
+        
+        }catch(NullPointerException s){       
+        }
        DecimalFormatSymbols otherSymbols = new DecimalFormatSymbols();
                otherSymbols.setDecimalSeparator('.');
                DecimalFormat df = new DecimalFormat("###.###",otherSymbols);
