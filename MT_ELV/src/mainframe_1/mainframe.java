@@ -3234,8 +3234,8 @@ import mt_variables.Overload_variables;
                                                                 1.,
                                                                 Kot_usek.get_gama_w(),
                                                                 Kot_usek.get_gama_I(),
-                                                                Kot_usek.get_Psi_w(), 
                                                                 Kot_usek.get_Psi_I(), 
+                                                                Kot_usek.get_Psi_w(), 
                                                                 Kot_usek.get_B_I(), 
                                                                 3, 
                                                                 0, 
@@ -3246,10 +3246,10 @@ import mt_variables.Overload_variables;
             
            overload.set_all_variables(Overload,Kot_usek.get_Ai_array());
            overload.compute();
-           System.out.println(overload.z_I);
-           System.out.println(overload.z_Iw);
-           System.out.println(overload.z_W);
-           System.out.println(overload.z_iW);
+           System.out.println("z_I = " + overload.z_I);
+           System.out.println("z_Iw = " + overload.z_Iw);
+           System.out.println("z_W = " + overload.z_W);
+           System.out.println("z_iW = " + overload.z_iW);
             
 //            Object[] Conductor = new Object[7];
 //            Conductor = Databaza.get(selected_conductor_index_from_JComboBox);
