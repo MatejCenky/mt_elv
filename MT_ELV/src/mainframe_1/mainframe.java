@@ -8,6 +8,7 @@
  */
 package mainframe_1;
 
+import com.itextpdf.text.Chunk;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Element;
@@ -3039,6 +3040,9 @@ import mt_variables.Overload_variables;
                       Font.NORMAL );
             Font fontTable = new Font(bf, 6,
                       Font.NORMAL );
+            Font fontScript = new Font(bf, 3,
+                      Font.NORMAL );
+            
             doc.open(); 
             
         for(int i =0;i<Variable_globeal_kotevny_usek.size();i++ ){  // cyklus pre všetky existujuce
@@ -3099,10 +3103,7 @@ import mt_variables.Overload_variables;
                 table.setLockedWidth(true);
                 
                 table.setHorizontalAlignment(Element.ALIGN_LEFT);
-               
-                // t.setPadding(4);
-                // t.setSpacing(4);
-                // t.setBorderWidth(1);
+         
 
                 c1 = new PdfPCell(new Phrase(" "+language.language_label(languageOption, 188),fontText));
                 c1.setHorizontalAlignment(Element.ALIGN_LEFT); 
@@ -3170,8 +3171,82 @@ import mt_variables.Overload_variables;
             doc.add(new Paragraph(" "));
             doc.add(new Phrase(" " + Variable_globeal_kotevny_usek.get(i).get_name(),fontHeader)); // nadpis kotevneho useku
             
-            doc.add(new Phrase("\n\r " + language.language_label(languageOption, 194) + " : " + Databaza.get(Variable_globeal_kotevny_usek.get(i).get_conductor_number())[0] ,fontText)); 
+            doc.add(new Phrase("\n\r " + language.language_label(languageOption, 194) + " : " + Databaza.get(Variable_globeal_kotevny_usek.get(i).get_conductor_number())[0] +
+                               "\n " + language.language_label(languageOption, 195)        ,fontText)); 
             
+            float[] columnWidths3 = {73f,73f,73f,73f,73f,73f,73f};
+             table = new PdfPTable(columnWidths3);
+             table.setTotalWidth(511f); 
+                table.setLockedWidth(true);
+                table.setHorizontalAlignment(Element.ALIGN_CENTER);
+                
+                
+                Chunk superScript = new Chunk("2",fontScript); // superscript
+                superScript.setTextRise(2f);
+                
+                
+                c1 = new PdfPCell();
+                Phrase p1 = new Phrase(language.language_label(languageOption, 196) +"\n" +"d (mm)" ,fontTable);
+                c1.addElement(p1);
+                
+                PdfPCell c2 = new PdfPCell();
+                Phrase p2 = new Phrase(language.language_label(languageOption, 197) +"\n" +"S (mm" ,fontTable);
+                Phrase p22 = new Phrase(")" ,fontTable);
+                c2.addElement(p2);
+                c2.addElement(superScript);
+                c2.addElement(p22);
+                
+                PdfPCell c3 = new PdfPCell();
+                Phrase p3 = new Phrase(language.language_label(languageOption, 198) +"\n" +"m (kg/m)" ,fontTable);
+                c3.addElement(p3);
+                
+                PdfPCell c4 = new PdfPCell();
+                Phrase p4 = new Phrase(language.language_label(languageOption, 199) +"\n" +"E (Mpa)" ,fontTable);
+                c4.addElement(p4);
+                
+                PdfPCell c5 = new PdfPCell();
+                Phrase p5 = new Phrase(language.language_label(languageOption, 200) +"\r" +"\u03B3 (N/m.mm" ,fontTable);
+                Phrase p55 = new Phrase(")" ,fontTable);
+                Phrase p5_total= new Phrase();
+                       p5_total.add(p5);
+                       p5_total.add(superScript);
+                       p5_total.add(p55);
+                c5.addElement(p5_total);
+                
+                
+                PdfPCell c6 = new PdfPCell();
+                Phrase p6 = new Phrase(language.language_label(languageOption, 201) +"\n" +"\u03B1 (1/°C)" ,fontTable);
+                c6.addElement(p6);
+                
+                PdfPCell c7 = new PdfPCell();
+                Phrase p7 = new Phrase(language.language_label(languageOption, 202) +"\n" +"F (N)" ,fontTable);
+                c7.addElement(p7);
+                
+                c1.setHorizontalAlignment(c1.ALIGN_CENTER);
+                c1.setVerticalAlignment(c1.ALIGN_CENTER);
+                c2.setHorizontalAlignment(Element.ALIGN_CENTER);
+                c2.setVerticalAlignment(Element.ALIGN_CENTER); 
+                c3.setHorizontalAlignment(Element.ALIGN_CENTER);
+                c3.setVerticalAlignment(Element.ALIGN_CENTER); 
+                c4.setHorizontalAlignment(Element.ALIGN_CENTER);
+                c4.setVerticalAlignment(Element.ALIGN_CENTER); 
+                c5.setHorizontalAlignment(Element.ALIGN_CENTER);
+                c5.setVerticalAlignment(Element.ALIGN_CENTER); 
+                c6.setHorizontalAlignment(Element.ALIGN_CENTER);
+                c6.setVerticalAlignment(Element.ALIGN_CENTER); 
+                c7.setHorizontalAlignment(Element.ALIGN_CENTER);
+                c7.setVerticalAlignment(Element.ALIGN_CENTER); 
+                
+                table.addCell(c1);
+                table.addCell(c2);
+                table.addCell(c3);
+                table.addCell(c4);
+                table.addCell(c5);
+                table.addCell(c6);
+                table.addCell(c7);
+                
+                doc.add(table);
+                
             
             doc.newPage();
             

@@ -344,6 +344,14 @@ public static void constructor(){
 /*194*/  language.SK.add("Typ lana");       language.CZ.add("I-SK");                     language.EN.add("I-SK");
 /*195*/  language.SK.add("Parametre Lana");       language.CZ.add("I-SK");                     language.EN.add("I-SK");
 
+/*196*/  language.SK.add("Menovitý priemer");       language.CZ.add("I-SK");                     language.EN.add("I-SK");
+/*197*/  language.SK.add("Menovitý prierez");       language.CZ.add("I-SK");                     language.EN.add("I-SK");
+/*198*/  language.SK.add("Menovitá hmotnosť");       language.CZ.add("I-SK");                     language.EN.add("I-SK");
+/*199*/  language.SK.add("Modul pružnosti");       language.CZ.add("I-SK");                     language.EN.add("I-SK");
+/*200*/  language.SK.add("Merná tiež lana");       language.CZ.add("I-SK");                     language.EN.add("I-SK");
+/*201*/  language.SK.add("Koef. tep. rozťažnosti");       language.CZ.add("I-SK");                     language.EN.add("I-SK");
+/*202*/  language.SK.add("Matematická únosnosť lana");       language.CZ.add("I-SK");                     language.EN.add("I-SK");
+
 
  inicializovane = true;
 }
