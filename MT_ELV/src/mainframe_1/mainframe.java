@@ -46,9 +46,13 @@ import javax.swing.table.DefaultTableModel;
 import mt_main.language;
 import mt_main.startPanel;
 import static mt_main.startPanel.languageOption;
+import mt_math.conductor_creeping;
 import mt_math.overload;
+import mt_math.state_equation;
+import mt_variables.Conductor_creeping_variables;
 import mt_variables.Conductor_variables;
 import mt_variables.Overload_variables;
+import mt_variables.State_equation_variables;
 
 /**
  *
@@ -3394,10 +3398,11 @@ import mt_variables.Overload_variables;
         
         ///MAIN CALCULATION
         
-        
-            int selected_conductor_index_from_JComboBox = Kot_usek.get_conductor_number();           
+            // setting the conductor - prerequisite
+            int selected_conductor_index_from_JComboBox = Kot_usek.get_conductor_number();
             Conductor_variables Conductor =  new  Conductor_variables (Databaza.get(selected_conductor_index_from_JComboBox));   
             
+            // overload class - first step
             Overload_variables Overload = new Overload_variables(Conductor,
                                                                 Conductor.get_m()*9.80665,
                                                                 Kot_usek.get_ro_I(),
@@ -3422,18 +3427,49 @@ import mt_variables.Overload_variables;
                                                                 Kot_usek.get_C_cl(),
                                                                 Kot_usek.get_h_c_mean());
 
-            
+           // setting variables into overload vlass 
            overload.set_all_variables(Overload,Kot_usek.get_Ai_array());
+           // compute overloads
            overload.compute();
+           // show results in console
+           System.out.println("Overload class results:");
            System.out.println("z_I = " + overload.z_I);
            System.out.println("z_Iw = " + overload.z_Iw);
            System.out.println("z_W = " + overload.z_W);
            System.out.println("z_iW = " + overload.z_iW);
+           System.out.println("");
+           
+        // conductor creeping class - second step
+           /* Txp */
+           Conductor_creeping_variables Creeping_txp = new Conductor_creeping_variables(Conductor, 
+                                                                                    Conductor.get_m()*9.80665, 
+                                                                                    Variable_streda_roc_teplota, 
+                                                                                    Variable_T0_zivotnost, 
+                                                                                    Variable_Tp_prechodna_doba)
+            // set variables to state equation class 
+            // - compute sigma_HT for conductor creeping variable 
+            // - compute thermal shift for [i]th temperature
+            State_equation_variables State = new State_equation_variables(Conductor, Variable_streda_roc_teplota, -5, Variable_zakladne_mech_napatie_lana_pre_minus5, 1)
+            state_equation.set_all_variables(State, Variable_Ai_array, Variable_DeltaHi_array);
+            state_equation.compute_sigma_H(1, Variable_mid_span);
             
-//            Object[] Conductor = new Object[7];
-//            Conductor = Databaza.get(selected_conductor_index_from_JComboBox);
-//            //vlož 4 premene do state equation
-////            state_equation.set_variables_from_conductor(Conductor);
+            // set variables to conductor creeping class 
+            // - compute thermal shift for [i]th temperature
+            conductor_creeping.set_all_variables(Creeping_txp, state_equation.sigma_h1);
+            conductor_creeping.compute_transient_thermal_shift_value(Variable_Tp_prechodna_doba);
+            conductor_creeping.set_Txp(Variable_teploty_stav_rovnica[i]); // input as Txp to the final state equation
+            
+            /* Tx0 */
+            Conductor_creeping_variables Creeping_tx0 = new Conductor_creeping_variables(Conductor, 
+                                                                                    Conductor.get_m()*9.80665, 
+                                                                                    -5, 
+                                                                                    Variable_T0_zivotnost, 
+                                                                                    Variable_Tp_prechodna_doba)
+            // set variables to conductor creeping class 
+            // - compute thermal shift for default temperature; -5 degrees
+            conductor_creeping.set_all_variables(Creeping_tx0, Variable_zakladne_mech_napatie_lana_pre_minus5);
+            conductor_creeping.compute_transient_thermal_shift_value(Variable_Tp_prechodna_doba);
+            conductor_creeping.set_Tx0(-5); // input as Tx0 to the final state equation
 
         } // if check box enabled
         } // do  pocet kotevnych usekov
