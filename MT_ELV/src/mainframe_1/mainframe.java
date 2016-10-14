@@ -3174,6 +3174,8 @@ import mt_variables.Overload_variables;
             doc.add(new Phrase("\n\r " + language.language_label(languageOption, 194) + " : " + Databaza.get(Variable_globeal_kotevny_usek.get(i).get_conductor_number())[0] +
                                "\n " + language.language_label(languageOption, 195)        ,fontText)); 
             
+            
+            //conductoe info table http://tutorials.jenkov.com/java-itext/paragraph.html help
             float[] columnWidths3 = {73f,73f,73f,73f,73f,73f,73f};
              table = new PdfPTable(columnWidths3);
              table.setTotalWidth(511f); 
@@ -3186,57 +3188,124 @@ import mt_variables.Overload_variables;
                 
                 
                 c1 = new PdfPCell();
-                Phrase p1 = new Phrase(language.language_label(languageOption, 196) +"\n" +"d (mm)" ,fontTable);
-                c1.addElement(p1);
+                Chunk p1 = new Chunk(language.language_label(languageOption, 196) +"\n" +"d (mm)" ,fontTable);
+                Paragraph p1_total= new Paragraph(10);
+                          p1_total.add(p1);
+                p1_total.setAlignment(Element.ALIGN_CENTER);
+               p1_total.setSpacingAfter(5);
+               p1_total.setSpacingBefore(10);
+                c1.addElement(p1_total);
                 
                 PdfPCell c2 = new PdfPCell();
-                Phrase p2 = new Phrase(language.language_label(languageOption, 197) +"\n" +"S (mm" ,fontTable);
-                Phrase p22 = new Phrase(")" ,fontTable);
-                c2.addElement(p2);
-                c2.addElement(superScript);
-                c2.addElement(p22);
+                Chunk p2 = new Chunk(language.language_label(languageOption, 197) +"\n" +"S (mm" ,fontTable);
+                Chunk p22 = new Chunk(")" ,fontTable);
+                Paragraph p2_total= new Paragraph(10);
+                       p2_total.add(p2);
+                       p2_total.add(superScript);
+                       p2_total.add(p22);
+                p2_total.setAlignment(Element.ALIGN_CENTER);       
+                c2.addElement(p2_total);
+                
+                
                 
                 PdfPCell c3 = new PdfPCell();
-                Phrase p3 = new Phrase(language.language_label(languageOption, 198) +"\n" +"m (kg/m)" ,fontTable);
-                c3.addElement(p3);
+                Chunk p3 = new Chunk(language.language_label(languageOption, 198) +"\n" +"m (kg/m)" ,fontTable);
+                Paragraph p3_total= new Paragraph(10);
+                          p3_total.add(p3);
+                p3_total.setAlignment(Element.ALIGN_CENTER); 
+                c3.addElement(p3_total);
                 
                 PdfPCell c4 = new PdfPCell();
-                Phrase p4 = new Phrase(language.language_label(languageOption, 199) +"\n" +"E (Mpa)" ,fontTable);
-                c4.addElement(p4);
+                Chunk p4 = new Chunk(language.language_label(languageOption, 199) +"\n" +"E (Mpa)" ,fontTable);
+                Paragraph p4_total= new Paragraph(10);
+                          p4_total.add(p4);
+                p4_total.setAlignment(Element.ALIGN_CENTER); 
+                c4.addElement(p4_total);
                 
                 PdfPCell c5 = new PdfPCell();
-                Phrase p5 = new Phrase(language.language_label(languageOption, 200) +"\r" +"\u03B3 (N/m.mm" ,fontTable);
-                Phrase p55 = new Phrase(")" ,fontTable);
-                Phrase p5_total= new Phrase();
+                Chunk p5 = new Chunk(language.language_label(languageOption, 200) +"\r" +"\u03B3 (N/m.mm" ,fontTable);
+                Chunk p55 = new Chunk(")" ,fontTable);
+                Paragraph p5_total= new Paragraph(10);
                        p5_total.add(p5);
                        p5_total.add(superScript);
                        p5_total.add(p55);
+                p5_total.setAlignment(Element.ALIGN_CENTER);       
                 c5.addElement(p5_total);
                 
                 
                 PdfPCell c6 = new PdfPCell();
-                Phrase p6 = new Phrase(language.language_label(languageOption, 201) +"\n" +"\u03B1 (1/°C)" ,fontTable);
-                c6.addElement(p6);
+                Chunk p6 = new Chunk(language.language_label(languageOption, 201) +"\n" +"\u03B1 (1/°C)" ,fontTable);
+                Paragraph p6_total= new Paragraph(10);
+                          p6_total.add(p6);
+                p6_total.setAlignment(Element.ALIGN_CENTER); 
+                c6.addElement(p6_total);
                 
                 PdfPCell c7 = new PdfPCell();
-                Phrase p7 = new Phrase(language.language_label(languageOption, 202) +"\n" +"F (N)" ,fontTable);
-                c7.addElement(p7);
+                Chunk p7 = new Chunk(language.language_label(languageOption, 202) +"\n" +"F (N)" ,fontTable);
+                Paragraph p7_total= new Paragraph(10);
+                          p7_total.add(p7);
+                p7_total.setAlignment(Element.ALIGN_CENTER); 
+                c7.addElement(p7_total);
                 
-                c1.setHorizontalAlignment(c1.ALIGN_CENTER);
-                c1.setVerticalAlignment(c1.ALIGN_CENTER);
-                c2.setHorizontalAlignment(Element.ALIGN_CENTER);
-                c2.setVerticalAlignment(Element.ALIGN_CENTER); 
-                c3.setHorizontalAlignment(Element.ALIGN_CENTER);
-                c3.setVerticalAlignment(Element.ALIGN_CENTER); 
-                c4.setHorizontalAlignment(Element.ALIGN_CENTER);
-                c4.setVerticalAlignment(Element.ALIGN_CENTER); 
-                c5.setHorizontalAlignment(Element.ALIGN_CENTER);
-                c5.setVerticalAlignment(Element.ALIGN_CENTER); 
-                c6.setHorizontalAlignment(Element.ALIGN_CENTER);
-                c6.setVerticalAlignment(Element.ALIGN_CENTER); 
-                c7.setHorizontalAlignment(Element.ALIGN_CENTER);
-                c7.setVerticalAlignment(Element.ALIGN_CENTER); 
+                // pdf table conductor values
+        
+                PdfPCell c8 = new PdfPCell();
+                Chunk p8 = new Chunk(  String.valueOf(Databaza.get(Variable_globeal_kotevny_usek.get(i).get_conductor_number())[1] ) ,fontTable);
+                Paragraph p8_total= new Paragraph(10);
+                          p8_total.add(p8);
+                p8_total.setAlignment(Element.ALIGN_CENTER);
+                 p8_total.setSpacingAfter(5);
+               p8_total.setSpacingBefore(5);
+                c8.addElement(p8_total);
                 
+                 PdfPCell c9 = new PdfPCell();
+                Chunk p9 = new Chunk(  String.valueOf(Databaza.get(Variable_globeal_kotevny_usek.get(i).get_conductor_number())[2] ) ,fontTable);
+                Paragraph p9_total= new Paragraph(10);
+                          p9_total.add(p9);
+                p9_total.setAlignment(Element.ALIGN_CENTER); 
+                c9.addElement(p9_total);
+                
+                 PdfPCell c10 = new PdfPCell();
+                Chunk p10 = new Chunk(  String.valueOf(Databaza.get(Variable_globeal_kotevny_usek.get(i).get_conductor_number())[3] ) ,fontTable);
+                Paragraph p10_total= new Paragraph(10);
+                          p10_total.add(p10);
+                p10_total.setAlignment(Element.ALIGN_CENTER); 
+                c10.addElement(p10_total);
+                
+                 PdfPCell c11 = new PdfPCell();
+                Chunk p11 = new Chunk(  String.valueOf(Databaza.get(Variable_globeal_kotevny_usek.get(i).get_conductor_number())[4] ) ,fontTable);
+                Paragraph p11_total= new Paragraph(10);
+                          p11_total.add(p11);
+                p11_total.setAlignment(Element.ALIGN_CENTER); 
+                c11.addElement(p11_total);
+                
+                double m = (double) Databaza.get(Variable_globeal_kotevny_usek.get(i).get_conductor_number())[3];
+                double S = (double) Databaza.get(Variable_globeal_kotevny_usek.get(i).get_conductor_number())[2];
+                
+                double gamma =  (m*9.80665 )/S;
+                
+                 PdfPCell c12 = new PdfPCell();
+                Chunk p12 = new Chunk(  String.valueOf(gamma) ,fontTable);
+                Paragraph p12_total= new Paragraph(10);
+                          p12_total.add(p12);
+                p12_total.setAlignment(Element.ALIGN_CENTER); 
+                c12.addElement(p12_total);
+                
+                 PdfPCell c13 = new PdfPCell();
+                Chunk p13 = new Chunk(  String.valueOf(Databaza.get(Variable_globeal_kotevny_usek.get(i).get_conductor_number())[5] ) ,fontTable);
+                Paragraph p13_total= new Paragraph(10);
+                          p13_total.add(p13);
+                p13_total.setAlignment(Element.ALIGN_CENTER); 
+                c13.addElement(p13_total);
+                
+                 PdfPCell c14 = new PdfPCell();
+                Chunk p14 = new Chunk(  String.valueOf(Databaza.get(Variable_globeal_kotevny_usek.get(i).get_conductor_number())[6] ) ,fontTable);
+                Paragraph p14_total= new Paragraph(10);
+                          p14_total.add(p14);
+                p14_total.setAlignment(Element.ALIGN_CENTER); 
+                c14.addElement(p14_total);
+                
+             
                 table.addCell(c1);
                 table.addCell(c2);
                 table.addCell(c3);
@@ -3245,6 +3314,14 @@ import mt_variables.Overload_variables;
                 table.addCell(c6);
                 table.addCell(c7);
                 
+                
+                table.addCell(c8);
+                table.addCell(c9);
+                table.addCell(c10);
+                table.addCell(c11);
+                table.addCell(c12);
+                table.addCell(c13);
+                table.addCell(c14);
                 doc.add(table);
                 
             
