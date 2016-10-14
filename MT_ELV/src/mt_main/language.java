@@ -348,7 +348,10 @@ public static void constructor(){
 /*197*/  language.SK.add("Menovitý prierez");       language.CZ.add("I-SK");                     language.EN.add("I-SK");
 /*198*/  language.SK.add("Menovitá hmotnosť");       language.CZ.add("I-SK");                     language.EN.add("I-SK");
 /*199*/  language.SK.add("Modul pružnosti");       language.CZ.add("I-SK");                     language.EN.add("I-SK");
-/*200*/  language.SK.add("Merná tiež lana");       language.CZ.add("I-SK");                     language.EN.add("I-SK");
+/*200*/  language.SK.add("Merná tiaž lana");       language.CZ.add("I-SK");                     language.EN.add("I-SK");
+/*201*/  language.SK.add("Koef. tep. rozťažnosti");       language.CZ.add("I-SK");                     language.EN.add("I-SK");
+/*202*/  language.SK.add("Mat. únosnosť lana");       language.CZ.add("I-SK");                     language.EN.add("I-SK");
+
 /*201*/  language.SK.add("Koef. tep. rozťažnosti");       language.CZ.add("I-SK");                     language.EN.add("I-SK");
 /*202*/  language.SK.add("Mat. únosnosť lana");       language.CZ.add("I-SK");                     language.EN.add("I-SK");
 

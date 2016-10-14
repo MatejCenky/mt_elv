@@ -3005,7 +3005,9 @@ import mt_variables.Overload_variables;
         // RESAVE actual window
         
         int rowNumber =  Table_kotevne_useky.getSelectedRow(); //- (e.getFirstIndex()-e.getLastIndex()); 
-             kotevnyUsek docasny_kot_usek = new kotevnyUsek(new_kotevny_usek_name, 0, 0, 0, 0, 0, filename, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, teplotyser, first_Start, teplotyser, teplotyser, teplotyser, first_Start, Variable_Ai_array, Variable_Hi_array, Variable_Hi_array,Variable_Hi_array_nmv,0,0,0);                      
+             double[] empty = null;
+             double[][] empty2 = null;
+             kotevnyUsek docasny_kot_usek = new kotevnyUsek(new_kotevny_usek_name, 0, 0, 0, 0, 0, filename, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, teplotyser, first_Start, teplotyser, teplotyser, teplotyser, first_Start, Variable_Ai_array, Variable_Hi_array, Variable_Hi_array,Variable_Hi_array_nmv,0,0,0,empty,empty,empty,empty,empty,empty,empty2);                      
              mainframe_to_kotevny_usek(docasny_kot_usek,rowNumber);                        
              Variable_globeal_kotevny_usek.set(rowNumber, docasny_kot_usek);  
              
@@ -3042,6 +3044,13 @@ import mt_variables.Overload_variables;
                       Font.NORMAL );
             Font fontScript = new Font(bf, 3,
                       Font.NORMAL );
+            
+            DecimalFormatSymbols otherSymbols = new DecimalFormatSymbols();
+               otherSymbols.setDecimalSeparator('.');
+               DecimalFormat decimal_trimiesta = new DecimalFormat("####.###",otherSymbols);  // definovany počet desatinnych miest
+               DecimalFormat decimal_long = new DecimalFormat("##.########",otherSymbols);  // definovany počet desatinnych miest
+               DecimalFormat decimal_none = new DecimalFormat("########",otherSymbols);  // definovany počet desatinnych miest
+            
             
             doc.open(); 
             
@@ -3172,7 +3181,7 @@ import mt_variables.Overload_variables;
             doc.add(new Phrase(" " + Variable_globeal_kotevny_usek.get(i).get_name(),fontHeader)); // nadpis kotevneho useku
             
             doc.add(new Phrase("\n\r " + language.language_label(languageOption, 194) + " : " + Databaza.get(Variable_globeal_kotevny_usek.get(i).get_conductor_number())[0] +
-                               "\n " + language.language_label(languageOption, 195)        ,fontText)); 
+                               "\n " + language.language_label(languageOption, 195) + " : "  ,fontText)); 
             
             
             //conductoe info table http://tutorials.jenkov.com/java-itext/paragraph.html help
@@ -3250,7 +3259,7 @@ import mt_variables.Overload_variables;
                 // pdf table conductor values
         
                 PdfPCell c8 = new PdfPCell();
-                Chunk p8 = new Chunk(  String.valueOf(Databaza.get(Variable_globeal_kotevny_usek.get(i).get_conductor_number())[1] ) ,fontTable);
+                Chunk p8 = new Chunk(  decimal_trimiesta.format(Databaza.get(Variable_globeal_kotevny_usek.get(i).get_conductor_number())[1] ) ,fontTable);
                 Paragraph p8_total= new Paragraph(10);
                           p8_total.add(p8);
                 p8_total.setAlignment(Element.ALIGN_CENTER);
@@ -3259,21 +3268,21 @@ import mt_variables.Overload_variables;
                 c8.addElement(p8_total);
                 
                  PdfPCell c9 = new PdfPCell();
-                Chunk p9 = new Chunk(  String.valueOf(Databaza.get(Variable_globeal_kotevny_usek.get(i).get_conductor_number())[2] ) ,fontTable);
+                Chunk p9 = new Chunk(  decimal_trimiesta.format(Databaza.get(Variable_globeal_kotevny_usek.get(i).get_conductor_number())[2] ) ,fontTable);
                 Paragraph p9_total= new Paragraph(10);
                           p9_total.add(p9);
                 p9_total.setAlignment(Element.ALIGN_CENTER); 
                 c9.addElement(p9_total);
                 
                  PdfPCell c10 = new PdfPCell();
-                Chunk p10 = new Chunk(  String.valueOf(Databaza.get(Variable_globeal_kotevny_usek.get(i).get_conductor_number())[3] ) ,fontTable);
+                Chunk p10 = new Chunk(  decimal_trimiesta.format(Databaza.get(Variable_globeal_kotevny_usek.get(i).get_conductor_number())[3] ) ,fontTable);
                 Paragraph p10_total= new Paragraph(10);
                           p10_total.add(p10);
                 p10_total.setAlignment(Element.ALIGN_CENTER); 
                 c10.addElement(p10_total);
                 
                  PdfPCell c11 = new PdfPCell();
-                Chunk p11 = new Chunk(  String.valueOf(Databaza.get(Variable_globeal_kotevny_usek.get(i).get_conductor_number())[4] ) ,fontTable);
+                Chunk p11 = new Chunk(  decimal_none.format(Databaza.get(Variable_globeal_kotevny_usek.get(i).get_conductor_number())[4] ) ,fontTable);
                 Paragraph p11_total= new Paragraph(10);
                           p11_total.add(p11);
                 p11_total.setAlignment(Element.ALIGN_CENTER); 
@@ -3285,21 +3294,21 @@ import mt_variables.Overload_variables;
                 double gamma =  (m*9.80665 )/S;
                 
                  PdfPCell c12 = new PdfPCell();
-                Chunk p12 = new Chunk(  String.valueOf(gamma) ,fontTable);
+                Chunk p12 = new Chunk(  decimal_long.format(gamma) ,fontTable);
                 Paragraph p12_total= new Paragraph(10);
                           p12_total.add(p12);
                 p12_total.setAlignment(Element.ALIGN_CENTER); 
                 c12.addElement(p12_total);
                 
                  PdfPCell c13 = new PdfPCell();
-                Chunk p13 = new Chunk(  String.valueOf(Databaza.get(Variable_globeal_kotevny_usek.get(i).get_conductor_number())[5] ) ,fontTable);
+                Chunk p13 = new Chunk(  decimal_long.format(Databaza.get(Variable_globeal_kotevny_usek.get(i).get_conductor_number())[5] ) ,fontTable);
                 Paragraph p13_total= new Paragraph(10);
                           p13_total.add(p13);
                 p13_total.setAlignment(Element.ALIGN_CENTER); 
                 c13.addElement(p13_total);
                 
-                 PdfPCell c14 = new PdfPCell();
-                Chunk p14 = new Chunk(  String.valueOf(Databaza.get(Variable_globeal_kotevny_usek.get(i).get_conductor_number())[6] ) ,fontTable);
+                PdfPCell c14 = new PdfPCell();
+                Chunk p14 = new Chunk(  decimal_none.format(Databaza.get(Variable_globeal_kotevny_usek.get(i).get_conductor_number())[6] ) ,fontTable);
                 Paragraph p14_total= new Paragraph(10);
                           p14_total.add(p14);
                 p14_total.setAlignment(Element.ALIGN_CENTER); 
@@ -3324,7 +3333,23 @@ import mt_variables.Overload_variables;
                 table.addCell(c14);
                 doc.add(table);
                 
-            
+           float[] columnWidths4 = {292f,146f};
+             table = new PdfPTable(columnWidths4);
+             table.setTotalWidth(511f); 
+             table.setLockedWidth(true); 
+               
+           Chunk subScript = new Chunk("ALT",fontScript); // superscript
+                 subScript.setTextRise(-2f);  
+             
+           c1 = new PdfPCell();
+           Paragraph par_left= new Paragraph(15);
+           Chunk hoz_zlozka = new Chunk(  decimal_long.format(gamma) ,fontTable);
+           Chunk str_vyska = new Chunk(  decimal_long.format(gamma) ,fontTable);
+           Chunk char_terenu_nadpis = new Chunk(  decimal_long.format(gamma) ,fontTable);
+           Chunk char_terenu_text = new Chunk(  decimal_long.format(gamma) ,fontTable);
+           Chunk typ_terenu_nadpis = new Chunk(  decimal_long.format(gamma) ,fontTable);
+           Chunk typ_terenu_text = new Chunk(  decimal_long.format(gamma) ,fontTable);
+           
             doc.newPage();
             
         } // if check box enabled
@@ -3349,7 +3374,9 @@ import mt_variables.Overload_variables;
         // RESAVE actual window
         
          int rowNumber =  Table_kotevne_useky.getSelectedRow(); //- (e.getFirstIndex()-e.getLastIndex()); 
-             kotevnyUsek docasny_kot_usek = new kotevnyUsek(new_kotevny_usek_name, 0, 0, 0, 0, 0, filename, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, teplotyser, first_Start, teplotyser, teplotyser, teplotyser, first_Start, Variable_Ai_array, Variable_Hi_array, Variable_Hi_array,Variable_Hi_array_nmv,0,0,0);                      
+             double[] empty = null;
+             double[][] empty2 = null;
+             kotevnyUsek docasny_kot_usek = new kotevnyUsek(new_kotevny_usek_name, 0, 0, 0, 0, 0, filename, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, teplotyser, first_Start, teplotyser, teplotyser, teplotyser, first_Start, Variable_Ai_array, Variable_Hi_array, Variable_Hi_array,Variable_Hi_array_nmv,0,0,0,empty,empty,empty,empty,empty,empty,empty2);                     
              mainframe_to_kotevny_usek(docasny_kot_usek,rowNumber);                        
              Variable_globeal_kotevny_usek.set(rowNumber, docasny_kot_usek);  
                        
@@ -3424,8 +3451,9 @@ import mt_variables.Overload_variables;
            new_kotevny_usek_name=language.language_label(languageOption, 60);
            
             modelTable.addRow(new Object[]{(Boolean) false,(String) new_kotevny_usek_name});
-            
-            kotevnyUsek novy_usek =  new kotevnyUsek(new_kotevny_usek_name, 0, 0, 0, 0, 0, language.language_label(languageOption, 60), 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, teplotyser, teplotyser, teplotyser, teplotyser, teplotyser, teplotyser, Variable_Ai_array, Variable_Hi_array, Variable_Hi_array,Variable_Hi_array_nmv,0,0,0);    
+            double[] empty = null;
+            double[][] empty2 = null;
+            kotevnyUsek novy_usek =  new kotevnyUsek(new_kotevny_usek_name, 0, 0, 0, 0, 0, language.language_label(languageOption, 60), 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, teplotyser, teplotyser, teplotyser, teplotyser, teplotyser, teplotyser, Variable_Ai_array, Variable_Hi_array, Variable_Hi_array,Variable_Hi_array_nmv,0,0,0,empty,empty,empty,empty,empty,empty,empty2);    
             Variable_globeal_kotevny_usek.add(novy_usek);
             mainframe_to_kotevny_usek(novy_usek,0);
             Table_kotevne_useky.changeSelection(0, 1, false, false);
@@ -3442,7 +3470,8 @@ import mt_variables.Overload_variables;
         if (existnewkotevnyusek == true){  // ak pride že vytvorit od Jdialog tak vytvor ak uzivatel zavie Jdilog križiok tam nie
             modelTable.addRow(new Object[]{(Boolean) false,(String) new_kotevny_usek_name});
             double[] empty = null;
-            kotevnyUsek novy_usek =  new kotevnyUsek(new_kotevny_usek_name, 0, 0, 1, 0, 0, "KOKOT", 4,0.0, 50, 50, 1, 500, 1, 1, 123456789.987654321, 0.189, 0.05, 24.0, 1, 1, 1, 1, 1, 0.35, 0.25, 0.656, 3, 0, 1.25, 1.1, 0.0, true, true, true, true, true, true, empty, empty, empty,empty,0,0,0);    
+            double[][] empty2 = null;
+            kotevnyUsek novy_usek =  new kotevnyUsek(new_kotevny_usek_name, 0, 0, 1, 0, 0, "KOKOT", 4,0.0, 50, 50, 1, 500, 1, 1, 123456789.987654321, 0.189, 0.05, 24.0, 1, 1, 1, 1, 1, 0.35, 0.25, 0.656, 3, 0, 1.25, 1.1, 0.0, true, true, true, true, true, true, empty, empty, empty,empty,0,0,0,empty,empty,empty,empty,empty,empty,empty2);    
             Variable_globeal_kotevny_usek.add(novy_usek);
             
             
@@ -5232,6 +5261,16 @@ class kotevnyUsek extends javax.swing.JFrame{
     private  double[] DeltaHi_array_over;
     private  double[] Hi_array_over;
     private  double[] Hi_array_nmv_over;
+    
+                              private  double[] vysledky_tlaky6_over;
+                              private  double[] vysledky_pretazenia5_over;
+                              private  double[] vysledky_sigmaH_MT_over;
+                              private  double[] vysledky_c_MT_over;
+                              private  double[] vysledky_pretazenia_MT_over;
+                              private  double[] vysledky_sily_MT_over;
+                              private  double[][] vysledky_vid_priehyb_MT_over;
+    
+    
     //constructor
     
     
@@ -5280,7 +5319,16 @@ class kotevnyUsek extends javax.swing.JFrame{
                                 double[] H1_array_nmv,
                                 double h_c_mean_window_vypocitana,
                                 double h_c_mean_window_vlastna,
-                                double str_rozpatie
+                                double str_rozpatie,
+            
+                                double[] vysledky_tlaky6,
+                                double[] vysledky_zatazenia5,
+                                double[] vysledky_sigmaH_MT,
+                                double[] vysledky_c_MT,
+                                double[] vysledky_pretazenia_MT,
+                                double[] vysledky_sily_MT,
+                                double[][] vysledky_vid_priehyb_MT
+                                
     
     ){
         
@@ -5513,6 +5561,27 @@ class kotevnyUsek extends javax.swing.JFrame{
     public double[] get_Hi_array_nvm(){
         return Hi_array_nmv_over;
     }
+    public double[] get_vysledky_tlaky6(){
+        return vysledky_tlaky6_over;
+    }
+    public double[] get_vysledky_pretazenia5(){
+        return vysledky_pretazenia5_over;
+    }
+    public double[] get_vysledky_sigmaH_MT(){
+        return vysledky_sigmaH_MT_over;
+    }
+    public double[] get_vysledky_c_MT(){
+        return vysledky_c_MT_over;
+    }
+    public double[] get_vysledky_pretazenia_MT(){
+        return vysledky_pretazenia_MT_over;
+    }
+    public double[] get_vysledky_sily_MT(){
+        return vysledky_sily_MT_over;
+    }
+    public double[][] get_vysledky_vid_priehyb_MT(){
+        return vysledky_vid_priehyb_MT_over;
+    }
     
     public void set_name(String name_kot_useku){
         name=name_kot_useku;
@@ -5695,6 +5764,25 @@ class kotevnyUsek extends javax.swing.JFrame{
     public void set_Hi_array_nvm(double[] H1_array_nvm){
         Hi_array_nmv_over= H1_array_nvm;
     }
-    
-    
+     public void set_vysledky_tlaky6(double[] vysledky_tlaky6){
+        vysledky_tlaky6_over= vysledky_tlaky6;
+    }
+      public void set_vysledky_pretazenia6(double[] vysledky_pretazenia4){
+        vysledky_pretazenia5_over= vysledky_pretazenia4;
+    }
+        public void set_vysledky_sigmaH_MT(double[] vysledky_sigmaH_MT){
+        vysledky_sigmaH_MT_over= vysledky_sigmaH_MT;
+    }
+        public void set_vysledky_c_MT(double[] vysledky_c_MT){
+        vysledky_c_MT_over= vysledky_c_MT;
+    }
+        public void set_vysledky_pretazenia_MT(double[] vysledky_pretazenia_MT){
+        vysledky_pretazenia_MT_over= vysledky_pretazenia_MT;
+    }
+            public void set_vysledky_sily_MT(double[] vysledky_sily_MT){
+       vysledky_sily_MT_over= vysledky_sily_MT;
+    }
+       public void set_vysledky_vid_priehyb_M(double[][] vysledky_vid_priehyb_MT){
+       vysledky_vid_priehyb_MT_over= vysledky_vid_priehyb_MT;
+    }        
 }
