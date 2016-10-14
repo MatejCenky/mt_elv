@@ -112,13 +112,13 @@ public static void constructor(){
 /*53*/  language.SK.add("Uložiť projekt");                     language.CZ.add("Ulozit cestu");                     language.EN.add("Save path");
 /*54*/  language.SK.add("Uložiť projekt ako");                     language.CZ.add("Ulozit cestu");                     language.EN.add("Save path");
 /*55*/  language.SK.add("Uložiť výsledky projektu");                     language.CZ.add("Ulozit cestu");                     language.EN.add("Save path");
-/*56*/  language.SK.add("Nový koťevný úsek");                     language.CZ.add("Ulozit cestu");                     language.EN.add("Save path");
-/*57*/  language.SK.add("Zmazať koťevný úsek");                     language.CZ.add("Ulozit cestu");                     language.EN.add("Save path");
+/*56*/  language.SK.add("Nový kotevný úsek");                     language.CZ.add("Ulozit cestu");                     language.EN.add("Save path");
+/*57*/  language.SK.add("Zmazať kotevný úsek");                     language.CZ.add("Ulozit cestu");                     language.EN.add("Save path");
 /*58*/  language.SK.add("Spustiť výpočet");                     language.CZ.add("Ulozit cestu");                     language.EN.add("Save path");
 /*59*/  language.SK.add("Tlač do PDF");                     language.CZ.add("Ulozit cestu");                     language.EN.add("Save path");
 
 // Main_frame_jdialog_create_kotevny_usek
-/*60*/  language.SK.add("Nový koťevný úsek");                     language.CZ.add("Ulozit cestu");                     language.EN.add("Save path");
+/*60*/  language.SK.add("Nový kotevný úsek");                     language.CZ.add("Ulozit cestu");                     language.EN.add("Save path");
 /*61*/  language.SK.add("Vytvoriť");                     language.CZ.add("Ulozit cestu");                     language.EN.add("Save path");
 /*62*/  language.SK.add("Názov");                     language.CZ.add("Ulozit cestu");                     language.EN.add("Save path");
 
@@ -350,7 +350,7 @@ public static void constructor(){
 /*199*/  language.SK.add("Modul pružnosti");       language.CZ.add("I-SK");                     language.EN.add("I-SK");
 /*200*/  language.SK.add("Merná tiež lana");       language.CZ.add("I-SK");                     language.EN.add("I-SK");
 /*201*/  language.SK.add("Koef. tep. rozťažnosti");       language.CZ.add("I-SK");                     language.EN.add("I-SK");
-/*202*/  language.SK.add("Matematická únosnosť lana");       language.CZ.add("I-SK");                     language.EN.add("I-SK");
+/*202*/  language.SK.add("Mat. únosnosť lana");       language.CZ.add("I-SK");                     language.EN.add("I-SK");
 
 
  inicializovane = true;
