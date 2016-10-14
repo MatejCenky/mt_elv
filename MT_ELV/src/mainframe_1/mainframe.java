@@ -201,8 +201,9 @@ import mt_variables.State_equation_variables;
 
                     int rowNumber = Table_kotevne_useky.getSelectedRow(); //- (e.getFirstIndex()-e.getLastIndex());
                     if (povodna_hodnota_selekcie != rowNumber) {
-
-                        kotevnyUsek docasny_kot_usek = new kotevnyUsek(new_kotevny_usek_name, 0, 0, 0, 0, 0, filename, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, teplotyser, first_Start, teplotyser, teplotyser, teplotyser, first_Start, Variable_Ai_array, Variable_Hi_array, Variable_Hi_array, Variable_Hi_array_nmv, 0, 0, 0);
+                        double[] empty = null;
+                         double[][] empty2 = null;
+                        kotevnyUsek docasny_kot_usek = new kotevnyUsek(new_kotevny_usek_name, 0, 0, 0, 0, 0, filename, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, teplotyser, first_Start, teplotyser, teplotyser, teplotyser, first_Start, Variable_Ai_array, Variable_Hi_array, Variable_Hi_array, Variable_Hi_array_nmv, 0, 0, 0,empty,empty,empty,empty,empty,empty,empty2);
                         mainframe_to_kotevny_usek(docasny_kot_usek,povodna_hodnota_selekcie);
                         Variable_globeal_kotevny_usek.set(povodna_hodnota_selekcie, docasny_kot_usek);
 
@@ -3446,11 +3447,11 @@ import mt_variables.State_equation_variables;
                                                                                     Conductor.get_m()*9.80665, 
                                                                                     Variable_streda_roc_teplota, 
                                                                                     Variable_T0_zivotnost, 
-                                                                                    Variable_Tp_prechodna_doba)
+                                                                                    Variable_Tp_prechodna_doba);
             // set variables to state equation class 
             // - compute sigma_HT for conductor creeping variable 
             // - compute thermal shift for [i]th temperature
-            State_equation_variables State = new State_equation_variables(Conductor, Variable_streda_roc_teplota, -5, Variable_zakladne_mech_napatie_lana_pre_minus5, 1)
+            State_equation_variables State = new State_equation_variables(Conductor, Variable_streda_roc_teplota, -5, Variable_zakladne_mech_napatie_lana_pre_minus5, 1);
             state_equation.set_all_variables(State, Variable_Ai_array, Variable_DeltaHi_array);
             state_equation.compute_sigma_H(1, Variable_mid_span);
             
@@ -3465,7 +3466,7 @@ import mt_variables.State_equation_variables;
                                                                                     Conductor.get_m()*9.80665, 
                                                                                     -5, 
                                                                                     Variable_T0_zivotnost, 
-                                                                                    Variable_Tp_prechodna_doba)
+                                                                                    Variable_Tp_prechodna_doba);
             // set variables to conductor creeping class 
             // - compute thermal shift for default temperature; -5 degrees
             conductor_creeping.set_all_variables(Creeping_tx0, Variable_zakladne_mech_napatie_lana_pre_minus5);
