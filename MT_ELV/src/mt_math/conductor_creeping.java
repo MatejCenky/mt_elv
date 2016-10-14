@@ -189,9 +189,6 @@ public class conductor_creeping {
         conductor_creeping.RTS = var.get_RTS();
         conductor_creeping.alpha = var.get_alpha();
         conductor_creeping.w_Fe = var.get_w_Fe();
-        conductor_creeping.k_w = var.get_k_w();
-        conductor_creeping.k_EDS = var.get_k_EDS();
-        conductor_creeping.k_EDT = var.get_k_EDT();
         conductor_creeping.g_c = var.get_g_c();
         conductor_creeping.T_EDT = var.get_T_EDT();
         conductor_creeping.t_0 = var.get_t_0();

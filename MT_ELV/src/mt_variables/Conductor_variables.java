@@ -20,7 +20,7 @@ public class Conductor_variables {
        private static double E_conductor;
        private static double alpha_conductor;
        private static double RTS_conductor;
-       private static double Fe_AlFe_conductor;
+       private static double w_Fe_conductor;
              
        /**
         * constructor for conductor object from object[] with following parameters:
@@ -30,7 +30,7 @@ public class Conductor_variables {
         * [4] E Young model of elasticity of conductor [MPa]
         * [5] alpha linear expansion coefficient [1/degree_C]
         * [6] RTS Rated Tensile Strength (Matematicka unosnost lana)
-        * [7] Fe_Alfe Fe/AlFe ratio (pomer Fe / Alfe vodica)
+        * [7] w_Fe ratio (pomer mFe / mAlfe vodica)
         * @param Conductor - object[] containing conductor variables
         */
        public Conductor_variables(Object[] Conductor){
@@ -40,7 +40,7 @@ public class Conductor_variables {
            Conductor_variables.E_conductor = Double.valueOf(String.valueOf(Conductor[4]));
            Conductor_variables.alpha_conductor = Double.valueOf(String.valueOf(Conductor[5]));
            Conductor_variables.RTS_conductor = Double.valueOf(String.valueOf(Conductor[6]));
-           Conductor_variables.Fe_AlFe_conductor = Double.valueOf(String.valueOf(Conductor[7]));
+           Conductor_variables.w_Fe_conductor = Double.valueOf(String.valueOf(Conductor[7]));
        }
        
        /**
@@ -51,7 +51,7 @@ public class Conductor_variables {
         * @param E Young model of elasticity of conductor [MPa]
         * @param alpha linear expansion coefficient [1/degree_C]
         * @param RTS Rated Tensile Strength (Matematicka unosnost lana)
-        * @param Fe_AlFe Fe/AlFe ratio (pomer Fe / Alfe vodica)
+        * @param w_Fe Fe/AlFe ratio (pomer Fe / Alfe vodica)
         */
        public static void set_variables(double d,
                                         double S,
@@ -59,7 +59,7 @@ public class Conductor_variables {
                                         double E,
                                         double alpha,
                                         double RTS,
-                                        double Fe_AlFe){
+                                        double w_Fe){
            
            Conductor_variables.d_conductor = d;
            Conductor_variables.S_conductor = S;
@@ -67,7 +67,7 @@ public class Conductor_variables {
            Conductor_variables.E_conductor = E;
            Conductor_variables.alpha_conductor = alpha;
            Conductor_variables.RTS_conductor = RTS;
-           Conductor_variables.Fe_AlFe_conductor = Fe_AlFe;
+           Conductor_variables.w_Fe_conductor = w_Fe;
        }
        
        /**
@@ -88,7 +88,7 @@ public class Conductor_variables {
            Conductor_variables.E_conductor = Double.valueOf(String.valueOf(Conductor[4]));
            Conductor_variables.alpha_conductor = Double.valueOf(String.valueOf(Conductor[5]));
            Conductor_variables.RTS_conductor = Double.valueOf(String.valueOf(Conductor[6]));
-           Conductor_variables.Fe_AlFe_conductor = Double.valueOf(String.valueOf(Conductor[7]));
+           Conductor_variables.w_Fe_conductor = Double.valueOf(String.valueOf(Conductor[7]));
        }
         
        /**
@@ -143,7 +143,7 @@ public class Conductor_variables {
         * 
         * @return Fe/AlFe ratio (pomer Fe / Alfe vodica)
         */
-       public double get_Fe_Alfe(){
-           return Conductor_variables.Fe_AlFe_conductor;
+       public double get_w_Fe(){
+           return Conductor_variables.w_Fe_conductor;
        }
 }

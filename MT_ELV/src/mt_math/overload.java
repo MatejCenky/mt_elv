@@ -69,16 +69,37 @@ public class overload {
     private static double q_h;         // mean wind pressure
     private static double I_50;        // characteristic ice load
     
-    private static double I_T;         // extreme ice load
-    private static double q_wT;        // extreme wind load
-    private static double I_3;         // mild ice load
-    private static double q_wI3;       // combined load for mild wind with extreme ice
-    private static double q_wIT;       // combined load for extreme wind with mild ice
-    
     private static double D_I;         // equivalent diameter for conductor with extreme ice [m]
     private static double D_i;         // equivalent diameter for conductor with mild ice [m]
     
 // results
+    /* LOADS */
+    /**
+     * extreme ice load
+     */
+    public static double I_T;         
+    
+    /**
+     * extreme wind load
+     */
+    public static double q_wT;        
+    
+    /**
+     * mild ice load
+     */
+    public static double I_3;        
+    
+    /**
+     * combined load for mild wind with extreme ice
+     */
+    public static double q_wI3;      
+    
+    /**
+     * combined load for extreme wind with mild ice
+     */
+    public static double q_wIT;      
+    
+    /* OVERLOADS */
     /**
      * extreme ice overload
      */

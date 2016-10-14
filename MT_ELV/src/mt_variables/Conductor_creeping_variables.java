@@ -16,9 +16,6 @@ public class Conductor_creeping_variables {
     
     // conductor creeping variables
     private static double w_Fe_creep;
-    private static double k_w_creep;
-    private static double k_EDS_creep;
-    private static double k_EDT_creep;
     private static double S_creep;
     private static double g_c_creep;
     private static double RTS_creep;
@@ -30,20 +27,12 @@ public class Conductor_creeping_variables {
     /**
      * constructor for conductor creeping variables
      * @param Conductor - Variables_conductor class object
-     * @param w_Fe proportional weight of steel in the conductor [-]
-     * @param k_w conductor composition coefficient [-]
-     * @param k_EDS average year load influence coefficient [-]
-     * @param k_EDT average year temperature influence coefficient [-]
      * @param g_c specific weight of conductor [N/m]
      * @param T_EDT average year temperature [degreeC]
      * @param t_0 time to final state of conductor creeping [h] (usually 30y = 262800h)
      * @param t_p time from the construction of the line - check various time stages on the line [h]
      */
     public Conductor_creeping_variables(Conductor_variables Conductor,
-                                        double w_Fe,
-                                        double k_w,
-                                        double k_EDS,
-                                        double k_EDT,
                                         double g_c,
                                         double T_EDT,
                                         double t_0,
@@ -52,10 +41,7 @@ public class Conductor_creeping_variables {
         Conductor_creeping_variables.S_creep = Conductor.get_S();
         Conductor_creeping_variables.RTS_creep = Conductor.get_RTS();
         Conductor_creeping_variables.alpha_creep = Conductor.get_alpha();
-        Conductor_creeping_variables.w_Fe_creep = w_Fe;
-        Conductor_creeping_variables.k_w_creep = k_w;
-        Conductor_creeping_variables.k_EDS_creep = k_EDS;
-        Conductor_creeping_variables.k_EDT_creep = k_EDT;
+        Conductor_creeping_variables.w_Fe_creep = Conductor.get_w_Fe();
         Conductor_creeping_variables.g_c_creep = g_c;
         Conductor_creeping_variables.T_EDT_creep = T_EDT;
         Conductor_creeping_variables.t_0_creep = t_0;
@@ -65,20 +51,12 @@ public class Conductor_creeping_variables {
     /**
      * setting conductor creeping variables
      * @param Conductor - Variables_conductor class object
-     * @param w_Fe proportional weight of steel in the conductor [-]
-     * @param k_w conductor composition coefficient [-]
-     * @param k_EDS average year load influence coefficient [-]
-     * @param k_EDT average year temperature influence coefficient [-]
      * @param g_c specific weight of conductor [N/m]
      * @param T_EDT average year temperature [degreeC]
      * @param t_0 time to final state of conductor creeping [h] (usually 30y = 262800h)
      * @param t_p time from the construction of the line - check various time stages on the line [h]
      */
     public static void set_variables(   Conductor_variables Conductor,
-                                        double w_Fe,
-                                        double k_w,
-                                        double k_EDS,
-                                        double k_EDT,
                                         double g_c,
                                         double T_EDT,
                                         double t_0,
@@ -87,10 +65,7 @@ public class Conductor_creeping_variables {
         Conductor_creeping_variables.S_creep = Conductor.get_S();
         Conductor_creeping_variables.RTS_creep = Conductor.get_RTS();
         Conductor_creeping_variables.alpha_creep = Conductor.get_alpha();
-        Conductor_creeping_variables.w_Fe_creep = w_Fe;
-        Conductor_creeping_variables.k_w_creep = k_w;
-        Conductor_creeping_variables.k_EDS_creep = k_EDS;
-        Conductor_creeping_variables.k_EDT_creep = k_EDT;
+        Conductor_creeping_variables.w_Fe_creep = Conductor.get_w_Fe();
         Conductor_creeping_variables.g_c_creep = g_c;
         Conductor_creeping_variables.T_EDT_creep = T_EDT;
         Conductor_creeping_variables.t_0_creep = t_0;
@@ -111,18 +86,6 @@ public class Conductor_creeping_variables {
     
     public double get_w_Fe(){
         return Conductor_creeping_variables.w_Fe_creep;
-    }
-    
-    public double get_k_w(){
-        return Conductor_creeping_variables.k_w_creep;
-    }
-    
-    public double get_k_EDS(){
-        return Conductor_creeping_variables.k_EDS_creep;
-    }
-    
-    public double get_k_EDT(){
-        return Conductor_creeping_variables.k_EDT_creep;
     }
     
     public double get_g_c(){
