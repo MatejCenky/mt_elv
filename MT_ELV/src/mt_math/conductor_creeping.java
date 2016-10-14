@@ -70,8 +70,9 @@ public class conductor_creeping {
    
 // **************** PUBLIC METHODS **************** //
     
-    public static void set_all_variables(Conductor_creeping_variables var){
+    public static void set_all_variables(Conductor_creeping_variables var, double sigma_HT){
         set_variables(var);
+        set_sigma_HT(sigma_HT);
     }
     
     /**
@@ -193,6 +194,10 @@ public class conductor_creeping {
         conductor_creeping.T_EDT = var.get_T_EDT();
         conductor_creeping.t_0 = var.get_t_0();
         conductor_creeping.t_p = var.get_t_p();
+    }
+    
+    private static void set_sigma_HT(double sigma_HT){
+        conductor_creeping.sigma_HT = sigma_HT;
     }
     
     

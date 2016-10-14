@@ -42,9 +42,9 @@ public class overload {
     private static double C_c   ;         // aerodynamic resistance of the conductor coefficient (čl. 4.4.1.3/SK.1) [-]
     
 // directive constants [set by user !!!!! - or manually in code !!!!!!]
-    private static double k_p;   // tip coefficient (= 3) (čl. 4.4.1.2)
-    private static double RR;    // resonance response coefficient (RR = R^2 = 0) (čl. 4.4.12)
-    private static double ro;    // density of the wind (= 1.25)
+    private static double k_p;          // tip coefficient (= 3) (čl. 4.4.1.2)
+    private static double RR;           // resonance response coefficient (RR = R^2 = 0) (čl. 4.4.12)
+    private static double ro;           // density of the wind (= 1.25)
     private static double C_cl;        // aerodynamic resistance for conductor with ice coefficient (= 1,1) [-]
 
 

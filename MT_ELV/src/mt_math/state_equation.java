@@ -122,8 +122,8 @@ public class state_equation {
 // **************** PUBLIC METHODS **************** //    
     
     public static void set_all_variables(   State_equation_variables Variables,
-                                            Double[] spans,
-                                            Double[] heights){
+                                            double[] spans,
+                                            double[] heights){
         set_variables(Variables);
         set_variables_spans(spans);
         set_variables_heights(heights);
@@ -287,22 +287,18 @@ public class state_equation {
      * set the spans
      * @param X - double[] array of spans
      */
-    private static void set_variables_spans(Double[] X){                         
+    private static void set_variables_spans(double[] X){                         
         // assign a[] from mainframe
-        for (int i=0; i<X.length; i++){
-            state_equation.a[i] = X[i];
-        }
+            state_equation.a = X;
     }
     
     /**
      * set the difference of heights
      * @param X - double[] array of spans
      */
-    private static void set_variables_heights(Double[] X){                         
+    private static void set_variables_heights(double[] X){                         
         // assign a[] from mainframe
-        for (int i=0; i<X.length; i++){
-            state_equation.dh[i] = X[i];
-        }
+            state_equation.dh = X;
     }
     
     // **************** OTHER METHODS **************** //
@@ -315,91 +311,13 @@ public class state_equation {
         cubic_equation_coef_D();
     }
     
-//    /**
-//     * Computes the mid span based on terrain type
-//     * @param ter 1 == flat [MSF] // else == terrain [MST]
-//     */
-//    private static void mid_span(int ter){
-//        if (ter == 1){
-//            mid_span_flat();
-//        } else {
-//            mid_span_terrain();
-//        }
-//    }
-    
+   
     /**
      * Method computes the specific gravity of the conductor "gama".
      */
     private static void gama(){
         state_equation.gama = (state_equation.m *state_equation.g)/state_equation.S;
     }
-    
-//    /**
-//     * Set the overload factor from the overload class
-//     * @param load type of load on the conductor
-//     *  1 - z_1
-//     *  2 - z_W
-//     *  3 - z_I
-//     *  4 - z_iW
-//     *  5 - z_Iw
-//     */
-//    private static void z_1(int load){
-//        
-//        try {
-//            if (load < 1 || load > 5){
-//                throw new MyException("Load parameter must be 1 <= x <= 5");
-//            }
-//        } catch (MyException e) {
-//        }
-//        
-//        switch (load){
-//            case 1: 
-//                state_equation.z_1 = 1;
-//                break;
-//            case 2: 
-//                state_equation.z_1 = overload.z_W;
-//                break;
-//            case 3: 
-//                state_equation.z_1 = overload.z_I;
-//                break;
-//            case 4: 
-//                state_equation.z_1 = overload.z_iW;
-//                break;
-//            case 5: 
-//                state_equation.z_1 = overload.z_Iw;
-//                break;
-//        }
-//        
-//                
-//    }
-    
-//    /**
-//     * Method computes middle span for flat terrain "MSF".
-//     */
-//    private static void mid_span_flat(){
-//        double cube = 0;
-//        double sum = 0;
-//        for (int i=0; i<state_equation.a.length; i++){
-//            cube = cube + Math.pow(state_equation.a[i],3);
-//            sum = sum + state_equation.a[i];
-//        }
-//        state_equation.MSF = Math.sqrt(cube/sum);
-//    }
-//    
-//    /**
-//     * Method computes middle span for non-flat terrain "MST".
-//     */
-//    private static void mid_span_terrain(){
-//        double upper = 0;
-//        double lower = 0;
-//        double temp;
-//        for (int i=0; i<state_equation.a.length; i++){
-//            temp = Math.sqrt(Math.pow(state_equation.a[i],2)+ Math.pow(state_equation.dh[i], 2));
-//            upper = upper + Math.pow(state_equation.a[i], 4)/temp;
-//            lower = lower + temp;
-//        }
-//        state_equation.MST = Math.sqrt(upper/lower);
-//    }
     
     /**
      * Computes the cubic equation in the form: A*x^3 + B*x^2 + C*x + D = 0
@@ -427,7 +345,6 @@ public class state_equation {
         state_equation.sigma_h1 = result;
     }
 
-    
     /**
      * Computes the B coefficient which is input to the cubic equation
      */
@@ -506,7 +423,6 @@ public class state_equation {
         state_equation.Bc_i =  Math.pow(state_equation.gama,2) * state_equation.E/24 * Math.pow(var*state_equation.z_0/state_equation.sigma_h0, 2) + state_equation.alpha*state_equation.E*(tp - t0) - state_equation.sigma_h0;
     }
     
-
     /**
      * Computes the cubic equation in the form: A*x^3 + B*x^2 + C*x + D = 0 with imaginary temperatures!!
      * Defined are only B,D coefficient -> sufficient to solve
