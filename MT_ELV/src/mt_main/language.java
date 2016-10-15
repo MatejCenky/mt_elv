@@ -409,6 +409,14 @@ public static void constructor(){
 /*236*/  language.SK.add("rok");       language.CZ.add("I-SK");                     language.EN.add("I-SK");
 /*237*/  language.SK.add("mesiace");       language.CZ.add("I-SK");                     language.EN.add("I-SK");
 
+/*238*/  language.SK.add("Hodnoty namáhania ");       language.CZ.add("I-SK");                     language.EN.add("I-SK");
+/*239*/  language.SK.add("a parametra c pre stredné rozpätie = ");       language.CZ.add("I-SK");                     language.EN.add("I-SK");
+
+/*240*/  language.SK.add("teplota [°C]");       language.CZ.add("I-SK");                     language.EN.add("I-SK");
+/*241*/  language.SK.add("preťaženia");       language.CZ.add("I-SK");                     language.EN.add("I-SK");
+/*242*/  language.SK.add("Viditeľné priehyby F");       language.CZ.add("I-SK");                     language.EN.add("I-SK");
+/*243*/  language.SK.add("v jednotlicých rozpätiach kotevného úseku");       language.CZ.add("I-SK");                     language.EN.add("I-SK");
+
 
          
  inicializovane = true;

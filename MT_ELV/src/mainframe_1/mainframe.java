@@ -3027,8 +3027,8 @@ import mt_variables.State_equation_variables;
         // kontrola ci je mozne urobit export PDF aj vje urobeny vypocet a zaroven ak je vypocet urobeny z aktualnych dat    
         if(Calculation_done== true && Variable_globeal_kotevny_usek_zmena.equals( Variable_globeal_kotevny_usek)){        
         }else{        
-        warning_text ="Urob prepočet";
-        throw new NullPointerException();
+        warning_text ="Urobym prepočet nehnevaj sa! :)"; warning_sign(warning_text);
+        Button_Icon_calculate.doClick();
         }
             
             
@@ -3061,10 +3061,13 @@ import mt_variables.State_equation_variables;
                       Font.NORMAL );
             Font fontScript = new Font(bf, 3,
                       Font.NORMAL );
+            Font fontScript2 = new Font(bf, 5,
+                      Font.NORMAL );
             
             DecimalFormatSymbols otherSymbols = new DecimalFormatSymbols();
                otherSymbols.setDecimalSeparator('.');
                DecimalFormat decimal_trimiesta = new DecimalFormat("####.###",otherSymbols);  // definovany počet desatinnych miest
+               DecimalFormat decimal_dvamiesta = new DecimalFormat("####.##",otherSymbols); 
                DecimalFormat decimal_long = new DecimalFormat("##.########",otherSymbols);  // definovany počet desatinnych miest
                DecimalFormat decimal_none = new DecimalFormat("########",otherSymbols);  // definovany počet desatinnych miest
             
@@ -3211,7 +3214,7 @@ import mt_variables.State_equation_variables;
                 
                 
                 c1 = new PdfPCell();
-                Chunk p1 = new Chunk(language.language_label(languageOption, 196) +"\n" +"d (mm)" ,fontTable);
+                Chunk p1 = new Chunk(language.language_label(languageOption, 196) +"\n" +"d [mm)]" ,fontTable);
                 Paragraph p1_total= new Paragraph(10);
                           p1_total.add(p1);
                 p1_total.setAlignment(Element.ALIGN_CENTER);
@@ -3220,8 +3223,8 @@ import mt_variables.State_equation_variables;
                 c1.addElement(p1_total);
                 
                 PdfPCell c2 = new PdfPCell();
-                Chunk p2 = new Chunk(language.language_label(languageOption, 197) +"\n" +"S (mm" ,fontTable);
-                Chunk p22 = new Chunk(")" ,fontTable);
+                Chunk p2 = new Chunk(language.language_label(languageOption, 197) +"\n" +"S [mm" ,fontTable);
+                Chunk p22 = new Chunk("]" ,fontTable);
                 Paragraph p2_total= new Paragraph(10);
                        p2_total.add(p2);
                        p2_total.add(superScript);
@@ -3232,22 +3235,22 @@ import mt_variables.State_equation_variables;
                 
                 
                 PdfPCell c3 = new PdfPCell();
-                Chunk p3 = new Chunk(language.language_label(languageOption, 198) +"\n" +"m (kg/m)" ,fontTable);
+                Chunk p3 = new Chunk(language.language_label(languageOption, 198) +"\n" +"m [kg/m]" ,fontTable);
                 Paragraph p3_total= new Paragraph(10);
                           p3_total.add(p3);
                 p3_total.setAlignment(Element.ALIGN_CENTER); 
                 c3.addElement(p3_total);
                 
                 PdfPCell c4 = new PdfPCell();
-                Chunk p4 = new Chunk(language.language_label(languageOption, 199) +"\n" +"E (Mpa)" ,fontTable);
+                Chunk p4 = new Chunk(language.language_label(languageOption, 199) +"\n" +"E [MPa]" ,fontTable);
                 Paragraph p4_total= new Paragraph(10);
                           p4_total.add(p4);
                 p4_total.setAlignment(Element.ALIGN_CENTER); 
                 c4.addElement(p4_total);
                 
                 PdfPCell c5 = new PdfPCell();
-                Chunk p5 = new Chunk(language.language_label(languageOption, 200) +"\r" +"\u03B3 (N/m.mm" ,fontTable);
-                Chunk p55 = new Chunk(")" ,fontTable);
+                Chunk p5 = new Chunk(language.language_label(languageOption, 200) +"\r" +"\u03B3 [N/m.mm" ,fontTable);
+                Chunk p55 = new Chunk("]" ,fontTable);
                 Paragraph p5_total= new Paragraph(10);
                        p5_total.add(p5);
                        p5_total.add(superScript);
@@ -3257,14 +3260,14 @@ import mt_variables.State_equation_variables;
                 
                 
                 PdfPCell c6 = new PdfPCell();
-                Chunk p6 = new Chunk(language.language_label(languageOption, 201) +"\n" +"\u03B1 (1/°C)" ,fontTable);
+                Chunk p6 = new Chunk(language.language_label(languageOption, 201) +"\n" +"\u03B1 [1/°C]" ,fontTable);
                 Paragraph p6_total= new Paragraph(10);
                           p6_total.add(p6);
                 p6_total.setAlignment(Element.ALIGN_CENTER); 
                 c6.addElement(p6_total);
                 
                 PdfPCell c7 = new PdfPCell();
-                Chunk p7 = new Chunk(language.language_label(languageOption, 202) +"\n" +"F (N)" ,fontTable);
+                Chunk p7 = new Chunk(language.language_label(languageOption, 202) +"\n" +"F [N]" ,fontTable);
                 Paragraph p7_total= new Paragraph(10);
                           p7_total.add(p7);
                 p7_total.setAlignment(Element.ALIGN_CENTER); 
@@ -3352,8 +3355,7 @@ import mt_variables.State_equation_variables;
              table.setTotalWidth(511f); 
              table.setLockedWidth(true); 
                
-           Chunk subScript = new Chunk("ALT",fontScript); // superscript
-                 subScript.setTextRise(-2f);  
+            
    
            c1 = new PdfPCell();
            Paragraph par_left= new Paragraph(10);
@@ -3391,7 +3393,16 @@ import mt_variables.State_equation_variables;
             table.addCell(c1);
             table.addCell(c2);
             doc.add(table);
+           
+          Chunk subScript = new Chunk("H",fontScript2); // superscript
+                 subScript.setTextRise(-2f);   
+          doc.add(new Phrase(" " + language.language_label(languageOption, 238) + "\u03C3",fontText)); 
+          doc.add(subScript);  
+          doc.add(new Phrase(" " + language.language_label(languageOption, 239) + decimal_trimiesta.format(Variable_mid_span) + " m" ,fontText)); 
             
+          
+          make_MT_table(doc,Variable_globeal_kotevny_usek.get(i),fontTable,fontScript,fontScript2,fontText,5,decimal_dvamiesta);
+          
             doc.newPage();
             
         } // if check box enabled
@@ -3533,6 +3544,62 @@ import mt_variables.State_equation_variables;
 //            conductor_creeping.set_all_variables(Creeping_tx0, Variable_zakladne_mech_napatie_lana_pre_minus5);
 //            conductor_creeping.compute_transient_thermal_shift_value(Variable_Tp_prechodna_doba);
 //            conductor_creeping.set_Tx0(-5); // input as Tx0 to the final state equation
+
+
+
+
+        //mechanical input of zeros to results
+         double[] sigmy = new double[14];
+         double[] cecka = new double[14];
+         double[] pretazenia = new double[14];
+         double[] sily = new double[14];
+       
+       if(jRadioButton_with_pretazenia_vlastna.isSelected() ==true ){
+            for(int y=0 ;y<14;y++){
+           
+             pretazenia[y]=Variable_pretazenia_stav_rovnica[y];           
+       }
+       }else{
+             pretazenia[0]=1; 
+             pretazenia[1]=1;
+             pretazenia[2]=1;
+             pretazenia[3]=1;
+             pretazenia[4]=overload.z_I;
+             pretazenia[5]=overload.z_W;
+             pretazenia[6]=overload.z_Iw;
+             pretazenia[7]=overload.z_iW;
+             pretazenia[8]=1;
+             pretazenia[9]=1;
+             pretazenia[10]=1;
+             pretazenia[11]=1;
+             pretazenia[12]=1;
+             pretazenia[13]=1;
+             }  
+         
+       // 14 členny cyklus pre už samotny vypočet 
+            for(int y=0 ;y<14;y++){
+             sigmy[y]=0;
+             cecka[y]=0;
+             sily[y]=0;
+            }
+       
+          Kot_usek.set_vysledky_sigmaH_MT(sigmy);
+          Kot_usek.set_vysledky_c_MT(cecka);
+          Kot_usek.set_vysledky_pretazenia_MT(pretazenia);
+          Kot_usek.set_vysledky_sily_MT(sily);
+
+         double[][] vid_priehyby = new double[Kot_usek.get_Ai_array().length][14];
+          
+            for (int y = 0; y < Kot_usek.get_Ai_array().length; y++) {
+                
+                for (int z = 0; z < 14; z++) {
+                    
+                    vid_priehyby[y][z] = 0;                    
+                }                
+            }
+        Kot_usek.set_vysledky_vid_priehyb_M(vid_priehyby); 
+          
+          
 
         } // if check box enabled
         } // do  pocet kotevnych usekov
@@ -5389,6 +5456,326 @@ private void seticon() {
         return output;      
     }
    
+    private void make_MT_table (Document doc,kotevnyUsek kot_usek, Font fontTable,Font fontScript,Font fontScript2,Font fontText,int spacing,DecimalFormat decimal_dva  ) throws DocumentException{
+       float[] columnWidths_of_table = {77f,31f,31f,31f,31f,31f,31f,31f,31f,31f,31f,31f,31f,31f,31f};
+        PdfPTable table = new PdfPTable(columnWidths_of_table);
+        table.setTotalWidth(511f); 
+        table.setLockedWidth(true);
+        table.setHorizontalAlignment(Element.ALIGN_CENTER); 
+        
+        PdfPCell c1 = new PdfPCell();
+        Chunk p1 = new Chunk(language.language_label(languageOption, 240)  ,fontTable);
+        Paragraph p1_total= new Paragraph(spacing);
+        p1_total.add(p1);p1_total.setAlignment(Element.ALIGN_CENTER);
+        c1.addElement(p1_total);table.addCell(c1);
+        
+        
+         c1 = new PdfPCell();
+         p1 = new Chunk(TextField_teploha_stav1.getText(),fontTable);
+         p1_total= new Paragraph(spacing);
+         p1_total.add(p1);p1_total.setAlignment(Element.ALIGN_CENTER);
+         c1.addElement(p1_total);table.addCell(c1);
+        
+         c1 = new PdfPCell();
+         p1 = new Chunk(TextField_teploha_stav2.getText(),fontTable);
+         p1_total= new Paragraph(spacing);
+         p1_total.add(p1);p1_total.setAlignment(Element.ALIGN_CENTER);
+         c1.addElement(p1_total);table.addCell(c1);
+         
+         c1 = new PdfPCell();
+         p1 = new Chunk(TextField_teploha_stav3.getText(),fontTable);
+         p1_total= new Paragraph(spacing);
+         p1_total.add(p1);p1_total.setAlignment(Element.ALIGN_CENTER);
+         c1.addElement(p1_total);table.addCell(c1);
+         
+         c1 = new PdfPCell();
+         p1 = new Chunk(TextField_teploha_stav4.getText(),fontTable);
+         p1_total= new Paragraph(spacing);
+         p1_total.add(p1);p1_total.setAlignment(Element.ALIGN_CENTER);
+         c1.addElement(p1_total);table.addCell(c1);
+         
+         c1 = new PdfPCell();
+         p1 = new Chunk(TextField_teploha_stav5.getText(),fontTable);
+         p1_total= new Paragraph(spacing);
+         p1_total.add(p1);p1_total.setAlignment(Element.ALIGN_CENTER);
+         c1.addElement(p1_total);table.addCell(c1);
+         
+         c1 = new PdfPCell();
+         p1 = new Chunk(TextField_teploha_stav6.getText(),fontTable);
+         p1_total= new Paragraph(spacing);
+         p1_total.add(p1);p1_total.setAlignment(Element.ALIGN_CENTER);
+         c1.addElement(p1_total);table.addCell(c1);
+         
+         c1 = new PdfPCell();
+         p1 = new Chunk(TextField_teploha_stav7.getText(),fontTable);
+         p1_total= new Paragraph(spacing);
+         p1_total.add(p1);p1_total.setAlignment(Element.ALIGN_CENTER);
+         c1.addElement(p1_total);table.addCell(c1);
+         
+         c1 = new PdfPCell();
+         p1 = new Chunk(TextField_teploha_stav8.getText(),fontTable);
+         p1_total= new Paragraph(spacing);
+         p1_total.add(p1);p1_total.setAlignment(Element.ALIGN_CENTER);
+         c1.addElement(p1_total);table.addCell(c1);
+         
+         c1 = new PdfPCell();
+         p1 = new Chunk(TextField_teploha_stav9.getText(),fontTable);
+         p1_total= new Paragraph(spacing);
+         p1_total.add(p1);p1_total.setAlignment(Element.ALIGN_CENTER);
+         c1.addElement(p1_total);table.addCell(c1);
+         
+         c1 = new PdfPCell();
+         p1 = new Chunk(TextField_teploha_stav10.getText(),fontTable);
+         p1_total= new Paragraph(spacing);
+         p1_total.add(p1);p1_total.setAlignment(Element.ALIGN_CENTER);
+         c1.addElement(p1_total);table.addCell(c1);
+         
+         c1 = new PdfPCell();
+         p1 = new Chunk(TextField_teploha_stav11.getText(),fontTable);
+         p1_total= new Paragraph(spacing);
+         p1_total.add(p1);p1_total.setAlignment(Element.ALIGN_CENTER);
+         c1.addElement(p1_total);table.addCell(c1);
+         
+         c1 = new PdfPCell();
+         p1 = new Chunk(TextField_teploha_stav12.getText(),fontTable);
+         p1_total= new Paragraph(spacing);
+         p1_total.add(p1);p1_total.setAlignment(Element.ALIGN_CENTER);
+         c1.addElement(p1_total);table.addCell(c1);
+         
+         c1 = new PdfPCell();
+         p1 = new Chunk(TextField_teploha_stav13.getText(),fontTable);
+         p1_total= new Paragraph(spacing);
+         p1_total.add(p1);p1_total.setAlignment(Element.ALIGN_CENTER);
+         c1.addElement(p1_total);table.addCell(c1);
+         
+         c1 = new PdfPCell();
+         p1 = new Chunk(TextField_teploha_stav14.getText(),fontTable);
+         p1_total= new Paragraph(spacing);
+         p1_total.add(p1);p1_total.setAlignment(Element.ALIGN_CENTER);
+         c1.addElement(p1_total);table.addCell(c1);
+         
+         Chunk subScript = new Chunk("H",fontScript); // superscript
+         subScript.setTextRise(-2f); 
+         
+        c1 = new PdfPCell();
+        p1 = new Chunk("\u03C3" ,fontTable);        
+        Chunk p2 = new Chunk( " [MPa]"  ,fontTable);
+        p1_total= new Paragraph(spacing);
+        p1_total.add(p1);p1_total.add(subScript);p1_total.add(p2);p1_total.setAlignment(Element.ALIGN_CENTER);
+        c1.addElement(p1_total);table.addCell(c1);
+        
+        for(int i =0 ; i<14;i++){
+         c1 = new PdfPCell();
+         p1 = new Chunk(decimal_dva.format(kot_usek.get_vysledky_sigmaH_MT()[i]),fontTable);
+         p1_total= new Paragraph(spacing);
+         p1_total.add(p1);p1_total.setAlignment(Element.ALIGN_CENTER);
+         c1.addElement(p1_total);table.addCell(c1);
+           
+            
+        }
+        
+        c1 = new PdfPCell();    
+        p1 = new Chunk( "c [m]"  ,fontTable);
+        p1_total= new Paragraph(spacing);
+        p1_total.add(p1);p1_total.setAlignment(Element.ALIGN_CENTER);
+        c1.addElement(p1_total);table.addCell(c1);
+        
+        for(int i =0 ; i<14;i++){
+         c1 = new PdfPCell();
+         p1 = new Chunk(decimal_dva.format(kot_usek.get_vysledky_c_MT()[i]),fontTable);
+         p1_total= new Paragraph(spacing);
+         p1_total.add(p1);p1_total.setAlignment(Element.ALIGN_CENTER);
+         c1.addElement(p1_total);table.addCell(c1);
+           
+            
+        }
+        
+        c1 = new PdfPCell();    
+        p1 = new Chunk( language.language_label(languageOption, 241)  ,fontTable);
+        p1_total= new Paragraph(spacing);
+        p1_total.add(p1);p1_total.setAlignment(Element.ALIGN_CENTER);
+        c1.addElement(p1_total);table.addCell(c1);
+        
+        for(int i =0 ; i<14;i++){
+         c1 = new PdfPCell();
+         p1 = new Chunk(decimal_dva.format(kot_usek.get_vysledky_pretazenia_MT()[i]),fontTable);
+         p1_total= new Paragraph(spacing);
+         p1_total.add(p1);p1_total.setAlignment(Element.ALIGN_CENTER);
+         c1.addElement(p1_total);table.addCell(c1);
+           
+            
+        }
+        
+        c1 = new PdfPCell();
+        p1 = new Chunk("F" ,fontTable);        
+        p2 = new Chunk( " [kN]"  ,fontTable);
+        p1_total= new Paragraph(spacing);
+        p1_total.add(p1);p1_total.add(subScript);p1_total.add(p2);p1_total.setAlignment(Element.ALIGN_CENTER);
+        c1.addElement(p1_total);table.addCell(c1);
+        
+        for(int i =0 ; i<14;i++){
+         c1 = new PdfPCell();
+         p1 = new Chunk(decimal_dva.format(kot_usek.get_vysledky_sily_MT()[i]),fontTable);
+         p1_total= new Paragraph(spacing);
+         p1_total.add(p1);p1_total.setAlignment(Element.ALIGN_CENTER);
+         c1.addElement(p1_total);table.addCell(c1);
+           
+            
+        }
+        
+         
+         
+         doc.add(table);
+         
+          subScript = new Chunk("v",fontScript2); // superscript
+                 subScript.setTextRise(-2f);   
+          doc.add(new Phrase(" " + language.language_label(languageOption, 242) ,fontText)); 
+          doc.add(subScript);  
+          doc.add(new Phrase("  [m] " + language.language_label(languageOption, 243) ,fontText)); 
+            
+         
+         
+         
+        table = new PdfPTable(columnWidths_of_table);
+        table.setTotalWidth(511f); 
+        table.setLockedWidth(true);
+        table.setHorizontalAlignment(Element.ALIGN_CENTER); 
+        
+         c1 = new PdfPCell();
+         p1 = new Chunk(language.language_label(languageOption, 240)  ,fontTable);
+         p1_total= new Paragraph(spacing);
+        p1_total.add(p1);p1_total.setAlignment(Element.ALIGN_CENTER);
+        c1.addElement(p1_total);table.addCell(c1);
+        
+        
+         c1 = new PdfPCell();
+         p1 = new Chunk(TextField_teploha_stav1.getText(),fontTable);
+         p1_total= new Paragraph(spacing);
+         p1_total.add(p1);p1_total.setAlignment(Element.ALIGN_CENTER);
+         c1.addElement(p1_total);table.addCell(c1);
+        
+         c1 = new PdfPCell();
+         p1 = new Chunk(TextField_teploha_stav2.getText(),fontTable);
+         p1_total= new Paragraph(spacing);
+         p1_total.add(p1);p1_total.setAlignment(Element.ALIGN_CENTER);
+         c1.addElement(p1_total);table.addCell(c1);
+         
+         c1 = new PdfPCell();
+         p1 = new Chunk(TextField_teploha_stav3.getText(),fontTable);
+         p1_total= new Paragraph(spacing);
+         p1_total.add(p1);p1_total.setAlignment(Element.ALIGN_CENTER);
+         c1.addElement(p1_total);table.addCell(c1);
+         
+         c1 = new PdfPCell();
+         p1 = new Chunk(TextField_teploha_stav4.getText(),fontTable);
+         p1_total= new Paragraph(spacing);
+         p1_total.add(p1);p1_total.setAlignment(Element.ALIGN_CENTER);
+         c1.addElement(p1_total);table.addCell(c1);
+         
+         c1 = new PdfPCell();
+         p1 = new Chunk(TextField_teploha_stav5.getText(),fontTable);
+         p1_total= new Paragraph(spacing);
+         p1_total.add(p1);p1_total.setAlignment(Element.ALIGN_CENTER);
+         c1.addElement(p1_total);table.addCell(c1);
+         
+         c1 = new PdfPCell();
+         p1 = new Chunk(TextField_teploha_stav6.getText(),fontTable);
+         p1_total= new Paragraph(spacing);
+         p1_total.add(p1);p1_total.setAlignment(Element.ALIGN_CENTER);
+         c1.addElement(p1_total);table.addCell(c1);
+         
+         c1 = new PdfPCell();
+         p1 = new Chunk(TextField_teploha_stav7.getText(),fontTable);
+         p1_total= new Paragraph(spacing);
+         p1_total.add(p1);p1_total.setAlignment(Element.ALIGN_CENTER);
+         c1.addElement(p1_total);table.addCell(c1);
+         
+         c1 = new PdfPCell();
+         p1 = new Chunk(TextField_teploha_stav8.getText(),fontTable);
+         p1_total= new Paragraph(spacing);
+         p1_total.add(p1);p1_total.setAlignment(Element.ALIGN_CENTER);
+         c1.addElement(p1_total);table.addCell(c1);
+         
+         c1 = new PdfPCell();
+         p1 = new Chunk(TextField_teploha_stav9.getText(),fontTable);
+         p1_total= new Paragraph(spacing);
+         p1_total.add(p1);p1_total.setAlignment(Element.ALIGN_CENTER);
+         c1.addElement(p1_total);table.addCell(c1);
+         
+         c1 = new PdfPCell();
+         p1 = new Chunk(TextField_teploha_stav10.getText(),fontTable);
+         p1_total= new Paragraph(spacing);
+         p1_total.add(p1);p1_total.setAlignment(Element.ALIGN_CENTER);
+         c1.addElement(p1_total);table.addCell(c1);
+         
+         c1 = new PdfPCell();
+         p1 = new Chunk(TextField_teploha_stav11.getText(),fontTable);
+         p1_total= new Paragraph(spacing);
+         p1_total.add(p1);p1_total.setAlignment(Element.ALIGN_CENTER);
+         c1.addElement(p1_total);table.addCell(c1);
+         
+         c1 = new PdfPCell();
+         p1 = new Chunk(TextField_teploha_stav12.getText(),fontTable);
+         p1_total= new Paragraph(spacing);
+         p1_total.add(p1);p1_total.setAlignment(Element.ALIGN_CENTER);
+         c1.addElement(p1_total);table.addCell(c1);
+         
+         c1 = new PdfPCell();
+         p1 = new Chunk(TextField_teploha_stav13.getText(),fontTable);
+         p1_total= new Paragraph(spacing);
+         p1_total.add(p1);p1_total.setAlignment(Element.ALIGN_CENTER);
+         c1.addElement(p1_total);table.addCell(c1);
+         
+         c1 = new PdfPCell();
+         p1 = new Chunk(TextField_teploha_stav14.getText(),fontTable);
+         p1_total= new Paragraph(spacing);
+         p1_total.add(p1);p1_total.setAlignment(Element.ALIGN_CENTER);
+         c1.addElement(p1_total);table.addCell(c1);
+         
+         double celkova_dlzka_kot_useku=0;
+         
+          for (int y = 0; y < kot_usek.get_Ai_array().length; y++) {
+                
+               c1 = new PdfPCell();    
+               p1 = new Chunk( decimal_dva.format(kot_usek.get_Ai_array()[y]) ,fontTable);
+               p1_total= new Paragraph(spacing);
+               p1_total.add(p1);p1_total.setAlignment(Element.ALIGN_CENTER);
+               c1.addElement(p1_total);table.addCell(c1);
+               celkova_dlzka_kot_useku=celkova_dlzka_kot_useku+kot_usek.get_Ai_array()[y];
+              
+                for (int z = 0; z < 14; z++) {
+                    
+                     c1 = new PdfPCell();
+                     p1 = new Chunk(decimal_dva.format(kot_usek.get_vysledky_vid_priehyb_MT()[y][z]),fontTable);
+                     p1_total= new Paragraph(spacing);
+                     p1_total.add(p1);p1_total.setAlignment(Element.ALIGN_CENTER);
+                     c1.addElement(p1_total);table.addCell(c1);
+                    
+                                       
+                }                
+            }
+          
+         
+         c1 = new PdfPCell();
+         p1 = new Chunk(decimal_dva.format(celkova_dlzka_kot_useku),fontTable);
+         p1_total= new Paragraph(spacing);
+         p1_total.add(p1);p1_total.setAlignment(Element.ALIGN_CENTER);
+         c1.addElement(p1_total);table.addCell(c1);
+         
+         for(int i =0 ; i<14;i++){
+         c1 = new PdfPCell();
+         p1 = new Chunk("",fontTable);
+         p1_total= new Paragraph(spacing);
+         p1_total.add(p1);p1_total.setAlignment(Element.ALIGN_CENTER);
+         c1.setBorder(Rectangle.NO_BORDER);
+         c1.addElement(p1_total);table.addCell(c1);
+           
+            
+        }
+            
+          doc.add(table);
+         
+    }
 }
 class header_pdf extends javax.swing.JFrame{
     private static String PDF_VAR_vypocet_podla_normy = "";
