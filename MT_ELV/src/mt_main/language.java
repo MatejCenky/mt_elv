@@ -352,10 +352,65 @@ public static void constructor(){
 /*201*/  language.SK.add("Koef. tep. rozťažnosti");       language.CZ.add("I-SK");                     language.EN.add("I-SK");
 /*202*/  language.SK.add("Mat. únosnosť lana");       language.CZ.add("I-SK");                     language.EN.add("I-SK");
 
-/*201*/  language.SK.add("Koef. tep. rozťažnosti");       language.CZ.add("I-SK");                     language.EN.add("I-SK");
-/*202*/  language.SK.add("Mat. únosnosť lana");       language.CZ.add("I-SK");                     language.EN.add("I-SK");
+/*203*/  language.SK.add("Horizontálna zložka mechanického namáhania pri -5°C");       language.CZ.add("I-SK");                     language.EN.add("I-SK");
+/*204*/  language.SK.add("Stredná výška vodiča nad terénom v kotevnom úseku");       language.CZ.add("I-SK");                     language.EN.add("I-SK");
+/*205*/  language.SK.add("Charakteristika terénu");       language.CZ.add("I-SK");                     language.EN.add("I-SK");
+/*206*/  language.SK.add("Typ terénu");       language.CZ.add("I-SK");                     language.EN.add("I-SK");
+
+/*207*/  language.SK.add("Búrlivé otvorené more, jazerá do vzdialenosti najmenej 5 km proti smeru vetra a rovná krajina bez prekážok.");                    
+         language.CZ.add("Kategória I_blablablablablabl");                    
+         language.EN.add("Kategória I_blablablablablabl");
+         
+/*208*/  language.SK.add("Poľnohospodárska pôda s deliacimi živými plotmi, rozptýlené malé poľnohospodárske sídla, domy a stromy");                    
+         language.CZ.add("Kategória II_blablablablablabl");                    
+         language.EN.add("Kategória II_blablablablablabl");
+         
+/*209*/  language.SK.add("Predmestské alebo priemyselné oblasti a trvale zalesnené územia.");                    
+         language.CZ.add("Kategória III_blablablablablabl");                    
+         language.EN.add("Kategória III_blablablablablabl");
+         
+/*210*/  language.SK.add("Mestské oblasti, v ktorých je aspoň 15% povrchu pokrytého pozemnými stavbami s priemernou výškou > 15 m.");                    
+         language.CZ.add("Kategória IV_blablablablablabl");                    
+         language.EN.add("Kategória IV_blablablablablabl");
+         
+/*211*/  language.SK.add("Hornatý a viac členitý terén, kde sa vietor môže lokálne zosilňovať alebo zoslabovať.");                    
+         language.CZ.add("Kategória V_blablablablablabl");                    
+         language.EN.add("Kategória V_blablablablablabl");
+
+/*212*/  language.SK.add("Úroveň spoľahlivosti");       language.CZ.add("I-SK");                     language.EN.add("I-SK");
+/*213*/  language.SK.add("Doba návratu klimatického zaťaženia");       language.CZ.add("I-SK");                     language.EN.add("I-SK");
+/*214*/  language.SK.add("rokov");       language.CZ.add("I-SK");                     language.EN.add("I-SK");
+/*215*/  language.SK.add("Námrazová oblasť");       language.CZ.add("I-SK");                     language.EN.add("I-SK");
+
+/*216*/  language.SK.add("I-0");       language.CZ.add("I-SK");                     language.EN.add("I-SK");
+/*217*/  language.SK.add("I-1");       language.CZ.add("I-SK");                     language.EN.add("I-SK");
+/*218*/  language.SK.add("I-2");       language.CZ.add("I-SK");                     language.EN.add("I-SK");
+/*219*/  language.SK.add("I-3");       language.CZ.add("I-SK");                     language.EN.add("I-SK");
+/*220*/  language.SK.add("I-5");       language.CZ.add("I-SK");                     language.EN.add("I-SK");
+/*221*/  language.SK.add("I-8");       language.CZ.add("I-SK");                     language.EN.add("I-SK");
+/*222*/  language.SK.add("I-12");       language.CZ.add("I-SK");                     language.EN.add("I-SK");
+/*223*/  language.SK.add("I-18");       language.CZ.add("I-SK");                     language.EN.add("I-SK");
+/*224*/  language.SK.add("I-K - vlastná hodnota");       language.CZ.add("I-SK");                     language.EN.add("I-SK");
+                     
+/*225*/  language.SK.add(" - STN EN 50341-1");       language.CZ.add("I-SK");                     language.EN.add("I-SK");
+   
+/*226*/  language.SK.add("Vetrová oblasť");       language.CZ.add("I-SK");                     language.EN.add("I-SK");
+/*227*/  language.SK.add("Koeficient nadm. výšky");       language.CZ.add("I-SK");                     language.EN.add("I-SK");
+/*228*/  language.SK.add("Zaťaženie extrénmou námrazou");       language.CZ.add("I-SK");                     language.EN.add("I-SK");
+/*229*/  language.SK.add("Zaťaženie miernou námrazou");       language.CZ.add("I-SK");                     language.EN.add("I-SK");
+/*230*/  language.SK.add("Zaťaženie extrémnym vetrom");       language.CZ.add("I-SK");                     language.EN.add("I-SK");
+/*231*/  language.SK.add("Zaťaženie miernym vetrom a ext. námrazou");       language.CZ.add("I-SK");                     language.EN.add("I-SK");
+/*232*/  language.SK.add("Zaťaženie ext. vetrom a miernou námrazou");       language.CZ.add("I-SK");                     language.EN.add("I-SK");
+
+/*233*/  language.SK.add("Navrhovaná živostnosť vedenia");       language.CZ.add("I-SK");                     language.EN.add("I-SK");
+/*234*/  language.SK.add("Čas od montáže vedenia");       language.CZ.add("I-SK");                     language.EN.add("I-SK");
+
+/*235*/  language.SK.add("dní");       language.CZ.add("I-SK");                     language.EN.add("I-SK");
+/*236*/  language.SK.add("rok");       language.CZ.add("I-SK");                     language.EN.add("I-SK");
+/*237*/  language.SK.add("mesiace");       language.CZ.add("I-SK");                     language.EN.add("I-SK");
 
 
+         
  inicializovane = true;
 }
  

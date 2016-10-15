@@ -3007,19 +3007,30 @@ import mt_variables.State_equation_variables;
 
     private void Button_Icon_export_PDFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button_Icon_export_PDFActionPerformed
         
+        String warning_text = "empty";
+ 
+        
         // RESAVE actual window
         
-        int rowNumber =  Table_kotevne_useky.getSelectedRow(); //- (e.getFirstIndex()-e.getLastIndex()); 
-             double[] empty = null;
-             double[][] empty2 = null;
-             kotevnyUsek docasny_kot_usek = new kotevnyUsek(new_kotevny_usek_name, 0, 0, 0, 0, 0, filename, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, teplotyser, first_Start, teplotyser, teplotyser, teplotyser, first_Start, Variable_Ai_array, Variable_Hi_array, Variable_Hi_array,Variable_Hi_array_nmv,0,0,0,empty,empty,empty,empty,empty,empty,empty2);                      
-             mainframe_to_kotevny_usek(docasny_kot_usek,rowNumber);                        
-             Variable_globeal_kotevny_usek.set(rowNumber, docasny_kot_usek);  
-             
+//        int rowNumber =  Table_kotevne_useky.getSelectedRow(); //- (e.getFirstIndex()-e.getLastIndex()); 
+//             double[] empty = null;
+//             double[][] empty2 = null;
+//             kotevnyUsek docasny_kot_usek = new kotevnyUsek(new_kotevny_usek_name, 0, 0, 0, 0, 0, filename, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, teplotyser, first_Start, teplotyser, teplotyser, teplotyser, first_Start, Variable_Ai_array, Variable_Hi_array, Variable_Hi_array,Variable_Hi_array_nmv,0,0,0);                      
+//             mainframe_to_kotevny_usek(docasny_kot_usek,rowNumber);                        
+//             Variable_globeal_kotevny_usek.set(rowNumber, docasny_kot_usek);  
+//             
         
         String text="No mama dont cry";
-        Document doc = new Document(PageSize.A4, 56, 28, 28, 28);
+        
         try {
+        
+        // kontrola ci je mozne urobit export PDF aj vje urobeny vypocet a zaroven ak je vypocet urobeny z aktualnych dat    
+        if(Calculation_done== true && Variable_globeal_kotevny_usek_zmena.equals( Variable_globeal_kotevny_usek)){        
+        }else{        
+        warning_text ="Urob prepočet";
+        throw new NullPointerException();
+        }
+            
             
             // tu sa vlozi chooser kd ktory urči nazov a kde a kokotiny podobne
             
@@ -3036,6 +3047,7 @@ import mt_variables.State_equation_variables;
                                          intChecker_short_answer(jTextField_nazov_cislo_strany)
                                          );
             
+            Document doc = new Document(PageSize.A4, 56, 28, 28, 28);
             PdfWriter writer = PdfWriter.getInstance(doc, new FileOutputStream("HeaderFooter.pdf"));
             BaseFont bf = BaseFont.createFont("/mt_graphic/arial.ttf", BaseFont.IDENTITY_H, BaseFont.EMBEDDED); // pridanie našeho kodovanie pre slovensko vranci fontu 
             //BaseFont mojFOnt = BaseFont.createFont(BaseFont.HELVETICA, BaseFont.IDENTITY_H, BaseFont.EMBEDDED);
@@ -3107,8 +3119,7 @@ import mt_variables.State_equation_variables;
                 table1.setSpacingBefore(1);
                 table1.setSpacingAfter(3);
                 doc.add(table1);
-            
-            
+                       
             doc.add(line);
             float[] columnWidths = {80f, 270f,20f, 60f,81f};
             PdfPTable table = new PdfPTable(columnWidths);
@@ -3146,9 +3157,7 @@ import mt_variables.State_equation_variables;
                 table.setSpacingAfter(3);
             doc.add(table);
             doc.add(line);
-            
-           
-            
+                  
                 table = new PdfPTable(columnWidths);
                 table.setTotalWidth(511f); 
                 table.setLockedWidth(true);               
@@ -3338,23 +3347,51 @@ import mt_variables.State_equation_variables;
                 table.addCell(c14);
                 doc.add(table);
                 
-           float[] columnWidths4 = {292f,146f};
+           float[] columnWidths4 = {272f,166f};
              table = new PdfPTable(columnWidths4);
              table.setTotalWidth(511f); 
              table.setLockedWidth(true); 
                
            Chunk subScript = new Chunk("ALT",fontScript); // superscript
                  subScript.setTextRise(-2f);  
-             
+   
            c1 = new PdfPCell();
-           Paragraph par_left= new Paragraph(15);
-           Chunk hoz_zlozka = new Chunk(  decimal_long.format(gamma) ,fontTable);
-           Chunk str_vyska = new Chunk(  decimal_long.format(gamma) ,fontTable);
-           Chunk char_terenu_nadpis = new Chunk(  decimal_long.format(gamma) ,fontTable);
-           Chunk char_terenu_text = new Chunk(  decimal_long.format(gamma) ,fontTable);
-           Chunk typ_terenu_nadpis = new Chunk(  decimal_long.format(gamma) ,fontTable);
-           Chunk typ_terenu_text = new Chunk(  decimal_long.format(gamma) ,fontTable);
+           Paragraph par_left= new Paragraph(10);
+           Chunk text_left = new Chunk(  language.language_label(languageOption, 203) + " : " + decimal_trimiesta.format( Variable_globeal_kotevny_usek.get(i).get_zakladne_mech_napatie_lana_pre_minus5_over() ) + " Mpa" + "\n" 
+                                       +  language.language_label(languageOption, 204) + " : " + decimal_trimiesta.format( Variable_globeal_kotevny_usek.get(i).get_h_c_mean() ) + " m"   
+                                       + "\n" ,fontTable); 
+           Chunk text_left1 = new Chunk(  language.language_label(languageOption, 205) + " : " + get_char_terenu_number(Variable_globeal_kotevny_usek.get(i))  
+                                       + "\n" + get_char_terenu_text(Variable_globeal_kotevny_usek.get(i))  
+                                       + "\n" ,fontTable);
+           Chunk text_left2 = new Chunk(  language.language_label(languageOption, 206) + " : " + get_typ_terenu_number(jComboBox_KPB_typ_terenu.getSelectedIndex())  
+                                       + "\n" + get_typ_terenu_text(jComboBox_KPB_typ_terenu.getSelectedIndex())   ,fontTable);
            
+            par_left.add(text_left);par_left.add(line);par_left.add(text_left1);par_left.add(line);par_left.add(text_left2);par_left.setAlignment(Element.ALIGN_LEFT); 
+            c1.addElement(par_left);
+            c1.setBorder(Rectangle.NO_BORDER);
+            
+           c2 = new PdfPCell();
+           Paragraph par_right= new Paragraph(10);
+           Chunk text_right = new Chunk(  language.language_label(languageOption, 212) + " : " + decimal_trimiesta.format( Variable_globeal_kotevny_usek.get(i).get_uroven_spolahlivosti_porcislo()+1) + "\n" 
+                                       +  language.language_label(languageOption, 213) + " : " + get_rok_navratu_cas(jComboBox_uroven_splahlivosti.getSelectedIndex()) + "\n" 
+                                       +  language.language_label(languageOption, 215) + " : " + Variable_globeal_kotevny_usek.get(i).get_namrazova_oblast_string() +  language.language_label(languageOption, 225) +"\n" 
+                                       +  language.language_label(languageOption, 226) + " : " + get_vetrova_oblast_string(jComboBox_vetrova_oblast.getSelectedIndex()) + ", v = " + decimal_trimiesta.format(Variable_globeal_kotevny_usek.get(i).get_V_mean()) + " m/s" +"\n" 
+                                       ,fontTable); 
+           Chunk text_right1 = new Chunk(  language.language_label(languageOption, 228) + " : " + decimal_trimiesta.format(Variable_globeal_kotevny_usek.get(i).get_vysledky_tlaky6()[0]) + " kg/m" + "\n" 
+                                         + language.language_label(languageOption, 229) + " : " + decimal_trimiesta.format(Variable_globeal_kotevny_usek.get(i).get_vysledky_tlaky6()[1]) + " kg/m" + "\n" 
+                                         + language.language_label(languageOption, 230) + " : " + decimal_trimiesta.format(Variable_globeal_kotevny_usek.get(i).get_vysledky_tlaky6()[2]) + " N/m" + "\n" 
+                                         + language.language_label(languageOption, 231) + " : " + decimal_trimiesta.format(Variable_globeal_kotevny_usek.get(i).get_vysledky_tlaky6()[3]) + " N/m" + "\n" 
+                                         + language.language_label(languageOption, 232) + " : " + decimal_trimiesta.format(Variable_globeal_kotevny_usek.get(i).get_vysledky_tlaky6()[4]) + " N/m" + "\n",fontTable);
+           Chunk text_right2 = new Chunk(  language.language_label(languageOption, 233) + " : " + decimal_trimiesta.format(Variable_T0_zivotnost/(365*24)) +" " +language.language_label(languageOption, 214)+ "\n" 
+                                         + language.language_label(languageOption, 234) + " : " + get_vcas_od_montaze() +" " +language.language_label(languageOption, 214)   ,fontTable);
+        
+           par_right.add(text_right);par_right.add(line);par_right.add(text_right1);par_right.add(line);par_right.add(text_right2);
+           c2.addElement(par_right);
+           c2.setBorder(Rectangle.NO_BORDER);
+            table.addCell(c1);
+            table.addCell(c2);
+            doc.add(table);
+            
             doc.newPage();
             
         } // if check box enabled
@@ -3394,6 +3431,8 @@ import mt_variables.State_equation_variables;
         /// WARNINGOVAC AND TESTER ZONE 
         kotevnyUsek Kot_usek = Variable_globeal_kotevny_usek.get(i);
         warning_text ="Array Ai neni vyplneni";            if (Kot_usek.get_Ai_array().length == 1){}  // warning neni array A1 vyplneni a nebude to fungovať
+        warning_text ="Array HI neni vyplneni";            if (Kot_usek.get_Hi_array().length == 1){}  // warning neni array A1 vyplneni a nebude to fungovať     
+        warning_text ="Array dHI neni vyplneni";            if (Kot_usek.get_DeltaHi_array().length == 1){}  // warning neni array A1 vyplneni a nebude to fungovať        
         warning_text ="Námazová oblast nie je vybraná ";  if (Kot_usek.get_I_R50() == 123456789.987654321){throw new NullPointerException();}
         warning_text ="Hcmean = 0 ";  if (Kot_usek.get_h_c_mean() == 123456789.987654321 || Kot_usek.get_h_c_mean() == 0){throw new NullPointerException();}
         
@@ -3433,53 +3472,78 @@ import mt_variables.State_equation_variables;
            overload.set_all_variables(Overload,Kot_usek.get_Ai_array());
            // compute overloads
            overload.compute();
-           // show results in console
-           System.out.println("Overload class results:");
-           System.out.println("z_I = " + overload.z_I);
-           System.out.println("z_Iw = " + overload.z_Iw);
-           System.out.println("z_W = " + overload.z_W);
-           System.out.println("z_iW = " + overload.z_iW);
-           System.out.println("");
+    
+          //parsing value to array list zatazenia a prezataniza 
+           ArrayList<Double>  vysledky_pretazenia5 = new ArrayList<>();
+           vysledky_pretazenia5.removeAll(vysledky_pretazenia5);
+           vysledky_pretazenia5.add(overload.z_I);
+           vysledky_pretazenia5.add(overload.z_W);
+           vysledky_pretazenia5.add(overload.z_Iw);
+           vysledky_pretazenia5.add(overload.z_iW);
+           double[] target = new double[vysledky_pretazenia5.size()];
+           for (int a = 0; a < target.length; a++) {    
+           target[i] = vysledky_pretazenia5.get(a);                // java 1.5+ style (outboxing)
+           }         
+           Kot_usek.set_vysledky_pretazenia6(target);
            
-        // conductor creeping class - second step
-           /* Txp */
-           Conductor_creeping_variables Creeping_txp = new Conductor_creeping_variables(Conductor, 
-                                                                                    Conductor.get_m()*9.80665, 
-                                                                                    Variable_streda_roc_teplota, 
-                                                                                    Variable_T0_zivotnost, 
-                                                                                    Variable_Tp_prechodna_doba);
-            // set variables to state equation class 
-            // - compute sigma_HT for conductor creeping variable 
-            // - compute thermal shift for [i]th temperature
-            State_equation_variables State = new State_equation_variables(Conductor, Variable_streda_roc_teplota, -5, Variable_zakladne_mech_napatie_lana_pre_minus5, 1);
-            state_equation.set_all_variables(State, Variable_Ai_array, Variable_DeltaHi_array);
-            state_equation.compute_sigma_H(1, Variable_mid_span);
-            
-            // set variables to conductor creeping class 
-            // - compute thermal shift for [i]th temperature
-            conductor_creeping.set_all_variables(Creeping_txp, state_equation.sigma_h1);
-            conductor_creeping.compute_transient_thermal_shift_value(Variable_Tp_prechodna_doba);
-            conductor_creeping.set_Txp(Variable_teploty_stav_rovnica[i]); // input as Txp to the final state equation
-            
-            /* Tx0 */
-            Conductor_creeping_variables Creeping_tx0 = new Conductor_creeping_variables(Conductor, 
-                                                                                    Conductor.get_m()*9.80665, 
-                                                                                    -5, 
-                                                                                    Variable_T0_zivotnost, 
-                                                                                    Variable_Tp_prechodna_doba);
-            // set variables to conductor creeping class 
-            // - compute thermal shift for default temperature; -5 degrees
-            conductor_creeping.set_all_variables(Creeping_tx0, Variable_zakladne_mech_napatie_lana_pre_minus5);
-            conductor_creeping.compute_transient_thermal_shift_value(Variable_Tp_prechodna_doba);
-            conductor_creeping.set_Tx0(-5); // input as Tx0 to the final state equation
+           
+           ArrayList<Double> vysledky_tlaky = new ArrayList<>();
+           vysledky_tlaky.removeAll(vysledky_tlaky);
+           vysledky_tlaky.add(overload.I_T);
+           vysledky_tlaky.add(overload.I_3);
+           vysledky_tlaky.add(overload.q_wT);
+           vysledky_tlaky.add(overload.q_wI3);
+           vysledky_tlaky.add(overload.q_wIT);  
+           double[] target2 = new double[vysledky_tlaky.size()];
+          for (int a = 0; a < target2.length; a++) {    
+          target2[a] = vysledky_tlaky.get(a);                // java 1.5+ style (outboxing)
+           }
+          Kot_usek.set_vysledky_tlaky6(target2);
+          
+          
+          
+//        // conductor creeping class - second step
+//           /* Txp */
+//           Conductor_creeping_variables Creeping_txp = new Conductor_creeping_variables(Conductor, 
+//                                                                                    Conductor.get_m()*9.80665, 
+//                                                                                    Variable_streda_roc_teplota, 
+//                                                                                    Variable_T0_zivotnost, 
+//                                                                                    Variable_Tp_prechodna_doba);
+//            // set variables to state equation class 
+//            // - compute sigma_HT for conductor creeping variable 
+//            // - compute thermal shift for [i]th temperature
+//            State_equation_variables State = new State_equation_variables(Conductor, Variable_streda_roc_teplota, -5, Variable_zakladne_mech_napatie_lana_pre_minus5, 1);
+//            state_equation.set_all_variables(State, Variable_Ai_array, Variable_DeltaHi_array);
+//            state_equation.compute_sigma_H(1, Variable_mid_span);
+//            
+//            // set variables to conductor creeping class 
+//            // - compute thermal shift for [i]th temperature
+//            conductor_creeping.set_all_variables(Creeping_txp, state_equation.sigma_h1);
+//            conductor_creeping.compute_transient_thermal_shift_value(Variable_Tp_prechodna_doba);
+//            conductor_creeping.set_Txp(Variable_teploty_stav_rovnica[i]); // input as Txp to the final state equation
+//            
+//            /* Tx0 */
+//            Conductor_creeping_variables Creeping_tx0 = new Conductor_creeping_variables(Conductor, 
+//                                                                                    Conductor.get_m()*9.80665, 
+//                                                                                    -5, 
+//                                                                                    Variable_T0_zivotnost, 
+//                                                                                    Variable_Tp_prechodna_doba);
+//            // set variables to conductor creeping class 
+//            // - compute thermal shift for default temperature; -5 degrees
+//            conductor_creeping.set_all_variables(Creeping_tx0, Variable_zakladne_mech_napatie_lana_pre_minus5);
+//            conductor_creeping.compute_transient_thermal_shift_value(Variable_Tp_prechodna_doba);
+//            conductor_creeping.set_Tx0(-5); // input as Tx0 to the final state equation
 
         } // if check box enabled
         } // do  pocet kotevnych usekov
+        Calculation_done=true;  // bool prebehla kalkulacia
+        Variable_globeal_kotevny_usek_zmena = Variable_globeal_kotevny_usek;
         } catch(NullPointerException e){
            warning_sign(warning_text);
         
         }
         }
+        
     }//GEN-LAST:event_Button_Icon_calculateActionPerformed
 
     private void Button_Icon_arr_row_table_kotevny_usekActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button_Icon_arr_row_table_kotevny_usekActionPerformed
@@ -4447,7 +4511,7 @@ private static boolean urovenspolahlivostiblocker = true;
 private static boolean first_Start= true;
 private static boolean selection_kotevny_usek= true;
 private static int povodna_hodnota_selekcie=0;
-
+private static boolean  Calculation_done=false;
 //namrazove oblasti premene
 public static Object[] hodnoty_namrazove_oblasti = new Object[3];
 public static String namrazove_oblasti_názov_oblasti = "----";
@@ -4477,6 +4541,7 @@ private static ArrayList<Double>  Variable_Ai_dlzka_rozpatia = new ArrayList<>()
 private static ArrayList<Double>  Variable_hi_vyska_stoziarov = new ArrayList<>();
 private static ArrayList<Double>  Variable_hi2_nadmorska_vyska_stoziarov = new ArrayList<>();
 private static ArrayList<kotevnyUsek>  Variable_globeal_kotevny_usek = new ArrayList<>();
+private static ArrayList<kotevnyUsek>  Variable_globeal_kotevny_usek_zmena = new ArrayList<>();
 private static double  Variable_Hc_mean;
 private static double  Variable_Hc_mean_medzikrok;
 private static double  Variable_n_pocet_rozpati;
@@ -5139,7 +5204,191 @@ private void seticon() {
         
         }
    
-     
+    private String get_char_terenu_number(kotevnyUsek X){
+        
+        int number_of_char = X.get_char_terenu_porcislo();
+        String output="none";  
+          switch (number_of_char) {
+            case 0:  output="I";
+                     //jTextPane_char_terenu.setText(language.language_label(languageOption, 135));
+                     break;
+            case 1:  output="II";
+                     //jTextPane_char_terenu.setText(language.language_label(languageOption, 136));
+                     break;
+            case 2:  output="III";
+                     //jTextPane_char_terenu.setText(language.language_label(languageOption, 137));
+                     break;
+            case 3:  output="IV";
+                     //jTextPane_char_terenu.setText(language.language_label(languageOption, 139));
+                     break;
+            case 4:  output="V";
+                     //jTextPane_char_terenu.setText(language.language_label(languageOption, 139));
+                     break;                    
+        }
+        return output;      
+    }
+    
+    private String get_char_terenu_text(kotevnyUsek X){
+        
+        int number_of_char = X.get_char_terenu_porcislo();
+        String output="none";  
+          switch (number_of_char) {
+            case 0:  
+                     output=language.language_label(languageOption, 207);
+                     break;
+            case 1:  
+                     output=language.language_label(languageOption, 208);
+                     break;
+            case 2:  
+                     output=language.language_label(languageOption, 209);
+                     break;
+            case 3:  
+                     output=language.language_label(languageOption, 210);
+                     break;
+            case 4:  
+                     output=language.language_label(languageOption, 211);
+                     break;                    
+        }
+        return output;      
+    }
+    
+    private String get_typ_terenu_number(int X){
+        
+        int number_of_char = X;
+        String output="none";  
+          switch (number_of_char) {
+                case 0:  output="1";
+                //jTextPane_KPB_typ_terenu.setText(language.language_label(languageOption, 169));
+                break;
+                case 1:  output="2"; 
+               // jTextPane_KPB_typ_terenu.setText(language.language_label(languageOption, 170));
+                break;
+                case 2:  output="3"; 
+                //jTextPane_KPB_typ_terenu.setText(language.language_label(languageOption, 171));
+                break;
+                case 3:  output="4"; 
+                //jTextPane_KPB_typ_terenu.setText(language.language_label(languageOption, 172));
+                break;
+
+            }
+        return output;      
+    }
+    
+    private String get_typ_terenu_text(int X){
+        
+        int number_of_char = X;
+        String output="none";  
+          switch (number_of_char) {
+                case 0:  output=language.language_label(languageOption, 169);
+                break;
+                case 1:  output=language.language_label(languageOption, 170);
+                break;
+                case 2:  output=language.language_label(languageOption, 171);
+                break;
+                case 3:  output=language.language_label(languageOption, 172);
+                break;
+
+            }
+        return output;      
+    }
+    
+    private String get_rok_navratu_cas(int X){
+        
+        int number = X;
+        String output="none";
+        
+        int selected_index_from_JComboBox = jComboBox_uroven_splahlivosti.getSelectedIndex();
+
+            switch (number) {
+                case 0:  //50 rokov
+                output = "50 " + language.language_label(languageOption, 214);
+                break;
+                case 1:  //150 rokov
+                output = "150 " + language.language_label(languageOption, 214);
+                break;
+                case 2:  //500 rokov
+                output = "500 " + language.language_label(languageOption, 214);
+                break;
+                case 3:  //3 dni
+                output = "3 " + language.language_label(languageOption, 235);
+                break;
+                case 4:  //3 mesiace
+                output = "50"+ language.language_label(languageOption, 237);
+                break;
+                case 5:  //1 rok
+                output = "50"+ language.language_label(languageOption, 236);
+                break;
+                case 6:  //50 rokov
+                output = String.valueOf(Variable_uroven_spolahlivosti_cas_navratu_klim_udalosti) +" " + language.language_label(languageOption, 214);
+                break;
+            }
+        
+        
+        return output;      
+    }
+ 
+    private String get_vetrova_oblast_string(int X){
+        
+        int number = X;
+        String output="none";
+        
+        
+
+            switch (number) {
+                case 0:  //50 rokov
+                output = "I-SK";
+                break;
+                case 1:  //150 rokov
+                output = "II-SK";
+                break;
+                case 2:  //500 rokov
+                output = "III-SK";
+                break;
+                case 3:  //3 dni
+                output = "IV-SK";
+                break;
+                case 4:  //3 mesiace
+                output = "I-CZ";
+                break;
+                case 5:  //1 rok
+                output = "II-CZ";
+                break;
+                case 6:  //1 rok
+                output = "III-CZ";
+                break;
+                case 7:  //1 rok
+                output = "IV-CZ";
+                break;
+                case 8:  //1 rok
+                output = "V-CZ";
+                break;
+                case 9:  //1 rok
+                output = "Volitelné";
+                break;               
+            }
+        
+        
+        return output;      
+    }
+   
+    private String get_vcas_od_montaze(){
+        
+        
+        String output="none";
+         
+        if(jRadioButton_with_label_pociatocne.isSelected()){
+            output= "0";
+        }
+        if(jRadioButton_with_label_prechodne.isSelected()){
+            output= TextField_tabulky_prechodna.getText();
+        }
+         if(jRadioButton_with_label_konecne.isSelected()){
+            output= TextField_tabulky_konecna.getText();
+        }
+
+        return output;      
+    }
+   
 }
 class header_pdf extends javax.swing.JFrame{
     private static String PDF_VAR_vypocet_podla_normy = "";
@@ -5413,8 +5662,106 @@ class kotevnyUsek extends javax.swing.JFrame{
         Hi_array_over= H1_array;
         Hi_array_nmv_over= H1_array_nmv;
         h_c_mean_window_vypocitana_over= h_c_mean_window_vypocitana;
-         h_c_mean_window_vlastna_over= h_c_mean_window_vlastna;
-         str_rozpatie_over=str_rozpatie;
+        h_c_mean_window_vlastna_over= h_c_mean_window_vlastna;
+        str_rozpatie_over=str_rozpatie;
+    }
+    
+    kotevnyUsek(                String name_kot_useku,
+                                int conductor,
+                                int vetrova_oblast_porC,
+                                int char_terenu_porC, 
+                                int uroven_spolahlivosti_porC,
+                                int uroven_spolahlivosti_stav_porC,
+                                String namrazova_oblst,
+                                int typ_namrazy_porC,
+                                double RTS,
+                                double zakl_mech_minus_5,
+                                double max_zataz_lana_podiel_z_RTS,
+                                double g_c, 
+                                double ro_I, 
+                                double K_lc,
+                                double K_h,
+                                double I_R50,
+                                double k_r,
+                                double z_0,
+                                double V_mean,
+                                double c_dir,
+                                double c_0,
+                                double C_c,
+                                double gama_w,
+                                double gama_I,
+                                double Psi_I,
+                                double Psi_w,
+                                double B_I,
+                                double k_p,
+                                double RR,
+                                double ro,
+                                double C_cl,
+                                double h_c_mean,
+                                boolean str_vys_vodicov_radio,
+                                boolean CDIR_radio,
+                                boolean CO_radio,
+                                boolean  Kcl_radio,
+                                boolean Kh_radio,
+                                boolean Bi_radio,
+                                double[] A1_array,
+                                double[] Delta_Hi_array,
+                                double[] H1_array,
+                                double[] H1_array_nmv,
+                                double h_c_mean_window_vypocitana,
+                                double h_c_mean_window_vlastna,
+                                double str_rozpatie
+            
+                             
+                                
+    
+    ){
+        
+        name=name_kot_useku;
+        conductor_porcislo = conductor;
+        vetrova_oblast_porcislo=vetrova_oblast_porC;
+        char_terenu_porcislo=char_terenu_porC;
+        uroven_spolahlivosti_porcislo=uroven_spolahlivosti_porC;
+        uroven_spolahlivosti_stav_porcislo=uroven_spolahlivosti_stav_porC;
+        namrazova_oblast=namrazova_oblst;
+        typ_namrazy_porcislo=typ_namrazy_porC;
+        RTS_over=RTS;
+        zakladne_mech_napatie_lana_pre_minus5_over= zakl_mech_minus_5;
+        maximalne_zataz_lana_podiel_z_RTS_over = max_zataz_lana_podiel_z_RTS;
+        g_c_over = g_c;
+        ro_I_over = ro_I;
+        K_lc_over = K_lc;
+        K_h_over = K_h;
+        I_R50_over = I_R50;
+        k_r_over = k_r;
+        z_0_over = z_0;
+        V_mean_over = V_mean;
+        c_dir_over = c_dir;
+        c_0_over = c_0;
+        C_c_over = C_c;
+        gama_w_over = gama_w;
+        gama_I_over = gama_I;
+        Psi_I_over = Psi_I;
+        Psi_w_over = Psi_w;
+        B_I_over = B_I;
+        k_p_over = k_p;
+        RR_over = RR;
+        ro_over = ro;
+        C_cl_over = C_cl;
+        h_c_mean_over = h_c_mean;
+        str_vys_vodicov_radio_over = str_vys_vodicov_radio;
+        CDIR_radio_over=CDIR_radio;
+        CO_radio_over=CO_radio;
+        Kcl_radio_over=Kcl_radio;
+        Kh_radio_over= Kh_radio;
+        Bi_radio_over=Bi_radio;
+        Ai_array_over=A1_array;
+        DeltaHi_array_over= Delta_Hi_array;
+        Hi_array_over= H1_array;
+        Hi_array_nmv_over= H1_array_nmv;
+        h_c_mean_window_vypocitana_over= h_c_mean_window_vypocitana;
+        h_c_mean_window_vlastna_over= h_c_mean_window_vlastna;
+        str_rozpatie_over=str_rozpatie;
     }
     
     public String get_name(){
