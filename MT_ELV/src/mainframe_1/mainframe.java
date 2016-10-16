@@ -4570,8 +4570,8 @@ import mt_variables.State_equation_variables;
 DefaultTableModel modelTable;
 DefaultTableModel modeltable_rozpatia;
 DefaultTableModel modeltable_rozpatia_nadm_vysky;
-public static String new_kotevny_usek_name;
-public static boolean existnewkotevnyusek = false;
+private static String new_kotevny_usek_name;
+private static boolean existnewkotevnyusek = false;
 private static boolean mainframeLodaed = false;
 private static boolean teplotyser = false;
 private static boolean urovenspolahlivostiblocker = true;
@@ -4580,6 +4580,9 @@ private static boolean selection_kotevny_usek= true;
 private static int povodna_hodnota_selekcie=0;
 private static boolean  Calculation_done=false;
 
+private static String project_filename;
+private static String project_filepath;
+private static boolean project_save_as;
 
 //namrazove oblasti premene
 public static Object[] hodnoty_namrazove_oblasti = new Object[3];
@@ -5874,7 +5877,7 @@ private void seticon() {
     
     }
     
-    private void save_project(){
+    private void save_project(String user_path){
         
         // create variables filename and filepath
         // if save  with false just resave ( fafalse if loaded of of save as
@@ -5884,6 +5887,61 @@ private void seticon() {
         
         // save include global variable ane variables kotevne useky witch is cycles 
         
+        //ochrana ak nie jezadani filepath alebo filename
+        if(project_filename.equals(null) || project_filepath.equals(null)){
+          project_save_as=true;  
+        }
+        
+        if(project_save_as==true){
+        
+        String userhome = System.getProperty("user.dir");          //userhome is home folder of program
+        
+        // ak je zadaná špec lokaciakde ukladať tak tam ak nide default priečion kde existuje
+         JFileChooser chooser;
+        if(user_path.equals("")){
+         chooser = new JFileChooser(userhome + "");}
+        else{
+          chooser = new JFileChooser(user_path);}
+        
+          //key files are stored in resources
+        FileNameExtensionFilter txtfilter = new FileNameExtensionFilter(
+                language.language_label(languageOption, 32), "txt");                                // whitch type of files are we looking for
+        chooser.setDialogTitle(language.language_label(languageOption, 31));   // title for Jfile chooser window
+        chooser.setFileFilter(txtfilter);                                   // Txt filter for choosing file
+
+        chooser.showOpenDialog(null);
+        File f = chooser.getSelectedFile();   
+            
+        project_filename=  f.getName(); 
+        project_filepath = f.getParent(); 
+        
+        }else{
+          
+        //save  no save_as  filename and filepath has data    
+            
+        }
+        
+        File subor = new File(project_filename+ "\\" +project_filepath);
+        
+        try {
+            PrintWriter fw = new PrintWriter(subor);
+            fw.println("Saved project file DO NOT MODIFY or I will hunt you and eat you alive");
+            fw.println("Created by Jozef Bendík & Matej Cenký 2016 ");
+            fw.println("All rights restricked for SAG Elektrovod a.s.");
+            fw.println("General project data");
+            
+           
+            
+            
+            
+            
+            
+            
+            
+            
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(mainframe.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
     }
     
