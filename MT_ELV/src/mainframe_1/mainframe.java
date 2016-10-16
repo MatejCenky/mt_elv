@@ -5873,6 +5873,20 @@ private void seticon() {
          
     
     }
+    
+    private void save_project(){
+        
+        // create variables filename and filepath
+        // if save  with false just resave ( fafalse if loaded of of save as
+        // if save with true open chooser ane create new file and so on save simple
+        
+        //make saving cycle folder for save on the 
+        
+        // save include global variable ane variables kotevne useky witch is cycles 
+        
+        
+    }
+    
   }
 
 
