@@ -3398,7 +3398,7 @@ import mt_variables.State_equation_variables;
                  subScript.setTextRise(-2f);   
           doc.add(new Phrase(" " + language.language_label(languageOption, 238) + "\u03C3",fontText)); 
           doc.add(subScript);  
-          doc.add(new Phrase(" " + language.language_label(languageOption, 239) + decimal_trimiesta.format(Variable_mid_span) + " m" ,fontText)); 
+          doc.add(new Phrase(" " + language.language_label(languageOption, 239) + decimal_trimiesta.format(Variable_globeal_kotevny_usek.get(i).get_str_rozpatie()  ) + " m" ,fontText)); 
             
           
           make_MT_table(doc,Variable_globeal_kotevny_usek.get(i),fontTable,fontScript,fontScript2,fontText,5,decimal_dvamiesta);
@@ -4579,6 +4579,8 @@ private static boolean first_Start= true;
 private static boolean selection_kotevny_usek= true;
 private static int povodna_hodnota_selekcie=0;
 private static boolean  Calculation_done=false;
+
+
 //namrazove oblasti premene
 public static Object[] hodnoty_namrazove_oblasti = new Object[3];
 public static String namrazove_oblasti_názov_oblasti = "----";
@@ -5456,6 +5458,18 @@ private void seticon() {
         return output;      
     }
    
+    /**
+     * 
+     * @param doc    Itext document
+     * @param kot_usek kotevny usek class
+     * @param fontTable   font for table
+     * @param fontScript   font for script
+     * @param fontScript2   font for script outsideš table
+     * @param fontText      font fot plain text
+     * @param spacing       spacing in table
+     * @param decimal_dva   rounding on two decimal places
+     * @throws DocumentException  well this is posible
+     */
     private void make_MT_table (Document doc,kotevnyUsek kot_usek, Font fontTable,Font fontScript,Font fontScript2,Font fontText,int spacing,DecimalFormat decimal_dva  ) throws DocumentException{
        float[] columnWidths_of_table = {77f,31f,31f,31f,31f,31f,31f,31f,31f,31f,31f,31f,31f,31f,31f};
         PdfPTable table = new PdfPTable(columnWidths_of_table);
@@ -5776,7 +5790,94 @@ private void seticon() {
           doc.add(table);
          
     }
-}
+
+    private void global_var_to_main_frame(projekt_global_variables X){
+        DecimalFormatSymbols otherSymbols = new DecimalFormatSymbols();
+               otherSymbols.setDecimalSeparator('.');
+               DecimalFormat df = new DecimalFormat("###.##",otherSymbols);
+               DecimalFormat df0 = new DecimalFormat("###",otherSymbols);
+        
+               
+        jRadioButton_with_label_rozpatie_klasicky.setSelected(X.get_mid_span_option());
+        jRadioButton_KPB_cas_vypoctu_1_rok.setSelected(X.get_KPB_typ_terenu());
+        jComboBox_KPB_typ_terenu.setSelectedIndex(X.get_KPB_combobo_number());
+        TextField_tabulky_prechodna.setText(df.format(X.get_tables_prechodne()));
+        TextField_tabulky_konecna.setText(df.format(X.get_tables_konecne()));
+        
+        if(X.get_tables_number123()==2 || X.get_tables_number123()==3){
+        if(X.get_tables_number123()==3){jRadioButton_with_label_konecne.setSelected(true);}else{jRadioButton_with_label_prechodne.setSelected(true);}
+       
+        for(int i=0;i<14;i++){
+         Variable_teploty_stav_rovnica[i]=X.get_teploty_MT()[i];   
+        }
+        TextField_teploha_stav2.setText(df0.format(X.get_teploty_MT()[1]));
+        TextField_teploha_stav3.setText(df0.format(X.get_teploty_MT()[2]));
+        TextField_teploha_stav10.setText(df0.format(X.get_teploty_MT()[9]));
+        TextField_teploha_stav11.setText(df0.format(X.get_teploty_MT()[10]));
+        TextField_teploha_stav12.setText(df0.format(X.get_teploty_MT()[11]));
+        TextField_teploha_stav13.setText(df0.format(X.get_teploty_MT()[12]));
+        
+        
+        }
+        
+        if(X.get_tables_number123()==1){
+        jRadioButton_with_label_pociatocne.setSelected(true);
+        for(int i=0;i<14;i++){
+         Variable_teploty_stav_rovnica[i]=X.get_teploty_MT()[i];   
+        }
+        TextField_teploha_stav1.setText(df0.format(X.get_teploty_MT()[0]));
+        TextField_teploha_stav7.setText(df0.format(X.get_teploty_MT()[6]));
+        TextField_teploha_stav9.setText(df0.format(X.get_teploty_MT()[8]));
+        TextField_teploha_stav10.setText(df0.format(X.get_teploty_MT()[9]));
+        TextField_teploha_stav11.setText(df0.format(X.get_teploty_MT()[10]));
+        TextField_teploha_stav12.setText(df0.format(X.get_teploty_MT()[11]));
+         TextField_teploha_stav13.setText(df0.format(X.get_teploty_MT()[12]));
+          TextField_teploha_stav14.setText(df0.format(X.get_teploty_MT()[13]));
+        
+        
+        }
+        
+         jRadioButton_with_pretazenia_vypocitana.setSelected(X.get_pretazenia_vypocitane());
+    
+         
+         if(X.get_pretazenia_vypocitane() == false ){
+        
+         TextField_pretazenia_stav1.setText(df.format(X.get_pretazenia_MT()[0]));    
+         TextField_pretazenia_stav2.setText(df.format(X.get_pretazenia_MT()[1]));
+         TextField_pretazenia_stav3.setText(df.format(X.get_pretazenia_MT()[2]));
+         TextField_pretazenia_stav4.setText(df.format(X.get_pretazenia_MT()[3]));
+         TextField_pretazenia_stav5.setText(df.format(X.get_pretazenia_MT()[4]));
+         TextField_pretazenia_stav6.setText(df.format(X.get_pretazenia_MT()[5]));
+         TextField_pretazenia_stav7.setText(df.format(X.get_pretazenia_MT()[6]));
+         TextField_pretazenia_stav8.setText(df.format(X.get_pretazenia_MT()[7]));
+         TextField_pretazenia_stav9.setText(df.format(X.get_pretazenia_MT()[8]));
+         TextField_pretazenia_stav10.setText(df.format(X.get_pretazenia_MT()[9]));
+         TextField_pretazenia_stav11.setText(df.format(X.get_pretazenia_MT()[10]));
+         TextField_pretazenia_stav12.setText(df.format(X.get_pretazenia_MT()[11]));
+         TextField_pretazenia_stav13.setText(df.format(X.get_pretazenia_MT()[12]));
+         TextField_pretazenia_stav14.setText(df.format(X.get_pretazenia_MT()[13]));
+         array_pretaezenia_stav_rovnica_loader_setter();
+        
+        }
+         
+     jTextField_datum.setText(X.get_hlavicka().dátum());
+     jTextField_nadpis_pre_prechodna.setText(X.get_hlavicka().nadpis_pre_prechodne());
+     jTextField_nazov_SOPS.setText(X.get_hlavicka().SO_PS());
+     jTextField_nazov_SOPS1.setText(X.get_hlavicka().SO_PS1());
+     jTextField_nazov_arch_cislo.setText(X.get_hlavicka().Archivne_cislo());
+     jTextField_nazov_cislo_strany.setText(String.valueOf(X.get_hlavicka().cislovanie_stran_od()));
+     jTextField_nazov_nazov_stavby.setText(X.get_hlavicka().Stavba());
+    jTextField_nazov_nazov_stavby1.setText(X.get_hlavicka().Stavba1());
+    jTextField_nazov_normi.setText(X.get_hlavicka().vypocet_podla_normy_getter());
+     jTextField_vypracoval.setText(X.get_hlavicka().vypracoval()); 
+         
+    
+    }
+  }
+
+
+//Classes
+
 class header_pdf extends javax.swing.JFrame{
     private static String PDF_VAR_vypocet_podla_normy = "";
     private static String PDF_VAR_nadpis_pre_prechodne = "";
@@ -6557,4 +6658,110 @@ class kotevnyUsek extends javax.swing.JFrame{
        public void set_vysledky_vid_priehyb_M(double[][] vysledky_vid_priehyb_MT){
        vysledky_vid_priehyb_MT_over= vysledky_vid_priehyb_MT;
     }        
+}
+
+
+class projekt_global_variables extends javax.swing.JFrame{
+    
+      private boolean mid_span_option_over;
+      private boolean KPB_typ_terenu_over;
+      private int KPB_combobo_number_over;
+      private int tables_number123_over;
+      private double tables_prechodne_over;
+      private double tables_konecne_over;
+      private double[] teploty_MT_over;
+      private double[] pretazenia_MT_over;
+      private boolean pretazenia_vypocitane_over;
+      private header_pdf hlavicka_over;
+    
+    
+    
+    
+projekt_global_variables(
+      boolean mid_span_option,
+      boolean KPB_typ_terenu,
+      int KPB_combobo_number,
+      int tables_number123,
+      double tables_prechodne,
+      double tables_konecne,
+      double[] teploty_MT,
+      double[] pretazenia_MT,
+      boolean pretazenia_vypocitane,
+      header_pdf hlavicka
+        
+){
+      mid_span_option_over=mid_span_option;
+       KPB_typ_terenu_over=KPB_typ_terenu;
+       KPB_combobo_number_over=KPB_combobo_number;
+       tables_number123_over=tables_number123;
+       tables_prechodne_over=tables_prechodne;
+       tables_konecne_over=tables_konecne;
+       teploty_MT_over=teploty_MT;
+       pretazenia_MT_over=pretazenia_MT;
+       pretazenia_vypocitane_over=pretazenia_vypocitane;
+       hlavicka_over=hlavicka;   
+}    
+      public boolean get_mid_span_option(){
+        return mid_span_option_over;
+    }
+    public boolean get_KPB_typ_terenu(){
+        return KPB_typ_terenu_over;
+    }
+    public int get_KPB_combobo_number(){
+        return KPB_combobo_number_over;
+    }
+    public int get_tables_number123(){
+        return tables_number123_over;
+    }
+    public double get_tables_prechodne(){
+        return tables_prechodne_over;
+    }
+    public double get_tables_konecne(){
+        return tables_konecne_over;
+    }
+    public double[] get_teploty_MT(){
+        return teploty_MT_over;
+    }
+    public double[] get_pretazenia_MT(){
+        return pretazenia_MT_over;
+    }
+    public boolean get_pretazenia_vypocitane(){
+        return pretazenia_vypocitane_over;
+    }
+    public header_pdf get_hlavicka(){
+        return hlavicka_over;
+    }
+    
+    
+    public void set_mid_span_option(boolean mid_span_option){
+         mid_span_option_over=mid_span_option;
+    }
+    public void set_KPB_typ_terenu(boolean KPB_typ_terenu){
+         KPB_typ_terenu_over=KPB_typ_terenu;
+    }
+    public void set_KPB_combobo_number(int KPB_combobo_number){
+         KPB_combobo_number_over=KPB_combobo_number;
+    }
+    public void  set_tables_number123(int tables_number123){
+         tables_number123_over=tables_number123;
+    }
+    public void  set_tables_prechodne(double tables_prechodne){
+         tables_prechodne_over=tables_prechodne;
+    }
+    public void   set_tables_konecne(double tables_konecne ){
+         tables_konecne_over=tables_konecne;
+    }
+    public void  set_teploty_MT(double[] teploty_MT){
+         teploty_MT_over=teploty_MT;
+    }
+    public void  set_pretazenia_MT(double[] pretazenia_MT){
+         pretazenia_MT_over=pretazenia_MT;
+    }
+    public void  set_pretazenia_vypocitane(boolean pretazenia_vypocitane){
+         pretazenia_vypocitane_over=pretazenia_vypocitane;
+    }
+    public void  set_hlavicka(header_pdf hlavicka ){
+         hlavicka_over=hlavicka;
+    }
+    
 }
