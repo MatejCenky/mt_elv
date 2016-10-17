@@ -67,6 +67,10 @@ import mt_variables.State_equation_variables;
      */
     public  mainframe() {
         
+        // set name of project
+        mainframe_new_project_set_title mainframe_new_project_JDialog_window = new mainframe_new_project_set_title(this, rootPaneCheckingEnabled);
+        mainframe_new_project_JDialog_window.setVisible(true); 
+        project_name=mainframe_new_project_set_title.name_of_project;
         
         initComponents();
         setLocationRelativeTo(null);
@@ -75,6 +79,8 @@ import mt_variables.State_equation_variables;
         this.modelTable = (DefaultTableModel) Table_kotevne_useky.getModel();
         this.modeltable_rozpatia = (DefaultTableModel) Table_rozpatia.getModel();
         this.modeltable_rozpatia_nadm_vysky = (DefaultTableModel) Table_rozpatia_nadm_vysky.getModel();
+        
+        
         
         
         
@@ -203,7 +209,7 @@ import mt_variables.State_equation_variables;
                     if (povodna_hodnota_selekcie != rowNumber) {
                         double[] empty = null;
                          double[][] empty2 = null;
-                        kotevnyUsek docasny_kot_usek = new kotevnyUsek(new_kotevny_usek_name, 0, 0, 0, 0, 0, filename, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, teplotyser, first_Start, teplotyser, teplotyser, teplotyser, first_Start, Variable_Ai_array, Variable_Hi_array, Variable_Hi_array, Variable_Hi_array_nmv, 0, 0, 0,empty,empty,empty,empty,empty,empty,empty2);
+                        kotevnyUsek docasny_kot_usek = new kotevnyUsek(new_kotevny_usek_name, 0, 0, 0, 0, 0, filename, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, teplotyser, first_Start, teplotyser, teplotyser, teplotyser, first_Start, Variable_Ai_array, Variable_Hi_array, Variable_Hi_array, Variable_Hi_array_nmv, 0, 0, 0,hodnoty_namrazove_oblasti,empty,empty,empty,empty,empty,empty,empty2);
                         mainframe_to_kotevny_usek(docasny_kot_usek,povodna_hodnota_selekcie);
                         Variable_globeal_kotevny_usek.set(povodna_hodnota_selekcie, docasny_kot_usek);
 
@@ -636,9 +642,8 @@ import mt_variables.State_equation_variables;
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("MT project_add here name of project");
+        setTitle(project_name);
         setBackground(new java.awt.Color(204, 204, 204));
-        setSize(new java.awt.Dimension(0, 0));
 
         jToolBar1.setRollover(true);
 
@@ -2637,13 +2642,13 @@ import mt_variables.State_equation_variables;
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jPanel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jPanel9, javax.swing.GroupLayout.DEFAULT_SIZE, 572, Short.MAX_VALUE))
+                            .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, 572, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 309, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jPanel10, javax.swing.GroupLayout.DEFAULT_SIZE, 0, Short.MAX_VALUE))
+                                    .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                     .addComponent(jPanel11, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -2671,7 +2676,7 @@ import mt_variables.State_equation_variables;
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, 0, Short.MAX_VALUE))
+                        .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                     .addComponent(jPanel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -3010,26 +3015,17 @@ import mt_variables.State_equation_variables;
         String warning_text = "empty";
  
         
-        // RESAVE actual window
-        
-//        int rowNumber =  Table_kotevne_useky.getSelectedRow(); //- (e.getFirstIndex()-e.getLastIndex()); 
-//             double[] empty = null;
-//             double[][] empty2 = null;
-//             kotevnyUsek docasny_kot_usek = new kotevnyUsek(new_kotevny_usek_name, 0, 0, 0, 0, 0, filename, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, teplotyser, first_Start, teplotyser, teplotyser, teplotyser, first_Start, Variable_Ai_array, Variable_Hi_array, Variable_Hi_array,Variable_Hi_array_nmv,0,0,0);                      
-//             mainframe_to_kotevny_usek(docasny_kot_usek,rowNumber);                        
-//             Variable_globeal_kotevny_usek.set(rowNumber, docasny_kot_usek);  
-//             
-        
+        Button_Icon_calculate.doClick();
         String text="No mama dont cry";
         
         try {
         
-        // kontrola ci je mozne urobit export PDF aj vje urobeny vypocet a zaroven ak je vypocet urobeny z aktualnych dat    
-        if(Calculation_done== true && Variable_globeal_kotevny_usek_zmena.equals( Variable_globeal_kotevny_usek)){        
-        }else{        
-        warning_text ="Urobym prepočet nehnevaj sa! :)"; warning_sign(warning_text);
-        Button_Icon_calculate.doClick();
-        }
+//        // kontrola ci je mozne urobit export PDF aj vje urobeny vypocet a zaroven ak je vypocet urobeny z aktualnych dat    
+//        if(Calculation_done== true && Variable_globeal_kotevny_usek_zmena.equals( Variable_globeal_kotevny_usek)){        
+//        }else{        
+//        warning_text ="Urobym prepočet nehnevaj sa! :)"; warning_sign(warning_text);
+//        Button_Icon_calculate.doClick();
+//        }
             
             
             // tu sa vlozi chooser kd ktory urči nazov a kde a kokotiny podobne
@@ -3430,7 +3426,7 @@ import mt_variables.State_equation_variables;
          int rowNumber =  Table_kotevne_useky.getSelectedRow(); //- (e.getFirstIndex()-e.getLastIndex()); 
              double[] empty = null;
              double[][] empty2 = null;
-             kotevnyUsek docasny_kot_usek = new kotevnyUsek(new_kotevny_usek_name, 0, 0, 0, 0, 0, filename, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, teplotyser, first_Start, teplotyser, teplotyser, teplotyser, first_Start, Variable_Ai_array, Variable_Hi_array, Variable_Hi_array,Variable_Hi_array_nmv,0,0,0,empty,empty,empty,empty,empty,empty,empty2);                     
+             kotevnyUsek docasny_kot_usek = new kotevnyUsek(new_kotevny_usek_name, 0, 0, 0, 0, 0, filename, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, teplotyser, first_Start, teplotyser, teplotyser, teplotyser, first_Start, Variable_Ai_array, Variable_Hi_array, Variable_Hi_array,Variable_Hi_array_nmv,0,0,0,hodnoty_namrazove_oblasti,empty,empty,empty,empty,empty,empty,empty2);                     
              mainframe_to_kotevny_usek(docasny_kot_usek,rowNumber);                        
              Variable_globeal_kotevny_usek.set(rowNumber, docasny_kot_usek);  
                        
@@ -3622,7 +3618,7 @@ import mt_variables.State_equation_variables;
             modelTable.addRow(new Object[]{(Boolean) false,(String) new_kotevny_usek_name});
             double[] empty = null;
             double[][] empty2 = null;
-            kotevnyUsek novy_usek =  new kotevnyUsek(new_kotevny_usek_name, 0, 0, 0, 0, 0, language.language_label(languageOption, 60), 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, teplotyser, teplotyser, teplotyser, teplotyser, teplotyser, teplotyser, Variable_Ai_array, Variable_Hi_array, Variable_Hi_array,Variable_Hi_array_nmv,0,0,0,empty,empty,empty,empty,empty,empty,empty2);    
+            kotevnyUsek novy_usek =  new kotevnyUsek(new_kotevny_usek_name, 0, 0, 0, 0, 0, language.language_label(languageOption, 60), 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, teplotyser, teplotyser, teplotyser, teplotyser, teplotyser, teplotyser, Variable_Ai_array, Variable_Hi_array, Variable_Hi_array,Variable_Hi_array_nmv,0,0,0,hodnoty_namrazove_oblasti,empty,empty,empty,empty,empty,empty,empty2);    
             Variable_globeal_kotevny_usek.add(novy_usek);
             mainframe_to_kotevny_usek(novy_usek,0);
             Table_kotevne_useky.changeSelection(0, 1, false, false);
@@ -3640,7 +3636,7 @@ import mt_variables.State_equation_variables;
             modelTable.addRow(new Object[]{(Boolean) false,(String) new_kotevny_usek_name});
             double[] empty = null;
             double[][] empty2 = null;
-            kotevnyUsek novy_usek =  new kotevnyUsek(new_kotevny_usek_name, 0, 0, 1, 0, 0, "KOKOT", 4,0.0, 50, 50, 1, 500, 1, 1, 123456789.987654321, 0.189, 0.05, 24.0, 1, 1, 1, 1, 1, 0.35, 0.25, 0.656, 3, 0, 1.25, 1.1, 0.0, true, true, true, true, true, true, empty, empty, empty,empty,0,0,0,empty,empty,empty,empty,empty,empty,empty2);    
+            kotevnyUsek novy_usek =  new kotevnyUsek(new_kotevny_usek_name, 0, 0, 1, 0, 0, "KOKOT", 4,0.0, 50, 50, 1, 500, 1, 1, 123456789.987654321, 0.189, 0.05, 24.0, 1, 1, 1, 1, 1, 0.35, 0.25, 0.656, 3, 0, 1.25, 1.1, 0.0, true, true, true, true, true, true, empty, empty, empty,empty,0,0,0,hodnoty_namrazove_oblasti,empty,empty,empty,empty,empty,empty,empty2);    
             Variable_globeal_kotevny_usek.add(novy_usek);
             
             
@@ -3666,11 +3662,24 @@ import mt_variables.State_equation_variables;
     }//GEN-LAST:event_Button_Icon_save_resultsActionPerformed
 
     private void Button_Icon_save_asActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button_Icon_save_asActionPerformed
-        // TODO add your handling code here:
+        String no= "";
+        load_project(no);
     }//GEN-LAST:event_Button_Icon_save_asActionPerformed
 
     private void Button_Icon_saveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button_Icon_saveActionPerformed
-        // TODO add your handling code here:
+       
+        
+        //RESAVE ACTUAL SCREEN
+        int rowNumber =  Table_kotevne_useky.getSelectedRow(); //- (e.getFirstIndex()-e.getLastIndex()); 
+             double[] empty = null;
+             double[][] empty2 = null;
+             kotevnyUsek docasny_kot_usek = new kotevnyUsek(new_kotevny_usek_name, 0, 0, 0, 0, 0, filename, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, teplotyser, first_Start, teplotyser, teplotyser, teplotyser, first_Start, Variable_Ai_array, Variable_Hi_array, Variable_Hi_array,Variable_Hi_array_nmv,0,0,0,hodnoty_namrazove_oblasti,empty,empty,empty,empty,empty,empty,empty2);                     
+             mainframe_to_kotevny_usek(docasny_kot_usek,rowNumber);                        
+             Variable_globeal_kotevny_usek.set(rowNumber, docasny_kot_usek);  
+          
+        
+        String no= "";
+        save_project(no);
     }//GEN-LAST:event_Button_Icon_saveActionPerformed
 
     private void TextField_teploha_stav1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextField_teploha_stav1ActionPerformed
@@ -4580,8 +4589,9 @@ private static boolean selection_kotevny_usek= true;
 private static int povodna_hodnota_selekcie=0;
 private static boolean  Calculation_done=false;
 
-private static String project_filename;
-private static String project_filepath;
+private static String project_name;
+private static String project_filename="";
+private static String project_filepath="";
 private static boolean project_save_as;
 
 //namrazove oblasti premene
@@ -5055,6 +5065,7 @@ private void seticon() {
         X.set_Hi_array(Variable_Hi_array); 
         X.set_Hi_array_nvm(Variable_Hi_array_nmv);
         X.set_str_rozpatie(Variable_mid_span);
+        X.set_hodnoty_namrazove_oblasti(hodnoty_namrazove_oblasti);
         }
    
     private void kotevn_usek_to_mainframe(kotevnyUsek X){
@@ -5272,7 +5283,7 @@ private void seticon() {
         if(jRadioButton_with_label_rozpate_previsenia.isSelected() == true){Variable_mid_span=Variable_mid_span_terrain_docasna;}
                 }
        
-        
+        hodnoty_namrazove_oblasti=X.get_hodnotynamrazove_oblast();
         
         }
    
@@ -5888,7 +5899,7 @@ private void seticon() {
         // save include global variable ane variables kotevne useky witch is cycles 
         
         //ochrana ak nie jezadani filepath alebo filename
-        if(project_filename.equals(null) || project_filepath.equals(null)){
+        if(project_filename.equals("") || project_filepath.equals("")){
           project_save_as=true;  
         }
         
@@ -5909,10 +5920,10 @@ private void seticon() {
         chooser.setDialogTitle(language.language_label(languageOption, 31));   // title for Jfile chooser window
         chooser.setFileFilter(txtfilter);                                   // Txt filter for choosing file
 
-        chooser.showOpenDialog(null);
+        chooser.showSaveDialog(null);
         File f = chooser.getSelectedFile();   
             
-        project_filename=  f.getName(); 
+        project_filename=  f.getName()+".txt"; 
         project_filepath = f.getParent(); 
         
         }else{
@@ -5921,7 +5932,7 @@ private void seticon() {
             
         }
         
-        File subor = new File(project_filename+ "\\" +project_filepath);
+        File subor = new File(project_filepath +"\\" +project_filename);
         
         try {
             PrintWriter fw = new PrintWriter(subor);
@@ -5929,9 +5940,116 @@ private void seticon() {
             fw.println("Created by Jozef Bendík & Matej Cenký 2016 ");
             fw.println("All rights restricked for SAG Elektrovod a.s.");
             fw.println("General project data");
+            fw.println(project_name); // name of project
             
-           
+            fw.println(    jRadioButton_with_label_rozpatie_klasicky.isSelected()       );
+            fw.println(   jRadioButton_KPB_cas_vypoctu_1_rok.isSelected()       );
+            fw.println(   jComboBox_KPB_typ_terenu.getSelectedIndex()       );
             
+            int cislo=3;
+            if(jRadioButton_with_label_pociatocne.isSelected()== true){cislo=1;}
+            if(jRadioButton_with_label_prechodne.isSelected()== true){cislo=2;}
+            if(jRadioButton_with_label_konecne.isSelected()== true){cislo=3;}
+            fw.println(   cislo      );
+            
+            fw.println(   TextField_tabulky_prechodna.getText()      );
+            fw.println(   TextField_tabulky_konecna.getText()      );
+            
+            for(int i =0 ;i<14;i++){
+            fw.print(   Variable_teploty_stav_rovnica[i] + " "      );}
+            fw.println(" ");
+             for(int i =0 ;i<14;i++){
+            fw.print(   Variable_pretazenia_stav_rovnica[i] + " "      );}
+            fw.println(" ");
+            
+            fw.println(   jRadioButton_with_pretazenia_vypocitana.isSelected()   );
+            
+            fw.println(jTextField_nazov_normi.getText());   // hlavicka projektu tak ako sa zadava do class
+            fw.println(jTextField_nadpis_pre_prechodna.getText()); 
+            fw.println(jTextField_nazov_nazov_stavby.getText()); 
+            fw.println(jTextField_nazov_nazov_stavby1.getText()); 
+            fw.println(jTextField_nazov_SOPS.getText()); 
+            fw.println(jTextField_nazov_SOPS1.getText()); 
+            fw.println(jTextField_nazov_arch_cislo.getText()); 
+            fw.println(jTextField_vypracoval.getText()); 
+            fw.println(jTextField_datum.getText());
+            fw.println(jTextField_nazov_cislo_strany.getText()); 
+            // zapis kolko kotevných usekov existuje
+            fw.println(Table_kotevne_useky.getRowCount());
+            
+            for(int i = 0 ; i< Table_kotevne_useky.getRowCount();i++ ){
+            fw.println("-----------------------------------");
+            fw.println(Variable_globeal_kotevny_usek.get(i).get_name());
+            fw.println(Variable_globeal_kotevny_usek.get(i).get_conductor_number());
+            fw.println(Variable_globeal_kotevny_usek.get(i).get_vetrova_oblast_porcislo());
+            fw.println(Variable_globeal_kotevny_usek.get(i).get_char_terenu_porcislo());
+            fw.println(Variable_globeal_kotevny_usek.get(i).get_uroven_spolahlivosti_porcislo());
+            fw.println(Variable_globeal_kotevny_usek.get(i).get_uroven_spolahlivosti_stav_porcislo());
+            fw.println(Variable_globeal_kotevny_usek.get(i).get_namrazova_oblast_string());
+            fw.println(Variable_globeal_kotevny_usek.get(i).get_typ_namrazy_porcislo());
+            fw.println(Variable_globeal_kotevny_usek.get(i).get_RTS_over());
+            fw.println(Variable_globeal_kotevny_usek.get(i).get_zakladne_mech_napatie_lana_pre_minus5_over());
+            fw.println(Variable_globeal_kotevny_usek.get(i).get_maximalne_zataz_lana_podiel_z_RTS_over());
+            fw.println(Variable_globeal_kotevny_usek.get(i).get_c_dir());
+            fw.println(Variable_globeal_kotevny_usek.get(i).get_g_c());
+            fw.println(Variable_globeal_kotevny_usek.get(i).get_ro_I());
+            fw.println(Variable_globeal_kotevny_usek.get(i).get_K_lc());
+            fw.println(Variable_globeal_kotevny_usek.get(i).get_K_h());
+            fw.println(Variable_globeal_kotevny_usek.get(i).get_I_R50());
+            fw.println(Variable_globeal_kotevny_usek.get(i).get_k_r());
+            fw.println(Variable_globeal_kotevny_usek.get(i).get_z_0());
+            fw.println(Variable_globeal_kotevny_usek.get(i).get_V_mean());
+            fw.println(Variable_globeal_kotevny_usek.get(i).get_c_0());
+            fw.println(Variable_globeal_kotevny_usek.get(i).get_C_c());
+            fw.println(Variable_globeal_kotevny_usek.get(i).get_gama_w());
+            fw.println(Variable_globeal_kotevny_usek.get(i).get_gama_I());
+            fw.println(Variable_globeal_kotevny_usek.get(i).get_Psi_I());
+            fw.println(Variable_globeal_kotevny_usek.get(i).get_Psi_w());
+            fw.println(Variable_globeal_kotevny_usek.get(i).get_B_I());
+            fw.println(Variable_globeal_kotevny_usek.get(i).get_k_p());
+            fw.println(Variable_globeal_kotevny_usek.get(i).get_RR());
+            fw.println(Variable_globeal_kotevny_usek.get(i).get_ro());
+            fw.println(Variable_globeal_kotevny_usek.get(i).get_C_cl());
+            fw.println(Variable_globeal_kotevny_usek.get(i).get_h_c_mean());
+            fw.println(Variable_globeal_kotevny_usek.get(i).get_h_c_mean_window_vypocitana());
+            fw.println(Variable_globeal_kotevny_usek.get(i).get_h_c_mean_window_vlastna());
+            fw.println(Variable_globeal_kotevny_usek.get(i).get_str_rozpatie());
+            fw.println(Variable_globeal_kotevny_usek.get(i).get_str_vys_vodicov_radio());
+            fw.println(Variable_globeal_kotevny_usek.get(i).get_CDIR_radio());
+            fw.println(Variable_globeal_kotevny_usek.get(i).get_CO_radio());
+            fw.println(Variable_globeal_kotevny_usek.get(i).get_Kcl_radio());
+            fw.println(Variable_globeal_kotevny_usek.get(i).get_Kh_radio());
+            fw.println(Variable_globeal_kotevny_usek.get(i).get_Bi_radio());
+            
+            
+            fw.println(Variable_globeal_kotevny_usek.get(i).get_Ai_array().length);
+            for(int a =0 ;a<Variable_globeal_kotevny_usek.get(i).get_Ai_array().length;a++){
+            fw.print(   Variable_globeal_kotevny_usek.get(i).get_Ai_array()[a]   + " "   );}
+            fw.println(" ");
+            fw.println(Variable_globeal_kotevny_usek.get(i).get_DeltaHi_array().length);
+             for(int a =0 ;a<Variable_globeal_kotevny_usek.get(i).get_DeltaHi_array().length;a++){
+            fw.print(   Variable_globeal_kotevny_usek.get(i).get_DeltaHi_array()[a]   + " "   );}
+            fw.println(" ");
+             fw.println(Variable_globeal_kotevny_usek.get(i).get_Hi_array().length);
+             for(int a =0 ;a<Variable_globeal_kotevny_usek.get(i).get_Hi_array().length;a++){
+            fw.print(   Variable_globeal_kotevny_usek.get(i).get_Hi_array()[a]   + " "   );}
+            fw.println(" ");      
+              fw.println(Variable_globeal_kotevny_usek.get(i).get_Hi_array_nvm().length);
+             for(int a =0 ;a<Variable_globeal_kotevny_usek.get(i).get_Hi_array_nvm().length;a++){
+            fw.print(   Variable_globeal_kotevny_usek.get(i).get_Hi_array_nvm()[a]   + " "   );}
+            fw.println(" "); 
+            fw.println(Variable_globeal_kotevny_usek.get(i).get_hodnotynamrazove_oblast()[0] );
+            fw.println(Variable_globeal_kotevny_usek.get(i).get_hodnotynamrazove_oblast()[1] );
+            fw.println(Variable_globeal_kotevny_usek.get(i).get_hodnotynamrazove_oblast()[2] );
+            fw.println(Variable_globeal_kotevny_usek.get(i).get_hodnotynamrazove_oblast()[3] );
+        
+            
+            
+            }
+            fw.println("This is End of file_ bye bye java reader");
+            
+            
+            fw.close();
             
             
             
@@ -5942,6 +6060,260 @@ private void seticon() {
         } catch (FileNotFoundException ex) {
             Logger.getLogger(mainframe.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
+    }
+   
+    private void load_project(String user_path){
+        // load sa spusta pred nacitanim prvkov s tym že blokuje vačšinu veci
+        // výdy sa pusťa chooser
+        
+        
+        String userhome = System.getProperty("user.dir");          //userhome is home folder of program
+        
+        // ak je zadaná špec lokaciakde ukladať tak tam ak nide default priečion kde existuje
+         JFileChooser chooser;
+        if(user_path.equals("")){
+         chooser = new JFileChooser(userhome + "");}
+        else{
+          chooser = new JFileChooser(user_path);}
+        
+          //key files are stored in resources
+        FileNameExtensionFilter txtfilter = new FileNameExtensionFilter(
+                language.language_label(languageOption, 32), "txt");                                // whitch type of files are we looking for
+        chooser.setDialogTitle(language.language_label(languageOption, 31));   // title for Jfile chooser window
+        chooser.setFileFilter(txtfilter);                                   // Txt filter for choosing file
+
+        chooser.showSaveDialog(null);
+        File f = chooser.getSelectedFile();   
+            
+        project_filename=  f.getName();
+        project_filepath = f.getParent(); 
+        
+        File subor = new File(project_filepath + "\\" + project_filename);
+        String pokus;
+        
+        try {
+            Scanner input = new Scanner(subor);
+            pokus = input.nextLine();  // uvod kecy
+            pokus = input.nextLine();
+            pokus = input.nextLine();
+            pokus = input.nextLine();
+            
+            project_name = input.nextLine();
+            
+            boolean rozpatie_klasicky = Boolean.valueOf(input.nextLine()) ;
+            boolean KPB_cas_vypoctu_1_rok = Boolean.valueOf(input.nextLine()) ;
+            int ComboBox_KPB_typ_terenu =  Integer.valueOf(input.nextLine());
+            int radio_number_tabulky=  Integer.valueOf(input.nextLine());
+            double tabulky_prechodna = Double.valueOf(input.nextLine());
+            double tabulky_konecne = Double.valueOf(input.nextLine());
+            double[] teploty_stav_mt= new double[14];
+            double[] pretazenia_stav_mt= new double[14];
+            
+             for(int i =0 ;i<14;i++){
+             
+             teploty_stav_mt[i]=Double.parseDouble(input.next());
+             }
+              pokus = input.nextLine();
+             for(int i =0 ;i<14;i++){
+             pretazenia_stav_mt[i]=Double.parseDouble(input.next());     
+             }
+             pokus = input.nextLine();
+             boolean pretazena_vypocitane = Boolean.valueOf(input.nextLine()) ;
+           
+             String nazov_normi = input.nextLine();
+             String       nadpis_pre_prechodna = input.nextLine();
+             String       nazov_nazov_stavby = input.nextLine();
+             String       nazov_nazov_stavby1 = input.nextLine();
+             String       nazov_SOPS = input.nextLine();
+             String       nazov_SOPS1 = input.nextLine();
+             String       nazov_arch_cislo = input.nextLine();
+             String       vypracoval = input.nextLine();
+             String       datum = input.nextLine();
+             int       nazov_cislo_strany = Integer.valueOf(input.nextLine());
+             
+             
+             header_pdf hlavicka = new header_pdf(
+                                         nazov_normi ,
+                                         nadpis_pre_prechodna,
+                                         nazov_nazov_stavby,
+                                         nazov_nazov_stavby1,
+                                         nazov_SOPS,
+                                         nazov_SOPS1,
+                                         nazov_arch_cislo,
+                                         vypracoval,
+                                         datum,
+                                         nazov_cislo_strany
+             );
+             
+             //add to global variables
+             projekt_global_variables project_global_VAR  = new projekt_global_variables(
+             rozpatie_klasicky,
+             KPB_cas_vypoctu_1_rok,
+             ComboBox_KPB_typ_terenu,
+             radio_number_tabulky,
+             tabulky_prechodna,
+             tabulky_konecne,
+             teploty_stav_mt,
+             pretazenia_stav_mt,
+             pretazena_vypocitane,
+             hlavicka
+                     );
+             
+             global_var_to_main_frame(project_global_VAR);
+            
+             //nacitavanie kotevnych usekov
+               int       pocetkot_usekov = Integer.valueOf(input.nextLine());
+              for(int i =0 ;i<pocetkot_usekov;i++){
+              pokus = input.nextLine();
+              
+              String name = input.nextLine();
+              int    conductor_number = Integer.valueOf(input.nextLine());
+              int    vetrova_obl_number = Integer.valueOf(input.nextLine());
+              int    chat_ter_number = Integer.valueOf(input.nextLine());
+              int    uroven_splo_number = Integer.valueOf(input.nextLine());
+              int    uroven_stav_number = Integer.valueOf(input.nextLine());
+              String namr_obl = input.nextLine();
+              int    typ_namr = Integer.valueOf(input.nextLine());
+              double RTS = Double.valueOf(input.nextLine());
+              double zakladne_mech_napatie_lana_pre_minus5 = Double.valueOf(input.nextLine());
+              double maximalne_zataz_lana_podiel_z_RTS = Double.valueOf(input.nextLine());
+              double c_dir = Double.valueOf(input.nextLine());
+              double g_c = Double.valueOf(input.nextLine());
+              double ro_I = Double.valueOf(input.nextLine());
+              double K_lc = Double.valueOf(input.nextLine());
+              double K_h = Double.valueOf(input.nextLine());
+              double I_R50 = Double.valueOf(input.nextLine());
+              double k_r = Double.valueOf(input.nextLine());
+              double z_0 = Double.valueOf(input.nextLine());
+              double V_mean = Double.valueOf(input.nextLine());
+              double c_0 = Double.valueOf(input.nextLine());
+              double C_c = Double.valueOf(input.nextLine());
+              double gama_w = Double.valueOf(input.nextLine());
+              double gama_I = Double.valueOf(input.nextLine());
+              double Psi_I = Double.valueOf(input.nextLine());
+              double Psi_w = Double.valueOf(input.nextLine());
+              double B_I = Double.valueOf(input.nextLine());
+              double k_p = Double.valueOf(input.nextLine());
+              double RR = Double.valueOf(input.nextLine());
+              double ro = Double.valueOf(input.nextLine());
+              double C_cl = Double.valueOf(input.nextLine());
+              double h_c_mean = Double.valueOf(input.nextLine());
+              double h_c_mean_window_vypocitana = Double.valueOf(input.nextLine());
+              double h_c_mean_window_vlastn = Double.valueOf(input.nextLine());
+              double str_rozpatie = Double.valueOf(input.nextLine());
+              boolean str_vys_vodicov_radio = Boolean.valueOf(input.nextLine());
+              boolean CDIR_radio = Boolean.valueOf(input.nextLine());
+              boolean CO_radio = Boolean.valueOf(input.nextLine());
+              boolean Kcl_radio = Boolean.valueOf(input.nextLine());
+              boolean Kh_radio = Boolean.valueOf(input.nextLine());
+              boolean Bi_radio = Boolean.valueOf(input.nextLine());
+              
+             
+             
+             int    pocetAi = Integer.valueOf(input.nextLine());
+             double[] Ai_array= new double[pocetAi];           
+             for(int a =0 ;a<pocetAi;a++){             
+             Ai_array[a]=Double.parseDouble(input.next());
+             }
+             pokus = input.nextLine();
+              
+             int    pocetDeltaHi = Integer.valueOf(input.nextLine());
+             double[] DeltaHi_array= new double[pocetDeltaHi];           
+             for(int a =0 ;a<pocetDeltaHi;a++){             
+             DeltaHi_array[a]=Double.parseDouble(input.next());
+             }
+             pokus = input.nextLine();
+             
+             int    pocetHi = Integer.valueOf(input.nextLine());
+             double[] Hi_array= new double[pocetHi];           
+             for(int a =0 ;a<pocetHi;a++){             
+             Hi_array[a]=Double.parseDouble(input.next());
+             }
+             pokus = input.nextLine();
+             
+             int    pocetHi_nvm = Integer.valueOf(input.nextLine());
+             double[] Hi_nvm_array= new double[pocetHi_nvm];           
+             for(int a =0 ;a<pocetHi_nvm;a++){             
+             Hi_nvm_array[a]=Double.parseDouble(input.next());
+             }
+             pokus = input.nextLine();
+             
+             double namr_hod1 = Double.valueOf(input.nextLine());
+             double namr_hod2 = Double.valueOf(input.nextLine());
+             double namr_hod3 = Double.valueOf(input.nextLine());
+             double namr_hod4 = Double.valueOf(input.nextLine());
+             Object[] oblast_hodnoty = new Object[3];
+             oblast_hodnoty = new Object[]{(double) namr_hod1, (double) namr_hod2,(double) namr_hod3, (double) namr_hod4};
+             
+            double[] empty = null;
+            double[][] empty2 = null;
+             
+             kotevnyUsek novy_usek =  new kotevnyUsek(
+                     name,
+                     conductor_number,
+                     vetrova_obl_number,
+                     chat_ter_number,
+                     uroven_splo_number,
+                     uroven_stav_number,
+                     namr_obl,
+                     typ_namr,
+                     RTS,
+                     zakladne_mech_napatie_lana_pre_minus5,
+                     maximalne_zataz_lana_podiel_z_RTS,
+                     g_c,
+                     ro_I,
+                     K_lc,
+                     K_h,
+                     I_R50,
+                     k_r,
+                     z_0,
+                     V_mean,
+                     c_dir,
+                     c_0,
+                     C_c,
+                     gama_w,
+                     gama_I,
+                     Psi_I,
+                     Psi_w,
+                     B_I,
+                     k_p,
+                     RR,
+                     ro,
+                     C_cl,
+                     h_c_mean,
+                     str_vys_vodicov_radio,
+                     CDIR_radio,
+                     CO_radio,
+                     Kcl_radio,
+                     Kh_radio,
+                     Bi_radio,
+                     Ai_array,
+                     DeltaHi_array,                    
+                     Hi_array,
+                     Hi_nvm_array,
+                     h_c_mean_window_vypocitana,
+                     h_c_mean_window_vlastn,
+                     str_rozpatie,
+                     oblast_hodnoty,empty,empty,empty,empty,empty,empty,empty2);    
+               selection_kotevny_usek=true;
+               if(i==0){
+                   Variable_globeal_kotevny_usek.set(0, novy_usek);
+                   kotevn_usek_to_mainframe(novy_usek);
+               }else{
+                  modelTable.addRow(new Object[]{(Boolean) false,(String) name});
+                  Variable_globeal_kotevny_usek.add(novy_usek);
+               }
+               selection_kotevny_usek=false;
+             
+              }
+              pokus = input.nextLine();
+              
+              
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(mainframe.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
         
     }
     
@@ -6096,6 +6468,7 @@ class kotevnyUsek extends javax.swing.JFrame{
     private  double h_c_mean_window_vypocitana_over;
     private  double h_c_mean_window_vlastna_over;
     private  double str_rozpatie_over;
+    private  Object[] hodnoty_namrazove_oblasti_over;
     
     private  boolean str_vys_vodicov_radio_over;
     private  boolean CDIR_radio_over;
@@ -6167,6 +6540,7 @@ class kotevnyUsek extends javax.swing.JFrame{
                                 double h_c_mean_window_vypocitana,
                                 double h_c_mean_window_vlastna,
                                 double str_rozpatie,
+                                Object[] hodnoty_namrazove_oblasti,
             
                                 double[] vysledky_tlaky6,
                                 double[] vysledky_zatazenia5,
@@ -6270,7 +6644,8 @@ class kotevnyUsek extends javax.swing.JFrame{
                                 double[] H1_array_nmv,
                                 double h_c_mean_window_vypocitana,
                                 double h_c_mean_window_vlastna,
-                                double str_rozpatie
+                                double str_rozpatie,
+                                Object[] hodnoty_namrazove_oblasti
             
                              
                                 
@@ -6322,6 +6697,7 @@ class kotevnyUsek extends javax.swing.JFrame{
         h_c_mean_window_vypocitana_over= h_c_mean_window_vypocitana;
         h_c_mean_window_vlastna_over= h_c_mean_window_vlastna;
         str_rozpatie_over=str_rozpatie;
+        hodnoty_namrazove_oblasti_over=hodnoty_namrazove_oblasti;
     }
     
     public String get_name(){
@@ -6506,6 +6882,10 @@ class kotevnyUsek extends javax.swing.JFrame{
     public double[] get_Hi_array_nvm(){
         return Hi_array_nmv_over;
     }
+     public Object[] get_hodnotynamrazove_oblast(){
+        return hodnoty_namrazove_oblasti_over;
+    }
+   
     public double[] get_vysledky_tlaky6(){
         return vysledky_tlaky6_over;
     }
@@ -6700,6 +7080,11 @@ class kotevnyUsek extends javax.swing.JFrame{
     public void set_Ai_array(double[] A1_array){
         Ai_array_over=A1_array;
     }
+    
+    public void set_hodnoty_namrazove_oblasti(Object[] hodnoty_namrazove_oblasti){
+        hodnoty_namrazove_oblasti_over=hodnoty_namrazove_oblasti;
+    }
+    
     public void set_DeltaHi_array(double[] Delta_Hi_array){
         DeltaHi_array_over= Delta_Hi_array;
     }

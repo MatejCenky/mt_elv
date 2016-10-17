@@ -417,6 +417,9 @@ public static void constructor(){
 /*242*/  language.SK.add("Viditeľné priehyby F");       language.CZ.add("I-SK");                     language.EN.add("I-SK");
 /*243*/  language.SK.add("v jednotlicých rozpätiach kotevného úseku");       language.CZ.add("I-SK");                     language.EN.add("I-SK");
 
+/*244*/  language.SK.add("Nový projekt");       language.CZ.add("I-SK");                     language.EN.add("I-SK");
+/*244*/  language.SK.add("Nový projekt - názov ");       language.CZ.add("I-SK");                     language.EN.add("I-SK");
+
 
          
  inicializovane = true;
