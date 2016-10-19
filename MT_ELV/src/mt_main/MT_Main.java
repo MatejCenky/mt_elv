@@ -52,15 +52,20 @@ public class MT_Main {
             } catch (InterruptedException ex) {
                 Thread.currentThread().interrupt();
             }
-            Boolean status = startPanel.getStatus_for_new_project(); // vytvor nove okno
-            if (status.equals(true)) {             //has user choosen the language in language Chooser frame ?             
-                startPanel.setStatus_for_new_project(false);    // nastavi status že bolo vytvorene blokne od zacyklenia
-                
-                mainframe.main(args);
-                //mainframe_2.main(args);
-                
-                
+            int status = startPanel.getStatus_for_new_project(); // vytvor nove okno
+            
+            if (status == 1) {                               // Status 1 mena new project           
+                startPanel.setStatus_for_new_project(0);    // nastavi status že bolo vytvorene blokne od zacyklenia                
+                mainframe.main(args,false);
+                //mainframe_2.main(args);         
             }
+            
+            if (status == 2) {                               // Status 1 mena new project           
+                startPanel.setStatus_for_new_project(0);    // nastavi status že bolo vytvorene blokne od zacyklenia                
+                mainframe.main(args,true);
+                //mainframe_2.main(args);         
+            }
+            
 
         }
 

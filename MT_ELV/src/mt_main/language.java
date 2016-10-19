@@ -418,7 +418,10 @@ public static void constructor(){
 /*243*/  language.SK.add("v jednotlicých rozpätiach kotevného úseku");       language.CZ.add("I-SK");                     language.EN.add("I-SK");
 
 /*244*/  language.SK.add("Nový projekt");       language.CZ.add("I-SK");                     language.EN.add("I-SK");
-/*244*/  language.SK.add("Nový projekt - názov ");       language.CZ.add("I-SK");                     language.EN.add("I-SK");
+/*245*/  language.SK.add("Nový projekt - názov ");       language.CZ.add("I-SK");                     language.EN.add("I-SK");
+
+/*246*/  language.SK.add("Načítať projekt");       language.CZ.add("I-SK");                     language.EN.add("I-SK");
+/*247*/  language.SK.add("Uložiť projekt ako");       language.CZ.add("I-SK");                     language.EN.add("I-SK");
 
 
          

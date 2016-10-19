@@ -74,7 +74,7 @@ public class Conductors_main_JDialog extends javax.swing.JDialog {
 
         
         //if pass ok bas been set remember to unloct features
-        if (startPanel.getStatus_conductor_password().equals(true)) {
+        if (startPanel.getStatus_conductor_password() == true ) {
             Button_new_conductor.setEnabled(true);
             BUtton_change_conductor.setEnabled(true);
             BUtton_delete_conductor.setEnabled(true);

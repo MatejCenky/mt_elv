@@ -237,11 +237,11 @@ public class startPanel extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void JmenuFIleNewBUttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JmenuFIleNewBUttonActionPerformed
-      Clicked_NEW = true;
+      Clicked_NEW = 1;
     }//GEN-LAST:event_JmenuFIleNewBUttonActionPerformed
 
     private void jMenuFlneILoadbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuFlneILoadbuttonActionPerformed
-        // TODO add your handling code here:
+      Clicked_NEW = 2;
     }//GEN-LAST:event_jMenuFlneILoadbuttonActionPerformed
 
     private void jMenuIFileExitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuIFileExitButtonActionPerformed
@@ -299,18 +299,18 @@ public class startPanel extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuIHelpAboutButtonActionPerformed
 
     //posiela status mainu aby odblokovalo vytvorenie noveho okna
-    public static Boolean getStatus_for_new_project() {
+    public static int getStatus_for_new_project() {
         return Clicked_NEW;
         
     }
     
-    public static Boolean getStatus_conductor_password() {
+    public static boolean getStatus_conductor_password() {
         return conductor_password_set;
         
     }
     
     //prijma status z Mainu aby nastavilo status na vytvaranie novych projektových oknien oknie na False
-    public static void setStatus_for_new_project(boolean X) {
+    public static void setStatus_for_new_project(int X) {
          Clicked_NEW =X;
         
     }
@@ -388,8 +388,8 @@ public class startPanel extends javax.swing.JFrame {
     private javax.swing.JLabel textfieldBottomBasicAbout;
     // End of variables declaration//GEN-END:variables
 public static Integer languageOption  ;
- public static Boolean Clicked_NEW = false;
- public static Boolean conductor_password_set = false;
+ public static int Clicked_NEW = 0;
+ public static boolean conductor_password_set = false;
  public static String conductor_memory_path_plus_filename="none";
  
     private void seticon() {
