@@ -8,8 +8,9 @@
  */
 package mt_main;
 
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
 import mainframe_1.mainframe;
-import mainframe_2.mainframe_2;
 
 /**
  *
@@ -21,7 +22,12 @@ public class MT_Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        
+ 
+    
+
+
+// TODO code application logic here
         languageChooserFrame.main(args);
 
         while (true) { //wait for information that user has choosen a language
