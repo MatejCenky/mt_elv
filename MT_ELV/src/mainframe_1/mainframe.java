@@ -93,6 +93,8 @@ import mt_variables.State_equation_variables;
         this.modeltable_rozpatia = (DefaultTableModel) Table_rozpatia.getModel();
         this.modeltable_rozpatia_nadm_vysky = (DefaultTableModel) Table_rozpatia_nadm_vysky.getModel();
         
+        Table_rozpatia.setSurrendersFocusOnKeystroke(true); // for focus on key listener
+        
         
         
         
@@ -296,6 +298,26 @@ import mt_variables.State_equation_variables;
 
                         }
                     }
+                    
+                    try {String hodnota1 =String.valueOf(Table_rozpatia.getValueAt(Table_rozpatia.getEditingRow(), 0));
+                     hodnota1=hodnota1.replace(",", ".");
+                     Table_rozpatia.setValueAt(hodnota1,Table_rozpatia.getEditingRow(), 0);
+                     double value;
+                       try{
+                      value = Double.parseDouble(String.valueOf(hodnota1));      
+        
+                      }catch(NumberFormatException | NullPointerException p){ 
+         
+                      if(Table_rozpatia.getSelectedRow() == 0){}
+                      else{ 
+                      Table_rozpatia.setValueAt("0.0",Table_rozpatia.getEditingRow(), 0);
+
+                          
+                      }
+                      }
+                    }catch(ArrayIndexOutOfBoundsException p){}
+                    
+                    
                     tablemodellistener_rozpatia = true;
                     tablemodellistener_nad_vysky = true;
                     Table_rozpatia.getModel().addTableModelListener(this);
@@ -393,10 +415,31 @@ import mt_variables.State_equation_variables;
                         }
 
                     }
+                    
+                    //replace , for .
+                    
+                     try {String hodnota1 =String.valueOf(Table_rozpatia_nadm_vysky.getValueAt(Table_rozpatia_nadm_vysky.getEditingRow(), Table_rozpatia_nadm_vysky.getEditingColumn()));
+                     hodnota1=hodnota1.replace(",", ".");
+                     Table_rozpatia_nadm_vysky.setValueAt(hodnota1,Table_rozpatia_nadm_vysky.getEditingRow(), Table_rozpatia_nadm_vysky.getEditingColumn());
+                     //check.
+                     double value;
+                       try{
+                      value = Double.parseDouble(String.valueOf(hodnota1));      
+        
+                      }catch(NumberFormatException | NullPointerException p){ 
+
+                      Table_rozpatia_nadm_vysky.setValueAt("0.0",Table_rozpatia_nadm_vysky.getEditingRow(), Table_rozpatia_nadm_vysky.getEditingColumn());
+           
+                      }
+                     }catch(ArrayIndexOutOfBoundsException p){}
+                    
                     tablemodellistener_rozpatia = true;
                     tablemodellistener_nad_vysky = true;
                     Table_rozpatia_nadm_vysky.getModel().addTableModelListener(this);
 
+                    
+                    
+                    
                     // Hcmean pocitac
                     double Sumar_scitavac = 0;
                     for (int i = 0; i < Variable_n_pocet_rozpati + 1; i++) {           //pocita len tam kde je zadana dlka zorpatia ine stožiare bdue ignotrovat plus jedna preto lebo pocet stožiarov je vždy rozpatia plus 1
@@ -1036,9 +1079,19 @@ import mt_variables.State_equation_variables;
         });
         Table_rozpatia.setColumnSelectionAllowed(true);
         Table_rozpatia.setRowMargin(2);
+        Table_rozpatia.addInputMethodListener(new java.awt.event.InputMethodListener() {
+            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
+            }
+            public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
+                Table_rozpatiaInputMethodTextChanged(evt);
+            }
+        });
         Table_rozpatia.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 Table_rozpatiaKeyReleased(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                Table_rozpatiaKeyTyped(evt);
             }
         });
         jScrollPane3.setViewportView(Table_rozpatia);
@@ -1679,11 +1732,21 @@ import mt_variables.State_equation_variables;
                 TextField_tabulky_prechodnaActionPerformed(evt);
             }
         });
+        TextField_tabulky_prechodna.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                TextField_tabulky_prechodnaKeyReleased(evt);
+            }
+        });
 
         TextField_tabulky_konecna.setText("50.0");
         TextField_tabulky_konecna.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 TextField_tabulky_konecnaActionPerformed(evt);
+            }
+        });
+        TextField_tabulky_konecna.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                TextField_tabulky_konecnaKeyReleased(evt);
             }
         });
 
@@ -2369,6 +2432,7 @@ import mt_variables.State_equation_variables;
         });
 
         TextField_hcmean_vpocitana.setEditable(false);
+        TextField_hcmean_vpocitana.setEnabled(false);
         TextField_hcmean_vpocitana.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 TextField_hcmean_vpocitanaActionPerformed(evt);
@@ -2798,6 +2862,9 @@ import mt_variables.State_equation_variables;
         
     }//GEN-LAST:event_Table_rozpatia_nadm_vyskyKeyReleased
     private void Table_rozpatiaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Table_rozpatiaKeyReleased
+       
+     
+        
         
     }//GEN-LAST:event_Table_rozpatiaKeyReleased
 
@@ -2906,7 +2973,7 @@ import mt_variables.State_equation_variables;
         PDF_VAR_typ_tabulky =3;
     }//GEN-LAST:event_jRadioButton_with_label_konecneActionPerformed
     private void TextField_tabulky_konecnaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextField_tabulky_konecnaActionPerformed
-       
+  
     }//GEN-LAST:event_TextField_tabulky_konecnaActionPerformed
 
     private void TextField_tabulky_prechodnaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextField_tabulky_prechodnaActionPerformed
@@ -3729,9 +3796,11 @@ import mt_variables.State_equation_variables;
         try{hodnoty[1] =Double.valueOf(String.valueOf(hodnoty_namrazove_oblasti[1]));}catch(NullPointerException e){hodnoty[1]=0;}
         try{hodnoty[2] =Double.valueOf(String.valueOf(hodnoty_namrazove_oblasti[2]));}catch(NullPointerException e){hodnoty[2]=0;}
         try{hodnoty[3] =Double.valueOf(String.valueOf(hodnoty_namrazove_oblasti[3]));}catch(NullPointerException e){hodnoty[3]=0;}
-            
-            kotevnyUsek novy_usek =  new kotevnyUsek(new_kotevny_usek_name, 0, 0, 0, 0, 0, language.language_label(languageOption, 60), 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, teplotyser, teplotyser, teplotyser, teplotyser, teplotyser, teplotyser, Variable_Ai_array, Variable_Hi_array, Variable_Hi_array,Variable_Hi_array_nmv,0,0,0,hodnoty,empty,empty,empty,empty,empty,empty,empty2);    
-            Variable_globeal_kotevny_usek.add(novy_usek);
+      
+        kotevnyUsek novy_usek =  new kotevnyUsek(new_kotevny_usek_name, 0, 0, 0, 0, 0, language.language_label(languageOption, 60), 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, teplotyser, teplotyser, teplotyser, teplotyser, teplotyser, teplotyser, Variable_Ai_array, Variable_Hi_array, Variable_Hi_array,Variable_Hi_array_nmv,0,0,0,hodnoty,empty,empty,empty,empty,empty,empty,empty2);    
+        
+        
+        Variable_globeal_kotevny_usek.add(novy_usek);
             mainframe_to_kotevny_usek(novy_usek,0);
             Table_kotevne_useky.changeSelection(0, 1, false, false);
            
@@ -3754,8 +3823,21 @@ import mt_variables.State_equation_variables;
         try{hodnoty[1] =Double.valueOf(String.valueOf(hodnoty_namrazove_oblasti[1]));}catch(NullPointerException e){hodnoty[1]=0;}
         try{hodnoty[2] =Double.valueOf(String.valueOf(hodnoty_namrazove_oblasti[2]));}catch(NullPointerException e){hodnoty[2]=0;}
         try{hodnoty[3] =Double.valueOf(String.valueOf(hodnoty_namrazove_oblasti[3]));}catch(NullPointerException e){hodnoty[3]=0;}
-            kotevnyUsek novy_usek =  new kotevnyUsek(new_kotevny_usek_name, 0, 0, 1, 0, 0, "KOKOT", 4,0.0, 50, 50, 1, 500, 1, 1, 123456789.987654321, 0.189, 0.05, 24.0, 1, 1, 1, 1, 1, 0.35, 0.25, 0.656, 3, 0, 1.25, 1.1, 0.0, true, true, true, true, true, true, empty, empty, empty,empty,0,0,0,hodnoty,empty,empty,empty,empty,empty,empty,empty2);    
-            Variable_globeal_kotevny_usek.add(novy_usek);
+           
+        
+         int rowNumber =  Table_kotevne_useky.getSelectedRow(); //- (e.getFirstIndex()-e.getLastIndex()); 
+             kotevnyUsek docasny_kot_usek = new kotevnyUsek(new_kotevny_usek_name, 0, 0, 0, 0, 0, filename, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, teplotyser, first_Start, teplotyser, teplotyser, teplotyser, first_Start, Variable_Ai_array, Variable_Hi_array, Variable_Hi_array,Variable_Hi_array_nmv,0,0,0,hodnoty,empty,empty,empty,empty,empty,empty,empty2);                     
+             mainframe_to_kotevny_usek(docasny_kot_usek,rowNumber);
+
+        kotevnyUsek novy_usek =  docasny_kot_usek;
+        novy_usek.set_name(new_kotevny_usek_name);
+        novy_usek.set_Ai_array(empty);
+        novy_usek.set_Hi_array(empty);
+        novy_usek.set_DeltaHi_array(empty);
+        novy_usek.set_Hi_array_nvm(empty);
+        
+        //new kotevnyUsek(new_kotevny_usek_name, 0, 0, 1, 0, 0, "KOKOT", 4,0.0, 50, 50, 1, 500, 1, 1, 123456789.987654321, 0.189, 0.05, 24.0, 1, 1, 1, 1, 1, 0.35, 0.25, 0.656, 3, 0, 1.25, 1.1, 0.0, true, true, true, true, true, true, empty, empty, empty,empty,0,0,0,hodnoty,empty,empty,empty,empty,empty,empty,empty2);    
+        Variable_globeal_kotevny_usek.add(novy_usek);
             
             
             existnewkotevnyusek = false;
@@ -3960,7 +4042,7 @@ import mt_variables.State_equation_variables;
     }//GEN-LAST:event_Button_namrazova_oblastActionPerformed
 
     private void TextField_max_mech_podiel_z_RTSKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextField_max_mech_podiel_z_RTSKeyReleased
-        Variable_maximalne_zataz_lana_podiel_z_RTS=Variable_RTS*((doubleChecker_short_answer(TextField_zakladne_mech_lana_minus5))/(100));
+        Variable_maximalne_zataz_lana_podiel_z_RTS=Variable_RTS*((doubleChecker_short_answer(TextField_max_mech_podiel_z_RTS))/(100));
     }//GEN-LAST:event_TextField_max_mech_podiel_z_RTSKeyReleased
 
     private void TextField_max_mech_podiel_z_RTSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextField_max_mech_podiel_z_RTSActionPerformed
@@ -4039,7 +4121,7 @@ import mt_variables.State_equation_variables;
 
     private void jComboBox_uroven_splahlivostiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox_uroven_splahlivostiActionPerformed
 
-        if (mainframeLodaed == true || urovenspolahlivostiblocker == true) {
+        if (mainframeLodaed == true && urovenspolahlivostiblocker == true) {
 
             int selected_index_from_JComboBox = jComboBox_uroven_splahlivosti.getSelectedIndex();
 
@@ -4493,6 +4575,22 @@ import mt_variables.State_equation_variables;
 
         }else{ Variable_vybrany_stav_pre_KPB= 1.0;}
     }//GEN-LAST:event_jComboBox_KPB_typ_terenuActionPerformed
+
+    private void TextField_tabulky_prechodnaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextField_tabulky_prechodnaKeyReleased
+        Variable_Tp_prechodna_doba=doubleChecker_short_answer(TextField_tabulky_prechodna);
+    }//GEN-LAST:event_TextField_tabulky_prechodnaKeyReleased
+
+    private void Table_rozpatiaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Table_rozpatiaKeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Table_rozpatiaKeyTyped
+
+    private void Table_rozpatiaInputMethodTextChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_Table_rozpatiaInputMethodTextChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Table_rozpatiaInputMethodTextChanged
+
+    private void TextField_tabulky_konecnaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextField_tabulky_konecnaKeyReleased
+     Variable_T0_zivotnost = doubleChecker_short_answer(TextField_tabulky_konecna);
+    }//GEN-LAST:event_TextField_tabulky_konecnaKeyReleased
 
   public static void lanochangeinDatabaze() {
   nacitatDatabazuLan();      
@@ -4995,9 +5093,14 @@ private void seticon() {
     }
     
      private double doubleChecker_short_answer (javax.swing.JTextField Y){
+    String hodnota1 =Y.getText();
+       String hodnota2=hodnota1.replace(",", ".");
+       if(hodnota1.equals(hodnota2)){}else{ Y.setText(hodnota2);}
+       
+  
        Double value ;
         try{
-        value = Double.parseDouble(Y.getText());
+        value = Double.parseDouble(hodnota2);
         Y.setForeground(Color.black);
         return value;
         }catch(NumberFormatException | NullPointerException e){
@@ -5024,9 +5127,14 @@ private void seticon() {
      
       
      private double doubleChecker (javax.swing.JTextField Y){
+       String hodnota1 =Y.getText();
+       String hodnota2=hodnota1.replace(",", ".");
+       if(hodnota1.equals(hodnota2)){}else{ Y.setText(hodnota2);}
+       
+  
        Double value ;
         try{
-        value = Double.parseDouble(Y.getText());
+        value = Double.parseDouble(hodnota2);
         Y.setForeground(Color.black);
         return value;
         }catch(NumberFormatException | NullPointerException e){
@@ -5037,9 +5145,14 @@ private void seticon() {
      }
      
       private double doubleChecker_tableinput (String Y){
-       Double value ;
+       
+       String hodnota1 =Y;
+       hodnota1=hodnota1.replace(",", ".");
+      
+       
+          Double value ;
         try{
-        value = Double.parseDouble(Y);      
+        value = Double.parseDouble(hodnota1);      
         return value;
         }catch(NumberFormatException | NullPointerException e){ 
        return value = 123456789.987654321;            

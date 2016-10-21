@@ -761,7 +761,9 @@
                         </Property>
                       </Properties>
                       <Events>
+                        <EventHandler event="inputMethodTextChanged" listener="java.awt.event.InputMethodListener" parameters="java.awt.event.InputMethodEvent" handler="Table_rozpatiaInputMethodTextChanged"/>
                         <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="Table_rozpatiaKeyReleased"/>
+                        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="Table_rozpatiaKeyTyped"/>
                       </Events>
                     </Component>
                   </SubComponents>
@@ -1474,6 +1476,7 @@
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="TextField_tabulky_prechodnaActionPerformed"/>
+                    <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="TextField_tabulky_prechodnaKeyReleased"/>
                   </Events>
                 </Component>
                 <Component class="javax.swing.JTextField" name="TextField_tabulky_konecna">
@@ -1482,6 +1485,7 @@
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="TextField_tabulky_konecnaActionPerformed"/>
+                    <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="TextField_tabulky_konecnaKeyReleased"/>
                   </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="Label_tabulky2">
@@ -2560,6 +2564,7 @@
                     <Component class="javax.swing.JTextField" name="TextField_hcmean_vpocitana">
                       <Properties>
                         <Property name="editable" type="boolean" value="false"/>
+                        <Property name="enabled" type="boolean" value="false"/>
                       </Properties>
                       <Events>
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="TextField_hcmean_vpocitanaActionPerformed"/>

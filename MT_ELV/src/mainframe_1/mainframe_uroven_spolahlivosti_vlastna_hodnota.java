@@ -339,9 +339,14 @@ public class mainframe_uroven_spolahlivosti_vlastna_hodnota extends javax.swing.
     }
     
      private double doubleChecker (javax.swing.JTextField Y){
+       String hodnota1 =Y.getText();
+       String hodnota2=hodnota1.replace(",", ".");
+       if(hodnota1.equals(hodnota2)){}else{ Y.setText(hodnota2);}
+       
+  
        Double value ;
         try{
-        value = Double.parseDouble(Y.getText());
+        value = Double.parseDouble(hodnota2);
         Y.setForeground(Color.black);
         return value;
         }catch(NumberFormatException | NullPointerException e){
