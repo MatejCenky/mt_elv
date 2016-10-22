@@ -598,15 +598,13 @@
                                   <Component id="Label_RTS_velicina6" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="jRadioButton_with_label_rozpate_previsenia" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
                               </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="jRadioButton_with_label_rozpatie_klasicky" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
-                                      <Component id="TextField_STRrozpatie_klasicky" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
-                                      <Component id="Label_RTS_velicina5" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" alignment="0" groupAlignment="3" attributes="0">
+                                  <Component id="jRadioButton_with_label_rozpatie_klasicky" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
+                                  <Component id="TextField_STRrozpatie_klasicky" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
+                                  <Component id="Label_RTS_velicina5" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
+                          <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>

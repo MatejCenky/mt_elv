@@ -352,7 +352,9 @@ import mt_variables.State_equation_variables;
                     }
                     Variable_Hi_array[Variable_Ai_array.length] = Variable_hi_vyska_stoziarov.get(Variable_Ai_array.length);
                     Variable_Hi_array_nmv[Variable_Ai_array.length] = Variable_hi2_nadmorska_vyska_stoziarov.get(Variable_Ai_array.length);
-
+                    Variable_Ai_array=double_setter_array(Variable_Ai_array);
+                    
+                    
                     // Hcmean pocitac
                     double Sumar_scitavac = 0;
                     for (int i = 0; i < Variable_n_pocet_rozpati + 1; i++) {           //pocita len tam kde je zadana dlka zorpatia ine stožiare bdue ignotrovat plus jedna preto lebo pocet stožiarov je vždy rozpatia plus 1
@@ -363,7 +365,7 @@ import mt_variables.State_equation_variables;
 
                     Variable_Hc_mean_medzikrok = Sumar_scitavac / (Variable_n_pocet_rozpati + 1);
                     if (jRadioButton_with_label_vypoctana.isSelected() == true) {
-                        Variable_Hc_mean = Variable_Hc_mean_medzikrok;
+                        Variable_Hc_mean =double_setter( Variable_Hc_mean_medzikrok);
                     }
                     DecimalFormatSymbols otherSymbols = new DecimalFormatSymbols();
                     otherSymbols.setDecimalSeparator('.');
@@ -454,7 +456,7 @@ import mt_variables.State_equation_variables;
                     TextField_hcmean_vpocitana.setText(String.valueOf(df.format(Variable_Hc_mean_medzikrok))); // vloz do text field pri radio buttne
 
                     if (jRadioButton_with_label_vypoctana.isSelected() == true) {
-                        Variable_Hc_mean = Variable_Hc_mean_medzikrok;
+                        Variable_Hc_mean =double_setter( Variable_Hc_mean_medzikrok);
                     }
                     // naplnenie AI array rozpatia na zaklade postu rozpati a deltaHi ktore ma rovnaky rozmer ako Ai
                     Variable_Ai_array = new double[(int) Variable_n_pocet_rozpati];
@@ -474,6 +476,9 @@ import mt_variables.State_equation_variables;
                     Variable_Hi_array[Variable_Ai_array.length] = Variable_hi_vyska_stoziarov.get(Variable_Ai_array.length);
                     Variable_Hi_array_nmv[Variable_Ai_array.length] = Variable_hi2_nadmorska_vyska_stoziarov.get(Variable_Ai_array.length);
 
+                    Variable_Ai_array=double_setter_array(Variable_Ai_array);
+                   
+                    
                     //ak niesu array nulove vypočitaj vyšlu
                     if (Variable_Ai_array.length != 0 || Variable_DeltaHi_array.length != 0) {
                         mid_span_flat();
@@ -488,11 +493,7 @@ import mt_variables.State_equation_variables;
                             Variable_mid_span = Variable_mid_span_terrain_docasna;
                         }
                     }
-//                System.out.println("-------------");
-//                System.out.println(Arrays.toString(Variable_Ai_array));
-//                System.out.println(Arrays.toString(Variable_DeltaHi_array));
-//                System.out.println(Arrays.toString(Variable_Hi_array));
-//                System.out.println(Variable_Hc_mean);
+
 
                 }
 
@@ -2870,13 +2871,13 @@ import mt_variables.State_equation_variables;
 
     private void jRadioButton_with_label_vlastnaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton_with_label_vlastnaActionPerformed
         TextField_hcmean_vlastna.setEnabled(true);
-        Variable_Hc_mean=doubleChecker_short_answer(TextField_hcmean_vlastna);
+        Variable_Hc_mean=double_setter(doubleChecker_short_answer(TextField_hcmean_vlastna));
         
     }//GEN-LAST:event_jRadioButton_with_label_vlastnaActionPerformed
 
     private void jRadioButton_with_label_vypoctanaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton_with_label_vypoctanaActionPerformed
         TextField_hcmean_vlastna.setEnabled(false);
-        Variable_Hc_mean=Variable_Hc_mean_medzikrok;
+        Variable_Hc_mean=double_setter(Variable_Hc_mean_medzikrok);
     }//GEN-LAST:event_jRadioButton_with_label_vypoctanaActionPerformed
 
     private void TextField_hcmean_vlastnaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextField_hcmean_vlastnaActionPerformed
@@ -2887,7 +2888,7 @@ import mt_variables.State_equation_variables;
         if(TextField_hcmean_vlastna.isEditable() == true){
           if(TextField_hcmean_vlastna.getText().equals("-"))TextField_hcmean_vlastna.setText("");
             
-            Variable_Hc_mean=doubleChecker_short_answer(TextField_hcmean_vlastna);           
+            Variable_Hc_mean=double_setter(doubleChecker_short_answer(TextField_hcmean_vlastna));           
         }
         
     }//GEN-LAST:event_TextField_hcmean_vlastnaKeyReleased
@@ -2988,44 +2989,44 @@ import mt_variables.State_equation_variables;
             switch (selected_index_from_JComboBox) {
                 case 0:
                     TextField_Vmean_0.setEnabled(false);
-                    Variable_V_mean_0 = 24;
+                    Variable_V_mean_0 = double_setter(24);
                     break;
                 case 1:
                     TextField_Vmean_0.setEnabled(false);
-                    Variable_V_mean_0 = 26;
+                    Variable_V_mean_0 = double_setter(26);
                     break;
                 case 2:
                     TextField_Vmean_0.setEnabled(false);
-                    Variable_V_mean_0 = 30;
+                    Variable_V_mean_0 = double_setter(30);
                     break;
                 case 3:
                     TextField_Vmean_0.setEnabled(false);
-                    Variable_V_mean_0 = 33;
+                    Variable_V_mean_0 = double_setter(33);
                     break;
                 case 4:
                     TextField_Vmean_0.setEnabled(false);
-                    Variable_V_mean_0 = 22.5;
+                    Variable_V_mean_0 = double_setter(22.5);
                     break;
                 case 5:
                     TextField_Vmean_0.setEnabled(false);
-                    Variable_V_mean_0 = 25;
+                    Variable_V_mean_0 = double_setter(25);
                     break;
                 case 6:
                     TextField_Vmean_0.setEnabled(false);
-                    Variable_V_mean_0 = 27.5;
+                    Variable_V_mean_0 = double_setter(27.5);
                     break;
                 case 7:
                     TextField_Vmean_0.setEnabled(false);
-                    Variable_V_mean_0 = 30;
+                    Variable_V_mean_0 = double_setter(30);
                     break;
                 case 8:
                     TextField_Vmean_0.setEnabled(false);
-                    Variable_V_mean_0 = 36;
+                    Variable_V_mean_0 = double_setter(36);
                     break;
 
                 case 9:
                     TextField_Vmean_0.setEnabled(true);                  
-                    Variable_V_mean_0 = 24;             
+                    Variable_V_mean_0 = double_setter(24);             
                     TextField_Vmean_0.setForeground(Color.black);
                     break;
             }
@@ -3039,21 +3040,21 @@ import mt_variables.State_equation_variables;
     }//GEN-LAST:event_TextField_Vmean_0ActionPerformed
 
     private void TextField_Vmean_0KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextField_Vmean_0KeyReleased
-        Variable_V_mean_0=doubleChecker_short_answer(TextField_Vmean_0);
+        Variable_V_mean_0=double_setter(doubleChecker_short_answer(TextField_Vmean_0));
     }//GEN-LAST:event_TextField_Vmean_0KeyReleased
 
     private void jRadioButton_vetrova_oblast_Cdir_1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton_vetrova_oblast_Cdir_1ActionPerformed
-        Variable_Cdir=1.0;
+        Variable_Cdir=double_setter(1.0);
         TextField_vetrova_oblast_Cdir.setEnabled(false);        
     }//GEN-LAST:event_jRadioButton_vetrova_oblast_Cdir_1ActionPerformed
 
     private void jRadioButton_vetrova_oblast_Cdir_vlastnaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton_vetrova_oblast_Cdir_vlastnaActionPerformed
         TextField_vetrova_oblast_Cdir.setEnabled(true);
-        Variable_Cdir=doubleChecker_short_answer(TextField_vetrova_oblast_Cdir);
+        Variable_Cdir=double_setter(doubleChecker_short_answer(TextField_vetrova_oblast_Cdir));
     }//GEN-LAST:event_jRadioButton_vetrova_oblast_Cdir_vlastnaActionPerformed
 
     private void TextField_vetrova_oblast_CdirKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextField_vetrova_oblast_CdirKeyReleased
-        Variable_Cdir=doubleChecker_short_answer(TextField_vetrova_oblast_Cdir);
+        Variable_Cdir=double_setter(doubleChecker_short_answer(TextField_vetrova_oblast_Cdir));
     }//GEN-LAST:event_TextField_vetrova_oblast_CdirKeyReleased
 
     private void TextField_vetrova_oblast_CdirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextField_vetrova_oblast_CdirActionPerformed
@@ -3065,17 +3066,17 @@ import mt_variables.State_equation_variables;
     }//GEN-LAST:event_TextField_vetrova_oblast_C0ActionPerformed
 
     private void TextField_vetrova_oblast_C0KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextField_vetrova_oblast_C0KeyReleased
-        Variable_Co=doubleChecker_short_answer(TextField_vetrova_oblast_C0);
+        Variable_Co=double_setter(doubleChecker_short_answer(TextField_vetrova_oblast_C0));
     }//GEN-LAST:event_TextField_vetrova_oblast_C0KeyReleased
 
     private void jRadioButton_vetrova_oblast_C0_1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton_vetrova_oblast_C0_1ActionPerformed
-         Variable_Co=1.0;
+         Variable_Co=double_setter(1.0);
         TextField_vetrova_oblast_C0.setEnabled(false); 
     }//GEN-LAST:event_jRadioButton_vetrova_oblast_C0_1ActionPerformed
 
     private void jRadioButton_vetrova_oblast_C0_vlastnaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton_vetrova_oblast_C0_vlastnaActionPerformed
         TextField_vetrova_oblast_C0.setEnabled(true);
-        Variable_Co=doubleChecker_short_answer(TextField_vetrova_oblast_C0);
+        Variable_Co=double_setter(doubleChecker_short_answer(TextField_vetrova_oblast_C0));
     }//GEN-LAST:event_jRadioButton_vetrova_oblast_C0_vlastnaActionPerformed
 
     private void TextField_dlzka_drsnjosti_zoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextField_dlzka_drsnjosti_zoActionPerformed
@@ -3083,7 +3084,7 @@ import mt_variables.State_equation_variables;
     }//GEN-LAST:event_TextField_dlzka_drsnjosti_zoActionPerformed
 
     private void TextField_dlzka_drsnjosti_zoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextField_dlzka_drsnjosti_zoKeyReleased
-       Variable_char_terenu_Kr=doubleChecker_short_answer(TextField_dlzka_drsnjosti_zo);
+       Variable_char_terenu_Zo=double_setter(doubleChecker_short_answer(TextField_dlzka_drsnjosti_zo));
     }//GEN-LAST:event_TextField_dlzka_drsnjosti_zoKeyReleased
 
     private void TextField_KrActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextField_KrActionPerformed
@@ -3091,7 +3092,7 @@ import mt_variables.State_equation_variables;
     }//GEN-LAST:event_TextField_KrActionPerformed
 
     private void TextField_KrKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextField_KrKeyReleased
-        Variable_char_terenu_Kr=doubleChecker_short_answer(TextField_Kr);
+        Variable_char_terenu_Kr=double_setter(doubleChecker_short_answer(TextField_Kr));
     }//GEN-LAST:event_TextField_KrKeyReleased
     private void jComboBox_char_terenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox_char_terenuActionPerformed
      
@@ -3102,32 +3103,32 @@ import mt_variables.State_equation_variables;
           switch (selected_index_from_JComboBox) {
             case 0:  TextField_Kr.setEnabled(false);
                      TextField_dlzka_drsnjosti_zo.setEnabled(false);
-                     Variable_char_terenu_Kr = 0.169;
-                     Variable_char_terenu_Zo= 0.01;
+                     Variable_char_terenu_Kr = double_setter(0.169);
+                     Variable_char_terenu_Zo= double_setter(0.01);
                      jTextPane_char_terenu.setText(language.language_label(languageOption, 135));
                      break;
             case 1:  TextField_Kr.setEnabled(false);
                      TextField_dlzka_drsnjosti_zo.setEnabled(false);
-                     Variable_char_terenu_Kr = 0.189;
-                     Variable_char_terenu_Zo= 0.05;
+                     Variable_char_terenu_Kr = double_setter(0.189);
+                     Variable_char_terenu_Zo= double_setter(0.05);
                      jTextPane_char_terenu.setText(language.language_label(languageOption, 136));
                      break;
             case 2:  TextField_Kr.setEnabled(false);
                      TextField_dlzka_drsnjosti_zo.setEnabled(false);
-                     Variable_char_terenu_Kr = 0.214;
-                     Variable_char_terenu_Zo= 0.3;
+                     Variable_char_terenu_Kr = double_setter(0.214);
+                     Variable_char_terenu_Zo= double_setter(0.3);
                      jTextPane_char_terenu.setText(language.language_label(languageOption, 137));
                      break;
             case 3:  TextField_Kr.setEnabled(false);
                      TextField_dlzka_drsnjosti_zo.setEnabled(false);
-                     Variable_char_terenu_Kr = 0.233;
-                     Variable_char_terenu_Zo= 1;
+                     Variable_char_terenu_Kr = double_setter(0.233);
+                     Variable_char_terenu_Zo= double_setter(1);
                      jTextPane_char_terenu.setText(language.language_label(languageOption, 139));
                      break;
             case 4:  TextField_Kr.setEnabled(true);
                      TextField_dlzka_drsnjosti_zo.setEnabled(true);
-                     Variable_char_terenu_Kr = 0.169;
-                     Variable_char_terenu_Zo= 0.01;
+                     Variable_char_terenu_Kr = double_setter(0.169);
+                     Variable_char_terenu_Zo= double_setter(0.01);
                      TextField_Kr.setForeground(Color.black);
                      TextField_dlzka_drsnjosti_zo.setForeground(Color.black);
                      jTextPane_char_terenu.setText(language.language_label(languageOption, 139));
@@ -3909,7 +3910,7 @@ import mt_variables.State_equation_variables;
     private void TextField_hustota_namrazyKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextField_hustota_namrazyKeyReleased
         if (TextField_hustota_namrazy.isEditable() == true){
 
-            Variable_hustota_namrazy=doubleChecker_short_answer(TextField_hustota_namrazy);
+            Variable_hustota_namrazy=double_setter(doubleChecker_short_answer(TextField_hustota_namrazy));
 
         }
     }//GEN-LAST:event_TextField_hustota_namrazyKeyReleased
@@ -3922,7 +3923,7 @@ import mt_variables.State_equation_variables;
 
         if (TextField_Ccl.isEditable() == true){
 
-            Variable_Ccl=doubleChecker_short_answer(TextField_Ccl);
+            Variable_Ccl=double_setter(doubleChecker_short_answer(TextField_Ccl));
 
         }
     }//GEN-LAST:event_TextField_CclKeyReleased
@@ -3939,34 +3940,34 @@ import mt_variables.State_equation_variables;
             switch (selected_index_from_JComboBox) {
                 case 0:  TextField_Ccl.setEnabled(false);
                 TextField_hustota_namrazy.setEnabled(false);
-                Variable_Ccl = 1.1;
-                Variable_hustota_namrazy= 500.0;
+                Variable_Ccl =double_setter( 1.1);
+                Variable_hustota_namrazy= double_setter(500.0);
 
                 break;
                 case 1:  TextField_Ccl.setEnabled(false);
                 TextField_hustota_namrazy.setEnabled(false);
-                Variable_Ccl = 1.1;
-                Variable_hustota_namrazy= 900.0;
+                Variable_Ccl = double_setter(1.1);
+                Variable_hustota_namrazy= double_setter(900.0);
                 break;
                 case 2:  TextField_Ccl.setEnabled(false);
                 TextField_hustota_namrazy.setEnabled(false);
-                Variable_Ccl = 1.1;
-                Variable_hustota_namrazy= 300.0;
+                Variable_Ccl = double_setter(1.1);
+                Variable_hustota_namrazy= double_setter(300.0);
                 break;
                 case 3:  TextField_Ccl.setEnabled(false);
                 TextField_hustota_namrazy.setEnabled(false);
-                Variable_Ccl = 1.1;
-                Variable_hustota_namrazy= 700.0;
+                Variable_Ccl =double_setter( 1.1);
+                Variable_hustota_namrazy= double_setter(700.0);
                 break;
                 case 4:  TextField_Ccl.setEnabled(false);
                 TextField_hustota_namrazy.setEnabled(false);
-                Variable_Ccl = 1.1;
-                Variable_hustota_namrazy= 500.0;
+                Variable_Ccl =double_setter( 1.1);
+                Variable_hustota_namrazy= double_setter(500.0);
                 break;
                 case 5:  TextField_Ccl.setEnabled(true);
                 TextField_hustota_namrazy.setEnabled(true);
-                Variable_Ccl = 1.1;
-                Variable_hustota_namrazy= 500.0;
+                Variable_Ccl = double_setter(1.1);
+                Variable_hustota_namrazy= double_setter(500.0);
                 TextField_Ccl.setForeground(Color.black);
                 TextField_hustota_namrazy.setForeground(Color.black);
                 break;
@@ -3978,13 +3979,14 @@ import mt_variables.State_equation_variables;
     }//GEN-LAST:event_jComboBox_druh_namrazyActionPerformed
 
     private void TextField_Bi2KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextField_Bi2KeyReleased
-        // TODO add your handling code here:
+      Variable_Bi=double_setter(doubleChecker_short_answer(TextField_Bi2));  
     }//GEN-LAST:event_TextField_Bi2KeyReleased
 
     private void jRadioButton_Bi_2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton_Bi_2ActionPerformed
         TextField_Bi2.setEnabled(true);
         TextField_Bi_1.setEnabled(false);
-        Variable_Bi=doubleChecker_short_answer(TextField_Bi2);
+        TextField_Bi2.setEditable(true);
+        Variable_Bi=double_setter(doubleChecker_short_answer(TextField_Bi2));
     }//GEN-LAST:event_jRadioButton_Bi_2ActionPerformed
 
     private void TextField_Bi_1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextField_Bi_1KeyReleased
@@ -3998,34 +4000,35 @@ import mt_variables.State_equation_variables;
     private void jRadioButton_Bi_1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton_Bi_1ActionPerformed
         TextField_Bi_1.setEnabled(true);
         TextField_Bi2.setEnabled(false);
-        Variable_Bi=doubleChecker_short_answer(TextField_Bi_1);
+        TextField_Bi2.setEditable(false);
+        Variable_Bi=double_setter(doubleChecker_short_answer(TextField_Bi_1));
     }//GEN-LAST:event_jRadioButton_Bi_1ActionPerformed
 
     private void TextField_KhKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextField_KhKeyReleased
-        Variable_Kh =doubleChecker_short_answer(TextField_Kh);
+        Variable_Kh =double_setter(doubleChecker_short_answer(TextField_Kh));
     }//GEN-LAST:event_TextField_KhKeyReleased
 
     private void jRadioButton_Kh_vlastnaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton_Kh_vlastnaActionPerformed
         TextField_Kh.setEnabled(true);
-        Variable_Kh=doubleChecker_short_answer(TextField_Kcl);
+        Variable_Kh=double_setter(doubleChecker_short_answer(TextField_Kh));
     }//GEN-LAST:event_jRadioButton_Kh_vlastnaActionPerformed
 
     private void jRadioButton_Kh_1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton_Kh_1ActionPerformed
-        Variable_Kh=1.0;
+        Variable_Kh=double_setter(1.0);
         TextField_Kh.setEnabled(false);
     }//GEN-LAST:event_jRadioButton_Kh_1ActionPerformed
 
     private void jRadioButton_Klc_vlastnaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton_Klc_vlastnaActionPerformed
         TextField_Kcl.setEnabled(true);
-        Variable_Klc=doubleChecker_short_answer(TextField_Kcl);
+        Variable_Klc=double_setter(doubleChecker_short_answer(TextField_Kcl));
     }//GEN-LAST:event_jRadioButton_Klc_vlastnaActionPerformed
 
     private void TextField_KclKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextField_KclKeyReleased
-        Variable_Klc=doubleChecker_short_answer(TextField_Kcl);
+        Variable_Klc=double_setter(doubleChecker_short_answer(TextField_Kcl));
     }//GEN-LAST:event_TextField_KclKeyReleased
 
     private void jRadioButton_Klc_1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton_Klc_1ActionPerformed
-        Variable_Klc=1.0;
+        Variable_Klc=double_setter(1.0);
         TextField_Kcl.setEnabled(false);
     }//GEN-LAST:event_jRadioButton_Klc_1ActionPerformed
 
@@ -4037,7 +4040,8 @@ import mt_variables.State_equation_variables;
         if(is_namrazove_oblasti_setted== true){
 
             Label_vybrana_namrazova_oblast.setText(namrazove_oblasti_názov_oblasti);
-            Variable_Ir50=vypocet_IR50_namrazove_oblasti();
+            Variable_Ir50=double_setter(vypocet_IR50_namrazove_oblasti());
+            Variable_Ir50=double_setter(vypocet_IR50_namrazove_oblasti());
         }
     }//GEN-LAST:event_Button_namrazova_oblastActionPerformed
 
@@ -4078,9 +4082,11 @@ import mt_variables.State_equation_variables;
             TextField_RTS.setText(df.format(Variable_RTS));
 
             if (is_namrazove_oblasti_setted == true){   //  ak už je zvolena namrazova oblast tk spusti vypocet
-                Variable_Ir50=vypocet_IR50_namrazove_oblasti();
+                Variable_Ir50=double_setter(vypocet_IR50_namrazove_oblasti());
             }
 
+            double lentak = double_setter(1); /// aby prenbehol vypočet zažťeženi 
+            
         }
 
     }//GEN-LAST:event_jComboBox_conductor_chooserActionPerformed
@@ -4127,57 +4133,57 @@ import mt_variables.State_equation_variables;
 
             switch (selected_index_from_JComboBox) {
                 case 0:  //50 rokov
-                Variable_uroven_spolahlivosti_cas_navratu_klim_udalosti = 50;
-                Variable_uroven_spolahlivosti_Yw=1;
-                Variable_uroven_spolahlivosti_Yi=1;
-                Variable_uroven_spolahlivosti_Ww=0.25;
-                Variable_uroven_spolahlivosti_Wi=0.35;
+                Variable_uroven_spolahlivosti_cas_navratu_klim_udalosti = double_setter(50);
+                Variable_uroven_spolahlivosti_Yw=double_setter(1);
+                Variable_uroven_spolahlivosti_Yi=double_setter(1);
+                Variable_uroven_spolahlivosti_Ww=double_setter(0.25);
+                Variable_uroven_spolahlivosti_Wi=double_setter(0.35);
                 break;
                 case 1:  //150 rokov
-                Variable_uroven_spolahlivosti_cas_navratu_klim_udalosti = 150;
-                Variable_uroven_spolahlivosti_Yw=1.2;
-                Variable_uroven_spolahlivosti_Yi=1.25;
-                Variable_uroven_spolahlivosti_Ww=0.25;
-                Variable_uroven_spolahlivosti_Wi=0.35;
+                Variable_uroven_spolahlivosti_cas_navratu_klim_udalosti = double_setter(150);
+                Variable_uroven_spolahlivosti_Yw=double_setter(1.2);
+                Variable_uroven_spolahlivosti_Yi=double_setter(1.25);
+                Variable_uroven_spolahlivosti_Ww=double_setter(0.25);
+                Variable_uroven_spolahlivosti_Wi=double_setter(0.35);
                 break;
                 case 2:  //500 rokov
-                Variable_uroven_spolahlivosti_cas_navratu_klim_udalosti = 500;
-                Variable_uroven_spolahlivosti_Yw=1.4;
-                Variable_uroven_spolahlivosti_Yi=1.5;
-                Variable_uroven_spolahlivosti_Ww=0.25;
-                Variable_uroven_spolahlivosti_Wi=0.35;
+                Variable_uroven_spolahlivosti_cas_navratu_klim_udalosti = double_setter(500);
+                Variable_uroven_spolahlivosti_Yw=double_setter(1.4);
+                Variable_uroven_spolahlivosti_Yi=double_setter(1.5);
+                Variable_uroven_spolahlivosti_Ww=double_setter(0.25);
+                Variable_uroven_spolahlivosti_Wi=double_setter(0.35);
                 break;
                 case 3:  //3 dni
-                Variable_uroven_spolahlivosti_cas_navratu_klim_udalosti = 2;
-                Variable_uroven_spolahlivosti_Yw=0.52;
-                Variable_uroven_spolahlivosti_Yi=0.26;
-                Variable_uroven_spolahlivosti_Ww=0.22;
-                Variable_uroven_spolahlivosti_Wi=0.35;
+                Variable_uroven_spolahlivosti_cas_navratu_klim_udalosti =double_setter( 2);
+                Variable_uroven_spolahlivosti_Yw=double_setter(0.52);
+                Variable_uroven_spolahlivosti_Yi=double_setter(0.26);
+                Variable_uroven_spolahlivosti_Ww=double_setter(0.22);
+                Variable_uroven_spolahlivosti_Wi=double_setter(0.35);
                 break;
                 case 4:  //3 mesiace
-                Variable_uroven_spolahlivosti_cas_navratu_klim_udalosti = 5;
-                Variable_uroven_spolahlivosti_Yw=0.66;
-                Variable_uroven_spolahlivosti_Yi=0.5;
-                Variable_uroven_spolahlivosti_Ww=0.25;
-                Variable_uroven_spolahlivosti_Wi=0.35;
+                Variable_uroven_spolahlivosti_cas_navratu_klim_udalosti = double_setter(5);
+                Variable_uroven_spolahlivosti_Yw=double_setter(0.66);
+                Variable_uroven_spolahlivosti_Yi=double_setter(0.5);
+                Variable_uroven_spolahlivosti_Ww=double_setter(0.25);
+                Variable_uroven_spolahlivosti_Wi=double_setter(0.35);
                 break;
                 case 5:  //1 rok
-                Variable_uroven_spolahlivosti_cas_navratu_klim_udalosti = 10;
-                Variable_uroven_spolahlivosti_Yw=0.75;
-                Variable_uroven_spolahlivosti_Yi=0.65;
-                Variable_uroven_spolahlivosti_Ww=0.25;
-                Variable_uroven_spolahlivosti_Wi=0.35;
+                Variable_uroven_spolahlivosti_cas_navratu_klim_udalosti = double_setter(10);
+                Variable_uroven_spolahlivosti_Yw=double_setter(0.75);
+                Variable_uroven_spolahlivosti_Yi=double_setter(0.65);
+                Variable_uroven_spolahlivosti_Ww=double_setter(0.25);
+                Variable_uroven_spolahlivosti_Wi=double_setter(0.35);
                 break;
                 case 6:  //50 rokov
                 mainframe_uroven_spolahlivosti_vlastna_hodnota.setValues(Variable_uroven_spolahlivosti_cas_navratu_klim_udalosti, Variable_uroven_spolahlivosti_Yw, Variable_uroven_spolahlivosti_Yi, Variable_uroven_spolahlivosti_Ww, Variable_uroven_spolahlivosti_Wi);
                 mainframe_uroven_spolahlivosti_vlastna_hodnota mainframe_uroven_spolahlivosti_vlastna_hodnota_jDialog_window = new  mainframe_uroven_spolahlivosti_vlastna_hodnota(this, rootPaneCheckingEnabled);
                 mainframe_uroven_spolahlivosti_vlastna_hodnota_jDialog_window.setVisible(true);
 
-                Variable_uroven_spolahlivosti_cas_navratu_klim_udalosti = Double.valueOf( vlastnehodnoty_uroven_splahlivosti[0].toString());
-                Variable_uroven_spolahlivosti_Yw=Double.valueOf( vlastnehodnoty_uroven_splahlivosti[1].toString());
-                Variable_uroven_spolahlivosti_Yi=Double.valueOf( vlastnehodnoty_uroven_splahlivosti[2].toString());
-                Variable_uroven_spolahlivosti_Ww=Double.valueOf( vlastnehodnoty_uroven_splahlivosti[3].toString());
-                Variable_uroven_spolahlivosti_Wi=Double.valueOf( vlastnehodnoty_uroven_splahlivosti[4].toString());
+                Variable_uroven_spolahlivosti_cas_navratu_klim_udalosti = double_setter(Double.valueOf( vlastnehodnoty_uroven_splahlivosti[0].toString()));
+                Variable_uroven_spolahlivosti_Yw=double_setter(Double.valueOf( vlastnehodnoty_uroven_splahlivosti[1].toString()));
+                Variable_uroven_spolahlivosti_Yi=double_setter(Double.valueOf( vlastnehodnoty_uroven_splahlivosti[2].toString()));
+                Variable_uroven_spolahlivosti_Ww=double_setter(Double.valueOf( vlastnehodnoty_uroven_splahlivosti[3].toString()));
+                Variable_uroven_spolahlivosti_Wi=double_setter(Double.valueOf( vlastnehodnoty_uroven_splahlivosti[4].toString()));
 
                 break;
             }
@@ -5380,70 +5386,70 @@ private void seticon() {
        
        if (X.get_CDIR_radio() == true )
        {jRadioButton_vetrova_oblast_Cdir_1.setSelected(true);
-       Variable_Cdir=X.get_c_dir();} 
+       Variable_Cdir=double_setter(X.get_c_dir());} 
        else{
        jRadioButton_vetrova_oblast_Cdir_vlastna.setSelected(true);
        TextField_vetrova_oblast_Cdir.setText(String.valueOf(X.get_c_dir()));
-       Variable_Cdir=X.get_c_dir();
+       Variable_Cdir=double_setter(X.get_c_dir());
        }
        
-      Variable_hustota_namrazy=X.get_ro_I();
+      Variable_hustota_namrazy=double_setter(X.get_ro_I());
        TextField_hustota_namrazy.setText(String.valueOf(Variable_hustota_namrazy));
        
        if (X.get_Kcl_radio() == true )
        {jRadioButton_Klc_1.setSelected(true);
-        Variable_Klc=X.get_K_lc();} 
+        Variable_Klc=double_setter(X.get_K_lc());} 
        else{
        jRadioButton_Klc_vlastna.setSelected(true);
        TextField_Kcl.setText(String.valueOf(X.get_K_lc()));
-       Variable_Klc=X.get_K_lc();
+       Variable_Klc=double_setter(X.get_K_lc());
        }
         
        if (X.get_Kh_radio()== true )
        {jRadioButton_Kh_1.setSelected(true);
-        Variable_Kh=X.get_K_h();} 
+        Variable_Kh=double_setter(X.get_K_h());} 
        else{
        jRadioButton_Kh_vlastna.setSelected(true);
        TextField_Kh.setText(String.valueOf(X.get_K_h()));
-       Variable_Kh=X.get_K_h();
+       Variable_Kh=double_setter(X.get_K_h());
        }
         
-       Variable_Ir50=X.get_I_R50();
+       Variable_Ir50=double_setter(X.get_I_R50());
        
-       Variable_char_terenu_Kr=X.get_k_r();
+       Variable_char_terenu_Kr=double_setter(X.get_k_r());
        TextField_Kr.setText(String.valueOf(Variable_char_terenu_Kr));
       
-       Variable_char_terenu_Zo=X.get_z_0();
+       Variable_char_terenu_Zo=double_setter(X.get_z_0());
        TextField_dlzka_drsnjosti_zo.setText(String.valueOf(Variable_char_terenu_Zo));
       
-       Variable_V_mean_0=X.get_V_mean();
+       Variable_V_mean_0=double_setter(X.get_V_mean());
        TextField_Vmean_0.setText(String.valueOf(Variable_V_mean_0));
       
        if (X.get_CO_radio()== true )
        {jRadioButton_vetrova_oblast_C0_1.setSelected(true);
-        Variable_Co=X.get_c_0();} 
+        Variable_Co=double_setter(X.get_c_0());} 
        else{
        jRadioButton_vetrova_oblast_C0_vlastna.setSelected(true);
        TextField_vetrova_oblast_C0.setText(String.valueOf(X.get_c_0()));
-       Variable_Co=X.get_c_0();;
+       Variable_Co=double_setter(X.get_c_0());
        }
        
        if (X.get_Bi_radio()== true )
        {jRadioButton_Bi_1.setSelected(true);
-        Variable_Bi=X.get_B_I();} 
+        Variable_Bi=double_setter(X.get_B_I());} 
        else{
        jRadioButton_Bi_2.setSelected(true);
        TextField_Bi2.setText(String.valueOf(X.get_B_I()));
-       Variable_Bi=X.get_B_I();
+       Variable_Bi=double_setter(X.get_B_I());
        }
        
-       Variable_Ccl=X.get_C_cl();
+       Variable_Ccl=double_setter(X.get_C_cl());
        TextField_Ccl.setText(String.valueOf(Variable_Ccl));
       
-       Variable_uroven_spolahlivosti_Yw=X.get_gama_w();
-       Variable_uroven_spolahlivosti_Yi=X.get_gama_I();
-       Variable_uroven_spolahlivosti_Ww=X.get_Psi_w();
-       Variable_uroven_spolahlivosti_Wi=X.get_Psi_I();
+       Variable_uroven_spolahlivosti_Yw=double_setter(X.get_gama_w());
+       Variable_uroven_spolahlivosti_Yi=double_setter(X.get_gama_I());
+       Variable_uroven_spolahlivosti_Ww=double_setter(X.get_Psi_w());
+       Variable_uroven_spolahlivosti_Wi=double_setter(X.get_Psi_I());
         
        
        //Remove rows one by one from the end of the table
@@ -5479,6 +5485,8 @@ private void seticon() {
                 
             }
         }
+        
+        
         
         if (X.get_Hi_array() == null) {
         } else {
@@ -5522,7 +5530,9 @@ private void seticon() {
                 Variable_Hi_array[Variable_Ai_array.length] = Variable_hi_vyska_stoziarov.get(Variable_Ai_array.length);
                 Variable_Hi_array_nmv[Variable_Ai_array.length] = Variable_hi2_nadmorska_vyska_stoziarov.get(Variable_Ai_array.length);
                 }
-        
+                Variable_Ai_array=double_setter_array(Variable_Ai_array);
+                
+                
        modeltable_rozpatia.addRow(new Object[0]);  
        if (X.get_Hi_array() == null) {modeltable_rozpatia_nadm_vysky.addRow(new Object[1]);}
        modeltable_rozpatia_nadm_vysky.addRow(new Object[1]);
@@ -5536,13 +5546,13 @@ private void seticon() {
         if (X.get_str_vys_vodicov_radio()== true ){
        jRadioButton_with_label_vypoctana.setSelected(true);
         
-        Variable_Hc_mean=X.get_h_c_mean();
+        Variable_Hc_mean=double_setter(X.get_h_c_mean());
         TextField_hcmean_vpocitana.setText(df.format(X.get_h_c_mean_window_vypocitana()));
         TextField_hcmean_vlastna.setText(df.format(X.get_h_c_mean_window_vlastna()));
        // System.out.println(Variable_Hc_mean);
         }else{
        jRadioButton_with_label_vlastna.setSelected(true);
-       Variable_Hc_mean=X.get_h_c_mean();
+       Variable_Hc_mean=double_setter(X.get_h_c_mean());
        
        
        TextField_hcmean_vpocitana.setText(String.valueOf(X.get_h_c_mean_window_vypocitana()));
@@ -6614,8 +6624,83 @@ private void seticon() {
         
     }
     
+    
+    public  double double_setter(double X){
+        pretazenia_intomainframe();
+        Swriter("doublesetter");   
+        return X;
+           
+           
+       }
+    
+    public double[] double_setter_array(double[] X){
+        pretazenia_intomainframe();
+        Swriter("doublesetter");   
+        return X;
+           
+       }
+  
+    public   void pretazenia_intomainframe(){
+        
+      if(jRadioButton_with_pretazenia_vypocitana.isSelected() == true &&
+         Variable_Ir50 != 123456789.987564321 &&
+         Variable_Hc_mean != 0.0            
+              ){
+        
+      try{  
+      int selected_conductor_index_from_JComboBox = jComboBox_conductor_chooser.getSelectedIndex();
+            Conductor_variables Conductor =  new  Conductor_variables (Databaza.get(selected_conductor_index_from_JComboBox));   
+            
+            // overload class - first step
+            Overload_variables Overload = new Overload_variables(Conductor,
+                                                                Conductor.get_m()*9.80665,
+                                                                Variable_hustota_namrazy,
+                                                                Variable_Klc,
+                                                                
+                                                                Variable_Kh, 
+                                                                Variable_Ir50,
+                                                                Variable_char_terenu_Kr, 
+                                                                Variable_char_terenu_Zo, 
+                                                                Variable_V_mean_0, 
+                                                                Variable_Cdir,
+                                                                Variable_Co, 
+                                                                1.,
+                                                                Variable_uroven_spolahlivosti_Yw,
+                                                                Variable_uroven_spolahlivosti_Yi,
+                                                                Variable_uroven_spolahlivosti_Wi, 
+                                                                 Variable_uroven_spolahlivosti_Ww, 
+                                                                Variable_Bi, 
+                                                                3, 
+                                                                0, 
+                                                                1.25,
+                                                                Variable_Ccl,
+                                                                Variable_Hc_mean);
+
+           // setting variables into overload vlass 
+           overload.set_all_variables(Overload,Variable_Ai_array);
+           // compute overloads
+           overload.compute();
+    
+          //parsing value to array list zatazenia a prezataniza 
+
+          DecimalFormatSymbols otherSymbols = new DecimalFormatSymbols();
+               otherSymbols.setDecimalSeparator('.');
+               DecimalFormat df = new DecimalFormat("###.###",otherSymbols);
+          
+           TextField_pretazenia_stav5.setText(df.format(overload.z_I));
+            TextField_pretazenia_stav6.setText(df.format(overload.z_W));
+             TextField_pretazenia_stav7.setText(df.format(overload.z_Iw));
+              TextField_pretazenia_stav8.setText(df.format(overload.z_iW));
+           
+           
+        }catch(NullPointerException a){Swriter("nemam AI");};
+        
+    }}
+  
+  
   }
 
+  
 
 //Classes
 
@@ -7413,6 +7498,9 @@ class kotevnyUsek extends javax.swing.JFrame{
        public void set_vysledky_vid_priehyb_M(double[][] vysledky_vid_priehyb_MT){
        vysledky_vid_priehyb_MT_over= vysledky_vid_priehyb_MT;
     }        
+  
+       
+
 }
 
 
