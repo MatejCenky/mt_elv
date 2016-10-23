@@ -425,7 +425,8 @@ public static void constructor(){
 
 /*248*/  language.SK.add("Námraza [%]");       language.CZ.add("I-SK");                     language.EN.add("I-SK");
 
-/*249*/  language.SK.add("ťah pre -5+N");       language.CZ.add("I-SK");                     language.EN.add("I-SK");
+/*249*/  language.SK.add("ťah pre -5+N [MPa]");       language.CZ.add("I-SK");                     language.EN.add("I-SK");
+/*250*/  language.SK.add("Kontrola ťahov a pracovného bodu");       language.CZ.add("I-SK");                     language.EN.add("I-SK");
 
 
          

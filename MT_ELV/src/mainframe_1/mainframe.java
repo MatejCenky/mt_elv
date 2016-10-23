@@ -585,14 +585,6 @@ import mt_variables.State_equation_variables;
         TextField_STRrozpatie_sPrevisenim = new javax.swing.JTextField();
         Label_RTS_velicina5 = new javax.swing.JLabel();
         Label_RTS_velicina6 = new javax.swing.JLabel();
-        jPanel12 = new javax.swing.JPanel();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        Table_rozpatia = new javax.swing.JTable();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        Table_rozpatia_nadm_vysky = new javax.swing.JTable();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        Table_kotevne_useky = new javax.swing.JTable();
-        Label_kotevne_useky = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         TextField_pretazenia_stav1 = new javax.swing.JTextField();
         TextField_pretazenia_stav2 = new javax.swing.JTextField();
@@ -730,6 +722,15 @@ import mt_variables.State_equation_variables;
         vyp_percento2_sigma = new javax.swing.JTextField();
         vyp_percento3_sigma = new javax.swing.JTextField();
         vyp_percento4_sigma = new javax.swing.JTextField();
+        jTabbedPane1 = new javax.swing.JTabbedPane();
+        jPanel12 = new javax.swing.JPanel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        Table_rozpatia = new javax.swing.JTable();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        Table_rozpatia_nadm_vysky = new javax.swing.JTable();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        Table_kotevne_useky = new javax.swing.JTable();
+        jPanel21 = new javax.swing.JPanel();
 
         javax.swing.GroupLayout jPanel15Layout = new javax.swing.GroupLayout(jPanel15);
         jPanel15.setLayout(jPanel15Layout);
@@ -1073,144 +1074,6 @@ import mt_variables.State_equation_variables;
                         .addComponent(TextField_STRrozpatie_klasicky, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(Label_RTS_velicina5)))
                 .addContainerGap())
-        );
-
-        jPanel12.setBackground(new java.awt.Color(0, 153, 153));
-        jPanel12.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
-
-        Table_rozpatia.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                ""
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.String.class
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-        });
-        Table_rozpatia.setColumnSelectionAllowed(true);
-        Table_rozpatia.setRowMargin(2);
-        Table_rozpatia.addInputMethodListener(new java.awt.event.InputMethodListener() {
-            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
-            }
-            public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
-                Table_rozpatiaInputMethodTextChanged(evt);
-            }
-        });
-        Table_rozpatia.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                Table_rozpatiaKeyReleased(evt);
-            }
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                Table_rozpatiaKeyTyped(evt);
-            }
-        });
-        jScrollPane3.setViewportView(Table_rozpatia);
-        Table_rozpatia.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        if (Table_rozpatia.getColumnModel().getColumnCount() > 0) {
-            Table_rozpatia.getColumnModel().getColumn(0).setResizable(false);
-            Table_rozpatia.getColumnModel().getColumn(0).setHeaderValue(language.language_label(languageOption, 91)
-            );
-        }
-
-        jScrollPane2.setPreferredSize(new java.awt.Dimension(4593, 403));
-
-        Table_rozpatia_nadm_vysky.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "", ""
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-        });
-        Table_rozpatia_nadm_vysky.setRowMargin(2);
-        Table_rozpatia_nadm_vysky.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                Table_rozpatia_nadm_vyskyKeyReleased(evt);
-            }
-        });
-        jScrollPane2.setViewportView(Table_rozpatia_nadm_vysky);
-        if (Table_rozpatia_nadm_vysky.getColumnModel().getColumnCount() > 0) {
-            Table_rozpatia_nadm_vysky.getColumnModel().getColumn(0).setResizable(false);
-            Table_rozpatia_nadm_vysky.getColumnModel().getColumn(0).setHeaderValue(language.language_label(languageOption, 92)
-            );
-            Table_rozpatia_nadm_vysky.getColumnModel().getColumn(1).setResizable(false);
-            Table_rozpatia_nadm_vysky.getColumnModel().getColumn(1).setHeaderValue(language.language_label(languageOption, 93)
-            );
-        }
-
-        Table_kotevne_useky.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "", ""
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.Boolean.class, java.lang.String.class
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-        });
-        Table_kotevne_useky.setCellSelectionEnabled(true);
-        Table_kotevne_useky.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        Table_kotevne_useky.getTableHeader().setReorderingAllowed(false);
-        jScrollPane1.setViewportView(Table_kotevne_useky);
-        Table_kotevne_useky.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        if (Table_kotevne_useky.getColumnModel().getColumnCount() > 0) {
-            Table_kotevne_useky.getColumnModel().getColumn(0).setResizable(false);
-            Table_kotevne_useky.getColumnModel().getColumn(0).setPreferredWidth(5);
-            Table_kotevne_useky.getColumnModel().getColumn(1).setResizable(false);
-            Table_kotevne_useky.getColumnModel().getColumn(1).setPreferredWidth(200);
-            Table_kotevne_useky.getColumnModel().getColumn(1).setHeaderValue(language.language_label(languageOption,51));
-        }
-
-        Label_kotevne_useky.setText(language.language_label(languageOption, 51));
-
-        javax.swing.GroupLayout jPanel12Layout = new javax.swing.GroupLayout(jPanel12);
-        jPanel12.setLayout(jPanel12Layout);
-        jPanel12Layout.setHorizontalGroup(
-            jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel12Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel12Layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(Label_kotevne_useky))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanel12Layout.setVerticalGroup(
-            jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel12Layout.createSequentialGroup()
-                .addGap(0, 0, 0)
-                .addComponent(Label_kotevne_useky)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(10, 10, 10))
         );
 
         jPanel4.setBackground(new java.awt.Color(0, 153, 153));
@@ -2972,6 +2835,152 @@ import mt_variables.State_equation_variables;
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        jPanel12.setBackground(new java.awt.Color(0, 153, 153));
+        jPanel12.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+
+        Table_rozpatia.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                ""
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        Table_rozpatia.setColumnSelectionAllowed(true);
+        Table_rozpatia.setRowMargin(2);
+        Table_rozpatia.addInputMethodListener(new java.awt.event.InputMethodListener() {
+            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
+            }
+            public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
+                Table_rozpatiaInputMethodTextChanged(evt);
+            }
+        });
+        Table_rozpatia.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                Table_rozpatiaKeyReleased(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                Table_rozpatiaKeyTyped(evt);
+            }
+        });
+        jScrollPane3.setViewportView(Table_rozpatia);
+        Table_rozpatia.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        if (Table_rozpatia.getColumnModel().getColumnCount() > 0) {
+            Table_rozpatia.getColumnModel().getColumn(0).setResizable(false);
+            Table_rozpatia.getColumnModel().getColumn(0).setHeaderValue(language.language_label(languageOption, 91)
+            );
+        }
+
+        jScrollPane2.setPreferredSize(new java.awt.Dimension(4593, 403));
+
+        Table_rozpatia_nadm_vysky.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "", ""
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        Table_rozpatia_nadm_vysky.setRowMargin(2);
+        Table_rozpatia_nadm_vysky.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                Table_rozpatia_nadm_vyskyKeyReleased(evt);
+            }
+        });
+        jScrollPane2.setViewportView(Table_rozpatia_nadm_vysky);
+        if (Table_rozpatia_nadm_vysky.getColumnModel().getColumnCount() > 0) {
+            Table_rozpatia_nadm_vysky.getColumnModel().getColumn(0).setResizable(false);
+            Table_rozpatia_nadm_vysky.getColumnModel().getColumn(0).setHeaderValue(language.language_label(languageOption, 92)
+            );
+            Table_rozpatia_nadm_vysky.getColumnModel().getColumn(1).setResizable(false);
+            Table_rozpatia_nadm_vysky.getColumnModel().getColumn(1).setHeaderValue(language.language_label(languageOption, 93)
+            );
+        }
+
+        Table_kotevne_useky.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "", ""
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Boolean.class, java.lang.String.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        Table_kotevne_useky.setCellSelectionEnabled(true);
+        Table_kotevne_useky.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        Table_kotevne_useky.getTableHeader().setReorderingAllowed(false);
+        jScrollPane1.setViewportView(Table_kotevne_useky);
+        Table_kotevne_useky.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        if (Table_kotevne_useky.getColumnModel().getColumnCount() > 0) {
+            Table_kotevne_useky.getColumnModel().getColumn(0).setResizable(false);
+            Table_kotevne_useky.getColumnModel().getColumn(0).setPreferredWidth(5);
+            Table_kotevne_useky.getColumnModel().getColumn(1).setResizable(false);
+            Table_kotevne_useky.getColumnModel().getColumn(1).setPreferredWidth(200);
+            Table_kotevne_useky.getColumnModel().getColumn(1).setHeaderValue(language.language_label(languageOption,51));
+        }
+
+        javax.swing.GroupLayout jPanel12Layout = new javax.swing.GroupLayout(jPanel12);
+        jPanel12.setLayout(jPanel12Layout);
+        jPanel12Layout.setHorizontalGroup(
+            jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel12Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel12Layout.setVerticalGroup(
+            jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel12Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 388, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+
+        jTabbedPane1.addTab("tab1", jPanel12);
+
+        javax.swing.GroupLayout jPanel21Layout = new javax.swing.GroupLayout(jPanel21);
+        jPanel21.setLayout(jPanel21Layout);
+        jPanel21Layout.setHorizontalGroup(
+            jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        jPanel21Layout.setVerticalGroup(
+            jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+
+        jTabbedPane1.addTab("tab2", jPanel21);
+
         javax.swing.GroupLayout jPanel18Layout = new javax.swing.GroupLayout(jPanel18);
         jPanel18.setLayout(jPanel18Layout);
         jPanel18Layout.setHorizontalGroup(
@@ -2983,7 +2992,7 @@ import mt_variables.State_equation_variables;
                         .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(jPanel9, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                             .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jPanel12, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jPanel19, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -3001,10 +3010,12 @@ import mt_variables.State_equation_variables;
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel18Layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel19, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel18Layout.createSequentialGroup()
+                        .addComponent(jPanel19, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jTabbedPane1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel18Layout.createSequentialGroup()
                         .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -3018,6 +3029,9 @@ import mt_variables.State_equation_variables;
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
+
+        jTabbedPane1.setTitleAt(0, language.language_label(languageOption, 51));
+        jTabbedPane1.setTitleAt(1, language.language_label(languageOption, 250));
 
         jScrollPane4.setViewportView(jPanel18);
 
@@ -3033,7 +3047,7 @@ import mt_variables.State_equation_variables;
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 1, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
@@ -4963,7 +4977,6 @@ import mt_variables.State_equation_variables;
     private static javax.swing.JLabel Label_hlavicka_vypocet_podla_normi;
     private static javax.swing.JLabel Label_hlavicka_vypracoval;
     private javax.swing.JLabel Label_hustota_namrazy;
-    private javax.swing.JLabel Label_kotevne_useky;
     private static javax.swing.JLabel Label_kotevne_useky1;
     private javax.swing.JLabel Label_max_zataz_lana;
     private static javax.swing.JLabel Label_pretazenia;
@@ -5067,6 +5080,7 @@ import mt_variables.State_equation_variables;
     private javax.swing.JPanel jPanel19;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel20;
+    private javax.swing.JPanel jPanel21;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
@@ -5101,6 +5115,7 @@ import mt_variables.State_equation_variables;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
+    private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTextField jTextField_datum;
     private javax.swing.JTextField jTextField_nadpis_pre_prechodna;
     private javax.swing.JTextField jTextField_nazov_SOPS;
