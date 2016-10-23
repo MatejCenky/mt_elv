@@ -151,6 +151,12 @@ import mt_variables.State_equation_variables;
         Variable_Hc_mean_medzikrok= 0.0;
         TextField_hcmean_vpocitana.setText("0.0");
         TextField_hcmean_vlastna.setText("0.0");
+        // inicializacia Hpercent_pre vypocet_sygmi
+        percento_podiel_namrazy_sigma1=30;
+        percento_podiel_namrazy_sigma1=40;
+        percento_podiel_namrazy_sigma1=50;
+        percento_podiel_namrazy_sigma1=70;
+        
         // inicializacia tabulky a casy
         jRadioButton_with_label_konecne.doClick();
         Variable_T0_zivotnost= Double.valueOf(TextField_tabulky_konecna.getText())*24*365;
@@ -230,7 +236,7 @@ import mt_variables.State_equation_variables;
         try{hodnoty[1] =Double.valueOf(String.valueOf(hodnoty_namrazove_oblasti[1]));}catch(NullPointerException i){hodnoty[1]=0;}
         try{hodnoty[2] =Double.valueOf(String.valueOf(hodnoty_namrazove_oblasti[2]));}catch(NullPointerException i){hodnoty[2]=0;}
         try{hodnoty[3] =Double.valueOf(String.valueOf(hodnoty_namrazove_oblasti[3]));}catch(NullPointerException i){hodnoty[3]=0;}
-                        kotevnyUsek docasny_kot_usek = new kotevnyUsek(new_kotevny_usek_name, 0, 0, 0, 0, 0, filename, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, teplotyser, first_Start, teplotyser, teplotyser, teplotyser, first_Start, Variable_Ai_array, Variable_Hi_array, Variable_Hi_array, Variable_Hi_array_nmv, 0, 0, 0,hodnoty,empty,empty,empty,empty,empty,empty,empty2);
+                        kotevnyUsek docasny_kot_usek = new kotevnyUsek(new_kotevny_usek_name, 0, 0, 0, 0, 0, filename, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, teplotyser, first_Start, teplotyser, teplotyser, teplotyser, first_Start, Variable_Ai_array, Variable_Hi_array, Variable_Hi_array, Variable_Hi_array_nmv, 0, 0, 0,hodnoty,empty,empty,empty,empty,empty,empty,empty2,empty2);
                         mainframe_to_kotevny_usek(docasny_kot_usek,povodna_hodnota_selekcie);
                         Variable_globeal_kotevny_usek.set(povodna_hodnota_selekcie, docasny_kot_usek);
 
@@ -713,6 +719,17 @@ import mt_variables.State_equation_variables;
         TextField_Bi_1 = new javax.swing.JTextField();
         jRadioButton_Bi_1 = new javax.swing.JRadioButton();
         Label__Bi = new javax.swing.JLabel();
+        jPanel20 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        percento1_sigma = new javax.swing.JTextField();
+        percento2_sigma = new javax.swing.JTextField();
+        percento3_sigma = new javax.swing.JTextField();
+        percento4_sigma = new javax.swing.JTextField();
+        vyp_percento1_sigma = new javax.swing.JTextField();
+        vyp_percento2_sigma = new javax.swing.JTextField();
+        vyp_percento3_sigma = new javax.swing.JTextField();
+        vyp_percento4_sigma = new javax.swing.JTextField();
 
         javax.swing.GroupLayout jPanel15Layout = new javax.swing.GroupLayout(jPanel15);
         jPanel15.setLayout(jPanel15Layout);
@@ -1051,12 +1068,11 @@ import mt_variables.State_equation_variables;
                         .addComponent(TextField_STRrozpatie_sPrevisenim, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(Label_RTS_velicina6)
                         .addComponent(jRadioButton_with_label_rozpate_previsenia, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel9Layout.createSequentialGroup()
-                        .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jRadioButton_with_label_rozpatie_klasicky, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(TextField_STRrozpatie_klasicky, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(Label_RTS_velicina5))
-                        .addContainerGap())))
+                    .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jRadioButton_with_label_rozpatie_klasicky, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(TextField_STRrozpatie_klasicky, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(Label_RTS_velicina5)))
+                .addContainerGap())
         );
 
         jPanel12.setBackground(new java.awt.Color(0, 153, 153));
@@ -2796,6 +2812,166 @@ import mt_variables.State_equation_variables;
                 .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        jPanel20.setBackground(new java.awt.Color(0, 153, 153));
+        jPanel20.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        jLabel2.setText(language.language_label(languageOption, 248));
+
+        jLabel3.setText(language.language_label(languageOption, 249));
+
+        percento1_sigma.setText("30");
+        percento1_sigma.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                percento1_sigmaActionPerformed(evt);
+            }
+        });
+        percento1_sigma.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                percento1_sigmaKeyReleased(evt);
+            }
+        });
+
+        percento2_sigma.setText("40");
+        percento2_sigma.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                percento2_sigmaActionPerformed(evt);
+            }
+        });
+        percento2_sigma.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                percento2_sigmaKeyReleased(evt);
+            }
+        });
+
+        percento3_sigma.setText("50");
+        percento3_sigma.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                percento3_sigmaActionPerformed(evt);
+            }
+        });
+        percento3_sigma.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                percento3_sigmaKeyReleased(evt);
+            }
+        });
+
+        percento4_sigma.setText("70");
+        percento4_sigma.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                percento4_sigmaActionPerformed(evt);
+            }
+        });
+        percento4_sigma.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                percento4_sigmaKeyReleased(evt);
+            }
+        });
+
+        vyp_percento1_sigma.setEditable(false);
+        vyp_percento1_sigma.setText("0");
+        vyp_percento1_sigma.setEnabled(false);
+        vyp_percento1_sigma.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                vyp_percento1_sigmaActionPerformed(evt);
+            }
+        });
+        vyp_percento1_sigma.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                vyp_percento1_sigmaKeyReleased(evt);
+            }
+        });
+
+        vyp_percento2_sigma.setEditable(false);
+        vyp_percento2_sigma.setText("0");
+        vyp_percento2_sigma.setEnabled(false);
+        vyp_percento2_sigma.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                vyp_percento2_sigmaActionPerformed(evt);
+            }
+        });
+        vyp_percento2_sigma.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                vyp_percento2_sigmaKeyReleased(evt);
+            }
+        });
+
+        vyp_percento3_sigma.setEditable(false);
+        vyp_percento3_sigma.setText("0");
+        vyp_percento3_sigma.setEnabled(false);
+        vyp_percento3_sigma.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                vyp_percento3_sigmaActionPerformed(evt);
+            }
+        });
+        vyp_percento3_sigma.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                vyp_percento3_sigmaKeyReleased(evt);
+            }
+        });
+
+        vyp_percento4_sigma.setEditable(false);
+        vyp_percento4_sigma.setText("0");
+        vyp_percento4_sigma.setEnabled(false);
+        vyp_percento4_sigma.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                vyp_percento4_sigmaActionPerformed(evt);
+            }
+        });
+        vyp_percento4_sigma.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                vyp_percento4_sigmaKeyReleased(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel20Layout = new javax.swing.GroupLayout(jPanel20);
+        jPanel20.setLayout(jPanel20Layout);
+        jPanel20Layout.setHorizontalGroup(
+            jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel20Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel20Layout.createSequentialGroup()
+                        .addComponent(percento1_sigma, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(percento2_sigma, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(percento3_sigma, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(percento4_sigma, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel20Layout.createSequentialGroup()
+                        .addComponent(vyp_percento1_sigma, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(vyp_percento2_sigma, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(vyp_percento3_sigma, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(vyp_percento4_sigma, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel20Layout.setVerticalGroup(
+            jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel20Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(percento1_sigma, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(percento2_sigma, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(percento3_sigma, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(percento4_sigma, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(9, 9, 9)
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(vyp_percento1_sigma, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(vyp_percento2_sigma, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(vyp_percento3_sigma, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(vyp_percento4_sigma, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
         javax.swing.GroupLayout jPanel18Layout = new javax.swing.GroupLayout(jPanel18);
         jPanel18.setLayout(jPanel18Layout);
         jPanel18Layout.setHorizontalGroup(
@@ -2803,19 +2979,21 @@ import mt_variables.State_equation_variables;
             .addGroup(jPanel18Layout.createSequentialGroup()
                 .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel18Layout.createSequentialGroup()
-                            .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(jPanel9, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                                .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jPanel12, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jPanel19, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jPanel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel18Layout.createSequentialGroup()
+                        .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jPanel9, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                            .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jPanel12, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jPanel19, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jPanel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel18Layout.createSequentialGroup()
                         .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(jPanel5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jPanel4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(jPanel4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jPanel20, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGap(0, 0, 0))
         );
         jPanel18Layout.setVerticalGroup(
@@ -2834,7 +3012,9 @@ import mt_variables.State_equation_variables;
                         .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jPanel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jPanel20, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -3542,8 +3722,8 @@ import mt_variables.State_equation_variables;
                                        +  language.language_label(languageOption, 215) + " : " + Variable_globeal_kotevny_usek.get(i).get_namrazova_oblast_string() +  language.language_label(languageOption, 225) +"\n" 
                                        +  language.language_label(languageOption, 226) + " : " + get_vetrova_oblast_string(jComboBox_vetrova_oblast.getSelectedIndex()) + ", v = " + decimal_trimiesta.format(Variable_globeal_kotevny_usek.get(i).get_V_mean()) + " m/s" +"\n" 
                                        ,fontTable); 
-           Chunk text_right1 = new Chunk(  language.language_label(languageOption, 228) + " : " + decimal_trimiesta.format(Variable_globeal_kotevny_usek.get(i).get_vysledky_tlaky6()[0]) + " kg/m" + "\n" 
-                                         + language.language_label(languageOption, 229) + " : " + decimal_trimiesta.format(Variable_globeal_kotevny_usek.get(i).get_vysledky_tlaky6()[1]) + " kg/m" + "\n" 
+           Chunk text_right1 = new Chunk(  language.language_label(languageOption, 228) + " : " + decimal_trimiesta.format(Variable_globeal_kotevny_usek.get(i).get_vysledky_tlaky6()[0]) + " N/m" + "\n" 
+                                         + language.language_label(languageOption, 229) + " : " + decimal_trimiesta.format(Variable_globeal_kotevny_usek.get(i).get_vysledky_tlaky6()[1]) + " N/m" + "\n" 
                                          + language.language_label(languageOption, 230) + " : " + decimal_trimiesta.format(Variable_globeal_kotevny_usek.get(i).get_vysledky_tlaky6()[2]) + " N/m" + "\n" 
                                          + language.language_label(languageOption, 231) + " : " + decimal_trimiesta.format(Variable_globeal_kotevny_usek.get(i).get_vysledky_tlaky6()[3]) + " N/m" + "\n" 
                                          + language.language_label(languageOption, 232) + " : " + decimal_trimiesta.format(Variable_globeal_kotevny_usek.get(i).get_vysledky_tlaky6()[4]) + " N/m" + "\n",fontTable);
@@ -3599,7 +3779,7 @@ import mt_variables.State_equation_variables;
         try{hodnoty[1] =Double.valueOf(String.valueOf(hodnoty_namrazove_oblasti[1]));}catch(NullPointerException e){hodnoty[1]=0;}
         try{hodnoty[2] =Double.valueOf(String.valueOf(hodnoty_namrazove_oblasti[2]));}catch(NullPointerException e){hodnoty[2]=0;}
         try{hodnoty[3] =Double.valueOf(String.valueOf(hodnoty_namrazove_oblasti[3]));}catch(NullPointerException e){hodnoty[3]=0;}
-             kotevnyUsek docasny_kot_usek = new kotevnyUsek(new_kotevny_usek_name, 0, 0, 0, 0, 0, filename, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, teplotyser, first_Start, teplotyser, teplotyser, teplotyser, first_Start, Variable_Ai_array, Variable_Hi_array, Variable_Hi_array,Variable_Hi_array_nmv,0,0,0,hodnoty,empty,empty,empty,empty,empty,empty,empty2);                     
+             kotevnyUsek docasny_kot_usek = new kotevnyUsek(new_kotevny_usek_name, 0, 0, 0, 0, 0, filename, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, teplotyser, first_Start, teplotyser, teplotyser, teplotyser, first_Start, Variable_Ai_array, Variable_Hi_array, Variable_Hi_array,Variable_Hi_array_nmv,0,0,0,hodnoty,empty,empty,empty,empty,empty,empty,empty2,empty2);                     
              mainframe_to_kotevny_usek(docasny_kot_usek,rowNumber);                        
              Variable_globeal_kotevny_usek.set(rowNumber, docasny_kot_usek);  
                        
@@ -3717,12 +3897,15 @@ import mt_variables.State_equation_variables;
 
 
 
-        //mechanical input of zeros to results
+        
          double[] sigmy = new double[14];
+         double[][] sigmy_minu5_podiel = new double[3][4];
          double[] cecka = new double[14];
          double[] pretazenia = new double[14];
          double[] sily = new double[14];
        
+         
+         // rozličovač ake pretaženia ma bra vlastne alebo vypocitane hotova vec 
        if(jRadioButton_with_pretazenia_vlastna.isSelected() ==true ){
             for(int y=0 ;y<14;y++){
            
@@ -3745,18 +3928,47 @@ import mt_variables.State_equation_variables;
              pretazenia[13]=1;
              }  
          
-       // 14 členny cyklus pre už samotny vypočet 
+       // 14 členny cyklus pre už samotny vypočet jednotlivých stavov
             for(int y=0 ;y<14;y++){
              sigmy[y]=0;
              cecka[y]=0;
              sily[y]=0;
+             
+        // cyklus na podielove zataženia     
+             // sa bude prepočitavat zaťaženie na percentulany podiel namrazy
+             if(y==5){ // -5+N
+                 
+             sigmy_minu5_podiel[1][1]=0;        
+             sigmy_minu5_podiel[1][2]=0;        
+             sigmy_minu5_podiel[1][3]=0;       
+             sigmy_minu5_podiel[1][4]=0;   
+             }
+             if(y==7){ // -5+Nv
+                 
+             sigmy_minu5_podiel[1][1]=0;    
+             sigmy_minu5_podiel[1][2]=0;       
+             sigmy_minu5_podiel[1][3]=0;       
+             sigmy_minu5_podiel[1][4]=0;   
+             }
+             if(y==8){ // -5+nV
+                 
+             sigmy_minu5_podiel[1][1]=0;  
+             sigmy_minu5_podiel[1][2]=0;     
+             sigmy_minu5_podiel[1][3]=0;      
+             sigmy_minu5_podiel[1][4]=0;   
+             }
+             
             }
-       
+        ////////////////////////////// vlozenie vysledkov
+        
           Kot_usek.set_vysledky_sigmaH_MT(sigmy);
           Kot_usek.set_vysledky_c_MT(cecka);
           Kot_usek.set_vysledky_pretazenia_MT(pretazenia);
           Kot_usek.set_vysledky_sily_MT(sily);
-
+          
+        /////////////////////////////// v
+        
+        ///////////// cyklus na zaklade poctu rozpati  pre vypocet vid priehybov 
          double[][] vid_priehyby = new double[Kot_usek.get_Ai_array().length][14];
           
             for (int y = 0; y < Kot_usek.get_Ai_array().length; y++) {
@@ -3766,8 +3978,9 @@ import mt_variables.State_equation_variables;
                     vid_priehyby[y][z] = 0;                    
                 }                
             }
+        ////////////////////////////// vlozenie vysledkov    
         Kot_usek.set_vysledky_vid_priehyb_M(vid_priehyby); 
-          
+        //////////////////////////////   
           
 
         } // if check box enabled
@@ -3798,7 +4011,7 @@ import mt_variables.State_equation_variables;
         try{hodnoty[2] =Double.valueOf(String.valueOf(hodnoty_namrazove_oblasti[2]));}catch(NullPointerException e){hodnoty[2]=0;}
         try{hodnoty[3] =Double.valueOf(String.valueOf(hodnoty_namrazove_oblasti[3]));}catch(NullPointerException e){hodnoty[3]=0;}
       
-        kotevnyUsek novy_usek =  new kotevnyUsek(new_kotevny_usek_name, 0, 0, 0, 0, 0, language.language_label(languageOption, 60), 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, teplotyser, teplotyser, teplotyser, teplotyser, teplotyser, teplotyser, Variable_Ai_array, Variable_Hi_array, Variable_Hi_array,Variable_Hi_array_nmv,0,0,0,hodnoty,empty,empty,empty,empty,empty,empty,empty2);    
+        kotevnyUsek novy_usek =  new kotevnyUsek(new_kotevny_usek_name, 0, 0, 0, 0, 0, language.language_label(languageOption, 60), 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, teplotyser, teplotyser, teplotyser, teplotyser, teplotyser, teplotyser, Variable_Ai_array, Variable_Hi_array, Variable_Hi_array,Variable_Hi_array_nmv,0,0,0,hodnoty,empty,empty,empty,empty,empty,empty,empty2,empty2);    
         
         
         Variable_globeal_kotevny_usek.add(novy_usek);
@@ -3827,7 +4040,7 @@ import mt_variables.State_equation_variables;
            
         
          int rowNumber =  Table_kotevne_useky.getSelectedRow(); //- (e.getFirstIndex()-e.getLastIndex()); 
-             kotevnyUsek docasny_kot_usek = new kotevnyUsek(new_kotevny_usek_name, 0, 0, 0, 0, 0, filename, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, teplotyser, first_Start, teplotyser, teplotyser, teplotyser, first_Start, Variable_Ai_array, Variable_Hi_array, Variable_Hi_array,Variable_Hi_array_nmv,0,0,0,hodnoty,empty,empty,empty,empty,empty,empty,empty2);                     
+             kotevnyUsek docasny_kot_usek = new kotevnyUsek(new_kotevny_usek_name, 0, 0, 0, 0, 0, filename, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, teplotyser, first_Start, teplotyser, teplotyser, teplotyser, first_Start, Variable_Ai_array, Variable_Hi_array, Variable_Hi_array,Variable_Hi_array_nmv,0,0,0,hodnoty,empty,empty,empty,empty,empty,empty,empty2,empty2);                     
              mainframe_to_kotevny_usek(docasny_kot_usek,rowNumber);
 
         kotevnyUsek novy_usek =  docasny_kot_usek;
@@ -3874,7 +4087,7 @@ import mt_variables.State_equation_variables;
         try{hodnoty[1] =Double.valueOf(String.valueOf(hodnoty_namrazove_oblasti[1]));}catch(NullPointerException e){hodnoty[1]=0;}
         try{hodnoty[2] =Double.valueOf(String.valueOf(hodnoty_namrazove_oblasti[2]));}catch(NullPointerException e){hodnoty[2]=0;}
         try{hodnoty[3] =Double.valueOf(String.valueOf(hodnoty_namrazove_oblasti[3]));}catch(NullPointerException e){hodnoty[3]=0;}
-             kotevnyUsek docasny_kot_usek = new kotevnyUsek(new_kotevny_usek_name, 0, 0, 0, 0, 0, filename, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, teplotyser, first_Start, teplotyser, teplotyser, teplotyser, first_Start, Variable_Ai_array, Variable_Hi_array, Variable_Hi_array,Variable_Hi_array_nmv,0,0,0,hodnoty,empty,empty,empty,empty,empty,empty,empty2);                     
+             kotevnyUsek docasny_kot_usek = new kotevnyUsek(new_kotevny_usek_name, 0, 0, 0, 0, 0, filename, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, teplotyser, first_Start, teplotyser, teplotyser, teplotyser, first_Start, Variable_Ai_array, Variable_Hi_array, Variable_Hi_array,Variable_Hi_array_nmv,0,0,0,hodnoty,empty,empty,empty,empty,empty,empty,empty2,empty2);                     
              mainframe_to_kotevny_usek(docasny_kot_usek,rowNumber);                        
              Variable_globeal_kotevny_usek.set(rowNumber, docasny_kot_usek);  
           
@@ -3898,7 +4111,7 @@ import mt_variables.State_equation_variables;
         try{hodnoty[1] =Double.valueOf(String.valueOf(hodnoty_namrazove_oblasti[1]));}catch(NullPointerException e){hodnoty[1]=0;}
         try{hodnoty[2] =Double.valueOf(String.valueOf(hodnoty_namrazove_oblasti[2]));}catch(NullPointerException e){hodnoty[2]=0;}
         try{hodnoty[3] =Double.valueOf(String.valueOf(hodnoty_namrazove_oblasti[3]));}catch(NullPointerException e){hodnoty[3]=0;}
-             kotevnyUsek docasny_kot_usek = new kotevnyUsek(new_kotevny_usek_name, 0, 0, 0, 0, 0, filename, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, teplotyser, first_Start, teplotyser, teplotyser, teplotyser, first_Start, Variable_Ai_array, Variable_Hi_array, Variable_Hi_array,Variable_Hi_array_nmv,0,0,0,hodnoty,empty,empty,empty,empty,empty,empty,empty2);                     
+             kotevnyUsek docasny_kot_usek = new kotevnyUsek(new_kotevny_usek_name, 0, 0, 0, 0, 0, filename, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, teplotyser, first_Start, teplotyser, teplotyser, teplotyser, first_Start, Variable_Ai_array, Variable_Hi_array, Variable_Hi_array,Variable_Hi_array_nmv,0,0,0,hodnoty,empty,empty,empty,empty,empty,empty,empty2,empty2);                     
              mainframe_to_kotevny_usek(docasny_kot_usek,rowNumber);                        
              Variable_globeal_kotevny_usek.set(rowNumber, docasny_kot_usek);  
           
@@ -4598,6 +4811,70 @@ import mt_variables.State_equation_variables;
      Variable_T0_zivotnost = doubleChecker_short_answer(TextField_tabulky_konecna);
     }//GEN-LAST:event_TextField_tabulky_konecnaKeyReleased
 
+    private void percento1_sigmaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_percento1_sigmaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_percento1_sigmaActionPerformed
+
+    private void percento1_sigmaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_percento1_sigmaKeyReleased
+        percento_podiel_namrazy_sigma1=doubleChecker_short_answer(percento1_sigma);
+    }//GEN-LAST:event_percento1_sigmaKeyReleased
+
+    private void percento2_sigmaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_percento2_sigmaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_percento2_sigmaActionPerformed
+
+    private void percento2_sigmaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_percento2_sigmaKeyReleased
+         percento_podiel_namrazy_sigma2=doubleChecker_short_answer(percento2_sigma);
+    }//GEN-LAST:event_percento2_sigmaKeyReleased
+
+    private void percento3_sigmaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_percento3_sigmaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_percento3_sigmaActionPerformed
+
+    private void percento3_sigmaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_percento3_sigmaKeyReleased
+         percento_podiel_namrazy_sigma3=doubleChecker_short_answer(percento3_sigma);
+    }//GEN-LAST:event_percento3_sigmaKeyReleased
+
+    private void percento4_sigmaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_percento4_sigmaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_percento4_sigmaActionPerformed
+
+    private void percento4_sigmaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_percento4_sigmaKeyReleased
+         percento_podiel_namrazy_sigma4=doubleChecker_short_answer(percento4_sigma);
+    }//GEN-LAST:event_percento4_sigmaKeyReleased
+
+    private void vyp_percento1_sigmaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vyp_percento1_sigmaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_vyp_percento1_sigmaActionPerformed
+
+    private void vyp_percento1_sigmaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_vyp_percento1_sigmaKeyReleased
+        // TODO add your handling code here:
+    }//GEN-LAST:event_vyp_percento1_sigmaKeyReleased
+
+    private void vyp_percento2_sigmaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vyp_percento2_sigmaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_vyp_percento2_sigmaActionPerformed
+
+    private void vyp_percento2_sigmaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_vyp_percento2_sigmaKeyReleased
+        // TODO add your handling code here:
+    }//GEN-LAST:event_vyp_percento2_sigmaKeyReleased
+
+    private void vyp_percento3_sigmaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vyp_percento3_sigmaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_vyp_percento3_sigmaActionPerformed
+
+    private void vyp_percento3_sigmaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_vyp_percento3_sigmaKeyReleased
+        // TODO add your handling code here:
+    }//GEN-LAST:event_vyp_percento3_sigmaKeyReleased
+
+    private void vyp_percento4_sigmaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vyp_percento4_sigmaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_vyp_percento4_sigmaActionPerformed
+
+    private void vyp_percento4_sigmaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_vyp_percento4_sigmaKeyReleased
+        // TODO add your handling code here:
+    }//GEN-LAST:event_vyp_percento4_sigmaKeyReleased
+
   public static void lanochangeinDatabaze() {
   nacitatDatabazuLan();      
         
@@ -4775,6 +5052,8 @@ import mt_variables.State_equation_variables;
     private static final javax.swing.JComboBox<String> jComboBox_uroven_splahlivosti = new javax.swing.JComboBox<>();
     private final javax.swing.JComboBox<String> jComboBox_vetrova_oblast = new javax.swing.JComboBox<>();
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel11;
@@ -4787,6 +5066,7 @@ import mt_variables.State_equation_variables;
     private javax.swing.JPanel jPanel18;
     private javax.swing.JPanel jPanel19;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel20;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
@@ -4833,6 +5113,14 @@ import mt_variables.State_equation_variables;
     private javax.swing.JTextField jTextField_vypracoval;
     private javax.swing.JTextArea jTextPane_KPB_typ_terenu;
     private javax.swing.JTextArea jTextPane_char_terenu;
+    private javax.swing.JTextField percento1_sigma;
+    private javax.swing.JTextField percento2_sigma;
+    private javax.swing.JTextField percento3_sigma;
+    private javax.swing.JTextField percento4_sigma;
+    private javax.swing.JTextField vyp_percento1_sigma;
+    private javax.swing.JTextField vyp_percento2_sigma;
+    private javax.swing.JTextField vyp_percento3_sigma;
+    private javax.swing.JTextField vyp_percento4_sigma;
     // End of variables declaration//GEN-END:variables
 DefaultTableModel modelTable;
 DefaultTableModel modeltable_rozpatia;
@@ -4913,6 +5201,12 @@ private static double Variable_streda_roc_teplota;
 private static double Variable_vybrany_stav_pre_KPB;
 private static double Variable_KPB_typ_terenu;
 private static double Variable_KPB_cas_vypoctu;
+
+private static double percento_podiel_namrazy_sigma1;
+private static double percento_podiel_namrazy_sigma2;
+private static double percento_podiel_namrazy_sigma3;
+private static double percento_podiel_namrazy_sigma4;
+
 // conductor variables
 private static final ArrayList<Object[]> Databaza = new ArrayList<>();
 public static javax.swing.JLabel Lano_listener_JLabel_Maska;
@@ -6602,7 +6896,7 @@ private void seticon() {
                      h_c_mean_window_vypocitana,
                      h_c_mean_window_vlastn,
                      str_rozpatie,
-                     oblast_hodnoty,empty,empty,empty,empty,empty,empty,empty2);    
+                     oblast_hodnoty,empty,empty,empty,empty,empty,empty,empty2,empty2);    
                 selection_kotevny_usek=true;
                if(i==0){
                    Variable_globeal_kotevny_usek.set(0, novy_usek);
@@ -6871,7 +7165,8 @@ class kotevnyUsek extends javax.swing.JFrame{
                               private  double[] vysledky_pretazenia_MT_over;
                               private  double[] vysledky_sily_MT_over;
                               private  double[][] vysledky_vid_priehyb_MT_over;
-    
+                              private  double[][] vysledky_per_podiel_sigma_over;
+      
     
     //constructor
     
@@ -6930,7 +7225,8 @@ class kotevnyUsek extends javax.swing.JFrame{
                                 double[] vysledky_c_MT,
                                 double[] vysledky_pretazenia_MT,
                                 double[] vysledky_sily_MT,
-                                double[][] vysledky_vid_priehyb_MT
+                                double[][] vysledky_vid_priehyb_MT,
+                                double[][] vysledky_per_podiel_sigma
                                 
     
     ){
@@ -7291,6 +7587,10 @@ class kotevnyUsek extends javax.swing.JFrame{
         return vysledky_vid_priehyb_MT_over;
     }
     
+     public double[][] get_vysledky_per_podiel_sigma(){
+        return vysledky_per_podiel_sigma_over;
+    }
+    
     public void set_name(String name_kot_useku){
         name=name_kot_useku;
     }
@@ -7497,6 +7797,9 @@ class kotevnyUsek extends javax.swing.JFrame{
     }
        public void set_vysledky_vid_priehyb_M(double[][] vysledky_vid_priehyb_MT){
        vysledky_vid_priehyb_MT_over= vysledky_vid_priehyb_MT;
+    }        
+        public void set_per_podiel_sigma(double[][] vysledky_per_podiel_sigma){
+       vysledky_per_podiel_sigma_over= vysledky_per_podiel_sigma;
     }        
   
        

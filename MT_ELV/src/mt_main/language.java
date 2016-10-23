@@ -423,6 +423,10 @@ public static void constructor(){
 /*246*/  language.SK.add("Načítať projekt");       language.CZ.add("I-SK");                     language.EN.add("I-SK");
 /*247*/  language.SK.add("Uložiť projekt ako");       language.CZ.add("I-SK");                     language.EN.add("I-SK");
 
+/*248*/  language.SK.add("Námraza [%]");       language.CZ.add("I-SK");                     language.EN.add("I-SK");
+
+/*249*/  language.SK.add("ťah pre -5+N");       language.CZ.add("I-SK");                     language.EN.add("I-SK");
+
 
          
  inicializovane = true;
