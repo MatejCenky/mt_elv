@@ -3847,7 +3847,7 @@ import mt_variables.State_equation_variables;
            overload.set_all_variables(Overload,Kot_usek.get_Ai_array());
            // compute overloads
            overload.compute();
-    
+
           //parsing value to array list zatazenia a prezataniza 
            ArrayList<Double>  vysledky_pretazenia5 = new ArrayList<>();
            vysledky_pretazenia5.removeAll(vysledky_pretazenia5);
@@ -3860,8 +3860,8 @@ import mt_variables.State_equation_variables;
            target[i] = vysledky_pretazenia5.get(a);                // java 1.5+ style (outboxing)
            }         
            Kot_usek.set_vysledky_pretazenia6(target);
-           
-           
+
+
            ArrayList<Double> vysledky_tlaky = new ArrayList<>();
            vysledky_tlaky.removeAll(vysledky_tlaky);
            vysledky_tlaky.add(overload.I_T);
@@ -3874,45 +3874,7 @@ import mt_variables.State_equation_variables;
           target2[a] = vysledky_tlaky.get(a);                // java 1.5+ style (outboxing)
            }
           Kot_usek.set_vysledky_tlaky6(target2);
-          
-          
-          
-//        // conductor creeping class - second step
-//           /* Txp */
-//           Conductor_creeping_variables Creeping_txp = new Conductor_creeping_variables(Conductor, 
-//                                                                                    Conductor.get_m()*9.80665, 
-//                                                                                    Variable_streda_roc_teplota, 
-//                                                                                    Variable_T0_zivotnost, 
-//                                                                                    Variable_Tp_prechodna_doba);
-//            // set variables to state equation class 
-//            // - compute sigma_HT for conductor creeping variable 
-//            // - compute thermal shift for [i]th temperature
-//            State_equation_variables State = new State_equation_variables(Conductor, Variable_streda_roc_teplota, -5, Variable_zakladne_mech_napatie_lana_pre_minus5, 1);
-//            state_equation.set_all_variables(State, Variable_Ai_array, Variable_DeltaHi_array);
-//            state_equation.compute_sigma_H(1, Variable_mid_span);
-//            
-//            // set variables to conductor creeping class 
-//            // - compute thermal shift for [i]th temperature
-//            conductor_creeping.set_all_variables(Creeping_txp, state_equation.sigma_h1);
-//            conductor_creeping.compute_transient_thermal_shift_value(Variable_Tp_prechodna_doba);
-//            conductor_creeping.set_Txp(Variable_teploty_stav_rovnica[i]); // input as Txp to the final state equation
-//            
-//            /* Tx0 */
-//            Conductor_creeping_variables Creeping_tx0 = new Conductor_creeping_variables(Conductor, 
-//                                                                                    Conductor.get_m()*9.80665, 
-//                                                                                    -5, 
-//                                                                                    Variable_T0_zivotnost, 
-//                                                                                    Variable_Tp_prechodna_doba);
-//            // set variables to conductor creeping class 
-//            // - compute thermal shift for default temperature; -5 degrees
-//            conductor_creeping.set_all_variables(Creeping_tx0, Variable_zakladne_mech_napatie_lana_pre_minus5);
-//            conductor_creeping.compute_transient_thermal_shift_value(Variable_Tp_prechodna_doba);
-//            conductor_creeping.set_Tx0(-5); // input as Tx0 to the final state equation
 
-
-
-
-        
          double[] sigmy = new double[14];
          double[][] sigmy_minu5_podiel = new double[3][4];
          double[] cecka = new double[14];
@@ -3921,11 +3883,10 @@ import mt_variables.State_equation_variables;
        
          
          // rozličovač ake pretaženia ma bra vlastne alebo vypocitane hotova vec 
-       if(jRadioButton_with_pretazenia_vlastna.isSelected() ==true ){
+       if(jRadioButton_with_pretazenia_vlastna.isSelected() == true ){
             for(int y=0 ;y<14;y++){
-           
-             pretazenia[y]=Variable_pretazenia_stav_rovnica[y];           
-       }
+                pretazenia[y]=Variable_pretazenia_stav_rovnica[y];           
+            }
        }else{
              pretazenia[0]=1; 
              pretazenia[1]=1;
@@ -3944,34 +3905,49 @@ import mt_variables.State_equation_variables;
              }  
          
        // 14 členny cyklus pre už samotny vypočet jednotlivých stavov
-            for(int y=0 ;y<14;y++){
-             sigmy[y]=0;
-             cecka[y]=0;
-             sily[y]=0;
+            for(int y=0 ; y<Variable_teploty_stav_rovnica.length; y++){
+                double[] temperatures_state_equation = temperatures_for_state_equation( Conductor, 
+                                                                                        Kot_usek, 
+                                                                                        Variable_teploty_stav_rovnica[y], 
+                                                                                        Variable_streda_roc_teplota, 
+                                                                                        Variable_T0_zivotnost, 
+                                                                                        Variable_Tp_prechodna_doba );
+                State_equation_variables State = new State_equation_variables(  Conductor,
+                                                                                temperatures_state_equation[1],
+                                                                                temperatures_state_equation[0],
+                                                                                Kot_usek.get_zakladne_mech_napatie_lana_pre_minus5_over(),
+                                                                                1.0);
+                state_equation.set_all_variables(State, Kot_usek.get_Ai_array(), Kot_usek.get_DeltaHi_array());
+                sigmy[y] = state_equation.compute_sigma_H(  pretazenia[y],                  // load
+                                                            Variable_mid_span,              // mid span
+                                                            temperatures_state_equation[0], // Tx0
+                                                            temperatures_state_equation[1]);// Tx1
+                cecka[y] = state_equation.compute_c(sigmy[y], pretazenia[y], Conductor);
+                sily[y] = state_equation.compute_Fh(sigmy[y], Conductor)/1000; //kN
              
-        // cyklus na podielove zataženia     
-             // sa bude prepočitavat zaťaženie na percentulany podiel namrazy
-             if(y==5){ // -5+N
-                 
-             sigmy_minu5_podiel[1][1]=0;        
-             sigmy_minu5_podiel[1][2]=0;        
-             sigmy_minu5_podiel[1][3]=0;       
-             sigmy_minu5_podiel[1][4]=0;   
-             }
-             if(y==7){ // -5+Nv
-                 
-             sigmy_minu5_podiel[1][1]=0;    
-             sigmy_minu5_podiel[1][2]=0;       
-             sigmy_minu5_podiel[1][3]=0;       
-             sigmy_minu5_podiel[1][4]=0;   
-             }
-             if(y==8){ // -5+nV
-                 
-             sigmy_minu5_podiel[1][1]=0;  
-             sigmy_minu5_podiel[1][2]=0;     
-             sigmy_minu5_podiel[1][3]=0;      
-             sigmy_minu5_podiel[1][4]=0;   
-             }
+//        // cyklus na podielove zataženia     
+//            // sa bude prepočitavat zaťaženie na percentulany podiel namrazy
+//            if(y==5){ // -5+N
+//                 
+//                sigmy_minu5_podiel[1][0]=0;        
+//                sigmy_minu5_podiel[1][1]=0;        
+//                sigmy_minu5_podiel[1][2]=0;       
+//                sigmy_minu5_podiel[1][3]=0;   
+//            }
+//            if(y==7){ // -5+Nv
+//                 
+//                sigmy_minu5_podiel[1][0]=0;    
+//                sigmy_minu5_podiel[1][1]=0;       
+//                sigmy_minu5_podiel[1][2]=0;       
+//                sigmy_minu5_podiel[1][3]=0;   
+//            }
+//            if(y==8){ // -5+nV
+//                
+//                sigmy_minu5_podiel[1][0]=0;  
+//                sigmy_minu5_podiel[1][1]=0;     
+//                sigmy_minu5_podiel[1][2]=0;      
+//                sigmy_minu5_podiel[1][3]=0;   
+//            }
              
             }
         ////////////////////////////// vlozenie vysledkov
@@ -4010,6 +3986,42 @@ import mt_variables.State_equation_variables;
         
     }//GEN-LAST:event_Button_Icon_calculateActionPerformed
 
+    /**
+     * 
+     * @param Conductor selected conductor -> Conductor_variables class
+     * @param Kot_usek selected suspension section -> kotevnyUsek class
+     * @param Temperature temepreature from the Variable_teplotny _stav_rovnica -> global variable
+     * @param stredna_rocna_teplota average year temperature -> global variable
+     * @param T0_zivotnost global variable
+     * @param Tp_prechodna_doba global variable
+     * @return double[] array in which:
+     *      [0] - Tx0 - used as theta0 in state equation
+     *      [1] - Tx1 - used as theta1 in state equaton
+     */
+    private static double[] temperatures_for_state_equation(    Conductor_variables Conductor, 
+                                                                kotevnyUsek Kot_usek, 
+                                                                double Temperature,
+                                                                double stredna_rocna_teplota,
+                                                                double T0_zivotnost,
+                                                                double Tp_prechodna_doba){
+         double[] result_T = new double[2];
+ 
+            // set variables to state equation class 
+            // - compute sigma_HT for conductor creeping variable 
+            // - compute thermal shift for selected temperature
+            State_equation_variables State = new State_equation_variables(Conductor, stredna_rocna_teplota, -5, Kot_usek.get_zakladne_mech_napatie_lana_pre_minus5_over(), 1);
+            state_equation.set_all_variables(State, Kot_usek.get_Ai_array(), Kot_usek.get_DeltaHi_array());
+            double sigma_H_creeping = state_equation.compute_sigma_H_value(1, Kot_usek.get_str_rozpatie());
+            
+            // set variables to conductor creeping class 
+            // - compute thermal shift for selected temperature
+            double shift = conductor_creeping.thermal_shift_universal_value(T0_zivotnost, Tp_prechodna_doba, sigma_H_creeping, Conductor, stredna_rocna_teplota);
+            result_T[1] = Temperature + shift;  // theta_1
+            result_T[0] = -5 + shift;           // theta_0
+            
+            return result_T;
+    }
+    
     private void Button_Icon_arr_row_table_kotevny_usekActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button_Icon_arr_row_table_kotevny_usekActionPerformed
         selection_kotevny_usek=true;
         if ( first_Start==true){

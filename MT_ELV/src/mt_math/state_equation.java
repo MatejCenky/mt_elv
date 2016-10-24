@@ -9,6 +9,7 @@
 package mt_math;
 
 import mt_main.MyException;
+import mt_variables.Conductor_variables;
 import mt_variables.State_equation_variables;
 
 /**
@@ -16,25 +17,6 @@ import mt_variables.State_equation_variables;
  * @author Mattto
  */
 public class state_equation {
-
-//    /** 
-//     * @param terrain 1 == flat [MSF] // else == terrain [MST]
-//     * 
-//     */
-//    public state_equation(int terrain){
-//        state_equation.ter = terrain;
-//    }
-//    
-//    /** 
-//     * @param terrain 1 == flat [MSF] // else == terrain [MST]
-//     * @param spans array containing all spans in the suspension section [n-1 dim]
-//     * @param heights array containing all conductor catching points on towers [n dim]
-//     */
-//    public state_equation(int terrain, double spans[], double heights[]){
-//        state_equation.ter = terrain;
-//        state_equation.a = spans;
-//        state_equation.dh = heights;
-//    }
 
  /* Defining variables */
     
@@ -135,31 +117,31 @@ public class state_equation {
     public static void check_variables(){
         try {
             if (state_equation.m == -1111.0000){
-                System.out.println(state_equation.m + "not set");
+                System.out.println(state_equation.m + " state_equation not set");
                 throw new MyException("Variable set error in state equation class");
             } else if (state_equation.S == -1111.0000){
-                System.out.println(state_equation.S + "not set");
+                System.out.println(state_equation.S + " state_equation not set");
                 throw new MyException("Variable set error in state equation class");
             } else if (state_equation.E == -1111.0000){
-                System.out.println(state_equation.E + "not set");
+                System.out.println(state_equation.E + " state_equationnot set");
                 throw new MyException("Variable set error in state equation class");
             } else if (state_equation.alpha == -1111.0000){
-                System.out.println(state_equation.alpha + "not set");
+                System.out.println(state_equation.alpha + " state_equation not set");
                 throw new MyException("Variable set error in state equation class");
             } else if (state_equation.theta_1 == -1111.0000){
-                System.out.println(state_equation.theta_1 + "not set");
+                System.out.println(state_equation.theta_1 + " state_equationnot set");
                 throw new MyException("Variable set error in state equation class");
             } else if (state_equation.theta_0 == -1111.0000){
-                System.out.println(state_equation.theta_0 + "not set");
+                System.out.println(state_equation.theta_0 + " state_equation not set");
                 throw new MyException("Variable set error in state equation class");
             } else if (state_equation.sigma_h0 == -1111.0000){
-                System.out.println(state_equation.sigma_h0 + "not set");
+                System.out.println(state_equation.sigma_h0 + " state_equation not set");
                 throw new MyException("Variable set error in state equation class");
             } else if (state_equation.gama == -1111.0000){
-                System.out.println(state_equation.gama + "not set");
+                System.out.println(state_equation.gama + " state_equationnot set");
                 throw new MyException("Variable set error in state equation class");
             } else if (state_equation.z_1 == -1111.0000){
-                System.out.println(state_equation.gama + "not set");
+                System.out.println(state_equation.gama + " state_equation not set");
                 throw new MyException("Variable set error in state equation class");
             }
         } catch (MyException e){}
@@ -206,7 +188,26 @@ public class state_equation {
         sag_maximum();
         sag_visible();
         // null variables and partial results
-        null_variables();
+//        null_variables();
+    }
+    
+    /**
+     * Computes the state equation using set variables; 
+     * Variables need to be set BEFORE computation;
+     * @param load overload z_1 on the conductor
+     * @param mid_span /average/ span of suspension section [m] 
+     * @return  sigma_H as double
+     */
+    public static double compute_sigma_H_value( double load, 
+                                                double mid_span){
+        //preparing
+        state_equation.mid_span = mid_span;
+        state_equation.z_1 = load;
+        gama();
+        check_variables();
+        //cubic equation
+        set_cubic_values();
+        return cubic_equation_solve_value();
     }
     
     /**
@@ -251,6 +252,22 @@ public class state_equation {
         cubic_equation_coef_B_imaginary(T_x0, T_xp);
         // results - variables are nulled before return statement
         return cubic_equation_solve_imaginary();
+    }
+    
+    public static double compute_c(double sigma_h1, double pretazenie, Conductor_variables Conductor){
+        return c_parameter_value(sigma_h1, pretazenie, (Conductor.get_m()*state_equation.g)/Conductor.get_S());
+    }
+    
+    public static double compute_Fh(double sigma_h1, Conductor_variables Conductor){
+        return pulling_force_value(sigma_h1, Conductor);
+    }
+    
+    public static double[] compute_sag_vis(double[] spans, double c, double[] dh){
+        return sag_visible_value(spans, c, dh);
+    }
+    
+    public static double[] compute_sag_max(double[] spans, double c){
+        return sag_maximum_value(spans, c);
     }
     
     /**
@@ -343,6 +360,32 @@ public class state_equation {
             result = 2 * part1 * part3;
         }
         state_equation.sigma_h1 = result;
+    }
+    
+    /**
+     * Computes the cubic equation in the form: A*x^3 + B*x^2 + C*x + D = 0
+     * Defined are only B,D coefficient -> sufficient to solve
+     */
+    private static double cubic_equation_solve_value(){
+        double part1;
+        double part2;
+        double part3;
+        double condition;
+        double result;
+        
+        condition = Math.pow(-1* Math.pow(state_equation.Bc, 2)/9, 3) + Math.pow(-1* (27* state_equation.Dc + 2* Math.pow(state_equation.Bc, 3)) /54, 2);
+        
+        if (0 < condition) {
+            part1 = Math.cbrt((-1*(27*state_equation.Dc+2*Math.pow(state_equation.Bc, 3))/54) - Math.sqrt(condition));
+            part2 = Math.cbrt((-1*(27*state_equation.Dc+2*Math.pow(state_equation.Bc, 3))/54) + Math.sqrt(condition)) - state_equation.Bc/3;
+            result = part1 + part2;
+        } else {
+            part1 = Math.cbrt(-1*Math.pow(-1*Math.pow(state_equation.Bc, 2)/9, 3));
+            part2 = Math.acos(-1*(27*state_equation.Dc+2*Math.pow(state_equation.Bc, 3))/54/part1);
+            part3 = Math.cos(part2/3) - state_equation.Bc/3;
+            result = 2 * part1 * part3;
+        }
+        return result;
     }
 
     /**
@@ -447,7 +490,53 @@ public class state_equation {
             part3 = Math.cos(part2/3) - state_equation.Bc_i/3;
             result = 2 * part1 * part3;
         }
-        null_variables();
+//        null_variables();
+        return result;
+    }
+    
+    /**
+     * Computes the pulling force based on the horizontal stress of the conductor "F_mH"
+     */
+    private static double pulling_force_value(double sigma_H1, Conductor_variables Conductor){
+        return sigma_H1* Conductor.get_S();
+    }
+    
+    /**
+     * Computes the "c" parameter of the conductor shape /sag/ - gama and z_1 are get straight from state_equation class!
+     */
+    private static double c_parameter_value(double sigma_H1, double pretazenie, double gama){
+        return sigma_H1 / (gama* pretazenie);
+    }
+    
+    /**
+     * Computes the maximum sag for ideal conditions in one suspension section
+     */
+    private static double[] sag_maximum_value(double[] spans, double c){
+        double[] result = new double[spans.length];
+        for (int i=0; i<spans.length; i++) {
+        result[i] = c* (Math.cosh(spans[i]/(2*c)) - 1);
+        }
+        return result;
+    }
+    
+    /**
+     * Computes the array of all visible sags in one suspension section. 
+     */
+    private static double[] sag_visible_value(double[] spans, double c, double[] dh){
+        double result[] = new double[spans.length];
+        double part1[] = new double[spans.length];
+        double part2;
+        double part3;
+        
+        for (int i=0; i<spans.length; i++) {
+            part1[i] = spans[i]/(2*c);
+            part2 = part1[i] + Math_Extended.asinh(dh[i]/(2*c*Math.sinh(part1[i])));
+            part3 = Math_Extended.asinh(dh[i]/spans[i]);
+            result[i] = c*(Math.cosh(part2) - Math.cosh(part3) - (dh[i]/spans[i])*(part2 - part3));
+        }
+        
         return result;
     }
 }
+
+

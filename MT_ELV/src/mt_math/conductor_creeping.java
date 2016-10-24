@@ -9,6 +9,7 @@ package mt_math;
 
 import mt_main.MyException;
 import mt_variables.Conductor_creeping_variables;
+import mt_variables.Conductor_variables;
 
 /**
  *
@@ -75,23 +76,23 @@ public class conductor_creeping {
         set_sigma_HT(sigma_HT);
     }
     
-    /**
-     * null the variables /inputs/ from mainframe and partial results 
-     * - final results remain untouched
-     */
-    public static void null_variables(){
-        conductor_creeping.w_Fe = -1111.0000;
-        conductor_creeping.k_w = -1111.0000;
-        conductor_creeping.k_EDS = -1111.0000;
-        conductor_creeping.k_EDT = -1111.0000;
-        conductor_creeping.S = -1111.0000;
-        conductor_creeping.g_c = -1111.0000;
-        conductor_creeping.RTS = -1111.0000;
-        conductor_creeping.T_EDT = -1111.0000;
-        conductor_creeping.alpha = -1111.0000;
-        conductor_creeping.t_0 = -1111.0000;
-        conductor_creeping.t_p = -1111.0000;
-    }
+//    /**
+//     * null the variables /inputs/ from mainframe and partial results 
+//     * - final results remain untouched
+//     */
+//    public static void null_variables(){
+//        conductor_creeping.w_Fe = -1111.0000;
+//        conductor_creeping.k_w = -1111.0000;
+//        conductor_creeping.k_EDS = -1111.0000;
+//        conductor_creeping.k_EDT = -1111.0000;
+//        conductor_creeping.S = -1111.0000;
+//        conductor_creeping.g_c = -1111.0000;
+//        conductor_creeping.RTS = -1111.0000;
+//        conductor_creeping.T_EDT = -1111.0000;
+//        conductor_creeping.alpha = -1111.0000;
+//        conductor_creeping.t_0 = -1111.0000;
+//        conductor_creeping.t_p = -1111.0000;
+//    }
     
     /**
      * checks if all variables /inputs/ are set correctly from mainframe
@@ -99,25 +100,25 @@ public class conductor_creeping {
     public static void check_variables(){
         try {
             if (conductor_creeping.S == -1111.0000){
-                System.out.println(conductor_creeping.S + "not set");
+                System.out.println(conductor_creeping.S + " conductor_creeping not set");
                 throw new MyException("Variable set error in conductor creeping class");
             } else if (conductor_creeping.g_c == -1111.0000){
-                System.out.println(conductor_creeping.g_c + "not set");
+                System.out.println(conductor_creeping.g_c + " conductor_creeping not set");
                 throw new MyException("Variable set error in conductor creeping class");
             } else if (conductor_creeping.RTS == -1111.0000){
-                System.out.println(conductor_creeping.RTS + "not set");
+                System.out.println(conductor_creeping.RTS + " conductor_creeping not set");
                 throw new MyException("Variable set error in conductor creeping class");
             } else if (conductor_creeping.T_EDT == -1111.0000){
-                System.out.println(conductor_creeping.T_EDT + "not set");
+                System.out.println(conductor_creeping.T_EDT + " conductor_creepingnot set");
                 throw new MyException("Variable set error in conductor creeping class");
             } else if (conductor_creeping.alpha == -1111.0000){
-                System.out.println(conductor_creeping.alpha + "not set");
+                System.out.println(conductor_creeping.alpha + " conductor_creepingnot set");
                 throw new MyException("Variable set error in conductor creeping class");
             } else if (conductor_creeping.t_0 == -1111.0000){
-                System.out.println(conductor_creeping.t_0 + "not set");
+                System.out.println(conductor_creeping.t_0 + " conductor_creepingnot set");
                 throw new MyException("Variable set error in conductor creeping class");
             } else if (conductor_creeping.t_p == -1111.0000){
-                System.out.println(conductor_creeping.t_p + "not set");
+                System.out.println(conductor_creeping.t_p + " conductor_creeping not set");
                 throw new MyException("Variable set error in conductor creeping class");
             } 
         } catch (MyException e) {
@@ -143,8 +144,7 @@ public class conductor_creeping {
         // results
         thermal_shift_intitial();
         thermal_shift_transient();
-        // null variables
-        null_variables();
+
     }
     
     /**
@@ -157,13 +157,36 @@ public class conductor_creeping {
     }
     
     /**
-     * Computes the transient thermal shift with double variable return
+     * Computes the initial thermal shift with double variable return
      * - NEED TO BE COMPUTED AFTER "COMPUTE_THERMAL_SHIFTS()"
-     * @param tp specify time after construction [h]
-     * @return transient thermal shift [double]
+     * @return initial thermal shift [double]
      */
-    public static double compute_transient_thermal_shift_value(double tp){
-        return thermal_shift_transient_value(tp);
+    public static double compute_transient_thermal_shift_value(){
+        return thermal_shift_transient_value();
+    }
+
+    
+    /**
+     * 
+     * @param t0 - as theta_0
+     * @param tp - as theta_1
+     * @param sigma_HT - computed for -5 degrees and z_0 == 1
+     * @param Conductor - conductor variables class
+     * @param T_EDT - average year temperature
+     * @return thermal shift usable for multiple purposes
+     */
+     public static double thermal_shift_universal_value(   double t0, 
+                                                            double tp,
+                                                            double sigma_HT,
+                                                            Conductor_variables Conductor,
+                                                            double T_EDT){
+         
+        return (-1/(Conductor.get_alpha()*1e6))* 
+                    k_EDS_value(sigma_HT, Conductor)* 
+                    k_EDT_value(T_EDT)* 
+                    k_w_value(Conductor.get_w_Fe())* 
+                    conductor_creeping.fi* 
+                    (Math.pow(t0, n) - Math.pow(tp, n));
     }
     
     /**
@@ -256,15 +279,35 @@ public class conductor_creeping {
      private static double thermal_shift_initial_value(){
         return (-1/(conductor_creeping.alpha*1e6))* conductor_creeping.k_EDS* conductor_creeping.k_EDT* conductor_creeping.k_w* conductor_creeping.fi* Math.pow(conductor_creeping.t_0, n);
     }
-    
-    /**
-     * Computes the transient thermal shift "dT_p"
+     
+     /**
+     * Computes the initial thermal shift "dT_0"
      */
-     private static double thermal_shift_transient_value(double tp){
-        return (-1/(conductor_creeping.alpha*1e6))* conductor_creeping.k_EDS* conductor_creeping.k_EDT* conductor_creeping.k_w* conductor_creeping.fi* (Math.pow(conductor_creeping.t_0, n) - Math.pow(tp, n));
+     private static double thermal_shift_transient_value(){
+        return (-1/(conductor_creeping.alpha*1e6))* conductor_creeping.k_EDS* conductor_creeping.k_EDT* conductor_creeping.k_w* conductor_creeping.fi* (Math.pow(conductor_creeping.t_0, n)-Math.pow(t_p, n));
     }
     
     
+     /**
+     * Computes the conductor composition coefficient "k_w"
+     */
+    private static double k_w_value(double w_Fe){
+        return 1.212 - 1.06*w_Fe;
+    }
+    
+    /**
+     * Computes the average year load influence coefficient on the conductor "k_EDS"
+     */
+     private static double k_EDS_value(double sigma_HT, Conductor_variables Conductor){
+        return 0.0319 * Math.pow((100*sigma_HT*(Conductor.get_S()/1000)) / Conductor.get_RTS(), 1.15);
+    }
+    
+    /**
+     * Computes the average year temperature influence coefficient of the conductor "k_EDT"
+     */
+     private static double k_EDT_value(double T_EDT){
+        return 0.842 + 0.0079* T_EDT;
+    }
     
     
 }
