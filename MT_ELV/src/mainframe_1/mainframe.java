@@ -3622,7 +3622,8 @@ import mt_variables.State_equation_variables;
                           p6_total.add(p6);
                 p6_total.setAlignment(Element.ALIGN_CENTER); 
                 c6.addElement(p6_total);
-                
+                 
+                //kokot
                 PdfPCell c7 = new PdfPCell();
                 Chunk p7 = new Chunk(language.language_label(languageOption, 202) +"\n" +"F [N]" ,fontTable);
                 Paragraph p7_total= new Paragraph(10);
