@@ -3374,12 +3374,17 @@ import mt_variables.State_equation_variables;
 
     private void Button_Icon_export_PDFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button_Icon_export_PDFActionPerformed
         
-        String warning_text = "empty";
-         
+        String warning_text = "empty";       
         Button_Icon_calculate.doClick();
         String text="No mama dont cry";
+        Boolean madatavprvomstlpciOtaznik = false;
         
+        for(int i =0;i<Variable_globeal_kotevny_usek.size();i++ ){  // cyklus pre všetky existujuce
+        if(Table_kotevne_useky.getValueAt(i, 0).equals(true)){      // zisti  je zaskrtnuty prv ysstlpc ak nie vypis warning
+            madatavprvomstlpciOtaznik=true;
+        }}
         
+        if(madatavprvomstlpciOtaznik.equals(true)){
         
         try {
         
@@ -3388,7 +3393,7 @@ import mt_variables.State_equation_variables;
         File f = new File(userhome + "\\" + temppdfname);
         if(f.exists() && !f.isDirectory()) { 
          warning_text =language.language_label(languageOption, 251); 
-        if(f.canExecute() == false){throw new NullPointerException();}   
+          
          f.delete();// do something
         }    
             
@@ -3441,12 +3446,12 @@ import mt_variables.State_equation_variables;
                DecimalFormat decimal_none = new DecimalFormat("########",otherSymbols);  // definovany počet desatinnych miest
             
             
-            doc.open(); 
+            
             
         for(int i =0;i<Variable_globeal_kotevny_usek.size();i++ ){  // cyklus pre všetky existujuce
         if(Table_kotevne_useky.getValueAt(i, 0).equals(true)){     
            
-            
+           doc.open(); 
            Image headerLogo = Image.getInstance(getClass().getResource("/mt_graphic/header.png"));          
            headerLogo.scaleAbsolute( 511f,55f);
            headerLogo.setAlignment(Image.RIGHT);
@@ -3787,11 +3792,15 @@ import mt_variables.State_equation_variables;
         }catch(NullPointerException e){  // catch for cycle and kotevny usek data
            warning_sign(warning_text);     
         } catch (DocumentException | FileNotFoundException ex) {
-            Logger.getLogger(mainframe.class.getName()).log(Level.SEVERE, null, ex);
+           warning_sign(warning_text); Logger.getLogger(mainframe.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
             Logger.getLogger(mainframe.class.getName()).log(Level.SEVERE, null, ex);
         }
+        }else{  // ak niesu data v v prom stlpci
+            
+            warning_sign(language.language_label(languageOption, 252));
         
+        }
         
         
     }//GEN-LAST:event_Button_Icon_export_PDFActionPerformed
