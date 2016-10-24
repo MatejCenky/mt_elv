@@ -24,6 +24,7 @@ import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 import com.itextpdf.text.pdf.draw.LineSeparator;
 import java.awt.Color;
+import java.awt.Desktop;
 import java.awt.Toolkit;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -3374,13 +3375,24 @@ import mt_variables.State_equation_variables;
     private void Button_Icon_export_PDFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button_Icon_export_PDFActionPerformed
         
         String warning_text = "empty";
- 
-        
+         
         Button_Icon_calculate.doClick();
         String text="No mama dont cry";
         
+        
+        
         try {
         
+        String temppdfname = "tempPdf.pdf";
+        String userhome = System.getProperty("user.dir");
+        File f = new File(userhome + "\\" + temppdfname);
+        if(f.exists() && !f.isDirectory()) { 
+         warning_text =language.language_label(languageOption, 251); 
+        if(f.canExecute() == false){throw new NullPointerException();}   
+         f.delete();// do something
+        }    
+            
+            
 //        // kontrola ci je mozne urobit export PDF aj vje urobeny vypocet a zaroven ak je vypocet urobeny z aktualnych dat    
 //        if(Calculation_done== true && Variable_globeal_kotevny_usek_zmena.equals( Variable_globeal_kotevny_usek)){        
 //        }else{        
@@ -3405,7 +3417,7 @@ import mt_variables.State_equation_variables;
                                          );
             
             Document doc = new Document(PageSize.A4, 56, 28, 28, 28);
-            PdfWriter writer = PdfWriter.getInstance(doc, new FileOutputStream("HeaderFooter.pdf"));
+            PdfWriter writer = PdfWriter.getInstance(doc, new FileOutputStream(temppdfname));
             BaseFont bf = BaseFont.createFont("/mt_graphic/arial.ttf", BaseFont.IDENTITY_H, BaseFont.EMBEDDED); // pridanie našeho kodovanie pre slovensko vranci fontu 
             //BaseFont mojFOnt = BaseFont.createFont(BaseFont.HELVETICA, BaseFont.IDENTITY_H, BaseFont.EMBEDDED);
 
@@ -3766,6 +3778,11 @@ import mt_variables.State_equation_variables;
         } // if check box enabled
         } // do  pocet kotevnych usekov  
          doc.close();
+         
+         File ff = new File(userhome + "\\" + temppdfname);
+        if(ff.exists() && !ff.isDirectory()) { 
+         Desktop.getDesktop().open(ff);;// do something
+        }
         
         }catch(NullPointerException e){  // catch for cycle and kotevny usek data
            warning_sign(warning_text);     
