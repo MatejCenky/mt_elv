@@ -6457,6 +6457,9 @@ private void seticon() {
         jComboBox_KPB_typ_terenu.setSelectedIndex(X.get_KPB_combobo_number());
         TextField_tabulky_prechodna.setText(df.format(X.get_tables_prechodne()));
         TextField_tabulky_konecna.setText(df.format(X.get_tables_konecne()));
+        Variable_T0_zivotnost=X.get_tables_konecne();
+        Variable_Tp_prechodna_doba=X.get_tables_prechodne();
+        
         
         if(X.get_tables_number123()==2 || X.get_tables_number123()==3){
         if(X.get_tables_number123()==3){jRadioButton_with_label_konecne.setSelected(true);}else{jRadioButton_with_label_prechodne.setSelected(true);}
