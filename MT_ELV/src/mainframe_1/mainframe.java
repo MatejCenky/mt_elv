@@ -3114,7 +3114,7 @@ import mt_variables.State_equation_variables;
 
     private void jRadioButton_with_label_prechodneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton_with_label_prechodneActionPerformed
          Variable_T0_zivotnost=doubleChecker_short_answer(TextField_tabulky_konecna)*24*365;
-       Variable_Tp_prechodna_doba=doubleChecker_short_answer(TextField_tabulky_prechodna)*24*365;
+        Variable_Tp_prechodna_doba=doubleChecker_short_answer(TextField_tabulky_prechodna)*24*365;
        
          TextField_teploha_stav1.setText("-30");TextField_teploha_stav1.setEnabled(false);
          TextField_teploha_stav2.setText("-20");TextField_teploha_stav2.setEnabled(true);
@@ -5870,12 +5870,13 @@ private void seticon() {
         
         Variable_Hc_mean=double_setter(X.get_h_c_mean());
         TextField_hcmean_vpocitana.setText(df.format(X.get_h_c_mean_window_vypocitana()));
+        Variable_Hc_mean_medzikrok=X.get_h_c_mean_window_vypocitana();
         TextField_hcmean_vlastna.setText(df.format(X.get_h_c_mean_window_vlastna()));
        // System.out.println(Variable_Hc_mean);
         }else{
        jRadioButton_with_label_vlastna.setSelected(true);
        Variable_Hc_mean=double_setter(X.get_h_c_mean());
-       
+       Variable_Hc_mean_medzikrok=X.get_h_c_mean_window_vypocitana();
        
        TextField_hcmean_vpocitana.setText(String.valueOf(X.get_h_c_mean_window_vypocitana()));
         TextField_hcmean_vlastna.setText(String.valueOf(X.get_h_c_mean_window_vlastna()));
@@ -6829,6 +6830,7 @@ private void seticon() {
               double C_cl = Double.valueOf(input.nextLine());
               double h_c_mean = Double.valueOf(input.nextLine());
               double h_c_mean_window_vypocitana = Double.valueOf(input.nextLine());
+              Variable_Hc_mean_medzikrok=h_c_mean_window_vypocitana;
               double h_c_mean_window_vlastn = Double.valueOf(input.nextLine());
               double str_rozpatie = Double.valueOf(input.nextLine());
               boolean str_vys_vodicov_radio = Boolean.valueOf(input.nextLine());
