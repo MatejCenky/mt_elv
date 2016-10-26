@@ -176,17 +176,19 @@ public class conductor_creeping {
      * @return thermal shift usable for multiple purposes
      */
      public static double thermal_shift_universal_value(   double t0, 
-                                                            double tp,
-                                                            double sigma_HT,
-                                                            Conductor_variables Conductor,
-                                                            double T_EDT){
+                                                           double tp,
+                                                           double sigma_HT,
+                                                           Conductor_variables Conductor,
+                                                           double T_EDT){
          
-        return (-1/(Conductor.get_alpha()*1e6))* 
-                    k_EDS_value(sigma_HT, Conductor)* 
-                    k_EDT_value(T_EDT)* 
-                    k_w_value(Conductor.get_w_Fe())* 
-                    conductor_creeping.fi* 
-                    (Math.pow(t0, n) - Math.pow(tp, n));
+        double deltaEta =   k_EDS_value(sigma_HT, Conductor)* 
+                            k_EDT_value(T_EDT)*
+                            k_w_value(Conductor.get_w_Fe())*
+                            conductor_creeping.fi*
+                            (Math.pow(t0, n) - Math.pow(tp, n));
+        System.out.println("deltaETA = " + deltaEta);
+        return ((-1*deltaEta)/(Conductor.get_alpha()*1e6)); 
+
     }
     
     /**
@@ -300,8 +302,8 @@ public class conductor_creeping {
      * Computes the average year load influence coefficient on the conductor "k_EDS"
      */
      private static double k_EDS_value(double sigma_HT, Conductor_variables Conductor){
-        System.out.println(0.0319 * Math.pow((100*sigma_HT*(Conductor.get_S()/1000)) / Conductor.get_RTS(), 1.15));
-        return 0.0319 * Math.pow((100*sigma_HT*(Conductor.get_S()/1000)) / Conductor.get_RTS(), 1.15);
+        System.out.println(0.0319 * Math.pow((100*sigma_HT*Conductor.get_S()) / Conductor.get_RTS(), 1.15));
+        return 0.0319 * Math.pow((100*sigma_HT*Conductor.get_S()) / Conductor.get_RTS(), 1.15);
     }
     
     /**

@@ -3951,6 +3951,11 @@ import mt_variables.State_equation_variables;
              pretazenia[13]=1;
              }  
          
+        State_equation_variables Base = new State_equation_variables(Conductor, -5, -5, Variable_zakladne_mech_napatie_lana_pre_minus5, 1);
+        state_equation.set_all_variables(Base, Kot_usek.get_Ai_array(), Kot_usek.get_DeltaHi_array());
+        double sigma_H0_base = state_equation.compute_sigma_H(1, Kot_usek.get_zakladne_mech_napatie_lana_pre_minus5_over(), -5, -5);
+        System.out.println("SigmaH0_Base = " + sigma_H0_base + " MPa");
+        
        // 14 členny cyklus pre už samotny vypočet jednotlivých stavov
             for(int y=0 ; y<Variable_teploty_stav_rovnica.length; y++){
                 double[] temperatures_state_equation = temperatures_for_state_equation( Conductor, 
@@ -3966,7 +3971,7 @@ import mt_variables.State_equation_variables;
                                                                                 1.0);
                 state_equation.set_all_variables(State, Kot_usek.get_Ai_array(), Kot_usek.get_DeltaHi_array());
                 sigmy[y] = state_equation.compute_sigma_H(  pretazenia[y],                  // load
-                                                            Variable_mid_span,              // mid span
+                                                            Kot_usek.get_str_rozpatie(),    // mid span
                                                             temperatures_state_equation[0], // Tx0
                                                             temperatures_state_equation[1]);// Tx1
                 cecka[y] = state_equation.compute_c(sigmy[y], pretazenia[y], Conductor);
@@ -4053,19 +4058,30 @@ import mt_variables.State_equation_variables;
                                                                 double Tp_prechodna_doba){
          double[] result_T = new double[2];
  
-            // set variables to state equation class 
-            // - compute sigma_HT for conductor creeping variable 
+//            // set variables to state equation class 
+//            // - compute sigma_HT for conductor creeping variable - USING AVERAG YEAR TEMPERATURE
+//            // - compute thermal shift for selected temperature
+//            State_equation_variables State = new State_equation_variables(Conductor, stredna_rocna_teplota, -5, Kot_usek.get_zakladne_mech_napatie_lana_pre_minus5_over(), 1);
+//            state_equation.set_all_variables(State, Kot_usek.get_Ai_array(), Kot_usek.get_DeltaHi_array());
+//            double sigma_H_creeping = state_equation.compute_sigma_H_value(1, Kot_usek.get_str_rozpatie());
+         
+             // set variables to state equation class 
+            // - compute sigma_HT for conductor creeping variable - USING 0 degrees AVG YEAR TEMPERATURE
             // - compute thermal shift for selected temperature
-            State_equation_variables State = new State_equation_variables(Conductor, stredna_rocna_teplota, -5, Kot_usek.get_zakladne_mech_napatie_lana_pre_minus5_over(), 1);
+            State_equation_variables State = new State_equation_variables(Conductor, 0, -5, Kot_usek.get_zakladne_mech_napatie_lana_pre_minus5_over(), 1);
             state_equation.set_all_variables(State, Kot_usek.get_Ai_array(), Kot_usek.get_DeltaHi_array());
             double sigma_H_creeping = state_equation.compute_sigma_H_value(1, Kot_usek.get_str_rozpatie());
+
             
             // set variables to conductor creeping class 
             // - compute thermal shift for selected temperature
             double shift = conductor_creeping.thermal_shift_universal_value(T0_zivotnost, Tp_prechodna_doba, sigma_H_creeping, Conductor, stredna_rocna_teplota);
             result_T[1] = Temperature + shift;  // theta_1
-            result_T[0] = -5 + shift;           // theta_0
+            result_T[0] = -5; // + shift;           // theta_0
             
+            System.out.println("Tx0 = " + result_T[0]);
+            System.out.println("Tx1 = " + result_T[1]);
+            System.out.println("shift = " + shift);
             return result_T;
     }
     
