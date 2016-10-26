@@ -8,7 +8,7 @@
  */
 package mt_math;
 
-import mt_main.MyException;
+import mt_variables.Conductor_variables;
 
 /**
  * Protection of the conductor from the vibration induced by wind (STN EN 50341-1, cl. 9.2.4/SK.2)
@@ -25,120 +25,33 @@ import mt_main.MyException;
  * @author Mattto
  */
 public class vibration_protection {
-    
-    /**
-     * Class is used for computation of the vibration protection
-     * - it is checking the safety for the spans
-     * @param terrain [1-4] - define the terrain
-     *      1 - open flat terrain, without trees, with snow, near / over water areas
-     *      2 - open flat terrain, without trees, without snow
-     *      3 - open flat / rough terrain, few trees, occasional breaks / barriers
-     *      4 - built-up terrain with trees and buildings, forests, fields with bushes
-     */
-    public vibration_protection(int terrain){
-        switch(terrain){
-            case 1:
-                vibration_protection.c_vib = 1000;
-            case 2:
-                vibration_protection.c_vib = 1125;
-            case 3:
-                vibration_protection.c_vib = 1225;
-            case 4:
-                vibration_protection.c_vib = 1425;
-        }
-    }
 
-/* Defining variables */
-
-// constants
-    private static double c_vib;        // catenary parameter for specific terrain
-    private static double EQ_vib;       // auxiliary parameter for specific terrain
-    private static double d;            // diameter of conductor [mm]
-    private static double g_c;          // specific weight of conductor [N/m]
-    private static double L;            // L == a[i]; specific span from the suspension section
-    
-// calculation
-    private static double T_0;          // similar as sigma_H1 but with specific initial values
-    private static double y;            // y axis
-    private static double x;            // x axis
-    
-// results
-    /**
-     * Value is in range [1-3] based on area 1 - 3.
-     */
-    public static int protection_area;  
-    
 // **************** PUBLIC METHODS **************** //    
     
     /**
-     * checks if all variables /inputs/ are set correctly from mainframe
+     * Computes the vibration protection area
+     * @param x axis value
+     * @param y axis value
+     * @param c_vib 
+     * @param EQ_vib
+     * @return the safety category 1-3
      */
-    public static void check_variables(){
-        try {
-            if (vibration_protection.c_vib == -1111.0000){
-                throw new MyException("Variable set error in vibration protection class");
-            } else if (vibration_protection.EQ_vib == -1111.0000){
-                throw new MyException("Variable set error in vibration protection class");
-            } else if (vibration_protection.d == -1111.0000){
-                throw new MyException("Variable set error in vibration protection class");
-            } else if (vibration_protection.g_c == -1111.0000){
-                throw new MyException("Variable set error in vibration protection class");
-            } else if (vibration_protection.L == -1111.0000){
-                throw new MyException("Variable set error in vibration protection class");
-            } 
-        } catch (Exception e) {
-        }
-    }
-    
-    /**
-     * null the variables /inputs/ from mainframe and partial results 
-     * - final results remain untouched
-     */
-    public static void null_variables(){
-        vibration_protection.c_vib = -1111.0000;
-        vibration_protection.EQ_vib = -1111.0000;
-        vibration_protection.d = -1111.0000;
-        vibration_protection.g_c = -1111.0000;
-        vibration_protection.L = -1111.0000;
-        vibration_protection.T_0 = -1111.0000;
-        vibration_protection.x = -1111.0000;
-        vibration_protection.y = -1111.0000;
-    }
-    
-    /**
-     * Computes the vibration protection area 
-     * @param load overload z_1 on the conductor
-     * @param ter [1-4] - define the terrain
-     *      1 - open flat terrain, without trees, with snow, near / over water areas
-     *      2 - open flat terrain, without trees, without snow
-     *      3 - open flat / rough terrain, few trees, occasional breaks / barriers
-     *      4 - built-up terrain with trees and buildings, forests, fields with bushes
-     * @param mid_span /average/ span of suspension section [m]
-     */
-    public static void compute(double load, int ter, double mid_span){
-        imaginary_horizontal_stress(load, mid_span);
-        axis_x();
-        axis_y();
-        set_c_vib(ter);
-        set_EQvib(ter);
+    public static double evaluate_protection_area(double x, double y, double c_vib, double EQ_vib){
         
-        if (vibration_protection.x <= vibration_protection.c_vib){
-            vibration_protection.protection_area = 1; 
+        if (x <= c_vib){
+            return 1; 
             // basic safe area
         } else {
-            if (vibration_protection.y <= 1.5 && 
-                vibration_protection.y <= vibration_protection.EQ_vib){
-                vibration_protection.protection_area = 2;
+            if (y <= 1.5 && y <= EQ_vib){
+                return 2;
                 // safe area
             } else {
-                vibration_protection.protection_area = 3;
+                return 3;
                 // specific requirements needed
             }
         }
     }
     
-// **************** PRIVATE METHODS **************** //  
-    
     /**
      * Class is used for computation of the vibration protection
      * - it is checking the safety for the spans
@@ -147,65 +60,55 @@ public class vibration_protection {
      *      2 - open flat terrain, without trees, without snow
      *      3 - open flat / rough terrain, few trees, occasional breaks / barriers
      *      4 - built-up terrain with trees and buildings, forests, fields with bushes
+     * @return c vibration [arameter
      */
-    private static void set_c_vib(int terrain){
+    public static double c_vib_value(int terrain){
         switch(terrain){
             case 1:
-                vibration_protection.c_vib = 1000;
+                return 1000;
             case 2:
-                vibration_protection.c_vib = 1125;
+                return 1125;
             case 3:
-                vibration_protection.c_vib = 1225;
+                return 1225;
             case 4:
-                vibration_protection.c_vib = 1425;
+                return 1425;
+            default:
+                return 0;
         }
     }
-    
-    /**
-     * Computes T_0 using theory of conductor creeping and state equation
-     * @param load overload z_1 on the conductor
-     * @param mid_span /average/ span of suspension section [m] 
-     */
-    private static void imaginary_horizontal_stress(double load, double mid_span){
-        // setting variables - with help of theory #3
-        double T_x0 = -5; //+ conductor_creeping.compute_initial_thermal_shift_value();
-        double T_xp = -5; //+ conductor_creeping.compute_transient_thermal_shift_value(); // input 8760h
-        
-        // computing state equation using specific initial conditions
-        vibration_protection.T_0 = state_equation.compute_sigma_H(load, mid_span, T_x0, T_xp);
-    }
-    
+   
     /**
      * Computes the y axis
+     * @param L span
+     * @param Conductor conductor variables
+     * @return axis y
      */
-    private static void axis_y(){
-        vibration_protection.y = vibration_protection.L* vibration_protection.d / vibration_protection.g_c;
+    public static double axis_y_value(double L, Conductor_variables Conductor){
+        return L* Conductor.get_d() / (Conductor.get_m()*9.80665);
     }
     
     /**
      * Computes the x axis
+     * @param T0 horizontal stress
+     * @param Conductor conductor variables
+     * @return x axis
      */
-    private static void axis_x(){
-        vibration_protection.x = vibration_protection.T_0 / vibration_protection.g_c;
+    public static double axis_x_value(double T0, Conductor_variables Conductor){
+        return T0 / (Conductor.get_m()*9.80665);
     }
     
-    private static void set_EQvib(int terrain){
+    public static double EQvib_value(int terrain, double T0, Conductor_variables Conductor){
         switch(terrain){
             case 1:
-                vibration_protection.EQ_vib = (1.3* Math.pow(10, 27)) / Math.pow(vibration_protection.T_0 / vibration_protection.g_c, 8.2);
+                return (1.3* Math.pow(10, 27)) / Math.pow(T0 / (Conductor.get_m()*9.80665), 8.2);
             case 2:
-                vibration_protection.EQ_vib = (5.4* Math.pow(10, 27)) / Math.pow(vibration_protection.T_0 / vibration_protection.g_c, 8.3);
+                return (5.4* Math.pow(10, 27)) / Math.pow(T0 / (Conductor.get_m()*9.80665), 8.3);
             case 3:
-                vibration_protection.EQ_vib = (1.3* Math.pow(10, 28)) / Math.pow(vibration_protection.T_0 / vibration_protection.g_c, 8.4);
+                return (1.3* Math.pow(10, 28)) / Math.pow(T0 / (Conductor.get_m()*9.80665), 8.4);
             case 4:
-                vibration_protection.EQ_vib = (1.1* Math.pow(10, 29)) / Math.pow(vibration_protection.T_0 / vibration_protection.g_c, 8.6);
+                return (1.1* Math.pow(10, 29)) / Math.pow(T0 / (Conductor.get_m()*9.80665), 8.6);
+            default:
+                return 0;
         }
     }
-    
-    
-
-
-
-    
-    
 }

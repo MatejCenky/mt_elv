@@ -52,6 +52,7 @@ import static mt_main.startPanel.languageOption;
 import mt_math.conductor_creeping;
 import mt_math.overload;
 import mt_math.state_equation;
+import mt_math.vibration_protection;
 import mt_variables.Conductor_creeping_variables;
 import mt_variables.Conductor_variables;
 import mt_variables.Overload_variables;
@@ -4061,10 +4062,38 @@ import mt_variables.State_equation_variables;
             double[] dh = Kot_usek.get_DeltaHi_array();
             
             for (int y = 0; y < Kot_usek.get_Ai_array().length; y++) {
-                for (int z = 0; z < 14; z++) {
+                for (int z = 0; z<Variable_teploty_stav_rovnica.length; z++) {
                     vid_priehyby[y][z] = state_equation.compute_sag_vis(a[y], cecka[z], dh[y]);                    
                 }                
             }
+            
+            ////////////////////////////////////////////////// vibration protection
+            double[] temperatures_vibration = temperatures_for_state_equation( Conductor, 
+                                                                                        Kot_usek, 
+                                                                                        -5, 
+                                                                                        -5, 
+                                                                                        Variable_T0_zivotnost, 
+                                                                                        Variable_KPB_cas_vypoctu );
+            
+            State_equation_variables Vib = new State_equation_variables(  Conductor,-5, -5,
+                                                                        Kot_usek.get_zakladne_mech_napatie_lana_pre_minus5_over(),
+                                                                        1.0);
+            state_equation.set_all_variables(Vib, Kot_usek.get_Ai_array(), Kot_usek.get_DeltaHi_array());
+            double T0 = state_equation.compute_sigma_H(1, // load
+                    Kot_usek.get_str_rozpatie(), // mid span
+                    temperatures_vibration[0], // Tx0
+                    temperatures_vibration[1]);// Tx1
+            for (int y=0; y<Kot_usek.get_Ai_array().length; y++){
+                double x_axis = vibration_protection.axis_x_value(T0, Conductor);
+                double y_axis = vibration_protection.axis_y_value(a[y], Conductor);
+                double c_vib = vibration_protection.c_vib_value((int)Variable_KPB_typ_terenu);
+                double EQ_vib = vibration_protection.EQvib_value((int)Variable_KPB_typ_terenu, T0, Conductor);
+                System.out.println(x_axis);
+                System.err.println(y_axis);
+                System.out.println(vibration_protection.evaluate_protection_area(x_axis, y_axis, c_vib, EQ_vib));
+                        
+            }
+            
         ////////////////////////////// vlozenie vysledkov    
         Kot_usek.set_vysledky_vid_priehyb_M(vid_priehyby); 
         //////////////////////////////   
