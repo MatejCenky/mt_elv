@@ -3130,6 +3130,8 @@ import mt_variables.State_equation_variables;
        
          array_teploty_stav_rovnica_pociatocne_loader_setter();
          Jcombo_stav_KPB_setter();
+         one_pretazenia_setter();
+         array_pretaezenia_stav_rovnica_loader_setter();
          teplotyser=true;
          PDF_VAR_typ_tabulky =1;
     }//GEN-LAST:event_jRadioButton_with_label_pociatocneActionPerformed
@@ -4886,7 +4888,7 @@ import mt_variables.State_equation_variables;
     }//GEN-LAST:event_jComboBox_KPB_typ_terenuActionPerformed
 
     private void TextField_tabulky_prechodnaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextField_tabulky_prechodnaKeyReleased
-        Variable_Tp_prechodna_doba=doubleChecker_short_answer(TextField_tabulky_prechodna);
+        Variable_Tp_prechodna_doba=doubleChecker_short_answer(TextField_tabulky_prechodna)*24*365;
     }//GEN-LAST:event_TextField_tabulky_prechodnaKeyReleased
 
     private void Table_rozpatiaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Table_rozpatiaKeyTyped
@@ -5603,6 +5605,27 @@ private void seticon() {
     Variable_teploty_stav_rovnica[12]=doubleChecker_short_answer(TextField_teploha_stav13);
     Variable_teploty_stav_rovnica[13]=doubleChecker_short_answer(TextField_teploha_stav14); 
     }
+    
+    private void one_pretazenia_setter(){
+    
+        TextField_pretazenia_stav1.setText("1.0");
+        TextField_pretazenia_stav2.setText("1.0");
+        TextField_pretazenia_stav3.setText("1.0");
+        TextField_pretazenia_stav4.setText("1.0");
+        TextField_pretazenia_stav5.setText("1.0");
+        TextField_pretazenia_stav6.setText("1.0");
+        TextField_pretazenia_stav7.setText("1.0");
+        TextField_pretazenia_stav8.setText("1.0");
+        TextField_pretazenia_stav9.setText("1.0");
+        TextField_pretazenia_stav10.setText("1.0");
+        TextField_pretazenia_stav11.setText("1.0");
+        TextField_pretazenia_stav12.setText("1.0");
+        TextField_pretazenia_stav13.setText("1.0");
+        TextField_pretazenia_stav14.setText("1.0");
+        
+        
+    }
+    
     
     private  void array_teploty_stav_rovnica_pociatocne_loader_setter(){
     Variable_teploty_stav_rovnica[0]=doubleChecker_short_answer(TextField_teploha_stav1);
