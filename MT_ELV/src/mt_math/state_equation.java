@@ -167,71 +167,6 @@ public class state_equation {
     }
     
     /**
-     * Computes the state equation using set variables; 
-     * Variables need to be set BEFORE computation;
-     * @param load overload z_1 on the conductor
-     * @param mid_span /average/ span of suspension section [m] 
-     */
-    public static void compute_sigma_H( double load, 
-                                        double mid_span){
-        //preparing
-        state_equation.mid_span = mid_span;
-        state_equation.z_1 = load;
-        gama();
-        check_variables();
-        //cubic equation
-        set_cubic_values();
-        cubic_equation_solve();
-        // results
-        pulling_force();
-        c_parameter();
-        sag_maximum();
-        sag_visible();
-        // null variables and partial results
-//        null_variables();
-    }
-    
-    /**
-     * Computes the state equation using set variables; 
-     * Variables need to be set BEFORE computation;
-     * @param load overload z_1 on the conductor
-     * @param mid_span /average/ span of suspension section [m] 
-     * @return  sigma_H as double
-     */
-    public static double compute_sigma_H_value( double load, 
-                                                double mid_span){
-        //preparing
-        state_equation.mid_span = mid_span;
-        state_equation.z_1 = load;
-        gama();
-        check_variables();
-        //cubic equation
-        set_cubic_values();
-        return cubic_equation_solve_value();
-    }
-    
-    /**
-     * @param T_EDT average year temperature [degreeC] - act as theta_1
-     * @param load overload z_1 on the conductor
-     * @param mid_span /average/ span of suspension section [m] 
-     * @return sigma_HT
-     */
-    public static double compute_sigma_H(   double load, 
-                                            double mid_span,
-                                            double T_EDT){
-        //preparing
-        state_equation.mid_span = mid_span;
-        state_equation.z_1 = load;
-        gama();
-        check_variables();
-        //cubic equation
-        set_cubic_values();
-        cubic_equation_coef_B_imaginary(theta_0, T_EDT);
-        // results - variables are nulled before return statement
-        return cubic_equation_solve_imaginary();
-    }
-    
-    /**
      * @param T_x0 imaginary temperature == theta_0
      * @param T_xp imaginary temperature == theta_1
      * @param load overload z_1 on the conductor
@@ -251,7 +186,7 @@ public class state_equation {
         set_cubic_values();
         cubic_equation_coef_B_imaginary(T_x0, T_xp);
         // results - variables are nulled before return statement
-        return cubic_equation_solve_imaginary();
+        return cubic_equation_imaginary_value();
     }
     
     public static double compute_c(double sigma_h1, double pretazenie, Conductor_variables Conductor){
@@ -262,24 +197,14 @@ public class state_equation {
         return pulling_force_value(sigma_h1, Conductor);
     }
     
-    public static double[] compute_sag_vis(double[] spans, double c, double[] dh){
+    public static double compute_sag_vis(double spans, double c, double dh){
         return sag_visible_value(spans, c, dh);
     }
     
     public static double[] compute_sag_max(double[] spans, double c){
         return sag_maximum_value(spans, c);
     }
-    
-    /**
-     * Computes the maximum and visible SAGs for every span
-     * in the suspension section. Spans array a[] need to be defined!
-     * Public results in sag_max[] and sag_vis[] in this class
-     */
-    public static void compute_sags(){
-        sag_maximum();
-        sag_visible();
-    }
-    
+   
     
 // **************** PRIVATE METHODS **************** //
     
@@ -327,8 +252,7 @@ public class state_equation {
         cubic_equation_coef_B();
         cubic_equation_coef_D();
     }
-    
-   
+       
     /**
      * Method computes the specific gravity of the conductor "gama".
      */
@@ -336,56 +260,40 @@ public class state_equation {
         state_equation.gama = (state_equation.m *state_equation.g)/state_equation.S;
     }
     
-    /**
-     * Computes the cubic equation in the form: A*x^3 + B*x^2 + C*x + D = 0
-     * Defined are only B,D coefficient -> sufficient to solve
-     */
-    private static void cubic_equation_solve(){
-        double part1;
-        double part2;
-        double part3;
-        double condition;
-        double result;
-        
-        condition = Math.pow(-1* Math.pow(state_equation.Bc, 2)/9, 3) + Math.pow(-1* (27* state_equation.Dc + 2* Math.pow(state_equation.Bc, 3)) /54, 2);
-        
-        if (0 < condition) {
-            part1 = Math.cbrt((-1*(27*state_equation.Dc+2*Math.pow(state_equation.Bc, 3))/54) - Math.sqrt(condition));
-            part2 = Math.cbrt((-1*(27*state_equation.Dc+2*Math.pow(state_equation.Bc, 3))/54) + Math.sqrt(condition)) - state_equation.Bc/3;
-            result = part1 + part2;
-        } else {
-            part1 = Math.cbrt(-1*Math.pow(-1*Math.pow(state_equation.Bc, 2)/9, 3));
-            part2 = Math.acos(-1*(27*state_equation.Dc+2*Math.pow(state_equation.Bc, 3))/54/part1);
-            part3 = Math.cos(part2/3) - state_equation.Bc/3;
-            result = 2 * part1 * part3;
-        }
-        state_equation.sigma_h1 = result;
+    private static double cubic_equation_imaginary_value(){
+        return cube(1,state_equation.Bc_i,0,state_equation.Dc);
     }
     
-    /**
-     * Computes the cubic equation in the form: A*x^3 + B*x^2 + C*x + D = 0
-     * Defined are only B,D coefficient -> sufficient to solve
-     */
-    private static double cubic_equation_solve_value(){
-        double part1;
-        double part2;
-        double part3;
-        double condition;
-        double result;
+    private static double cube(double A,double B, double C, double D){
+        double t, s, q, r;
+        double Ro, Fi, X;
+        double cube;
         
-        condition = Math.pow(-1* Math.pow(state_equation.Bc, 2)/9, 3) + Math.pow(-1* (27* state_equation.Dc + 2* Math.pow(state_equation.Bc, 3)) /54, 2);
+        q = (3*A*C - Math.pow(B, 2)) / (9* Math.pow(A, 2));
+        r = (9*A*B*C - 27*Math.pow(A, 2)*D - 2*Math.pow(B, 3)) / (54*Math.pow(A, 3));
         
-        if (0 < condition) {
-            part1 = Math.cbrt((-1*(27*state_equation.Dc+2*Math.pow(state_equation.Bc, 3))/54) - Math.sqrt(condition));
-            part2 = Math.cbrt((-1*(27*state_equation.Dc+2*Math.pow(state_equation.Bc, 3))/54) + Math.sqrt(condition)) - state_equation.Bc/3;
-            result = part1 + part2;
+        if (Math.pow(q, 3)+ Math.pow(r, 2) > 0){
+    
+            s = Math.cbrt(r - Math.sqrt(Math.pow(q, 3) + Math.pow(r, 2)));
+            t = Math.cbrt(r + Math.sqrt(Math.pow(q, 3) + Math.pow(r, 2)));
+            
+            cube = (s + t - (B/(3*A)));
+//            System.out.println("CUBE = " + cube);
+
+            return cube;
+
+
         } else {
-            part1 = Math.cbrt(-1*Math.pow(-1*Math.pow(state_equation.Bc, 2)/9, 3));
-            part2 = Math.acos(-1*(27*state_equation.Dc+2*Math.pow(state_equation.Bc, 3))/54/part1);
-            part3 = Math.cos(part2/3) - state_equation.Bc/3;
-            result = 2 * part1 * part3;
+            Ro = Math.sqrt(-(Math.pow(q, 3)));
+            Fi = Math.acos(r / Ro);
+            s = Math.cbrt(Ro);
+            X = s * Math.cos(Fi / 3);
+            
+            cube = (2*X - (B/(3*A)));
+//            System.out.println("CUBE = " + cube);
+            
+            return cube;
         }
-        return result;
     }
 
     /**
@@ -398,7 +306,10 @@ public class state_equation {
 //        } else {
 //            var = state_equation.MST;
 //        }
-        state_equation.Bc =  Math.pow(state_equation.gama,2) * state_equation.E/24 * Math.pow(var*state_equation.z_0/state_equation.sigma_h0, 2) + state_equation.alpha*state_equation.E*(state_equation.theta_1 - state_equation.theta_0) - state_equation.sigma_h0;
+        state_equation.Bc = Math.pow(state_equation.gama,2)* 
+                            state_equation.E/24* Math.pow(var*state_equation.z_0/state_equation.sigma_h0, 2) 
+                            + state_equation.alpha*state_equation.E*(state_equation.theta_1 - state_equation.theta_0) 
+                            - state_equation.sigma_h0;
     }
    
     /**
@@ -412,45 +323,6 @@ public class state_equation {
 //            var = state_equation.MST;
 //        }
         state_equation.Dc = (-1)*Math.pow(state_equation.gama,2)*state_equation.E/24 * Math.pow(var*state_equation.z_1, 2);
-    }
-    
-    /**
-     * Computes the pulling force based on the horizontal stress of the conductor "F_mH"
-     */
-    private static void pulling_force(){
-        state_equation.F_mH1 = state_equation.sigma_h1 * state_equation.S;
-    }
-    
-    /**
-     * Computes the "c" parameter of the conductor shape /sag/
-     */
-    private static void c_parameter(){
-        state_equation.c = state_equation.sigma_h1 / (state_equation.gama * state_equation.z_1);
-    }
-    
-    /**
-     * Computes the maximum sag for ideal conditions in one suspension section
-     */
-    private static void sag_maximum(){
-        for (int i=0; i<state_equation.a.length; i++) {
-        state_equation.sag_max[i] = state_equation.c* (Math.cosh(state_equation.a[i]/(2*state_equation.c)) - 1);
-        }
-    }
-    
-    /**
-     * Computes the array of all visible sags in one suspension section. 
-     */
-    private static void sag_visible(){
-        double part1[] = new double[state_equation.a.length];
-        double part2;
-        double part3;
-
-        for (int i=0; i<state_equation.a.length; i++) {
-            part1[i] = state_equation.a[i]/(2*state_equation.c);
-            part2 = part1[i] + Math_Extended.asinh(state_equation.dh[i]/(2*state_equation.c*Math.sinh(part1[i])));
-            part3 = Math_Extended.asinh(state_equation.dh[i]/state_equation.a[i]);
-            state_equation.sag_vis[i] = state_equation.c*(Math.cosh(part2) - Math.cosh(part3) - (state_equation.dh[i]/state_equation.a[i])*(part2 - part3));
-        }
     }
     
      /**
@@ -522,18 +394,16 @@ public class state_equation {
     /**
      * Computes the array of all visible sags in one suspension section. 
      */
-    private static double[] sag_visible_value(double[] spans, double c, double[] dh){
-        double result[] = new double[spans.length];
-        double part1[] = new double[spans.length];
+    private static double sag_visible_value(double spans, double c, double dh){
+        double result;
+        double part1;
         double part2;
         double part3;
         
-        for (int i=0; i<spans.length; i++) {
-            part1[i] = spans[i]/(2*c);
-            part2 = part1[i] + Math_Extended.asinh(dh[i]/(2*c*Math.sinh(part1[i])));
-            part3 = Math_Extended.asinh(dh[i]/spans[i]);
-            result[i] = c*(Math.cosh(part2) - Math.cosh(part3) - (dh[i]/spans[i])*(part2 - part3));
-        }
+        part1 = spans/(2*c);
+        part2 = part1 + Math_Extended.asinh(dh/(2*c*Math.sinh(part1)));
+        part3 = Math_Extended.asinh(dh/spans);
+        result = c*(Math.cosh(part2) - Math.cosh(part3) - (dh/spans)*(part2 - part3));
         
         return result;
     }

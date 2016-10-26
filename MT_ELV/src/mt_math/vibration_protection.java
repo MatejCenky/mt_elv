@@ -168,8 +168,8 @@ public class vibration_protection {
      */
     private static void imaginary_horizontal_stress(double load, double mid_span){
         // setting variables - with help of theory #3
-        double T_x0 = -5 + conductor_creeping.compute_initial_thermal_shift_value();
-        double T_xp = -5 + conductor_creeping.compute_transient_thermal_shift_value(); // input 8760h
+        double T_x0 = -5; //+ conductor_creeping.compute_initial_thermal_shift_value();
+        double T_xp = -5; //+ conductor_creeping.compute_transient_thermal_shift_value(); // input 8760h
         
         // computing state equation using specific initial conditions
         vibration_protection.T_0 = state_equation.compute_sigma_H(load, mid_span, T_x0, T_xp);

@@ -154,9 +154,9 @@ import mt_variables.State_equation_variables;
         TextField_hcmean_vlastna.setText("0.0");
         // inicializacia Hpercent_pre vypocet_sygmi
         percento_podiel_namrazy_sigma1=30;
-        percento_podiel_namrazy_sigma1=40;
-        percento_podiel_namrazy_sigma1=50;
-        percento_podiel_namrazy_sigma1=70;
+        percento_podiel_namrazy_sigma2=40;
+        percento_podiel_namrazy_sigma3=50;
+        percento_podiel_namrazy_sigma4=70;
         
         // inicializacia tabulky a casy
         jRadioButton_with_label_konecne.doClick();
@@ -3979,48 +3979,90 @@ import mt_variables.State_equation_variables;
                 cecka[y] = state_equation.compute_c(sigmy[y], pretazenia[y], Conductor);
                 sily[y] = state_equation.compute_Fh(sigmy[y], Conductor)/1000; //kN
              
-//        // cyklus na podielove zataženia     
-//            // sa bude prepočitavat zaťaženie na percentulany podiel namrazy
-//            if(y==5){ // -5+N
-//                 
-//                sigmy_minu5_podiel[1][0]=0;        
-//                sigmy_minu5_podiel[1][1]=0;        
-//                sigmy_minu5_podiel[1][2]=0;       
-//                sigmy_minu5_podiel[1][3]=0;   
-//            }
-//            if(y==7){ // -5+Nv
-//                 
-//                sigmy_minu5_podiel[1][0]=0;    
-//                sigmy_minu5_podiel[1][1]=0;       
-//                sigmy_minu5_podiel[1][2]=0;       
-//                sigmy_minu5_podiel[1][3]=0;   
-//            }
-//            if(y==8){ // -5+nV
+        // cyklus na podielove zataženia     
+            // sa bude prepočitavat zaťaženie na percentulany podiel namrazy
+            if(y==4){ // -5+N
+                 
+                // defining specific loads - local variables
+                double over1, over2, over3, over4;
+                over1 = (1 + (pretazenia[y]-1)*(percento_podiel_namrazy_sigma1/100));
+                over2 = (1 + (pretazenia[y]-1)*(percento_podiel_namrazy_sigma2/100));
+                over3 = (1 + (pretazenia[y]-1)*(percento_podiel_namrazy_sigma3/100));
+                over4 = (1 + (pretazenia[y]-1)*(percento_podiel_namrazy_sigma4/100));
 //                
-//                sigmy_minu5_podiel[1][0]=0;  
-//                sigmy_minu5_podiel[1][1]=0;     
-//                sigmy_minu5_podiel[1][2]=0;      
-//                sigmy_minu5_podiel[1][3]=0;   
-//            }
-             
+//                System.out.println("Pretazenie a% = " + over1);
+//                System.out.println("Pretazenie b% = " + over2);
+//                System.out.println("Pretazenie c% = " + over3);
+//                System.out.println("Pretazenie d% = " + over4);
+                
+                state_equation.set_all_variables(State, Kot_usek.get_Ai_array(), Kot_usek.get_DeltaHi_array());
+                double sigma_pomerna_1 = state_equation.compute_sigma_H(over1,                  // load
+                                                            Kot_usek.get_str_rozpatie(),    // mid span
+                                                            temperatures_state_equation[0], // Tx0
+                                                            temperatures_state_equation[1]);// Tx1
+                
+                state_equation.set_all_variables(State, Kot_usek.get_Ai_array(), Kot_usek.get_DeltaHi_array());
+                double sigma_pomerna_2 = state_equation.compute_sigma_H(over2,                  // load
+                                                            Kot_usek.get_str_rozpatie(),    // mid span
+                                                            temperatures_state_equation[0], // Tx0
+                                                            temperatures_state_equation[1]);// Tx1
+                
+                state_equation.set_all_variables(State, Kot_usek.get_Ai_array(), Kot_usek.get_DeltaHi_array());
+                double sigma_pomerna_3 = state_equation.compute_sigma_H(over3,                  // load
+                                                            Kot_usek.get_str_rozpatie(),    // mid span
+                                                            temperatures_state_equation[0], // Tx0
+                                                            temperatures_state_equation[1]);// Tx1
+                
+                state_equation.set_all_variables(State, Kot_usek.get_Ai_array(), Kot_usek.get_DeltaHi_array());
+                double sigma_pomerna_4 = state_equation.compute_sigma_H(over4,                  // load
+                                                            Kot_usek.get_str_rozpatie(),    // mid span
+                                                            temperatures_state_equation[0], // Tx0
+                                                            temperatures_state_equation[1]);// Tx1
+                
+                sigmy_minu5_podiel[1][0]=sigma_pomerna_1;        
+                sigmy_minu5_podiel[1][1]=sigma_pomerna_2;        
+                sigmy_minu5_podiel[1][2]=sigma_pomerna_3;       
+                sigmy_minu5_podiel[1][3]=sigma_pomerna_4;   
+                
+//                System.out.println("sigma pomerna 1 = " + sigma_pomerna_1);
+//                System.out.println("sigma pomerna 2 = " + sigma_pomerna_2);
+//                System.out.println("sigma pomerna 3 = " + sigma_pomerna_3);
+//                System.out.println("sigma pomerna 4 = " + sigma_pomerna_4);
+                }
+                if (y == 7) { // -5+Nv
+
+                    sigmy_minu5_podiel[2][0] = 0;
+                    sigmy_minu5_podiel[2][1] = 0;
+                    sigmy_minu5_podiel[2][2] = 0;
+                    sigmy_minu5_podiel[2][3] = 0;
+                }
+                if (y == 8) { // -5+nV
+
+                    sigmy_minu5_podiel[2][0] = 0;
+                    sigmy_minu5_podiel[2][1] = 0;
+                    sigmy_minu5_podiel[2][2] = 0;
+                    sigmy_minu5_podiel[2][3] = 0;
+                }
+
             }
-        ////////////////////////////// vlozenie vysledkov
-        
-          Kot_usek.set_vysledky_sigmaH_MT(sigmy);
-          Kot_usek.set_vysledky_c_MT(cecka);
-          Kot_usek.set_vysledky_pretazenia_MT(pretazenia);
-          Kot_usek.set_vysledky_sily_MT(sily);
-          
-        /////////////////////////////// v
+
+            ////////////////////////////// vlozenie vysledkov
+            Kot_usek.set_vysledky_sigmaH_MT(sigmy);
+            Kot_usek.set_vysledky_c_MT(cecka);
+            Kot_usek.set_vysledky_pretazenia_MT(pretazenia);
+            Kot_usek.set_vysledky_sily_MT(sily);
+
+            /////////////////////////////// v
         
         ///////////// cyklus na zaklade poctu rozpati  pre vypocet vid priehybov 
-         double[][] vid_priehyby = new double[Kot_usek.get_Ai_array().length][14];
+        double[][] vid_priehyby = new double[Kot_usek.get_Ai_array().length][14];
           
+            double[] a = Kot_usek.get_Ai_array();
+            double[] dh = Kot_usek.get_DeltaHi_array();
+            
             for (int y = 0; y < Kot_usek.get_Ai_array().length; y++) {
-                
                 for (int z = 0; z < 14; z++) {
-                    
-                    vid_priehyby[y][z] = 0;                    
+                    vid_priehyby[y][z] = state_equation.compute_sag_vis(a[y], cecka[z], dh[y]);                    
                 }                
             }
         ////////////////////////////// vlozenie vysledkov    
@@ -4070,9 +4112,9 @@ import mt_variables.State_equation_variables;
              // set variables to state equation class 
             // - compute sigma_HT for conductor creeping variable - USING 0 degrees AVG YEAR TEMPERATURE
             // - compute thermal shift for selected temperature
-            State_equation_variables State = new State_equation_variables(Conductor, 0, -5, Kot_usek.get_zakladne_mech_napatie_lana_pre_minus5_over(), 1);
+            State_equation_variables State = new State_equation_variables(Conductor, 0d, -5d, Kot_usek.get_zakladne_mech_napatie_lana_pre_minus5_over(), 1);
             state_equation.set_all_variables(State, Kot_usek.get_Ai_array(), Kot_usek.get_DeltaHi_array());
-            double sigma_H_creeping = state_equation.compute_sigma_H_value(1, Kot_usek.get_str_rozpatie());
+            double sigma_H_creeping = state_equation.compute_sigma_H(1, Kot_usek.get_str_rozpatie(),-5d,0d);
 
             
             // set variables to conductor creeping class 
@@ -4081,9 +4123,9 @@ import mt_variables.State_equation_variables;
             result_T[1] = Temperature + shift;  // theta_1
             result_T[0] = -5; // + shift;           // theta_0
             
-            System.out.println("Tx0 = " + result_T[0]);
-            System.out.println("Tx1 = " + result_T[1]);
-            System.out.println("shift = " + shift);
+//            System.out.println("Tx0 = " + result_T[0]);
+//            System.out.println("Tx1 = " + result_T[1]);
+//            System.out.println("shift = " + shift);
             return result_T;
     }
     
@@ -5702,7 +5744,7 @@ private void seticon() {
         
         int selekcia_for_name=number;
         try{
-            Swriter("****row");
+//            Swriter("****row");
         X.set_name(String.valueOf(Table_kotevne_useky.getValueAt(selekcia_for_name, 1)));
              
         }catch(Exception s){
@@ -7042,7 +7084,6 @@ private void seticon() {
     
     public  double double_setter(double X){
         pretazenia_intomainframe();
-        Swriter("doublesetter");   
         return X;
            
            
@@ -7050,7 +7091,6 @@ private void seticon() {
     
     public double[] double_setter_array(double[] X){
         pretazenia_intomainframe();
-        Swriter("doublesetter");   
         return X;
            
        }
