@@ -94,6 +94,7 @@ import mt_variables.State_equation_variables;
         this.modelTable = (DefaultTableModel) Table_kotevne_useky.getModel();
         this.modeltable_rozpatia = (DefaultTableModel) Table_rozpatia.getModel();
         this.modeltable_rozpatia_nadm_vysky = (DefaultTableModel) Table_rozpatia_nadm_vysky.getModel();
+        this.modeltable_KPB = (DefaultTableModel) Table_KPB.getModel();
         
         Table_rozpatia.setSurrendersFocusOnKeystroke(true); // for focus on key listener
         
@@ -238,7 +239,7 @@ import mt_variables.State_equation_variables;
         try{hodnoty[1] =Double.valueOf(String.valueOf(hodnoty_namrazove_oblasti[1]));}catch(NullPointerException i){hodnoty[1]=0;}
         try{hodnoty[2] =Double.valueOf(String.valueOf(hodnoty_namrazove_oblasti[2]));}catch(NullPointerException i){hodnoty[2]=0;}
         try{hodnoty[3] =Double.valueOf(String.valueOf(hodnoty_namrazove_oblasti[3]));}catch(NullPointerException i){hodnoty[3]=0;}
-                        kotevnyUsek docasny_kot_usek = new kotevnyUsek(new_kotevny_usek_name, 0, 0, 0, 0, 0, filename, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, teplotyser, first_Start, teplotyser, teplotyser, teplotyser, first_Start, Variable_Ai_array, Variable_Hi_array, Variable_Hi_array, Variable_Hi_array_nmv, 0, 0, 0,hodnoty,empty,empty,empty,empty,empty,empty,empty2,empty2);
+                        kotevnyUsek docasny_kot_usek = new kotevnyUsek(new_kotevny_usek_name, 0, 0, 0, 0, 0, filename, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, teplotyser, first_Start, teplotyser, teplotyser, teplotyser, first_Start, Variable_Ai_array, Variable_Hi_array, Variable_Hi_array, Variable_Hi_array_nmv, 0, 0, 0,hodnoty);
                         mainframe_to_kotevny_usek(docasny_kot_usek,povodna_hodnota_selekcie);
                         Variable_globeal_kotevny_usek.set(povodna_hodnota_selekcie, docasny_kot_usek);
 
@@ -413,9 +414,8 @@ import mt_variables.State_equation_variables;
                         int column = e.getColumn();
 
                         //prepisuje row -1 lebo tam sa nachadza hodnota  kedže nulty riadok je prazdny vždy
-                        Variable_hi_vyska_stoziarov.set(row, doubleChecker_tableinput(String.valueOf(Table_rozpatia_nadm_vysky.getValueAt(row, 1))));
-                        Variable_hi2_nadmorska_vyska_stoziarov.set(row, doubleChecker_tableinput(String.valueOf(Table_rozpatia_nadm_vysky.getValueAt(row, 0))));
-
+                        
+                     
                         if (row == Table_rozpatia_nadm_vysky.getRowCount() - 1) { // ak klinuty posledny riadok tak
                             Variable_Ai_dlzka_rozpatia.add(0.0);
                             Variable_hi_vyska_stoziarov.add(0.0);
@@ -423,6 +423,10 @@ import mt_variables.State_equation_variables;
                             modeltable_rozpatia.addRow(new Object[0]);
                             modeltable_rozpatia_nadm_vysky.addRow(new Object[1]);
                         }
+                        
+                          Variable_hi_vyska_stoziarov.set(row, doubleChecker_tableinput(String.valueOf(Table_rozpatia_nadm_vysky.getValueAt(row, 1))));
+                        Variable_hi2_nadmorska_vyska_stoziarov.set(row, doubleChecker_tableinput(String.valueOf(Table_rozpatia_nadm_vysky.getValueAt(row, 0))));
+
 
                     }
                     
@@ -733,6 +737,8 @@ import mt_variables.State_equation_variables;
         jScrollPane1 = new javax.swing.JScrollPane();
         Table_kotevne_useky = new javax.swing.JTable();
         jPanel21 = new javax.swing.JPanel();
+        jScrollPane8 = new javax.swing.JScrollPane();
+        Table_KPB = new javax.swing.JTable();
         jPanel22 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
 
@@ -1042,24 +1048,20 @@ import mt_variables.State_equation_variables;
         jPanel9Layout.setHorizontalGroup(
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel9Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel9Layout.createSequentialGroup()
-                        .addComponent(Label_stredne_rozpatie)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 397, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel9Layout.createSequentialGroup()
-                        .addGap(1, 1, 1)
-                        .addComponent(jRadioButton_with_label_rozpatie_klasicky, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(TextField_STRrozpatie_klasicky, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(Label_RTS_velicina5)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jRadioButton_with_label_rozpate_previsenia, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(TextField_STRrozpatie_sPrevisenim, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(Label_RTS_velicina6)))
+                .addGap(12, 12, 12)
+                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(Label_stredne_rozpatie, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jRadioButton_with_label_rozpatie_klasicky, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(TextField_STRrozpatie_klasicky, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(Label_RTS_velicina5)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jRadioButton_with_label_rozpate_previsenia, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(TextField_STRrozpatie_sPrevisenim, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(Label_RTS_velicina6)
                 .addGap(80, 80, 80))
         );
         jPanel9Layout.setVerticalGroup(
@@ -2797,8 +2799,6 @@ import mt_variables.State_equation_variables;
             .addGroup(jPanel20Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel20Layout.createSequentialGroup()
                         .addComponent(percento1_sigma, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -2814,7 +2814,9 @@ import mt_variables.State_equation_variables;
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(vyp_percento3_sigma, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(vyp_percento4_sigma, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(vyp_percento4_sigma, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel20Layout.setVerticalGroup(
@@ -2838,6 +2840,12 @@ import mt_variables.State_equation_variables;
                     .addComponent(vyp_percento4_sigma, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+
+        jTabbedPane1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTabbedPane1MouseClicked(evt);
+            }
+        });
 
         jPanel12.setBackground(new java.awt.Color(0, 153, 153));
         jPanel12.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
@@ -2965,22 +2973,70 @@ import mt_variables.State_equation_variables;
                 .addContainerGap()
                 .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 388, Short.MAX_VALUE)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 390, Short.MAX_VALUE)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
         jTabbedPane1.addTab("tab1", jPanel12);
 
+        jPanel21.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+
+        Table_KPB.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "", ""
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        Table_KPB.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                Table_KPBMouseEntered(evt);
+            }
+        });
+        jScrollPane8.setViewportView(Table_KPB);
+        if (Table_KPB.getColumnModel().getColumnCount() > 0) {
+            Table_KPB.getColumnModel().getColumn(0).setResizable(false);
+            Table_KPB.getColumnModel().getColumn(0).setPreferredWidth(85);
+            Table_KPB.getColumnModel().getColumn(0).setHeaderValue(language.language_label(languageOption, 253)
+            );
+            Table_KPB.getColumnModel().getColumn(1).setResizable(false);
+            Table_KPB.getColumnModel().getColumn(1).setPreferredWidth(15);
+            Table_KPB.getColumnModel().getColumn(1).setHeaderValue(language.language_label(languageOption, 254)
+            );
+        }
+
         javax.swing.GroupLayout jPanel21Layout = new javax.swing.GroupLayout(jPanel21);
         jPanel21.setLayout(jPanel21Layout);
         jPanel21Layout.setHorizontalGroup(
             jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel21Layout.createSequentialGroup()
+                .addContainerGap(316, Short.MAX_VALUE)
+                .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         jPanel21Layout.setVerticalGroup(
             jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(jPanel21Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane8, javax.swing.GroupLayout.DEFAULT_SIZE, 390, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         jTabbedPane1.addTab("tab2", jPanel21);
@@ -2993,7 +3049,7 @@ import mt_variables.State_equation_variables;
         jPanel22.setLayout(jPanel22Layout);
         jPanel22Layout.setHorizontalGroup(
             jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+            .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel22Layout.setVerticalGroup(
             jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -3031,12 +3087,10 @@ import mt_variables.State_equation_variables;
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel18Layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel18Layout.createSequentialGroup()
-                        .addComponent(jPanel19, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
+                .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jPanel19, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jTabbedPane1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel18Layout.createSequentialGroup()
                         .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -3064,13 +3118,11 @@ import mt_variables.State_equation_variables;
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, 0)
-                .addComponent(jScrollPane4))
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 1129, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -3844,7 +3896,7 @@ import mt_variables.State_equation_variables;
         try{hodnoty[1] =Double.valueOf(String.valueOf(hodnoty_namrazove_oblasti[1]));}catch(NullPointerException e){hodnoty[1]=0;}
         try{hodnoty[2] =Double.valueOf(String.valueOf(hodnoty_namrazove_oblasti[2]));}catch(NullPointerException e){hodnoty[2]=0;}
         try{hodnoty[3] =Double.valueOf(String.valueOf(hodnoty_namrazove_oblasti[3]));}catch(NullPointerException e){hodnoty[3]=0;}
-             kotevnyUsek docasny_kot_usek = new kotevnyUsek(new_kotevny_usek_name, 0, 0, 0, 0, 0, filename, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, teplotyser, first_Start, teplotyser, teplotyser, teplotyser, first_Start, Variable_Ai_array, Variable_Hi_array, Variable_Hi_array,Variable_Hi_array_nmv,0,0,0,hodnoty,empty,empty,empty,empty,empty,empty,empty2,empty2);                     
+             kotevnyUsek docasny_kot_usek = new kotevnyUsek(new_kotevny_usek_name, 0, 0, 0, 0, 0, filename, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, teplotyser, first_Start, teplotyser, teplotyser, teplotyser, first_Start, Variable_Ai_array, Variable_Hi_array, Variable_Hi_array,Variable_Hi_array_nmv,0,0,0,hodnoty);                     
              mainframe_to_kotevny_usek(docasny_kot_usek,rowNumber);                        
              Variable_globeal_kotevny_usek.set(rowNumber, docasny_kot_usek);  
                        
@@ -3930,6 +3982,7 @@ import mt_variables.State_equation_variables;
          double[] cecka = new double[14];
          double[] pretazenia = new double[14];
          double[] sily = new double[14];
+         int[] KPB_vysledky = new int[Kot_usek.get_Ai_array().length];
        
          
          // rozličovač ake pretaženia ma bra vlastne alebo vypocitane hotova vec 
@@ -4025,10 +4078,7 @@ import mt_variables.State_equation_variables;
                 sigmy_minu5_podiel[1][2]=sigma_pomerna_3;       
                 sigmy_minu5_podiel[1][3]=sigma_pomerna_4;   
                 
-//                System.out.println("sigma pomerna 1 = " + sigma_pomerna_1);
-//                System.out.println("sigma pomerna 2 = " + sigma_pomerna_2);
-//                System.out.println("sigma pomerna 3 = " + sigma_pomerna_3);
-//                System.out.println("sigma pomerna 4 = " + sigma_pomerna_4);
+
                 }
                 if (y == 7) { // -5+Nv
 
@@ -4052,7 +4102,7 @@ import mt_variables.State_equation_variables;
             Kot_usek.set_vysledky_c_MT(cecka);
             Kot_usek.set_vysledky_pretazenia_MT(pretazenia);
             Kot_usek.set_vysledky_sily_MT(sily);
-
+            Kot_usek.set_per_podiel_sigma(sigmy_minu5_podiel);  
             /////////////////////////////// v
         
         ///////////// cyklus na zaklade poctu rozpati  pre vypocet vid priehybov 
@@ -4066,8 +4116,8 @@ import mt_variables.State_equation_variables;
                     vid_priehyby[y][z] = state_equation.compute_sag_vis(a[y], cecka[z], dh[y]);                    
                 }                
             }
-            
-            ////////////////////////////////////////////////// vibration protection
+          
+        ////////////////////////////////////////////////// vibration protection
             double[] temperatures_vibration = temperatures_for_state_equation( Conductor, 
                                                                                         Kot_usek, 
                                                                                         -5, 
@@ -4091,11 +4141,15 @@ import mt_variables.State_equation_variables;
                 System.out.println(x_axis);
                 System.err.println(y_axis);
                 System.out.println(vibration_protection.evaluate_protection_area(x_axis, y_axis, c_vib, EQ_vib));
-                        
+                
+                KPB_vysledky[y]= (int) vibration_protection.evaluate_protection_area(x_axis, y_axis, c_vib, EQ_vib);
+                
+                
             }
             
         ////////////////////////////// vlozenie vysledkov    
         Kot_usek.set_vysledky_vid_priehyb_M(vid_priehyby); 
+        Kot_usek.set_vysledky_KPB(KPB_vysledky);            
         //////////////////////////////   
           
 
@@ -4158,6 +4212,28 @@ import mt_variables.State_equation_variables;
             return result_T;
     }
     
+    private  void set_KPB_to_mainframe(kotevnyUsek X){
+        
+      // vymaž všetky riadky ak su v tabulle KPB  
+     try{ 
+         
+         int rowCount = Table_KPB.getRowCount();
+        for (int i = rowCount ; i > 0; i--) {
+            modeltable_KPB.removeRow(i-1);      
+        }
+        
+        
+         for (int i =0  ; i < X.get_Ai_array().length; i++) {
+            modeltable_KPB.addRow(new Object[0]);
+            modeltable_KPB.setValueAt(X.get_Ai_array()[i], i, 0);
+            modeltable_KPB.setValueAt(X.get_vysledky_KPB()[i], i, 1);
+           // Table_KPB.getComponentAt(0, 0).SETsetToolTipText(filename);
+        }
+        
+     }catch(NullPointerException e ){Swriter("no data");}   
+    }
+    
+    
     private void Button_Icon_arr_row_table_kotevny_usekActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button_Icon_arr_row_table_kotevny_usekActionPerformed
         selection_kotevny_usek=true;
         if ( first_Start==true){
@@ -4174,7 +4250,7 @@ import mt_variables.State_equation_variables;
         try{hodnoty[2] =Double.valueOf(String.valueOf(hodnoty_namrazove_oblasti[2]));}catch(NullPointerException e){hodnoty[2]=0;}
         try{hodnoty[3] =Double.valueOf(String.valueOf(hodnoty_namrazove_oblasti[3]));}catch(NullPointerException e){hodnoty[3]=0;}
       
-        kotevnyUsek novy_usek =  new kotevnyUsek(new_kotevny_usek_name, 0, 0, 0, 0, 0, language.language_label(languageOption, 60), 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, teplotyser, teplotyser, teplotyser, teplotyser, teplotyser, teplotyser, Variable_Ai_array, Variable_Hi_array, Variable_Hi_array,Variable_Hi_array_nmv,0,0,0,hodnoty,empty,empty,empty,empty,empty,empty,empty2,empty2);    
+        kotevnyUsek novy_usek =  new kotevnyUsek(new_kotevny_usek_name, 0, 0, 0, 0, 0, language.language_label(languageOption, 60), 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, teplotyser, teplotyser, teplotyser, teplotyser, teplotyser, teplotyser, Variable_Ai_array, Variable_Hi_array, Variable_Hi_array,Variable_Hi_array_nmv,0,0,0,hodnoty);    
         
         
         Variable_globeal_kotevny_usek.add(novy_usek);
@@ -4203,7 +4279,7 @@ import mt_variables.State_equation_variables;
            
         
          int rowNumber =  Table_kotevne_useky.getSelectedRow(); //- (e.getFirstIndex()-e.getLastIndex()); 
-             kotevnyUsek docasny_kot_usek = new kotevnyUsek(new_kotevny_usek_name, 0, 0, 0, 0, 0, filename, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, teplotyser, first_Start, teplotyser, teplotyser, teplotyser, first_Start, Variable_Ai_array, Variable_Hi_array, Variable_Hi_array,Variable_Hi_array_nmv,0,0,0,hodnoty,empty,empty,empty,empty,empty,empty,empty2,empty2);                     
+             kotevnyUsek docasny_kot_usek = new kotevnyUsek(new_kotevny_usek_name, 0, 0, 0, 0, 0, filename, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, teplotyser, first_Start, teplotyser, teplotyser, teplotyser, first_Start, Variable_Ai_array, Variable_Hi_array, Variable_Hi_array,Variable_Hi_array_nmv,0,0,0,hodnoty);                     
              mainframe_to_kotevny_usek(docasny_kot_usek,rowNumber);
 
         kotevnyUsek novy_usek =  docasny_kot_usek;
@@ -4250,7 +4326,7 @@ import mt_variables.State_equation_variables;
         try{hodnoty[1] =Double.valueOf(String.valueOf(hodnoty_namrazove_oblasti[1]));}catch(NullPointerException e){hodnoty[1]=0;}
         try{hodnoty[2] =Double.valueOf(String.valueOf(hodnoty_namrazove_oblasti[2]));}catch(NullPointerException e){hodnoty[2]=0;}
         try{hodnoty[3] =Double.valueOf(String.valueOf(hodnoty_namrazove_oblasti[3]));}catch(NullPointerException e){hodnoty[3]=0;}
-             kotevnyUsek docasny_kot_usek = new kotevnyUsek(new_kotevny_usek_name, 0, 0, 0, 0, 0, filename, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, teplotyser, first_Start, teplotyser, teplotyser, teplotyser, first_Start, Variable_Ai_array, Variable_Hi_array, Variable_Hi_array,Variable_Hi_array_nmv,0,0,0,hodnoty,empty,empty,empty,empty,empty,empty,empty2,empty2);                     
+             kotevnyUsek docasny_kot_usek = new kotevnyUsek(new_kotevny_usek_name, 0, 0, 0, 0, 0, filename, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, teplotyser, first_Start, teplotyser, teplotyser, teplotyser, first_Start, Variable_Ai_array, Variable_Hi_array, Variable_Hi_array,Variable_Hi_array_nmv,0,0,0,hodnoty);                     
              mainframe_to_kotevny_usek(docasny_kot_usek,rowNumber);                        
              Variable_globeal_kotevny_usek.set(rowNumber, docasny_kot_usek);  
           
@@ -4274,7 +4350,7 @@ import mt_variables.State_equation_variables;
         try{hodnoty[1] =Double.valueOf(String.valueOf(hodnoty_namrazove_oblasti[1]));}catch(NullPointerException e){hodnoty[1]=0;}
         try{hodnoty[2] =Double.valueOf(String.valueOf(hodnoty_namrazove_oblasti[2]));}catch(NullPointerException e){hodnoty[2]=0;}
         try{hodnoty[3] =Double.valueOf(String.valueOf(hodnoty_namrazove_oblasti[3]));}catch(NullPointerException e){hodnoty[3]=0;}
-             kotevnyUsek docasny_kot_usek = new kotevnyUsek(new_kotevny_usek_name, 0, 0, 0, 0, 0, filename, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, teplotyser, first_Start, teplotyser, teplotyser, teplotyser, first_Start, Variable_Ai_array, Variable_Hi_array, Variable_Hi_array,Variable_Hi_array_nmv,0,0,0,hodnoty,empty,empty,empty,empty,empty,empty,empty2,empty2);                     
+             kotevnyUsek docasny_kot_usek = new kotevnyUsek(new_kotevny_usek_name, 0, 0, 0, 0, 0, filename, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, teplotyser, first_Start, teplotyser, teplotyser, teplotyser, first_Start, Variable_Ai_array, Variable_Hi_array, Variable_Hi_array,Variable_Hi_array_nmv,0,0,0,hodnoty);                     
              mainframe_to_kotevny_usek(docasny_kot_usek,rowNumber);                        
              Variable_globeal_kotevny_usek.set(rowNumber, docasny_kot_usek);  
           
@@ -5038,6 +5114,16 @@ import mt_variables.State_equation_variables;
         // TODO add your handling code here:
     }//GEN-LAST:event_vyp_percento4_sigmaKeyReleased
 
+    private void jTabbedPane1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTabbedPane1MouseClicked
+        int cislo = Table_kotevne_useky.getSelectedRow();
+        set_KPB_to_mainframe(Variable_globeal_kotevny_usek.get(cislo));
+        
+    }//GEN-LAST:event_jTabbedPane1MouseClicked
+
+    private void Table_KPBMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Table_KPBMouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Table_KPBMouseEntered
+
   public static void lanochangeinDatabaze() {
   nacitatDatabazuLan();      
         
@@ -5144,6 +5230,7 @@ import mt_variables.State_equation_variables;
     private javax.swing.JLabel Label_vybrana_namrazova_oblast;
     private javax.swing.JLabel Label_zakladne_mech_napatie_minis5;
     private javax.swing.JLabel Label_základna_rychlost_vetra;
+    private javax.swing.JTable Table_KPB;
     private javax.swing.JTable Table_kotevne_useky;
     private javax.swing.JTable Table_rozpatia;
     private javax.swing.JTable Table_rozpatia_nadm_vysky;
@@ -5266,6 +5353,7 @@ import mt_variables.State_equation_variables;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
+    private javax.swing.JScrollPane jScrollPane8;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTextField jTextField_datum;
     private javax.swing.JTextField jTextField_nadpis_pre_prechodna;
@@ -5291,6 +5379,7 @@ import mt_variables.State_equation_variables;
 DefaultTableModel modelTable;
 DefaultTableModel modeltable_rozpatia;
 DefaultTableModel modeltable_rozpatia_nadm_vysky;
+DefaultTableModel modeltable_KPB;
 private static String new_kotevny_usek_name;
 private static boolean existnewkotevnyusek = false;
 private static boolean mainframeLodaed = false;
@@ -5773,9 +5862,19 @@ private void seticon() {
         
         int selekcia_for_name=number;
         try{
-//            Swriter("****row");
+//            
         X.set_name(String.valueOf(Table_kotevne_useky.getValueAt(selekcia_for_name, 1)));
-             
+        
+        X.set_vysledky_KPB(Variable_globeal_kotevny_usek.get(selekcia_for_name).get_vysledky_KPB());
+        X.set_vysledky_c_MT(Variable_globeal_kotevny_usek.get(selekcia_for_name).get_vysledky_c_MT());
+        X.set_vysledky_pretazenia6(Variable_globeal_kotevny_usek.get(selekcia_for_name).get_vysledky_pretazenia5());
+        X.set_vysledky_pretazenia_MT(Variable_globeal_kotevny_usek.get(selekcia_for_name).get_vysledky_pretazenia_MT());
+        X.set_vysledky_sigmaH_MT(Variable_globeal_kotevny_usek.get(selekcia_for_name).get_vysledky_sigmaH_MT());
+        X.set_vysledky_sily_MT(Variable_globeal_kotevny_usek.get(selekcia_for_name).get_vysledky_sily_MT());
+        X.set_vysledky_tlaky6(Variable_globeal_kotevny_usek.get(selekcia_for_name).get_vysledky_tlaky6());
+        X.set_vysledky_vid_priehyb_M(Variable_globeal_kotevny_usek.get(selekcia_for_name).get_vysledky_vid_priehyb_MT());
+              
+        
         }catch(Exception s){
         
         }
@@ -5831,6 +5930,8 @@ private void seticon() {
         hodnoty[3] =Double.valueOf(String.valueOf(hodnoty_namrazove_oblasti[3]));
         X.set_hodnoty_namrazove_oblasti(hodnoty);
         }
+    
+        
    
     private void kotevn_usek_to_mainframe(kotevnyUsek X){
         //vybrany kotevny usek jebne do mainframe
@@ -7088,7 +7189,7 @@ private void seticon() {
                      h_c_mean_window_vypocitana,
                      h_c_mean_window_vlastn,
                      str_rozpatie,
-                     oblast_hodnoty,empty,empty,empty,empty,empty,empty,empty2,empty2);    
+                     oblast_hodnoty);    
                 selection_kotevny_usek=true;
                if(i==0){
                    Variable_globeal_kotevny_usek.set(0, novy_usek);
@@ -7344,6 +7445,7 @@ class kotevnyUsek extends javax.swing.JFrame{
     private  boolean Bi_radio_over;
     
     private  double[] Ai_array_over;
+    private  int[] vysledky_KPB_over;
     private  double[] DeltaHi_array_over;
     private  double[] Hi_array_over;
     private  double[] Hi_array_nmv_over;
@@ -7407,116 +7509,17 @@ class kotevnyUsek extends javax.swing.JFrame{
                                 double h_c_mean_window_vypocitana,
                                 double h_c_mean_window_vlastna,
                                 double str_rozpatie,
-                                double[] hodnoty_namrazove_oblasti,
-            
-                                double[] vysledky_tlaky6,
-                                double[] vysledky_zatazenia5,
-                                double[] vysledky_sigmaH_MT,
-                                double[] vysledky_c_MT,
-                                double[] vysledky_pretazenia_MT,
-                                double[] vysledky_sily_MT,
-                                double[][] vysledky_vid_priehyb_MT,
-                                double[][] vysledky_per_podiel_sigma
-                                
-    
-    ){
-        
-        name=name_kot_useku;
-        conductor_porcislo = conductor;
-        vetrova_oblast_porcislo=vetrova_oblast_porC;
-        char_terenu_porcislo=char_terenu_porC;
-        uroven_spolahlivosti_porcislo=uroven_spolahlivosti_porC;
-        uroven_spolahlivosti_stav_porcislo=uroven_spolahlivosti_stav_porC;
-        namrazova_oblast=namrazova_oblst;
-        typ_namrazy_porcislo=typ_namrazy_porC;
-        RTS_over=RTS;
-        zakladne_mech_napatie_lana_pre_minus5_over= zakl_mech_minus_5;
-        maximalne_zataz_lana_podiel_z_RTS_over = max_zataz_lana_podiel_z_RTS;
-        g_c_over = g_c;
-        ro_I_over = ro_I;
-        K_lc_over = K_lc;
-        K_h_over = K_h;
-        I_R50_over = I_R50;
-        k_r_over = k_r;
-        z_0_over = z_0;
-        V_mean_over = V_mean;
-        c_dir_over = c_dir;
-        c_0_over = c_0;
-        C_c_over = C_c;
-        gama_w_over = gama_w;
-        gama_I_over = gama_I;
-        Psi_I_over = Psi_I;
-        Psi_w_over = Psi_w;
-        B_I_over = B_I;
-        k_p_over = k_p;
-        RR_over = RR;
-        ro_over = ro;
-        C_cl_over = C_cl;
-        h_c_mean_over = h_c_mean;
-        str_vys_vodicov_radio_over = str_vys_vodicov_radio;
-        CDIR_radio_over=CDIR_radio;
-        CO_radio_over=CO_radio;
-        Kcl_radio_over=Kcl_radio;
-        Kh_radio_over= Kh_radio;
-        Bi_radio_over=Bi_radio;
-        Ai_array_over=A1_array;
-        DeltaHi_array_over= Delta_Hi_array;
-        Hi_array_over= H1_array;
-        Hi_array_nmv_over= H1_array_nmv;
-        h_c_mean_window_vypocitana_over= h_c_mean_window_vypocitana;
-        h_c_mean_window_vlastna_over= h_c_mean_window_vlastna;
-        str_rozpatie_over=str_rozpatie;
-        hodnoty_namrazove_oblasti_over=hodnoty_namrazove_oblasti;
-    }
-    
-    kotevnyUsek(                String name_kot_useku,
-                                int conductor,
-                                int vetrova_oblast_porC,
-                                int char_terenu_porC, 
-                                int uroven_spolahlivosti_porC,
-                                int uroven_spolahlivosti_stav_porC,
-                                String namrazova_oblst,
-                                int typ_namrazy_porC,
-                                double RTS,
-                                double zakl_mech_minus_5,
-                                double max_zataz_lana_podiel_z_RTS,
-                                double g_c, 
-                                double ro_I, 
-                                double K_lc,
-                                double K_h,
-                                double I_R50,
-                                double k_r,
-                                double z_0,
-                                double V_mean,
-                                double c_dir,
-                                double c_0,
-                                double C_c,
-                                double gama_w,
-                                double gama_I,
-                                double Psi_I,
-                                double Psi_w,
-                                double B_I,
-                                double k_p,
-                                double RR,
-                                double ro,
-                                double C_cl,
-                                double h_c_mean,
-                                boolean str_vys_vodicov_radio,
-                                boolean CDIR_radio,
-                                boolean CO_radio,
-                                boolean  Kcl_radio,
-                                boolean Kh_radio,
-                                boolean Bi_radio,
-                                double[] A1_array,
-                                double[] Delta_Hi_array,
-                                double[] H1_array,
-                                double[] H1_array_nmv,
-                                double h_c_mean_window_vypocitana,
-                                double h_c_mean_window_vlastna,
-                                double str_rozpatie,
                                 double[] hodnoty_namrazove_oblasti
             
-                             
+//                                double[] vysledky_tlaky6,
+//                                double[] vysledky_zatazenia5,
+//                                double[] vysledky_sigmaH_MT,
+//                                double[] vysledky_c_MT,
+//                                double[] vysledky_pretazenia_MT,
+//                                double[] vysledky_sily_MT,
+//                                double[][] vysledky_vid_priehyb_MT,
+//                                double[][] vysledky_per_podiel_sigma
+                              //double[] vysledky_KPB
                                 
     
     ){
@@ -7568,6 +7571,8 @@ class kotevnyUsek extends javax.swing.JFrame{
         str_rozpatie_over=str_rozpatie;
         hodnoty_namrazove_oblasti_over=hodnoty_namrazove_oblasti;
     }
+    
+ 
     
     public String get_name(){
         return name;
@@ -7746,6 +7751,9 @@ class kotevnyUsek extends javax.swing.JFrame{
     }
     public double[] get_Hi_array(){
         return Hi_array_over;
+    }
+     public int[] get_vysledky_KPB(){
+        return vysledky_KPB_over;
     }
     
     public double[] get_Hi_array_nvm(){
@@ -7952,6 +7960,9 @@ class kotevnyUsek extends javax.swing.JFrame{
     }
     public void set_Ai_array(double[] A1_array){
         Ai_array_over=A1_array;
+    }
+     public void set_vysledky_KPB(int[] vysledky_KPB){
+        vysledky_KPB_over=vysledky_KPB;
     }
     
     public void set_hodnoty_namrazove_oblasti(double[] hodnoty_namrazove_oblasti){

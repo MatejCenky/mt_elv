@@ -429,6 +429,8 @@ public static void constructor(){
 /*250*/  language.SK.add("Kontrola ťahov a pracovného bodu");       language.CZ.add("I-SK");                     language.EN.add("I-SK");
 /*251*/  language.SK.add("Zavri povodný subor");       language.CZ.add("I-SK");                     language.EN.add("I-SK");
 /*252*/  language.SK.add("Nie je vybraný žiaden kotevný usek");       language.CZ.add("I-SK");                     language.EN.add("I-SK");
+/*253*/  language.SK.add("Rozpätie kot. úseku");       language.CZ.add("I-SK");                     language.EN.add("I-SK");
+/*254*/  language.SK.add("Oblasť");       language.CZ.add("I-SK");                     language.EN.add("I-SK");
 
 
          
