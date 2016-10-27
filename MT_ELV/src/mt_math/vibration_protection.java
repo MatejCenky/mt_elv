@@ -100,13 +100,13 @@ public class vibration_protection {
     public static double EQvib_value(int terrain, double T0, Conductor_variables Conductor){
         switch(terrain){
             case 1:
-                return (1.3* Math.pow(10, 27)) / Math.pow(T0 / (Conductor.get_m()*9.80665), 8.2);
+                return (1.3* Math.pow(10, 27)) / Math.pow(T0* Conductor.get_S() / (Conductor.get_m()*9.80665), 8.2);
             case 2:
-                return (5.4* Math.pow(10, 27)) / Math.pow(T0 / (Conductor.get_m()*9.80665), 8.3);
+                return (5.4* Math.pow(10, 27)) / Math.pow(T0* Conductor.get_S() / (Conductor.get_m()*9.80665), 8.3);
             case 3:
-                return (1.3* Math.pow(10, 28)) / Math.pow(T0 / (Conductor.get_m()*9.80665), 8.4);
+                return (1.3* Math.pow(10, 28)) / Math.pow(T0* Conductor.get_S() / (Conductor.get_m()*9.80665), 8.4);
             case 4:
-                return (1.1* Math.pow(10, 29)) / Math.pow(T0 / (Conductor.get_m()*9.80665), 8.6);
+                return (1.1* Math.pow(10, 29)) / Math.pow(T0* Conductor.get_S() / (Conductor.get_m()*9.80665), 8.6);
             default:
                 return 0;
         }
