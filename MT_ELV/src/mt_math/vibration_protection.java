@@ -94,7 +94,7 @@ public class vibration_protection {
      * @return x axis
      */
     public static double axis_x_value(double T0, Conductor_variables Conductor){
-        return T0 / (Conductor.get_m()*9.80665);
+        return T0* Conductor.get_S() / (Conductor.get_m()*9.80665);
     }
     
     public static double EQvib_value(int terrain, double T0, Conductor_variables Conductor){

@@ -4121,7 +4121,7 @@ import mt_variables.State_equation_variables;
             double[] temperatures_vibration = temperatures_for_state_equation( Conductor, 
                                                                                         Kot_usek, 
                                                                                         -5, 
-                                                                                        -5, 
+                                                                                        Variable_streda_roc_teplota, 
                                                                                         Variable_T0_zivotnost, 
                                                                                         Variable_KPB_cas_vypoctu );
             
@@ -4139,7 +4139,7 @@ import mt_variables.State_equation_variables;
                 double c_vib = vibration_protection.c_vib_value((int)Variable_KPB_typ_terenu);
                 double EQ_vib = vibration_protection.EQvib_value((int)Variable_KPB_typ_terenu, T0, Conductor);
                 System.out.println("x axis = " + x_axis);
-                System.err.println("y axis = " + y_axis);
+                System.out.println("y axis = " + y_axis);
                 System.out.println("protection area = " + (int)vibration_protection.evaluate_protection_area(x_axis, y_axis, c_vib, EQ_vib));
                 
                 KPB_vysledky[y]= (int)vibration_protection.evaluate_protection_area(x_axis, y_axis, c_vib, EQ_vib);
@@ -4208,7 +4208,7 @@ import mt_variables.State_equation_variables;
             
 //            System.out.println("Tx0 = " + result_T[0]);
 //            System.out.println("Tx1 = " + result_T[1]);
-//            System.out.println("shift = " + shift);
+            System.out.println("shift = " + shift);
             return result_T;
     }
     
