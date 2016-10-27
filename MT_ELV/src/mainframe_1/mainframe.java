@@ -25,6 +25,7 @@ import com.itextpdf.text.pdf.PdfWriter;
 import com.itextpdf.text.pdf.draw.LineSeparator;
 import java.awt.Color;
 import java.awt.Desktop;
+import java.awt.Point;
 import java.awt.Toolkit;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -246,6 +247,17 @@ import mt_variables.State_equation_variables;
                         kotevn_usek_to_mainframe(Variable_globeal_kotevny_usek.get(rowNumber));
 
                     }
+                    
+                    
+                    try {
+                        int cislo = Table_kotevne_useky.getSelectedRow();
+                        String nazov = Variable_globeal_kotevny_usek.get(cislo).get_name();
+                        jTabbedPane1.setTitleAt(1, language.language_label(languageOption, 250) + " - " + nazov);
+
+                    } catch (ArrayIndexOutOfBoundsException p) {
+                        jTabbedPane1.setTitleAt(1, language.language_label(languageOption, 250));
+
+                    }
 
                     povodna_hodnota_selekcie = rowNumber;
                 }
@@ -261,6 +273,28 @@ import mt_variables.State_equation_variables;
 
         });  //selection listener fot text area to show data
 
+        Table_kotevne_useky.getModel().addTableModelListener(new TableModelListener() {
+
+            @Override
+            public void tableChanged(TableModelEvent e) {
+                
+                    try {
+                        int cislo = Table_kotevne_useky.getSelectedRow();
+                        String nazov = Variable_globeal_kotevny_usek.get(cislo).get_name();
+                        jTabbedPane1.setTitleAt(1, language.language_label(languageOption, 250) + " - " + nazov);
+
+                    } catch (ArrayIndexOutOfBoundsException p) {
+                        jTabbedPane1.setTitleAt(1, language.language_label(languageOption, 250));
+
+                    }
+                
+
+            
+        }}
+        );
+        
+        
+        
         Table_rozpatia.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
 
             @Override
@@ -3005,6 +3039,12 @@ import mt_variables.State_equation_variables;
                 return canEdit [columnIndex];
             }
         });
+        Table_KPB.setToolTipText("1--kokotbačov \\n\\r  1--kokotbačov \\n\\r 1--kokotbačov \\n\\r 1--kokotbačov ");
+        Table_KPB.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                Table_KPBMouseMoved(evt);
+            }
+        });
         Table_KPB.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 Table_KPBMouseEntered(evt);
@@ -3016,10 +3056,12 @@ import mt_variables.State_equation_variables;
             Table_KPB.getColumnModel().getColumn(0).setPreferredWidth(85);
             Table_KPB.getColumnModel().getColumn(0).setHeaderValue(language.language_label(languageOption, 253)
             );
+            Table_KPB.getColumnModel().getColumn(0).setCellRenderer(null);
             Table_KPB.getColumnModel().getColumn(1).setResizable(false);
             Table_KPB.getColumnModel().getColumn(1).setPreferredWidth(15);
             Table_KPB.getColumnModel().getColumn(1).setHeaderValue(language.language_label(languageOption, 254)
             );
+            Table_KPB.getColumnModel().getColumn(1).setCellRenderer(null);
         }
 
         javax.swing.GroupLayout jPanel21Layout = new javax.swing.GroupLayout(jPanel21);
@@ -3033,7 +3075,7 @@ import mt_variables.State_equation_variables;
         );
         jPanel21Layout.setVerticalGroup(
             jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel21Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel21Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane8, javax.swing.GroupLayout.DEFAULT_SIZE, 390, Short.MAX_VALUE)
                 .addContainerGap())
@@ -3108,7 +3150,16 @@ import mt_variables.State_equation_variables;
         );
 
         jTabbedPane1.setTitleAt(0, language.language_label(languageOption, 51));
-        jTabbedPane1.setTitleAt(1, language.language_label(languageOption, 250));
+
+        try{
+            int cislo = Table_kotevne_useky.getSelectedRow();
+            String nazov = Variable_globeal_kotevny_usek.get(cislo).get_name();
+            jTabbedPane1.setTitleAt(1, language.language_label(languageOption, 250) + " - " + nazov );
+
+        }catch(ArrayIndexOutOfBoundsException e){
+            jTabbedPane1.setTitleAt(1, language.language_label(languageOption, 250)  );
+
+        }
 
         jScrollPane4.setViewportView(jPanel18);
 
@@ -4134,6 +4185,7 @@ import mt_variables.State_equation_variables;
                     temperatures_vibration[0], // Tx0
                     temperatures_vibration[1]);// Tx1
             for (int y=0; y<Kot_usek.get_Ai_array().length; y++){
+                
                 double x_axis = vibration_protection.axis_x_value(T0, Conductor);
                 double y_axis = vibration_protection.axis_y_value(a[y], Conductor);
                 double c_vib = vibration_protection.c_vib_value((int)Variable_KPB_typ_terenu);
@@ -5121,8 +5173,34 @@ import mt_variables.State_equation_variables;
     }//GEN-LAST:event_jTabbedPane1MouseClicked
 
     private void Table_KPBMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Table_KPBMouseEntered
-        // TODO add your handling code here:
+        
+       
+        
     }//GEN-LAST:event_Table_KPBMouseEntered
+
+    private void Table_KPBMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Table_KPBMouseMoved
+      
+        Point point = evt.getPoint();
+        int row;
+      row 	= Table_KPB.rowAtPoint(point);
+      int hodnota = (int)Table_KPB.getValueAt(row, 1);
+      if(hodnota == 1){
+       
+        Table_KPB.setToolTipText(language.language_label(languageOption, 255));
+        
+      }
+       if(hodnota == 2){
+       
+        Table_KPB.setToolTipText(language.language_label(languageOption, 256));
+        
+      }
+        if(hodnota == 3){
+       
+        Table_KPB.setToolTipText(language.language_label(languageOption, 257));
+        
+      }
+       
+    }//GEN-LAST:event_Table_KPBMouseMoved
 
   public static void lanochangeinDatabaze() {
   nacitatDatabazuLan();      
@@ -6692,8 +6770,8 @@ private void seticon() {
         Variable_KPB_typ_terenu =(double) X.get_KPB_combobo_number() +1; 
         TextField_tabulky_prechodna.setText(df.format(X.get_tables_prechodne()));
         TextField_tabulky_konecna.setText(df.format(X.get_tables_konecne()));
-        Variable_T0_zivotnost=X.get_tables_konecne();
-        Variable_Tp_prechodna_doba=X.get_tables_prechodne();
+        Variable_T0_zivotnost=X.get_tables_konecne()*24*365;
+        Variable_Tp_prechodna_doba=X.get_tables_prechodne()*24*365;
         
         
         if(X.get_tables_number123()==2 || X.get_tables_number123()==3){
@@ -6794,14 +6872,14 @@ private void seticon() {
         
           //key files are stored in resources
         FileNameExtensionFilter txtfilter = new FileNameExtensionFilter(
-                language.language_label(languageOption, 32), "txt");                                // whitch type of files are we looking for
+                language.language_label(languageOption, 32), "MT3");                                // whitch type of files are we looking for
         chooser.setDialogTitle(language.language_label(languageOption, 247));   // title for Jfile chooser window
         chooser.setFileFilter(txtfilter);                                   // Txt filter for choosing file
 
         chooser.showSaveDialog(null);
         File f = chooser.getSelectedFile();   
             
-        project_filename=  f.getName()+".txt"; 
+        project_filename=  f.getName()+".MT3"; 
         project_filepath = f.getParent(); 
         
         }else{
@@ -6973,7 +7051,7 @@ private void seticon() {
         
           //key files are stored in resources
         FileNameExtensionFilter txtfilter = new FileNameExtensionFilter(
-                language.language_label(languageOption, 32), "txt");                                // whitch type of files are we looking for
+                language.language_label(languageOption, 32), "MT3");                                // whitch type of files are we looking for
         chooser.setDialogTitle(language.language_label(languageOption, 246));   // title for Jfile chooser window
         chooser.setFileFilter(txtfilter);                                   // Txt filter for choosing file
 
@@ -7001,6 +7079,7 @@ private void seticon() {
             int radio_number_tabulky=  Integer.valueOf(input.nextLine());
             double tabulky_prechodna = Double.valueOf(input.nextLine());
             double tabulky_konecne = Double.valueOf(input.nextLine());
+            
             double[] teploty_stav_mt= new double[14];
             double[] pretazenia_stav_mt= new double[14];
             

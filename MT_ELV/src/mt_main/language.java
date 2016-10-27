@@ -63,7 +63,7 @@ public static void constructor(){
  /*29*/  language.SK.add("Databáza");                    language.CZ.add("Databáze");                       language.EN.add("Database");
  /*30*/  language.SK.add("Načítať");                     language.CZ.add("Načítat");                        language.EN.add("Load");
  /*31*/  language.SK.add("Vyberte súbor s databázou vodičou");   language.CZ.add("Vyběrte soubor s databazí vodičú");      language.EN.add("Choose database file of conductors");
- /*32*/  language.SK.add("txt subor (*.txt)");           language.CZ.add("txt soubor (*.txt)");             language.EN.add("txt files (*.txt)");
+ /*32*/  language.SK.add("MT3 subor (*.MT3)");           language.CZ.add("txt soubor (*.txt)");             language.EN.add("txt files (*.txt)");
  
  //Conductors_Jdialog_main_JtextArea ( conductor info )
  
@@ -431,6 +431,10 @@ public static void constructor(){
 /*252*/  language.SK.add("Nie je vybraný žiaden kotevný usek");       language.CZ.add("I-SK");                     language.EN.add("I-SK");
 /*253*/  language.SK.add("Rozpätie kot. úseku");       language.CZ.add("I-SK");                     language.EN.add("I-SK");
 /*254*/  language.SK.add("Oblasť");       language.CZ.add("I-SK");                     language.EN.add("I-SK");
+
+/*255*/  language.SK.add("1 - základná bezpečná oblasť");       language.CZ.add("I-SK");                     language.EN.add("I-SK");
+/*256*/  language.SK.add("2 - bezpečná oblasť");       language.CZ.add("I-SK");                     language.EN.add("I-SK");
+/*257*/  language.SK.add("3 - oblasť osobitných opatrení");       language.CZ.add("I-SK");                     language.EN.add("I-SK");
 
 
          

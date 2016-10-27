@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
-<Form version="1.6" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
+<Form version="1.8" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <NonVisualComponents>
     <Component class="javax.swing.ButtonGroup" name="buttonGroup1">
     </Component>
@@ -2989,7 +2989,7 @@
                 <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jTabbedPane1MouseClicked"/>
               </Events>
               <AuxValues>
-                <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="jTabbedPane1.setTitleAt(0, language.language_label(languageOption, 51));&#xa;jTabbedPane1.setTitleAt(1, language.language_label(languageOption, 250));"/>
+                <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="jTabbedPane1.setTitleAt(0, language.language_label(languageOption, 51));&#xa;&#xa;&#xa;try{&#xa;int cislo = Table_kotevne_useky.getSelectedRow();&#xa;String nazov = Variable_globeal_kotevny_usek.get(cislo).get_name();&#xa;jTabbedPane1.setTitleAt(1, language.language_label(languageOption, 250) + &quot; - &quot; + nazov );&#xa;&#xa;}catch(ArrayIndexOutOfBoundsException e){&#xa;jTabbedPane1.setTitleAt(1, language.language_label(languageOption, 250)  );&#xa;&#xa;}"/>
               </AuxValues>
 
               <Layout class="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout"/>
@@ -3202,7 +3202,7 @@
                     </DimensionLayout>
                     <DimensionLayout dim="1">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
+                          <Group type="102" alignment="1" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="jScrollPane8" pref="390" max="32767" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
@@ -3226,6 +3226,7 @@
                                 <Column editable="false" title="" type="java.lang.String"/>
                               </Table>
                             </Property>
+                            <Property name="toolTipText" type="java.lang.String" value="1--kokotba&#x10d;ov \u005cn\u005cr  1--kokotba&#x10d;ov \u005cn\u005cr 1--kokotba&#x10d;ov \u005cn\u005cr 1--kokotba&#x10d;ov " containsInvalidXMLChars="true"/>
                             <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
                               <TableColumnModel selectionModel="0">
                                 <Column maxWidth="-1" minWidth="-1" prefWidth="85" resizable="false">
@@ -3233,14 +3234,14 @@
                                     <Connection code="language.language_label(languageOption, 253)&#xd;&#xa;" type="code"/>
                                   </Title>
                                   <Editor/>
-                                  <Renderer/>
+                                  <Renderer editor="org.netbeans.modules.form.RADConnectionPropertyEditor"/>
                                 </Column>
                                 <Column maxWidth="-1" minWidth="-1" prefWidth="15" resizable="false">
                                   <Title editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
                                     <Connection code="language.language_label(languageOption, 254)&#xd;&#xa;" type="code"/>
                                   </Title>
                                   <Editor/>
-                                  <Renderer/>
+                                  <Renderer editor="org.netbeans.modules.form.RADConnectionPropertyEditor"/>
                                 </Column>
                               </TableColumnModel>
                             </Property>
@@ -3249,6 +3250,7 @@
                             </Property>
                           </Properties>
                           <Events>
+                            <EventHandler event="mouseMoved" listener="java.awt.event.MouseMotionListener" parameters="java.awt.event.MouseEvent" handler="Table_KPBMouseMoved"/>
                             <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="Table_KPBMouseEntered"/>
                           </Events>
                         </Component>
