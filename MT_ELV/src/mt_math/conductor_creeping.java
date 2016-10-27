@@ -62,7 +62,7 @@ public class conductor_creeping {
                             k_w_value(Conductor.get_w_Fe())*
                             conductor_creeping.fi*
                             (Math.pow(t0, n) - Math.pow(tp, n));
-        System.out.println("deltaETA = " + deltaEta);
+//        System.out.println("deltaETA = " + deltaEta);
         return ((-1*deltaEta)/(Conductor.get_alpha()*1e6)); 
 
     }
@@ -74,7 +74,7 @@ public class conductor_creeping {
      * Computes the conductor composition coefficient "k_w"
      */
     private static double k_w_value(double w_Fe){
-        System.out.println(1.212 - 1.06*w_Fe);
+        System.out.println("k_w = " + (1.212 - 1.06*w_Fe));
         return 1.212 - 1.06*w_Fe;
     }
     
@@ -82,7 +82,7 @@ public class conductor_creeping {
      * Computes the average year load influence coefficient on the conductor "k_EDS"
      */
      private static double k_EDS_value(double sigma_HT, Conductor_variables Conductor){
-        System.out.println(0.0319 * Math.pow((100*sigma_HT*Conductor.get_S()) / Conductor.get_RTS(), 1.15));
+        System.out.println("k_EDS = " + (0.0319 * Math.pow((100*sigma_HT*Conductor.get_S()) / Conductor.get_RTS(), 1.15)));
         return 0.0319 * Math.pow((100*sigma_HT*Conductor.get_S()) / Conductor.get_RTS(), 1.15);
     }
     
@@ -90,7 +90,7 @@ public class conductor_creeping {
      * Computes the average year temperature influence coefficient of the conductor "k_EDT"
      */
      private static double k_EDT_value(double T_EDT){
-        System.out.println(0.842 + 0.0079* T_EDT);
+        System.out.println("k_EDT = " + (0.842 + 0.0079* T_EDT));
         return 0.842 + 0.0079* T_EDT;
     }
     

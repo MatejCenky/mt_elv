@@ -4007,11 +4007,11 @@ import mt_variables.State_equation_variables;
              pretazenia[13]=1;
              }  
          
-        State_equation_variables Base = new State_equation_variables(Conductor, -5, -5, Variable_zakladne_mech_napatie_lana_pre_minus5, 1);
-        state_equation.set_all_variables(Base, Kot_usek.get_Ai_array(), Kot_usek.get_DeltaHi_array());
-        double sigma_H0_base = state_equation.compute_sigma_H(1, Kot_usek.get_zakladne_mech_napatie_lana_pre_minus5_over(), -5, -5);
-        System.out.println("SigmaH0_Base = " + sigma_H0_base + " MPa");
-        
+//        State_equation_variables Base = new State_equation_variables(Conductor, -5, -5, Variable_zakladne_mech_napatie_lana_pre_minus5, 1);
+//        state_equation.set_all_variables(Base, Kot_usek.get_Ai_array(), Kot_usek.get_DeltaHi_array());
+//        double sigma_H0_base = state_equation.compute_sigma_H(1, Kot_usek.get_zakladne_mech_napatie_lana_pre_minus5_over(), -5, -5);
+//        System.out.println("SigmaH0_Base = " + sigma_H0_base + " MPa");
+//        
        // 14 členny cyklus pre už samotny vypočet jednotlivých stavov
             for(int y=0 ; y<Variable_teploty_stav_rovnica.length; y++){
                 double[] temperatures_state_equation = temperatures_for_state_equation( Conductor, 
@@ -4138,11 +4138,11 @@ import mt_variables.State_equation_variables;
                 double y_axis = vibration_protection.axis_y_value(a[y], Conductor);
                 double c_vib = vibration_protection.c_vib_value((int)Variable_KPB_typ_terenu);
                 double EQ_vib = vibration_protection.EQvib_value((int)Variable_KPB_typ_terenu, T0, Conductor);
-                System.out.println(x_axis);
-                System.err.println(y_axis);
-                System.out.println(vibration_protection.evaluate_protection_area(x_axis, y_axis, c_vib, EQ_vib));
+                System.out.println("x axis = " + x_axis);
+                System.err.println("y axis = " + y_axis);
+                System.out.println("protection area = " + (int)vibration_protection.evaluate_protection_area(x_axis, y_axis, c_vib, EQ_vib));
                 
-                KPB_vysledky[y]= (int) vibration_protection.evaluate_protection_area(x_axis, y_axis, c_vib, EQ_vib);
+                KPB_vysledky[y]= (int)vibration_protection.evaluate_protection_area(x_axis, y_axis, c_vib, EQ_vib);
                 
                 
             }
@@ -5016,22 +5016,22 @@ import mt_variables.State_equation_variables;
 
             switch (selected_index_from_JComboBox) {
                 case 0:
-                Variable_vybrany_stav_pre_KPB= 1.0;
+                Variable_KPB_typ_terenu = 1.0;
                 jTextPane_KPB_typ_terenu.setText(language.language_label(languageOption, 169));
                 break;
-                case 1:  Variable_vybrany_stav_pre_KPB= 2.0;
+                case 1:  Variable_KPB_typ_terenu = 2.0;
                 jTextPane_KPB_typ_terenu.setText(language.language_label(languageOption, 170));
                 break;
-                case 2:  Variable_vybrany_stav_pre_KPB= 3.0;
+                case 2:  Variable_KPB_typ_terenu = 3.0;
                 jTextPane_KPB_typ_terenu.setText(language.language_label(languageOption, 171));
                 break;
-                case 3:  Variable_vybrany_stav_pre_KPB= 4.0;
+                case 3:  Variable_KPB_typ_terenu= 4.0;
                 jTextPane_KPB_typ_terenu.setText(language.language_label(languageOption, 172));
                 break;
 
             }
 
-        }else{ Variable_vybrany_stav_pre_KPB= 1.0;}
+        }else{ Variable_KPB_typ_terenu = 2.0;}
     }//GEN-LAST:event_jComboBox_KPB_typ_terenuActionPerformed
 
     private void TextField_tabulky_prechodnaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextField_tabulky_prechodnaKeyReleased
@@ -6689,6 +6689,7 @@ private void seticon() {
         jRadioButton_with_label_rozpatie_klasicky.setSelected(X.get_mid_span_option());
         jRadioButton_KPB_cas_vypoctu_1_rok.setSelected(X.get_KPB_typ_terenu());
         jComboBox_KPB_typ_terenu.setSelectedIndex(X.get_KPB_combobo_number());
+        Variable_KPB_typ_terenu =(double) X.get_KPB_combobo_number() +1; 
         TextField_tabulky_prechodna.setText(df.format(X.get_tables_prechodne()));
         TextField_tabulky_konecna.setText(df.format(X.get_tables_konecne()));
         Variable_T0_zivotnost=X.get_tables_konecne();
