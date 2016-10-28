@@ -63,14 +63,15 @@ import mt_variables.State_equation_variables;
  *
  * @author Mattto
  */
-  public class mainframe extends javax.swing.JFrame {
+  public   class mainframe extends javax.swing.JFrame {
 
-    private static final long serialVersionUID = 1L;
+   
 
     /**
      * Creates new form mainframe
      */
     public  mainframe() {
+       
         
         if(loaded_file== false){
         mainframe_new_project_set_title mainframe_new_project_JDialog_window = new mainframe_new_project_set_title(this, rootPaneCheckingEnabled);
@@ -85,11 +86,40 @@ import mt_variables.State_equation_variables;
 //         JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
 //        
         initComponents();
+        setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
         setLocationRelativeTo(null);
-        
-        
-        
+        first_Start = true;
+        povodna_hodnota_selekcie = 0;
 
+        existnewkotevnyusek = false;
+        mainframeLodaed = false;
+        teplotyser = false;
+        urovenspolahlivostiblocker = true;
+        first_Start = true;
+        selection_kotevny_usek = true;
+        povodna_hodnota_selekcie = 0;
+        Calculation_done = false;
+       // loaded_file = false;
+        project_filename = "";
+        project_filepath = "";
+        is_namrazove_oblasti_setted = false;
+        tablemodellistener_rozpatia = true;
+        tablemodellistener_nad_vysky = true;
+        tablemodellistener_total = true;
+        filename = "new_file";
+        memory_path_plus_filename_existence = false;
+        variable_pretazenia_vlastne = false;
+        Variable_globeal_kotevny_usek.removeAll(Variable_globeal_kotevny_usek);
+        Variable_Ai_dlzka_rozpatia.removeAll(Variable_Ai_dlzka_rozpatia);
+        Variable_hi_vyska_stoziarov.removeAll(Variable_hi_vyska_stoziarov);
+        Variable_hi2_nadmorska_vyska_stoziarov.removeAll(Variable_hi2_nadmorska_vyska_stoziarov);
+
+        Variable_Ai_array = null;
+        Variable_DeltaHi_array = null;
+        Variable_Hi_array = null;
+        Variable_Hi_array_nmv = null;
+        Variable_pretazenia_stav_rovnica = new double[14];
+        Variable_teploty_stav_rovnica = new double[14];
         
         seticon();
         this.modelTable = (DefaultTableModel) Table_kotevne_useky.getModel();
@@ -97,6 +127,11 @@ import mt_variables.State_equation_variables;
         this.modeltable_rozpatia_nadm_vysky = (DefaultTableModel) Table_rozpatia_nadm_vysky.getModel();
         this.modeltable_KPB = (DefaultTableModel) Table_KPB.getModel();
         
+        // lost focus when not selected auto enter select
+        Table_rozpatia.putClientProperty("terminateEditOnFocusLost", Boolean.TRUE);
+        Table_rozpatia_nadm_vysky.putClientProperty("terminateEditOnFocusLost", Boolean.TRUE);
+        Table_kotevne_useky.putClientProperty("terminateEditOnFocusLost", Boolean.TRUE);   
+         
         Table_rozpatia.setSurrendersFocusOnKeystroke(true); // for focus on key listener
         
         
@@ -141,7 +176,7 @@ import mt_variables.State_equation_variables;
         jComboBox_druh_namrazy.addItem(language.language_label(languageOption, 81));
         jComboBox_druh_namrazy.addItem(language.language_label(languageOption, 82));
         jComboBox_druh_namrazy.setSelectedIndex(4); 
-        
+        Label_vybrana_namrazova_oblast.setText("---");
         // inicializacia KPB
         jComboBox_KPB_typ_terenu.removeAllItems();;
         jComboBox_KPB_typ_terenu.addItem(language.language_label(languageOption, 165));
@@ -160,6 +195,10 @@ import mt_variables.State_equation_variables;
         percento_podiel_namrazy_sigma2=40;
         percento_podiel_namrazy_sigma3=50;
         percento_podiel_namrazy_sigma4=70;
+         vyp_percento1_sigma.setText( language.language_label(languageOption, 258) );
+         vyp_percento2_sigma.setText( language.language_label(languageOption, 258)  );
+         vyp_percento3_sigma.setText( language.language_label(languageOption, 258)  );
+         vyp_percento4_sigma.setText( language.language_label(languageOption, 258)  );
         
         // inicializacia tabulky a casy
         jRadioButton_with_label_konecne.doClick();
@@ -243,12 +282,15 @@ import mt_variables.State_equation_variables;
                         kotevnyUsek docasny_kot_usek = new kotevnyUsek(new_kotevny_usek_name, 0, 0, 0, 0, 0, filename, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, teplotyser, first_Start, teplotyser, teplotyser, teplotyser, first_Start, Variable_Ai_array, Variable_Hi_array, Variable_Hi_array, Variable_Hi_array_nmv, 0, 0, 0,hodnoty);
                         mainframe_to_kotevny_usek(docasny_kot_usek,povodna_hodnota_selekcie);
                         Variable_globeal_kotevny_usek.set(povodna_hodnota_selekcie, docasny_kot_usek);
+                        mainframe_to_kotevny_usek(docasny_kot_usek,povodna_hodnota_selekcie);
 
                         kotevn_usek_to_mainframe(Variable_globeal_kotevny_usek.get(rowNumber));
 
+                        
+                        set_percento_to_mainframe(Variable_globeal_kotevny_usek.get(rowNumber));
                     }
                     
-                    
+                    //udate nazvnu pre tabbed panel KPB
                     try {
                         int cislo = Table_kotevne_useky.getSelectedRow();
                         String nazov = Variable_globeal_kotevny_usek.get(cislo).get_name();
@@ -3056,12 +3098,10 @@ import mt_variables.State_equation_variables;
             Table_KPB.getColumnModel().getColumn(0).setPreferredWidth(85);
             Table_KPB.getColumnModel().getColumn(0).setHeaderValue(language.language_label(languageOption, 253)
             );
-            Table_KPB.getColumnModel().getColumn(0).setCellRenderer(null);
             Table_KPB.getColumnModel().getColumn(1).setResizable(false);
             Table_KPB.getColumnModel().getColumn(1).setPreferredWidth(15);
             Table_KPB.getColumnModel().getColumn(1).setHeaderValue(language.language_label(languageOption, 254)
             );
-            Table_KPB.getColumnModel().getColumn(1).setCellRenderer(null);
         }
 
         javax.swing.GroupLayout jPanel21Layout = new javax.swing.GroupLayout(jPanel21);
@@ -4207,6 +4247,11 @@ import mt_variables.State_equation_variables;
 
         } // if check box enabled
         } // do  pocet kotevnych usekov
+        
+        //insert value % into text fields
+        int cislo = Table_kotevne_useky.getSelectedRow();
+        set_percento_to_mainframe(Variable_globeal_kotevny_usek.get(cislo));
+        
         Calculation_done=true;  // bool prebehla kalkulacia
         Variable_globeal_kotevny_usek_zmena = Variable_globeal_kotevny_usek;
         } catch(NullPointerException e){
@@ -4284,6 +4329,34 @@ import mt_variables.State_equation_variables;
         
      }catch(NullPointerException e ){Swriter("no data");}   
     }
+    
+     private  void set_percento_to_mainframe(kotevnyUsek X){
+        
+       
+     try{ 
+          vyp_percento1_sigma.setForeground(Color.BLACK);
+     vyp_percento2_sigma.setForeground(Color.BLACK);
+     vyp_percento3_sigma.setForeground(Color.BLACK);
+     vyp_percento4_sigma.setForeground(Color.BLACK);
+     DecimalFormatSymbols otherSymbols = new DecimalFormatSymbols();
+               otherSymbols.setDecimalSeparator('.');
+               DecimalFormat df = new DecimalFormat("###.###",otherSymbols);
+               
+         vyp_percento1_sigma.setText( df.format(X.get_vysledky_per_podiel_sigma()[1][0]) );
+         vyp_percento2_sigma.setText( df.format(X.get_vysledky_per_podiel_sigma()[1][1]) );
+         vyp_percento3_sigma.setText( df.format(X.get_vysledky_per_podiel_sigma()[1][2]) );
+         vyp_percento4_sigma.setText( df.format(X.get_vysledky_per_podiel_sigma()[1][3]) );
+        
+     }catch(NullPointerException e ){Swriter("no data");
+        vyp_percento1_sigma.setBackground(Color.ORANGE);
+        vyp_percento2_sigma.setForeground(Color.ORANGE);
+        vyp_percento3_sigma.setForeground(Color.ORANGE);
+        vyp_percento4_sigma.setForeground(Color.ORANGE);
+         vyp_percento1_sigma.setText( language.language_label(languageOption, 258) );
+         vyp_percento2_sigma.setText( language.language_label(languageOption, 258)  );
+         vyp_percento3_sigma.setText( language.language_label(languageOption, 258)  );
+         vyp_percento4_sigma.setText( language.language_label(languageOption, 258)  );
+    }}
     
     
     private void Button_Icon_arr_row_table_kotevny_usekActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button_Icon_arr_row_table_kotevny_usekActionPerformed
@@ -5951,7 +6024,7 @@ private void seticon() {
         X.set_vysledky_sily_MT(Variable_globeal_kotevny_usek.get(selekcia_for_name).get_vysledky_sily_MT());
         X.set_vysledky_tlaky6(Variable_globeal_kotevny_usek.get(selekcia_for_name).get_vysledky_tlaky6());
         X.set_vysledky_vid_priehyb_M(Variable_globeal_kotevny_usek.get(selekcia_for_name).get_vysledky_vid_priehyb_MT());
-              
+        X.set_per_podiel_sigma(Variable_globeal_kotevny_usek.get(selekcia_for_name).get_vysledky_per_podiel_sigma());
         
         }catch(Exception s){
         
@@ -6775,7 +6848,11 @@ private void seticon() {
         
         
         if(X.get_tables_number123()==2 || X.get_tables_number123()==3){
-        if(X.get_tables_number123()==3){jRadioButton_with_label_konecne.setSelected(true);}else{jRadioButton_with_label_prechodne.setSelected(true);}
+        if(X.get_tables_number123()==3){
+        jRadioButton_with_label_konecne.setSelected(true);
+        Variable_Tp_prechodna_doba=Variable_T0_zivotnost;
+        
+        }else{jRadioButton_with_label_prechodne.setSelected(true);}
        
         for(int i=0;i<14;i++){
          Variable_teploty_stav_rovnica[i]=X.get_teploty_MT()[i];   
@@ -6792,6 +6869,7 @@ private void seticon() {
         
         if(X.get_tables_number123()==1){
         jRadioButton_with_label_pociatocne.setSelected(true);
+        Variable_Tp_prechodna_doba = 0.0;
         for(int i=0;i<14;i++){
          Variable_teploty_stav_rovnica[i]=X.get_teploty_MT()[i];   
         }
@@ -7283,6 +7361,18 @@ private void seticon() {
               }
               pokus = input.nextLine();
               
+             double KOKOT = double_setter(13d);
+              //udate nazvnu pre tabbed panel KPB
+                    try {
+                        int cislo = Table_kotevne_useky.getSelectedRow();
+                        String nazov = Variable_globeal_kotevny_usek.get(cislo).get_name();
+                        jTabbedPane1.setTitleAt(1, language.language_label(languageOption, 250) + " - " + nazov);
+
+                    } catch (ArrayIndexOutOfBoundsException p) {
+                        jTabbedPane1.setTitleAt(1, language.language_label(languageOption, 250));
+
+                    }
+              
               
         } catch (FileNotFoundException ex) {
             Logger.getLogger(mainframe.class.getName()).log(Level.SEVERE, null, ex);
@@ -7294,6 +7384,7 @@ private void seticon() {
     
     public  double double_setter(double X){
         pretazenia_intomainframe();
+        color_the_percento_field_to_orange();
         return X;
            
            
@@ -7301,6 +7392,7 @@ private void seticon() {
     
     public double[] double_setter_array(double[] X){
         pretazenia_intomainframe();
+        color_the_percento_field_to_orange();
         return X;
            
        }
@@ -7362,6 +7454,12 @@ private void seticon() {
         
     }}
   
+    public void color_the_percento_field_to_orange(){
+     vyp_percento1_sigma.setForeground(Color.ORANGE);
+     vyp_percento2_sigma.setForeground(Color.ORANGE);
+     vyp_percento3_sigma.setForeground(Color.ORANGE);
+     vyp_percento4_sigma.setForeground(Color.ORANGE);
+    }
   
   }
 

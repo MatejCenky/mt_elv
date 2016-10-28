@@ -435,6 +435,7 @@ public static void constructor(){
 /*255*/  language.SK.add("1 - základná bezpečná oblasť");       language.CZ.add("I-SK");                     language.EN.add("I-SK");
 /*256*/  language.SK.add("2 - bezpečná oblasť");       language.CZ.add("I-SK");                     language.EN.add("I-SK");
 /*257*/  language.SK.add("3 - oblasť osobitných opatrení");       language.CZ.add("I-SK");                     language.EN.add("I-SK");
+/*258*/  language.SK.add("0.0");       language.CZ.add("I-SK");                     language.EN.add("I-SK");
 
 
          

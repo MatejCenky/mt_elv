@@ -3234,14 +3234,14 @@
                                     <Connection code="language.language_label(languageOption, 253)&#xd;&#xa;" type="code"/>
                                   </Title>
                                   <Editor/>
-                                  <Renderer editor="org.netbeans.modules.form.RADConnectionPropertyEditor"/>
+                                  <Renderer/>
                                 </Column>
                                 <Column maxWidth="-1" minWidth="-1" prefWidth="15" resizable="false">
                                   <Title editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
                                     <Connection code="language.language_label(languageOption, 254)&#xd;&#xa;" type="code"/>
                                   </Title>
                                   <Editor/>
-                                  <Renderer editor="org.netbeans.modules.form.RADConnectionPropertyEditor"/>
+                                  <Renderer/>
                                 </Column>
                               </TableColumnModel>
                             </Property>
