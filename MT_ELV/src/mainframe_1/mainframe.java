@@ -4237,19 +4237,19 @@ import mt_variables.State_equation_variables;
                                                                 double Tp_prechodna_doba){
          double[] result_T = new double[2];
  
-//            // set variables to state equation class 
-//            // - compute sigma_HT for conductor creeping variable - USING AVERAG YEAR TEMPERATURE
-//            // - compute thermal shift for selected temperature
-//            State_equation_variables State = new State_equation_variables(Conductor, stredna_rocna_teplota, -5, Kot_usek.get_zakladne_mech_napatie_lana_pre_minus5_over(), 1);
-//            state_equation.set_all_variables(State, Kot_usek.get_Ai_array(), Kot_usek.get_DeltaHi_array());
-//            double sigma_H_creeping = state_equation.compute_sigma_H_value(1, Kot_usek.get_str_rozpatie());
-         
-             // set variables to state equation class 
-            // - compute sigma_HT for conductor creeping variable - USING 0 degrees AVG YEAR TEMPERATURE
+            // set variables to state equation class 
+            // - compute sigma_HT for conductor creeping variable - USING AVERAG YEAR TEMPERATURE
             // - compute thermal shift for selected temperature
-            State_equation_variables State = new State_equation_variables(Conductor, 0d, -5d, Kot_usek.get_zakladne_mech_napatie_lana_pre_minus5_over(), 1);
+            State_equation_variables State = new State_equation_variables(Conductor, stredna_rocna_teplota, -5, Kot_usek.get_zakladne_mech_napatie_lana_pre_minus5_over(), 1);
             state_equation.set_all_variables(State, Kot_usek.get_Ai_array(), Kot_usek.get_DeltaHi_array());
-            double sigma_H_creeping = state_equation.compute_sigma_H(1, Kot_usek.get_str_rozpatie(),-5d,0d);
+            double sigma_H_creeping = state_equation.compute_sigma_H(1, Kot_usek.get_str_rozpatie(),-5d,stredna_rocna_teplota);
+         
+//             // set variables to state equation class 
+//            // - compute sigma_HT for conductor creeping variable - USING 0 degrees AVG YEAR TEMPERATURE
+//            // - compute thermal shift for selected temperature
+//            State_equation_variables State = new State_equation_variables(Conductor, 0d, -5d, Kot_usek.get_zakladne_mech_napatie_lana_pre_minus5_over(), 1);
+//            state_equation.set_all_variables(State, Kot_usek.get_Ai_array(), Kot_usek.get_DeltaHi_array());
+//            double sigma_H_creeping = state_equation.compute_sigma_H(1, Kot_usek.get_str_rozpatie(),-5d,0d);
 
             
             // set variables to conductor creeping class 
