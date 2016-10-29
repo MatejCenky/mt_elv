@@ -27,6 +27,7 @@ import java.awt.Color;
 import java.awt.Desktop;
 import java.awt.Point;
 import java.awt.Toolkit;
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -34,13 +35,14 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
-import javax.swing.JFrame;
-import javax.swing.JScrollPane;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.event.TableModelEvent;
@@ -54,10 +56,13 @@ import mt_math.conductor_creeping;
 import mt_math.overload;
 import mt_math.state_equation;
 import mt_math.vibration_protection;
-import mt_variables.Conductor_creeping_variables;
 import mt_variables.Conductor_variables;
 import mt_variables.Overload_variables;
 import mt_variables.State_equation_variables;
+import org.apache.pdfbox.pdmodel.PDDocument;
+import org.apache.pdfbox.rendering.ImageType;
+import org.apache.pdfbox.rendering.PDFRenderer;
+import org.apache.pdfbox.tools.imageio.ImageIOUtil;
 
 /**
  *
@@ -90,7 +95,8 @@ import mt_variables.State_equation_variables;
         setLocationRelativeTo(null);
         first_Start = true;
         povodna_hodnota_selekcie = 0;
-
+        current_pdf_page = 1;
+        pocet_pdf_stran = 0;
         existnewkotevnyusek = false;
         mainframeLodaed = false;
         teplotyser = false;
@@ -120,6 +126,8 @@ import mt_variables.State_equation_variables;
         Variable_Hi_array_nmv = null;
         Variable_pretazenia_stav_rovnica = new double[14];
         Variable_teploty_stav_rovnica = new double[14];
+        Textfield_cas.setText("00:00:00");
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mt_graphic/empty.png")));
         
         seticon();
         this.modelTable = (DefaultTableModel) Table_kotevne_useky.getModel();
@@ -630,6 +638,7 @@ import mt_variables.State_equation_variables;
         buttonGroup_pretazenia_vlystne_vypocitane = new javax.swing.ButtonGroup();
         buttonGroup_KPB_cas_vypoctu = new javax.swing.ButtonGroup();
         jPanel15 = new javax.swing.JPanel();
+        jTabbedPane2 = new javax.swing.JTabbedPane();
         jScrollPane4 = new javax.swing.JScrollPane();
         jPanel18 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
@@ -710,19 +719,6 @@ import mt_variables.State_equation_variables;
         TextField_tabulky_prechodna = new javax.swing.JTextField();
         TextField_tabulky_konecna = new javax.swing.JTextField();
         Label_tabulky2 = new javax.swing.JLabel();
-        jPanel1 = new javax.swing.JPanel();
-        Button_Icon_save = new javax.swing.JButton();
-        Button_Icon_save_as = new javax.swing.JButton();
-        Button_Icon_save_results = new javax.swing.JButton();
-        Button_Icon_delete_row_table_kotevny_usek = new javax.swing.JButton();
-        Button_Icon_arr_row_table_kotevny_usek = new javax.swing.JButton();
-        Button_Icon_calculate = new javax.swing.JButton();
-        Button_Icon_export_PDF = new javax.swing.JButton();
-        Button_Icon_select_all_kotevny_usek = new javax.swing.JButton();
-        Button_Icon_deselect_all_kotevny_usek = new javax.swing.JButton();
-        jPanel17 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        Label_status = new javax.swing.JLabel();
         jPanel19 = new javax.swing.JPanel();
         jPanel11 = new javax.swing.JPanel();
         Label_uroven_spolahlivosti = new javax.swing.JLabel();
@@ -817,6 +813,25 @@ import mt_variables.State_equation_variables;
         Table_KPB = new javax.swing.JTable();
         jPanel22 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
+        jPanel23 = new javax.swing.JPanel();
+        jLabel5 = new javax.swing.JLabel();
+        Button_pdf_pageup = new javax.swing.JButton();
+        Button_pdf_pagedown = new javax.swing.JButton();
+        Textfield_cas = new javax.swing.JTextField();
+        label_cas_vytvorenia = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        Button_Icon_save = new javax.swing.JButton();
+        Button_Icon_save_as = new javax.swing.JButton();
+        Button_Icon_save_results = new javax.swing.JButton();
+        Button_Icon_delete_row_table_kotevny_usek = new javax.swing.JButton();
+        Button_Icon_arr_row_table_kotevny_usek = new javax.swing.JButton();
+        Button_Icon_calculate = new javax.swing.JButton();
+        Button_Icon_export_PDF = new javax.swing.JButton();
+        Button_Icon_select_all_kotevny_usek = new javax.swing.JButton();
+        Button_Icon_deselect_all_kotevny_usek = new javax.swing.JButton();
+        jPanel17 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        Label_status = new javax.swing.JLabel();
 
         javax.swing.GroupLayout jPanel15Layout = new javax.swing.GroupLayout(jPanel15);
         jPanel15.setLayout(jPanel15Layout);
@@ -1638,7 +1653,7 @@ import mt_variables.State_equation_variables;
                     .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jRadioButton_with_pretazenia_vypocitana)
                         .addComponent(jRadioButton_with_pretazenia_vlastna)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(TextField_pretazenia_stav1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(TextField_pretazenia_stav2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1757,188 +1772,6 @@ import mt_variables.State_equation_variables;
                 .addContainerGap())
         );
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-
-        Button_Icon_save.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mt_graphic/Save-24.png"))); // NOI18N
-        Button_Icon_save.setFocusable(false);
-        Button_Icon_save.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        Button_Icon_save.setPreferredSize(new java.awt.Dimension(48, 48));
-        Button_Icon_save.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        Button_Icon_save.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Button_Icon_saveActionPerformed(evt);
-            }
-        });
-        Button_Icon_save.setToolTipText(language.language_label(languageOption, 53));
-
-        Button_Icon_save_as.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mt_graphic/Save-as-24.png"))); // NOI18N
-        Button_Icon_save_as.setFocusable(false);
-        Button_Icon_save_as.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        Button_Icon_save_as.setPreferredSize(new java.awt.Dimension(48, 48));
-        Button_Icon_save_as.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        Button_Icon_save_as.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Button_Icon_save_asActionPerformed(evt);
-            }
-        });
-        Button_Icon_save_as.setToolTipText(language.language_label(languageOption, 54));
-
-        Button_Icon_save_results.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mt_graphic/Save-results-24.png"))); // NOI18N
-        Button_Icon_save_results.setFocusable(false);
-        Button_Icon_save_results.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        Button_Icon_save_results.setPreferredSize(new java.awt.Dimension(48, 48));
-        Button_Icon_save_results.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        Button_Icon_save_results.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Button_Icon_save_resultsActionPerformed(evt);
-            }
-        });
-        Button_Icon_save_results.setToolTipText(language.language_label(languageOption, 55));
-
-        Button_Icon_delete_row_table_kotevny_usek.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mt_graphic/Delete Row-24.png"))); // NOI18N
-        Button_Icon_delete_row_table_kotevny_usek.setFocusable(false);
-        Button_Icon_delete_row_table_kotevny_usek.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        Button_Icon_delete_row_table_kotevny_usek.setPreferredSize(new java.awt.Dimension(48, 48));
-        Button_Icon_delete_row_table_kotevny_usek.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        Button_Icon_delete_row_table_kotevny_usek.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Button_Icon_delete_row_table_kotevny_usekActionPerformed(evt);
-            }
-        });
-        Button_Icon_delete_row_table_kotevny_usek.setToolTipText(language.language_label(languageOption, 57));
-
-        Button_Icon_arr_row_table_kotevny_usek.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mt_graphic/Add Row-24.png"))); // NOI18N
-        Button_Icon_arr_row_table_kotevny_usek.setFocusable(false);
-        Button_Icon_arr_row_table_kotevny_usek.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        Button_Icon_arr_row_table_kotevny_usek.setPreferredSize(new java.awt.Dimension(48, 48));
-        Button_Icon_arr_row_table_kotevny_usek.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        Button_Icon_arr_row_table_kotevny_usek.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Button_Icon_arr_row_table_kotevny_usekActionPerformed(evt);
-            }
-        });
-        Button_Icon_arr_row_table_kotevny_usek.setToolTipText(language.language_label(languageOption, 56));
-
-        Button_Icon_calculate.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mt_graphic/Calculator-24.png"))); // NOI18N
-        Button_Icon_calculate.setFocusable(false);
-        Button_Icon_calculate.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        Button_Icon_calculate.setPreferredSize(new java.awt.Dimension(48, 48));
-        Button_Icon_calculate.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        Button_Icon_calculate.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Button_Icon_calculateActionPerformed(evt);
-            }
-        });
-        Button_Icon_calculate.setToolTipText(language.language_label(languageOption, 58));
-
-        Button_Icon_export_PDF.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mt_graphic/PDF-24.png"))); // NOI18N
-        Button_Icon_export_PDF.setFocusable(false);
-        Button_Icon_export_PDF.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        Button_Icon_export_PDF.setPreferredSize(new java.awt.Dimension(48, 48));
-        Button_Icon_export_PDF.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        Button_Icon_export_PDF.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Button_Icon_export_PDFActionPerformed(evt);
-            }
-        });
-        Button_Icon_export_PDF.setToolTipText(language.language_label(languageOption, 59));
-
-        Button_Icon_select_all_kotevny_usek.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mt_graphic/Checked Checkbox-24.png"))); // NOI18N
-        Button_Icon_select_all_kotevny_usek.setFocusable(false);
-        Button_Icon_select_all_kotevny_usek.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        Button_Icon_select_all_kotevny_usek.setPreferredSize(new java.awt.Dimension(48, 48));
-        Button_Icon_select_all_kotevny_usek.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        Button_Icon_select_all_kotevny_usek.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Button_Icon_select_all_kotevny_usekActionPerformed(evt);
-            }
-        });
-        Button_Icon_select_all_kotevny_usek.setToolTipText(language.language_label(languageOption, 63));
-
-        Button_Icon_deselect_all_kotevny_usek.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mt_graphic/Close Window-24.png"))); // NOI18N
-        Button_Icon_deselect_all_kotevny_usek.setFocusable(false);
-        Button_Icon_deselect_all_kotevny_usek.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        Button_Icon_deselect_all_kotevny_usek.setPreferredSize(new java.awt.Dimension(48, 48));
-        Button_Icon_deselect_all_kotevny_usek.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        Button_Icon_deselect_all_kotevny_usek.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Button_Icon_deselect_all_kotevny_usekActionPerformed(evt);
-            }
-        });
-        Button_Icon_deselect_all_kotevny_usek.setToolTipText(language.language_label(languageOption, 64));
-
-        jLabel1.setText("Status : ");
-
-        Label_status.setText("jLabel2");
-
-        javax.swing.GroupLayout jPanel17Layout = new javax.swing.GroupLayout(jPanel17);
-        jPanel17.setLayout(jPanel17Layout);
-        jPanel17Layout.setHorizontalGroup(
-            jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel17Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1)
-                .addGap(18, 18, 18)
-                .addComponent(Label_status, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanel17Layout.setVerticalGroup(
-            jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel17Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Label_status)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(Button_Icon_save, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Button_Icon_save_as, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Button_Icon_save_results, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(46, 46, 46)
-                .addComponent(Button_Icon_arr_row_table_kotevny_usek, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Button_Icon_delete_row_table_kotevny_usek, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Button_Icon_select_all_kotevny_usek, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Button_Icon_deselect_all_kotevny_usek, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(53, 53, 53)
-                .addComponent(Button_Icon_calculate, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Button_Icon_export_PDF, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jPanel17, javax.swing.GroupLayout.PREFERRED_SIZE, 302, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(Button_Icon_save_as, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Button_Icon_save_results, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Button_Icon_save, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(Button_Icon_select_all_kotevny_usek, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Button_Icon_deselect_all_kotevny_usek, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Button_Icon_delete_row_table_kotevny_usek, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Button_Icon_arr_row_table_kotevny_usek, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Button_Icon_calculate, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Button_Icon_export_PDF, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel17, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(7, 7, 7))
-        );
-
         jPanel11.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
 
         Label_uroven_spolahlivosti.setText(language.language_label(languageOption, 140));
@@ -2003,7 +1836,7 @@ import mt_variables.State_equation_variables;
                                 .addComponent(TextField_srt_roc_teplota, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(Label_RTS_velicina7)
-                                .addGap(0, 1, Short.MAX_VALUE))
+                                .addGap(0, 0, Short.MAX_VALUE))
                             .addComponent(jComboBox_stav_KPB, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap())
         );
@@ -2738,10 +2571,10 @@ import mt_variables.State_equation_variables;
                     .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, 309, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jPanel8, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 287, Short.MAX_VALUE)
+                    .addComponent(jPanel8, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addComponent(jPanel7, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(0, 2, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel19Layout.setVerticalGroup(
             jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2893,7 +2726,7 @@ import mt_variables.State_equation_variables;
                         .addComponent(vyp_percento4_sigma, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(22, Short.MAX_VALUE))
         );
         jPanel20Layout.setVerticalGroup(
             jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -3049,7 +2882,7 @@ import mt_variables.State_equation_variables;
                 .addContainerGap()
                 .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 390, Short.MAX_VALUE)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 388, Short.MAX_VALUE)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -3109,7 +2942,7 @@ import mt_variables.State_equation_variables;
         jPanel21Layout.setHorizontalGroup(
             jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel21Layout.createSequentialGroup()
-                .addContainerGap(316, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -3117,7 +2950,7 @@ import mt_variables.State_equation_variables;
             jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel21Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane8, javax.swing.GroupLayout.DEFAULT_SIZE, 390, Short.MAX_VALUE)
+                .addComponent(jScrollPane8, javax.swing.GroupLayout.DEFAULT_SIZE, 388, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -3131,11 +2964,13 @@ import mt_variables.State_equation_variables;
         jPanel22.setLayout(jPanel22Layout);
         jPanel22Layout.setHorizontalGroup(
             jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jPanel22Layout.createSequentialGroup()
+                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                .addContainerGap())
         );
         jPanel22Layout.setVerticalGroup(
             jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 170, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout jPanel18Layout = new javax.swing.GroupLayout(jPanel18);
@@ -3143,9 +2978,16 @@ import mt_variables.State_equation_variables;
         jPanel18Layout.setHorizontalGroup(
             jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel18Layout.createSequentialGroup()
-                .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel18Layout.createSequentialGroup()
+                .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel18Layout.createSequentialGroup()
+                        .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jPanel5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jPanel4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jPanel20, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jPanel22, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(jPanel18Layout.createSequentialGroup()
                         .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(jPanel9, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                             .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -3153,26 +2995,17 @@ import mt_variables.State_equation_variables;
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jPanel19, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jPanel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel18Layout.createSequentialGroup()
-                        .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jPanel5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jPanel4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jPanel20, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jPanel22, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addGap(0, 0, 0))
+                            .addComponent(jPanel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel18Layout.setVerticalGroup(
             jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel18Layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(2, 2, 2)
                 .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanel19, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jTabbedPane1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel18Layout.createSequentialGroup()
                         .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -3203,18 +3036,285 @@ import mt_variables.State_equation_variables;
 
         jScrollPane4.setViewportView(jPanel18);
 
+        jTabbedPane2.addTab("tab1", jScrollPane4);
+
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mt_graphic/empty.png"))); // NOI18N
+
+        Button_pdf_pageup.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mt_graphic/Circled Chevron Up-24.png"))); // NOI18N
+        Button_pdf_pageup.setFocusable(false);
+        Button_pdf_pageup.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        Button_pdf_pageup.setPreferredSize(new java.awt.Dimension(48, 48));
+        Button_pdf_pageup.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        Button_pdf_pageup.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Button_pdf_pageupActionPerformed(evt);
+            }
+        });
+        Button_Icon_save_results.setToolTipText(language.language_label(languageOption, 55));
+
+        Button_pdf_pagedown.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mt_graphic/Circled Chevron Down-24.png"))); // NOI18N
+        Button_pdf_pagedown.setFocusable(false);
+        Button_pdf_pagedown.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        Button_pdf_pagedown.setPreferredSize(new java.awt.Dimension(48, 48));
+        Button_pdf_pagedown.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        Button_pdf_pagedown.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Button_pdf_pagedownActionPerformed(evt);
+            }
+        });
+        Button_Icon_save_results.setToolTipText(language.language_label(languageOption, 55));
+
+        Textfield_cas.setEditable(false);
+        Textfield_cas.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        Textfield_cas.setText("00:00:00");
+        Textfield_cas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Textfield_casActionPerformed(evt);
+            }
+        });
+
+        label_cas_vytvorenia.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        label_cas_vytvorenia.setText(language.language_label(languageOption, 261));
+
+        javax.swing.GroupLayout jPanel23Layout = new javax.swing.GroupLayout(jPanel23);
+        jPanel23.setLayout(jPanel23Layout);
+        jPanel23Layout.setHorizontalGroup(
+            jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel23Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(Button_pdf_pageup, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Button_pdf_pagedown, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(label_cas_vytvorenia, javax.swing.GroupLayout.DEFAULT_SIZE, 159, Short.MAX_VALUE)
+                    .addComponent(Textfield_cas))
+                .addGap(41, 41, 41)
+                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 648, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(217, Short.MAX_VALUE))
+        );
+        jPanel23Layout.setVerticalGroup(
+            jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel23Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel23Layout.createSequentialGroup()
+                        .addComponent(Button_pdf_pageup, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(Button_pdf_pagedown, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel23Layout.createSequentialGroup()
+                        .addComponent(label_cas_vytvorenia)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(Textfield_cas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(849, Short.MAX_VALUE))
+            .addGroup(jPanel23Layout.createSequentialGroup()
+                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        jTabbedPane2.addTab("tab2", jPanel23);
+
+        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        Button_Icon_save.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mt_graphic/Save-24.png"))); // NOI18N
+        Button_Icon_save.setFocusable(false);
+        Button_Icon_save.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        Button_Icon_save.setPreferredSize(new java.awt.Dimension(48, 48));
+        Button_Icon_save.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        Button_Icon_save.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Button_Icon_saveActionPerformed(evt);
+            }
+        });
+        Button_Icon_save.setToolTipText(language.language_label(languageOption, 53));
+
+        Button_Icon_save_as.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mt_graphic/Save-as-24.png"))); // NOI18N
+        Button_Icon_save_as.setFocusable(false);
+        Button_Icon_save_as.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        Button_Icon_save_as.setPreferredSize(new java.awt.Dimension(48, 48));
+        Button_Icon_save_as.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        Button_Icon_save_as.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Button_Icon_save_asActionPerformed(evt);
+            }
+        });
+        Button_Icon_save_as.setToolTipText(language.language_label(languageOption, 54));
+
+        Button_Icon_save_results.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mt_graphic/Save-results-24.png"))); // NOI18N
+        Button_Icon_save_results.setFocusable(false);
+        Button_Icon_save_results.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        Button_Icon_save_results.setPreferredSize(new java.awt.Dimension(48, 48));
+        Button_Icon_save_results.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        Button_Icon_save_results.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Button_Icon_save_resultsActionPerformed(evt);
+            }
+        });
+        Button_Icon_save_results.setToolTipText(language.language_label(languageOption, 55));
+
+        Button_Icon_delete_row_table_kotevny_usek.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mt_graphic/Delete Row-24.png"))); // NOI18N
+        Button_Icon_delete_row_table_kotevny_usek.setFocusable(false);
+        Button_Icon_delete_row_table_kotevny_usek.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        Button_Icon_delete_row_table_kotevny_usek.setPreferredSize(new java.awt.Dimension(48, 48));
+        Button_Icon_delete_row_table_kotevny_usek.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        Button_Icon_delete_row_table_kotevny_usek.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Button_Icon_delete_row_table_kotevny_usekActionPerformed(evt);
+            }
+        });
+        Button_Icon_delete_row_table_kotevny_usek.setToolTipText(language.language_label(languageOption, 57));
+
+        Button_Icon_arr_row_table_kotevny_usek.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mt_graphic/Add Row-24.png"))); // NOI18N
+        Button_Icon_arr_row_table_kotevny_usek.setFocusable(false);
+        Button_Icon_arr_row_table_kotevny_usek.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        Button_Icon_arr_row_table_kotevny_usek.setPreferredSize(new java.awt.Dimension(48, 48));
+        Button_Icon_arr_row_table_kotevny_usek.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        Button_Icon_arr_row_table_kotevny_usek.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Button_Icon_arr_row_table_kotevny_usekActionPerformed(evt);
+            }
+        });
+        Button_Icon_arr_row_table_kotevny_usek.setToolTipText(language.language_label(languageOption, 56));
+
+        Button_Icon_calculate.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mt_graphic/Calculator-24.png"))); // NOI18N
+        Button_Icon_calculate.setFocusable(false);
+        Button_Icon_calculate.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        Button_Icon_calculate.setPreferredSize(new java.awt.Dimension(48, 48));
+        Button_Icon_calculate.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        Button_Icon_calculate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Button_Icon_calculateActionPerformed(evt);
+            }
+        });
+        Button_Icon_calculate.setToolTipText(language.language_label(languageOption, 58));
+
+        Button_Icon_export_PDF.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mt_graphic/PDF-24.png"))); // NOI18N
+        Button_Icon_export_PDF.setFocusable(false);
+        Button_Icon_export_PDF.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        Button_Icon_export_PDF.setPreferredSize(new java.awt.Dimension(48, 48));
+        Button_Icon_export_PDF.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        Button_Icon_export_PDF.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Button_Icon_export_PDFActionPerformed(evt);
+            }
+        });
+        Button_Icon_export_PDF.setToolTipText(language.language_label(languageOption, 59));
+
+        Button_Icon_select_all_kotevny_usek.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mt_graphic/Checked Checkbox-24.png"))); // NOI18N
+        Button_Icon_select_all_kotevny_usek.setFocusable(false);
+        Button_Icon_select_all_kotevny_usek.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        Button_Icon_select_all_kotevny_usek.setPreferredSize(new java.awt.Dimension(48, 48));
+        Button_Icon_select_all_kotevny_usek.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        Button_Icon_select_all_kotevny_usek.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Button_Icon_select_all_kotevny_usekActionPerformed(evt);
+            }
+        });
+        Button_Icon_select_all_kotevny_usek.setToolTipText(language.language_label(languageOption, 63));
+
+        Button_Icon_deselect_all_kotevny_usek.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mt_graphic/Close Window-24.png"))); // NOI18N
+        Button_Icon_deselect_all_kotevny_usek.setFocusable(false);
+        Button_Icon_deselect_all_kotevny_usek.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        Button_Icon_deselect_all_kotevny_usek.setPreferredSize(new java.awt.Dimension(48, 48));
+        Button_Icon_deselect_all_kotevny_usek.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        Button_Icon_deselect_all_kotevny_usek.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Button_Icon_deselect_all_kotevny_usekActionPerformed(evt);
+            }
+        });
+        Button_Icon_deselect_all_kotevny_usek.setToolTipText(language.language_label(languageOption, 64));
+
+        jLabel1.setText("Status : ");
+
+        Label_status.setText("jLabel2");
+
+        javax.swing.GroupLayout jPanel17Layout = new javax.swing.GroupLayout(jPanel17);
+        jPanel17.setLayout(jPanel17Layout);
+        jPanel17Layout.setHorizontalGroup(
+            jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel17Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1)
+                .addGap(18, 18, 18)
+                .addComponent(Label_status, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel17Layout.setVerticalGroup(
+            jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel17Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Label_status)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(Button_Icon_save, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(Button_Icon_save_as, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(Button_Icon_save_results, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(46, 46, 46)
+                .addComponent(Button_Icon_arr_row_table_kotevny_usek, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(Button_Icon_delete_row_table_kotevny_usek, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(Button_Icon_select_all_kotevny_usek, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(Button_Icon_deselect_all_kotevny_usek, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(53, 53, 53)
+                .addComponent(Button_Icon_calculate, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(Button_Icon_export_PDF, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jPanel17, javax.swing.GroupLayout.PREFERRED_SIZE, 302, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(Button_Icon_save_as, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Button_Icon_save_results, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Button_Icon_save, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(Button_Icon_select_all_kotevny_usek, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Button_Icon_deselect_all_kotevny_usek, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Button_Icon_delete_row_table_kotevny_usek, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Button_Icon_arr_row_table_kotevny_usek, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Button_Icon_calculate, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Button_Icon_export_PDF, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel17, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(7, 7, 7))
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, 0)
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 1129, Short.MAX_VALUE))
+            .addComponent(jTabbedPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 1129, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jTabbedPane2)
+                .addGap(0, 0, 0))
         );
+
+        jTabbedPane2.setTitleAt(0, language.language_label(languageOption, 259));
+        jTabbedPane2.setTitleAt(1, language.language_label(languageOption, 260));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -3557,7 +3657,7 @@ import mt_variables.State_equation_variables;
         
         String temppdfname = "tempPdf.pdf";
         String userhome = System.getProperty("user.dir");
-        File f = new File(userhome + "\\" + temppdfname);
+        File f = new File(userhome + "\\temp\\" + temppdfname);
         if(f.exists() && !f.isDirectory()) { 
          warning_text =language.language_label(languageOption, 251); 
           
@@ -3589,7 +3689,7 @@ import mt_variables.State_equation_variables;
                                          );
             
             Document doc = new Document(PageSize.A4, 56, 28, 28, 28);
-            PdfWriter writer = PdfWriter.getInstance(doc, new FileOutputStream(temppdfname));
+            PdfWriter writer = PdfWriter.getInstance(doc, new FileOutputStream(userhome + "\\temp\\" +temppdfname));
             BaseFont bf = BaseFont.createFont("/mt_graphic/arial.ttf", BaseFont.IDENTITY_H, BaseFont.EMBEDDED); // pridanie našeho kodovanie pre slovensko vranci fontu 
             //BaseFont mojFOnt = BaseFont.createFont(BaseFont.HELVETICA, BaseFont.IDENTITY_H, BaseFont.EMBEDDED);
 
@@ -3951,7 +4051,36 @@ import mt_variables.State_equation_variables;
         } // do  pocet kotevnych usekov  
          doc.close();
          
-         File ff = new File(userhome + "\\" + temppdfname);
+         //create PNG from pdf
+         PDDocument document = PDDocument.load(new File(userhome + "\\temp\\" + temppdfname));
+         PDFRenderer pdfRenderer = new PDFRenderer(document);
+         pocet_pdf_stran= document.getNumberOfPages();
+            for (int page = 0; page < document.getNumberOfPages(); ++page) {
+                BufferedImage bim = pdfRenderer.renderImageWithDPI(page, 300, ImageType.RGB);
+
+                // suffix in filename will be used as the file format
+                ImageIOUtil.writeImage(bim,userhome + "\\temp\\" + temppdfname + "-" + (page + 1) + ".png", 300);
+            }
+            document.close();
+ // nahod prvu   
+     String path = userhome + "\\temp\\" + "tempPdf.pdf-" +"1" +".png";
+     ImageIcon icon = new ImageIcon(path);
+     java.awt.Image img = icon.getImage();
+     jLabel5.setIcon(new ImageIcon(img.getScaledInstance(jLabel5.getWidth(), jLabel5.getHeight(), java.awt.Image.SCALE_AREA_AVERAGING)));
+
+     
+    // jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource(path)));
+            
+            
+       // nahod cas do  textfield cas 
+        Calendar cal = Calendar.getInstance();
+        SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
+        Textfield_cas.setText(sdf.format(cal.getTime())); ;
+            
+            
+         
+         // open pdf in external viewer
+         File ff = new File(userhome + "\\temp\\" + temppdfname);
         if(ff.exists() && !ff.isDirectory()) { 
          Desktop.getDesktop().open(ff);;// do something
         }
@@ -5275,6 +5404,44 @@ import mt_variables.State_equation_variables;
        
     }//GEN-LAST:event_Table_KPBMouseMoved
 
+    private void Button_pdf_pageupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button_pdf_pageupActionPerformed
+      
+     if(pocet_pdf_stran == 0){}else{   
+     current_pdf_page=current_pdf_page+1;
+
+     if ( current_pdf_page > pocet_pdf_stran){ 
+     current_pdf_page=1;   
+     }
+     String userhome = System.getProperty("user.dir"); 
+     String path = userhome + "\\temp\\" + "tempPdf.pdf-" +current_pdf_page +".png";
+     ImageIcon icon = new ImageIcon(path);
+     java.awt.Image img = icon.getImage();
+     jLabel5.setIcon(new ImageIcon(img.getScaledInstance(jLabel5.getWidth(), jLabel5.getHeight(), java.awt.Image.SCALE_AREA_AVERAGING)));
+     }  
+    }//GEN-LAST:event_Button_pdf_pageupActionPerformed
+
+    private void Button_pdf_pagedownActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button_pdf_pagedownActionPerformed
+      if(pocet_pdf_stran == 0){}else{   
+     current_pdf_page=current_pdf_page-1;
+
+     if ( current_pdf_page < 1){ 
+     current_pdf_page=pocet_pdf_stran;   
+     }
+     String userhome = System.getProperty("user.dir"); 
+     String path = userhome + "\\temp\\" + "tempPdf.pdf-" +current_pdf_page +".png";
+     ImageIcon icon = new ImageIcon(path);
+     java.awt.Image img = icon.getImage();
+     jLabel5.setIcon(new ImageIcon(img.getScaledInstance(jLabel5.getWidth(), jLabel5.getHeight(), java.awt.Image.SCALE_AREA_AVERAGING)));
+     } 
+        
+        
+        
+    }//GEN-LAST:event_Button_pdf_pagedownActionPerformed
+
+    private void Textfield_casActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Textfield_casActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Textfield_casActionPerformed
+
   public static void lanochangeinDatabaze() {
   nacitatDatabazuLan();      
         
@@ -5332,6 +5499,8 @@ import mt_variables.State_equation_variables;
     private javax.swing.JButton Button_Icon_save_results;
     private javax.swing.JButton Button_Icon_select_all_kotevny_usek;
     private javax.swing.JButton Button_namrazova_oblast;
+    private javax.swing.JButton Button_pdf_pagedown;
+    private javax.swing.JButton Button_pdf_pageup;
     private static javax.swing.JLabel Label_KPB;
     private static javax.swing.JLabel Label_KPB_typ_terenu;
     private javax.swing.JLabel Label_RTS;
@@ -5434,6 +5603,7 @@ import mt_variables.State_equation_variables;
     private javax.swing.JTextField TextField_vetrova_oblast_C0;
     private javax.swing.JTextField TextField_vetrova_oblast_Cdir;
     private javax.swing.JTextField TextField_zakladne_mech_lana_minus5;
+    private javax.swing.JTextField Textfield_cas;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.ButtonGroup buttonGroup_Bi;
     private javax.swing.ButtonGroup buttonGroup_C0;
@@ -5455,6 +5625,7 @@ import mt_variables.State_equation_variables;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel11;
@@ -5470,6 +5641,7 @@ import mt_variables.State_equation_variables;
     private javax.swing.JPanel jPanel20;
     private javax.swing.JPanel jPanel21;
     private javax.swing.JPanel jPanel22;
+    private javax.swing.JPanel jPanel23;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
@@ -5506,6 +5678,7 @@ import mt_variables.State_equation_variables;
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JScrollPane jScrollPane8;
     private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JTabbedPane jTabbedPane2;
     private javax.swing.JTextField jTextField_datum;
     private javax.swing.JTextField jTextField_nadpis_pre_prechodna;
     private javax.swing.JTextField jTextField_nazov_SOPS;
@@ -5518,6 +5691,7 @@ import mt_variables.State_equation_variables;
     private javax.swing.JTextField jTextField_vypracoval;
     private javax.swing.JTextArea jTextPane_KPB_typ_terenu;
     private javax.swing.JTextArea jTextPane_char_terenu;
+    private javax.swing.JLabel label_cas_vytvorenia;
     private javax.swing.JTextField percento1_sigma;
     private javax.swing.JTextField percento2_sigma;
     private javax.swing.JTextField percento3_sigma;
@@ -5541,7 +5715,8 @@ private static boolean selection_kotevny_usek= true;
 private static int povodna_hodnota_selekcie=0;
 private static boolean  Calculation_done=false;
 private static boolean loaded_file=false;
-
+private static int pocet_pdf_stran = 0;
+private static int current_pdf_page = 1;
 private static String project_name;
 private static String project_filename="";
 private static String project_filepath="";

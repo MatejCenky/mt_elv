@@ -436,6 +436,10 @@ public static void constructor(){
 /*256*/  language.SK.add("2 - bezpečná oblasť");       language.CZ.add("I-SK");                     language.EN.add("I-SK");
 /*257*/  language.SK.add("3 - oblasť osobitných opatrení");       language.CZ.add("I-SK");                     language.EN.add("I-SK");
 /*258*/  language.SK.add("0.0");       language.CZ.add("I-SK");                     language.EN.add("I-SK");
+/*259*/  language.SK.add("Dizajn manažér MT3");       language.CZ.add("I-SK");                     language.EN.add("I-SK");
+/*260*/  language.SK.add("Náhľad exportu pdf");       language.CZ.add("I-SK");                     language.EN.add("I-SK");
+/*261*/  language.SK.add("Čas vytvorenia pdf náhľadu");       language.CZ.add("I-SK");                     language.EN.add("I-SK");
+
 
 
          
