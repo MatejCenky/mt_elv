@@ -719,6 +719,7 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
         TextField_tabulky_prechodna = new javax.swing.JTextField();
         TextField_tabulky_konecna = new javax.swing.JTextField();
         Label_tabulky2 = new javax.swing.JLabel();
+        jRadioButton_with_label_pociatocne1 = new javax.swing.JRadioButton();
         jPanel19 = new javax.swing.JPanel();
         jPanel11 = new javax.swing.JPanel();
         Label_uroven_spolahlivosti = new javax.swing.JLabel();
@@ -765,6 +766,8 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
         TextField_hcmean_vpocitana = new javax.swing.JTextField();
         jRadioButton_with_label_vypoctana = new javax.swing.JRadioButton();
         Label_stredna_vyska_vodicov_nad_terenom = new javax.swing.JLabel();
+        Label_RTS_velicina9 = new javax.swing.JLabel();
+        Label_RTS_velicina10 = new javax.swing.JLabel();
         jPanel8 = new javax.swing.JPanel();
         Label_vybrana_namrazova_oblast = new javax.swing.JLabel();
         Button_namrazova_oblast = new javax.swing.JButton();
@@ -826,12 +829,14 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
         Button_Icon_delete_row_table_kotevny_usek = new javax.swing.JButton();
         Button_Icon_arr_row_table_kotevny_usek = new javax.swing.JButton();
         Button_Icon_calculate = new javax.swing.JButton();
-        Button_Icon_export_PDF = new javax.swing.JButton();
+        Button_Icon_export_PDF_internal = new javax.swing.JButton();
         Button_Icon_select_all_kotevny_usek = new javax.swing.JButton();
         Button_Icon_deselect_all_kotevny_usek = new javax.swing.JButton();
         jPanel17 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         Label_status = new javax.swing.JLabel();
+        Button_Icon_export_PDF_external = new javax.swing.JButton();
+        Button_Icon_export_PDF2_save_as = new javax.swing.JButton();
 
         javax.swing.GroupLayout jPanel15Layout = new javax.swing.GroupLayout(jPanel15);
         jPanel15.setLayout(jPanel15Layout);
@@ -1729,15 +1734,26 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
 
         Label_tabulky2.setText(language.language_label(languageOption, 101));
 
+        buttonGroup_tabulka.add(jRadioButton_with_label_pociatocne1);
+        jRadioButton_with_label_pociatocne1.setText(language.language_label(languageOption, 262));
+        jRadioButton_with_label_pociatocne1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButton_with_label_pociatocne1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(Label_tabulky, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jRadioButton_with_label_pociatocne, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addComponent(Label_tabulky, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jRadioButton_with_label_pociatocne, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jRadioButton_with_label_pociatocne1, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel6Layout.createSequentialGroup()
@@ -1768,7 +1784,8 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
                     .addComponent(TextField_tabulky_prechodna, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(TextField_tabulky_konecna, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Label_tabulky1)
-                    .addComponent(Label_tabulky2))
+                    .addComponent(Label_tabulky2)
+                    .addComponent(jRadioButton_with_label_pociatocne1, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
@@ -2244,6 +2261,10 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
 
         Label_stredna_vyska_vodicov_nad_terenom.setText(language.language_label(languageOption, 94));
 
+        Label_RTS_velicina9.setText("m");
+
+        Label_RTS_velicina10.setText("m");
+
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
         jPanel7Layout.setHorizontalGroup(
@@ -2262,7 +2283,11 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
                         .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(TextField_hcmean_vpocitana, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(TextField_hcmean_vlastna, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(41, 41, 41))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(Label_RTS_velicina9)
+                            .addComponent(Label_RTS_velicina10))
+                        .addGap(21, 21, 21))))
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2272,11 +2297,13 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(TextField_hcmean_vpocitana, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jRadioButton_with_label_vypoctana))
+                    .addComponent(jRadioButton_with_label_vypoctana)
+                    .addComponent(Label_RTS_velicina9))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jRadioButton_with_label_vlastna)
-                    .addComponent(TextField_hcmean_vlastna, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(TextField_hcmean_vlastna, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Label_RTS_velicina10))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -3091,7 +3118,7 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
                     .addComponent(Textfield_cas))
                 .addGap(41, 41, 41)
                 .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 648, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(217, Short.MAX_VALUE))
+                .addContainerGap(233, Short.MAX_VALUE))
         );
         jPanel23Layout.setVerticalGroup(
             jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -3188,17 +3215,17 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
         });
         Button_Icon_calculate.setToolTipText(language.language_label(languageOption, 58));
 
-        Button_Icon_export_PDF.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mt_graphic/PDF-24.png"))); // NOI18N
-        Button_Icon_export_PDF.setFocusable(false);
-        Button_Icon_export_PDF.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        Button_Icon_export_PDF.setPreferredSize(new java.awt.Dimension(48, 48));
-        Button_Icon_export_PDF.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        Button_Icon_export_PDF.addActionListener(new java.awt.event.ActionListener() {
+        Button_Icon_export_PDF_internal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mt_graphic/PDF-24.png"))); // NOI18N
+        Button_Icon_export_PDF_internal.setFocusable(false);
+        Button_Icon_export_PDF_internal.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        Button_Icon_export_PDF_internal.setPreferredSize(new java.awt.Dimension(48, 48));
+        Button_Icon_export_PDF_internal.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        Button_Icon_export_PDF_internal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Button_Icon_export_PDFActionPerformed(evt);
+                Button_Icon_export_PDF_internalActionPerformed(evt);
             }
         });
-        Button_Icon_export_PDF.setToolTipText(language.language_label(languageOption, 59));
+        Button_Icon_export_PDF_internal.setToolTipText(language.language_label(languageOption, 263));
 
         Button_Icon_select_all_kotevny_usek.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mt_graphic/Checked Checkbox-24.png"))); // NOI18N
         Button_Icon_select_all_kotevny_usek.setFocusable(false);
@@ -3224,30 +3251,44 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
         });
         Button_Icon_deselect_all_kotevny_usek.setToolTipText(language.language_label(languageOption, 64));
 
-        jLabel1.setText("Status : ");
-
-        Label_status.setText("jLabel2");
-
         javax.swing.GroupLayout jPanel17Layout = new javax.swing.GroupLayout(jPanel17);
         jPanel17.setLayout(jPanel17Layout);
         jPanel17Layout.setHorizontalGroup(
             jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel17Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1)
-                .addGap(18, 18, 18)
-                .addComponent(Label_status, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGap(0, 149, Short.MAX_VALUE)
         );
         jPanel17Layout.setVerticalGroup(
             jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel17Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Label_status)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addGap(0, 0, Short.MAX_VALUE)
         );
+
+        jLabel1.setText("Status : ");
+
+        Label_status.setText("jLabel2");
+
+        Button_Icon_export_PDF_external.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mt_graphic/PDFexternal-24.png"))); // NOI18N
+        Button_Icon_export_PDF_external.setFocusable(false);
+        Button_Icon_export_PDF_external.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        Button_Icon_export_PDF_external.setPreferredSize(new java.awt.Dimension(48, 48));
+        Button_Icon_export_PDF_external.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        Button_Icon_export_PDF_external.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Button_Icon_export_PDF_externalActionPerformed(evt);
+            }
+        });
+        Button_Icon_export_PDF_internal.setToolTipText(language.language_label(languageOption, 264));
+
+        Button_Icon_export_PDF2_save_as.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mt_graphic/PDFas-24.png"))); // NOI18N
+        Button_Icon_export_PDF2_save_as.setFocusable(false);
+        Button_Icon_export_PDF2_save_as.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        Button_Icon_export_PDF2_save_as.setPreferredSize(new java.awt.Dimension(48, 48));
+        Button_Icon_export_PDF2_save_as.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        Button_Icon_export_PDF2_save_as.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Button_Icon_export_PDF2_save_asActionPerformed(evt);
+            }
+        });
+        Button_Icon_export_PDF_internal.setToolTipText(language.language_label(languageOption, 265));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -3271,9 +3312,17 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
                 .addGap(53, 53, 53)
                 .addComponent(Button_Icon_calculate, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Button_Icon_export_PDF, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jPanel17, javax.swing.GroupLayout.PREFERRED_SIZE, 302, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(Button_Icon_export_PDF_internal, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(3, 3, 3)
+                .addComponent(Button_Icon_export_PDF_external, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(Button_Icon_export_PDF2_save_as, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(117, 117, 117)
+                .addComponent(jPanel17, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel1)
+                .addGap(18, 18, 18)
+                .addComponent(Label_status, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -3284,15 +3333,24 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
                     .addComponent(Button_Icon_save_results, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Button_Icon_save, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(Button_Icon_select_all_kotevny_usek, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Button_Icon_deselect_all_kotevny_usek, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Button_Icon_delete_row_table_kotevny_usek, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Button_Icon_arr_row_table_kotevny_usek, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Button_Icon_calculate, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Button_Icon_export_PDF, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel17, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(Label_status)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(Button_Icon_export_PDF2_save_as, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Button_Icon_export_PDF_external, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(Button_Icon_select_all_kotevny_usek, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(Button_Icon_deselect_all_kotevny_usek, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(Button_Icon_delete_row_table_kotevny_usek, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(Button_Icon_arr_row_table_kotevny_usek, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(Button_Icon_calculate, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(Button_Icon_export_PDF_internal, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jPanel17, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
                 .addGap(7, 7, 7))
         );
 
@@ -3300,7 +3358,7 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 1129, Short.MAX_VALUE)
+            .addComponent(jTabbedPane2)
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
@@ -3375,7 +3433,10 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
          array_teploty_stav_rovnica_pociatocne_loader_setter();
          Jcombo_stav_KPB_setter();
          one_pretazenia_setter();
+         
          array_pretaezenia_stav_rovnica_loader_setter();
+         
+         double kokot = double_setter(0d);
          teplotyser=true;
          PDF_VAR_typ_tabulky =1;
     }//GEN-LAST:event_jRadioButton_with_label_pociatocneActionPerformed
@@ -3402,6 +3463,7 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
          array_teploty_stav_rovnica_konecne_loader_setter();
          
          Jcombo_stav_KPB_setter();
+         double kokot = double_setter(0d);
          teplotyser=true;
          PDF_VAR_typ_tabulky =2;
     }//GEN-LAST:event_jRadioButton_with_label_prechodneActionPerformed
@@ -3432,6 +3494,8 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
         if (teplotyser == false){ // vloz prvu hodnotu
         Variable_vybrany_stav_pre_KPB=Variable_teploty_stav_rovnica[0];
         }
+        
+        double kokot = double_setter(0d);
         teplotyser=true;
         PDF_VAR_typ_tabulky =3;
     }//GEN-LAST:event_jRadioButton_with_label_konecneActionPerformed
@@ -3639,12 +3703,22 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
         }
     }//GEN-LAST:event_Button_Icon_select_all_kotevny_usekActionPerformed
 
-    private void Button_Icon_export_PDFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button_Icon_export_PDFActionPerformed
+    private void Button_Icon_export_PDF_internalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button_Icon_export_PDF_internalActionPerformed
         
+        pdf_internal=true;
+        pdf_external=false;
+        pdf_as=false;
+        pdf_manager();
+        
+    }//GEN-LAST:event_Button_Icon_export_PDF_internalActionPerformed
+
+    private void pdf_manager(){
+    
         String warning_text = "empty";       
         Button_Icon_calculate.doClick();
         String text="No mama dont cry";
         Boolean madatavprvomstlpciOtaznik = false;
+        
         
         for(int i =0;i<Variable_globeal_kotevny_usek.size();i++ ){  // cyklus pre všetky existujuce
         if(Table_kotevne_useky.getValueAt(i, 0).equals(true)){      // zisti  je zaskrtnuty prv ysstlpc ak nie vypis warning
@@ -3653,15 +3727,20 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
         
         if(madatavprvomstlpciOtaznik.equals(true)){
         
+           
         try {
         
         String temppdfname = "tempPdf.pdf";
         String userhome = System.getProperty("user.dir");
+        
+         
         File f = new File(userhome + "\\temp\\" + temppdfname);
         if(f.exists() && !f.isDirectory()) { 
          warning_text =language.language_label(languageOption, 251); 
-          
+        
+         if(pdf_as == false){ // ak DF save nerob nič ak je ootvorene nevadi  
          f.delete();// do something
+        }
         }    
             
             
@@ -3689,7 +3768,31 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
                                          );
             
             Document doc = new Document(PageSize.A4, 56, 28, 28, 28);
+             String pdf_file_path_absolute ="null";
+            if(pdf_as==true){
+            
+                
+            String user_path = ""   ;  
+              
+        // ak je zadaná špec lokaciakde ukladať tak tam ak nide default priečion kde existuje
+         JFileChooser chooser;
+        if(user_path.equals("")){
+         chooser = new JFileChooser(userhome + "");}
+        else{
+          chooser = new JFileChooser(user_path);}
+        
+          //key files are stored in resources
+                                     // whitch type of files are we looking for
+        chooser.setDialogTitle(language.language_label(languageOption, 266));   // title for Jfile chooser window
+        chooser.showSaveDialog(null);
+        File fi = chooser.getSelectedFile(); 
+            
+           
+              pdf_file_path_absolute = fi.getAbsolutePath();  
+            PdfWriter writer = PdfWriter.getInstance(doc,new FileOutputStream( pdf_file_path_absolute));    
+            }else{
             PdfWriter writer = PdfWriter.getInstance(doc, new FileOutputStream(userhome + "\\temp\\" +temppdfname));
+            }
             BaseFont bf = BaseFont.createFont("/mt_graphic/arial.ttf", BaseFont.IDENTITY_H, BaseFont.EMBEDDED); // pridanie našeho kodovanie pre slovensko vranci fontu 
             //BaseFont mojFOnt = BaseFont.createFont(BaseFont.HELVETICA, BaseFont.IDENTITY_H, BaseFont.EMBEDDED);
 
@@ -4050,7 +4153,7 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
         } // if check box enabled
         } // do  pocet kotevnych usekov  
          doc.close();
-         
+         if(pdf_internal == true){
          //create PNG from pdf
          PDDocument document = PDDocument.load(new File(userhome + "\\temp\\" + temppdfname));
          PDFRenderer pdfRenderer = new PDFRenderer(document);
@@ -4067,24 +4170,37 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
      ImageIcon icon = new ImageIcon(path);
      java.awt.Image img = icon.getImage();
      jLabel5.setIcon(new ImageIcon(img.getScaledInstance(jLabel5.getWidth(), jLabel5.getHeight(), java.awt.Image.SCALE_AREA_AVERAGING)));
-
-     
-    // jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource(path)));
-            
+         
+       
             
        // nahod cas do  textfield cas 
         Calendar cal = Calendar.getInstance();
         SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
         Textfield_cas.setText(sdf.format(cal.getTime())); ;
-            
-            
+
+         } 
          
-         // open pdf in external viewer
+         // opeing in  extenaô viewer         
+         if(pdf_external ==  true) {
+         
          File ff = new File(userhome + "\\temp\\" + temppdfname);
         if(ff.exists() && !ff.isDirectory()) { 
-         Desktop.getDesktop().open(ff);;// do something
+         Desktop.getDesktop().open(ff);// do something
         }
-        
+         }
+         
+         if(pdf_as ==  true) {
+         
+         File ff = new File(pdf_file_path_absolute);
+        if(ff.exists() && !ff.isDirectory()) { 
+         Desktop.getDesktop().open(ff);// do something
+        }
+         }
+         
+         
+         
+         
+         
         }catch(NullPointerException e){  // catch for cycle and kotevny usek data
            warning_sign(warning_text);     
         } catch (DocumentException | FileNotFoundException ex) {
@@ -4099,8 +4215,8 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
         }
         
         
-    }//GEN-LAST:event_Button_Icon_export_PDFActionPerformed
-
+    }
+    
     private void Button_Icon_calculateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button_Icon_calculateActionPerformed
         String warning_text = "empty";
         if (mainframeLodaed == true) {
@@ -5442,6 +5558,57 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
         // TODO add your handling code here:
     }//GEN-LAST:event_Textfield_casActionPerformed
 
+    private void jRadioButton_with_label_pociatocne1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton_with_label_pociatocne1ActionPerformed
+       
+        Variable_T0_zivotnost=doubleChecker_short_answer(TextField_tabulky_konecna)*24*365;
+       Variable_Tp_prechodna_doba=0.0;
+       
+         TextField_teploha_stav1.setText("-30");TextField_teploha_stav1.setEnabled(false);
+         TextField_teploha_stav2.setText("-20");TextField_teploha_stav2.setEnabled(true);
+         TextField_teploha_stav3.setText("-10");TextField_teploha_stav3.setEnabled(true);
+         TextField_teploha_stav4.setText("-5");TextField_teploha_stav4.setEnabled(false);
+         TextField_teploha_stav5.setText("-5+N");TextField_teploha_stav5.setEnabled(false);
+         TextField_teploha_stav6.setText("-5+V");TextField_teploha_stav6.setEnabled(false);
+         TextField_teploha_stav7.setText("-5+Nv");TextField_teploha_stav7.setEnabled(false);
+         TextField_teploha_stav8.setText("-5+vn");TextField_teploha_stav8.setEnabled(false);
+         TextField_teploha_stav9.setText("0");TextField_teploha_stav9.setEnabled(false);
+         TextField_teploha_stav10.setText("10");TextField_teploha_stav10.setEnabled(true);
+         TextField_teploha_stav11.setText("20");TextField_teploha_stav11.setEnabled(true);
+         TextField_teploha_stav12.setText("40");TextField_teploha_stav12.setEnabled(true);
+         TextField_teploha_stav13.setText("60");TextField_teploha_stav13.setEnabled(true);
+         TextField_teploha_stav14.setText("80");TextField_teploha_stav14.setEnabled(false);
+         
+         array_teploty_stav_rovnica_konecne_loader_setter();
+         Jcombo_stav_KPB_setter();
+        
+         one_pretazenia_setter();
+         array_pretaezenia_stav_rovnica_loader_setter();
+         
+         double kokot = double_setter(0d);
+         teplotyser=true;
+         PDF_VAR_typ_tabulky =1;
+        
+        
+    }//GEN-LAST:event_jRadioButton_with_label_pociatocne1ActionPerformed
+
+    private void Button_Icon_export_PDF_externalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button_Icon_export_PDF_externalActionPerformed
+       
+        pdf_internal=false;
+        pdf_external=true;
+        pdf_as=false;
+        pdf_manager();
+        
+    }//GEN-LAST:event_Button_Icon_export_PDF_externalActionPerformed
+
+    private void Button_Icon_export_PDF2_save_asActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button_Icon_export_PDF2_save_asActionPerformed
+        
+        pdf_internal=false;
+        pdf_external=false;
+        pdf_as=true;
+        pdf_manager();
+        
+    }//GEN-LAST:event_Button_Icon_export_PDF2_save_asActionPerformed
+
   public static void lanochangeinDatabaze() {
   nacitatDatabazuLan();      
         
@@ -5493,7 +5660,9 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
     private javax.swing.JButton Button_Icon_calculate;
     private javax.swing.JButton Button_Icon_delete_row_table_kotevny_usek;
     private javax.swing.JButton Button_Icon_deselect_all_kotevny_usek;
-    private javax.swing.JButton Button_Icon_export_PDF;
+    private javax.swing.JButton Button_Icon_export_PDF2_save_as;
+    private javax.swing.JButton Button_Icon_export_PDF_external;
+    private javax.swing.JButton Button_Icon_export_PDF_internal;
     private javax.swing.JButton Button_Icon_save;
     private javax.swing.JButton Button_Icon_save_as;
     private javax.swing.JButton Button_Icon_save_results;
@@ -5506,6 +5675,7 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
     private javax.swing.JLabel Label_RTS;
     private javax.swing.JLabel Label_RTS_velicina;
     private javax.swing.JLabel Label_RTS_velicina1;
+    private javax.swing.JLabel Label_RTS_velicina10;
     private javax.swing.JLabel Label_RTS_velicina2;
     private javax.swing.JLabel Label_RTS_velicina3;
     private javax.swing.JLabel Label_RTS_velicina4;
@@ -5513,6 +5683,7 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
     private javax.swing.JLabel Label_RTS_velicina6;
     private javax.swing.JLabel Label_RTS_velicina7;
     private javax.swing.JLabel Label_RTS_velicina8;
+    private javax.swing.JLabel Label_RTS_velicina9;
     private javax.swing.JLabel Label__Bi;
     private javax.swing.JLabel Label__Kh;
     private javax.swing.JLabel Label__Klc;
@@ -5663,6 +5834,7 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
     private javax.swing.JRadioButton jRadioButton_vetrova_oblast_Cdir_vlastna;
     private javax.swing.JRadioButton jRadioButton_with_label_konecne;
     private javax.swing.JRadioButton jRadioButton_with_label_pociatocne;
+    private javax.swing.JRadioButton jRadioButton_with_label_pociatocne1;
     private javax.swing.JRadioButton jRadioButton_with_label_prechodne;
     private javax.swing.JRadioButton jRadioButton_with_label_rozpate_previsenia;
     private javax.swing.JRadioButton jRadioButton_with_label_rozpatie_klasicky;
@@ -5721,6 +5893,10 @@ private static String project_name;
 private static String project_filename="";
 private static String project_filepath="";
 private static boolean project_save_as;
+private static boolean pdf_internal=false;
+private static boolean pdf_external=false;
+private static boolean pdf_as=false;
+
 
 //namrazove oblasti premene
 public static Object[] hodnoty_namrazove_oblasti = new Object[3];
@@ -7026,8 +7202,9 @@ private void seticon() {
         if(X.get_tables_number123()==3){
         jRadioButton_with_label_konecne.setSelected(true);
         Variable_Tp_prechodna_doba=Variable_T0_zivotnost;
+        PDF_VAR_typ_tabulky = 3;
         
-        }else{jRadioButton_with_label_prechodne.setSelected(true);}
+        }else{jRadioButton_with_label_prechodne.setSelected(true); PDF_VAR_typ_tabulky = 2;}
        
         for(int i=0;i<14;i++){
          Variable_teploty_stav_rovnica[i]=X.get_teploty_MT()[i];   
@@ -7056,9 +7233,25 @@ private void seticon() {
         TextField_teploha_stav12.setText(df0.format(X.get_teploty_MT()[11]));
          TextField_teploha_stav13.setText(df0.format(X.get_teploty_MT()[12]));
           TextField_teploha_stav14.setText(df0.format(X.get_teploty_MT()[13]));
-        
+        PDF_VAR_typ_tabulky = 1;
         
         }
+        if(X.get_tables_number123()==4){
+        jRadioButton_with_label_pociatocne1.setSelected(true);
+        Variable_Tp_prechodna_doba = 0.0;
+        for(int i=0;i<14;i++){
+         Variable_teploty_stav_rovnica[i]=X.get_teploty_MT()[i];   
+        }
+        TextField_teploha_stav2.setText(df0.format(X.get_teploty_MT()[1]));
+        TextField_teploha_stav3.setText(df0.format(X.get_teploty_MT()[2]));
+        TextField_teploha_stav10.setText(df0.format(X.get_teploty_MT()[9]));
+        TextField_teploha_stav11.setText(df0.format(X.get_teploty_MT()[10]));
+        TextField_teploha_stav12.setText(df0.format(X.get_teploty_MT()[11]));
+        TextField_teploha_stav13.setText(df0.format(X.get_teploty_MT()[12]));
+        PDF_VAR_typ_tabulky = 1;
+        
+        }
+        
         
          jRadioButton_with_pretazenia_vypocitana.setSelected(X.get_pretazenia_vypocitane());
     
@@ -7159,6 +7352,7 @@ private void seticon() {
             if(jRadioButton_with_label_pociatocne.isSelected()== true){cislo=1;}
             if(jRadioButton_with_label_prechodne.isSelected()== true){cislo=2;}
             if(jRadioButton_with_label_konecne.isSelected()== true){cislo=3;}
+            if(jRadioButton_with_label_pociatocne1.isSelected()== true){cislo=4;}
             fw.println(   cislo      );
             
             fw.println(   TextField_tabulky_prechodna.getText()      );

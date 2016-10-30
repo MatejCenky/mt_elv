@@ -185,7 +185,7 @@ public static void constructor(){
 // main_frame tabulky cas
 
 /*97*/  language.SK.add("Tabuľky");                     language.CZ.add("Ulozit cestu");                     language.EN.add("Save path");
-/*98*/  language.SK.add("Počiatočné");                     language.CZ.add("Ulozit cestu");                     language.EN.add("Save path");
+/*98*/  language.SK.add("Počiatočné a)");                     language.CZ.add("Ulozit cestu");                     language.EN.add("Save path");
 /*99*/  language.SK.add("Prechodné");                     language.CZ.add("Ulozit cestu");                     language.EN.add("Save path");
 /*100*/  language.SK.add("Konečné");                     language.CZ.add("Ulozit cestu");                     language.EN.add("Save path");
 /*101*/  language.SK.add("Roky");                     language.CZ.add("Ulozit cestu");                     language.EN.add("Save path");
@@ -439,6 +439,15 @@ public static void constructor(){
 /*259*/  language.SK.add("Dizajn manažér MT3");       language.CZ.add("I-SK");                     language.EN.add("I-SK");
 /*260*/  language.SK.add("Náhľad exportu pdf");       language.CZ.add("I-SK");                     language.EN.add("I-SK");
 /*261*/  language.SK.add("Čas vytvorenia pdf náhľadu");       language.CZ.add("I-SK");                     language.EN.add("I-SK");
+/*262*/  language.SK.add("Počiatočné b)");       language.CZ.add("I-SK");                     language.EN.add("I-SK");
+
+/*263*/  language.SK.add("Náhľad pdf  a výsledkov v MT3");       language.CZ.add("I-SK");                     language.EN.add("I-SK");
+/*264*/  language.SK.add("Náhľad pdf  a výsledkov v Adobe reader");       language.CZ.add("I-SK");                     language.EN.add("I-SK");
+/*265*/  language.SK.add("Vytvotenie pdf");       language.CZ.add("I-SK");                     language.EN.add("I-SK");
+/*266*/  language.SK.add("Uložiť monážne tabuľky - pdf export");       language.CZ.add("I-SK");                     language.EN.add("I-SK");
+
+
+
 
 
 

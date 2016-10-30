@@ -66,7 +66,7 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="jTabbedPane2" pref="1129" max="32767" attributes="0"/>
+          <Component id="jTabbedPane2" max="32767" attributes="0"/>
           <Component id="jPanel1" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
@@ -1191,10 +1191,15 @@
                     <DimensionLayout dim="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" max="-2" attributes="0"/>
-                              <Component id="Label_tabulky" min="-2" pref="88" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jRadioButton_with_label_pociatocne" min="-2" pref="106" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="1" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <Component id="Label_tabulky" min="-2" pref="88" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="jRadioButton_with_label_pociatocne" min="-2" pref="106" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Component id="jRadioButton_with_label_pociatocne1" min="-2" pref="106" max="-2" attributes="0"/>
+                              </Group>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" alignment="0" attributes="0">
@@ -1233,6 +1238,7 @@
                                   <Component id="TextField_tabulky_konecna" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
                                   <Component id="Label_tabulky1" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="Label_tabulky2" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jRadioButton_with_label_pociatocne1" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                           </Group>
@@ -1326,6 +1332,19 @@
                       <AuxValues>
                         <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="10"/>
                       </AuxValues>
+                    </Component>
+                    <Component class="javax.swing.JRadioButton" name="jRadioButton_with_label_pociatocne1">
+                      <Properties>
+                        <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                          <ComponentRef name="buttonGroup_tabulka"/>
+                        </Property>
+                        <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                          <Connection code="language.language_label(languageOption, 262)" type="code"/>
+                        </Property>
+                      </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jRadioButton_with_label_pociatocne1ActionPerformed"/>
+                      </Events>
                     </Component>
                   </SubComponents>
                 </Container>
@@ -2068,7 +2087,12 @@
                                               <Component id="TextField_hcmean_vpocitana" alignment="1" min="-2" pref="80" max="-2" attributes="0"/>
                                               <Component id="TextField_hcmean_vlastna" alignment="1" min="-2" pref="80" max="-2" attributes="0"/>
                                           </Group>
-                                          <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="Label_RTS_velicina9" min="-2" max="-2" attributes="0"/>
+                                              <Component id="Label_RTS_velicina10" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                               </Group>
@@ -2083,11 +2107,13 @@
                                   <Group type="103" groupAlignment="3" attributes="0">
                                       <Component id="TextField_hcmean_vpocitana" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="jRadioButton_with_label_vypoctana" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="Label_RTS_velicina9" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
                                       <Component id="jRadioButton_with_label_vlastna" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="TextField_hcmean_vlastna" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="Label_RTS_velicina10" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace max="32767" attributes="0"/>
                               </Group>
@@ -2145,6 +2171,16 @@
                           <AuxValues>
                             <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="10"/>
                           </AuxValues>
+                        </Component>
+                        <Component class="javax.swing.JLabel" name="Label_RTS_velicina9">
+                          <Properties>
+                            <Property name="text" type="java.lang.String" value="m"/>
+                          </Properties>
+                        </Component>
+                        <Component class="javax.swing.JLabel" name="Label_RTS_velicina10">
+                          <Properties>
+                            <Property name="text" type="java.lang.String" value="m"/>
+                          </Properties>
                         </Component>
                       </SubComponents>
                     </Container>
@@ -3063,7 +3099,7 @@
                       </Group>
                       <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
                       <Component id="jLabel5" min="-2" pref="648" max="-2" attributes="0"/>
-                      <EmptySpace pref="217" max="32767" attributes="0"/>
+                      <EmptySpace pref="233" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -3190,9 +3226,17 @@
                   <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
                   <Component id="Button_Icon_calculate" min="-2" pref="36" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="Button_Icon_export_PDF" min="-2" pref="36" max="-2" attributes="0"/>
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Component id="jPanel17" min="-2" pref="302" max="-2" attributes="0"/>
+                  <Component id="Button_Icon_export_PDF_internal" min="-2" pref="36" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
+                  <Component id="Button_Icon_export_PDF_external" min="-2" pref="36" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="Button_Icon_export_PDF2_save_as" min="-2" pref="36" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="117" max="-2" attributes="0"/>
+                  <Component id="jPanel17" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Component id="Label_status" min="-2" pref="248" max="-2" attributes="0"/>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
@@ -3207,15 +3251,28 @@
                   </Group>
                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
               </Group>
-              <Group type="102" attributes="0">
-                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="Button_Icon_select_all_kotevny_usek" min="-2" pref="32" max="-2" attributes="0"/>
-                      <Component id="Button_Icon_deselect_all_kotevny_usek" alignment="0" min="-2" pref="32" max="-2" attributes="0"/>
-                      <Component id="Button_Icon_delete_row_table_kotevny_usek" alignment="0" min="-2" pref="32" max="-2" attributes="0"/>
-                      <Component id="Button_Icon_arr_row_table_kotevny_usek" alignment="0" min="-2" pref="32" max="-2" attributes="0"/>
-                      <Component id="Button_Icon_calculate" alignment="0" min="-2" pref="32" max="-2" attributes="0"/>
-                      <Component id="Button_Icon_export_PDF" alignment="0" min="-2" pref="32" max="-2" attributes="0"/>
-                      <Component id="jPanel17" alignment="0" max="32767" attributes="0"/>
+              <Group type="102" alignment="1" attributes="0">
+                  <Group type="103" groupAlignment="1" attributes="0">
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="Label_status" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel1" alignment="3" max="32767" attributes="0"/>
+                      </Group>
+                      <Group type="102" attributes="0">
+                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                          <Group type="103" groupAlignment="1" attributes="0">
+                              <Component id="Button_Icon_export_PDF2_save_as" min="-2" pref="32" max="-2" attributes="0"/>
+                              <Component id="Button_Icon_export_PDF_external" min="-2" pref="32" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="Button_Icon_select_all_kotevny_usek" min="-2" pref="32" max="-2" attributes="0"/>
+                                  <Component id="Button_Icon_deselect_all_kotevny_usek" alignment="0" min="-2" pref="32" max="-2" attributes="0"/>
+                                  <Component id="Button_Icon_delete_row_table_kotevny_usek" alignment="0" min="-2" pref="32" max="-2" attributes="0"/>
+                                  <Component id="Button_Icon_arr_row_table_kotevny_usek" alignment="0" min="-2" pref="32" max="-2" attributes="0"/>
+                                  <Component id="Button_Icon_calculate" alignment="0" min="-2" pref="32" max="-2" attributes="0"/>
+                                  <Component id="Button_Icon_export_PDF_internal" alignment="0" min="-2" pref="32" max="-2" attributes="0"/>
+                                  <Component id="jPanel17" alignment="0" max="32767" attributes="0"/>
+                              </Group>
+                          </Group>
+                      </Group>
                   </Group>
                   <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
               </Group>
@@ -3337,7 +3394,7 @@
             <AuxValue name="JavaCodeGenerator_ListenersCodePost" type="java.lang.String" value="Button_Icon_calculate.setToolTipText(language.language_label(languageOption, 58));"/>
           </AuxValues>
         </Component>
-        <Component class="javax.swing.JButton" name="Button_Icon_export_PDF">
+        <Component class="javax.swing.JButton" name="Button_Icon_export_PDF_internal">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/mt_graphic/PDF-24.png"/>
@@ -3350,10 +3407,10 @@
             <Property name="verticalTextPosition" type="int" value="3"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Button_Icon_export_PDFActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Button_Icon_export_PDF_internalActionPerformed"/>
           </Events>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_ListenersCodePost" type="java.lang.String" value="Button_Icon_export_PDF.setToolTipText(language.language_label(languageOption, 59));"/>
+            <AuxValue name="JavaCodeGenerator_ListenersCodePost" type="java.lang.String" value="Button_Icon_export_PDF_internal.setToolTipText(language.language_label(languageOption, 263));"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JButton" name="Button_Icon_select_all_kotevny_usek">
@@ -3399,41 +3456,64 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="Label_status" min="-2" pref="248" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
-                  </Group>
+                  <EmptySpace min="0" pref="149" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="Label_status" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel1" alignment="3" max="32767" attributes="0"/>
-                      </Group>
-                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                  </Group>
+                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
           </Layout>
-          <SubComponents>
-            <Component class="javax.swing.JLabel" name="jLabel1">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Status : "/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JLabel" name="Label_status">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="jLabel2"/>
-              </Properties>
-            </Component>
-          </SubComponents>
         </Container>
+        <Component class="javax.swing.JLabel" name="jLabel1">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Status : "/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="Label_status">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="jLabel2"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="Button_Icon_export_PDF_external">
+          <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/mt_graphic/PDFexternal-24.png"/>
+            </Property>
+            <Property name="focusable" type="boolean" value="false"/>
+            <Property name="horizontalTextPosition" type="int" value="0"/>
+            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+              <Dimension value="[48, 48]"/>
+            </Property>
+            <Property name="verticalTextPosition" type="int" value="3"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Button_Icon_export_PDF_externalActionPerformed"/>
+          </Events>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_ListenersCodePost" type="java.lang.String" value="Button_Icon_export_PDF_internal.setToolTipText(language.language_label(languageOption, 264));"/>
+          </AuxValues>
+        </Component>
+        <Component class="javax.swing.JButton" name="Button_Icon_export_PDF2_save_as">
+          <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/mt_graphic/PDFas-24.png"/>
+            </Property>
+            <Property name="focusable" type="boolean" value="false"/>
+            <Property name="horizontalTextPosition" type="int" value="0"/>
+            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+              <Dimension value="[48, 48]"/>
+            </Property>
+            <Property name="verticalTextPosition" type="int" value="3"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Button_Icon_export_PDF2_save_asActionPerformed"/>
+          </Events>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_ListenersCodePost" type="java.lang.String" value="Button_Icon_export_PDF_internal.setToolTipText(language.language_label(languageOption, 265));"/>
+          </AuxValues>
+        </Component>
       </SubComponents>
     </Container>
   </SubComponents>
