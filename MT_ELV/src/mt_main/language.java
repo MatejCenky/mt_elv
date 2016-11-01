@@ -446,6 +446,37 @@ public static void constructor(){
 /*265*/  language.SK.add("Vytvotenie pdf");       language.CZ.add("I-SK");                     language.EN.add("I-SK");
 /*266*/  language.SK.add("Uložiť monážne tabuľky - pdf export");       language.CZ.add("I-SK");                     language.EN.add("I-SK");
 
+/*267*/  language.SK.add("Xa");       language.CZ.add("I-SK");                     language.EN.add("I-SK");
+/*268*/  language.SK.add("Xb");       language.CZ.add("I-SK");                     language.EN.add("I-SK");
+/*269*/  language.SK.add("Fa");       language.CZ.add("I-SK");                     language.EN.add("I-SK");
+/*270*/  language.SK.add("Fb");       language.CZ.add("I-SK");                     language.EN.add("I-SK");
+
+/*271*/  language.SK.add("Nový projekt vytvorený");       language.CZ.add("I-SK");                     language.EN.add("I-SK");
+/*272*/  language.SK.add("Projekt načítaný");       language.CZ.add("I-SK");                     language.EN.add("I-SK");
+/*273*/  language.SK.add("Projekt uložený");       language.CZ.add("I-SK");                     language.EN.add("I-SK");
+/*274*/  language.SK.add("Projekt uložený ako");       language.CZ.add("I-SK");                     language.EN.add("I-SK");
+/*275*/  language.SK.add("Ťahy a kontrola pracovného bodu vypočítaná");       language.CZ.add("I-SK");                     language.EN.add("I-SK");
+/*276*/  language.SK.add("Interný náhlad pripravený");       language.CZ.add("I-SK");                     language.EN.add("I-SK");
+/*277*/  language.SK.add("Externý náhlad pripravený");       language.CZ.add("I-SK");                     language.EN.add("I-SK");
+/*278*/  language.SK.add("Montážne tabuľy pdf export vytvorený");       language.CZ.add("I-SK");                     language.EN.add("I-SK");
+/*279*/  language.SK.add("Kotevný úsek vytvorený");       language.CZ.add("I-SK");                     language.EN.add("I-SK");
+/*280*/  language.SK.add("Kotevný úsek odstránený");       language.CZ.add("I-SK");                     language.EN.add("I-SK");
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -129,11 +129,14 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
         Textfield_cas.setText("00:00:00");
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mt_graphic/empty.png")));
         
+        Label_status.setText(language.language_label(languageOption, 271));
+        
         seticon();
         this.modelTable = (DefaultTableModel) Table_kotevne_useky.getModel();
         this.modeltable_rozpatia = (DefaultTableModel) Table_rozpatia.getModel();
         this.modeltable_rozpatia_nadm_vysky = (DefaultTableModel) Table_rozpatia_nadm_vysky.getModel();
         this.modeltable_KPB = (DefaultTableModel) Table_KPB.getModel();
+        this.modeltable_tahy = (DefaultTableModel) Table_tahy.getModel();
         
         // lost focus when not selected auto enter select
         Table_rozpatia.putClientProperty("terminateEditOnFocusLost", Boolean.TRUE);
@@ -609,7 +612,7 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
         String no= "";
         load_project(no);   
         setTitle(project_name);
-           
+        Label_status.setText(language.language_label(languageOption, 272));   
         
         }
         
@@ -814,6 +817,8 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
         jPanel21 = new javax.swing.JPanel();
         jScrollPane8 = new javax.swing.JScrollPane();
         Table_KPB = new javax.swing.JTable();
+        jScrollPane7 = new javax.swing.JScrollPane();
+        Table_tahy = new javax.swing.JTable();
         jPanel22 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         jPanel23 = new javax.swing.JPanel();
@@ -825,14 +830,12 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
         jPanel1 = new javax.swing.JPanel();
         Button_Icon_save = new javax.swing.JButton();
         Button_Icon_save_as = new javax.swing.JButton();
-        Button_Icon_save_results = new javax.swing.JButton();
         Button_Icon_delete_row_table_kotevny_usek = new javax.swing.JButton();
         Button_Icon_arr_row_table_kotevny_usek = new javax.swing.JButton();
         Button_Icon_calculate = new javax.swing.JButton();
         Button_Icon_export_PDF_internal = new javax.swing.JButton();
         Button_Icon_select_all_kotevny_usek = new javax.swing.JButton();
         Button_Icon_deselect_all_kotevny_usek = new javax.swing.JButton();
-        jPanel17 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         Label_status = new javax.swing.JLabel();
         Button_Icon_export_PDF_external = new javax.swing.JButton();
@@ -2964,20 +2967,63 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
             );
         }
 
+        Table_tahy.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "", "", "", ""
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane7.setViewportView(Table_tahy);
+        if (Table_tahy.getColumnModel().getColumnCount() > 0) {
+            Table_tahy.getColumnModel().getColumn(0).setResizable(false);
+            Table_tahy.getColumnModel().getColumn(0).setHeaderValue(language.language_label(languageOption, 267)
+            );
+            Table_tahy.getColumnModel().getColumn(1).setResizable(false);
+            Table_tahy.getColumnModel().getColumn(1).setHeaderValue(language.language_label(languageOption, 268)
+            );
+            Table_tahy.getColumnModel().getColumn(2).setResizable(false);
+            Table_tahy.getColumnModel().getColumn(2).setHeaderValue(language.language_label(languageOption, 269)
+            );
+            Table_tahy.getColumnModel().getColumn(3).setResizable(false);
+            Table_tahy.getColumnModel().getColumn(3).setHeaderValue(language.language_label(languageOption, 270)
+            );
+        }
+
         javax.swing.GroupLayout jPanel21Layout = new javax.swing.GroupLayout(jPanel21);
         jPanel21.setLayout(jPanel21Layout);
         jPanel21Layout.setHorizontalGroup(
             jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel21Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap()
+                .addComponent(jScrollPane7, javax.swing.GroupLayout.DEFAULT_SIZE, 284, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         jPanel21Layout.setVerticalGroup(
             jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel21Layout.createSequentialGroup()
+            .addGroup(jPanel21Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane8, javax.swing.GroupLayout.DEFAULT_SIZE, 388, Short.MAX_VALUE)
+                .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane8, javax.swing.GroupLayout.DEFAULT_SIZE, 388, Short.MAX_VALUE)
+                    .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -3023,7 +3069,7 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
                         .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jPanel19, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jPanel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(262, Short.MAX_VALUE))
         );
         jPanel18Layout.setVerticalGroup(
             jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -3118,24 +3164,25 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
                     .addComponent(Textfield_cas))
                 .addGap(41, 41, 41)
                 .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 648, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(233, Short.MAX_VALUE))
+                .addContainerGap(219, Short.MAX_VALUE))
         );
         jPanel23Layout.setVerticalGroup(
             jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel23Layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 918, Short.MAX_VALUE)
                     .addGroup(jPanel23Layout.createSequentialGroup()
-                        .addComponent(Button_pdf_pageup, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(Button_pdf_pagedown, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel23Layout.createSequentialGroup()
-                        .addComponent(label_cas_vytvorenia)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(Textfield_cas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(849, Short.MAX_VALUE))
-            .addGroup(jPanel23Layout.createSequentialGroup()
-                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                        .addContainerGap()
+                        .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel23Layout.createSequentialGroup()
+                                .addComponent(Button_pdf_pageup, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(Button_pdf_pagedown, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel23Layout.createSequentialGroup()
+                                .addComponent(label_cas_vytvorenia)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(Textfield_cas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
 
@@ -3166,18 +3213,6 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
             }
         });
         Button_Icon_save_as.setToolTipText(language.language_label(languageOption, 54));
-
-        Button_Icon_save_results.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mt_graphic/Save-results-24.png"))); // NOI18N
-        Button_Icon_save_results.setFocusable(false);
-        Button_Icon_save_results.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        Button_Icon_save_results.setPreferredSize(new java.awt.Dimension(48, 48));
-        Button_Icon_save_results.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        Button_Icon_save_results.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Button_Icon_save_resultsActionPerformed(evt);
-            }
-        });
-        Button_Icon_save_results.setToolTipText(language.language_label(languageOption, 55));
 
         Button_Icon_delete_row_table_kotevny_usek.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mt_graphic/Delete Row-24.png"))); // NOI18N
         Button_Icon_delete_row_table_kotevny_usek.setFocusable(false);
@@ -3251,17 +3286,6 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
         });
         Button_Icon_deselect_all_kotevny_usek.setToolTipText(language.language_label(languageOption, 64));
 
-        javax.swing.GroupLayout jPanel17Layout = new javax.swing.GroupLayout(jPanel17);
-        jPanel17.setLayout(jPanel17Layout);
-        jPanel17Layout.setHorizontalGroup(
-            jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 149, Short.MAX_VALUE)
-        );
-        jPanel17Layout.setVerticalGroup(
-            jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-
         jLabel1.setText("Status : ");
 
         Label_status.setText("jLabel2");
@@ -3299,9 +3323,7 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
                 .addComponent(Button_Icon_save, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(Button_Icon_save_as, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Button_Icon_save_results, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(46, 46, 46)
+                .addGap(87, 87, 87)
                 .addComponent(Button_Icon_arr_row_table_kotevny_usek, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(Button_Icon_delete_row_table_kotevny_usek, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -3317,12 +3339,10 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
                 .addComponent(Button_Icon_export_PDF_external, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(Button_Icon_export_PDF2_save_as, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(117, 117, 117)
-                .addComponent(jPanel17, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel1)
                 .addGap(18, 18, 18)
-                .addComponent(Label_status, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(Label_status, javax.swing.GroupLayout.PREFERRED_SIZE, 305, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -3330,7 +3350,6 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(Button_Icon_save_as, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Button_Icon_save_results, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Button_Icon_save, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
@@ -3343,14 +3362,13 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(Button_Icon_export_PDF2_save_as, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(Button_Icon_export_PDF_external, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(Button_Icon_select_all_kotevny_usek, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(Button_Icon_deselect_all_kotevny_usek, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(Button_Icon_delete_row_table_kotevny_usek, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(Button_Icon_arr_row_table_kotevny_usek, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(Button_Icon_calculate, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(Button_Icon_export_PDF_internal, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jPanel17, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+                                .addComponent(Button_Icon_export_PDF_internal, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addGap(7, 7, 7))
         );
 
@@ -3358,7 +3376,7 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane2)
+            .addComponent(jTabbedPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 1131, Short.MAX_VALUE)
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
@@ -3709,6 +3727,7 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
         pdf_external=false;
         pdf_as=false;
         pdf_manager();
+        Label_status.setText(language.language_label(languageOption, 276));
         
     }//GEN-LAST:event_Button_Icon_export_PDF_internalActionPerformed
 
@@ -4443,7 +4462,8 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
         
         ///////////// cyklus na zaklade poctu rozpati  pre vypocet vid priehybov 
         double[][] vid_priehyby = new double[Kot_usek.get_Ai_array().length][14];
-          
+        double[][] tahy = new double[Kot_usek.get_Ai_array().length][4];  
+        
             double[] a = Kot_usek.get_Ai_array();
             double[] dh = Kot_usek.get_DeltaHi_array();
             
@@ -4481,12 +4501,19 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
                 
                 KPB_vysledky[y]= (int)vibration_protection.evaluate_protection_area(x_axis, y_axis, c_vib, EQ_vib);
                 
+                // tu sa zadavaju tahy
+                
+                tahy[y][0] = 0.01;
+                tahy[y][1] = 0.02;
+                tahy[y][2] = 0.03;
+                tahy[y][3] = 0.04;
                 
             }
             
         ////////////////////////////// vlozenie vysledkov    
         Kot_usek.set_vysledky_vid_priehyb_M(vid_priehyby); 
-        Kot_usek.set_vysledky_KPB(KPB_vysledky);            
+        Kot_usek.set_vysledky_KPB(KPB_vysledky);
+        Kot_usek.set_tahy(tahy);    
         //////////////////////////////   
           
 
@@ -4499,6 +4526,7 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
         
         Calculation_done=true;  // bool prebehla kalkulacia
         Variable_globeal_kotevny_usek_zmena = Variable_globeal_kotevny_usek;
+        Label_status.setText(language.language_label(languageOption, 275));
         } catch(NullPointerException e){
            warning_sign(warning_text);
         
@@ -4575,6 +4603,28 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
      }catch(NullPointerException e ){Swriter("no data");}   
     }
     
+     private  void set_tahy_to_mainframe(kotevnyUsek X){
+        
+      // vymaž všetky riadky ak su v tabulle tahy
+     try{ 
+         
+         int rowCount = Table_tahy.getRowCount();
+        for (int i = rowCount ; i > 0; i--) {
+            modeltable_tahy.removeRow(i-1);      
+        }
+        
+        
+         for (int i =0  ; i < X.get_Ai_array().length; i++) {
+            modeltable_tahy.addRow(new Object[0]);
+            modeltable_tahy.setValueAt(X.get_tahy()[i][0], i, 0);
+            modeltable_tahy.setValueAt(X.get_tahy()[i][1], i, 1);
+            modeltable_tahy.setValueAt(X.get_tahy()[i][2], i, 2);
+            modeltable_tahy.setValueAt(X.get_tahy()[i][3], i, 3);
+           
+        }
+        
+     }catch(NullPointerException e ){Swriter("no data");}   
+    }
      private  void set_percento_to_mainframe(kotevnyUsek X){
         
        
@@ -4632,7 +4682,8 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
            
                }else{     
         mainframe_new_kotevny_usek mainframe_new_kotevny_usek_JDialog_window = new mainframe_new_kotevny_usek(this, rootPaneCheckingEnabled);
-        mainframe_new_kotevny_usek_JDialog_window.setVisible(true);               
+        mainframe_new_kotevny_usek_JDialog_window.setVisible(true);
+        Label_status.setText(language.language_label(languageOption, 279));
                        }
         
         
@@ -4677,12 +4728,9 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
             Table_kotevne_useky.changeSelection(selectedRow-1, 1, false, false);       
             modelTable.removeRow(selectedRow);
             Variable_globeal_kotevny_usek.remove(selectedRow);
+            Label_status.setText(language.language_label(languageOption, 280));
         }}
     }//GEN-LAST:event_Button_Icon_delete_row_table_kotevny_usekActionPerformed
-
-    private void Button_Icon_save_resultsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button_Icon_save_resultsActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_Button_Icon_save_resultsActionPerformed
 
     private void Button_Icon_save_asActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button_Icon_save_asActionPerformed
        
@@ -4703,7 +4751,7 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
         project_save_as=true;
         String no= "";
         save_project(no);
-        
+        Label_status.setText(language.language_label(languageOption, 274));
         
     }//GEN-LAST:event_Button_Icon_save_asActionPerformed
 
@@ -4727,6 +4775,7 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
         project_save_as=false;
         String no= "";
         save_project(no);
+        Label_status.setText(language.language_label(languageOption, 273));
     }//GEN-LAST:event_Button_Icon_saveActionPerformed
 
     private void TextField_hustota_namrazyKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextField_hustota_namrazyKeyReleased
@@ -5487,6 +5536,7 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
     private void jTabbedPane1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTabbedPane1MouseClicked
         int cislo = Table_kotevne_useky.getSelectedRow();
         set_KPB_to_mainframe(Variable_globeal_kotevny_usek.get(cislo));
+        set_tahy_to_mainframe(Variable_globeal_kotevny_usek.get(cislo));
         
     }//GEN-LAST:event_jTabbedPane1MouseClicked
 
@@ -5597,6 +5647,7 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
         pdf_external=true;
         pdf_as=false;
         pdf_manager();
+        Label_status.setText(language.language_label(languageOption, 277));
         
     }//GEN-LAST:event_Button_Icon_export_PDF_externalActionPerformed
 
@@ -5606,6 +5657,7 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
         pdf_external=false;
         pdf_as=true;
         pdf_manager();
+        Label_status.setText(language.language_label(languageOption, 278));
         
     }//GEN-LAST:event_Button_Icon_export_PDF2_save_asActionPerformed
 
@@ -5665,7 +5717,6 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
     private javax.swing.JButton Button_Icon_export_PDF_internal;
     private javax.swing.JButton Button_Icon_save;
     private javax.swing.JButton Button_Icon_save_as;
-    private javax.swing.JButton Button_Icon_save_results;
     private javax.swing.JButton Button_Icon_select_all_kotevny_usek;
     private javax.swing.JButton Button_namrazova_oblast;
     private javax.swing.JButton Button_pdf_pagedown;
@@ -5725,6 +5776,7 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
     private javax.swing.JTable Table_kotevne_useky;
     private javax.swing.JTable Table_rozpatia;
     private javax.swing.JTable Table_rozpatia_nadm_vysky;
+    private javax.swing.JTable Table_tahy;
     private javax.swing.JTextField TextField_Bi2;
     private javax.swing.JTextField TextField_Bi_1;
     private javax.swing.JTextField TextField_Ccl;
@@ -5805,7 +5857,6 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
     private javax.swing.JPanel jPanel14;
     private javax.swing.JPanel jPanel15;
     private javax.swing.JPanel jPanel16;
-    private javax.swing.JPanel jPanel17;
     private javax.swing.JPanel jPanel18;
     private javax.swing.JPanel jPanel19;
     private javax.swing.JPanel jPanel2;
@@ -5848,6 +5899,7 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
+    private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JScrollPane jScrollPane8;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTabbedPane jTabbedPane2;
@@ -5877,6 +5929,7 @@ DefaultTableModel modelTable;
 DefaultTableModel modeltable_rozpatia;
 DefaultTableModel modeltable_rozpatia_nadm_vysky;
 DefaultTableModel modeltable_KPB;
+DefaultTableModel modeltable_tahy;
 private static String new_kotevny_usek_name;
 private static boolean existnewkotevnyusek = false;
 private static boolean mainframeLodaed = false;
@@ -6376,6 +6429,7 @@ private void seticon() {
         X.set_vysledky_tlaky6(Variable_globeal_kotevny_usek.get(selekcia_for_name).get_vysledky_tlaky6());
         X.set_vysledky_vid_priehyb_M(Variable_globeal_kotevny_usek.get(selekcia_for_name).get_vysledky_vid_priehyb_MT());
         X.set_per_podiel_sigma(Variable_globeal_kotevny_usek.get(selekcia_for_name).get_vysledky_per_podiel_sigma());
+        X.set_tahy(Variable_globeal_kotevny_usek.get(selekcia_for_name).get_tahy());
         
         }catch(Exception s){
         
@@ -7829,6 +7883,16 @@ private void seticon() {
      vyp_percento3_sigma.setForeground(Color.ORANGE);
      vyp_percento4_sigma.setForeground(Color.ORANGE);
     }
+
+    private static class Button_Icon_save_results {
+
+        private static void setToolTipText(String language_label) {
+           
+        }
+
+        public Button_Icon_save_results() {
+        }
+    }
   
   }
 
@@ -8005,7 +8069,7 @@ class kotevnyUsek extends javax.swing.JFrame{
                               private  double[] vysledky_sily_MT_over;
                               private  double[][] vysledky_vid_priehyb_MT_over;
                               private  double[][] vysledky_per_podiel_sigma_over;
-      
+                              private  double[][] vysledky_tahy_over;
     
     //constructor
     
@@ -8336,6 +8400,11 @@ class kotevnyUsek extends javax.swing.JFrame{
         return vysledky_per_podiel_sigma_over;
     }
     
+     public double[][] get_tahy(){
+        return vysledky_tahy_over;
+    }
+    
+     
     public void set_name(String name_kot_useku){
         name=name_kot_useku;
     }
@@ -8550,6 +8619,11 @@ class kotevnyUsek extends javax.swing.JFrame{
        vysledky_per_podiel_sigma_over= vysledky_per_podiel_sigma;
     }        
   
+        public void set_tahy(double[][] vysledky_tahy){
+       vysledky_tahy_over= vysledky_tahy;
+    }        
+  
+       
        
 
 }
