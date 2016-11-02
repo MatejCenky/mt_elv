@@ -446,10 +446,10 @@ public static void constructor(){
 /*265*/  language.SK.add("Vytvotenie pdf");       language.CZ.add("I-SK");                     language.EN.add("I-SK");
 /*266*/  language.SK.add("Uložiť monážne tabuľky - pdf export");       language.CZ.add("I-SK");                     language.EN.add("I-SK");
 
-/*267*/  language.SK.add("Xa");       language.CZ.add("I-SK");                     language.EN.add("I-SK");
-/*268*/  language.SK.add("Xb");       language.CZ.add("I-SK");                     language.EN.add("I-SK");
-/*269*/  language.SK.add("Fa");       language.CZ.add("I-SK");                     language.EN.add("I-SK");
-/*270*/  language.SK.add("Fb");       language.CZ.add("I-SK");                     language.EN.add("I-SK");
+/*267*/  language.SK.add("Fa [MPa]");       language.CZ.add("I-SK");                     language.EN.add("I-SK");
+/*268*/  language.SK.add("Fb [MPa]");       language.CZ.add("I-SK");                     language.EN.add("I-SK");
+/*269*/  language.SK.add("Fa [MPa]");       language.CZ.add("I-SK");                     language.EN.add("I-SK");
+/*270*/  language.SK.add("Fb [MPa]");       language.CZ.add("I-SK");                     language.EN.add("I-SK");
 
 /*271*/  language.SK.add("Nový projekt vytvorený");       language.CZ.add("I-SK");                     language.EN.add("I-SK");
 /*272*/  language.SK.add("Projekt načítaný");       language.CZ.add("I-SK");                     language.EN.add("I-SK");
@@ -462,6 +462,14 @@ public static void constructor(){
 /*279*/  language.SK.add("Kotevný úsek vytvorený");       language.CZ.add("I-SK");                     language.EN.add("I-SK");
 /*280*/  language.SK.add("Kotevný úsek odstránený");       language.CZ.add("I-SK");                     language.EN.add("I-SK");
 /*281*/  language.SK.add("Ťah pre -5+N [MPa] pre percentuálny podiel námrazy");       language.CZ.add("I-SK");                     language.EN.add("I-SK");
+
+/*282*/  language.SK.add("Ťah -5+Nv konečné tab.");       language.CZ.add("I-SK");                     language.EN.add("I-SK");
+/*283*/  language.SK.add("Ťah ");       language.CZ.add("I-SK");                     language.EN.add("I-SK");
+/*284*/  language.SK.add("Nie je označený žiaden kot. úsek");       language.CZ.add("I-SK");                     language.EN.add("I-SK");
+/*285*/  language.SK.add(" volitelné tab.");       language.CZ.add("I-SK");                     language.EN.add("I-SK");
+/*285*/  language.SK.add("kontrola ťahov pracovného bodu");       language.CZ.add("I-SK");                     language.EN.add("I-SK");
+
+
 
 
 

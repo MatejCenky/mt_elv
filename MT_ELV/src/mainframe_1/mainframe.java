@@ -251,7 +251,7 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
         TextField_srt_roc_teplota.setEditable(true);
         TextField_srt_roc_teplota.setEnabled(true);
         Variable_streda_roc_teplota =  Double.parseDouble(TextField_srt_roc_teplota.getText());
-        
+        tah_konecne1.setText(language.language_label(languageOption, 283) + String.valueOf(jComboBox_stav_KPB.getSelectedItem()) + language.language_label(languageOption, 285));
         //testing Jtable
         
         modeltable_rozpatia.addRow(new Object[]{(String) "-----------------------------------------"});    // nulty riedok
@@ -820,6 +820,15 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
         Table_KPB = new javax.swing.JTable();
         jScrollPane7 = new javax.swing.JScrollPane();
         Table_tahy = new javax.swing.JTable();
+        tah_konecne = new javax.swing.JLabel();
+        tah_konecne1 = new javax.swing.JLabel();
+        podiel_z_RTS1 = new javax.swing.JTextField();
+        podiel_z_RTS2 = new javax.swing.JTextField();
+        Label_RTS_velicina11 = new javax.swing.JLabel();
+        Label_RTS_velicina12 = new javax.swing.JLabel();
+        Label_RTS_velicina13 = new javax.swing.JLabel();
+        Label_RTS_velicina14 = new javax.swing.JLabel();
+        tah_konecne2 = new javax.swing.JLabel();
         jPanel22 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         jPanel23 = new javax.swing.JPanel();
@@ -3006,25 +3015,87 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
             );
         }
 
+        tah_konecne.setText(language.language_label(languageOption, 282));
+
+        tah_konecne1.setText(language.language_label(languageOption, 283) + String.valueOf(jComboBox_stav_KPB.getSelectedItem()) + language.language_label(languageOption, 285));
+
+        podiel_z_RTS1.setEditable(false);
+        podiel_z_RTS1.setText("0.0");
+        podiel_z_RTS1.setEnabled(false);
+        podiel_z_RTS1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                podiel_z_RTS1ActionPerformed(evt);
+            }
+        });
+
+        podiel_z_RTS2.setEditable(false);
+        podiel_z_RTS2.setText("0.0");
+        podiel_z_RTS2.setEnabled(false);
+
+        Label_RTS_velicina11.setText("% RTS");
+
+        Label_RTS_velicina12.setText("% RTS");
+
+        Label_RTS_velicina13.setText("max");
+
+        Label_RTS_velicina14.setText("max");
+
+        tah_konecne2.setText(language.language_label(languageOption, 286));
+
         javax.swing.GroupLayout jPanel21Layout = new javax.swing.GroupLayout(jPanel21);
         jPanel21.setLayout(jPanel21Layout);
         jPanel21Layout.setHorizontalGroup(
             jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel21Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane7, javax.swing.GroupLayout.DEFAULT_SIZE, 284, Short.MAX_VALUE)
+            .addGroup(jPanel21Layout.createSequentialGroup()
+                .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane7, javax.swing.GroupLayout.DEFAULT_SIZE, 296, Short.MAX_VALUE)
+                    .addGroup(jPanel21Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel21Layout.createSequentialGroup()
+                                .addComponent(Label_RTS_velicina13)
+                                .addGap(11, 11, 11)
+                                .addComponent(podiel_z_RTS1, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(Label_RTS_velicina11))
+                            .addComponent(tah_konecne, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel21Layout.createSequentialGroup()
+                                .addComponent(Label_RTS_velicina14)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(podiel_z_RTS2, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(Label_RTS_velicina12)
+                                .addGap(6, 6, 6))
+                            .addComponent(tah_konecne1, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPane8, javax.swing.GroupLayout.DEFAULT_SIZE, 179, Short.MAX_VALUE)
+                    .addComponent(tah_konecne2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel21Layout.setVerticalGroup(
             jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel21Layout.createSequentialGroup()
-                .addContainerGap()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel21Layout.createSequentialGroup()
+                .addGap(15, 15, 15)
+                .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(tah_konecne)
+                    .addComponent(tah_konecne1)
+                    .addComponent(tah_konecne2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(podiel_z_RTS1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(podiel_z_RTS2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Label_RTS_velicina11)
+                    .addComponent(Label_RTS_velicina12)
+                    .addComponent(Label_RTS_velicina13)
+                    .addComponent(Label_RTS_velicina14))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane8, javax.swing.GroupLayout.DEFAULT_SIZE, 388, Short.MAX_VALUE)
+                    .addComponent(jScrollPane8, javax.swing.GroupLayout.DEFAULT_SIZE, 325, Short.MAX_VALUE)
                     .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                .addContainerGap())
+                .addGap(20, 20, 20))
         );
 
         jTabbedPane1.addTab("tab2", jPanel21);
@@ -3067,7 +3138,7 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
                         .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jPanel22, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jPanel20, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addContainerGap())
+                .addGap(0, 0, 0))
         );
         jPanel18Layout.setVerticalGroup(
             jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -3162,7 +3233,7 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
                     .addComponent(Textfield_cas))
                 .addGap(41, 41, 41)
                 .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 648, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(249, Short.MAX_VALUE))
+                .addContainerGap(316, Short.MAX_VALUE))
         );
         jPanel23Layout.setVerticalGroup(
             jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -3376,8 +3447,10 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane2)
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jTabbedPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 1228, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -3462,6 +3535,10 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
          Variable_T0_zivotnost=doubleChecker_short_answer(TextField_tabulky_konecna)*24*365;
         Variable_Tp_prechodna_doba=doubleChecker_short_answer(TextField_tabulky_prechodna)*24*365;
        
+        if (jRadioButton_KPB_cas_vypoctu_prechodne.isSelected() == true){
+            Variable_KPB_cas_vypoctu = Variable_Tp_prechodna_doba;
+        }
+        
          TextField_teploha_stav1.setText("-30");TextField_teploha_stav1.setEnabled(false);
          TextField_teploha_stav2.setText("-20");TextField_teploha_stav2.setEnabled(true);
          TextField_teploha_stav3.setText("-10");TextField_teploha_stav3.setEnabled(true);
@@ -4650,10 +4727,18 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
         //insert value % into text fields
         int cislo = Table_kotevne_useky.getSelectedRow();
         set_percento_to_mainframe(Variable_globeal_kotevny_usek.get(cislo));
-        
+        set_tahy_to_mainframe(Variable_globeal_kotevny_usek.get(cislo));
+        set_KPB_to_mainframe(Variable_globeal_kotevny_usek.get(cislo));
         Calculation_done=true;  // bool prebehla kalkulacia
         Variable_globeal_kotevny_usek_zmena = Variable_globeal_kotevny_usek;
-        Label_status.setText(language.language_label(languageOption, 275));
+        Label_status.setText(language.language_label(languageOption, 284));
+        
+        for(int i =0;i<Variable_globeal_kotevny_usek.size();i++ ){  // cyklus pre všetky existujuce
+        if(Table_kotevne_useky.getValueAt(i, 0).equals(true)){      // zisti  je zaskrtnuty prv ysstlpc ak nie vypis warning
+        Label_status.setText(language.language_label(languageOption, 275));  
+        }}
+        
+        
         } catch(NullPointerException e){
            warning_sign(warning_text);
         
@@ -4732,6 +4817,11 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
     
      private  void set_tahy_to_mainframe(kotevnyUsek X){
         
+       DecimalFormatSymbols otherSymbols = new DecimalFormatSymbols();
+               otherSymbols.setDecimalSeparator('.');
+               DecimalFormat df = new DecimalFormat("####.##",otherSymbols);  // definovany počet desatinnych miest
+                 
+         
       // vymaž všetky riadky ak su v tabulle tahy
      try{ 
          
@@ -4740,16 +4830,35 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
             modeltable_tahy.removeRow(i-1);      
         }
         
-        
+        double max_tah1 = 0.0;
+        double max_tah2 = 0.0;
          for (int i =0  ; i < X.get_Ai_array().length; i++) {
             modeltable_tahy.addRow(new Object[0]);
-            modeltable_tahy.setValueAt(X.get_tahy()[i][0], i, 0);
-            modeltable_tahy.setValueAt(X.get_tahy()[i][1], i, 1);
-            modeltable_tahy.setValueAt(X.get_tahy()[i][2], i, 2);
-            modeltable_tahy.setValueAt(X.get_tahy()[i][3], i, 3);
-           
+            modeltable_tahy.setValueAt(df.format(X.get_tahy()[i][0]), i, 0);
+            modeltable_tahy.setValueAt(df.format(X.get_tahy()[i][1]), i, 1);
+            modeltable_tahy.setValueAt(df.format(X.get_tahy()[i][2]), i, 2);
+            modeltable_tahy.setValueAt(df.format(X.get_tahy()[i][3]), i, 3);
+          
+            if(X.get_tahy()[i][0] > max_tah1){
+                max_tah1=X.get_tahy()[i][0];
+            }
+            if(X.get_tahy()[i][1] > max_tah1){
+                max_tah1=X.get_tahy()[i][1];
+            }
+            if(X.get_tahy()[i][2] > max_tah2){
+                max_tah2=X.get_tahy()[i][2];
+            }
+            if(X.get_tahy()[i][3] > max_tah2){
+                max_tah2=X.get_tahy()[i][3];
+            }
+            
         }
-        
+         
+         double podielzRTS1 = (max_tah1 / X.get_RTS_over())*100;
+         double podielzRTS2 = (max_tah2 / X.get_RTS_over())*100;
+         podiel_z_RTS1.setText(df.format(podielzRTS1));
+         podiel_z_RTS2.setText(df.format(podielzRTS2));
+         
      }catch(NullPointerException e ){Swriter("no data");}   
     }
      private  void set_percento_to_mainframe(kotevnyUsek X){
@@ -5098,6 +5207,8 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
             }else{
                 Variable_vybrany_stav_pre_KPB=Variable_teploty_stav_rovnica[selected_index];
             }
+            tah_konecne1.setText(language.language_label(languageOption, 283) + String.valueOf(jComboBox_stav_KPB.getSelectedItem()) + language.language_label(languageOption, 285));
+            
         }
 
     }//GEN-LAST:event_jComboBox_stav_KPBActionPerformed
@@ -5664,7 +5775,7 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
         int cislo = Table_kotevne_useky.getSelectedRow();
         set_KPB_to_mainframe(Variable_globeal_kotevny_usek.get(cislo));
         set_tahy_to_mainframe(Variable_globeal_kotevny_usek.get(cislo));
-        
+        tah_konecne1.setText(language.language_label(languageOption, 283) + String.valueOf(jComboBox_stav_KPB.getSelectedItem()) + language.language_label(languageOption, 285));
     }//GEN-LAST:event_jTabbedPane1MouseClicked
 
     private void Table_KPBMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Table_KPBMouseEntered
@@ -5788,6 +5899,10 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
         
     }//GEN-LAST:event_Button_Icon_export_PDF2_save_asActionPerformed
 
+    private void podiel_z_RTS1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_podiel_z_RTS1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_podiel_z_RTS1ActionPerformed
+
   public static void lanochangeinDatabaze() {
   nacitatDatabazuLan();      
         
@@ -5854,6 +5969,10 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
     private javax.swing.JLabel Label_RTS_velicina;
     private javax.swing.JLabel Label_RTS_velicina1;
     private javax.swing.JLabel Label_RTS_velicina10;
+    private javax.swing.JLabel Label_RTS_velicina11;
+    private javax.swing.JLabel Label_RTS_velicina12;
+    private javax.swing.JLabel Label_RTS_velicina13;
+    private javax.swing.JLabel Label_RTS_velicina14;
     private javax.swing.JLabel Label_RTS_velicina2;
     private javax.swing.JLabel Label_RTS_velicina3;
     private javax.swing.JLabel Label_RTS_velicina4;
@@ -6047,6 +6166,11 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
     private javax.swing.JTextField percento2_sigma;
     private javax.swing.JTextField percento3_sigma;
     private javax.swing.JTextField percento4_sigma;
+    private javax.swing.JTextField podiel_z_RTS1;
+    private javax.swing.JTextField podiel_z_RTS2;
+    private javax.swing.JLabel tah_konecne;
+    private javax.swing.JLabel tah_konecne1;
+    private javax.swing.JLabel tah_konecne2;
     private javax.swing.JTextField vyp_percento1_sigma;
     private javax.swing.JTextField vyp_percento2_sigma;
     private javax.swing.JTextField vyp_percento3_sigma;
