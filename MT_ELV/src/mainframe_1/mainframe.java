@@ -53,6 +53,7 @@ import mt_main.language;
 import mt_main.startPanel;
 import static mt_main.startPanel.languageOption;
 import mt_math.conductor_creeping;
+import mt_math.forces_check;
 import mt_math.overload;
 import mt_math.state_equation;
 import mt_math.vibration_protection;
@@ -4560,15 +4561,79 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
 //                System.out.println("x axis = " + x_axis);
 //                System.out.println("y axis = " + y_axis);
 //                System.out.println("protection area = " + (int)vibration_protection.evaluate_protection_area(x_axis, y_axis, c_vib, EQ_vib));
-                
                 KPB_vysledky[y]= (int)vibration_protection.evaluate_protection_area(x_axis, y_axis, c_vib, EQ_vib);
+            }
+                        
+                
+                //////////////////////////////////// kontrola tahov v pracovnych bodoch
+            int selected = jComboBox_stav_KPB.getSelectedIndex();
+            
+            double[] temperatures_base = temperatures_for_state_equation(   Conductor, 
+                                                                            Kot_usek, 
+                                                                            -5, // pre -5 degree
+                                                                            Variable_streda_roc_teplota, 
+                                                                            Variable_T0_zivotnost, 
+                                                                            50*8760 ); // konecny stav
+            State_equation_variables Base = new State_equation_variables(   Conductor,
+                                                                            temperatures_base[1],
+                                                                            temperatures_base[0],
+                                                                            Kot_usek.get_zakladne_mech_napatie_lana_pre_minus5_over(),
+                                                                            1.0);
+            state_equation.set_all_variables(Base, Kot_usek.get_Ai_array(), Kot_usek.get_DeltaHi_array());
+            double sigma_H_base = state_equation.compute_sigma_H(   pretazenia[6],                  // load -5+Nv
+                                                                    Kot_usek.get_str_rozpatie(),    // mid span
+                                                                    temperatures_base[0], // Tx0
+                                                                    temperatures_base[1]);// Tx1
+            double c_base = state_equation.compute_c(   sigma_H_base, 
+                                                        pretazenia[6], // load -5+Nv
+                                                        Conductor);
+            
+                
+            for (int y=0; y<Kot_usek.get_Ai_array().length; y++){
+                
+                double x_AB_base[] = forces_check.x_ABi(Variable_DeltaHi_array[y], c_base, Variable_Ai_array[y]);
+                double x_A_base = x_AB_base[0];
+                double x_B_base = x_AB_base[1];
+                double F_A_base = forces_check.F_ABi(x_A_base, c_base, Conductor, pretazenia[6]);// load -5+Nv
+                double F_B_base = forces_check.F_ABi(x_B_base, c_base, Conductor, pretazenia[6]);// load -5+Nv
+                
+                
+                double[] temperatures_check = temperatures_for_state_equation(  Conductor, 
+                                                                                Kot_usek, 
+                                                                                Variable_vybrany_stav_pre_KPB, 
+                                                                                Variable_streda_roc_teplota, 
+                                                                                Variable_T0_zivotnost, 
+                                                                                Variable_KPB_cas_vypoctu );
+                State_equation_variables Check = new State_equation_variables(  Conductor,
+                                                                                temperatures_check[1],
+                                                                                temperatures_check[0],
+                                                                                Kot_usek.get_zakladne_mech_napatie_lana_pre_minus5_over(),
+                                                                                1.0);
+                state_equation.set_all_variables(Check, Kot_usek.get_Ai_array(), Kot_usek.get_DeltaHi_array());
+                double sigma_H_check = state_equation.compute_sigma_H(  pretazenia[selected],                  // load
+                                                                        Kot_usek.get_str_rozpatie(),    // mid span
+                                                                        temperatures_check[0], // Tx0
+                                                                        temperatures_check[1]);// Tx1
+                double c_check = state_equation.compute_c(  sigma_H_check, 
+                                                            pretazenia[selected], 
+                                                            Conductor);
+                double F_check_max = (Variable_maximalne_zataz_lana_podiel_z_RTS*1000)/Conductor.get_S();
+                double x_AB[] = forces_check.x_ABi(Variable_DeltaHi_array[y], c_check, Variable_Ai_array[y]);
+                double x_A = x_AB[0];
+                double x_B = x_AB[1];
+                double F_A_mod = forces_check.F_ABi(x_A, c_check, Conductor, pretazenia[selected]);
+                double F_B_mod = forces_check.F_ABi(x_B, c_check, Conductor, pretazenia[selected]);
+
+                
+                
+                
                 
                 // tu sa zadavaju tahy
                 
-                tahy[y][0] = 0.01;
-                tahy[y][1] = 0.02;
-                tahy[y][2] = 0.03;
-                tahy[y][3] = 0.04;
+                tahy[y][0] = F_A_base;  // F_A -> base in kN
+                tahy[y][1] = F_B_base;  // F_B -> base in kN
+                tahy[y][2] = F_A_mod;  // F_A -> modal in kN
+                tahy[y][3] = F_B_mod;  // F_B -> modal in kN
                 
             }
             

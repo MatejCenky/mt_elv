@@ -461,8 +461,7 @@ public static void constructor(){
 /*278*/  language.SK.add("Montážne tabuľy pdf export vytvorený");       language.CZ.add("I-SK");                     language.EN.add("I-SK");
 /*279*/  language.SK.add("Kotevný úsek vytvorený");       language.CZ.add("I-SK");                     language.EN.add("I-SK");
 /*280*/  language.SK.add("Kotevný úsek odstránený");       language.CZ.add("I-SK");                     language.EN.add("I-SK");
-
-
+/*281*/  language.SK.add("Ťah pre -5+N [MPa] pre percentuálny podiel námrazy");       language.CZ.add("I-SK");                     language.EN.add("I-SK");
 
 
 
