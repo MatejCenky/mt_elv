@@ -87,10 +87,10 @@ public static void constructor(){
 
 //Conductors_Jdialog_new conductor
 
-/*44*/  language.SK.add("Nový vodič");               language.CZ.add("Novej vodič");               language.EN.add("New conductor");
-/*45*/  language.SK.add("Vytvoriť");                 language.CZ.add("Vytvořit");                  language.EN.add("Create");
-/*46*/  language.SK.add("Názov vodiča :");           language.CZ.add("Jméno vodiče :");            language.EN.add("Name of the conductor :");
-/*47*/  language.SK.add("Zlá vstupná hodnota");      language.CZ.add("Zlá vstupní hodnota");       language.EN.add("Incorrect input");
+/*44*/  language.SK.add("Nový vodič");                  language.CZ.add("Novej vodič");               language.EN.add("New conductor");
+/*45*/  language.SK.add("Vytvoriť");                    language.CZ.add("Vytvořit");                  language.EN.add("Create");
+/*46*/  language.SK.add("Názov vodiča :");              language.CZ.add("Jméno vodiče :");            language.EN.add("Name of the conductor :");
+/*47*/  language.SK.add("Zlá vstupná hodnota");         language.CZ.add("Zlá vstupní hodnota");       language.EN.add("Incorrect input");
 
 //Conductors_Jdialog_change conductor
 
@@ -99,114 +99,152 @@ public static void constructor(){
 
 //Conductors_Jdialog_main_save memory button 
 
-/*50*/  language.SK.add("Uložiť cestu");                     language.CZ.add("Ulozit cestu");                     language.EN.add("Save path");
+/*50*/  language.SK.add("Uložiť cestu");                     language.CZ.add("Uložit cestu");                     language.EN.add("Save path");
 
 
 // Main_frame
 
-/*51*/  language.SK.add("Zoznam kotevných úsekov");                            language.CZ.add("Ulozit cestu");                     language.EN.add("Save path");
-/*52*/  language.SK.add("Kotevný úsek");                     language.CZ.add("Ulozit cestu");                     language.EN.add("Save path");
+/*51*/  language.SK.add("Zoznam kotevných úsekov");                            
+        language.CZ.add("Seznam kotěvních úseků");                     
+        language.EN.add("Suspension section list");
+        
+/*52*/  language.SK.add("Kotevný úsek");                     
+        language.CZ.add("Kotěvný úsek");                     
+        language.EN.add("Suspension section");
 
 // Main_frame_tool_tip
 
-/*53*/  language.SK.add("Uložiť projekt");                     language.CZ.add("Ulozit cestu");                     language.EN.add("Save path");
-/*54*/  language.SK.add("Uložiť projekt ako");                     language.CZ.add("Ulozit cestu");                     language.EN.add("Save path");
-/*55*/  language.SK.add("Uložiť výsledky projektu");                     language.CZ.add("Ulozit cestu");                     language.EN.add("Save path");
-/*56*/  language.SK.add("Nový kotevný úsek");                     language.CZ.add("Ulozit cestu");                     language.EN.add("Save path");
-/*57*/  language.SK.add("Zmazať kotevný úsek");                     language.CZ.add("Ulozit cestu");                     language.EN.add("Save path");
-/*58*/  language.SK.add("Spustiť výpočet");                     language.CZ.add("Ulozit cestu");                     language.EN.add("Save path");
-/*59*/  language.SK.add("Tlač do PDF");                     language.CZ.add("Ulozit cestu");                     language.EN.add("Save path");
+/*53*/  language.SK.add("Uložiť projekt");                     
+        language.CZ.add("Uložit projekt");                     
+        language.EN.add("Save project");
+
+/*54*/  language.SK.add("Uložiť projekt ako");                     
+        language.CZ.add("Uložit projekt jako");                     
+        language.EN.add("Save project as");
+        
+/*55*/  language.SK.add("Uložiť výsledky projektu");                     
+        language.CZ.add("Uložit výsledky projektu");                     
+        language.EN.add("Save project results");
+        
+/*56*/  language.SK.add("Nový kotevný úsek");                     
+        language.CZ.add("Nový kotěvný úsek");                     
+        language.EN.add("New susp. section");
+        
+/*57*/  language.SK.add("Zmazať kotevný úsek");                     
+        language.CZ.add("Smazat kotěvný úsek");                     
+        language.EN.add("Delete susp. section");
+        
+/*58*/  language.SK.add("Spustiť výpočet");                     
+        language.CZ.add("Spustit výpočet");                     
+        language.EN.add("Run calculation");
+        
+/*59*/  language.SK.add("Tlač do PDF");                     
+        language.CZ.add("Tlač do PDF");                     
+        language.EN.add("Print to PDF");
 
 // Main_frame_jdialog_create_kotevny_usek
-/*60*/  language.SK.add("Nový kotevný úsek");                     language.CZ.add("Ulozit cestu");                     language.EN.add("Save path");
-/*61*/  language.SK.add("Vytvoriť");                     language.CZ.add("Ulozit cestu");                     language.EN.add("Save path");
-/*62*/  language.SK.add("Názov");                     language.CZ.add("Ulozit cestu");                     language.EN.add("Save path");
+/*60*/  language.SK.add("Nový kotevný úsek");                     
+        language.CZ.add("Nový kotěvný úsek");                     
+        language.EN.add("New susp. section");
+        
+/*61*/  language.SK.add("Vytvoriť");                     
+        language.CZ.add("Vytvořit");                     
+        language.EN.add("Create");
+        
+/*62*/  language.SK.add("Názov");                     
+        language.CZ.add("Název");                     
+        language.EN.add("Name");
 
 // Main_frame_tool_tip2
 
-/*63*/  language.SK.add("Označiť všetky kotevné úseky");                     language.CZ.add("Ulozit cestu");                     language.EN.add("Save path");
-/*64*/  language.SK.add("Odznačiť všetky kotevné úseky");                     language.CZ.add("Ulozit cestu");                     language.EN.add("Save path");
+/*63*/  language.SK.add("Označiť všetky kotevné úseky");                     
+        language.CZ.add("Označit všechny kot. úseky");                     
+        language.EN.add("Mark all susp. sections");
+        
+/*64*/  language.SK.add("Odznačiť všetky kotevné úseky");                     
+        language.CZ.add(" ");                     
+        language.EN.add("Save path");
 
 // main_frame
 
-/*65*/  language.SK.add("Lano");                     language.CZ.add("Ulozit cestu");                     language.EN.add("Save path");
-/*66*/  language.SK.add("RTS");                     language.CZ.add("Ulozit cestu");                     language.EN.add("Save path");
-/*67*/  language.SK.add("Námrazová oblasť");                     language.CZ.add("Ulozit cestu");                     language.EN.add("Save path");
+/*65*/  language.SK.add("Lano");                     language.CZ.add(" ");                     language.EN.add("Save path");
+/*66*/  language.SK.add("RTS");                     language.CZ.add(" ");                     language.EN.add("Save path");
+/*67*/  language.SK.add("Námrazová oblasť");                     language.CZ.add(" ");                     language.EN.add("Save path");
 
 // main_frame namrazova oblast
 
-/*68*/  language.SK.add("Námrazová oblasť");                     language.CZ.add("Ulozit cestu");                     language.EN.add("Save path");
-/*69*/  language.SK.add("Označenie");                     language.CZ.add("Ulozit cestu");                     language.EN.add("Save path");
-/*70*/  language.SK.add("Ak");                     language.CZ.add("Ulozit cestu");                     language.EN.add("Save path");
-/*71*/  language.SK.add("Vlastná hodnota");                     language.CZ.add("Ulozit cestu");                     language.EN.add("Save path");
-/*72*/  language.SK.add("Vlastná definovanie námrazovej oblasti");                     language.CZ.add("Ulozit cestu");                     language.EN.add("Save path");
-/*73*/  language.SK.add("Použi");                     language.CZ.add("Ulozit cestu");                     language.EN.add("Save path");
-/*74*/  language.SK.add("Zrušiť");                     language.CZ.add("Ulozit cestu");                     language.EN.add("Save path");
+/*68*/  language.SK.add("Námrazová oblasť");                     language.CZ.add(" ");                     language.EN.add("Save path");
+/*69*/  language.SK.add("Označenie");                     language.CZ.add(" ");                     language.EN.add("Save path");
+/*70*/  language.SK.add("Ak");                     language.CZ.add(" ");                     language.EN.add("Save path");
+/*71*/  language.SK.add("Vlastná hodnota");                     language.CZ.add(" ");                     language.EN.add("Save path");
+/*72*/  language.SK.add("Vlastná definovanie námrazovej oblasti");                     language.CZ.add(" ");                     language.EN.add("Save path");
+/*73*/  language.SK.add("Použi");                     language.CZ.add(" ");                     language.EN.add("Save path");
+/*74*/  language.SK.add("Zrušiť");                     language.CZ.add(" ");                     language.EN.add("Save path");
 
-/*75*/  language.SK.add("Použiť");                     language.CZ.add("Ulozit cestu");                     language.EN.add("Save path");
+/*75*/  language.SK.add("Použiť");                     language.CZ.add(" ");                     language.EN.add("Save path");
 
 // main_frame druh námrazy
 
-/*76*/  language.SK.add("Typ námrazy");                     language.CZ.add("Ulozit cestu");                     language.EN.add("Save path");
-/*77*/  language.SK.add("Mokrý sneh");                     language.CZ.add("Ulozit cestu");                     language.EN.add("Save path");
-/*78*/  language.SK.add("Ľadovica");                     language.CZ.add("Ulozit cestu");                     language.EN.add("Save path");
-/*79*/  language.SK.add("Ľahká inovať");                     language.CZ.add("Ulozit cestu");                     language.EN.add("Save path");
-/*80*/  language.SK.add("Ťažká inovať");                     language.CZ.add("Ulozit cestu");                     language.EN.add("Save path");
-/*81*/  language.SK.add("NNA-SK");                     language.CZ.add("Ulozit cestu");                     language.EN.add("Save path");
-/*82*/  language.SK.add("Voliteľná");                     language.CZ.add("Ulozit cestu");                     language.EN.add("Save path");
+/*76*/  language.SK.add("Typ námrazy");                     language.CZ.add(" ");                     language.EN.add("Save path");
+/*77*/  language.SK.add("Mokrý sneh");                     language.CZ.add(" ");                     language.EN.add("Save path");
+/*78*/  language.SK.add("Ľadovica");                     language.CZ.add(" ");                     language.EN.add("Save path");
+/*79*/  language.SK.add("Ľahká inovať");                     language.CZ.add(" ");                     language.EN.add("Save path");
+/*80*/  language.SK.add("Ťažká inovať");                     language.CZ.add(" ");                     language.EN.add("Save path");
+/*81*/  language.SK.add("NNA-SK");                     language.CZ.add(" ");                     language.EN.add("Save path");
+/*82*/  language.SK.add("Voliteľná");                     language.CZ.add(" ");                     language.EN.add("Save path");
 
-/*83*/  language.SK.add("Ccl = ");                     language.CZ.add("Ulozit cestu");                     language.EN.add("Save path");
-/*84*/  language.SK.add("\u03C1 = ");                     language.CZ.add("Ulozit cestu");                     language.EN.add("Save path");
+/*83*/  language.SK.add("Ccl = ");                     language.CZ.add(" ");                     language.EN.add("Save path");
+/*84*/  language.SK.add("\u03C1 = ");                     language.CZ.add(" ");                     language.EN.add("Save path");
 /*85*/  language.SK.add("-");                     language.CZ.add("-");                     language.EN.add("-");
 
 // main_frame mech napatia a podiel z RTS
 
-/*86*/  language.SK.add("Zákl. mech. napätie lana pri -5°C");                 language.CZ.add("Ulozit cestu");          language.EN.add("Save path");
+/*86*/  language.SK.add("Zákl. mech. napätie lana pri -5°C");                 language.CZ.add(" ");          language.EN.add("Save path");
 /*87*/  language.SK.add("Maximálne zaťaženie pre vodič");                     language.CZ.add("-");                     language.EN.add("-");
 
 // main_frame amrazy tool tips
 
-/*88*/  language.SK.add("Súčiniteľ aerodynamického odporu vodiča s námrazou");                     language.CZ.add("Ulozit cestu");                     language.EN.add("Save path");
+/*88*/  language.SK.add("Súčiniteľ aerodynamického odporu vodiča s námrazou");                     language.CZ.add(" ");                     language.EN.add("Save path");
 /*89*/  language.SK.add("Hustota námrazy");                     language.CZ.add("-");                     language.EN.add("-");
-/*90*/  language.SK.add("Rated Tensile Strength (Matematická únosnost)");                     language.CZ.add("Ulozit cestu");                     language.EN.add("Save path");
+/*90*/  language.SK.add("Rated Tensile Strength (Matematická únosnost)");                     language.CZ.add(" ");                     language.EN.add("Save path");
 
 // main_frame BigTable for rozpatia and so on
 
-/*91*/  language.SK.add("Rozpätia [m]");                     language.CZ.add("Ulozit cestu");                     language.EN.add("Save path");
+/*91*/  language.SK.add("Rozpätia [m]");                     language.CZ.add(" ");                     language.EN.add("Save path");
 /*92*/  language.SK.add("Výška m.n.m. [m]");                     language.CZ.add("-");                     language.EN.add("-");
-/*93*/  language.SK.add("Výška stožiara [m]");                     language.CZ.add("Ulozit cestu");                     language.EN.add("Save path");
+/*93*/  language.SK.add("Výška stožiara [m]");                     language.CZ.add(" ");                     language.EN.add("Save path");
 
 // main_frame BigTable for rozpatia and so on
 
-/*94*/  language.SK.add("Stredná výška vodičov nad terénom");                     language.CZ.add("Ulozit cestu");                     language.EN.add("Save path");
-/*95*/  language.SK.add("Vypočítana");                     language.CZ.add("Ulozit cestu");                     language.EN.add("Save path");
-/*96*/  language.SK.add("Vlastná");                     language.CZ.add("Ulozit cestu");                     language.EN.add("Save path");
+/*94*/  language.SK.add("Stredná výška vodičov nad terénom");                     language.CZ.add(" ");                     language.EN.add("Save path");
+/*95*/  language.SK.add("Vypočítana");                     language.CZ.add(" ");                     language.EN.add("Save path");
+/*96*/  language.SK.add("Vlastná");                     language.CZ.add(" ");                     language.EN.add("Save path");
 
 // main_frame tabulky cas
 
-/*97*/  language.SK.add("Tabuľky");                     language.CZ.add("Ulozit cestu");                     language.EN.add("Save path");
-/*98*/  language.SK.add("Počiatočné a)");                     language.CZ.add("Ulozit cestu");                     language.EN.add("Save path");
-/*99*/  language.SK.add("Prechodné");                     language.CZ.add("Ulozit cestu");                     language.EN.add("Save path");
-/*100*/  language.SK.add("Konečné");                     language.CZ.add("Ulozit cestu");                     language.EN.add("Save path");
-/*101*/  language.SK.add("Roky");                     language.CZ.add("Ulozit cestu");                     language.EN.add("Save path");
+/*97*/  language.SK.add("Tabuľky");                     language.CZ.add(" ");                     language.EN.add("Save path");
+/*98*/  language.SK.add("Počiatočné a)");                     language.CZ.add(" ");                     language.EN.add("Save path");
+/*99*/  language.SK.add("Prechodné");                     language.CZ.add(" ");                     language.EN.add("Save path");
+/*100*/  language.SK.add("Konečné");                     language.CZ.add(" ");                     language.EN.add("Save path");
+/*101*/  language.SK.add("Roky");                     language.CZ.add(" ");                     language.EN.add("Save path");
 
 // main_frame Klc, Kh, BI
 
 /*102*/  language.SK.add("Klc =");                     language.CZ.add("Klc =");                     language.EN.add("Klc =");
-/*103*/  language.SK.add("súčiniteľ miestnych podmienok (čl.4.5.1/SK.3)");                     language.CZ.add("Ulozit cestu");                     language.EN.add("Save path");
+/*103*/  language.SK.add("súčiniteľ miestnych podmienok (čl.4.5.1/SK.3)");                     language.CZ.add(" ");                     language.EN.add("Save path");
 /*104*/  language.SK.add("Kh =");                     language.CZ.add("Kh =");                     language.EN.add("Kh =");
-/*105*/  language.SK.add("súčiniteľ výšky (čl.4.5.1/SK.3)");                     language.CZ.add("Ulozit cestu");                     language.EN.add("Save path");
+/*105*/  language.SK.add("súčiniteľ výšky (čl.4.5.1/SK.3)");                     language.CZ.add(" ");                     language.EN.add("Save path");
 /*106*/  language.SK.add("Bl =");                     language.CZ.add("Bl =");                     language.EN.add("Bl =");
-/*107*/  language.SK.add("súčiniteľ pre spolupôsobenie vetra a námrazy (čl. 4.6.6/SK/CZ)");                     language.CZ.add("Ulozit cestu");                     language.EN.add("Save path");
+/*107*/  language.SK.add("súčiniteľ pre spolupôsobenie vetra a námrazy (čl. 4.6.6/SK/CZ)");                     language.CZ.add(" ");                     language.EN.add("Save path");
 
 // main_frame vetrova oblast
 
 /*108*/  language.SK.add("Vetrová oblasť");                     language.CZ.add("Klc =");                     language.EN.add("Klc =");
-/*109*/  language.SK.add("Základná rýchlosť vetra");                     language.CZ.add("Ulozit cestu");                     language.EN.add("Save path");
+/*109*/  language.SK.add("Základná rýchlosť vetra");                     language.CZ.add(" ");                     language.EN.add("Save path");
 /*110*/  language.SK.add("Cdir =");                     language.CZ.add("Kh =");                     language.EN.add("Kh =");
-/*111*/  language.SK.add("Súčiniteľ smerovosti vetra");                     language.CZ.add("Ulozit cestu");                     language.EN.add("Save path");
+/*111*/  language.SK.add("Súčiniteľ smerovosti vetra");                     language.CZ.add(" ");                     language.EN.add("Save path");
 /*112*/  language.SK.add("Co =");                     language.CZ.add("Bl =");                     language.EN.add("Bl =");
-/*113*/  language.SK.add("Súčiniteľ orografie");                     language.CZ.add("Ulozit cestu");                     language.EN.add("Save path");
+/*113*/  language.SK.add("Súčiniteľ orografie");                     language.CZ.add(" ");                     language.EN.add("Save path");
 
 /*114*/  language.SK.add("I-SK");                     language.CZ.add("I-SK");                     language.EN.add("I-SK");
 /*115*/  language.SK.add("II-SK");                     language.CZ.add("I-SK");                     language.EN.add("I-SK");
@@ -223,9 +261,9 @@ public static void constructor(){
 
 // main_frame Charakt_terenu
 /*125*/  language.SK.add("Charakteristika terénu");                     language.CZ.add("Klc =");                     language.EN.add("Klc =");
-/*126*/  language.SK.add("kr =");                     language.CZ.add("Ulozit cestu");                     language.EN.add("Save path");
+/*126*/  language.SK.add("kr =");                     language.CZ.add(" ");                     language.EN.add("Save path");
 /*127*/  language.SK.add("z0 =");                     language.CZ.add("Kh =");                     language.EN.add("Kh =");
-/*128*/  language.SK.add("Súčiniteľ terénu");                     language.CZ.add("Ulozit cestu");                     language.EN.add("Save path");
+/*128*/  language.SK.add("Súčiniteľ terénu");                     language.CZ.add(" ");                     language.EN.add("Save path");
 /*129*/  language.SK.add("Dĺžka drsnosti");                     language.CZ.add("Bl =");                     language.EN.add("Bl =");
 
 /*130*/  language.SK.add("Kategória I");                     language.CZ.add("I-SK");                     language.EN.add("I-SK");
