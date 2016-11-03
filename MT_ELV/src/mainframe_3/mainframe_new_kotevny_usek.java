@@ -6,8 +6,9 @@
  * of it must be consulted and the permission granted 
  * by authors Ing. Matej Cenky and Ing. Jozef Bendik.
  */
-package mainframe_1;
+package mainframe_3;
 
+import mainframe_1.*;
 import java.awt.Desktop;
 import java.awt.Toolkit;
 import java.io.File;
@@ -99,8 +100,8 @@ public class mainframe_new_kotevny_usek extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void createButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createButtonActionPerformed
-        mainframe_1.new_kotevny_usek_jdialog(jTextField1.getText());        
-        mainframe_1.newkotevnyusekstatus(true);
+        mainframe_3.new_kotevny_usek_jdialog(jTextField1.getText());        
+        mainframe_3.newkotevnyusekstatus(true);
         disinit();
     }//GEN-LAST:event_createButtonActionPerformed
 
@@ -153,6 +154,10 @@ public class mainframe_new_kotevny_usek extends javax.swing.JDialog {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(mainframe_new_kotevny_usek.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>

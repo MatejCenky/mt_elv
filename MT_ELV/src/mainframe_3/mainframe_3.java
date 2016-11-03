@@ -6,8 +6,9 @@
  * of it must be consulted and the permission granted 
  * by authors Ing. Matej Cenky and Ing. Jozef Bendik.
  */
-package mainframe_1;
+package mainframe_3;
 
+import mainframe_1.*;
 import com.itextpdf.text.Chunk;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
@@ -69,14 +70,14 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
  *
  * @author Mattto
  */
-  public   class mainframe extends javax.swing.JFrame {
+  public   class mainframe_3 extends javax.swing.JFrame {
 
    
 
     /**
      * Creates new form mainframe
      */
-    public  mainframe() {
+    public  mainframe_3() {
        
         
         if(loaded_file== false){
@@ -2551,7 +2552,7 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
                 .addContainerGap()
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel8Layout.createSequentialGroup()
-                        .addComponent(jPanel14, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                        .addComponent(jPanel14, javax.swing.GroupLayout.DEFAULT_SIZE, 0, Short.MAX_VALUE)
                         .addContainerGap())
                     .addGroup(jPanel8Layout.createSequentialGroup()
                         .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -3123,7 +3124,7 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
                 .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel18Layout.createSequentialGroup()
                         .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jPanel9, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                            .addComponent(jPanel9, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 0, Short.MAX_VALUE)
                             .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -4363,9 +4364,9 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
         }catch(NullPointerException e){  // catch for cycle and kotevny usek data
            warning_sign(warning_text);     
         } catch (DocumentException | FileNotFoundException ex) {
-           warning_sign(warning_text); Logger.getLogger(mainframe.class.getName()).log(Level.SEVERE, null, ex);
+           warning_sign(warning_text); Logger.getLogger(mainframe_3.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
-            Logger.getLogger(mainframe.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(mainframe_3.class.getName()).log(Level.SEVERE, null, ex);
         }
         }else{  // ak niesu data v v prom stlpci
             
@@ -5931,20 +5932,23 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(mainframe.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(mainframe_3.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(mainframe.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(mainframe_3.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(mainframe.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(mainframe_3.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(mainframe.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(mainframe_3.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new mainframe().setVisible(true);
+                new mainframe_3().setVisible(true);
             }
         });
     }
@@ -7773,7 +7777,7 @@ private void seticon() {
             
             
         } catch (FileNotFoundException ex) {
-            Logger.getLogger(mainframe.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(mainframe_3.class.getName()).log(Level.SEVERE, null, ex);
         }
         
     }
@@ -8052,7 +8056,7 @@ private void seticon() {
               
               
         } catch (FileNotFoundException ex) {
-            Logger.getLogger(mainframe.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(mainframe_3.class.getName()).log(Level.SEVERE, null, ex);
         }
         
         

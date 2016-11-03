@@ -6,7 +6,7 @@
  * of it must be consulted and the permission granted 
  * by authors Ing. Matej Cenky and Ing. Jozef Bendik.
  */
-package mainframe_2;
+package mainframe_3;
 
 import mainframe_1.*;
 import java.awt.Color;
@@ -243,7 +243,7 @@ public class mainframe_uroven_spolahlivosti_vlastna_hodnota extends javax.swing.
    
         Object[] hodnoty = new Object[4];
         hodnoty = new Object[]{(double) hodnota1,(double) hodnota2, (double) hodnota3,(double) hodnota4, (double) hodnota5};
-        mainframe_2.getvlastnehodnoty_uroven_splahlivosti(hodnoty);
+        mainframe_3.getvlastnehodnoty_uroven_splahlivosti(hodnoty);
        disinit();
        }
         
@@ -254,7 +254,7 @@ public class mainframe_uroven_spolahlivosti_vlastna_hodnota extends javax.swing.
         
      Object[] hodnoty = new Object[4];
         hodnoty = new Object[]{(double) 0.0,(double) 0.0, (double) 0.0,(double) 0.0,(double) 0.0};
-        mainframe_2.getvlastnehodnoty_uroven_splahlivosti(hodnoty);
+        mainframe_3.getvlastnehodnoty_uroven_splahlivosti(hodnoty);
        disinit();
         
     }//GEN-LAST:event_button_stormoActionPerformed

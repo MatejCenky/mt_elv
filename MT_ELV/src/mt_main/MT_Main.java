@@ -10,7 +10,9 @@ package mt_main;
 
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
-import mainframe_1.mainframe;
+import mainframe_1.mainframe_1;
+import mainframe_2.mainframe_2;
+import mainframe_3.mainframe_3;
 
 /**
  *
@@ -58,19 +60,28 @@ public class MT_Main {
             } catch (InterruptedException ex) {
                 Thread.currentThread().interrupt();
             }
+            int pocet_otvoreni = 0;
             int status = startPanel.getStatus_for_new_project(); // vytvor nove okno
             
             if (status == 1) {                               // Status 1 mena new project           
                 startPanel.setStatus_for_new_project(0);    // nastavi status že bolo vytvorene blokne od zacyklenia                
-                mainframe.main(args,false);
-                //mainframe_2.main(args);         
+               
+            if(pocet_otvoreni == 0){mainframe_1.main(args,false);}
+            if(pocet_otvoreni == 1){mainframe_2.main(args,false);}    
+            if(pocet_otvoreni == 2){mainframe_3.main(args,false);}   
+            pocet_otvoreni=pocet_otvoreni+1;          
             }
             
             if (status == 2) {                               // Status 1 mena new project           
                 startPanel.setStatus_for_new_project(0);    // nastavi status že bolo vytvorene blokne od zacyklenia                
-                mainframe.main(args,true);
-                //mainframe_2.main(args);         
+                
+                
+              if(pocet_otvoreni == 0){ mainframe_1.main(args,true);}
+              if(pocet_otvoreni == 1){ mainframe_2.main(args,true);   } 
+              if(pocet_otvoreni == 2){ mainframe_3.main(args,true);   } 
+            pocet_otvoreni=pocet_otvoreni+1;  
             }
+            
             
 
         }

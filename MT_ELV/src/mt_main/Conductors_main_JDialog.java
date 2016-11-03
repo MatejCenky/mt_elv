@@ -8,8 +8,8 @@
  */
 package mt_main;
 
-import mainframe_1.mainframe;
-import mainframe_2.mainframe_2;
+import mainframe_1.mainframe_1;
+
 import java.awt.Toolkit;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -21,10 +21,10 @@ import java.util.logging.Logger;
 import javax.swing.JFileChooser;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
-import javax.swing.event.TableModelEvent;
-import javax.swing.event.TableModelListener;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableModel;
+import mainframe_2.mainframe_2;
+import mainframe_3.mainframe_3;
 
 import static mt_main.startPanel.languageOption;
 
@@ -540,8 +540,9 @@ public class Conductors_main_JDialog extends javax.swing.JDialog {
             }
 
             fw.close();
-            mainframe.lanochangeinDatabaze();
-           // mainframe_2.lanochangeinDatabaze();
+            mainframe_1.lanochangeinDatabaze();
+            mainframe_2.lanochangeinDatabaze();
+            mainframe_3.lanochangeinDatabaze();
         } catch (FileNotFoundException ex) {
             Logger.getLogger(Conductors_main_JDialog.class.getName()).log(Level.SEVERE, null, ex);
         }

@@ -6,7 +6,7 @@
  * of it must be consulted and the permission granted 
  * by authors Ing. Matej Cenky and Ing. Jozef Bendik.
  */
-package mainframe_2;
+package mainframe_3;
 
 import mainframe_1.*;
 import java.awt.Toolkit;
@@ -194,14 +194,14 @@ public class mainframe_namrazova_oblast_jDialog extends javax.swing.JDialog {
         if( rowNumber >= 0 && rowNumber <= 8){
            Object[] hodnoty = new Object[3];
            hodnoty = Databaza_namrazova_oblast.get(rowNumber);
-        mainframe_2.hodnoty_namrazove_oblasti = hodnoty;
+        mainframe_3.hodnoty_namrazove_oblasti = hodnoty;
         
         if (rowNumber == 8){
-        mainframe_2.namrazove_oblasti_názov_oblasti = "I-K";    
+        mainframe_3.namrazove_oblasti_názov_oblasti = "I-K";    
         }else{
-        mainframe_2.namrazove_oblasti_názov_oblasti = String.valueOf(jTable.getValueAt(rowNumber, 0));
+        mainframe_3.namrazove_oblasti_názov_oblasti = String.valueOf(jTable.getValueAt(rowNumber, 0));
         }
-        mainframe_2.is_namrazove_oblasti_setted=true;
+        mainframe_3.is_namrazove_oblasti_setted=true;
         disinit();
        }else{
    

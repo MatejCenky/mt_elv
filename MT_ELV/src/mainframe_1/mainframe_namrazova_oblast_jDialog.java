@@ -193,14 +193,14 @@ public class mainframe_namrazova_oblast_jDialog extends javax.swing.JDialog {
         if( rowNumber >= 0 && rowNumber <= 8){
            Object[] hodnoty = new Object[3];
            hodnoty = Databaza_namrazova_oblast.get(rowNumber);
-        mainframe.hodnoty_namrazove_oblasti = hodnoty;
+        mainframe_1.hodnoty_namrazove_oblasti = hodnoty;
         
         if (rowNumber == 8){
-        mainframe.namrazove_oblasti_názov_oblasti = "I-K";    
+        mainframe_1.namrazove_oblasti_názov_oblasti = "I-K";    
         }else{
-        mainframe.namrazove_oblasti_názov_oblasti = String.valueOf(jTable.getValueAt(rowNumber, 0));
+        mainframe_1.namrazove_oblasti_názov_oblasti = String.valueOf(jTable.getValueAt(rowNumber, 0));
         }
-        mainframe.is_namrazove_oblasti_setted=true;
+        mainframe_1.is_namrazove_oblasti_setted=true;
         disinit();
        }else{
    

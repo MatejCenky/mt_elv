@@ -6,7 +6,7 @@
  * of it must be consulted and the permission granted 
  * by authors Ing. Matej Cenky and Ing. Jozef Bendik.
  */
-package mainframe_2;
+package mainframe_3;
 
 import mainframe_1.*;
 import java.awt.Color;

@@ -32,7 +32,7 @@ public class mainframe_warning_jDialog extends javax.swing.JDialog {
         initComponents();
         setLocationRelativeTo(null); //center of window position
         setIcon();
-        jLabel1.setText(mainframe.warning_text);
+        jLabel1.setText(mainframe_1.warning_text);
     }
 
     /**

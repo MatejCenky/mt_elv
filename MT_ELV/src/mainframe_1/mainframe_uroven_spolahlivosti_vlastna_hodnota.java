@@ -242,7 +242,7 @@ public class mainframe_uroven_spolahlivosti_vlastna_hodnota extends javax.swing.
    
         Object[] hodnoty = new Object[4];
         hodnoty = new Object[]{(double) hodnota1,(double) hodnota2, (double) hodnota3,(double) hodnota4, (double) hodnota5};
-        mainframe.getvlastnehodnoty_uroven_splahlivosti(hodnoty);
+        mainframe_1.getvlastnehodnoty_uroven_splahlivosti(hodnoty);
        disinit();
        }
         
@@ -253,7 +253,7 @@ public class mainframe_uroven_spolahlivosti_vlastna_hodnota extends javax.swing.
         
      Object[] hodnoty = new Object[4];
         hodnoty = new Object[]{(double) 0.0,(double) 0.0, (double) 0.0,(double) 0.0,(double) 0.0};
-        mainframe.getvlastnehodnoty_uroven_splahlivosti(hodnoty);
+        mainframe_1.getvlastnehodnoty_uroven_splahlivosti(hodnoty);
        disinit();
         
     }//GEN-LAST:event_button_stormoActionPerformed
