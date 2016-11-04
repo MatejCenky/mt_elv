@@ -5898,7 +5898,7 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField_nazov_normiActionPerformed
 
-  public  void lanochangeinDatabaze() {
+  public static void lanochangeinDatabaze() {
   nacitatDatabazuLan();      
         
     }
@@ -6081,7 +6081,7 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
     private javax.swing.ButtonGroup buttonGroup_tabulka;
     private javax.swing.JComboBox<String> jComboBox_KPB_typ_terenu;
     private javax.swing.JComboBox<String> jComboBox_char_terenu;
-    private javax.swing.JComboBox<String> jComboBox_conductor_chooser;
+    private static javax.swing.JComboBox<String> jComboBox_conductor_chooser;
     private javax.swing.JComboBox<String> jComboBox_druh_namrazy;
     private javax.swing.JComboBox<String> jComboBox_stav_KPB;
     private javax.swing.JComboBox<String> jComboBox_uroven_splahlivosti;
@@ -6304,7 +6304,7 @@ private void seticon() {
         return existnewkotevnyusek;
     }
     
-    private  void nacitatDatabazuLan(){
+    private static void nacitatDatabazuLan(){
     mainframeLodaed = false;    
     String  memory_path_plus_filename  = startPanel.set_memory_path_conductor();
         

@@ -5893,7 +5893,7 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField_nazov_normiActionPerformed
 
-  public  void lanochangeinDatabaze() {
+  public static void lanochangeinDatabaze() {
   nacitatDatabazuLan();      
         
     }
@@ -6305,7 +6305,7 @@ private void seticon() {
         return existnewkotevnyusek;
     }
     
-    private  void nacitatDatabazuLan(){
+    private static void nacitatDatabazuLan(){
     mainframeLodaed = false;    
     String  memory_path_plus_filename  = startPanel.set_memory_path_conductor();
         
