@@ -643,8 +643,21 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
         buttonGroup_pretazenia_vlystne_vypocitane = new javax.swing.ButtonGroup();
         buttonGroup_KPB_cas_vypoctu = new javax.swing.ButtonGroup();
         jPanel15 = new javax.swing.JPanel();
-        jTabbedPane2 = new javax.swing.JTabbedPane();
+        jPanel1 = new javax.swing.JPanel();
+        Button_Icon_save = new javax.swing.JButton();
+        Button_Icon_save_as = new javax.swing.JButton();
+        Button_Icon_delete_row_table_kotevny_usek = new javax.swing.JButton();
+        Button_Icon_arr_row_table_kotevny_usek = new javax.swing.JButton();
+        Button_Icon_calculate = new javax.swing.JButton();
+        Button_Icon_export_PDF_internal = new javax.swing.JButton();
+        Button_Icon_select_all_kotevny_usek = new javax.swing.JButton();
+        Button_Icon_deselect_all_kotevny_usek = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        Label_status = new javax.swing.JLabel();
+        Button_Icon_export_PDF_external = new javax.swing.JButton();
+        Button_Icon_export_PDF2_save_as = new javax.swing.JButton();
         jScrollPane4 = new javax.swing.JScrollPane();
+        jTabbedPane2 = new javax.swing.JTabbedPane();
         jPanel18 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
         Label_hlavicka_nazov = new javax.swing.JLabel();
@@ -838,19 +851,6 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
         Button_pdf_pagedown = new javax.swing.JButton();
         Textfield_cas = new javax.swing.JTextField();
         label_cas_vytvorenia = new javax.swing.JLabel();
-        jPanel1 = new javax.swing.JPanel();
-        Button_Icon_save = new javax.swing.JButton();
-        Button_Icon_save_as = new javax.swing.JButton();
-        Button_Icon_delete_row_table_kotevny_usek = new javax.swing.JButton();
-        Button_Icon_arr_row_table_kotevny_usek = new javax.swing.JButton();
-        Button_Icon_calculate = new javax.swing.JButton();
-        Button_Icon_export_PDF_internal = new javax.swing.JButton();
-        Button_Icon_select_all_kotevny_usek = new javax.swing.JButton();
-        Button_Icon_deselect_all_kotevny_usek = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-        Label_status = new javax.swing.JLabel();
-        Button_Icon_export_PDF_external = new javax.swing.JButton();
-        Button_Icon_export_PDF2_save_as = new javax.swing.JButton();
 
         javax.swing.GroupLayout jPanel15Layout = new javax.swing.GroupLayout(jPanel15);
         jPanel15.setLayout(jPanel15Layout);
@@ -866,6 +866,192 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle(project_name);
         setBackground(new java.awt.Color(204, 204, 204));
+
+        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        Button_Icon_save.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mt_graphic/Save-24.png"))); // NOI18N
+        Button_Icon_save.setFocusable(false);
+        Button_Icon_save.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        Button_Icon_save.setPreferredSize(new java.awt.Dimension(48, 48));
+        Button_Icon_save.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        Button_Icon_save.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Button_Icon_saveActionPerformed(evt);
+            }
+        });
+        Button_Icon_save.setToolTipText(language.language_label(languageOption, 53));
+
+        Button_Icon_save_as.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mt_graphic/Save-as-24.png"))); // NOI18N
+        Button_Icon_save_as.setFocusable(false);
+        Button_Icon_save_as.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        Button_Icon_save_as.setPreferredSize(new java.awt.Dimension(48, 48));
+        Button_Icon_save_as.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        Button_Icon_save_as.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Button_Icon_save_asActionPerformed(evt);
+            }
+        });
+        Button_Icon_save_as.setToolTipText(language.language_label(languageOption, 54));
+
+        Button_Icon_delete_row_table_kotevny_usek.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mt_graphic/Delete Row-24.png"))); // NOI18N
+        Button_Icon_delete_row_table_kotevny_usek.setFocusable(false);
+        Button_Icon_delete_row_table_kotevny_usek.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        Button_Icon_delete_row_table_kotevny_usek.setPreferredSize(new java.awt.Dimension(48, 48));
+        Button_Icon_delete_row_table_kotevny_usek.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        Button_Icon_delete_row_table_kotevny_usek.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Button_Icon_delete_row_table_kotevny_usekActionPerformed(evt);
+            }
+        });
+        Button_Icon_delete_row_table_kotevny_usek.setToolTipText(language.language_label(languageOption, 57));
+
+        Button_Icon_arr_row_table_kotevny_usek.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mt_graphic/Add Row-24.png"))); // NOI18N
+        Button_Icon_arr_row_table_kotevny_usek.setFocusable(false);
+        Button_Icon_arr_row_table_kotevny_usek.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        Button_Icon_arr_row_table_kotevny_usek.setPreferredSize(new java.awt.Dimension(48, 48));
+        Button_Icon_arr_row_table_kotevny_usek.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        Button_Icon_arr_row_table_kotevny_usek.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Button_Icon_arr_row_table_kotevny_usekActionPerformed(evt);
+            }
+        });
+        Button_Icon_arr_row_table_kotevny_usek.setToolTipText(language.language_label(languageOption, 56));
+
+        Button_Icon_calculate.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mt_graphic/Calculator-24.png"))); // NOI18N
+        Button_Icon_calculate.setFocusable(false);
+        Button_Icon_calculate.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        Button_Icon_calculate.setPreferredSize(new java.awt.Dimension(48, 48));
+        Button_Icon_calculate.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        Button_Icon_calculate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Button_Icon_calculateActionPerformed(evt);
+            }
+        });
+        Button_Icon_calculate.setToolTipText(language.language_label(languageOption, 58));
+
+        Button_Icon_export_PDF_internal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mt_graphic/PDF-24.png"))); // NOI18N
+        Button_Icon_export_PDF_internal.setFocusable(false);
+        Button_Icon_export_PDF_internal.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        Button_Icon_export_PDF_internal.setPreferredSize(new java.awt.Dimension(48, 48));
+        Button_Icon_export_PDF_internal.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        Button_Icon_export_PDF_internal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Button_Icon_export_PDF_internalActionPerformed(evt);
+            }
+        });
+        Button_Icon_export_PDF_internal.setToolTipText(language.language_label(languageOption, 263));
+
+        Button_Icon_select_all_kotevny_usek.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mt_graphic/Checked Checkbox-24.png"))); // NOI18N
+        Button_Icon_select_all_kotevny_usek.setFocusable(false);
+        Button_Icon_select_all_kotevny_usek.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        Button_Icon_select_all_kotevny_usek.setPreferredSize(new java.awt.Dimension(48, 48));
+        Button_Icon_select_all_kotevny_usek.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        Button_Icon_select_all_kotevny_usek.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Button_Icon_select_all_kotevny_usekActionPerformed(evt);
+            }
+        });
+        Button_Icon_select_all_kotevny_usek.setToolTipText(language.language_label(languageOption, 63));
+
+        Button_Icon_deselect_all_kotevny_usek.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mt_graphic/Close Window-24.png"))); // NOI18N
+        Button_Icon_deselect_all_kotevny_usek.setFocusable(false);
+        Button_Icon_deselect_all_kotevny_usek.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        Button_Icon_deselect_all_kotevny_usek.setPreferredSize(new java.awt.Dimension(48, 48));
+        Button_Icon_deselect_all_kotevny_usek.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        Button_Icon_deselect_all_kotevny_usek.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Button_Icon_deselect_all_kotevny_usekActionPerformed(evt);
+            }
+        });
+        Button_Icon_deselect_all_kotevny_usek.setToolTipText(language.language_label(languageOption, 64));
+
+        jLabel1.setText("Status : ");
+
+        Label_status.setText("jLabel2");
+
+        Button_Icon_export_PDF_external.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mt_graphic/PDFexternal-24.png"))); // NOI18N
+        Button_Icon_export_PDF_external.setFocusable(false);
+        Button_Icon_export_PDF_external.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        Button_Icon_export_PDF_external.setPreferredSize(new java.awt.Dimension(48, 48));
+        Button_Icon_export_PDF_external.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        Button_Icon_export_PDF_external.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Button_Icon_export_PDF_externalActionPerformed(evt);
+            }
+        });
+        Button_Icon_export_PDF_internal.setToolTipText(language.language_label(languageOption, 264));
+
+        Button_Icon_export_PDF2_save_as.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mt_graphic/PDFas-24.png"))); // NOI18N
+        Button_Icon_export_PDF2_save_as.setFocusable(false);
+        Button_Icon_export_PDF2_save_as.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        Button_Icon_export_PDF2_save_as.setPreferredSize(new java.awt.Dimension(48, 48));
+        Button_Icon_export_PDF2_save_as.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        Button_Icon_export_PDF2_save_as.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Button_Icon_export_PDF2_save_asActionPerformed(evt);
+            }
+        });
+        Button_Icon_export_PDF_internal.setToolTipText(language.language_label(languageOption, 265));
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(Button_Icon_save, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(Button_Icon_save_as, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(87, 87, 87)
+                .addComponent(Button_Icon_arr_row_table_kotevny_usek, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(Button_Icon_delete_row_table_kotevny_usek, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(Button_Icon_select_all_kotevny_usek, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(Button_Icon_deselect_all_kotevny_usek, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(53, 53, 53)
+                .addComponent(Button_Icon_calculate, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(Button_Icon_export_PDF_internal, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(3, 3, 3)
+                .addComponent(Button_Icon_export_PDF_external, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(Button_Icon_export_PDF2_save_as, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(Label_status, javax.swing.GroupLayout.PREFERRED_SIZE, 308, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(Button_Icon_save_as, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Button_Icon_save, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(Button_Icon_export_PDF2_save_as, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Button_Icon_export_PDF_external, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(Button_Icon_select_all_kotevny_usek, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(Button_Icon_deselect_all_kotevny_usek, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(Button_Icon_delete_row_table_kotevny_usek, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(Button_Icon_arr_row_table_kotevny_usek, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(Button_Icon_calculate, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(Button_Icon_export_PDF_internal, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(7, 7, 7))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(Label_status, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addContainerGap())))
+        );
 
         jPanel18.setAutoscrolls(true);
 
@@ -3177,9 +3363,7 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
 
         }
 
-        jScrollPane4.setViewportView(jPanel18);
-
-        jTabbedPane2.addTab("tab1", jScrollPane4);
+        jTabbedPane2.addTab("tab3", jPanel18);
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mt_graphic/empty.png"))); // NOI18N
 
@@ -3233,14 +3417,13 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
                     .addComponent(label_cas_vytvorenia, javax.swing.GroupLayout.DEFAULT_SIZE, 159, Short.MAX_VALUE)
                     .addComponent(Textfield_cas))
                 .addGap(41, 41, 41)
-                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 648, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(316, Short.MAX_VALUE))
+                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 627, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         jPanel23Layout.setVerticalGroup(
             jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel23Layout.createSequentialGroup()
                 .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel23Layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -3251,536 +3434,36 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
                             .addGroup(jPanel23Layout.createSequentialGroup()
                                 .addComponent(label_cas_vytvorenia)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(Textfield_cas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                                .addComponent(Textfield_cas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 896, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         jTabbedPane2.addTab("tab2", jPanel23);
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-
-        Button_Icon_save.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mt_graphic/Save-24.png"))); // NOI18N
-        Button_Icon_save.setFocusable(false);
-        Button_Icon_save.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        Button_Icon_save.setPreferredSize(new java.awt.Dimension(48, 48));
-        Button_Icon_save.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        Button_Icon_save.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Button_Icon_saveActionPerformed(evt);
-            }
-        });
-        Button_Icon_save.setToolTipText(language.language_label(languageOption, 53));
-
-        Button_Icon_save_as.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mt_graphic/Save-as-24.png"))); // NOI18N
-        Button_Icon_save_as.setFocusable(false);
-        Button_Icon_save_as.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        Button_Icon_save_as.setPreferredSize(new java.awt.Dimension(48, 48));
-        Button_Icon_save_as.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        Button_Icon_save_as.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Button_Icon_save_asActionPerformed(evt);
-            }
-        });
-        Button_Icon_save_as.setToolTipText(language.language_label(languageOption, 54));
-
-        Button_Icon_delete_row_table_kotevny_usek.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mt_graphic/Delete Row-24.png"))); // NOI18N
-        Button_Icon_delete_row_table_kotevny_usek.setFocusable(false);
-        Button_Icon_delete_row_table_kotevny_usek.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        Button_Icon_delete_row_table_kotevny_usek.setPreferredSize(new java.awt.Dimension(48, 48));
-        Button_Icon_delete_row_table_kotevny_usek.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        Button_Icon_delete_row_table_kotevny_usek.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Button_Icon_delete_row_table_kotevny_usekActionPerformed(evt);
-            }
-        });
-        Button_Icon_delete_row_table_kotevny_usek.setToolTipText(language.language_label(languageOption, 57));
-
-        Button_Icon_arr_row_table_kotevny_usek.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mt_graphic/Add Row-24.png"))); // NOI18N
-        Button_Icon_arr_row_table_kotevny_usek.setFocusable(false);
-        Button_Icon_arr_row_table_kotevny_usek.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        Button_Icon_arr_row_table_kotevny_usek.setPreferredSize(new java.awt.Dimension(48, 48));
-        Button_Icon_arr_row_table_kotevny_usek.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        Button_Icon_arr_row_table_kotevny_usek.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Button_Icon_arr_row_table_kotevny_usekActionPerformed(evt);
-            }
-        });
-        Button_Icon_arr_row_table_kotevny_usek.setToolTipText(language.language_label(languageOption, 56));
-
-        Button_Icon_calculate.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mt_graphic/Calculator-24.png"))); // NOI18N
-        Button_Icon_calculate.setFocusable(false);
-        Button_Icon_calculate.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        Button_Icon_calculate.setPreferredSize(new java.awt.Dimension(48, 48));
-        Button_Icon_calculate.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        Button_Icon_calculate.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Button_Icon_calculateActionPerformed(evt);
-            }
-        });
-        Button_Icon_calculate.setToolTipText(language.language_label(languageOption, 58));
-
-        Button_Icon_export_PDF_internal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mt_graphic/PDF-24.png"))); // NOI18N
-        Button_Icon_export_PDF_internal.setFocusable(false);
-        Button_Icon_export_PDF_internal.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        Button_Icon_export_PDF_internal.setPreferredSize(new java.awt.Dimension(48, 48));
-        Button_Icon_export_PDF_internal.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        Button_Icon_export_PDF_internal.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Button_Icon_export_PDF_internalActionPerformed(evt);
-            }
-        });
-        Button_Icon_export_PDF_internal.setToolTipText(language.language_label(languageOption, 263));
-
-        Button_Icon_select_all_kotevny_usek.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mt_graphic/Checked Checkbox-24.png"))); // NOI18N
-        Button_Icon_select_all_kotevny_usek.setFocusable(false);
-        Button_Icon_select_all_kotevny_usek.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        Button_Icon_select_all_kotevny_usek.setPreferredSize(new java.awt.Dimension(48, 48));
-        Button_Icon_select_all_kotevny_usek.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        Button_Icon_select_all_kotevny_usek.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Button_Icon_select_all_kotevny_usekActionPerformed(evt);
-            }
-        });
-        Button_Icon_select_all_kotevny_usek.setToolTipText(language.language_label(languageOption, 63));
-
-        Button_Icon_deselect_all_kotevny_usek.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mt_graphic/Close Window-24.png"))); // NOI18N
-        Button_Icon_deselect_all_kotevny_usek.setFocusable(false);
-        Button_Icon_deselect_all_kotevny_usek.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        Button_Icon_deselect_all_kotevny_usek.setPreferredSize(new java.awt.Dimension(48, 48));
-        Button_Icon_deselect_all_kotevny_usek.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        Button_Icon_deselect_all_kotevny_usek.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Button_Icon_deselect_all_kotevny_usekActionPerformed(evt);
-            }
-        });
-        Button_Icon_deselect_all_kotevny_usek.setToolTipText(language.language_label(languageOption, 64));
-
-        jLabel1.setText("Status : ");
-
-        Label_status.setText("jLabel2");
-
-        Button_Icon_export_PDF_external.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mt_graphic/PDFexternal-24.png"))); // NOI18N
-        Button_Icon_export_PDF_external.setFocusable(false);
-        Button_Icon_export_PDF_external.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        Button_Icon_export_PDF_external.setPreferredSize(new java.awt.Dimension(48, 48));
-        Button_Icon_export_PDF_external.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        Button_Icon_export_PDF_external.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Button_Icon_export_PDF_externalActionPerformed(evt);
-            }
-        });
-        Button_Icon_export_PDF_internal.setToolTipText(language.language_label(languageOption, 264));
-
-        Button_Icon_export_PDF2_save_as.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mt_graphic/PDFas-24.png"))); // NOI18N
-        Button_Icon_export_PDF2_save_as.setFocusable(false);
-        Button_Icon_export_PDF2_save_as.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        Button_Icon_export_PDF2_save_as.setPreferredSize(new java.awt.Dimension(48, 48));
-        Button_Icon_export_PDF2_save_as.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        Button_Icon_export_PDF2_save_as.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Button_Icon_export_PDF2_save_asActionPerformed(evt);
-            }
-        });
-        Button_Icon_export_PDF_internal.setToolTipText(language.language_label(languageOption, 265));
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(Button_Icon_save, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Button_Icon_save_as, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(87, 87, 87)
-                .addComponent(Button_Icon_arr_row_table_kotevny_usek, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Button_Icon_delete_row_table_kotevny_usek, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Button_Icon_select_all_kotevny_usek, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Button_Icon_deselect_all_kotevny_usek, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(53, 53, 53)
-                .addComponent(Button_Icon_calculate, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Button_Icon_export_PDF_internal, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(3, 3, 3)
-                .addComponent(Button_Icon_export_PDF_external, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Button_Icon_export_PDF2_save_as, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Label_status, javax.swing.GroupLayout.PREFERRED_SIZE, 428, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(Button_Icon_save_as, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Button_Icon_save, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(Button_Icon_export_PDF2_save_as, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(Button_Icon_export_PDF_external, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(Button_Icon_select_all_kotevny_usek, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(Button_Icon_deselect_all_kotevny_usek, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(Button_Icon_delete_row_table_kotevny_usek, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(Button_Icon_arr_row_table_kotevny_usek, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(Button_Icon_calculate, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(Button_Icon_export_PDF_internal, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(7, 7, 7))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(Label_status, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addContainerGap())))
-        );
+        jScrollPane4.setViewportView(jTabbedPane2);
+        jTabbedPane2.setTitleAt(0, language.language_label(languageOption, 259));
+        jTabbedPane2.setTitleAt(1, language.language_label(languageOption, 260));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jTabbedPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 1228, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jScrollPane4)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(0, 0, 0)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTabbedPane2))
+                .addComponent(jScrollPane4)
+                .addContainerGap())
         );
-
-        jTabbedPane2.setTitleAt(0, language.language_label(languageOption, 259));
-        jTabbedPane2.setTitleAt(1, language.language_label(languageOption, 260));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void Table_rozpatia_nadm_vyskyKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Table_rozpatia_nadm_vyskyKeyReleased
-        
-    }//GEN-LAST:event_Table_rozpatia_nadm_vyskyKeyReleased
-    private void Table_rozpatiaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Table_rozpatiaKeyReleased
-       
-     
-        
-        
-    }//GEN-LAST:event_Table_rozpatiaKeyReleased
-
-    private void jRadioButton_with_label_vlastnaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton_with_label_vlastnaActionPerformed
-        TextField_hcmean_vlastna.setEnabled(true);
-        Variable_Hc_mean=double_setter(doubleChecker_short_answer(TextField_hcmean_vlastna));
-        
-    }//GEN-LAST:event_jRadioButton_with_label_vlastnaActionPerformed
-
-    private void jRadioButton_with_label_vypoctanaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton_with_label_vypoctanaActionPerformed
-        TextField_hcmean_vlastna.setEnabled(false);
-        Variable_Hc_mean=double_setter(Variable_Hc_mean_medzikrok);
-    }//GEN-LAST:event_jRadioButton_with_label_vypoctanaActionPerformed
-
-    private void TextField_hcmean_vlastnaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextField_hcmean_vlastnaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TextField_hcmean_vlastnaActionPerformed
-    private void TextField_hcmean_vlastnaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextField_hcmean_vlastnaKeyReleased
-        
-        if(TextField_hcmean_vlastna.isEditable() == true){
-          if(TextField_hcmean_vlastna.getText().equals("-"))TextField_hcmean_vlastna.setText("");
-            
-            Variable_Hc_mean=double_setter(doubleChecker_short_answer(TextField_hcmean_vlastna));           
-        }
-        
-    }//GEN-LAST:event_TextField_hcmean_vlastnaKeyReleased
-
-    private void jRadioButton_with_label_pociatocneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton_with_label_pociatocneActionPerformed
-       Variable_T0_zivotnost=doubleChecker_short_answer(TextField_tabulky_konecna)*24*365;
-       Variable_Tp_prechodna_doba=0.0;
-       
-        TextField_teploha_stav1.setText("-10");TextField_teploha_stav1.setEnabled(true);
-         TextField_teploha_stav2.setText("-5");TextField_teploha_stav2.setEnabled(false);
-         TextField_teploha_stav3.setText("0");TextField_teploha_stav3.setEnabled(false);
-         TextField_teploha_stav4.setText("5");TextField_teploha_stav4.setEnabled(false);
-         TextField_teploha_stav5.setText("10");TextField_teploha_stav5.setEnabled(false);
-         TextField_teploha_stav6.setText("15");TextField_teploha_stav6.setEnabled(false);
-         TextField_teploha_stav7.setText("17");TextField_teploha_stav7.setEnabled(true);
-         TextField_teploha_stav8.setText("20");TextField_teploha_stav8.setEnabled(false);
-         TextField_teploha_stav9.setText("22");TextField_teploha_stav9.setEnabled(true);
-         TextField_teploha_stav10.setText("25");TextField_teploha_stav10.setEnabled(true);
-         TextField_teploha_stav11.setText("27");TextField_teploha_stav11.setEnabled(true);
-         TextField_teploha_stav12.setText("30");TextField_teploha_stav12.setEnabled(true);
-         TextField_teploha_stav13.setText("35");TextField_teploha_stav13.setEnabled(true);
-         TextField_teploha_stav14.setText("40");TextField_teploha_stav14.setEnabled(true);
-       
-         array_teploty_stav_rovnica_pociatocne_loader_setter();
-         Jcombo_stav_KPB_setter();
-         one_pretazenia_setter();
-         
-         array_pretaezenia_stav_rovnica_loader_setter();
-         
-         double kokot = double_setter(0d);
-         teplotyser=true;
-         PDF_VAR_typ_tabulky =1;
-    }//GEN-LAST:event_jRadioButton_with_label_pociatocneActionPerformed
-
-    private void jRadioButton_with_label_prechodneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton_with_label_prechodneActionPerformed
-         Variable_T0_zivotnost=doubleChecker_short_answer(TextField_tabulky_konecna)*24*365;
-        Variable_Tp_prechodna_doba=doubleChecker_short_answer(TextField_tabulky_prechodna)*24*365;
-       
-        if (jRadioButton_KPB_cas_vypoctu_prechodne.isSelected() == true){
-            Variable_KPB_cas_vypoctu = Variable_Tp_prechodna_doba;
-        }
-        
-         TextField_teploha_stav1.setText("-30");TextField_teploha_stav1.setEnabled(false);
-         TextField_teploha_stav2.setText("-20");TextField_teploha_stav2.setEnabled(true);
-         TextField_teploha_stav3.setText("-10");TextField_teploha_stav3.setEnabled(true);
-         TextField_teploha_stav4.setText("-5");TextField_teploha_stav4.setEnabled(false);
-         TextField_teploha_stav5.setText("-5+N");TextField_teploha_stav5.setEnabled(false);
-         TextField_teploha_stav6.setText("-5+V");TextField_teploha_stav6.setEnabled(false);
-         TextField_teploha_stav7.setText("-5+Nv");TextField_teploha_stav7.setEnabled(false);
-         TextField_teploha_stav8.setText("-5+vN");TextField_teploha_stav8.setEnabled(false);
-         TextField_teploha_stav9.setText("0");TextField_teploha_stav9.setEnabled(false);
-         TextField_teploha_stav10.setText("10");TextField_teploha_stav10.setEnabled(true);
-         TextField_teploha_stav11.setText("20");TextField_teploha_stav11.setEnabled(true);
-         TextField_teploha_stav12.setText("40");TextField_teploha_stav12.setEnabled(true);
-         TextField_teploha_stav13.setText("60");TextField_teploha_stav13.setEnabled(true);
-         TextField_teploha_stav14.setText("80");TextField_teploha_stav14.setEnabled(false);
-         
-         array_teploty_stav_rovnica_konecne_loader_setter();
-         
-         Jcombo_stav_KPB_setter();
-         double kokot = double_setter(0d);
-         teplotyser=true;
-         PDF_VAR_typ_tabulky =2;
-    }//GEN-LAST:event_jRadioButton_with_label_prechodneActionPerformed
-
-    private void jRadioButton_with_label_konecneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton_with_label_konecneActionPerformed
-         Variable_T0_zivotnost=doubleChecker_short_answer(TextField_tabulky_konecna)*24*365;
-         Variable_Tp_prechodna_doba=doubleChecker_short_answer(TextField_tabulky_konecna)*24*365;
-        
-         TextField_teploha_stav1.setText("-30");TextField_teploha_stav1.setEnabled(false);
-         TextField_teploha_stav2.setText("-20");TextField_teploha_stav2.setEnabled(true);
-         TextField_teploha_stav3.setText("-10");TextField_teploha_stav3.setEnabled(true);
-         TextField_teploha_stav4.setText("-5");TextField_teploha_stav4.setEnabled(false);
-         TextField_teploha_stav5.setText("-5+N");TextField_teploha_stav5.setEnabled(false);
-         TextField_teploha_stav6.setText("-5+V");TextField_teploha_stav6.setEnabled(false);
-         TextField_teploha_stav7.setText("-5+Nv");TextField_teploha_stav7.setEnabled(false);
-         TextField_teploha_stav8.setText("-5+vN");TextField_teploha_stav8.setEnabled(false);
-         TextField_teploha_stav9.setText("0");TextField_teploha_stav9.setEnabled(false);
-         TextField_teploha_stav10.setText("10");TextField_teploha_stav10.setEnabled(true);
-         TextField_teploha_stav11.setText("20");TextField_teploha_stav11.setEnabled(true);
-         TextField_teploha_stav12.setText("40");TextField_teploha_stav12.setEnabled(true);
-         TextField_teploha_stav13.setText("60");TextField_teploha_stav13.setEnabled(true);
-         TextField_teploha_stav14.setText("80");TextField_teploha_stav14.setEnabled(false);
-         
-         array_teploty_stav_rovnica_konecne_loader_setter();
-         
-        Jcombo_stav_KPB_setter();
-
-        if (teplotyser == false){ // vloz prvu hodnotu
-        Variable_vybrany_stav_pre_KPB=Variable_teploty_stav_rovnica[0];
-        }
-        
-        double kokot = double_setter(0d);
-        teplotyser=true;
-        PDF_VAR_typ_tabulky =3;
-    }//GEN-LAST:event_jRadioButton_with_label_konecneActionPerformed
-    private void TextField_tabulky_konecnaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextField_tabulky_konecnaActionPerformed
-  
-    }//GEN-LAST:event_TextField_tabulky_konecnaActionPerformed
-
-    private void TextField_tabulky_prechodnaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextField_tabulky_prechodnaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TextField_tabulky_prechodnaActionPerformed
-
-    private void jComboBox_vetrova_oblastActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox_vetrova_oblastActionPerformed
-        if (mainframeLodaed == true) {
-
-            int selected_index_from_JComboBox = jComboBox_vetrova_oblast.getSelectedIndex();
-
-            switch (selected_index_from_JComboBox) {
-                case 0:
-                    TextField_Vmean_0.setEnabled(false);
-                    Variable_V_mean_0 = double_setter(24);
-                    break;
-                case 1:
-                    TextField_Vmean_0.setEnabled(false);
-                    Variable_V_mean_0 = double_setter(26);
-                    break;
-                case 2:
-                    TextField_Vmean_0.setEnabled(false);
-                    Variable_V_mean_0 = double_setter(30);
-                    break;
-                case 3:
-                    TextField_Vmean_0.setEnabled(false);
-                    Variable_V_mean_0 = double_setter(33);
-                    break;
-                case 4:
-                    TextField_Vmean_0.setEnabled(false);
-                    Variable_V_mean_0 = double_setter(22.5);
-                    break;
-                case 5:
-                    TextField_Vmean_0.setEnabled(false);
-                    Variable_V_mean_0 = double_setter(25);
-                    break;
-                case 6:
-                    TextField_Vmean_0.setEnabled(false);
-                    Variable_V_mean_0 = double_setter(27.5);
-                    break;
-                case 7:
-                    TextField_Vmean_0.setEnabled(false);
-                    Variable_V_mean_0 = double_setter(30);
-                    break;
-                case 8:
-                    TextField_Vmean_0.setEnabled(false);
-                    Variable_V_mean_0 = double_setter(36);
-                    break;
-
-                case 9:
-                    TextField_Vmean_0.setEnabled(true);                  
-                    Variable_V_mean_0 = double_setter(24);             
-                    TextField_Vmean_0.setForeground(Color.black);
-                    break;
-            }
-            TextField_Vmean_0.setText(String.valueOf(Variable_V_mean_0));
-
-        }
-    }//GEN-LAST:event_jComboBox_vetrova_oblastActionPerformed
-
-    private void TextField_Vmean_0ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextField_Vmean_0ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TextField_Vmean_0ActionPerformed
-
-    private void TextField_Vmean_0KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextField_Vmean_0KeyReleased
-        Variable_V_mean_0=double_setter(doubleChecker_short_answer(TextField_Vmean_0));
-    }//GEN-LAST:event_TextField_Vmean_0KeyReleased
-
-    private void jRadioButton_vetrova_oblast_Cdir_1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton_vetrova_oblast_Cdir_1ActionPerformed
-        Variable_Cdir=double_setter(1.0);
-        TextField_vetrova_oblast_Cdir.setEnabled(false);        
-    }//GEN-LAST:event_jRadioButton_vetrova_oblast_Cdir_1ActionPerformed
-
-    private void jRadioButton_vetrova_oblast_Cdir_vlastnaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton_vetrova_oblast_Cdir_vlastnaActionPerformed
-        TextField_vetrova_oblast_Cdir.setEnabled(true);
-        Variable_Cdir=double_setter(doubleChecker_short_answer(TextField_vetrova_oblast_Cdir));
-    }//GEN-LAST:event_jRadioButton_vetrova_oblast_Cdir_vlastnaActionPerformed
-
-    private void TextField_vetrova_oblast_CdirKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextField_vetrova_oblast_CdirKeyReleased
-        Variable_Cdir=double_setter(doubleChecker_short_answer(TextField_vetrova_oblast_Cdir));
-    }//GEN-LAST:event_TextField_vetrova_oblast_CdirKeyReleased
-
-    private void TextField_vetrova_oblast_CdirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextField_vetrova_oblast_CdirActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TextField_vetrova_oblast_CdirActionPerformed
-
-    private void TextField_vetrova_oblast_C0ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextField_vetrova_oblast_C0ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TextField_vetrova_oblast_C0ActionPerformed
-
-    private void TextField_vetrova_oblast_C0KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextField_vetrova_oblast_C0KeyReleased
-        Variable_Co=double_setter(doubleChecker_short_answer(TextField_vetrova_oblast_C0));
-    }//GEN-LAST:event_TextField_vetrova_oblast_C0KeyReleased
-
-    private void jRadioButton_vetrova_oblast_C0_1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton_vetrova_oblast_C0_1ActionPerformed
-         Variable_Co=double_setter(1.0);
-        TextField_vetrova_oblast_C0.setEnabled(false); 
-    }//GEN-LAST:event_jRadioButton_vetrova_oblast_C0_1ActionPerformed
-
-    private void jRadioButton_vetrova_oblast_C0_vlastnaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton_vetrova_oblast_C0_vlastnaActionPerformed
-        TextField_vetrova_oblast_C0.setEnabled(true);
-        Variable_Co=double_setter(doubleChecker_short_answer(TextField_vetrova_oblast_C0));
-    }//GEN-LAST:event_jRadioButton_vetrova_oblast_C0_vlastnaActionPerformed
-
-    private void TextField_dlzka_drsnjosti_zoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextField_dlzka_drsnjosti_zoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TextField_dlzka_drsnjosti_zoActionPerformed
-
-    private void TextField_dlzka_drsnjosti_zoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextField_dlzka_drsnjosti_zoKeyReleased
-       Variable_char_terenu_Zo=double_setter(doubleChecker_short_answer(TextField_dlzka_drsnjosti_zo));
-    }//GEN-LAST:event_TextField_dlzka_drsnjosti_zoKeyReleased
-
-    private void TextField_KrActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextField_KrActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TextField_KrActionPerformed
-
-    private void TextField_KrKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextField_KrKeyReleased
-        Variable_char_terenu_Kr=double_setter(doubleChecker_short_answer(TextField_Kr));
-    }//GEN-LAST:event_TextField_KrKeyReleased
-    private void jComboBox_char_terenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox_char_terenuActionPerformed
-     
-         if (mainframeLodaed == true) {
-            
-          int selected_index_from_JComboBox = jComboBox_char_terenu.getSelectedIndex();
-          
-          switch (selected_index_from_JComboBox) {
-            case 0:  TextField_Kr.setEnabled(false);
-                     TextField_dlzka_drsnjosti_zo.setEnabled(false);
-                     Variable_char_terenu_Kr = double_setter(0.169);
-                     Variable_char_terenu_Zo= double_setter(0.01);
-                     jTextPane_char_terenu.setText(language.language_label(languageOption, 135));
-                     break;
-            case 1:  TextField_Kr.setEnabled(false);
-                     TextField_dlzka_drsnjosti_zo.setEnabled(false);
-                     Variable_char_terenu_Kr = double_setter(0.189);
-                     Variable_char_terenu_Zo= double_setter(0.05);
-                     jTextPane_char_terenu.setText(language.language_label(languageOption, 136));
-                     break;
-            case 2:  TextField_Kr.setEnabled(false);
-                     TextField_dlzka_drsnjosti_zo.setEnabled(false);
-                     Variable_char_terenu_Kr = double_setter(0.214);
-                     Variable_char_terenu_Zo= double_setter(0.3);
-                     jTextPane_char_terenu.setText(language.language_label(languageOption, 137));
-                     break;
-            case 3:  TextField_Kr.setEnabled(false);
-                     TextField_dlzka_drsnjosti_zo.setEnabled(false);
-                     Variable_char_terenu_Kr = double_setter(0.233);
-                     Variable_char_terenu_Zo= double_setter(1);
-                     jTextPane_char_terenu.setText(language.language_label(languageOption, 139));
-                     break;
-            case 4:  TextField_Kr.setEnabled(true);
-                     TextField_dlzka_drsnjosti_zo.setEnabled(true);
-                     Variable_char_terenu_Kr = double_setter(0.169);
-                     Variable_char_terenu_Zo= double_setter(0.01);
-                     TextField_Kr.setForeground(Color.black);
-                     TextField_dlzka_drsnjosti_zo.setForeground(Color.black);
-                     jTextPane_char_terenu.setText(language.language_label(languageOption, 139));
-                     break;                    
-        }
-            TextField_Kr.setText(String.valueOf(Variable_char_terenu_Kr));
-            TextField_dlzka_drsnjosti_zo.setText(String.valueOf(Variable_char_terenu_Zo));
-            
-        }
-        
-    }//GEN-LAST:event_jComboBox_char_terenuActionPerformed
-
-    private void jRadioButton_with_label_rozpatie_klasickyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton_with_label_rozpatie_klasickyActionPerformed
-       Variable_mid_span=Variable_mid_span_docasna;
-    }//GEN-LAST:event_jRadioButton_with_label_rozpatie_klasickyActionPerformed
-
-    private void jRadioButton_with_label_rozpate_previseniaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton_with_label_rozpate_previseniaActionPerformed
-       Variable_mid_span=Variable_mid_span_terrain_docasna;
-    }//GEN-LAST:event_jRadioButton_with_label_rozpate_previseniaActionPerformed
-
-    private void TextField_STRrozpatie_sPrevisenimActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextField_STRrozpatie_sPrevisenimActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TextField_STRrozpatie_sPrevisenimActionPerformed
-
-    private void TextField_STRrozpatie_sPrevisenimKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextField_STRrozpatie_sPrevisenimKeyReleased
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TextField_STRrozpatie_sPrevisenimKeyReleased
-
-    private void TextField_hcmean_vpocitanaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextField_hcmean_vpocitanaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TextField_hcmean_vpocitanaActionPerformed
 
     private void Button_Icon_deselect_all_kotevny_usekActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button_Icon_deselect_all_kotevny_usekActionPerformed
         int rowCount = Table_kotevne_useky.getRowCount();
@@ -5015,6 +4698,241 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
         Label_status.setText(language.language_label(languageOption, 273));
     }//GEN-LAST:event_Button_Icon_saveActionPerformed
 
+    private void Button_pdf_pageupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button_pdf_pageupActionPerformed
+      
+     if(pocet_pdf_stran == 0){}else{   
+     current_pdf_page=current_pdf_page+1;
+
+     if ( current_pdf_page > pocet_pdf_stran){ 
+     current_pdf_page=1;   
+     }
+     String userhome = System.getProperty("user.dir"); 
+     String path = userhome + "\\temp\\" + "tempPdf.pdf-" +current_pdf_page +".png";
+     ImageIcon icon = new ImageIcon(path);
+     java.awt.Image img = icon.getImage();
+     jLabel5.setIcon(new ImageIcon(img.getScaledInstance(jLabel5.getWidth(), jLabel5.getHeight(), java.awt.Image.SCALE_AREA_AVERAGING)));
+     }  
+    }//GEN-LAST:event_Button_pdf_pageupActionPerformed
+
+    private void Button_pdf_pagedownActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button_pdf_pagedownActionPerformed
+      if(pocet_pdf_stran == 0){}else{   
+     current_pdf_page=current_pdf_page-1;
+
+     if ( current_pdf_page < 1){ 
+     current_pdf_page=pocet_pdf_stran;   
+     }
+     String userhome = System.getProperty("user.dir"); 
+     String path = userhome + "\\temp\\" + "tempPdf.pdf-" +current_pdf_page +".png";
+     ImageIcon icon = new ImageIcon(path);
+     java.awt.Image img = icon.getImage();
+     jLabel5.setIcon(new ImageIcon(img.getScaledInstance(jLabel5.getWidth(), jLabel5.getHeight(), java.awt.Image.SCALE_AREA_AVERAGING)));
+     } 
+        
+        
+        
+    }//GEN-LAST:event_Button_pdf_pagedownActionPerformed
+
+    private void Textfield_casActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Textfield_casActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Textfield_casActionPerformed
+
+    private void Button_Icon_export_PDF_externalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button_Icon_export_PDF_externalActionPerformed
+       
+        pdf_internal=false;
+        pdf_external=true;
+        pdf_as=false;
+        pdf_manager();
+        Label_status.setText(language.language_label(languageOption, 277));
+        
+    }//GEN-LAST:event_Button_Icon_export_PDF_externalActionPerformed
+
+    private void Button_Icon_export_PDF2_save_asActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button_Icon_export_PDF2_save_asActionPerformed
+        
+        pdf_internal=false;
+        pdf_external=false;
+        pdf_as=true;
+        pdf_manager();
+        Label_status.setText(language.language_label(languageOption, 278));
+        
+    }//GEN-LAST:event_Button_Icon_export_PDF2_save_asActionPerformed
+
+    private void jTabbedPane1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTabbedPane1MouseClicked
+        int cislo = Table_kotevne_useky.getSelectedRow();
+        set_KPB_to_mainframe(Variable_globeal_kotevny_usek.get(cislo));
+        set_tahy_to_mainframe(Variable_globeal_kotevny_usek.get(cislo));
+        tah_konecne1.setText(language.language_label(languageOption, 283) + String.valueOf(jComboBox_stav_KPB.getSelectedItem()) + language.language_label(languageOption, 285));
+    }//GEN-LAST:event_jTabbedPane1MouseClicked
+
+    private void podiel_z_RTS1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_podiel_z_RTS1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_podiel_z_RTS1ActionPerformed
+
+    private void Table_KPBMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Table_KPBMouseEntered
+
+    }//GEN-LAST:event_Table_KPBMouseEntered
+
+    private void Table_KPBMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Table_KPBMouseMoved
+
+        Point point = evt.getPoint();
+        int row;
+        row 	= Table_KPB.rowAtPoint(point);
+        int hodnota = (int)Table_KPB.getValueAt(row, 1);
+        if(hodnota == 1){
+
+            Table_KPB.setToolTipText(language.language_label(languageOption, 255));
+
+        }
+        if(hodnota == 2){
+
+            Table_KPB.setToolTipText(language.language_label(languageOption, 256));
+
+        }
+        if(hodnota == 3){
+
+            Table_KPB.setToolTipText(language.language_label(languageOption, 257));
+
+        }
+
+    }//GEN-LAST:event_Table_KPBMouseMoved
+
+    private void Table_rozpatia_nadm_vyskyKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Table_rozpatia_nadm_vyskyKeyReleased
+
+    }//GEN-LAST:event_Table_rozpatia_nadm_vyskyKeyReleased
+
+    private void Table_rozpatiaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Table_rozpatiaKeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Table_rozpatiaKeyTyped
+
+    private void Table_rozpatiaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Table_rozpatiaKeyReleased
+
+    }//GEN-LAST:event_Table_rozpatiaKeyReleased
+
+    private void Table_rozpatiaInputMethodTextChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_Table_rozpatiaInputMethodTextChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Table_rozpatiaInputMethodTextChanged
+
+    private void vyp_percento4_sigmaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_vyp_percento4_sigmaKeyReleased
+        // TODO add your handling code here:
+    }//GEN-LAST:event_vyp_percento4_sigmaKeyReleased
+
+    private void vyp_percento4_sigmaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vyp_percento4_sigmaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_vyp_percento4_sigmaActionPerformed
+
+    private void vyp_percento3_sigmaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_vyp_percento3_sigmaKeyReleased
+        // TODO add your handling code here:
+    }//GEN-LAST:event_vyp_percento3_sigmaKeyReleased
+
+    private void vyp_percento3_sigmaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vyp_percento3_sigmaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_vyp_percento3_sigmaActionPerformed
+
+    private void vyp_percento2_sigmaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_vyp_percento2_sigmaKeyReleased
+        // TODO add your handling code here:
+    }//GEN-LAST:event_vyp_percento2_sigmaKeyReleased
+
+    private void vyp_percento2_sigmaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vyp_percento2_sigmaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_vyp_percento2_sigmaActionPerformed
+
+    private void vyp_percento1_sigmaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_vyp_percento1_sigmaKeyReleased
+        // TODO add your handling code here:
+    }//GEN-LAST:event_vyp_percento1_sigmaKeyReleased
+
+    private void vyp_percento1_sigmaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vyp_percento1_sigmaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_vyp_percento1_sigmaActionPerformed
+
+    private void percento4_sigmaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_percento4_sigmaKeyReleased
+        percento_podiel_namrazy_sigma4=doubleChecker_short_answer(percento4_sigma);
+    }//GEN-LAST:event_percento4_sigmaKeyReleased
+
+    private void percento4_sigmaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_percento4_sigmaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_percento4_sigmaActionPerformed
+
+    private void percento3_sigmaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_percento3_sigmaKeyReleased
+        percento_podiel_namrazy_sigma3=doubleChecker_short_answer(percento3_sigma);
+    }//GEN-LAST:event_percento3_sigmaKeyReleased
+
+    private void percento3_sigmaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_percento3_sigmaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_percento3_sigmaActionPerformed
+
+    private void percento2_sigmaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_percento2_sigmaKeyReleased
+        percento_podiel_namrazy_sigma2=doubleChecker_short_answer(percento2_sigma);
+    }//GEN-LAST:event_percento2_sigmaKeyReleased
+
+    private void percento2_sigmaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_percento2_sigmaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_percento2_sigmaActionPerformed
+
+    private void percento1_sigmaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_percento1_sigmaKeyReleased
+        percento_podiel_namrazy_sigma1=doubleChecker_short_answer(percento1_sigma);
+    }//GEN-LAST:event_percento1_sigmaKeyReleased
+
+    private void percento1_sigmaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_percento1_sigmaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_percento1_sigmaActionPerformed
+
+    private void jRadioButton_Bi_1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton_Bi_1ActionPerformed
+        TextField_Bi_1.setEnabled(true);
+        TextField_Bi2.setEnabled(false);
+        TextField_Bi2.setEditable(false);
+        Variable_Bi=double_setter(doubleChecker_short_answer(TextField_Bi_1));
+    }//GEN-LAST:event_jRadioButton_Bi_1ActionPerformed
+
+    private void TextField_Bi_1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextField_Bi_1KeyReleased
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TextField_Bi_1KeyReleased
+
+    private void TextField_Bi_1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextField_Bi_1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TextField_Bi_1ActionPerformed
+
+    private void jRadioButton_Bi_2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton_Bi_2ActionPerformed
+        TextField_Bi2.setEnabled(true);
+        TextField_Bi_1.setEnabled(false);
+        TextField_Bi2.setEditable(true);
+        Variable_Bi=double_setter(doubleChecker_short_answer(TextField_Bi2));
+    }//GEN-LAST:event_jRadioButton_Bi_2ActionPerformed
+
+    private void TextField_Bi2KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextField_Bi2KeyReleased
+        Variable_Bi=double_setter(doubleChecker_short_answer(TextField_Bi2));
+    }//GEN-LAST:event_TextField_Bi2KeyReleased
+
+    private void TextField_KclKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextField_KclKeyReleased
+        Variable_Klc=double_setter(doubleChecker_short_answer(TextField_Kcl));
+    }//GEN-LAST:event_TextField_KclKeyReleased
+
+    private void TextField_KclActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextField_KclActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TextField_KclActionPerformed
+
+    private void TextField_KhKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextField_KhKeyReleased
+        Variable_Kh =double_setter(doubleChecker_short_answer(TextField_Kh));
+    }//GEN-LAST:event_TextField_KhKeyReleased
+
+    private void jRadioButton_Kh_vlastnaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton_Kh_vlastnaActionPerformed
+        TextField_Kh.setEnabled(true);
+        Variable_Kh=double_setter(doubleChecker_short_answer(TextField_Kh));
+    }//GEN-LAST:event_jRadioButton_Kh_vlastnaActionPerformed
+
+    private void jRadioButton_Kh_1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton_Kh_1ActionPerformed
+        Variable_Kh=double_setter(1.0);
+        TextField_Kh.setEnabled(false);
+    }//GEN-LAST:event_jRadioButton_Kh_1ActionPerformed
+
+    private void jRadioButton_Klc_vlastnaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton_Klc_vlastnaActionPerformed
+        TextField_Kcl.setEnabled(true);
+        Variable_Klc=double_setter(doubleChecker_short_answer(TextField_Kcl));
+    }//GEN-LAST:event_jRadioButton_Klc_vlastnaActionPerformed
+
+    private void jRadioButton_Klc_1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton_Klc_1ActionPerformed
+        Variable_Klc=double_setter(1.0);
+        TextField_Kcl.setEnabled(false);
+    }//GEN-LAST:event_jRadioButton_Klc_1ActionPerformed
+
     private void TextField_hustota_namrazyKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextField_hustota_namrazyKeyReleased
         if (TextField_hustota_namrazy.isEditable() == true){
 
@@ -5086,60 +5004,6 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
         }
     }//GEN-LAST:event_jComboBox_druh_namrazyActionPerformed
 
-    private void TextField_Bi2KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextField_Bi2KeyReleased
-      Variable_Bi=double_setter(doubleChecker_short_answer(TextField_Bi2));  
-    }//GEN-LAST:event_TextField_Bi2KeyReleased
-
-    private void jRadioButton_Bi_2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton_Bi_2ActionPerformed
-        TextField_Bi2.setEnabled(true);
-        TextField_Bi_1.setEnabled(false);
-        TextField_Bi2.setEditable(true);
-        Variable_Bi=double_setter(doubleChecker_short_answer(TextField_Bi2));
-    }//GEN-LAST:event_jRadioButton_Bi_2ActionPerformed
-
-    private void TextField_Bi_1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextField_Bi_1KeyReleased
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TextField_Bi_1KeyReleased
-
-    private void TextField_Bi_1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextField_Bi_1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TextField_Bi_1ActionPerformed
-
-    private void jRadioButton_Bi_1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton_Bi_1ActionPerformed
-        TextField_Bi_1.setEnabled(true);
-        TextField_Bi2.setEnabled(false);
-        TextField_Bi2.setEditable(false);
-        Variable_Bi=double_setter(doubleChecker_short_answer(TextField_Bi_1));
-    }//GEN-LAST:event_jRadioButton_Bi_1ActionPerformed
-
-    private void TextField_KhKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextField_KhKeyReleased
-        Variable_Kh =double_setter(doubleChecker_short_answer(TextField_Kh));
-    }//GEN-LAST:event_TextField_KhKeyReleased
-
-    private void jRadioButton_Kh_vlastnaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton_Kh_vlastnaActionPerformed
-        TextField_Kh.setEnabled(true);
-        Variable_Kh=double_setter(doubleChecker_short_answer(TextField_Kh));
-    }//GEN-LAST:event_jRadioButton_Kh_vlastnaActionPerformed
-
-    private void jRadioButton_Kh_1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton_Kh_1ActionPerformed
-        Variable_Kh=double_setter(1.0);
-        TextField_Kh.setEnabled(false);
-    }//GEN-LAST:event_jRadioButton_Kh_1ActionPerformed
-
-    private void jRadioButton_Klc_vlastnaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton_Klc_vlastnaActionPerformed
-        TextField_Kcl.setEnabled(true);
-        Variable_Klc=double_setter(doubleChecker_short_answer(TextField_Kcl));
-    }//GEN-LAST:event_jRadioButton_Klc_vlastnaActionPerformed
-
-    private void TextField_KclKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextField_KclKeyReleased
-        Variable_Klc=double_setter(doubleChecker_short_answer(TextField_Kcl));
-    }//GEN-LAST:event_TextField_KclKeyReleased
-
-    private void jRadioButton_Klc_1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton_Klc_1ActionPerformed
-        Variable_Klc=double_setter(1.0);
-        TextField_Kcl.setEnabled(false);
-    }//GEN-LAST:event_jRadioButton_Klc_1ActionPerformed
-
     private void Button_namrazova_oblastActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button_namrazova_oblastActionPerformed
 
         mainframe_namrazova_oblast_jDialog mainframe_namrazova_oblast_jDialog_window = new mainframe_namrazova_oblast_jDialog(this, rootPaneCheckingEnabled);
@@ -5152,6 +5016,196 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
             Variable_Ir50=double_setter(vypocet_IR50_namrazove_oblasti());
         }
     }//GEN-LAST:event_Button_namrazova_oblastActionPerformed
+
+    private void jRadioButton_with_label_vypoctanaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton_with_label_vypoctanaActionPerformed
+        TextField_hcmean_vlastna.setEnabled(false);
+        Variable_Hc_mean=double_setter(Variable_Hc_mean_medzikrok);
+    }//GEN-LAST:event_jRadioButton_with_label_vypoctanaActionPerformed
+
+    private void TextField_hcmean_vpocitanaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextField_hcmean_vpocitanaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TextField_hcmean_vpocitanaActionPerformed
+
+    private void TextField_hcmean_vlastnaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextField_hcmean_vlastnaKeyReleased
+
+        if(TextField_hcmean_vlastna.isEditable() == true){
+            if(TextField_hcmean_vlastna.getText().equals("-"))TextField_hcmean_vlastna.setText("");
+
+            Variable_Hc_mean=double_setter(doubleChecker_short_answer(TextField_hcmean_vlastna));
+        }
+
+    }//GEN-LAST:event_TextField_hcmean_vlastnaKeyReleased
+
+    private void TextField_hcmean_vlastnaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextField_hcmean_vlastnaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TextField_hcmean_vlastnaActionPerformed
+
+    private void jRadioButton_with_label_vlastnaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton_with_label_vlastnaActionPerformed
+        TextField_hcmean_vlastna.setEnabled(true);
+        Variable_Hc_mean=double_setter(doubleChecker_short_answer(TextField_hcmean_vlastna));
+
+    }//GEN-LAST:event_jRadioButton_with_label_vlastnaActionPerformed
+
+    private void TextField_dlzka_drsnjosti_zoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextField_dlzka_drsnjosti_zoKeyReleased
+        Variable_char_terenu_Zo=double_setter(doubleChecker_short_answer(TextField_dlzka_drsnjosti_zo));
+    }//GEN-LAST:event_TextField_dlzka_drsnjosti_zoKeyReleased
+
+    private void TextField_dlzka_drsnjosti_zoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextField_dlzka_drsnjosti_zoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TextField_dlzka_drsnjosti_zoActionPerformed
+
+    private void TextField_KrKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextField_KrKeyReleased
+        Variable_char_terenu_Kr=double_setter(doubleChecker_short_answer(TextField_Kr));
+    }//GEN-LAST:event_TextField_KrKeyReleased
+
+    private void TextField_KrActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextField_KrActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TextField_KrActionPerformed
+
+    private void jComboBox_char_terenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox_char_terenuActionPerformed
+
+        if (mainframeLodaed == true) {
+
+            int selected_index_from_JComboBox = jComboBox_char_terenu.getSelectedIndex();
+
+            switch (selected_index_from_JComboBox) {
+                case 0:  TextField_Kr.setEnabled(false);
+                TextField_dlzka_drsnjosti_zo.setEnabled(false);
+                Variable_char_terenu_Kr = double_setter(0.169);
+                Variable_char_terenu_Zo= double_setter(0.01);
+                jTextPane_char_terenu.setText(language.language_label(languageOption, 135));
+                break;
+                case 1:  TextField_Kr.setEnabled(false);
+                TextField_dlzka_drsnjosti_zo.setEnabled(false);
+                Variable_char_terenu_Kr = double_setter(0.189);
+                Variable_char_terenu_Zo= double_setter(0.05);
+                jTextPane_char_terenu.setText(language.language_label(languageOption, 136));
+                break;
+                case 2:  TextField_Kr.setEnabled(false);
+                TextField_dlzka_drsnjosti_zo.setEnabled(false);
+                Variable_char_terenu_Kr = double_setter(0.214);
+                Variable_char_terenu_Zo= double_setter(0.3);
+                jTextPane_char_terenu.setText(language.language_label(languageOption, 137));
+                break;
+                case 3:  TextField_Kr.setEnabled(false);
+                TextField_dlzka_drsnjosti_zo.setEnabled(false);
+                Variable_char_terenu_Kr = double_setter(0.233);
+                Variable_char_terenu_Zo= double_setter(1);
+                jTextPane_char_terenu.setText(language.language_label(languageOption, 139));
+                break;
+                case 4:  TextField_Kr.setEnabled(true);
+                TextField_dlzka_drsnjosti_zo.setEnabled(true);
+                Variable_char_terenu_Kr = double_setter(0.169);
+                Variable_char_terenu_Zo= double_setter(0.01);
+                TextField_Kr.setForeground(Color.black);
+                TextField_dlzka_drsnjosti_zo.setForeground(Color.black);
+                jTextPane_char_terenu.setText(language.language_label(languageOption, 139));
+                break;
+            }
+            TextField_Kr.setText(String.valueOf(Variable_char_terenu_Kr));
+            TextField_dlzka_drsnjosti_zo.setText(String.valueOf(Variable_char_terenu_Zo));
+
+        }
+
+    }//GEN-LAST:event_jComboBox_char_terenuActionPerformed
+
+    private void TextField_vetrova_oblast_C0KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextField_vetrova_oblast_C0KeyReleased
+        Variable_Co=double_setter(doubleChecker_short_answer(TextField_vetrova_oblast_C0));
+    }//GEN-LAST:event_TextField_vetrova_oblast_C0KeyReleased
+
+    private void TextField_vetrova_oblast_C0ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextField_vetrova_oblast_C0ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TextField_vetrova_oblast_C0ActionPerformed
+
+    private void jRadioButton_vetrova_oblast_C0_vlastnaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton_vetrova_oblast_C0_vlastnaActionPerformed
+        TextField_vetrova_oblast_C0.setEnabled(true);
+        Variable_Co=double_setter(doubleChecker_short_answer(TextField_vetrova_oblast_C0));
+    }//GEN-LAST:event_jRadioButton_vetrova_oblast_C0_vlastnaActionPerformed
+
+    private void jRadioButton_vetrova_oblast_C0_1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton_vetrova_oblast_C0_1ActionPerformed
+        Variable_Co=double_setter(1.0);
+        TextField_vetrova_oblast_C0.setEnabled(false);
+    }//GEN-LAST:event_jRadioButton_vetrova_oblast_C0_1ActionPerformed
+
+    private void TextField_vetrova_oblast_CdirKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextField_vetrova_oblast_CdirKeyReleased
+        Variable_Cdir=double_setter(doubleChecker_short_answer(TextField_vetrova_oblast_Cdir));
+    }//GEN-LAST:event_TextField_vetrova_oblast_CdirKeyReleased
+
+    private void TextField_vetrova_oblast_CdirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextField_vetrova_oblast_CdirActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TextField_vetrova_oblast_CdirActionPerformed
+
+    private void jRadioButton_vetrova_oblast_Cdir_vlastnaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton_vetrova_oblast_Cdir_vlastnaActionPerformed
+        TextField_vetrova_oblast_Cdir.setEnabled(true);
+        Variable_Cdir=double_setter(doubleChecker_short_answer(TextField_vetrova_oblast_Cdir));
+    }//GEN-LAST:event_jRadioButton_vetrova_oblast_Cdir_vlastnaActionPerformed
+
+    private void jRadioButton_vetrova_oblast_Cdir_1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton_vetrova_oblast_Cdir_1ActionPerformed
+        Variable_Cdir=double_setter(1.0);
+        TextField_vetrova_oblast_Cdir.setEnabled(false);
+    }//GEN-LAST:event_jRadioButton_vetrova_oblast_Cdir_1ActionPerformed
+
+    private void TextField_Vmean_0KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextField_Vmean_0KeyReleased
+        Variable_V_mean_0=double_setter(doubleChecker_short_answer(TextField_Vmean_0));
+    }//GEN-LAST:event_TextField_Vmean_0KeyReleased
+
+    private void TextField_Vmean_0ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextField_Vmean_0ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TextField_Vmean_0ActionPerformed
+
+    private void jComboBox_vetrova_oblastActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox_vetrova_oblastActionPerformed
+        if (mainframeLodaed == true) {
+
+            int selected_index_from_JComboBox = jComboBox_vetrova_oblast.getSelectedIndex();
+
+            switch (selected_index_from_JComboBox) {
+                case 0:
+                TextField_Vmean_0.setEnabled(false);
+                Variable_V_mean_0 = double_setter(24);
+                break;
+                case 1:
+                TextField_Vmean_0.setEnabled(false);
+                Variable_V_mean_0 = double_setter(26);
+                break;
+                case 2:
+                TextField_Vmean_0.setEnabled(false);
+                Variable_V_mean_0 = double_setter(30);
+                break;
+                case 3:
+                TextField_Vmean_0.setEnabled(false);
+                Variable_V_mean_0 = double_setter(33);
+                break;
+                case 4:
+                TextField_Vmean_0.setEnabled(false);
+                Variable_V_mean_0 = double_setter(22.5);
+                break;
+                case 5:
+                TextField_Vmean_0.setEnabled(false);
+                Variable_V_mean_0 = double_setter(25);
+                break;
+                case 6:
+                TextField_Vmean_0.setEnabled(false);
+                Variable_V_mean_0 = double_setter(27.5);
+                break;
+                case 7:
+                TextField_Vmean_0.setEnabled(false);
+                Variable_V_mean_0 = double_setter(30);
+                break;
+                case 8:
+                TextField_Vmean_0.setEnabled(false);
+                Variable_V_mean_0 = double_setter(36);
+                break;
+
+                case 9:
+                TextField_Vmean_0.setEnabled(true);
+                Variable_V_mean_0 = double_setter(24);
+                TextField_Vmean_0.setForeground(Color.black);
+                break;
+            }
+            TextField_Vmean_0.setText(String.valueOf(Variable_V_mean_0));
+
+        }
+    }//GEN-LAST:event_jComboBox_vetrova_oblastActionPerformed
 
     private void TextField_max_mech_podiel_z_RTSKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextField_max_mech_podiel_z_RTSKeyReleased
         Variable_maximalne_zataz_lana_podiel_z_RTS=Variable_RTS*((doubleChecker_short_answer(TextField_max_mech_podiel_z_RTS))/(100));
@@ -5185,18 +5239,17 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
             Variable_RTS = Double.parseDouble(String.valueOf(Conductor[6]))/Double.parseDouble(String.valueOf(Conductor[2]));
 
             DecimalFormatSymbols otherSymbols = new DecimalFormatSymbols();
-               otherSymbols.setDecimalSeparator('.');
-               DecimalFormat df = new DecimalFormat("###.###",otherSymbols); // definovany počet desatinnych miest
+            otherSymbols.setDecimalSeparator('.');
+            DecimalFormat df = new DecimalFormat("###.###",otherSymbols); // definovany počet desatinnych miest
             TextField_RTS.setText(df.format(Variable_RTS));
 
             if (is_namrazove_oblasti_setted == true){   //  ak už je zvolena namrazova oblast tk spusti vypocet
                 Variable_Ir50=double_setter(vypocet_IR50_namrazove_oblasti());
             }
 
-            double lentak = double_setter(1); /// aby prenbehol vypočet zažťeženi 
-            
-        }
+            double lentak = double_setter(1); /// aby prenbehol vypočet zažťeženi
 
+        }
     }//GEN-LAST:event_jComboBox_conductor_chooserActionPerformed
 
     private void jComboBox_stav_KPBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox_stav_KPBActionPerformed
@@ -5209,9 +5262,8 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
                 Variable_vybrany_stav_pre_KPB=Variable_teploty_stav_rovnica[selected_index];
             }
             tah_konecne1.setText(language.language_label(languageOption, 283) + String.valueOf(jComboBox_stav_KPB.getSelectedItem()) + language.language_label(languageOption, 285));
-            
-        }
 
+        }
     }//GEN-LAST:event_jComboBox_stav_KPBActionPerformed
 
     private void jComboBox_stav_KPBItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBox_stav_KPBItemStateChanged
@@ -5224,7 +5276,6 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
                 Variable_vybrany_stav_pre_KPB=Variable_teploty_stav_rovnica[selected_index];
             }
         }
-
     }//GEN-LAST:event_jComboBox_stav_KPBItemStateChanged
 
     private void TextField_srt_roc_teplotaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextField_srt_roc_teplotaKeyReleased
@@ -5299,16 +5350,187 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
             }
 
         }
-
     }//GEN-LAST:event_jComboBox_uroven_splahlivostiActionPerformed
 
-    private void TextField_KclActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextField_KclActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TextField_KclActionPerformed
+    private void jRadioButton_with_label_pociatocne1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton_with_label_pociatocne1ActionPerformed
 
-    private void TextField_STRrozpatie_klasickyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextField_STRrozpatie_klasickyActionPerformed
+        Variable_T0_zivotnost=doubleChecker_short_answer(TextField_tabulky_konecna)*24*365;
+        Variable_Tp_prechodna_doba=0.0;
+
+        TextField_teploha_stav1.setText("-30");TextField_teploha_stav1.setEnabled(false);
+        TextField_teploha_stav2.setText("-20");TextField_teploha_stav2.setEnabled(true);
+        TextField_teploha_stav3.setText("-10");TextField_teploha_stav3.setEnabled(true);
+        TextField_teploha_stav4.setText("-5");TextField_teploha_stav4.setEnabled(false);
+        TextField_teploha_stav5.setText("-5+N");TextField_teploha_stav5.setEnabled(false);
+        TextField_teploha_stav6.setText("-5+V");TextField_teploha_stav6.setEnabled(false);
+        TextField_teploha_stav7.setText("-5+Nv");TextField_teploha_stav7.setEnabled(false);
+        TextField_teploha_stav8.setText("-5+vN");TextField_teploha_stav8.setEnabled(false);
+        TextField_teploha_stav9.setText("0");TextField_teploha_stav9.setEnabled(false);
+        TextField_teploha_stav10.setText("10");TextField_teploha_stav10.setEnabled(true);
+        TextField_teploha_stav11.setText("20");TextField_teploha_stav11.setEnabled(true);
+        TextField_teploha_stav12.setText("40");TextField_teploha_stav12.setEnabled(true);
+        TextField_teploha_stav13.setText("60");TextField_teploha_stav13.setEnabled(true);
+        TextField_teploha_stav14.setText("80");TextField_teploha_stav14.setEnabled(false);
+
+        array_teploty_stav_rovnica_konecne_loader_setter();
+        Jcombo_stav_KPB_setter();
+
+        one_pretazenia_setter();
+        array_pretaezenia_stav_rovnica_loader_setter();
+
+        double kokot = double_setter(0d);
+        teplotyser=true;
+        PDF_VAR_typ_tabulky =1;
+
+    }//GEN-LAST:event_jRadioButton_with_label_pociatocne1ActionPerformed
+
+    private void TextField_tabulky_konecnaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextField_tabulky_konecnaKeyReleased
+        Variable_T0_zivotnost = doubleChecker_short_answer(TextField_tabulky_konecna);
+    }//GEN-LAST:event_TextField_tabulky_konecnaKeyReleased
+
+    private void TextField_tabulky_konecnaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextField_tabulky_konecnaActionPerformed
+
+    }//GEN-LAST:event_TextField_tabulky_konecnaActionPerformed
+
+    private void TextField_tabulky_prechodnaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextField_tabulky_prechodnaKeyReleased
+        Variable_Tp_prechodna_doba=doubleChecker_short_answer(TextField_tabulky_prechodna)*24*365;
+    }//GEN-LAST:event_TextField_tabulky_prechodnaKeyReleased
+
+    private void TextField_tabulky_prechodnaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextField_tabulky_prechodnaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_TextField_STRrozpatie_klasickyActionPerformed
+    }//GEN-LAST:event_TextField_tabulky_prechodnaActionPerformed
+
+    private void jRadioButton_with_label_konecneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton_with_label_konecneActionPerformed
+        Variable_T0_zivotnost=doubleChecker_short_answer(TextField_tabulky_konecna)*24*365;
+        Variable_Tp_prechodna_doba=doubleChecker_short_answer(TextField_tabulky_konecna)*24*365;
+
+        TextField_teploha_stav1.setText("-30");TextField_teploha_stav1.setEnabled(false);
+        TextField_teploha_stav2.setText("-20");TextField_teploha_stav2.setEnabled(true);
+        TextField_teploha_stav3.setText("-10");TextField_teploha_stav3.setEnabled(true);
+        TextField_teploha_stav4.setText("-5");TextField_teploha_stav4.setEnabled(false);
+        TextField_teploha_stav5.setText("-5+N");TextField_teploha_stav5.setEnabled(false);
+        TextField_teploha_stav6.setText("-5+V");TextField_teploha_stav6.setEnabled(false);
+        TextField_teploha_stav7.setText("-5+Nv");TextField_teploha_stav7.setEnabled(false);
+        TextField_teploha_stav8.setText("-5+vN");TextField_teploha_stav8.setEnabled(false);
+        TextField_teploha_stav9.setText("0");TextField_teploha_stav9.setEnabled(false);
+        TextField_teploha_stav10.setText("10");TextField_teploha_stav10.setEnabled(true);
+        TextField_teploha_stav11.setText("20");TextField_teploha_stav11.setEnabled(true);
+        TextField_teploha_stav12.setText("40");TextField_teploha_stav12.setEnabled(true);
+        TextField_teploha_stav13.setText("60");TextField_teploha_stav13.setEnabled(true);
+        TextField_teploha_stav14.setText("80");TextField_teploha_stav14.setEnabled(false);
+
+        array_teploty_stav_rovnica_konecne_loader_setter();
+
+        Jcombo_stav_KPB_setter();
+
+        if (teplotyser == false){ // vloz prvu hodnotu
+            Variable_vybrany_stav_pre_KPB=Variable_teploty_stav_rovnica[0];
+        }
+
+        double kokot = double_setter(0d);
+        teplotyser=true;
+        PDF_VAR_typ_tabulky =3;
+    }//GEN-LAST:event_jRadioButton_with_label_konecneActionPerformed
+
+    private void jRadioButton_with_label_prechodneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton_with_label_prechodneActionPerformed
+        Variable_T0_zivotnost=doubleChecker_short_answer(TextField_tabulky_konecna)*24*365;
+        Variable_Tp_prechodna_doba=doubleChecker_short_answer(TextField_tabulky_prechodna)*24*365;
+
+        if (jRadioButton_KPB_cas_vypoctu_prechodne.isSelected() == true){
+            Variable_KPB_cas_vypoctu = Variable_Tp_prechodna_doba;
+        }
+
+        TextField_teploha_stav1.setText("-30");TextField_teploha_stav1.setEnabled(false);
+        TextField_teploha_stav2.setText("-20");TextField_teploha_stav2.setEnabled(true);
+        TextField_teploha_stav3.setText("-10");TextField_teploha_stav3.setEnabled(true);
+        TextField_teploha_stav4.setText("-5");TextField_teploha_stav4.setEnabled(false);
+        TextField_teploha_stav5.setText("-5+N");TextField_teploha_stav5.setEnabled(false);
+        TextField_teploha_stav6.setText("-5+V");TextField_teploha_stav6.setEnabled(false);
+        TextField_teploha_stav7.setText("-5+Nv");TextField_teploha_stav7.setEnabled(false);
+        TextField_teploha_stav8.setText("-5+vN");TextField_teploha_stav8.setEnabled(false);
+        TextField_teploha_stav9.setText("0");TextField_teploha_stav9.setEnabled(false);
+        TextField_teploha_stav10.setText("10");TextField_teploha_stav10.setEnabled(true);
+        TextField_teploha_stav11.setText("20");TextField_teploha_stav11.setEnabled(true);
+        TextField_teploha_stav12.setText("40");TextField_teploha_stav12.setEnabled(true);
+        TextField_teploha_stav13.setText("60");TextField_teploha_stav13.setEnabled(true);
+        TextField_teploha_stav14.setText("80");TextField_teploha_stav14.setEnabled(false);
+
+        array_teploty_stav_rovnica_konecne_loader_setter();
+
+        Jcombo_stav_KPB_setter();
+        double kokot = double_setter(0d);
+        teplotyser=true;
+        PDF_VAR_typ_tabulky =2;
+    }//GEN-LAST:event_jRadioButton_with_label_prechodneActionPerformed
+
+    private void jRadioButton_with_label_pociatocneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton_with_label_pociatocneActionPerformed
+        Variable_T0_zivotnost=doubleChecker_short_answer(TextField_tabulky_konecna)*24*365;
+        Variable_Tp_prechodna_doba=0.0;
+
+        TextField_teploha_stav1.setText("-10");TextField_teploha_stav1.setEnabled(true);
+        TextField_teploha_stav2.setText("-5");TextField_teploha_stav2.setEnabled(false);
+        TextField_teploha_stav3.setText("0");TextField_teploha_stav3.setEnabled(false);
+        TextField_teploha_stav4.setText("5");TextField_teploha_stav4.setEnabled(false);
+        TextField_teploha_stav5.setText("10");TextField_teploha_stav5.setEnabled(false);
+        TextField_teploha_stav6.setText("15");TextField_teploha_stav6.setEnabled(false);
+        TextField_teploha_stav7.setText("17");TextField_teploha_stav7.setEnabled(true);
+        TextField_teploha_stav8.setText("20");TextField_teploha_stav8.setEnabled(false);
+        TextField_teploha_stav9.setText("22");TextField_teploha_stav9.setEnabled(true);
+        TextField_teploha_stav10.setText("25");TextField_teploha_stav10.setEnabled(true);
+        TextField_teploha_stav11.setText("27");TextField_teploha_stav11.setEnabled(true);
+        TextField_teploha_stav12.setText("30");TextField_teploha_stav12.setEnabled(true);
+        TextField_teploha_stav13.setText("35");TextField_teploha_stav13.setEnabled(true);
+        TextField_teploha_stav14.setText("40");TextField_teploha_stav14.setEnabled(true);
+
+        array_teploty_stav_rovnica_pociatocne_loader_setter();
+        Jcombo_stav_KPB_setter();
+        one_pretazenia_setter();
+
+        array_pretaezenia_stav_rovnica_loader_setter();
+
+        double kokot = double_setter(0d);
+        teplotyser=true;
+        PDF_VAR_typ_tabulky =1;
+    }//GEN-LAST:event_jRadioButton_with_label_pociatocneActionPerformed
+
+    private void jRadioButton_with_pretazenia_vlastnaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton_with_pretazenia_vlastnaActionPerformed
+        variable_pretazenia_vlastne=true;
+        TextField_pretazenia_stav1.setEnabled(true);
+        TextField_pretazenia_stav2.setEnabled(true);
+        TextField_pretazenia_stav3.setEnabled(true);
+        TextField_pretazenia_stav4.setEnabled(true);
+        TextField_pretazenia_stav5.setEnabled(true);
+        TextField_pretazenia_stav6.setEnabled(true);
+        TextField_pretazenia_stav7.setEnabled(true);
+        TextField_pretazenia_stav8.setEnabled(true);
+        TextField_pretazenia_stav9.setEnabled(true);
+        TextField_pretazenia_stav10.setEnabled(true);
+        TextField_pretazenia_stav11.setEnabled(true);
+        TextField_pretazenia_stav12.setEnabled(true);
+        TextField_pretazenia_stav13.setEnabled(true);
+        TextField_pretazenia_stav14.setEnabled(true);
+        array_pretaezenia_stav_rovnica_loader_setter(); // toto len aby nebol aprazdna premenna
+    }//GEN-LAST:event_jRadioButton_with_pretazenia_vlastnaActionPerformed
+
+    private void jRadioButton_with_pretazenia_vypocitanaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton_with_pretazenia_vypocitanaActionPerformed
+
+        variable_pretazenia_vlastne=false;
+        TextField_pretazenia_stav1.setEnabled(false);
+        TextField_pretazenia_stav2.setEnabled(false);
+        TextField_pretazenia_stav3.setEnabled(false);
+        TextField_pretazenia_stav4.setEnabled(false);
+        TextField_pretazenia_stav5.setEnabled(false);
+        TextField_pretazenia_stav6.setEnabled(false);
+        TextField_pretazenia_stav7.setEnabled(false);
+        TextField_pretazenia_stav8.setEnabled(false);
+        TextField_pretazenia_stav9.setEnabled(false);
+        TextField_pretazenia_stav10.setEnabled(false);
+        TextField_pretazenia_stav11.setEnabled(false);
+        TextField_pretazenia_stav12.setEnabled(false);
+        TextField_pretazenia_stav13.setEnabled(false);
+        TextField_pretazenia_stav14.setEnabled(false);
+        array_pretaezenia_stav_rovnica_loader_setter(); // toto len aby nebol aprazdna premenna
+    }//GEN-LAST:event_jRadioButton_with_pretazenia_vypocitanaActionPerformed
 
     private void TextField_teploha_stav14KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextField_teploha_stav14KeyReleased
         if (TextField_teploha_stav14.isEnabled() == true) {
@@ -5465,47 +5687,6 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
         // TODO add your handling code here:
     }//GEN-LAST:event_TextField_teploha_stav1ActionPerformed
 
-    private void jRadioButton_with_pretazenia_vlastnaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton_with_pretazenia_vlastnaActionPerformed
-        variable_pretazenia_vlastne=true;
-        TextField_pretazenia_stav1.setEnabled(true);
-        TextField_pretazenia_stav2.setEnabled(true);
-        TextField_pretazenia_stav3.setEnabled(true);
-        TextField_pretazenia_stav4.setEnabled(true);
-        TextField_pretazenia_stav5.setEnabled(true);
-        TextField_pretazenia_stav6.setEnabled(true);
-        TextField_pretazenia_stav7.setEnabled(true);
-        TextField_pretazenia_stav8.setEnabled(true);
-        TextField_pretazenia_stav9.setEnabled(true);
-        TextField_pretazenia_stav10.setEnabled(true);
-        TextField_pretazenia_stav11.setEnabled(true);
-        TextField_pretazenia_stav12.setEnabled(true);
-        TextField_pretazenia_stav13.setEnabled(true);
-        TextField_pretazenia_stav14.setEnabled(true);
-        array_pretaezenia_stav_rovnica_loader_setter(); // toto len aby nebol aprazdna premenna
-
-    }//GEN-LAST:event_jRadioButton_with_pretazenia_vlastnaActionPerformed
-
-    private void jRadioButton_with_pretazenia_vypocitanaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton_with_pretazenia_vypocitanaActionPerformed
-
-        variable_pretazenia_vlastne=false;
-        TextField_pretazenia_stav1.setEnabled(false);
-        TextField_pretazenia_stav2.setEnabled(false);
-        TextField_pretazenia_stav3.setEnabled(false);
-        TextField_pretazenia_stav4.setEnabled(false);
-        TextField_pretazenia_stav5.setEnabled(false);
-        TextField_pretazenia_stav6.setEnabled(false);
-        TextField_pretazenia_stav7.setEnabled(false);
-        TextField_pretazenia_stav8.setEnabled(false);
-        TextField_pretazenia_stav9.setEnabled(false);
-        TextField_pretazenia_stav10.setEnabled(false);
-        TextField_pretazenia_stav11.setEnabled(false);
-        TextField_pretazenia_stav12.setEnabled(false);
-        TextField_pretazenia_stav13.setEnabled(false);
-        TextField_pretazenia_stav14.setEnabled(false);
-        array_pretaezenia_stav_rovnica_loader_setter(); // toto len aby nebol aprazdna premenna
-
-    }//GEN-LAST:event_jRadioButton_with_pretazenia_vypocitanaActionPerformed
-
     private void TextField_pretazenia_stav14KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextField_pretazenia_stav14KeyReleased
         Variable_pretazenia_stav_rovnica[13] = doubleChecker_short_answer(TextField_pretazenia_stav14);
     }//GEN-LAST:event_TextField_pretazenia_stav14KeyReleased
@@ -5618,6 +5799,60 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
         // TODO add your handling code here:
     }//GEN-LAST:event_TextField_pretazenia_stav1ActionPerformed
 
+    private void TextField_STRrozpatie_sPrevisenimKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextField_STRrozpatie_sPrevisenimKeyReleased
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TextField_STRrozpatie_sPrevisenimKeyReleased
+
+    private void TextField_STRrozpatie_sPrevisenimActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextField_STRrozpatie_sPrevisenimActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TextField_STRrozpatie_sPrevisenimActionPerformed
+
+    private void TextField_STRrozpatie_klasickyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextField_STRrozpatie_klasickyActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TextField_STRrozpatie_klasickyActionPerformed
+
+    private void jRadioButton_with_label_rozpate_previseniaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton_with_label_rozpate_previseniaActionPerformed
+        Variable_mid_span=Variable_mid_span_terrain_docasna;
+    }//GEN-LAST:event_jRadioButton_with_label_rozpate_previseniaActionPerformed
+
+    private void jRadioButton_with_label_rozpatie_klasickyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton_with_label_rozpatie_klasickyActionPerformed
+        Variable_mid_span=Variable_mid_span_docasna;
+    }//GEN-LAST:event_jRadioButton_with_label_rozpatie_klasickyActionPerformed
+
+    private void jRadioButton_KPB_cas_vypoctu_prechodneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton_KPB_cas_vypoctu_prechodneActionPerformed
+        Variable_KPB_cas_vypoctu= Variable_Tp_prechodna_doba;
+    }//GEN-LAST:event_jRadioButton_KPB_cas_vypoctu_prechodneActionPerformed
+
+    private void jRadioButton_KPB_cas_vypoctu_1_rokActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton_KPB_cas_vypoctu_1_rokActionPerformed
+        Variable_KPB_cas_vypoctu = 365*24;
+    }//GEN-LAST:event_jRadioButton_KPB_cas_vypoctu_1_rokActionPerformed
+
+    private void jComboBox_KPB_typ_terenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox_KPB_typ_terenuActionPerformed
+
+        if (mainframeLodaed == true) {
+
+            int selected_index_from_JComboBox = jComboBox_KPB_typ_terenu.getSelectedIndex();
+
+            switch (selected_index_from_JComboBox) {
+                case 0:
+                Variable_KPB_typ_terenu = 1.0;
+                jTextPane_KPB_typ_terenu.setText(language.language_label(languageOption, 169));
+                break;
+                case 1:  Variable_KPB_typ_terenu = 2.0;
+                jTextPane_KPB_typ_terenu.setText(language.language_label(languageOption, 170));
+                break;
+                case 2:  Variable_KPB_typ_terenu = 3.0;
+                jTextPane_KPB_typ_terenu.setText(language.language_label(languageOption, 171));
+                break;
+                case 3:  Variable_KPB_typ_terenu= 4.0;
+                jTextPane_KPB_typ_terenu.setText(language.language_label(languageOption, 172));
+                break;
+
+            }
+
+        }else{ Variable_KPB_typ_terenu = 2.0;}
+    }//GEN-LAST:event_jComboBox_KPB_typ_terenuActionPerformed
+
     private void jTextField_nazov_SOPS1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_nazov_SOPS1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField_nazov_SOPS1ActionPerformed
@@ -5658,253 +5893,7 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField_nazov_normiActionPerformed
 
-    private void jRadioButton_KPB_cas_vypoctu_prechodneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton_KPB_cas_vypoctu_prechodneActionPerformed
-        Variable_KPB_cas_vypoctu= Variable_Tp_prechodna_doba;
-    }//GEN-LAST:event_jRadioButton_KPB_cas_vypoctu_prechodneActionPerformed
-
-    private void jRadioButton_KPB_cas_vypoctu_1_rokActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton_KPB_cas_vypoctu_1_rokActionPerformed
-        Variable_KPB_cas_vypoctu = 365*24;
-    }//GEN-LAST:event_jRadioButton_KPB_cas_vypoctu_1_rokActionPerformed
-
-    private void jComboBox_KPB_typ_terenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox_KPB_typ_terenuActionPerformed
-
-        if (mainframeLodaed == true) {
-
-            int selected_index_from_JComboBox = jComboBox_KPB_typ_terenu.getSelectedIndex();
-
-            switch (selected_index_from_JComboBox) {
-                case 0:
-                Variable_KPB_typ_terenu = 1.0;
-                jTextPane_KPB_typ_terenu.setText(language.language_label(languageOption, 169));
-                break;
-                case 1:  Variable_KPB_typ_terenu = 2.0;
-                jTextPane_KPB_typ_terenu.setText(language.language_label(languageOption, 170));
-                break;
-                case 2:  Variable_KPB_typ_terenu = 3.0;
-                jTextPane_KPB_typ_terenu.setText(language.language_label(languageOption, 171));
-                break;
-                case 3:  Variable_KPB_typ_terenu= 4.0;
-                jTextPane_KPB_typ_terenu.setText(language.language_label(languageOption, 172));
-                break;
-
-            }
-
-        }else{ Variable_KPB_typ_terenu = 2.0;}
-    }//GEN-LAST:event_jComboBox_KPB_typ_terenuActionPerformed
-
-    private void TextField_tabulky_prechodnaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextField_tabulky_prechodnaKeyReleased
-        Variable_Tp_prechodna_doba=doubleChecker_short_answer(TextField_tabulky_prechodna)*24*365;
-    }//GEN-LAST:event_TextField_tabulky_prechodnaKeyReleased
-
-    private void Table_rozpatiaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Table_rozpatiaKeyTyped
-        // TODO add your handling code here:
-    }//GEN-LAST:event_Table_rozpatiaKeyTyped
-
-    private void Table_rozpatiaInputMethodTextChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_Table_rozpatiaInputMethodTextChanged
-        // TODO add your handling code here:
-    }//GEN-LAST:event_Table_rozpatiaInputMethodTextChanged
-
-    private void TextField_tabulky_konecnaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextField_tabulky_konecnaKeyReleased
-     Variable_T0_zivotnost = doubleChecker_short_answer(TextField_tabulky_konecna);
-    }//GEN-LAST:event_TextField_tabulky_konecnaKeyReleased
-
-    private void percento1_sigmaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_percento1_sigmaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_percento1_sigmaActionPerformed
-
-    private void percento1_sigmaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_percento1_sigmaKeyReleased
-        percento_podiel_namrazy_sigma1=doubleChecker_short_answer(percento1_sigma);
-    }//GEN-LAST:event_percento1_sigmaKeyReleased
-
-    private void percento2_sigmaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_percento2_sigmaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_percento2_sigmaActionPerformed
-
-    private void percento2_sigmaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_percento2_sigmaKeyReleased
-         percento_podiel_namrazy_sigma2=doubleChecker_short_answer(percento2_sigma);
-    }//GEN-LAST:event_percento2_sigmaKeyReleased
-
-    private void percento3_sigmaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_percento3_sigmaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_percento3_sigmaActionPerformed
-
-    private void percento3_sigmaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_percento3_sigmaKeyReleased
-         percento_podiel_namrazy_sigma3=doubleChecker_short_answer(percento3_sigma);
-    }//GEN-LAST:event_percento3_sigmaKeyReleased
-
-    private void percento4_sigmaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_percento4_sigmaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_percento4_sigmaActionPerformed
-
-    private void percento4_sigmaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_percento4_sigmaKeyReleased
-         percento_podiel_namrazy_sigma4=doubleChecker_short_answer(percento4_sigma);
-    }//GEN-LAST:event_percento4_sigmaKeyReleased
-
-    private void vyp_percento1_sigmaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vyp_percento1_sigmaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_vyp_percento1_sigmaActionPerformed
-
-    private void vyp_percento1_sigmaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_vyp_percento1_sigmaKeyReleased
-        // TODO add your handling code here:
-    }//GEN-LAST:event_vyp_percento1_sigmaKeyReleased
-
-    private void vyp_percento2_sigmaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vyp_percento2_sigmaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_vyp_percento2_sigmaActionPerformed
-
-    private void vyp_percento2_sigmaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_vyp_percento2_sigmaKeyReleased
-        // TODO add your handling code here:
-    }//GEN-LAST:event_vyp_percento2_sigmaKeyReleased
-
-    private void vyp_percento3_sigmaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vyp_percento3_sigmaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_vyp_percento3_sigmaActionPerformed
-
-    private void vyp_percento3_sigmaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_vyp_percento3_sigmaKeyReleased
-        // TODO add your handling code here:
-    }//GEN-LAST:event_vyp_percento3_sigmaKeyReleased
-
-    private void vyp_percento4_sigmaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vyp_percento4_sigmaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_vyp_percento4_sigmaActionPerformed
-
-    private void vyp_percento4_sigmaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_vyp_percento4_sigmaKeyReleased
-        // TODO add your handling code here:
-    }//GEN-LAST:event_vyp_percento4_sigmaKeyReleased
-
-    private void jTabbedPane1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTabbedPane1MouseClicked
-        int cislo = Table_kotevne_useky.getSelectedRow();
-        set_KPB_to_mainframe(Variable_globeal_kotevny_usek.get(cislo));
-        set_tahy_to_mainframe(Variable_globeal_kotevny_usek.get(cislo));
-        tah_konecne1.setText(language.language_label(languageOption, 283) + String.valueOf(jComboBox_stav_KPB.getSelectedItem()) + language.language_label(languageOption, 285));
-    }//GEN-LAST:event_jTabbedPane1MouseClicked
-
-    private void Table_KPBMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Table_KPBMouseEntered
-        
-       
-        
-    }//GEN-LAST:event_Table_KPBMouseEntered
-
-    private void Table_KPBMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Table_KPBMouseMoved
-      
-        Point point = evt.getPoint();
-        int row;
-      row 	= Table_KPB.rowAtPoint(point);
-      int hodnota = (int)Table_KPB.getValueAt(row, 1);
-      if(hodnota == 1){
-       
-        Table_KPB.setToolTipText(language.language_label(languageOption, 255));
-        
-      }
-       if(hodnota == 2){
-       
-        Table_KPB.setToolTipText(language.language_label(languageOption, 256));
-        
-      }
-        if(hodnota == 3){
-       
-        Table_KPB.setToolTipText(language.language_label(languageOption, 257));
-        
-      }
-       
-    }//GEN-LAST:event_Table_KPBMouseMoved
-
-    private void Button_pdf_pageupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button_pdf_pageupActionPerformed
-      
-     if(pocet_pdf_stran == 0){}else{   
-     current_pdf_page=current_pdf_page+1;
-
-     if ( current_pdf_page > pocet_pdf_stran){ 
-     current_pdf_page=1;   
-     }
-     String userhome = System.getProperty("user.dir"); 
-     String path = userhome + "\\temp\\" + "tempPdf.pdf-" +current_pdf_page +".png";
-     ImageIcon icon = new ImageIcon(path);
-     java.awt.Image img = icon.getImage();
-     jLabel5.setIcon(new ImageIcon(img.getScaledInstance(jLabel5.getWidth(), jLabel5.getHeight(), java.awt.Image.SCALE_AREA_AVERAGING)));
-     }  
-    }//GEN-LAST:event_Button_pdf_pageupActionPerformed
-
-    private void Button_pdf_pagedownActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button_pdf_pagedownActionPerformed
-      if(pocet_pdf_stran == 0){}else{   
-     current_pdf_page=current_pdf_page-1;
-
-     if ( current_pdf_page < 1){ 
-     current_pdf_page=pocet_pdf_stran;   
-     }
-     String userhome = System.getProperty("user.dir"); 
-     String path = userhome + "\\temp\\" + "tempPdf.pdf-" +current_pdf_page +".png";
-     ImageIcon icon = new ImageIcon(path);
-     java.awt.Image img = icon.getImage();
-     jLabel5.setIcon(new ImageIcon(img.getScaledInstance(jLabel5.getWidth(), jLabel5.getHeight(), java.awt.Image.SCALE_AREA_AVERAGING)));
-     } 
-        
-        
-        
-    }//GEN-LAST:event_Button_pdf_pagedownActionPerformed
-
-    private void Textfield_casActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Textfield_casActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_Textfield_casActionPerformed
-
-    private void jRadioButton_with_label_pociatocne1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton_with_label_pociatocne1ActionPerformed
-       
-        Variable_T0_zivotnost=doubleChecker_short_answer(TextField_tabulky_konecna)*24*365;
-       Variable_Tp_prechodna_doba=0.0;
-       
-         TextField_teploha_stav1.setText("-30");TextField_teploha_stav1.setEnabled(false);
-         TextField_teploha_stav2.setText("-20");TextField_teploha_stav2.setEnabled(true);
-         TextField_teploha_stav3.setText("-10");TextField_teploha_stav3.setEnabled(true);
-         TextField_teploha_stav4.setText("-5");TextField_teploha_stav4.setEnabled(false);
-         TextField_teploha_stav5.setText("-5+N");TextField_teploha_stav5.setEnabled(false);
-         TextField_teploha_stav6.setText("-5+V");TextField_teploha_stav6.setEnabled(false);
-         TextField_teploha_stav7.setText("-5+Nv");TextField_teploha_stav7.setEnabled(false);
-         TextField_teploha_stav8.setText("-5+vN");TextField_teploha_stav8.setEnabled(false);
-         TextField_teploha_stav9.setText("0");TextField_teploha_stav9.setEnabled(false);
-         TextField_teploha_stav10.setText("10");TextField_teploha_stav10.setEnabled(true);
-         TextField_teploha_stav11.setText("20");TextField_teploha_stav11.setEnabled(true);
-         TextField_teploha_stav12.setText("40");TextField_teploha_stav12.setEnabled(true);
-         TextField_teploha_stav13.setText("60");TextField_teploha_stav13.setEnabled(true);
-         TextField_teploha_stav14.setText("80");TextField_teploha_stav14.setEnabled(false);
-         
-         array_teploty_stav_rovnica_konecne_loader_setter();
-         Jcombo_stav_KPB_setter();
-        
-         one_pretazenia_setter();
-         array_pretaezenia_stav_rovnica_loader_setter();
-         
-         double kokot = double_setter(0d);
-         teplotyser=true;
-         PDF_VAR_typ_tabulky =1;
-        
-        
-    }//GEN-LAST:event_jRadioButton_with_label_pociatocne1ActionPerformed
-
-    private void Button_Icon_export_PDF_externalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button_Icon_export_PDF_externalActionPerformed
-       
-        pdf_internal=false;
-        pdf_external=true;
-        pdf_as=false;
-        pdf_manager();
-        Label_status.setText(language.language_label(languageOption, 277));
-        
-    }//GEN-LAST:event_Button_Icon_export_PDF_externalActionPerformed
-
-    private void Button_Icon_export_PDF2_save_asActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button_Icon_export_PDF2_save_asActionPerformed
-        
-        pdf_internal=false;
-        pdf_external=false;
-        pdf_as=true;
-        pdf_manager();
-        Label_status.setText(language.language_label(languageOption, 278));
-        
-    }//GEN-LAST:event_Button_Icon_export_PDF2_save_asActionPerformed
-
-    private void podiel_z_RTS1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_podiel_z_RTS1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_podiel_z_RTS1ActionPerformed
-
-  public static void lanochangeinDatabaze() {
+  public  void lanochangeinDatabaze() {
   nacitatDatabazuLan();      
         
     }
@@ -5940,6 +5929,10 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(mainframe_2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -6312,7 +6305,7 @@ private void seticon() {
         return existnewkotevnyusek;
     }
     
-    private static void nacitatDatabazuLan(){
+    private  void nacitatDatabazuLan(){
     mainframeLodaed = false;    
     String  memory_path_plus_filename  = startPanel.set_memory_path_conductor();
         
@@ -6431,7 +6424,7 @@ private void seticon() {
     
     }
     
-    private static double vypocet_IR50_namrazove_oblasti(){
+    private  double vypocet_IR50_namrazove_oblasti(){
         double Ir50 = 0.0;
         int selected_conductor_index_from_JComboBox = jComboBox_conductor_chooser.getSelectedIndex();
         Object[] Conductor = new Object[7];
