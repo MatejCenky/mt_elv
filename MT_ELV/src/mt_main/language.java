@@ -570,11 +570,11 @@ public static void constructor(){
         language.CZ.add("Střední rozpětí");                     
         language.EN.add("Mean span length");
         
-/*155*/  language.SK.add("Klasicky bez prevíšení");                     
+/*155*/  language.SK.add("Klasicky bez prevýšení");                     
         language.CZ.add("Klasicky bez převýšení");                     
         language.EN.add("Without elevation diff.");
         
-/*156*/  language.SK.add("S prevíšeniami");                     
+/*156*/  language.SK.add("S prevýšeniami");                     
         language.CZ.add("S převýšeními");                     
         language.EN.add("With elevation");
          

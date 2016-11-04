@@ -3739,7 +3739,7 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
                 
                 
                 c1 = new PdfPCell();
-                Chunk p1 = new Chunk(language.language_label(languageOption, 196) +"\n" +"d [mm)]" ,fontTable);
+                Chunk p1 = new Chunk(language.language_label(languageOption, 196) +"\n" +"d [mm]" ,fontTable);
                 Paragraph p1_total= new Paragraph(10);
                           p1_total.add(p1);
                 p1_total.setAlignment(Element.ALIGN_CENTER);
