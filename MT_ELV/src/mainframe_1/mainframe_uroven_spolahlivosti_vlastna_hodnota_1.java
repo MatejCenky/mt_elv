@@ -6,9 +6,8 @@
  * of it must be consulted and the permission granted 
  * by authors Ing. Matej Cenky and Ing. Jozef Bendik.
  */
-package mainframe_2;
+package mainframe_1;
 
-import mainframe_1.*;
 import java.awt.Color;
 import java.awt.Toolkit;
 import javax.swing.JDialog;
@@ -19,12 +18,12 @@ import static mt_main.startPanel.languageOption;
  *
  * @author Jozef
  */
-public class mainframe_uroven_spolahlivosti_vlastna_hodnota extends javax.swing.JDialog {
+public class mainframe_uroven_spolahlivosti_vlastna_hodnota_1 extends javax.swing.JDialog {
 
     /**
      * Creates new form mainframe_namrazova_oblast_vlastna_hodnota_jDialog
      */
-    public mainframe_uroven_spolahlivosti_vlastna_hodnota(java.awt.Frame parent, boolean modal) {
+    public mainframe_uroven_spolahlivosti_vlastna_hodnota_1(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
         setLocationRelativeTo(null);
@@ -243,7 +242,7 @@ public class mainframe_uroven_spolahlivosti_vlastna_hodnota extends javax.swing.
    
         Object[] hodnoty = new Object[4];
         hodnoty = new Object[]{(double) hodnota1,(double) hodnota2, (double) hodnota3,(double) hodnota4, (double) hodnota5};
-        mainframe_2.getvlastnehodnoty_uroven_splahlivosti(hodnoty);
+        mainframe_1.getvlastnehodnoty_uroven_splahlivosti(hodnoty);
        disinit();
        }
         
@@ -254,7 +253,7 @@ public class mainframe_uroven_spolahlivosti_vlastna_hodnota extends javax.swing.
         
      Object[] hodnoty = new Object[4];
         hodnoty = new Object[]{(double) 0.0,(double) 0.0, (double) 0.0,(double) 0.0,(double) 0.0};
-        mainframe_2.getvlastnehodnoty_uroven_splahlivosti(hodnoty);
+        mainframe_1.getvlastnehodnoty_uroven_splahlivosti(hodnoty);
        disinit();
         
     }//GEN-LAST:event_button_stormoActionPerformed
@@ -308,13 +307,13 @@ public class mainframe_uroven_spolahlivosti_vlastna_hodnota extends javax.swing.
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(mainframe_uroven_spolahlivosti_vlastna_hodnota.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(mainframe_uroven_spolahlivosti_vlastna_hodnota_1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(mainframe_uroven_spolahlivosti_vlastna_hodnota.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(mainframe_uroven_spolahlivosti_vlastna_hodnota_1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(mainframe_uroven_spolahlivosti_vlastna_hodnota.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(mainframe_uroven_spolahlivosti_vlastna_hodnota_1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(mainframe_uroven_spolahlivosti_vlastna_hodnota.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(mainframe_uroven_spolahlivosti_vlastna_hodnota_1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
         //</editor-fold>
@@ -324,7 +323,7 @@ public class mainframe_uroven_spolahlivosti_vlastna_hodnota extends javax.swing.
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                mainframe_uroven_spolahlivosti_vlastna_hodnota dialog = new mainframe_uroven_spolahlivosti_vlastna_hodnota(new javax.swing.JFrame(), true);
+                mainframe_uroven_spolahlivosti_vlastna_hodnota_1 dialog = new mainframe_uroven_spolahlivosti_vlastna_hodnota_1(new javax.swing.JFrame(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {

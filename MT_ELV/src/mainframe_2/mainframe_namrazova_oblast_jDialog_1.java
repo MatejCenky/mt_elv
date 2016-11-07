@@ -22,12 +22,12 @@ import static mt_main.startPanel.languageOption;
  *
  * @author Jozef
  */
-public class mainframe_namrazova_oblast_jDialog extends javax.swing.JDialog {
+public class mainframe_namrazova_oblast_jDialog_1 extends javax.swing.JDialog {
 
     /**
      * Creates new form Help_Math_JDialog
      */
-    public mainframe_namrazova_oblast_jDialog(java.awt.Frame parent, boolean modal) {
+    public mainframe_namrazova_oblast_jDialog_1(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
         setLocationRelativeTo(null); //center of window position
@@ -224,7 +224,7 @@ public class mainframe_namrazova_oblast_jDialog extends javax.swing.JDialog {
     }
     
     public  void run_vlastne_hodnoty(){
-         mainframe_namrazova_oblast_vlastna_hodnota_jDialog mainframe_namrazova_oblast_vlastna_hodnota_jDialog_window = new  mainframe_namrazova_oblast_vlastna_hodnota_jDialog(this, rootPaneCheckingEnabled);
+         mainframe_namrazova_oblast_vlastna_hodnota_jDialog_1 mainframe_namrazova_oblast_vlastna_hodnota_jDialog_window = new  mainframe_namrazova_oblast_vlastna_hodnota_jDialog_1(this, rootPaneCheckingEnabled);
                     mainframe_namrazova_oblast_vlastna_hodnota_jDialog_window.setVisible(true);
 
     }
@@ -249,14 +249,22 @@ public class mainframe_namrazova_oblast_jDialog extends javax.swing.JDialog {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(mainframe_namrazova_oblast_jDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(mainframe_namrazova_oblast_jDialog_1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(mainframe_namrazova_oblast_jDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(mainframe_namrazova_oblast_jDialog_1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(mainframe_namrazova_oblast_jDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(mainframe_namrazova_oblast_jDialog_1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(mainframe_namrazova_oblast_jDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(mainframe_namrazova_oblast_jDialog_1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -269,7 +277,7 @@ public class mainframe_namrazova_oblast_jDialog extends javax.swing.JDialog {
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                mainframe_namrazova_oblast_jDialog dialog = new mainframe_namrazova_oblast_jDialog(new javax.swing.JFrame(), true);
+                mainframe_namrazova_oblast_jDialog_1 dialog = new mainframe_namrazova_oblast_jDialog_1(new javax.swing.JFrame(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {

@@ -10,16 +10,11 @@ package mt_main;
 
 import java.awt.Desktop;
 import java.awt.Toolkit;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.net.URL;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.StandardCopyOption;
 import java.util.Scanner;
 
 /**
@@ -51,7 +46,37 @@ public class startPanel extends javax.swing.JFrame {
 
         }
      
-        
+      
+     setDefaultCloseOperation(startPanel.DO_NOTHING_ON_CLOSE);
+        addWindowListener(new WindowAdapter()
+        {
+            @Override
+            public void windowClosing(WindowEvent e)
+            {
+            end_of_programme=false;
+           
+            
+            warning_sign2but("Si kokot?");
+            
+            
+            if(end_of_programme == true  ){
+              
+                
+                System.exit(0);
+            } 
+            
+            if(end_of_programme == false ){
+              
+                
+              
+            } 
+            
+             
+                
+                
+            }
+        });
+     
     }
 
     /**
@@ -235,6 +260,13 @@ public class startPanel extends javax.swing.JFrame {
       Clicked_NEW = 1;
     }//GEN-LAST:event_JmenuFIleNewBUttonActionPerformed
 
+     public  void warning_sign2but (String X){
+        
+    mainframe_warningEND mainframe_warningEND = new mainframe_warningEND(this, rootPaneCheckingEnabled);
+        mainframe_warningEND.setVisible(true);  
+    }
+    
+    
     private void jMenuFlneILoadbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuFlneILoadbuttonActionPerformed
       Clicked_NEW = 2;
     }//GEN-LAST:event_jMenuFlneILoadbuttonActionPerformed
@@ -385,6 +417,7 @@ public static Integer languageOption  ;
  public static int Clicked_NEW = 0;
  public static boolean conductor_password_set = false;
  public static String conductor_memory_path_plus_filename="none";
+ public static boolean end_of_programme = false;
  
     private void seticon() {
      setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/mt_graphic/" + "icon.png")));

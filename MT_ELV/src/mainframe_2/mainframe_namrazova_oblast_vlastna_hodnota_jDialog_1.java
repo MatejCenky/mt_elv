@@ -6,7 +6,7 @@
  * of it must be consulted and the permission granted 
  * by authors Ing. Matej Cenky and Ing. Jozef Bendik.
  */
-package mainframe_3;
+package mainframe_2;
 
 import mainframe_1.*;
 import java.awt.Color;
@@ -19,12 +19,12 @@ import static mt_main.startPanel.languageOption;
  *
  * @author Jozef
  */
-public class mainframe_namrazova_oblast_vlastna_hodnota_jDialog extends javax.swing.JDialog {
+public class mainframe_namrazova_oblast_vlastna_hodnota_jDialog_1 extends javax.swing.JDialog {
 
     /**
      * Creates new form mainframe_namrazova_oblast_vlastna_hodnota_jDialog
      */
-    public mainframe_namrazova_oblast_vlastna_hodnota_jDialog(java.awt.Dialog parent, boolean modal) {
+    public mainframe_namrazova_oblast_vlastna_hodnota_jDialog_1(java.awt.Dialog parent, boolean modal) {
         super(parent, modal);
         initComponents();
         setLocationRelativeTo(null);
@@ -152,7 +152,7 @@ public class mainframe_namrazova_oblast_vlastna_hodnota_jDialog extends javax.sw
    
         Object[] hodnoty = new Object[4];
         hodnoty = new Object[]{(double) hodnota1,(double) 0.0, (double) hodnota2,(double) 0.0};
-        mainframe_namrazova_oblast_jDialog.getvlastnehodnoty(hodnoty);
+        mainframe_namrazova_oblast_jDialog_1.getvlastnehodnoty(hodnoty);
        disinit();
        }
         
@@ -163,7 +163,7 @@ public class mainframe_namrazova_oblast_vlastna_hodnota_jDialog extends javax.sw
         
      Object[] hodnoty = new Object[4];
         hodnoty = new Object[]{(double) 0.0,(double) 0.0, (double) 0.0,(double) 0.0};
-        mainframe_namrazova_oblast_jDialog.getvlastnehodnoty(hodnoty);
+        mainframe_namrazova_oblast_jDialog_1.getvlastnehodnoty(hodnoty);
        disinit();
         
     }//GEN-LAST:event_button_stormoActionPerformed
@@ -205,21 +205,23 @@ public class mainframe_namrazova_oblast_vlastna_hodnota_jDialog extends javax.sw
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(mainframe_namrazova_oblast_vlastna_hodnota_jDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(mainframe_namrazova_oblast_vlastna_hodnota_jDialog_1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(mainframe_namrazova_oblast_vlastna_hodnota_jDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(mainframe_namrazova_oblast_vlastna_hodnota_jDialog_1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(mainframe_namrazova_oblast_vlastna_hodnota_jDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(mainframe_namrazova_oblast_vlastna_hodnota_jDialog_1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(mainframe_namrazova_oblast_vlastna_hodnota_jDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(mainframe_namrazova_oblast_vlastna_hodnota_jDialog_1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                mainframe_namrazova_oblast_vlastna_hodnota_jDialog dialog = new mainframe_namrazova_oblast_vlastna_hodnota_jDialog(new javax.swing.JDialog(), true);
+                mainframe_namrazova_oblast_vlastna_hodnota_jDialog_1 dialog = new mainframe_namrazova_oblast_vlastna_hodnota_jDialog_1(new javax.swing.JDialog(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {

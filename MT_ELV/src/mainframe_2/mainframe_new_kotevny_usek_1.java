@@ -6,7 +6,7 @@
  * of it must be consulted and the permission granted 
  * by authors Ing. Matej Cenky and Ing. Jozef Bendik.
  */
-package mainframe_3;
+package mainframe_2;
 
 import mainframe_1.*;
 import java.awt.Desktop;
@@ -23,12 +23,12 @@ import static mt_main.startPanel.languageOption;
  *
  * @author Jozef
  */
-public class mainframe_new_kotevny_usek extends javax.swing.JDialog {
+public class mainframe_new_kotevny_usek_1 extends javax.swing.JDialog {
 
     /**
      * Creates new form Help_Math_JDialog
      */
-    public mainframe_new_kotevny_usek(java.awt.Frame parent, boolean modal) {
+    public mainframe_new_kotevny_usek_1(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
         setLocationRelativeTo(null); //center of window position
@@ -100,8 +100,8 @@ public class mainframe_new_kotevny_usek extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void createButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createButtonActionPerformed
-        mainframe_3.new_kotevny_usek_jdialog(jTextField1.getText());        
-        mainframe_3.newkotevnyusekstatus(true);
+        mainframe_2.new_kotevny_usek_jdialog(jTextField1.getText());        
+        mainframe_2.newkotevnyusekstatus(true);
         disinit();
     }//GEN-LAST:event_createButtonActionPerformed
 
@@ -146,14 +146,22 @@ public class mainframe_new_kotevny_usek extends javax.swing.JDialog {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(mainframe_new_kotevny_usek.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(mainframe_new_kotevny_usek_1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(mainframe_new_kotevny_usek.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(mainframe_new_kotevny_usek_1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(mainframe_new_kotevny_usek.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(mainframe_new_kotevny_usek_1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(mainframe_new_kotevny_usek.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(mainframe_new_kotevny_usek_1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -166,7 +174,7 @@ public class mainframe_new_kotevny_usek extends javax.swing.JDialog {
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                mainframe_new_kotevny_usek dialog = new mainframe_new_kotevny_usek(new javax.swing.JFrame(), true);
+                mainframe_new_kotevny_usek_1 dialog = new mainframe_new_kotevny_usek_1(new javax.swing.JFrame(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {

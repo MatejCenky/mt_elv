@@ -35,7 +35,10 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
+import java.nio.charset.Charset;
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
 import java.text.SimpleDateFormat;
@@ -47,7 +50,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
-import javax.swing.JFrame;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.event.TableModelEvent;
@@ -85,9 +87,9 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
        
         
         if(loaded_file== false){
-        mainframe_new_project_set_title mainframe_new_project_JDialog_window = new mainframe_new_project_set_title(this, rootPaneCheckingEnabled);
+        mainframe_new_project_set_title_1 mainframe_new_project_JDialog_window = new mainframe_new_project_set_title_1(this, rootPaneCheckingEnabled);
         mainframe_new_project_JDialog_window.setVisible(true); 
-        project_name=mainframe_new_project_set_title.name_of_project;
+        project_name=mainframe_new_project_set_title_1.name_of_project;
         }else{
             project_name= "new";           
         }
@@ -1010,7 +1012,7 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
                 Button_Icon_export_PDF_externalActionPerformed(evt);
             }
         });
-        Button_Icon_export_PDF_internal.setToolTipText(language.language_label(languageOption, 264));
+        Button_Icon_export_PDF_external.setToolTipText(language.language_label(languageOption, 264));
 
         Button_Icon_export_PDF2_save_as.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mt_graphic/PDFas-24.png"))); // NOI18N
         Button_Icon_export_PDF2_save_as.setFocusable(false);
@@ -1022,7 +1024,7 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
                 Button_Icon_export_PDF2_save_asActionPerformed(evt);
             }
         });
-        Button_Icon_export_PDF_internal.setToolTipText(language.language_label(languageOption, 265));
+        Button_Icon_export_PDF2_save_as.setToolTipText(language.language_label(languageOption, 265));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -1997,9 +1999,11 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
                     .addGroup(jPanel6Layout.createSequentialGroup()
                         .addComponent(TextField_tabulky_konecna, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(Label_tabulky1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jRadioButton_with_label_konecne, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(Label_tabulky1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addComponent(jRadioButton_with_label_konecne, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap())))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2769,7 +2773,7 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
                 .addContainerGap()
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel8Layout.createSequentialGroup()
-                        .addComponent(jPanel14, javax.swing.GroupLayout.DEFAULT_SIZE, 0, Short.MAX_VALUE)
+                        .addComponent(jPanel14, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                         .addContainerGap())
                     .addGroup(jPanel8Layout.createSequentialGroup()
                         .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -3341,7 +3345,7 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
                 .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel18Layout.createSequentialGroup()
                         .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jPanel9, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 0, Short.MAX_VALUE)
+                            .addComponent(jPanel9, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                             .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -3481,7 +3485,7 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jScrollPane4)
+            .addComponent(jScrollPane4, javax.swing.GroupLayout.Alignment.TRAILING)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -3540,7 +3544,7 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
            
         try {
         
-        String temppdfname = "tempPdf.pdf";
+        String temppdfname = "temp3Pdf.pdf";
         String userhome = System.getProperty("user.dir");
         
          
@@ -4040,7 +4044,7 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
             }
             document.close();
  // nahod prvu   
-     String path = userhome + "\\temp\\" + "tempPdf.pdf-" +"1" +".png";
+     String path = userhome + "\\temp\\" + "temp3Pdf.pdf-" +"1" +".png";
      ImageIcon icon = new ImageIcon(path);
      java.awt.Image img = icon.getImage();
      jLabel5.setIcon(new ImageIcon(img.getScaledInstance(jLabel5.getWidth(), jLabel5.getHeight(), java.awt.Image.SCALE_AREA_AVERAGING)));
@@ -4632,7 +4636,7 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
            first_Start=false;
            
                }else{     
-        mainframe_new_kotevny_usek mainframe_new_kotevny_usek_JDialog_window = new mainframe_new_kotevny_usek(this, rootPaneCheckingEnabled);
+        mainframe_new_kotevny_usek_1 mainframe_new_kotevny_usek_JDialog_window = new mainframe_new_kotevny_usek_1(this, rootPaneCheckingEnabled);
         mainframe_new_kotevny_usek_JDialog_window.setVisible(true);
         Label_status.setText(language.language_label(languageOption, 279));
                        }
@@ -4701,7 +4705,11 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
           
         project_save_as=true;
         String no= "";
-        save_project(no);
+        try {
+            save_project(no);
+        } catch (UnsupportedEncodingException ex) {
+            Logger.getLogger(mainframe_3.class.getName()).log(Level.SEVERE, null, ex);
+        }
         Label_status.setText(language.language_label(languageOption, 274));
         
     }//GEN-LAST:event_Button_Icon_save_asActionPerformed
@@ -4725,7 +4733,11 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
           
         project_save_as=false;
         String no= "";
-        save_project(no);
+        try {
+            save_project(no);
+        } catch (UnsupportedEncodingException ex) {
+            Logger.getLogger(mainframe_3.class.getName()).log(Level.SEVERE, null, ex);
+        }
         Label_status.setText(language.language_label(languageOption, 273));
     }//GEN-LAST:event_Button_Icon_saveActionPerformed
 
@@ -4738,7 +4750,7 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
      current_pdf_page=1;   
      }
      String userhome = System.getProperty("user.dir"); 
-     String path = userhome + "\\temp\\" + "tempPdf.pdf-" +current_pdf_page +".png";
+     String path = userhome + "\\temp\\" + "temp3Pdf.pdf-" +current_pdf_page +".png";
      ImageIcon icon = new ImageIcon(path);
      java.awt.Image img = icon.getImage();
      jLabel5.setIcon(new ImageIcon(img.getScaledInstance(jLabel5.getWidth(), jLabel5.getHeight(), java.awt.Image.SCALE_AREA_AVERAGING)));
@@ -4753,7 +4765,7 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
      current_pdf_page=pocet_pdf_stran;   
      }
      String userhome = System.getProperty("user.dir"); 
-     String path = userhome + "\\temp\\" + "tempPdf.pdf-" +current_pdf_page +".png";
+     String path = userhome + "\\temp\\" + "temp3Pdf.pdf-" +current_pdf_page +".png";
      ImageIcon icon = new ImageIcon(path);
      java.awt.Image img = icon.getImage();
      jLabel5.setIcon(new ImageIcon(img.getScaledInstance(jLabel5.getWidth(), jLabel5.getHeight(), java.awt.Image.SCALE_AREA_AVERAGING)));
@@ -5037,7 +5049,7 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
 
     private void Button_namrazova_oblastActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button_namrazova_oblastActionPerformed
 
-        mainframe_namrazova_oblast_jDialog mainframe_namrazova_oblast_jDialog_window = new mainframe_namrazova_oblast_jDialog(this, rootPaneCheckingEnabled);
+        mainframe_namrazova_oblast_jDialog_1 mainframe_namrazova_oblast_jDialog_window = new mainframe_namrazova_oblast_jDialog_1(this, rootPaneCheckingEnabled);
         mainframe_namrazova_oblast_jDialog_window.setVisible(true);
 
         if(is_namrazove_oblasti_setted== true){
@@ -5367,8 +5379,8 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
                 Variable_uroven_spolahlivosti_Wi=double_setter(0.35);
                 break;
                 case 6:  //50 rokov
-                mainframe_uroven_spolahlivosti_vlastna_hodnota.setValues(Variable_uroven_spolahlivosti_cas_navratu_klim_udalosti, Variable_uroven_spolahlivosti_Yw, Variable_uroven_spolahlivosti_Yi, Variable_uroven_spolahlivosti_Ww, Variable_uroven_spolahlivosti_Wi);
-                mainframe_uroven_spolahlivosti_vlastna_hodnota mainframe_uroven_spolahlivosti_vlastna_hodnota_jDialog_window = new  mainframe_uroven_spolahlivosti_vlastna_hodnota(this, rootPaneCheckingEnabled);
+                mainframe_uroven_spolahlivosti_vlastna_hodnota_1.setValues(Variable_uroven_spolahlivosti_cas_navratu_klim_udalosti, Variable_uroven_spolahlivosti_Yw, Variable_uroven_spolahlivosti_Yi, Variable_uroven_spolahlivosti_Ww, Variable_uroven_spolahlivosti_Wi);
+                mainframe_uroven_spolahlivosti_vlastna_hodnota_1 mainframe_uroven_spolahlivosti_vlastna_hodnota_jDialog_window = new  mainframe_uroven_spolahlivosti_vlastna_hodnota_1(this, rootPaneCheckingEnabled);
                 mainframe_uroven_spolahlivosti_vlastna_hodnota_jDialog_window.setVisible(true);
 
                 Variable_uroven_spolahlivosti_cas_navratu_klim_udalosti = double_setter(Double.valueOf( vlastnehodnoty_uroven_splahlivosti[0].toString()));
@@ -6316,13 +6328,13 @@ private void seticon() {
     
     public  void warning_sign (String X){
         warning_text=X ;
-        mainframe_warning_jDialog mainframe_warning = new mainframe_warning_jDialog(this, rootPaneCheckingEnabled);
+        mainframe_warning_jDialog_1 mainframe_warning = new mainframe_warning_jDialog_1(this, rootPaneCheckingEnabled);
         mainframe_warning.setVisible(true);      
     }
     
     public  void warning_sign2but (String X){
         warning_text=X ;
-    mainframe_warning2but_jDialog mainframe_warning2but = new mainframe_warning2but_jDialog(this, rootPaneCheckingEnabled);
+    mainframe_warning2but_jDialog_1 mainframe_warning2but = new mainframe_warning2but_jDialog_1(this, rootPaneCheckingEnabled);
         mainframe_warning2but.setVisible(true);  
     }
     public void Swriter (String S){
@@ -7632,7 +7644,7 @@ private void seticon() {
     
     }
     
-    private void save_project(String user_path){
+    private void save_project(String user_path) throws UnsupportedEncodingException{
         
         // create variables filename and filepath
         // if save  with false just resave ( fafalse if loaded of of save as
@@ -7679,7 +7691,9 @@ private void seticon() {
         File subor = new File(project_filepath +"\\" +project_filename);
         
         try {
-            PrintWriter fw = new PrintWriter(subor);
+            OutputStreamWriter outputStreamWriter = new OutputStreamWriter(new FileOutputStream(subor), Charset.forName("UTF-8"));
+            PrintWriter fw = new PrintWriter(outputStreamWriter);
+            
             fw.println("Saved project file DO NOT MODIFY or I will hunt you and eat you alive");
             fw.println("Created by Jozef Bendík & Matej Cenký 2016 ");
             fw.println("All rights restricked for SAG Elektrovod a.s.");

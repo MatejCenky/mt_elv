@@ -53,14 +53,15 @@ public class MT_Main {
         
         startPanel.main(args);
 
-        int pocitadlo = 0;
+        
+        int pocet_otvoreni = 0;
         while (true) { //wait for information that user has choosen a language
             try {
                 Thread.sleep(100);                 //1000 milliseconds is one second. wait to not get overcycled
             } catch (InterruptedException ex) {
                 Thread.currentThread().interrupt();
             }
-            int pocet_otvoreni = 0;
+            
             int status = startPanel.getStatus_for_new_project(); // vytvor nove okno
             
             if (status == 1) {                               // Status 1 mena new project           

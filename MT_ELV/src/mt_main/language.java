@@ -1085,6 +1085,9 @@ public static void constructor(){
          language.CZ.add("Nie");                    
          language.EN.add("No");           
 
+/*290*/  language.SK.add("Chystáte sa ukončiť MT3 ste si tym istý ?");       
+         language.CZ.add("Chystáte se ukončiť MT3 ste si tím jistý ?");                    
+         language.EN.add("You are about to exit MT3 are you sure ?"); 
          
  inicializovane = true;
 }
