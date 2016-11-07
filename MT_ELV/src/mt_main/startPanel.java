@@ -78,7 +78,6 @@ public class startPanel extends javax.swing.JFrame {
         JmenuFileMenu = new javax.swing.JMenu();
         JmenuFIleNewBUtton = new javax.swing.JMenuItem();
         jMenuFlneILoadbutton = new javax.swing.JMenuItem();
-        jMenuIFileexportSettingsButton = new javax.swing.JMenuItem();
         jSeparator2 = new javax.swing.JPopupMenu.Separator();
         jMenuIFileExitButton = new javax.swing.JMenuItem();
         jMenuLibratyButton = new javax.swing.JMenu();
@@ -116,7 +115,7 @@ public class startPanel extends javax.swing.JFrame {
         });
         JmenuFileMenu.add(JmenuFIleNewBUtton);
 
-        jMenuFlneILoadbutton.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_L, java.awt.event.InputEvent.CTRL_MASK));
+        jMenuFlneILoadbutton.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_O, java.awt.event.InputEvent.CTRL_MASK));
         jMenuFlneILoadbutton.setText(language.language_label(languageOption,3));
         jMenuFlneILoadbutton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -124,9 +123,6 @@ public class startPanel extends javax.swing.JFrame {
             }
         });
         JmenuFileMenu.add(jMenuFlneILoadbutton);
-
-        jMenuIFileexportSettingsButton.setText(language.language_label(languageOption,5));
-        JmenuFileMenu.add(jMenuIFileexportSettingsButton);
         JmenuFileMenu.add(jSeparator2);
 
         jMenuIFileExitButton.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_E, java.awt.event.InputEvent.CTRL_MASK));
@@ -370,7 +366,6 @@ public class startPanel extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuFlneILoadbutton;
     private javax.swing.JMenu jMenuHelp;
     private javax.swing.JMenuItem jMenuIFileExitButton;
-    private javax.swing.JMenuItem jMenuIFileexportSettingsButton;
     private javax.swing.JMenuItem jMenuIHelpAboutButton;
     private javax.swing.JMenuItem jMenuIHelpHelpMT3BUtton;
     private javax.swing.JMenuItem jMenuIHelpMathButton;

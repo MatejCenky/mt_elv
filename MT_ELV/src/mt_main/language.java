@@ -1065,11 +1065,25 @@ public static void constructor(){
          language.CZ.add(" voltelné tab.");                    
          language.EN.add(" custom tables");
          
-/*285*/  language.SK.add("kontrola ťahov pracovného bodu");       
+/*286*/  language.SK.add("kontrola ťahov pracovného bodu");       
          language.CZ.add("kontrola tahů pracovního bodu");                    
          language.EN.add("working node pull check");
 
+/*287*/  language.SK.add("Naozaj chete ukončiť projekt? ");       
+         language.CZ.add("Vážne chcete ukončiť projekt?");                    
+         language.EN.add("Do you really want to exit project?");
 
+/*288*/  language.SK.add("Áno");       
+         language.CZ.add("Ano");                    
+         language.EN.add("Yes");  
+         
+/*289*/  language.SK.add("Ano ale uložiť");       
+         language.CZ.add("Ano ale uložit");                    
+         language.EN.add("Yes with save");   
+         
+/*290*/  language.SK.add("Nie");       
+         language.CZ.add("Nie");                    
+         language.EN.add("No");           
 
          
  inicializovane = true;

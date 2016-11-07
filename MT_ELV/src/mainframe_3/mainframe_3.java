@@ -28,6 +28,8 @@ import java.awt.Color;
 import java.awt.Desktop;
 import java.awt.Point;
 import java.awt.Toolkit;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -39,11 +41,13 @@ import java.text.DecimalFormatSymbols;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Locale;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
+import javax.swing.JFrame;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.event.TableModelEvent;
@@ -93,7 +97,7 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
 //         JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
 //        
         initComponents();
-        setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+        setDefaultCloseOperation(mainframe_3.DO_NOTHING_ON_CLOSE);
         setLocationRelativeTo(null);
         first_Start = true;
         povodna_hodnota_selekcie = 0;
@@ -146,18 +150,12 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
         Table_kotevne_useky.putClientProperty("terminateEditOnFocusLost", Boolean.TRUE);   
          
         Table_rozpatia.setSurrendersFocusOnKeystroke(true); // for focus on key listener
-        
-        
-        
-        
-        
+              
         nacitatDatabazuLan(); 
         mainframeLodaed=true;// fisrt load oc conductr databaze
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE); // if ju exit window app will not close
         setResizable(true);
-        
-        
-        
+               
 //vloz prvu hodnotu do RTS nulty index v tabulke
         Object[] Conductor = new Object[7];
             Conductor = Databaza.get(0);
@@ -607,6 +605,39 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
         Button_Icon_arr_row_table_kotevny_usek.doClick();
         
         
+        setDefaultCloseOperation(mainframe_3.DO_NOTHING_ON_CLOSE);
+        addWindowListener(new WindowAdapter()
+        {
+            @Override
+            public void windowClosing(WindowEvent e)
+            {
+            really_close_mainframe=false;
+            really_close_mainframe_save=false;
+            
+            warning_sign2but("Si kokot?");
+            
+            
+            if(really_close_mainframe == true && really_close_mainframe_save == false ){
+              
+                
+                e.getWindow().dispose();
+            } 
+            
+            if(really_close_mainframe == true && really_close_mainframe_save == true ){
+              
+                Button_Icon_save.doClick();
+                e.getWindow().dispose();
+            } 
+            
+            if(really_close_mainframe == false && really_close_mainframe_save == false){
+             
+            }    
+                
+                
+            }
+        });
+        
+        
         // IF LOADding 
         
         if(loaded_file== true){
@@ -863,7 +894,7 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
             .addGap(0, 100, Short.MAX_VALUE)
         );
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle(project_name);
         setBackground(new java.awt.Color(204, 204, 204));
 
@@ -3299,7 +3330,7 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
         );
         jPanel22Layout.setVerticalGroup(
             jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 170, Short.MAX_VALUE)
+            .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout jPanel18Layout = new javax.swing.GroupLayout(jPanel18);
@@ -4352,7 +4383,7 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
                 
             for (int y=0; y<Kot_usek.get_Ai_array().length; y++){
                 
-                double x_AB_base[] = forces_check.x_ABi(Variable_DeltaHi_array[y], c_base, Variable_Ai_array[y]);
+                double x_AB_base[] = forces_check.x_ABi(Kot_usek.get_DeltaHi_array()[y], c_base, Kot_usek.get_Ai_array()[y]);
                 double x_A_base = x_AB_base[0];
                 double x_B_base = x_AB_base[1];
                 double F_A_base = forces_check.F_ABi(x_A_base, c_base, Conductor, pretazenia[6]);// load -5+Nv
@@ -4379,7 +4410,7 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
                                                             pretazenia[selected], 
                                                             Conductor);
                 double F_check_max = (Variable_maximalne_zataz_lana_podiel_z_RTS*1000)/Conductor.get_S();
-                double x_AB[] = forces_check.x_ABi(Variable_DeltaHi_array[y], c_check, Variable_Ai_array[y]);
+                double x_AB[] = forces_check.x_ABi(Kot_usek.get_DeltaHi_array()[y], c_check, Kot_usek.get_Ai_array()[y]);
                 double x_A = x_AB[0];
                 double x_B = x_AB[1];
                 double F_A_mod = forces_check.F_ABi(x_A, c_check, Conductor, pretazenia[selected]);
@@ -6016,7 +6047,7 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
     private javax.swing.JLabel Label_zakladne_mech_napatie_minis5;
     private javax.swing.JLabel Label_základna_rychlost_vetra;
     private javax.swing.JTable Table_KPB;
-    private javax.swing.JTable Table_kotevne_useky;
+    private static javax.swing.JTable Table_kotevne_useky;
     private javax.swing.JTable Table_rozpatia;
     private javax.swing.JTable Table_rozpatia_nadm_vysky;
     private javax.swing.JTable Table_tahy;
@@ -6197,7 +6228,8 @@ private static boolean project_save_as;
 private static boolean pdf_internal=false;
 private static boolean pdf_external=false;
 private static boolean pdf_as=false;
-
+public static boolean really_close_mainframe=false;
+public static boolean really_close_mainframe_save=false;
 
 //namrazove oblasti premene
 public static Object[] hodnoty_namrazove_oblasti = new Object[3];
@@ -6288,6 +6320,11 @@ private void seticon() {
         mainframe_warning.setVisible(true);      
     }
     
+    public  void warning_sign2but (String X){
+        warning_text=X ;
+    mainframe_warning2but_jDialog mainframe_warning2but = new mainframe_warning2but_jDialog(this, rootPaneCheckingEnabled);
+        mainframe_warning2but.setVisible(true);  
+    }
     public void Swriter (String S){
         System.out.println(S);
     }
@@ -7817,7 +7854,13 @@ private void seticon() {
         String pokus;
         
         try {
-            Scanner input = new Scanner(subor);
+            Scanner input = new Scanner(subor,"UTF-8");
+            
+            Locale locale2 = new Locale("sk","SK");
+            input.useLocale(locale2);
+            
+            
+            
             pokus = input.nextLine();  // uvod kecy
             pokus = input.nextLine();
             pokus = input.nextLine();

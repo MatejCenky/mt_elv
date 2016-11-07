@@ -27,6 +27,8 @@ import java.awt.Color;
 import java.awt.Desktop;
 import java.awt.Point;
 import java.awt.Toolkit;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -38,11 +40,13 @@ import java.text.DecimalFormatSymbols;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Locale;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
+import javax.swing.JFrame;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.event.TableModelEvent;
@@ -92,7 +96,7 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
 //         JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
 //        
         initComponents();
-        setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+        setDefaultCloseOperation(mainframe_1.DO_NOTHING_ON_CLOSE);
         setLocationRelativeTo(null);
         first_Start = true;
         povodna_hodnota_selekcie = 0;
@@ -145,18 +149,12 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
         Table_kotevne_useky.putClientProperty("terminateEditOnFocusLost", Boolean.TRUE);   
          
         Table_rozpatia.setSurrendersFocusOnKeystroke(true); // for focus on key listener
-        
-        
-        
-        
-        
+              
         nacitatDatabazuLan(); 
         mainframeLodaed=true;// fisrt load oc conductr databaze
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE); // if ju exit window app will not close
         setResizable(true);
-        
-        
-        
+               
 //vloz prvu hodnotu do RTS nulty index v tabulke
         Object[] Conductor = new Object[7];
             Conductor = Databaza.get(0);
@@ -606,6 +604,39 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
         Button_Icon_arr_row_table_kotevny_usek.doClick();
         
         
+        setDefaultCloseOperation(mainframe_1.DO_NOTHING_ON_CLOSE);
+        addWindowListener(new WindowAdapter()
+        {
+            @Override
+            public void windowClosing(WindowEvent e)
+            {
+            really_close_mainframe=false;
+            really_close_mainframe_save=false;
+            
+            warning_sign2but("Si kokot?");
+            
+            
+            if(really_close_mainframe == true && really_close_mainframe_save == false ){
+              
+                
+                e.getWindow().dispose();
+            } 
+            
+            if(really_close_mainframe == true && really_close_mainframe_save == true ){
+              
+                Button_Icon_save.doClick();
+                e.getWindow().dispose();
+            } 
+            
+            if(really_close_mainframe == false && really_close_mainframe_save == false){
+             
+            }    
+                
+                
+            }
+        });
+        
+        
         // IF LOADding 
         
         if(loaded_file== true){
@@ -681,7 +712,6 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
         jPanel13 = new javax.swing.JPanel();
         Label_KPB = new javax.swing.JLabel();
         Label_KPB_typ_terenu = new javax.swing.JLabel();
-        jComboBox_KPB_typ_terenu = new javax.swing.JComboBox<>();
         jScrollPane6 = new javax.swing.JScrollPane();
         jTextPane_KPB_typ_terenu = new javax.swing.JTextArea();
         jRadioButton_KPB_cas_vypoctu_1_rok = new javax.swing.JRadioButton();
@@ -741,12 +771,10 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
         jPanel19 = new javax.swing.JPanel();
         jPanel11 = new javax.swing.JPanel();
         Label_uroven_spolahlivosti = new javax.swing.JLabel();
-        jComboBox_uroven_splahlivosti = new javax.swing.JComboBox<>();
         Label__stredna_rocna_teplota = new javax.swing.JLabel();
         TextField_srt_roc_teplota = new javax.swing.JTextField();
         Label_RTS_velicina7 = new javax.swing.JLabel();
         Label__stav_KPB = new javax.swing.JLabel();
-        jComboBox_stav_KPB = new javax.swing.JComboBox<>();
         jPanel10 = new javax.swing.JPanel();
         Label_kotevne_useky1 = new javax.swing.JLabel();
         jComboBox_conductor_chooser = new javax.swing.JComboBox<>();
@@ -761,7 +789,6 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
         Label_RTS_velicina3 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         Label_vetrova_oblast = new javax.swing.JLabel();
-        jComboBox_vetrova_oblast = new javax.swing.JComboBox<>();
         Label_základna_rychlost_vetra = new javax.swing.JLabel();
         TextField_Vmean_0 = new javax.swing.JTextField();
         Label_RTS_velicina4 = new javax.swing.JLabel();
@@ -774,7 +801,6 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
         jRadioButton_vetrova_oblast_C0_vlastna = new javax.swing.JRadioButton();
         TextField_vetrova_oblast_C0 = new javax.swing.JTextField();
         Label_char_terenu = new javax.swing.JLabel();
-        jComboBox_char_terenu = new javax.swing.JComboBox<>();
         jScrollPane5 = new javax.swing.JScrollPane();
         jTextPane_char_terenu = new javax.swing.JTextArea();
         Label__char_terenu_kr = new javax.swing.JLabel();
@@ -794,7 +820,6 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
         Label_vybrana_namrazova_oblast = new javax.swing.JLabel();
         Button_namrazova_oblast = new javax.swing.JButton();
         Label_typ_namrazy = new javax.swing.JLabel();
-        jComboBox_druh_namrazy = new javax.swing.JComboBox<>();
         Label__typ_namrazy_Ccl = new javax.swing.JLabel();
         TextField_Ccl = new javax.swing.JTextField();
         Label_hustota_namrazy = new javax.swing.JLabel();
@@ -868,7 +893,7 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
             .addGap(0, 100, Short.MAX_VALUE)
         );
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle(project_name);
         setBackground(new java.awt.Color(204, 204, 204));
 
@@ -3304,7 +3329,7 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
         );
         jPanel22Layout.setVerticalGroup(
             jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 170, Short.MAX_VALUE)
+            .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout jPanel18Layout = new javax.swing.GroupLayout(jPanel18);
@@ -4357,7 +4382,7 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
                 
             for (int y=0; y<Kot_usek.get_Ai_array().length; y++){
                 
-                double x_AB_base[] = forces_check.x_ABi(Variable_DeltaHi_array[y], c_base, Variable_Ai_array[y]);
+                double x_AB_base[] = forces_check.x_ABi(Kot_usek.get_DeltaHi_array()[y], c_base, Kot_usek.get_Ai_array()[y]);
                 double x_A_base = x_AB_base[0];
                 double x_B_base = x_AB_base[1];
                 double F_A_base = forces_check.F_ABi(x_A_base, c_base, Conductor, pretazenia[6]);// load -5+Nv
@@ -4384,7 +4409,7 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
                                                             pretazenia[selected], 
                                                             Conductor);
                 double F_check_max = (Variable_maximalne_zataz_lana_podiel_z_RTS*1000)/Conductor.get_S();
-                double x_AB[] = forces_check.x_ABi(Variable_DeltaHi_array[y], c_check, Variable_Ai_array[y]);
+                double x_AB[] = forces_check.x_ABi(Kot_usek.get_DeltaHi_array()[y], c_check, Kot_usek.get_Ai_array()[y]);
                 double x_A = x_AB[0];
                 double x_B = x_AB[1];
                 double F_A_mod = forces_check.F_ABi(x_A, c_check, Conductor, pretazenia[selected]);
@@ -5959,8 +5984,8 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
     private javax.swing.JButton Button_namrazova_oblast;
     private javax.swing.JButton Button_pdf_pagedown;
     private javax.swing.JButton Button_pdf_pageup;
-    private javax.swing.JLabel Label_KPB;
-    private javax.swing.JLabel Label_KPB_typ_terenu;
+    private static javax.swing.JLabel Label_KPB;
+    private static javax.swing.JLabel Label_KPB_typ_terenu;
     private javax.swing.JLabel Label_RTS;
     private javax.swing.JLabel Label_RTS_velicina;
     private javax.swing.JLabel Label_RTS_velicina1;
@@ -5986,26 +6011,26 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
     private javax.swing.JLabel Label__typ_namrazy_Ccl;
     private javax.swing.JLabel Label_char_terenu;
     private javax.swing.JLabel Label_char_terenu_zo;
-    private javax.swing.JLabel Label_hlavicka_SOPS;
-    private javax.swing.JLabel Label_hlavicka_arch_cislo;
-    private javax.swing.JLabel Label_hlavicka_cislo_strany;
-    private javax.swing.JLabel Label_hlavicka_datum;
-    private javax.swing.JLabel Label_hlavicka_nadpis_pre_prechodne;
-    private javax.swing.JLabel Label_hlavicka_nazov;
-    private javax.swing.JLabel Label_hlavicka_stavba;
-    private javax.swing.JLabel Label_hlavicka_vypocet_podla_normi;
-    private javax.swing.JLabel Label_hlavicka_vypracoval;
+    private static javax.swing.JLabel Label_hlavicka_SOPS;
+    private static javax.swing.JLabel Label_hlavicka_arch_cislo;
+    private static javax.swing.JLabel Label_hlavicka_cislo_strany;
+    private static javax.swing.JLabel Label_hlavicka_datum;
+    private static javax.swing.JLabel Label_hlavicka_nadpis_pre_prechodne;
+    private static javax.swing.JLabel Label_hlavicka_nazov;
+    private static javax.swing.JLabel Label_hlavicka_stavba;
+    private static javax.swing.JLabel Label_hlavicka_vypocet_podla_normi;
+    private static javax.swing.JLabel Label_hlavicka_vypracoval;
     private javax.swing.JLabel Label_hustota_namrazy;
-    private javax.swing.JLabel Label_kotevne_useky1;
+    private static javax.swing.JLabel Label_kotevne_useky1;
     private javax.swing.JLabel Label_max_zataz_lana;
-    private javax.swing.JLabel Label_pretazenia;
+    private static javax.swing.JLabel Label_pretazenia;
     private javax.swing.JLabel Label_status;
-    private javax.swing.JLabel Label_stredna_vyska_vodicov_nad_terenom;
-    private javax.swing.JLabel Label_stredne_rozpatie;
-    private javax.swing.JLabel Label_tabulky;
-    private javax.swing.JLabel Label_tabulky1;
-    private javax.swing.JLabel Label_tabulky2;
-    private javax.swing.JLabel Label_teploty;
+    private static javax.swing.JLabel Label_stredna_vyska_vodicov_nad_terenom;
+    private static javax.swing.JLabel Label_stredne_rozpatie;
+    private static javax.swing.JLabel Label_tabulky;
+    private static javax.swing.JLabel Label_tabulky1;
+    private static javax.swing.JLabel Label_tabulky2;
+    private static javax.swing.JLabel Label_teploty;
     private javax.swing.JLabel Label_typ_namrazy;
     private javax.swing.JLabel Label_uroven_spolahlivosti;
     private javax.swing.JLabel Label_vetrova_oblast;
@@ -6015,7 +6040,7 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
     private javax.swing.JLabel Label_zakladne_mech_napatie_minis5;
     private javax.swing.JLabel Label_základna_rychlost_vetra;
     private javax.swing.JTable Table_KPB;
-    private javax.swing.JTable Table_kotevne_useky;
+    private static javax.swing.JTable Table_kotevne_useky;
     private javax.swing.JTable Table_rozpatia;
     private javax.swing.JTable Table_rozpatia_nadm_vysky;
     private javax.swing.JTable Table_tahy;
@@ -6079,13 +6104,13 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
     private javax.swing.ButtonGroup buttonGroup_pretazenia_vlystne_vypocitane;
     private javax.swing.ButtonGroup buttonGroup_stredne_rozpatia;
     private javax.swing.ButtonGroup buttonGroup_tabulka;
-    private javax.swing.JComboBox<String> jComboBox_KPB_typ_terenu;
-    private javax.swing.JComboBox<String> jComboBox_char_terenu;
+    private static final javax.swing.JComboBox<String> jComboBox_KPB_typ_terenu = new javax.swing.JComboBox<>();
+    private static final javax.swing.JComboBox<String> jComboBox_char_terenu = new javax.swing.JComboBox<>();
     private static javax.swing.JComboBox<String> jComboBox_conductor_chooser;
-    private javax.swing.JComboBox<String> jComboBox_druh_namrazy;
-    private javax.swing.JComboBox<String> jComboBox_stav_KPB;
-    private javax.swing.JComboBox<String> jComboBox_uroven_splahlivosti;
-    private javax.swing.JComboBox<String> jComboBox_vetrova_oblast;
+    private static final javax.swing.JComboBox<String> jComboBox_druh_namrazy = new javax.swing.JComboBox<>();
+    private static final javax.swing.JComboBox<String> jComboBox_stav_KPB = new javax.swing.JComboBox<>();
+    private static final javax.swing.JComboBox<String> jComboBox_uroven_splahlivosti = new javax.swing.JComboBox<>();
+    private final javax.swing.JComboBox<String> jComboBox_vetrova_oblast = new javax.swing.JComboBox<>();
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -6196,7 +6221,8 @@ private static boolean project_save_as;
 private static boolean pdf_internal=false;
 private static boolean pdf_external=false;
 private static boolean pdf_as=false;
-
+public static boolean really_close_mainframe=false;
+public static boolean really_close_mainframe_save=false;
 
 //namrazove oblasti premene
 public static Object[] hodnoty_namrazove_oblasti = new Object[3];
@@ -6287,6 +6313,11 @@ private void seticon() {
         mainframe_warning.setVisible(true);      
     }
     
+    public  void warning_sign2but (String X){
+        warning_text=X ;
+    mainframe_warning2but_jDialog mainframe_warning2but = new mainframe_warning2but_jDialog(this, rootPaneCheckingEnabled);
+        mainframe_warning2but.setVisible(true);  
+    }
     public void Swriter (String S){
         System.out.println(S);
     }
@@ -7816,7 +7847,13 @@ private void seticon() {
         String pokus;
         
         try {
-            Scanner input = new Scanner(subor);
+            Scanner input = new Scanner(subor,"UTF-8");
+            
+            Locale locale2 = new Locale("sk","SK");
+            input.useLocale(locale2);
+            
+            
+            
             pokus = input.nextLine();  // uvod kecy
             pokus = input.nextLine();
             pokus = input.nextLine();
