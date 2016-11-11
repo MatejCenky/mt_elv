@@ -84,6 +84,8 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
      */
     public  mainframe_1() {
        
+           
+        
         
         if(loaded_file== false){
         mainframe_new_project_set_title_1 mainframe_new_project_JDialog_window = new mainframe_new_project_set_title_1(this, rootPaneCheckingEnabled);
