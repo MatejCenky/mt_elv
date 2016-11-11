@@ -450,7 +450,7 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
                     Variable_Hi_array[Variable_Ai_array.length] = Variable_hi_vyska_stoziarov.get(Variable_Ai_array.length);
                     Variable_Hi_array_nmv[Variable_Ai_array.length] = Variable_hi2_nadmorska_vyska_stoziarov.get(Variable_Ai_array.length);
                     Variable_Ai_array=double_setter_array(Variable_Ai_array);
-                    
+                    pretazenia_intomainframe();
                     
                     // Hcmean pocitac
                     double Sumar_scitavac = 0;
@@ -463,6 +463,7 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
                     Variable_Hc_mean_medzikrok = Sumar_scitavac / (Variable_n_pocet_rozpati + 1);
                     if (jRadioButton_with_label_vypoctana.isSelected() == true) {
                         Variable_Hc_mean =double_setter( Variable_Hc_mean_medzikrok);
+                        pretazenia_intomainframe();
                     }
                     DecimalFormatSymbols otherSymbols = new DecimalFormatSymbols();
                     otherSymbols.setDecimalSeparator('.');
@@ -557,6 +558,7 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
 
                     if (jRadioButton_with_label_vypoctana.isSelected() == true) {
                         Variable_Hc_mean =double_setter( Variable_Hc_mean_medzikrok);
+                                pretazenia_intomainframe();
                     }
                     // naplnenie AI array rozpatia na zaklade postu rozpati a deltaHi ktore ma rovnaky rozmer ako Ai
                     Variable_Ai_array = new double[(int) Variable_n_pocet_rozpati];
@@ -576,7 +578,7 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
                     Variable_Hi_array[Variable_Ai_array.length] = Variable_hi_vyska_stoziarov.get(Variable_Ai_array.length);
                     Variable_Hi_array_nmv[Variable_Ai_array.length] = Variable_hi2_nadmorska_vyska_stoziarov.get(Variable_Ai_array.length);
 
-                    Variable_Ai_array=double_setter_array(Variable_Ai_array);
+                    Variable_Ai_array=double_setter_array(Variable_Ai_array); pretazenia_intomainframe();
                    
                     
                     //ak niesu array nulove vypočitaj vyšlu
@@ -1998,11 +2000,9 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
                     .addGroup(jPanel6Layout.createSequentialGroup()
                         .addComponent(TextField_tabulky_konecna, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(Label_tabulky1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())
-                    .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addComponent(jRadioButton_with_label_konecne, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addContainerGap())))
+                        .addComponent(Label_tabulky1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jRadioButton_with_label_konecne, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2652,6 +2652,11 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
 
         TextField_Bi2.setEditable(false);
         TextField_Bi2.setText("0.707");
+        TextField_Bi2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TextField_Bi2ActionPerformed(evt);
+            }
+        });
         TextField_Bi2.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 TextField_Bi2KeyReleased(evt);
@@ -4922,6 +4927,7 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
         TextField_Bi2.setEnabled(false);
         TextField_Bi2.setEditable(false);
         Variable_Bi=double_setter(doubleChecker_short_answer(TextField_Bi_1));
+        pretazenia_intomainframe();
     }//GEN-LAST:event_jRadioButton_Bi_1ActionPerformed
 
     private void TextField_Bi_1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextField_Bi_1KeyReleased
@@ -4937,14 +4943,17 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
         TextField_Bi_1.setEnabled(false);
         TextField_Bi2.setEditable(true);
         Variable_Bi=double_setter(doubleChecker_short_answer(TextField_Bi2));
+        pretazenia_intomainframe();
     }//GEN-LAST:event_jRadioButton_Bi_2ActionPerformed
 
     private void TextField_Bi2KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextField_Bi2KeyReleased
         Variable_Bi=double_setter(doubleChecker_short_answer(TextField_Bi2));
+        pretazenia_intomainframe();
     }//GEN-LAST:event_TextField_Bi2KeyReleased
 
     private void TextField_KclKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextField_KclKeyReleased
         Variable_Klc=double_setter(doubleChecker_short_answer(TextField_Kcl));
+        pretazenia_intomainframe();
     }//GEN-LAST:event_TextField_KclKeyReleased
 
     private void TextField_KclActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextField_KclActionPerformed
@@ -4953,25 +4962,30 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
 
     private void TextField_KhKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextField_KhKeyReleased
         Variable_Kh =double_setter(doubleChecker_short_answer(TextField_Kh));
+        pretazenia_intomainframe();
     }//GEN-LAST:event_TextField_KhKeyReleased
 
     private void jRadioButton_Kh_vlastnaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton_Kh_vlastnaActionPerformed
         TextField_Kh.setEnabled(true);
         Variable_Kh=double_setter(doubleChecker_short_answer(TextField_Kh));
+        pretazenia_intomainframe();
     }//GEN-LAST:event_jRadioButton_Kh_vlastnaActionPerformed
 
     private void jRadioButton_Kh_1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton_Kh_1ActionPerformed
         Variable_Kh=double_setter(1.0);
+        pretazenia_intomainframe();
         TextField_Kh.setEnabled(false);
     }//GEN-LAST:event_jRadioButton_Kh_1ActionPerformed
 
     private void jRadioButton_Klc_vlastnaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton_Klc_vlastnaActionPerformed
         TextField_Kcl.setEnabled(true);
         Variable_Klc=double_setter(doubleChecker_short_answer(TextField_Kcl));
+        pretazenia_intomainframe();
     }//GEN-LAST:event_jRadioButton_Klc_vlastnaActionPerformed
 
     private void jRadioButton_Klc_1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton_Klc_1ActionPerformed
         Variable_Klc=double_setter(1.0);
+        pretazenia_intomainframe();
         TextField_Kcl.setEnabled(false);
     }//GEN-LAST:event_jRadioButton_Klc_1ActionPerformed
 
@@ -4979,6 +4993,7 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
         if (TextField_hustota_namrazy.isEditable() == true){
 
             Variable_hustota_namrazy=double_setter(doubleChecker_short_answer(TextField_hustota_namrazy));
+            pretazenia_intomainframe();
 
         }
     }//GEN-LAST:event_TextField_hustota_namrazyKeyReleased
@@ -4992,6 +5007,7 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
         if (TextField_Ccl.isEditable() == true){
 
             Variable_Ccl=double_setter(doubleChecker_short_answer(TextField_Ccl));
+            pretazenia_intomainframe();
 
         }
     }//GEN-LAST:event_TextField_CclKeyReleased
@@ -5009,33 +5025,45 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
                 case 0:  TextField_Ccl.setEnabled(false);
                 TextField_hustota_namrazy.setEnabled(false);
                 Variable_Ccl =double_setter( 1.1);
+                pretazenia_intomainframe();
                 Variable_hustota_namrazy= double_setter(500.0);
+                pretazenia_intomainframe();
 
                 break;
                 case 1:  TextField_Ccl.setEnabled(false);
                 TextField_hustota_namrazy.setEnabled(false);
                 Variable_Ccl = double_setter(1.1);
+                pretazenia_intomainframe();
                 Variable_hustota_namrazy= double_setter(900.0);
+                pretazenia_intomainframe();
                 break;
                 case 2:  TextField_Ccl.setEnabled(false);
                 TextField_hustota_namrazy.setEnabled(false);
                 Variable_Ccl = double_setter(1.1);
+                pretazenia_intomainframe();
                 Variable_hustota_namrazy= double_setter(300.0);
+                pretazenia_intomainframe();
                 break;
                 case 3:  TextField_Ccl.setEnabled(false);
                 TextField_hustota_namrazy.setEnabled(false);
                 Variable_Ccl =double_setter( 1.1);
+                pretazenia_intomainframe();
                 Variable_hustota_namrazy= double_setter(700.0);
+                pretazenia_intomainframe();
                 break;
                 case 4:  TextField_Ccl.setEnabled(false);
                 TextField_hustota_namrazy.setEnabled(false);
                 Variable_Ccl =double_setter( 1.1);
+                pretazenia_intomainframe();
                 Variable_hustota_namrazy= double_setter(500.0);
+                pretazenia_intomainframe();
                 break;
                 case 5:  TextField_Ccl.setEnabled(true);
                 TextField_hustota_namrazy.setEnabled(true);
                 Variable_Ccl = double_setter(1.1);
+                pretazenia_intomainframe();
                 Variable_hustota_namrazy= double_setter(500.0);
+                pretazenia_intomainframe();
                 TextField_Ccl.setForeground(Color.black);
                 TextField_hustota_namrazy.setForeground(Color.black);
                 break;
@@ -5055,13 +5083,16 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
 
             Label_vybrana_namrazova_oblast.setText(namrazove_oblasti_názov_oblasti);
             Variable_Ir50=double_setter(vypocet_IR50_namrazove_oblasti());
+            pretazenia_intomainframe();
             Variable_Ir50=double_setter(vypocet_IR50_namrazove_oblasti());
+            pretazenia_intomainframe();
         }
     }//GEN-LAST:event_Button_namrazova_oblastActionPerformed
 
     private void jRadioButton_with_label_vypoctanaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton_with_label_vypoctanaActionPerformed
         TextField_hcmean_vlastna.setEnabled(false);
         Variable_Hc_mean=double_setter(Variable_Hc_mean_medzikrok);
+        pretazenia_intomainframe();
     }//GEN-LAST:event_jRadioButton_with_label_vypoctanaActionPerformed
 
     private void TextField_hcmean_vpocitanaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextField_hcmean_vpocitanaActionPerformed
@@ -5074,6 +5105,7 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
             if(TextField_hcmean_vlastna.getText().equals("-"))TextField_hcmean_vlastna.setText("");
 
             Variable_Hc_mean=double_setter(doubleChecker_short_answer(TextField_hcmean_vlastna));
+            pretazenia_intomainframe();
         }
 
     }//GEN-LAST:event_TextField_hcmean_vlastnaKeyReleased
@@ -5085,11 +5117,13 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
     private void jRadioButton_with_label_vlastnaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton_with_label_vlastnaActionPerformed
         TextField_hcmean_vlastna.setEnabled(true);
         Variable_Hc_mean=double_setter(doubleChecker_short_answer(TextField_hcmean_vlastna));
+        pretazenia_intomainframe();
 
     }//GEN-LAST:event_jRadioButton_with_label_vlastnaActionPerformed
 
     private void TextField_dlzka_drsnjosti_zoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextField_dlzka_drsnjosti_zoKeyReleased
         Variable_char_terenu_Zo=double_setter(doubleChecker_short_answer(TextField_dlzka_drsnjosti_zo));
+        pretazenia_intomainframe();
     }//GEN-LAST:event_TextField_dlzka_drsnjosti_zoKeyReleased
 
     private void TextField_dlzka_drsnjosti_zoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextField_dlzka_drsnjosti_zoActionPerformed
@@ -5098,6 +5132,7 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
 
     private void TextField_KrKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextField_KrKeyReleased
         Variable_char_terenu_Kr=double_setter(doubleChecker_short_answer(TextField_Kr));
+        pretazenia_intomainframe();
     }//GEN-LAST:event_TextField_KrKeyReleased
 
     private void TextField_KrActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextField_KrActionPerformed
@@ -5114,31 +5149,41 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
                 case 0:  TextField_Kr.setEnabled(false);
                 TextField_dlzka_drsnjosti_zo.setEnabled(false);
                 Variable_char_terenu_Kr = double_setter(0.169);
+                pretazenia_intomainframe();
                 Variable_char_terenu_Zo= double_setter(0.01);
+                pretazenia_intomainframe();
                 jTextPane_char_terenu.setText(language.language_label(languageOption, 135));
                 break;
                 case 1:  TextField_Kr.setEnabled(false);
                 TextField_dlzka_drsnjosti_zo.setEnabled(false);
                 Variable_char_terenu_Kr = double_setter(0.189);
+                pretazenia_intomainframe();
                 Variable_char_terenu_Zo= double_setter(0.05);
+                pretazenia_intomainframe();
                 jTextPane_char_terenu.setText(language.language_label(languageOption, 136));
                 break;
                 case 2:  TextField_Kr.setEnabled(false);
                 TextField_dlzka_drsnjosti_zo.setEnabled(false);
                 Variable_char_terenu_Kr = double_setter(0.214);
+                pretazenia_intomainframe();
                 Variable_char_terenu_Zo= double_setter(0.3);
+                pretazenia_intomainframe();
                 jTextPane_char_terenu.setText(language.language_label(languageOption, 137));
                 break;
                 case 3:  TextField_Kr.setEnabled(false);
                 TextField_dlzka_drsnjosti_zo.setEnabled(false);
                 Variable_char_terenu_Kr = double_setter(0.233);
+                pretazenia_intomainframe();
                 Variable_char_terenu_Zo= double_setter(1);
+                pretazenia_intomainframe();
                 jTextPane_char_terenu.setText(language.language_label(languageOption, 139));
                 break;
                 case 4:  TextField_Kr.setEnabled(true);
                 TextField_dlzka_drsnjosti_zo.setEnabled(true);
                 Variable_char_terenu_Kr = double_setter(0.169);
+                pretazenia_intomainframe();
                 Variable_char_terenu_Zo= double_setter(0.01);
+                pretazenia_intomainframe();
                 TextField_Kr.setForeground(Color.black);
                 TextField_dlzka_drsnjosti_zo.setForeground(Color.black);
                 jTextPane_char_terenu.setText(language.language_label(languageOption, 139));
@@ -5153,6 +5198,7 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
 
     private void TextField_vetrova_oblast_C0KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextField_vetrova_oblast_C0KeyReleased
         Variable_Co=double_setter(doubleChecker_short_answer(TextField_vetrova_oblast_C0));
+        pretazenia_intomainframe();
     }//GEN-LAST:event_TextField_vetrova_oblast_C0KeyReleased
 
     private void TextField_vetrova_oblast_C0ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextField_vetrova_oblast_C0ActionPerformed
@@ -5162,15 +5208,18 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
     private void jRadioButton_vetrova_oblast_C0_vlastnaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton_vetrova_oblast_C0_vlastnaActionPerformed
         TextField_vetrova_oblast_C0.setEnabled(true);
         Variable_Co=double_setter(doubleChecker_short_answer(TextField_vetrova_oblast_C0));
+        pretazenia_intomainframe();
     }//GEN-LAST:event_jRadioButton_vetrova_oblast_C0_vlastnaActionPerformed
 
     private void jRadioButton_vetrova_oblast_C0_1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton_vetrova_oblast_C0_1ActionPerformed
         Variable_Co=double_setter(1.0);
+        pretazenia_intomainframe();
         TextField_vetrova_oblast_C0.setEnabled(false);
     }//GEN-LAST:event_jRadioButton_vetrova_oblast_C0_1ActionPerformed
 
     private void TextField_vetrova_oblast_CdirKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextField_vetrova_oblast_CdirKeyReleased
         Variable_Cdir=double_setter(doubleChecker_short_answer(TextField_vetrova_oblast_Cdir));
+        pretazenia_intomainframe();
     }//GEN-LAST:event_TextField_vetrova_oblast_CdirKeyReleased
 
     private void TextField_vetrova_oblast_CdirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextField_vetrova_oblast_CdirActionPerformed
@@ -5184,11 +5233,13 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
 
     private void jRadioButton_vetrova_oblast_Cdir_1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton_vetrova_oblast_Cdir_1ActionPerformed
         Variable_Cdir=double_setter(1.0);
+        pretazenia_intomainframe();
         TextField_vetrova_oblast_Cdir.setEnabled(false);
     }//GEN-LAST:event_jRadioButton_vetrova_oblast_Cdir_1ActionPerformed
 
     private void TextField_Vmean_0KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextField_Vmean_0KeyReleased
         Variable_V_mean_0=double_setter(doubleChecker_short_answer(TextField_Vmean_0));
+        pretazenia_intomainframe();
     }//GEN-LAST:event_TextField_Vmean_0KeyReleased
 
     private void TextField_Vmean_0ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextField_Vmean_0ActionPerformed
@@ -5204,43 +5255,53 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
                 case 0:
                 TextField_Vmean_0.setEnabled(false);
                 Variable_V_mean_0 = double_setter(24);
+                pretazenia_intomainframe();
                 break;
                 case 1:
                 TextField_Vmean_0.setEnabled(false);
                 Variable_V_mean_0 = double_setter(26);
+                pretazenia_intomainframe();
                 break;
                 case 2:
                 TextField_Vmean_0.setEnabled(false);
                 Variable_V_mean_0 = double_setter(30);
+                pretazenia_intomainframe();
                 break;
                 case 3:
                 TextField_Vmean_0.setEnabled(false);
                 Variable_V_mean_0 = double_setter(33);
+                pretazenia_intomainframe();
                 break;
                 case 4:
                 TextField_Vmean_0.setEnabled(false);
                 Variable_V_mean_0 = double_setter(22.5);
+                pretazenia_intomainframe();
                 break;
                 case 5:
                 TextField_Vmean_0.setEnabled(false);
                 Variable_V_mean_0 = double_setter(25);
+                pretazenia_intomainframe();
                 break;
                 case 6:
                 TextField_Vmean_0.setEnabled(false);
                 Variable_V_mean_0 = double_setter(27.5);
+                pretazenia_intomainframe();
                 break;
                 case 7:
                 TextField_Vmean_0.setEnabled(false);
                 Variable_V_mean_0 = double_setter(30);
+                pretazenia_intomainframe();
                 break;
                 case 8:
                 TextField_Vmean_0.setEnabled(false);
                 Variable_V_mean_0 = double_setter(36);
+                pretazenia_intomainframe();
                 break;
 
                 case 9:
                 TextField_Vmean_0.setEnabled(true);
                 Variable_V_mean_0 = double_setter(24);
+                pretazenia_intomainframe();
                 TextField_Vmean_0.setForeground(Color.black);
                 break;
             }
@@ -5287,10 +5348,11 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
 
             if (is_namrazove_oblasti_setted == true){   //  ak už je zvolena namrazova oblast tk spusti vypocet
                 Variable_Ir50=double_setter(vypocet_IR50_namrazove_oblasti());
+                pretazenia_intomainframe();
             }
 
             double lentak = double_setter(1); /// aby prenbehol vypočet zažťeženi
-
+            pretazenia_intomainframe();
         }
     }//GEN-LAST:event_jComboBox_conductor_chooserActionPerformed
 
@@ -5337,45 +5399,75 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
             switch (selected_index_from_JComboBox) {
                 case 0:  //50 rokov
                 Variable_uroven_spolahlivosti_cas_navratu_klim_udalosti = double_setter(50);
+                pretazenia_intomainframe();
                 Variable_uroven_spolahlivosti_Yw=double_setter(1);
+                pretazenia_intomainframe();
                 Variable_uroven_spolahlivosti_Yi=double_setter(1);
+                pretazenia_intomainframe();
                 Variable_uroven_spolahlivosti_Ww=double_setter(0.25);
+                pretazenia_intomainframe();
                 Variable_uroven_spolahlivosti_Wi=double_setter(0.35);
+                pretazenia_intomainframe();
                 break;
                 case 1:  //150 rokov
                 Variable_uroven_spolahlivosti_cas_navratu_klim_udalosti = double_setter(150);
+                pretazenia_intomainframe();
                 Variable_uroven_spolahlivosti_Yw=double_setter(1.2);
+                pretazenia_intomainframe();
                 Variable_uroven_spolahlivosti_Yi=double_setter(1.25);
+                pretazenia_intomainframe();
                 Variable_uroven_spolahlivosti_Ww=double_setter(0.25);
+                pretazenia_intomainframe();
                 Variable_uroven_spolahlivosti_Wi=double_setter(0.35);
+                pretazenia_intomainframe();
                 break;
                 case 2:  //500 rokov
                 Variable_uroven_spolahlivosti_cas_navratu_klim_udalosti = double_setter(500);
+                pretazenia_intomainframe();
                 Variable_uroven_spolahlivosti_Yw=double_setter(1.4);
+                pretazenia_intomainframe();
                 Variable_uroven_spolahlivosti_Yi=double_setter(1.5);
+                pretazenia_intomainframe();
                 Variable_uroven_spolahlivosti_Ww=double_setter(0.25);
+                pretazenia_intomainframe();
                 Variable_uroven_spolahlivosti_Wi=double_setter(0.35);
+                pretazenia_intomainframe();
                 break;
                 case 3:  //3 dni
                 Variable_uroven_spolahlivosti_cas_navratu_klim_udalosti =double_setter( 2);
+                pretazenia_intomainframe();
                 Variable_uroven_spolahlivosti_Yw=double_setter(0.52);
+                pretazenia_intomainframe();
                 Variable_uroven_spolahlivosti_Yi=double_setter(0.26);
+                pretazenia_intomainframe();
                 Variable_uroven_spolahlivosti_Ww=double_setter(0.22);
+                pretazenia_intomainframe();
                 Variable_uroven_spolahlivosti_Wi=double_setter(0.35);
+                pretazenia_intomainframe();
                 break;
                 case 4:  //3 mesiace
                 Variable_uroven_spolahlivosti_cas_navratu_klim_udalosti = double_setter(5);
+                pretazenia_intomainframe();
                 Variable_uroven_spolahlivosti_Yw=double_setter(0.66);
+                pretazenia_intomainframe();
                 Variable_uroven_spolahlivosti_Yi=double_setter(0.5);
+                pretazenia_intomainframe();
                 Variable_uroven_spolahlivosti_Ww=double_setter(0.25);
+                pretazenia_intomainframe();
                 Variable_uroven_spolahlivosti_Wi=double_setter(0.35);
+                pretazenia_intomainframe();
                 break;
                 case 5:  //1 rok
                 Variable_uroven_spolahlivosti_cas_navratu_klim_udalosti = double_setter(10);
+                pretazenia_intomainframe();
                 Variable_uroven_spolahlivosti_Yw=double_setter(0.75);
+                pretazenia_intomainframe();
                 Variable_uroven_spolahlivosti_Yi=double_setter(0.65);
+                pretazenia_intomainframe();
                 Variable_uroven_spolahlivosti_Ww=double_setter(0.25);
+                pretazenia_intomainframe();
                 Variable_uroven_spolahlivosti_Wi=double_setter(0.35);
+                pretazenia_intomainframe();
                 break;
                 case 6:  //50 rokov
                 mainframe_uroven_spolahlivosti_vlastna_hodnota_1.setValues(Variable_uroven_spolahlivosti_cas_navratu_klim_udalosti, Variable_uroven_spolahlivosti_Yw, Variable_uroven_spolahlivosti_Yi, Variable_uroven_spolahlivosti_Ww, Variable_uroven_spolahlivosti_Wi);
@@ -5383,11 +5475,15 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
                 mainframe_uroven_spolahlivosti_vlastna_hodnota_jDialog_window.setVisible(true);
 
                 Variable_uroven_spolahlivosti_cas_navratu_klim_udalosti = double_setter(Double.valueOf( vlastnehodnoty_uroven_splahlivosti[0].toString()));
+                pretazenia_intomainframe();
                 Variable_uroven_spolahlivosti_Yw=double_setter(Double.valueOf( vlastnehodnoty_uroven_splahlivosti[1].toString()));
+                pretazenia_intomainframe();
                 Variable_uroven_spolahlivosti_Yi=double_setter(Double.valueOf( vlastnehodnoty_uroven_splahlivosti[2].toString()));
+                pretazenia_intomainframe();
                 Variable_uroven_spolahlivosti_Ww=double_setter(Double.valueOf( vlastnehodnoty_uroven_splahlivosti[3].toString()));
+                pretazenia_intomainframe();
                 Variable_uroven_spolahlivosti_Wi=double_setter(Double.valueOf( vlastnehodnoty_uroven_splahlivosti[4].toString()));
-
+pretazenia_intomainframe();
                 break;
             }
 
@@ -5420,7 +5516,8 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
         one_pretazenia_setter();
         array_pretaezenia_stav_rovnica_loader_setter();
 
-        double kokot = double_setter(0d);
+        
+        pretazenia_intomainframe();
         teplotyser=true;
         PDF_VAR_typ_tabulky =1;
 
@@ -5469,7 +5566,8 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
             Variable_vybrany_stav_pre_KPB=Variable_teploty_stav_rovnica[0];
         }
 
-        double kokot = double_setter(0d);
+        
+        pretazenia_intomainframe();
         teplotyser=true;
         PDF_VAR_typ_tabulky =3;
     }//GEN-LAST:event_jRadioButton_with_label_konecneActionPerformed
@@ -5500,7 +5598,8 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
         array_teploty_stav_rovnica_konecne_loader_setter();
 
         Jcombo_stav_KPB_setter();
-        double kokot = double_setter(0d);
+        
+        pretazenia_intomainframe();
         teplotyser=true;
         PDF_VAR_typ_tabulky =2;
     }//GEN-LAST:event_jRadioButton_with_label_prechodneActionPerformed
@@ -5530,7 +5629,8 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
 
         array_pretaezenia_stav_rovnica_loader_setter();
 
-        double kokot = double_setter(0d);
+        
+        pretazenia_intomainframe();
         teplotyser=true;
         PDF_VAR_typ_tabulky =1;
     }//GEN-LAST:event_jRadioButton_with_label_pociatocneActionPerformed
@@ -5934,6 +6034,10 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
     private void jTextField_nazov_normiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_nazov_normiActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField_nazov_normiActionPerformed
+
+    private void TextField_Bi2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextField_Bi2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TextField_Bi2ActionPerformed
 
   public static void lanochangeinDatabaze() {
   nacitatDatabazuLan();      
@@ -6814,57 +6918,70 @@ private void seticon() {
        
        if (X.get_CDIR_radio() == true )
        {jRadioButton_vetrova_oblast_Cdir_1.setSelected(true);
-       Variable_Cdir=double_setter(X.get_c_dir());} 
+       Variable_Cdir=double_setter(X.get_c_dir());
+       pretazenia_intomainframe();}
        else{
        jRadioButton_vetrova_oblast_Cdir_vlastna.setSelected(true);
        TextField_vetrova_oblast_Cdir.setText(String.valueOf(X.get_c_dir()));
        Variable_Cdir=double_setter(X.get_c_dir());
+       pretazenia_intomainframe();
        }
        
       Variable_hustota_namrazy=double_setter(X.get_ro_I());
+      pretazenia_intomainframe();
        TextField_hustota_namrazy.setText(String.valueOf(Variable_hustota_namrazy));
        
        if (X.get_Kcl_radio() == true )
        {jRadioButton_Klc_1.setSelected(true);
-        Variable_Klc=double_setter(X.get_K_lc());} 
+        Variable_Klc=double_setter(X.get_K_lc());
+       pretazenia_intomainframe();}
        else{
        jRadioButton_Klc_vlastna.setSelected(true);
        TextField_Kcl.setText(String.valueOf(X.get_K_lc()));
        Variable_Klc=double_setter(X.get_K_lc());
+       pretazenia_intomainframe();
        }
         
        if (X.get_Kh_radio()== true )
        {jRadioButton_Kh_1.setSelected(true);
-        Variable_Kh=double_setter(X.get_K_h());} 
+        Variable_Kh=double_setter(X.get_K_h());
+       pretazenia_intomainframe();}
        else{
        jRadioButton_Kh_vlastna.setSelected(true);
        TextField_Kh.setText(String.valueOf(X.get_K_h()));
        Variable_Kh=double_setter(X.get_K_h());
+       pretazenia_intomainframe();
        }
         
        Variable_Ir50=double_setter(X.get_I_R50());
-       
+       pretazenia_intomainframe();
        Variable_char_terenu_Kr=double_setter(X.get_k_r());
+       pretazenia_intomainframe();
        TextField_Kr.setText(String.valueOf(Variable_char_terenu_Kr));
       
        Variable_char_terenu_Zo=double_setter(X.get_z_0());
+       pretazenia_intomainframe();
        TextField_dlzka_drsnjosti_zo.setText(String.valueOf(Variable_char_terenu_Zo));
       
        Variable_V_mean_0=double_setter(X.get_V_mean());
+       pretazenia_intomainframe();
        TextField_Vmean_0.setText(String.valueOf(Variable_V_mean_0));
       
        if (X.get_CO_radio()== true )
        {jRadioButton_vetrova_oblast_C0_1.setSelected(true);
-        Variable_Co=double_setter(X.get_c_0());} 
+        Variable_Co=double_setter(X.get_c_0());
+       pretazenia_intomainframe();}
        else{
        jRadioButton_vetrova_oblast_C0_vlastna.setSelected(true);
        TextField_vetrova_oblast_C0.setText(String.valueOf(X.get_c_0()));
        Variable_Co=double_setter(X.get_c_0());
+       pretazenia_intomainframe();
        }
        
        if (X.get_Bi_radio()== true )
        {jRadioButton_Bi_1.setSelected(true);
-        Variable_Bi=double_setter(X.get_B_I());} 
+        Variable_Bi=double_setter(X.get_B_I());
+       pretazenia_intomainframe();} 
        else{
        jRadioButton_Bi_2.setSelected(true);
        TextField_Bi2.setText(String.valueOf(X.get_B_I()));
@@ -6872,13 +6989,17 @@ private void seticon() {
        }
        
        Variable_Ccl=double_setter(X.get_C_cl());
+       pretazenia_intomainframe();
        TextField_Ccl.setText(String.valueOf(Variable_Ccl));
       
        Variable_uroven_spolahlivosti_Yw=double_setter(X.get_gama_w());
+       pretazenia_intomainframe();
        Variable_uroven_spolahlivosti_Yi=double_setter(X.get_gama_I());
+       pretazenia_intomainframe();
        Variable_uroven_spolahlivosti_Ww=double_setter(X.get_Psi_w());
+       pretazenia_intomainframe();
        Variable_uroven_spolahlivosti_Wi=double_setter(X.get_Psi_I());
-        
+       pretazenia_intomainframe(); 
        
        //Remove rows one by one from the end of the table
         listener_switch(false, false, false);
@@ -6959,6 +7080,7 @@ private void seticon() {
                 Variable_Hi_array_nmv[Variable_Ai_array.length] = Variable_hi2_nadmorska_vyska_stoziarov.get(Variable_Ai_array.length);
                 }
                 Variable_Ai_array=double_setter_array(Variable_Ai_array);
+                pretazenia_intomainframe();
                 
                 
        modeltable_rozpatia.addRow(new Object[0]);  
@@ -6975,6 +7097,7 @@ private void seticon() {
        jRadioButton_with_label_vypoctana.setSelected(true);
         
         Variable_Hc_mean=double_setter(X.get_h_c_mean());
+        pretazenia_intomainframe();
         TextField_hcmean_vpocitana.setText(df.format(X.get_h_c_mean_window_vypocitana()));
         Variable_Hc_mean_medzikrok=X.get_h_c_mean_window_vypocitana();
         TextField_hcmean_vlastna.setText(df.format(X.get_h_c_mean_window_vlastna()));
@@ -6982,6 +7105,7 @@ private void seticon() {
         }else{
        jRadioButton_with_label_vlastna.setSelected(true);
        Variable_Hc_mean=double_setter(X.get_h_c_mean());
+       pretazenia_intomainframe();
        Variable_Hc_mean_medzikrok=X.get_h_c_mean_window_vypocitana();
        
        TextField_hcmean_vpocitana.setText(String.valueOf(X.get_h_c_mean_window_vypocitana()));
@@ -8085,7 +8209,7 @@ private void seticon() {
               }
               pokus = input.nextLine();
               
-             double KOKOT = double_setter(13d);
+             pretazenia_intomainframe();
               //udate nazvnu pre tabbed panel KPB
                     try {
                         int cislo = Table_kotevne_useky.getSelectedRow();
@@ -8107,7 +8231,7 @@ private void seticon() {
     
     
     public  double double_setter(double X){
-        pretazenia_intomainframe();
+       // pretazenia_intomainframe();
         color_the_percento_field_to_orange();
         return X;
            
@@ -8115,7 +8239,7 @@ private void seticon() {
        }
     
     public double[] double_setter_array(double[] X){
-        pretazenia_intomainframe();
+       // pretazenia_intomainframe();
         color_the_percento_field_to_orange();
         return X;
            
