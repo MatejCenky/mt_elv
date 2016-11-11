@@ -95,6 +95,7 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
             project_name= "new";           
         }
         
+        
 //        JScrollPane myJScrollPane = new JScrollPane(jPanel18,
 //         JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,
 //         JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
