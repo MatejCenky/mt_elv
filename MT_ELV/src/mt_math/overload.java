@@ -121,6 +121,26 @@ public class overload {
     public static double z_W;          
     
 // **************** PUBLIC METHODS **************** //
+    
+    public static double set_psi_w(int reliability_level, double BI){
+        switch(reliability_level){
+            case 3:
+                return 0.22;
+            case 4:
+            case 5: 
+                return 0.25;
+            case 0:
+            case 1:
+            case 2:
+                if (BI == 0.656){
+                    return 0.25;
+                } else {
+                    return 0.29;
+                }
+            default:
+                return -1;
+        }        
+    }
 
     public static void set_all_variables(Overload_variables Variables, double[] Spans){
         set_variables_spans(Spans);
@@ -442,4 +462,6 @@ public class overload {
     private static void overload_extreme_wind(){
         overload.z_W = Math.sqrt((overload.q_wT* overload.q_wT + overload.g_c* overload.g_c)) / overload.g_c;
     }
+    
+    
 }

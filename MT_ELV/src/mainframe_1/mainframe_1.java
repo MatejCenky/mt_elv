@@ -4139,6 +4139,13 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
             Conductor_variables Conductor =  new  Conductor_variables (Databaza.get(selected_conductor_index_from_JComboBox));   
             
             // overload class - first step
+            double final_psi_w;
+            if(Kot_usek.get_uroven_spolahlivosti_porcislo() == 6){ // custom values set
+                final_psi_w = Kot_usek.get_Psi_w();
+            } else {
+                final_psi_w = overload.set_psi_w(Kot_usek.get_uroven_spolahlivosti_porcislo(), Kot_usek.get_B_I()); // set from table
+            }
+                                                                
             Overload_variables Overload = new Overload_variables(Conductor,
                                                                 Conductor.get_m()*9.80665,
                                                                 Kot_usek.get_ro_I(),
@@ -4155,7 +4162,7 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
                                                                 Kot_usek.get_gama_w(),
                                                                 Kot_usek.get_gama_I(),
                                                                 Kot_usek.get_Psi_I(), 
-                                                                Kot_usek.get_Psi_w(), 
+                                                                final_psi_w, 
                                                                 Kot_usek.get_B_I(), 
                                                                 3, 
                                                                 0, 
