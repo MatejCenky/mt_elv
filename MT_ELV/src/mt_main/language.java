@@ -1085,9 +1085,17 @@ public static void constructor(){
          language.CZ.add("Nie");                    
          language.EN.add("No");           
 
-/*290*/  language.SK.add("Chystáte sa ukončiť MT3 ste si tym istý ?");       
+/*291*/  language.SK.add("Chystáte sa ukončiť MT3 ste si tym istý ?");       
          language.CZ.add("Chystáte se ukončiť MT3 ste si tím jistý ?");                    
          language.EN.add("You are about to exit MT3 are you sure ?"); 
+         
+/*292*/  language.SK.add("Koeficietn Kh bez vplyvu výšky stožiarov");       
+         language.CZ.add("Koeficietn Kh bez vplyvu výšky stožárú");                    
+         language.EN.add("Koeficietn Kh without influence of tower height"); 
+
+/*292*/  language.SK.add("Koeficietn Kh s vplyvom výšky stožiarov");       
+         language.CZ.add("Koeficietn Kh s plyvem výšky stožárú");                    
+         language.EN.add("Koeficietn Kh with influence of tower height");          
          
  inicializovane = true;
 }

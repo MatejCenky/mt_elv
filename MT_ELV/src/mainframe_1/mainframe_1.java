@@ -127,6 +127,7 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
         Variable_hi_vyska_stoziarov.removeAll(Variable_hi_vyska_stoziarov);
         Variable_hi2_nadmorska_vyska_stoziarov.removeAll(Variable_hi2_nadmorska_vyska_stoziarov);
 
+        Variable_Kh=1.0;
         Variable_Ai_array = null;
         Variable_DeltaHi_array = null;
         Variable_Hi_array = null;
@@ -175,7 +176,7 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
         // setiing importt Variables manually in code
         
         jRadioButton_Klc_1.doClick();
-        jRadioButton_Kh_1.doClick();
+        jRadioButton_Kh_noH.doClick();
         jRadioButton_Bi_1.doClick();
 
         // inicializacia_ vyber druhu namrazy
@@ -832,9 +833,7 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
         jPanel14 = new javax.swing.JPanel();
         jRadioButton_Klc_1 = new javax.swing.JRadioButton();
         jRadioButton_Klc_vlastna = new javax.swing.JRadioButton();
-        jRadioButton_Kh_1 = new javax.swing.JRadioButton();
-        jRadioButton_Kh_vlastna = new javax.swing.JRadioButton();
-        TextField_Kh = new javax.swing.JTextField();
+        jRadioButton_Kh_noH = new javax.swing.JRadioButton();
         Label__Klc = new javax.swing.JLabel();
         Label__Kh = new javax.swing.JLabel();
         TextField_Kcl = new javax.swing.JTextField();
@@ -844,6 +843,8 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
         TextField_Bi_1 = new javax.swing.JTextField();
         jRadioButton_Bi_1 = new javax.swing.JRadioButton();
         Label__Bi = new javax.swing.JLabel();
+        TextField_Kh_noH = new javax.swing.JTextField();
+        jRadioButton_Kh_H = new javax.swing.JRadioButton();
         jPanel20 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -2610,27 +2611,13 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
             }
         });
 
-        buttonGroup_kh.add(jRadioButton_Kh_1);
-        jRadioButton_Kh_1.setText("1");
-        jRadioButton_Kh_1.addActionListener(new java.awt.event.ActionListener() {
+        buttonGroup_kh.add(jRadioButton_Kh_noH);
+        jRadioButton_Kh_noH.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton_Kh_1ActionPerformed(evt);
+                jRadioButton_Kh_noHActionPerformed(evt);
             }
         });
-
-        buttonGroup_kh.add(jRadioButton_Kh_vlastna);
-        jRadioButton_Kh_vlastna.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton_Kh_vlastnaActionPerformed(evt);
-            }
-        });
-
-        TextField_Kh.setText("1.0");
-        TextField_Kh.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                TextField_KhKeyReleased(evt);
-            }
-        });
+        jRadioButton_Kh_noH.setToolTipText(language.language_label(languageOption, 292));
 
         Label__Klc.setText(language.language_label(languageOption, 102));
         Label__Klc.setToolTipText(language.language_label(languageOption, 103));
@@ -2708,7 +2695,7 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
                 .addComponent(jRadioButton_Bi_2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(TextField_Bi2, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(48, Short.MAX_VALUE))
+                .addGap(47, 47, 47))
         );
         jPanel16Layout.setVerticalGroup(
             jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2716,11 +2703,32 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
                 .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(Label__Bi)
                     .addComponent(jRadioButton_Bi_1, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(TextField_Bi2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jRadioButton_Bi_2, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(TextField_Bi_1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(TextField_Bi_1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel16Layout.createSequentialGroup()
+                        .addGap(4, 4, 4)
+                        .addComponent(TextField_Bi2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+
+        TextField_Kh_noH.setText("1.0");
+        TextField_Kh_noH.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TextField_Kh_noHActionPerformed(evt);
+            }
+        });
+        TextField_Kh_noH.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                TextField_Kh_noHKeyReleased(evt);
+            }
+        });
+
+        buttonGroup_kh.add(jRadioButton_Kh_H);
+        jRadioButton_Kh_H.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButton_Kh_HActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel14Layout = new javax.swing.GroupLayout(jPanel14);
         jPanel14.setLayout(jPanel14Layout);
@@ -2728,9 +2736,7 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
             jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel14Layout.createSequentialGroup()
                 .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel14Layout.createSequentialGroup()
-                        .addComponent(jPanel16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jPanel16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel14Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(Label__Klc, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -2742,13 +2748,13 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
                         .addComponent(TextField_Kcl, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(4, 4, 4)
                         .addComponent(Label__Kh, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(2, 2, 2)
-                        .addComponent(jRadioButton_Kh_1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jRadioButton_Kh_vlastna)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(TextField_Kh, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap())
+                        .addComponent(jRadioButton_Kh_noH)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(TextField_Kh_noH, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jRadioButton_Kh_H)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel14Layout.setVerticalGroup(
             jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2761,13 +2767,15 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
                         .addComponent(Label__Klc))
                     .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(TextField_Kcl, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(Label__Kh)
-                        .addComponent(jRadioButton_Kh_1, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jRadioButton_Kh_vlastna, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(TextField_Kh, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(Label__Kh))
+                    .addComponent(jRadioButton_Kh_noH, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(TextField_Kh_noH, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jRadioButton_Kh_H, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jPanel16, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
+
+        jRadioButton_Kh_H.setToolTipText(language.language_label(languageOption, 293));
 
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
@@ -2777,7 +2785,7 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
                 .addContainerGap()
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel8Layout.createSequentialGroup()
-                        .addComponent(jPanel14, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                        .addComponent(jPanel14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addContainerGap())
                     .addGroup(jPanel8Layout.createSequentialGroup()
                         .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -4967,22 +4975,20 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
         // TODO add your handling code here:
     }//GEN-LAST:event_TextField_KclActionPerformed
 
-    private void TextField_KhKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextField_KhKeyReleased
-        Variable_Kh =double_setter(doubleChecker_short_answer(TextField_Kh));
+    private void jRadioButton_Kh_HActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton_Kh_HActionPerformed
+       // TextField_Kh_H.setEnabled(true);
+        TextField_Kh_noH.setEnabled(false);
+        Variable_Kh=double_setter(-1);
         pretazenia_intomainframe();
-    }//GEN-LAST:event_TextField_KhKeyReleased
+    }//GEN-LAST:event_jRadioButton_Kh_HActionPerformed
 
-    private void jRadioButton_Kh_vlastnaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton_Kh_vlastnaActionPerformed
-        TextField_Kh.setEnabled(true);
-        Variable_Kh=double_setter(doubleChecker_short_answer(TextField_Kh));
-        pretazenia_intomainframe();
-    }//GEN-LAST:event_jRadioButton_Kh_vlastnaActionPerformed
-
-    private void jRadioButton_Kh_1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton_Kh_1ActionPerformed
+    private void jRadioButton_Kh_noHActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton_Kh_noHActionPerformed
+        TextField_Kh_noH.setEnabled(true);
         Variable_Kh=double_setter(1.0);
+        Variable_Kh=double_setter(doubleChecker_short_answer(TextField_Kh_noH));
         pretazenia_intomainframe();
-        TextField_Kh.setEnabled(false);
-    }//GEN-LAST:event_jRadioButton_Kh_1ActionPerformed
+      //  TextField_Kh_H.setEnabled(false);
+    }//GEN-LAST:event_jRadioButton_Kh_noHActionPerformed
 
     private void jRadioButton_Klc_vlastnaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton_Klc_vlastnaActionPerformed
         TextField_Kcl.setEnabled(true);
@@ -6046,6 +6052,15 @@ pretazenia_intomainframe();
         // TODO add your handling code here:
     }//GEN-LAST:event_TextField_Bi2ActionPerformed
 
+    private void TextField_Kh_noHActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextField_Kh_noHActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TextField_Kh_noHActionPerformed
+
+    private void TextField_Kh_noHKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextField_Kh_noHKeyReleased
+        Variable_Kh =double_setter(doubleChecker_short_answer(TextField_Kh_noH));
+        pretazenia_intomainframe();
+    }//GEN-LAST:event_TextField_Kh_noHKeyReleased
+
   public static void lanochangeinDatabaze() {
   nacitatDatabazuLan();      
         
@@ -6171,7 +6186,7 @@ pretazenia_intomainframe();
     private javax.swing.JTextField TextField_Bi_1;
     private javax.swing.JTextField TextField_Ccl;
     private javax.swing.JTextField TextField_Kcl;
-    private javax.swing.JTextField TextField_Kh;
+    private javax.swing.JTextField TextField_Kh_noH;
     private javax.swing.JTextField TextField_Kr;
     private javax.swing.JTextField TextField_RTS;
     private javax.swing.JTextField TextField_STRrozpatie_klasicky;
@@ -6265,8 +6280,8 @@ pretazenia_intomainframe();
     private javax.swing.JRadioButton jRadioButton_Bi_2;
     private javax.swing.JRadioButton jRadioButton_KPB_cas_vypoctu_1_rok;
     private javax.swing.JRadioButton jRadioButton_KPB_cas_vypoctu_prechodne;
-    private javax.swing.JRadioButton jRadioButton_Kh_1;
-    private javax.swing.JRadioButton jRadioButton_Kh_vlastna;
+    private javax.swing.JRadioButton jRadioButton_Kh_H;
+    private javax.swing.JRadioButton jRadioButton_Kh_noH;
     private javax.swing.JRadioButton jRadioButton_Klc_1;
     private javax.swing.JRadioButton jRadioButton_Klc_vlastna;
     private javax.swing.JRadioButton jRadioButton_vetrova_oblast_C0_1;
@@ -6872,7 +6887,7 @@ private void seticon() {
         X.set_CDIR_radio(jRadioButton_vetrova_oblast_Cdir_1.isSelected());
         X.set_CO_radio(jRadioButton_vetrova_oblast_C0_1.isSelected());
         X.set_Kcl_radio(jRadioButton_Klc_1.isSelected());
-        X.set_Kh_radio(jRadioButton_Kh_1.isSelected());
+        X.set_Kh_radio(jRadioButton_Kh_noH.isSelected());
         X.set_Bi_radio(jRadioButton_Bi_1.isSelected());
         X.set_Ai_array(Variable_Ai_array);
         X.set_DeltaHi_array(Variable_DeltaHi_array);
@@ -6950,13 +6965,13 @@ private void seticon() {
        }
         
        if (X.get_Kh_radio()== true )
-       {jRadioButton_Kh_1.setSelected(true);
+       {jRadioButton_Kh_noH.setSelected(true);
         Variable_Kh=double_setter(X.get_K_h());
        pretazenia_intomainframe();}
        else{
-       jRadioButton_Kh_vlastna.setSelected(true);
-       TextField_Kh.setText(String.valueOf(X.get_K_h()));
-       Variable_Kh=double_setter(X.get_K_h());
+       jRadioButton_Kh_H.setSelected(true);
+       TextField_Kh_noH.setText(String.valueOf(X.get_K_h()));
+       Variable_Kh=-1;
        pretazenia_intomainframe();
        }
         
