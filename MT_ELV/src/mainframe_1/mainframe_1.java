@@ -8263,11 +8263,11 @@ private void seticon() {
       int selected_conductor_index_from_JComboBox = jComboBox_conductor_chooser.getSelectedIndex();
             Conductor_variables Conductor =  new  Conductor_variables (Databaza.get(selected_conductor_index_from_JComboBox));   
          
-       double final_psi_w =0.;
+       double final_psi_w ;
             if(jComboBox_uroven_splahlivosti.getSelectedIndex() == 6){ // custom values set
                 final_psi_w = Variable_globeal_kotevny_usek.get(Table_kotevne_useky.getSelectedRow()).get_Psi_w();
             } else {
-                final_psi_w = overload.set_psi_w(Variable_globeal_kotevny_usek.get(Table_kotevne_useky.getSelectedRow()).get_uroven_spolahlivosti_porcislo(), Variable_globeal_kotevny_usek.get(Table_kotevne_useky.getSelectedRow()).get_B_I()); // set from table
+                final_psi_w = overload.set_psi_w(Variable_globeal_kotevny_usek.get(Table_kotevne_useky.getSelectedRow()).get_uroven_spolahlivosti_porcislo(), Variable_Bi); // set from table
             }      
             
             // overload class - first step
