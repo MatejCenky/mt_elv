@@ -4028,7 +4028,7 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
           doc.add(new Phrase(" " + language.language_label(languageOption, 239) + decimal_trimiesta.format(Variable_globeal_kotevny_usek.get(i).get_str_rozpatie()  ) + " m" ,fontText)); 
             
           
-          make_MT_table(doc,Variable_globeal_kotevny_usek.get(i),fontTable,fontScript,fontScript2,fontText,6,decimal_dvamiesta);
+          make_MT_table(doc,Variable_globeal_kotevny_usek.get(i),fontTable,fontScript,fontScript2,fontText,6,decimal_dvamiesta,decimal_trimiesta,decimal_none);
           
             doc.newPage();
             
@@ -5509,7 +5509,7 @@ pretazenia_intomainframe();
         TextField_teploha_stav5.setText("-5+N");TextField_teploha_stav5.setEnabled(false);
         TextField_teploha_stav6.setText("-5+V");TextField_teploha_stav6.setEnabled(false);
         TextField_teploha_stav7.setText("-5+Nv");TextField_teploha_stav7.setEnabled(false);
-        TextField_teploha_stav8.setText("-5+vN");TextField_teploha_stav8.setEnabled(false);
+        TextField_teploha_stav8.setText("-5+Vn");TextField_teploha_stav8.setEnabled(false);
         TextField_teploha_stav9.setText("0");TextField_teploha_stav9.setEnabled(false);
         TextField_teploha_stav10.setText("10");TextField_teploha_stav10.setEnabled(true);
         TextField_teploha_stav11.setText("20");TextField_teploha_stav11.setEnabled(true);
@@ -5557,7 +5557,7 @@ pretazenia_intomainframe();
         TextField_teploha_stav5.setText("-5+N");TextField_teploha_stav5.setEnabled(false);
         TextField_teploha_stav6.setText("-5+V");TextField_teploha_stav6.setEnabled(false);
         TextField_teploha_stav7.setText("-5+Nv");TextField_teploha_stav7.setEnabled(false);
-        TextField_teploha_stav8.setText("-5+vN");TextField_teploha_stav8.setEnabled(false);
+        TextField_teploha_stav8.setText("-5+Vn");TextField_teploha_stav8.setEnabled(false);
         TextField_teploha_stav9.setText("0");TextField_teploha_stav9.setEnabled(false);
         TextField_teploha_stav10.setText("10");TextField_teploha_stav10.setEnabled(true);
         TextField_teploha_stav11.setText("20");TextField_teploha_stav11.setEnabled(true);
@@ -5594,7 +5594,7 @@ pretazenia_intomainframe();
         TextField_teploha_stav5.setText("-5+N");TextField_teploha_stav5.setEnabled(false);
         TextField_teploha_stav6.setText("-5+V");TextField_teploha_stav6.setEnabled(false);
         TextField_teploha_stav7.setText("-5+Nv");TextField_teploha_stav7.setEnabled(false);
-        TextField_teploha_stav8.setText("-5+vN");TextField_teploha_stav8.setEnabled(false);
+        TextField_teploha_stav8.setText("-5+Vn");TextField_teploha_stav8.setEnabled(false);
         TextField_teploha_stav9.setText("0");TextField_teploha_stav9.setEnabled(false);
         TextField_teploha_stav10.setText("10");TextField_teploha_stav10.setEnabled(true);
         TextField_teploha_stav11.setText("20");TextField_teploha_stav11.setEnabled(true);
@@ -7338,7 +7338,7 @@ private void seticon() {
      * @param decimal_dva   rounding on two decimal places
      * @throws DocumentException  well this is posible
      */
-    private void make_MT_table (Document doc,kotevnyUsek kot_usek, Font fontTable,Font fontScript,Font fontScript2,Font fontText,int spacing,DecimalFormat decimal_dva  ) throws DocumentException{
+    private void make_MT_table (Document doc,kotevnyUsek kot_usek, Font fontTable,Font fontScript,Font fontScript2,Font fontText,int spacing,DecimalFormat decimal_dva,DecimalFormat decimal_tri,DecimalFormat decimal_none   ) throws DocumentException{
        float[] columnWidths_of_table = {49f,33f,33f,33f,33f,33f,33f,33f,33f,33f,33f,33f,33f,33f,33f};
         PdfPTable table = new PdfPTable(columnWidths_of_table);
         table.setTotalWidth(511f); 
@@ -7464,7 +7464,7 @@ private void seticon() {
         
         for(int i =0 ; i<14;i++){
          c1 = new PdfPCell();
-         p1 = new Chunk(decimal_dva.format(kot_usek.get_vysledky_c_MT()[i]),fontTable);
+         p1 = new Chunk(decimal_none.format(kot_usek.get_vysledky_c_MT()[i]),fontTable);
          p1_total= new Paragraph(spacing);
          p1_total.add(p1);p1_total.setAlignment(Element.ALIGN_CENTER);
          c1.addElement(p1_total);table.addCell(c1);
@@ -7480,7 +7480,7 @@ private void seticon() {
         
         for(int i =0 ; i<14;i++){
          c1 = new PdfPCell();
-         p1 = new Chunk(decimal_dva.format(kot_usek.get_vysledky_pretazenia_MT()[i]),fontTable);
+         p1 = new Chunk(decimal_tri.format(kot_usek.get_vysledky_pretazenia_MT()[i]),fontTable);
          p1_total= new Paragraph(spacing);
          p1_total.add(p1);p1_total.setAlignment(Element.ALIGN_CENTER);
          c1.addElement(p1_total);table.addCell(c1);
@@ -8262,6 +8262,13 @@ private void seticon() {
       try{  
       int selected_conductor_index_from_JComboBox = jComboBox_conductor_chooser.getSelectedIndex();
             Conductor_variables Conductor =  new  Conductor_variables (Databaza.get(selected_conductor_index_from_JComboBox));   
+         
+       double final_psi_w =0.;
+            if(jComboBox_uroven_splahlivosti.getSelectedIndex() == 6){ // custom values set
+                final_psi_w = Variable_globeal_kotevny_usek.get(Table_kotevne_useky.getSelectedRow()).get_Psi_w();
+            } else {
+                final_psi_w = overload.set_psi_w(Variable_globeal_kotevny_usek.get(Table_kotevne_useky.getSelectedRow()).get_uroven_spolahlivosti_porcislo(), Variable_globeal_kotevny_usek.get(Table_kotevne_useky.getSelectedRow()).get_B_I()); // set from table
+            }      
             
             // overload class - first step
             Overload_variables Overload = new Overload_variables(Conductor,
@@ -8280,7 +8287,7 @@ private void seticon() {
                                                                 Variable_uroven_spolahlivosti_Yw,
                                                                 Variable_uroven_spolahlivosti_Yi,
                                                                 Variable_uroven_spolahlivosti_Wi, 
-                                                                 Variable_uroven_spolahlivosti_Ww, 
+                                                                final_psi_w,
                                                                 Variable_Bi, 
                                                                 3, 
                                                                 0, 
