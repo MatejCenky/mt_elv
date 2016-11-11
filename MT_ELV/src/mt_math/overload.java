@@ -234,7 +234,9 @@ public class overload {
         // #1 layer
 //        mean_height();
         mean_wind_speed();
-        height_coefficient();
+        if (overload.K_h == -1){
+            height_coefficient();
+        }
         turbulence_intensity();
         response_coefficient_length();
         specific_turbulence_length();
