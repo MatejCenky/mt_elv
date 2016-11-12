@@ -49,9 +49,9 @@ public static void constructor(){
  /*19*/  language.SK.add("O programe");                  language.CZ.add("O programe");          language.EN.add("About");
  /*20*/  language.SK.add("Zavri");                       language.CZ.add("Zavři");               language.EN.add("Close");
   
- /*21*/  language.SK.add("Lorem ipsum bla bla bla teple slova zuzu po slovensky ahoj ideme si zašukat ? ok podme ju ju ju hu hu hu kert na dftr vdvvfvdf fgd er dsds cxcs erzzu dkdk dfsdf d d ddddd dfsdf sdf sdf sdfsdf sdfsdf sdfetrbtrb ddsfdg ");  
-         language.CZ.add("Lorem ipsum bla bla bla teple slova zuzu po cesky ahoj  vole to takle si zapichat ju ju ju hu hu hu kert na dftr vdvvfvdf fgd er dsds cxcs erzzu dkdk dfsdf d d ddddd dfsdf sdf sdf sdfsdf sdfsdf sdfetrbtrb ddsfdg "); 
-         language.EN.add("Lorem ipsum bla bla bla teple slova zuzu po anglcky hello mother fucker wana fuck today? ju ju ju hu hu hu kert na dftr vdvvfvdf fgd er dsds cxcs erzzu dkdk dfsdf d d ddddd dfsdf sdf sdf sdfsdf sdfsdf sdfetrbtrb ddsfdg ");
+ /*21*/  language.SK.add("MT3 software je program na výpočet montážnych tabuliek vonkajších elektrických vedení. Program a všetky je práva s ním spojené sú majetkom SAG Elektrovod a.s. Program je napísaný v programovacom jazyku JAVA. V prípade akýchkoľvek otázok sa prosím obrátťe na na vývojárov tohto programu Mateja Cenkého && Jozef Bendíka.");  
+         language.CZ.add("MT3 software je program pro výpočet montážních tabulek venkovních elektrických vedení. Program a všechny je práva s ním spojené jsou majetkem SAG Elektrovod a.s. Program je napsán v programovacím jazyce JAVA. V případě jakýchkoliv dotazů se prosím obraťte na na vývojáře tohoto programu Matěje Čenkov && Jozef Bendíka."); 
+         language.EN.add("MT3 is a software for calculation of the mechanical properties of overhead power lines. Program and all the rights associated with it are the property of SAG Elektrovod a.s. The program is written in Java language. If you have any questions, please contact the developer of the program Matej Cenký && Josef Bendík.");
 //Conductors_Jdialog_main
  /*22*/  language.SK.add("Knižnica vodičov");            language.CZ.add("Knižnice vodičú");                language.EN.add("Conductor library");
  /*23*/  language.SK.add("Vodiče");                      language.CZ.add("Vodiče");                         language.EN.add("Conductors");
@@ -1069,21 +1069,21 @@ public static void constructor(){
          language.CZ.add("kontrola tahů pracovního bodu");                    
          language.EN.add("working node pull check");
 
-/*287*/  language.SK.add("Naozaj chete ukončiť projekt? ");       
-         language.CZ.add("Vážne chcete ukončiť projekt?");                    
-         language.EN.add("Do you really want to exit project?");
+/*287*/  language.SK.add("Uložiť zmeny pred ukončením projektu ?");       
+         language.CZ.add("Uložiť zmeny před ukončením projektu ?");                    
+         language.EN.add("Save changes before quiting the project?"); 
 
-/*288*/  language.SK.add("Áno");       
+/*288*/  language.SK.add("Nie");       
+         language.CZ.add("Ne");                    
+         language.EN.add("No");  
+         
+/*289*/  language.SK.add("Ano");       
          language.CZ.add("Ano");                    
-         language.EN.add("Yes");  
+         language.EN.add("Yes");   
          
-/*289*/  language.SK.add("Ano ale uložiť");       
-         language.CZ.add("Ano ale uložit");                    
-         language.EN.add("Yes with save");   
-         
-/*290*/  language.SK.add("Nie");       
-         language.CZ.add("Nie");                    
-         language.EN.add("No");           
+/*290*/  language.SK.add("Zrušiť");       
+         language.CZ.add("Zrušiť");                    
+         language.EN.add("Cancel");           
 
 /*291*/  language.SK.add("Chystáte sa ukončiť MT3 ste si tym istý ?");       
          language.CZ.add("Chystáte se ukončiť MT3 ste si tím jistý ?");                    
@@ -1093,9 +1093,13 @@ public static void constructor(){
          language.CZ.add("Koeficietn Kh bez vplyvu výšky stožárú");                    
          language.EN.add("Koeficietn Kh without influence of tower height"); 
 
-/*292*/  language.SK.add("Koeficietn Kh s vplyvom výšky stožiarov");       
+/*293*/  language.SK.add("Koeficietn Kh s vplyvom výšky stožiarov");       
          language.CZ.add("Koeficietn Kh s plyvem výšky stožárú");                    
-         language.EN.add("Koeficietn Kh with influence of tower height");          
+         language.EN.add("Koeficietn Kh with influence of tower height"); 
+
+/*294*/  language.SK.add("OK");       
+         language.CZ.add("OK");                    
+         language.EN.add("OK");           
          
  inicializovane = true;
 }

@@ -55,7 +55,7 @@ public class mainframe_warning_jDialog_1 extends javax.swing.JDialog {
 
         jLabel1.setText(language.language_label(languageOption,60));
 
-        createButton.setText(language.language_label(languageOption,61));
+        createButton.setText(language.language_label(languageOption,294));
         createButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 createButtonActionPerformed(evt);

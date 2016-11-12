@@ -73,7 +73,7 @@
     <Component class="javax.swing.JButton" name="createButton">
       <Properties>
         <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-          <Connection code="language.language_label(languageOption,61)" type="code"/>
+          <Connection code="language.language_label(languageOption,294)" type="code"/>
         </Property>
       </Properties>
       <Events>
