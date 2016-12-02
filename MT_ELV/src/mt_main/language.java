@@ -832,9 +832,9 @@ public static void constructor(){
          language.CZ.add("I-K - vlastní hodnota");                     
          language.EN.add("I-K - custom value");
                      
-/*225*/  language.SK.add(" - STN EN 50341-1");       
-         language.CZ.add(" - STN EN 50341-1");                     
-         language.EN.add(" - STN EN 50341-1");
+/*225*/  language.SK.add(" - ");       
+         language.CZ.add(" - ");                     
+         language.EN.add(" - ");
    
 /*226*/  language.SK.add("Vetrová oblasť");                    
         language.CZ.add("Větrová oblast");                     
@@ -844,8 +844,8 @@ public static void constructor(){
          language.CZ.add("Koeficient nadm. výšky");                     
          language.EN.add("Above sea level coeff.");
          
-/*228*/  language.SK.add("Zaťaženie extrénmou námrazou");       
-         language.CZ.add("Zatížení extrémní námrazou");                     
+/*228*/  language.SK.add("Zaťaženie extrémnou námrazou");       
+         language.CZ.add("Zatížení extrémni námrazou");                     
          language.EN.add("Extreme ice overload");
          
 /*229*/  language.SK.add("Zaťaženie miernou námrazou");      
@@ -853,16 +853,16 @@ public static void constructor(){
          language.EN.add("Mild ice overload");
          
 /*230*/  language.SK.add("Zaťaženie extrémnym vetrom");       
-         language.CZ.add("Zatížení extrémním větrem");                     
+         language.CZ.add("Zatížení extrémnim větrem");                     
          language.EN.add("Extreme wind overload");
          
-/*231*/  language.SK.add("Zaťaženie miernym vetrom a ext. námrazou");       
-         language.CZ.add("Zatížení mírným větrem a ext. námrazou");                     
-         language.EN.add("Mild wind and extreme ice overload");
+/*231*/  language.SK.add("Zaťaženie extrémnou námrazou a vysoko pravdepodobnostným vetrom");       
+         language.CZ.add("Zatížení extrémní námrazou a vysoce pravdepodobnostním větrem");                     
+         language.EN.add("Extreme ice and high probability wind overload");
          
-/*232*/  language.SK.add("Zaťaženie ext. vetrom a miernou námrazou");       
-         language.CZ.add("Zatížení ext. větrem a mírnou námrazou");                     
-         language.EN.add("Extreme wind and mild ice overload");
+/*232*/  language.SK.add("Zaťaženie menovitou námrazou a nízko pravdepodobnostným vetrom");       
+         language.CZ.add("Zatížení jmenovitou námrazou a nízce pravdepodobnostním větrem");                     
+         language.EN.add("Nominal ice and low probability wind overload");
 
 /*233*/  language.SK.add("Navrhovaná živostnosť vedenia");       
          language.CZ.add("Navrhovaná životnost vedení");                     
@@ -1045,9 +1045,9 @@ public static void constructor(){
          language.CZ.add("Kotěvný úsek odstráněn");                     
          language.EN.add("Tensioning section deleted");
          
-/*281*/  language.SK.add("Ťah pre -5+N [MPa] - percentuálny podiel námrazy");       
-         language.CZ.add("Tah pro -5+N [MPa] - percentuální podíl námrazy");                     
-         language.EN.add("Pull for -5+N [MPa] - ice overload per cent");
+/*281*/  language.SK.add("Ťah pre -5+N - percentuálny podiel námrazy");       
+         language.CZ.add("Tah pro -5+N - percentuální podíl námrazy");                     
+         language.EN.add("Pull for -5+N - ice overload percent");
 
 /*282*/  language.SK.add("Ťah -5+Nv konečné tab.");       
          language.CZ.add("Tah -5+Nv koneční tab.");                     
@@ -1100,6 +1100,15 @@ public static void constructor(){
 /*294*/  language.SK.add("OK");       
          language.CZ.add("OK");                    
          language.EN.add("OK");           
+/*295*/  language.SK.add("Štandartná hodnota");       
+         language.CZ.add("Štandartná hodnota");                    
+         language.EN.add("Standard value");
+/*296*/  language.SK.add("Typická hodnota pre Čeps a.s.");       
+         language.CZ.add("Typická hodnota pro Čeps a.s.");                    
+         language.EN.add("Typical value for Čeps a.s.");  
+/*297*/  language.SK.add("Podiel z námrazy");       
+         language.CZ.add("Podíl z námrazy");                    
+         language.EN.add("Pecetage from iceload");
          
  inicializovane = true;
 }

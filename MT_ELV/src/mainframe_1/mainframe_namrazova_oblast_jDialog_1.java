@@ -54,9 +54,9 @@ public class mainframe_namrazova_oblast_jDialog_1 extends javax.swing.JDialog {
                      oblast = Databaza_namrazova_oblast.get(rowNumber);
 
                     textAreaConductorInfo.setText(
-                            language.language_label(languageOption, 67) + "  " + String.valueOf(jTable.getValueAt(rowNumber, 0)) + "  - NORMA XYZ -  " + "\r\n"
+                            language.language_label(languageOption, 67) + "  " + String.valueOf(jTable.getValueAt(rowNumber, 0)) + "  - STN 50341-2-23 -  " + "\r\n"
                             +"\r\n"
-                            + language.language_label(languageOption, 70) + " d£ 30 mm , Ir = " + String.valueOf(oblast[0]) + " + " + String.valueOf(oblast[1]) + "×d" +  "\r\n"
+                            + language.language_label(languageOption, 70) + " d< 30 mm , Ir = " + String.valueOf(oblast[0]) + " + " + String.valueOf(oblast[1]) + "×d" +  "\r\n"
                             + language.language_label(languageOption, 70) + " d> 30 mm , Ir = " + String.valueOf(oblast[2]) + " + " + String.valueOf(oblast[3]) + "×d" +  "\r\n"
                     );
 

@@ -459,13 +459,13 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
                     
                     // Hcmean pocitac
                     double Sumar_scitavac = 0;
-                    for (int i = 0; i < Variable_n_pocet_rozpati + 1; i++) {           //pocita len tam kde je zadana dlka zorpatia ine stožiare bdue ignotrovat plus jedna preto lebo pocet stožiarov je vždy rozpatia plus 1
+                    for (int i = 0; i < Variable_n_pocet_rozpati ; i++) {           //pocita len tam kde je zadana dlka zorpatia ine stožiare bdue ignotrovat plus jedna preto lebo pocet stožiarov je vždy rozpatia plus 1
 
-                        Sumar_scitavac = Sumar_scitavac + Variable_hi_vyska_stoziarov.get(i);
+                        Sumar_scitavac = Sumar_scitavac + ((Variable_hi_vyska_stoziarov.get(i)+ Variable_hi_vyska_stoziarov.get(i+1))/2);
 
                     }
 
-                    Variable_Hc_mean_medzikrok = Sumar_scitavac / (Variable_n_pocet_rozpati + 1);
+                    Variable_Hc_mean_medzikrok = Sumar_scitavac / (Variable_n_pocet_rozpati);
                     if (jRadioButton_with_label_vypoctana.isSelected() == true) {
                         Variable_Hc_mean =double_setter( Variable_Hc_mean_medzikrok);
                         pretazenia_intomainframe();
@@ -550,15 +550,17 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
                     
                     // Hcmean pocitac
                     double Sumar_scitavac = 0;
-                    for (int i = 0; i < Variable_n_pocet_rozpati + 1; i++) {           //pocita len tam kde je zadana dlka zorpatia ine stožiare bdue ignotrovat plus jedna preto lebo pocet stožiarov je vždy rozpatia plus 1
+                    for (int i = 0; i < Variable_n_pocet_rozpati ; i++) {           //pocita len tam kde je zadana dlka zorpatia ine stožiare bdue ignotrovat plus jedna preto lebo pocet stožiarov je vždy rozpatia plus 1
 
-                        Sumar_scitavac = Sumar_scitavac + Variable_hi_vyska_stoziarov.get(i);
+                        Sumar_scitavac = Sumar_scitavac + ((Variable_hi_vyska_stoziarov.get(i)+ Variable_hi_vyska_stoziarov.get(i+1))/2);
 
                     }
+
+                    Variable_Hc_mean_medzikrok = Sumar_scitavac / (Variable_n_pocet_rozpati);
                     DecimalFormatSymbols otherSymbols = new DecimalFormatSymbols();
                     otherSymbols.setDecimalSeparator('.');
                     DecimalFormat df = new DecimalFormat("###.###", otherSymbols);
-                    Variable_Hc_mean_medzikrok = Sumar_scitavac / (Variable_n_pocet_rozpati + 1);    // vypocitaj Hcmena
+                        // vypocitaj Hcmena
                     TextField_hcmean_vpocitana.setText(String.valueOf(df.format(Variable_Hc_mean_medzikrok))); // vloz do text field pri radio buttne
 
                     if (jRadioButton_with_label_vypoctana.isSelected() == true) {
@@ -2660,6 +2662,7 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
                 jRadioButton_Bi_2ActionPerformed(evt);
             }
         });
+        jRadioButton_Bi_2.setToolTipText(language.language_label(languageOption, 296));
 
         TextField_Bi_1.setEditable(false);
         TextField_Bi_1.setText("0.656");
@@ -2673,6 +2676,7 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
                 TextField_Bi_1KeyReleased(evt);
             }
         });
+        TextField_Bi_1.setToolTipText(language.language_label(languageOption, 295));
 
         buttonGroup_Bi.add(jRadioButton_Bi_1);
         jRadioButton_Bi_1.addActionListener(new java.awt.event.ActionListener() {
@@ -2680,6 +2684,7 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
                 jRadioButton_Bi_1ActionPerformed(evt);
             }
         });
+        jRadioButton_Bi_1.setToolTipText(language.language_label(languageOption, 295));
 
         Label__Bi.setText(language.language_label(languageOption, 106));
         Label__Bi.setToolTipText(language.language_label(languageOption, 107));
@@ -2709,9 +2714,7 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
                     .addComponent(jRadioButton_Bi_1, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jRadioButton_Bi_2, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(TextField_Bi_1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel16Layout.createSequentialGroup()
-                        .addGap(4, 4, 4)
-                        .addComponent(TextField_Bi2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(TextField_Bi2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -2776,7 +2779,7 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
                     .addComponent(TextField_Kh_noH, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jRadioButton_Kh_H, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel16, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jPanel16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         jRadioButton_Kh_H.setToolTipText(language.language_label(languageOption, 293));
@@ -3936,7 +3939,7 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
    
            c1 = new PdfPCell();
            Paragraph par_left= new Paragraph(10);
-           Chunk text_left = new Chunk(  language.language_label(languageOption, 203) + " : " + decimal_trimiesta.format( Variable_globeal_kotevny_usek.get(i).get_zakladne_mech_napatie_lana_pre_minus5_over() ) + " Mpa" + "\n" 
+           Chunk text_left = new Chunk(  language.language_label(languageOption, 203) + " : " + decimal_trimiesta.format( Variable_globeal_kotevny_usek.get(i).get_zakladne_mech_napatie_lana_pre_minus5_over() ) + " MPa" + "\n" 
                                        +  language.language_label(languageOption, 204) + " : " + decimal_trimiesta.format( Variable_globeal_kotevny_usek.get(i).get_h_c_mean() ) + " m"   
                                        + "\n" ,fontTable); 
            Chunk text_left1 = new Chunk(  language.language_label(languageOption, 205) + " : " + get_char_terenu_number(Variable_globeal_kotevny_usek.get(i))  
@@ -3948,61 +3951,110 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
            
            
            // tu vytvoriť
-          float[] columnWidths4x = {68f,68f,68f,68f};
+          float[] columnWidths4x = {88f,50f,50f,50f,50f};
           
           PdfPTable testTable = new PdfPTable(columnWidths4x);
           PdfPCell c2x = new PdfPCell();
           Paragraph par_total= new Paragraph(2);
           
-          
-          Chunk text_ltesttable = new Chunk(  percento1_sigma.getText() + "%",fontTable);
-         
-          par_total= new Paragraph(2);
+           c11 = new PdfPCell();
+          Chunk text_ltesttable = new Chunk(  language.language_label(languageOption, 297),fontTable);        
+          par_total= new Paragraph(6);
           par_total.add(text_ltesttable);
           par_total.setAlignment(Element.ALIGN_CENTER);
-          testTable.addCell(par_total);
-          testTable.setHorizontalAlignment(Element.ALIGN_CENTER);
-         
-          text_ltesttable = new Chunk(  percento2_sigma.getText() + "%" ,fontTable);
-          par_total= new Paragraph(2);
-          par_total.add(text_ltesttable);par_total.setAlignment(Element.ALIGN_CENTER);
-          testTable.addCell(par_total);
-          
-          
-          text_ltesttable = new Chunk(  percento3_sigma.getText() + "%",fontTable);
-          par_total= new Paragraph(2);
-          par_total.add(text_ltesttable);par_total.setAlignment(Element.ALIGN_CENTER);
-          testTable.addCell(par_total);
-          
-          
-          text_ltesttable = new Chunk(  percento4_sigma.getText() + "%",fontTable);
-          par_total= new Paragraph(2);
-          par_total.add(text_ltesttable);par_total.setAlignment(Element.ALIGN_CENTER);
-          testTable.addCell(par_total);
-          
-         
-          text_ltesttable = new Chunk( decimal_dvamiesta.format(Variable_globeal_kotevny_usek.get(i).get_vysledky_per_podiel_sigma()[1][0]) ,fontTable); 
-          par_total= new Paragraph(2);
-          par_total.add(text_ltesttable);par_total.setAlignment(Element.ALIGN_CENTER);
-          testTable.addCell(par_total);
-          
-          
-          text_ltesttable = new Chunk( decimal_dvamiesta.format(Variable_globeal_kotevny_usek.get(i).get_vysledky_per_podiel_sigma()[1][1]) ,fontTable);
-          par_total= new Paragraph(2);
-          par_total.add(text_ltesttable);par_total.setAlignment(Element.ALIGN_CENTER);
-          testTable.addCell(par_total);
-          
+          c11.addElement(par_total);testTable.addCell(c11);
+           c11 = new PdfPCell();
+          text_ltesttable = new Chunk(  percento1_sigma.getText() + "%",fontTable);        
+          par_total= new Paragraph(6);
+          par_total.add(text_ltesttable);
+          par_total.setAlignment(Element.ALIGN_CENTER);
+           c11.addElement(par_total);testTable.addCell(c11);
         
-          text_ltesttable = new Chunk( decimal_dvamiesta.format(Variable_globeal_kotevny_usek.get(i).get_vysledky_per_podiel_sigma()[1][2]) ,fontTable);  
-          par_total= new Paragraph(2);
+           c11 = new PdfPCell();
+          text_ltesttable = new Chunk(  percento2_sigma.getText() + "%" ,fontTable);
+          par_total= new Paragraph(6);
           par_total.add(text_ltesttable);par_total.setAlignment(Element.ALIGN_CENTER);
-          testTable.addCell(par_total);
+           c11.addElement(par_total);testTable.addCell(c11);
           
-         
-          text_ltesttable = new Chunk( decimal_dvamiesta.format(Variable_globeal_kotevny_usek.get(i).get_vysledky_per_podiel_sigma()[1][3]) ,fontTable);
-          par_total= new Paragraph(2);
+           c11 = new PdfPCell();
+          text_ltesttable = new Chunk(  percento3_sigma.getText() + "%",fontTable);
+          par_total= new Paragraph(6);
           par_total.add(text_ltesttable);par_total.setAlignment(Element.ALIGN_CENTER);
-          testTable.addCell(par_total);
+           c11.addElement(par_total);testTable.addCell(c11);
+          
+          c11 = new PdfPCell();
+          text_ltesttable = new Chunk(  percento4_sigma.getText() + "%",fontTable);
+          par_total= new Paragraph(6);
+          par_total.add(text_ltesttable);par_total.setAlignment(Element.ALIGN_CENTER);
+          c11.addElement(par_total);testTable.addCell(c11);
+          
+          
+          
+           Chunk susubScript = new Chunk("H",fontScript); // superscript
+         susubScript.setTextRise(-2f); 
+         
+        c11 = new PdfPCell();
+        p1 = new Chunk("\u03C3" ,fontTable);        
+        Chunk p23 = new Chunk( " [MPa]"  ,fontTable);
+        p1_total= new Paragraph(6);
+        p1_total.add(p1);p1_total.add(susubScript);p1_total.add(p23);p1_total.setAlignment(Element.ALIGN_CENTER);
+        c11.addElement(p1_total);testTable.addCell(c11);
+          
+          c11 = new PdfPCell();
+          text_ltesttable = new Chunk( decimal_dvamiesta.format(Variable_globeal_kotevny_usek.get(i).get_vysledky_per_podiel_sigma()[1][0]) ,fontTable); 
+          par_total= new Paragraph(6);
+          par_total.add(text_ltesttable);par_total.setAlignment(Element.ALIGN_CENTER);
+          c11.addElement(par_total);testTable.addCell(c11);
+          
+          c11 = new PdfPCell();
+          text_ltesttable = new Chunk( decimal_dvamiesta.format(Variable_globeal_kotevny_usek.get(i).get_vysledky_per_podiel_sigma()[1][1]) ,fontTable);
+          par_total= new Paragraph(6);
+          par_total.add(text_ltesttable);par_total.setAlignment(Element.ALIGN_CENTER);
+          c11.addElement(par_total);testTable.addCell(c11);
+          
+          c11 = new PdfPCell();
+          text_ltesttable = new Chunk( decimal_dvamiesta.format(Variable_globeal_kotevny_usek.get(i).get_vysledky_per_podiel_sigma()[1][2]) ,fontTable);  
+          par_total= new Paragraph(6);
+          par_total.add(text_ltesttable);par_total.setAlignment(Element.ALIGN_CENTER);
+         c11.addElement(par_total);testTable.addCell(c11);
+          
+          c11 = new PdfPCell();
+          text_ltesttable = new Chunk( decimal_dvamiesta.format(Variable_globeal_kotevny_usek.get(i).get_vysledky_per_podiel_sigma()[1][3]) ,fontTable);
+          par_total= new Paragraph(6);
+          par_total.add(text_ltesttable);par_total.setAlignment(Element.ALIGN_CENTER);
+          c11.addElement(par_total);testTable.addCell(c11);
+          
+        c11 = new PdfPCell();
+        p1 = new Chunk("F" ,fontTable);        
+        p2 = new Chunk( " [kN]"  ,fontTable);
+        p1_total= new Paragraph(6);
+        p1_total.add(p1);p1_total.add(susubScript);p1_total.add(p2);p1_total.setAlignment(Element.ALIGN_CENTER);
+        c11.addElement(p1_total);testTable.addCell(c11);
+        
+          c11 = new PdfPCell(); 
+          text_ltesttable = new Chunk( decimal_dvamiesta.format(Variable_globeal_kotevny_usek.get(i).get_vysledky_per_podiel_sigma()[2][0]) ,fontTable); 
+          par_total= new Paragraph(6);
+          par_total.add(text_ltesttable);par_total.setAlignment(Element.ALIGN_CENTER);
+          c11.addElement(par_total);testTable.addCell(c11);
+          
+          c11 = new PdfPCell();
+          text_ltesttable = new Chunk( decimal_dvamiesta.format(Variable_globeal_kotevny_usek.get(i).get_vysledky_per_podiel_sigma()[2][1]) ,fontTable);
+          par_total= new Paragraph(6);
+          par_total.add(text_ltesttable);par_total.setAlignment(Element.ALIGN_CENTER);
+          c11.addElement(par_total);testTable.addCell(c11);
+          
+          c11 = new PdfPCell();
+          text_ltesttable = new Chunk( decimal_dvamiesta.format(Variable_globeal_kotevny_usek.get(i).get_vysledky_per_podiel_sigma()[2][2]) ,fontTable);  
+          par_total= new Paragraph(6);
+          par_total.add(text_ltesttable);par_total.setAlignment(Element.ALIGN_CENTER);
+          c11.addElement(par_total);testTable.addCell(c11);
+          
+          c11 = new PdfPCell();
+          text_ltesttable = new Chunk( decimal_dvamiesta.format(Variable_globeal_kotevny_usek.get(i).get_vysledky_per_podiel_sigma()[2][3]) ,fontTable);
+          par_total= new Paragraph(6);
+          par_total.add(text_ltesttable);par_total.setAlignment(Element.ALIGN_CENTER);
+          c11.addElement(par_total);testTable.addCell(c11);
+          
           
           
            
@@ -4015,7 +4067,7 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
            Paragraph par_right= new Paragraph(10);
            Chunk text_right = new Chunk(  language.language_label(languageOption, 212) + " : " + decimal_trimiesta.format( Variable_globeal_kotevny_usek.get(i).get_uroven_spolahlivosti_porcislo()+1) + "\n" 
                                        +  language.language_label(languageOption, 213) + " : " + get_rok_navratu_cas(jComboBox_uroven_splahlivosti.getSelectedIndex()) + "\n" 
-                                       +  language.language_label(languageOption, 215) + " : " + Variable_globeal_kotevny_usek.get(i).get_namrazova_oblast_string() +  language.language_label(languageOption, 225) +"\n" 
+                                       +  language.language_label(languageOption, 215) + " : " + Variable_globeal_kotevny_usek.get(i).get_namrazova_oblast_string() +  language.language_label(languageOption, 225) + hlavicka.vypocet_podla_normy_getter() +"\n" 
                                        +  language.language_label(languageOption, 226) + " : " + get_vetrova_oblast_string(jComboBox_vetrova_oblast.getSelectedIndex()) + ", v = " + decimal_trimiesta.format(Variable_globeal_kotevny_usek.get(i).get_V_mean()) + " m/s" +"\n" 
                                        ,fontTable); 
            Chunk text_right1 = new Chunk(  language.language_label(languageOption, 228) + " : " + decimal_dvamiesta.format(Variable_globeal_kotevny_usek.get(i).get_vysledky_tlaky6()[0]) + " N/m" + "\n" 
@@ -4291,45 +4343,46 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
                                                             Kot_usek.get_str_rozpatie(),    // mid span
                                                             temperatures_state_equation[0], // Tx0
                                                             temperatures_state_equation[1]);// Tx1
+                double sila_pomerna_1 = state_equation.compute_Fh(sigma_pomerna_1, Conductor)/1000; //kN
+                
                 
                 state_equation.set_all_variables(State, Kot_usek.get_Ai_array(), Kot_usek.get_DeltaHi_array());
                 double sigma_pomerna_2 = state_equation.compute_sigma_H(over2,                  // load
                                                             Kot_usek.get_str_rozpatie(),    // mid span
                                                             temperatures_state_equation[0], // Tx0
                                                             temperatures_state_equation[1]);// Tx1
-                
+                double sila_pomerna_2 = state_equation.compute_Fh(sigma_pomerna_2, Conductor)/1000; //kN
                 state_equation.set_all_variables(State, Kot_usek.get_Ai_array(), Kot_usek.get_DeltaHi_array());
                 double sigma_pomerna_3 = state_equation.compute_sigma_H(over3,                  // load
                                                             Kot_usek.get_str_rozpatie(),    // mid span
                                                             temperatures_state_equation[0], // Tx0
                                                             temperatures_state_equation[1]);// Tx1
-                
+                double sila_pomerna_3 = state_equation.compute_Fh(sigma_pomerna_3, Conductor)/1000; //kN
                 state_equation.set_all_variables(State, Kot_usek.get_Ai_array(), Kot_usek.get_DeltaHi_array());
                 double sigma_pomerna_4 = state_equation.compute_sigma_H(over4,                  // load
                                                             Kot_usek.get_str_rozpatie(),    // mid span
                                                             temperatures_state_equation[0], // Tx0
                                                             temperatures_state_equation[1]);// Tx1
-                
+                double sila_pomerna_4 = state_equation.compute_Fh(sigma_pomerna_4, Conductor)/1000; //kN
                 sigmy_minu5_podiel[1][0]=sigma_pomerna_1;        
                 sigmy_minu5_podiel[1][1]=sigma_pomerna_2;        
                 sigmy_minu5_podiel[1][2]=sigma_pomerna_3;       
                 sigmy_minu5_podiel[1][3]=sigma_pomerna_4;   
+                sigmy_minu5_podiel[2][0] = sila_pomerna_1;
+                sigmy_minu5_podiel[2][1] = sila_pomerna_2;
+                sigmy_minu5_podiel[2][2] = sila_pomerna_3;
+                sigmy_minu5_podiel[2][3] = sila_pomerna_4;
+                
                 
 
                 }
                 if (y == 7) { // -5+Nv
 
-                    sigmy_minu5_podiel[2][0] = 0;
-                    sigmy_minu5_podiel[2][1] = 0;
-                    sigmy_minu5_podiel[2][2] = 0;
-                    sigmy_minu5_podiel[2][3] = 0;
+                    
                 }
                 if (y == 8) { // -5+nV
 
-                    sigmy_minu5_podiel[2][0] = 0;
-                    sigmy_minu5_podiel[2][1] = 0;
-                    sigmy_minu5_podiel[2][2] = 0;
-                    sigmy_minu5_podiel[2][3] = 0;
+                   
                 }
 
             }

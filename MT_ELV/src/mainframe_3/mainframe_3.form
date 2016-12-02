@@ -2695,7 +2695,7 @@
                                           <Component id="jRadioButton_Kh_H" min="-2" pref="23" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace max="32767" attributes="0"/>
-                                      <Component id="jPanel16" min="-2" pref="31" max="-2" attributes="0"/>
+                                      <Component id="jPanel16" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                             </DimensionLayout>
@@ -2792,10 +2792,7 @@
                                               <Component id="jRadioButton_Bi_1" min="-2" pref="23" max="-2" attributes="0"/>
                                               <Component id="jRadioButton_Bi_2" min="-2" pref="23" max="-2" attributes="0"/>
                                               <Component id="TextField_Bi_1" min="-2" max="-2" attributes="0"/>
-                                              <Group type="102" alignment="0" attributes="0">
-                                                  <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
-                                                  <Component id="TextField_Bi2" min="-2" max="-2" attributes="0"/>
-                                              </Group>
+                                              <Component id="TextField_Bi2" min="-2" max="-2" attributes="0"/>
                                           </Group>
                                           <EmptySpace max="32767" attributes="0"/>
                                       </Group>
@@ -2822,6 +2819,9 @@
                                   <Events>
                                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jRadioButton_Bi_2ActionPerformed"/>
                                   </Events>
+                                  <AuxValues>
+                                    <AuxValue name="JavaCodeGenerator_ListenersCodePost" type="java.lang.String" value="jRadioButton_Bi_2.setToolTipText(language.language_label(languageOption, 296));"/>
+                                  </AuxValues>
                                 </Component>
                                 <Component class="javax.swing.JTextField" name="TextField_Bi_1">
                                   <Properties>
@@ -2832,6 +2832,9 @@
                                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="TextField_Bi_1ActionPerformed"/>
                                     <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="TextField_Bi_1KeyReleased"/>
                                   </Events>
+                                  <AuxValues>
+                                    <AuxValue name="JavaCodeGenerator_ListenersCodePost" type="java.lang.String" value="TextField_Bi_1.setToolTipText(language.language_label(languageOption, 295));"/>
+                                  </AuxValues>
                                 </Component>
                                 <Component class="javax.swing.JRadioButton" name="jRadioButton_Bi_1">
                                   <Properties>
@@ -2842,6 +2845,9 @@
                                   <Events>
                                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jRadioButton_Bi_1ActionPerformed"/>
                                   </Events>
+                                  <AuxValues>
+                                    <AuxValue name="JavaCodeGenerator_ListenersCodePost" type="java.lang.String" value="jRadioButton_Bi_1.setToolTipText(language.language_label(languageOption, 295));"/>
+                                  </AuxValues>
                                 </Component>
                                 <Component class="javax.swing.JLabel" name="Label__Bi">
                                   <Properties>
