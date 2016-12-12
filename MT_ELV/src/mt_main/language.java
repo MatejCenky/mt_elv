@@ -28,7 +28,7 @@ public static void constructor(){
         
  /*1*/   language.SK.add("Súbor");                       language.CZ.add("Soubor");              language.EN.add("File");            //language String value  at position 
  /*2*/   language.SK.add("Nový");                        language.CZ.add("Nový");                language.EN.add("New");             //language String value  at position 
- /*3*/   language.SK.add("Načítať");                     language.CZ.add("Načítat");             language.EN.add("Load");            //language String value  at position 
+ /*3*/   language.SK.add("Načítať");                     language.CZ.add("Načíst");             language.EN.add("Load");            //language String value  at position 
  /*4*/   language.SK.add("Verzia 1.0 Beta");             language.CZ.add("Verze 1.0 Beta");      language.EN.add("Version 1.0 Beta");     //language String value  at position 
  /*5*/   language.SK.add("Nastavenia exportu");          language.CZ.add("Nastavení exportu");   language.EN.add("Export settings"); 
  /*6*/   language.SK.add("Koniec");                      language.CZ.add("Konec");               language.EN.add("Exit"); 
@@ -50,7 +50,7 @@ public static void constructor(){
  /*20*/  language.SK.add("Zavri");                       language.CZ.add("Zavři");               language.EN.add("Close");
   
  /*21*/  language.SK.add("MT3 software je program na výpočet montážnych tabuliek vonkajších elektrických vedení. Program a všetky je práva s ním spojené sú majetkom SAG Elektrovod a.s. Program je napísaný v programovacom jazyku JAVA. V prípade akýchkoľvek otázok sa prosím obrátťe na na vývojárov tohto programu Mateja Cenkého && Jozef Bendíka.");  
-         language.CZ.add("MT3 software je program pro výpočet montážních tabulek venkovních elektrických vedení. Program a všechny je práva s ním spojené jsou majetkem SAG Elektrovod a.s. Program je napsán v programovacím jazyce JAVA. V případě jakýchkoliv dotazů se prosím obraťte na na vývojáře tohoto programu Matěje Čenkov && Jozef Bendíka."); 
+         language.CZ.add("MT3 software je program pro výpočet montážních tabulek venkovních elektrických vedení. Program a všechny je práva s ním spojené jsou majetkem SAG Elektrovod a.s. Program je napsán v programovacím jazyce JAVA. V případě jakéchkoliv dotazů se prosím obraťte na na vývojáře tohoto programu Matěje Čenkov && Jozef Bendíka."); 
          language.EN.add("MT3 is a software for calculation of the mechanical properties of overhead power lines. Program and all the rights associated with it are the property of SAG Elektrovod a.s. The program is written in Java language. If you have any questions, please contact the developer of the program Matej Cenký && Josef Bendík.");
 //Conductors_Jdialog_main
  /*22*/  language.SK.add("Knižnica vodičov");            language.CZ.add("Knižnice vodičú");                language.EN.add("Conductor library");
@@ -123,11 +123,11 @@ public static void constructor(){
 // Main_frame
                     
 /*51*/  language.SK.add("Zoznam kotevných úsekov");          
-        language.CZ.add("Seznam kotěvných úseků");           
+        language.CZ.add("Seznam kotevních úseků");           
         language.EN.add("Tensioning section list");
         
 /*52*/  language.SK.add("Kotevný úsek");                     
-        language.CZ.add("Kotěvný úsek");                     
+        language.CZ.add("Kotevni úsek");                     
         language.EN.add("Tensioning section");
 
 // Main_frame_tool_tip
@@ -145,11 +145,11 @@ public static void constructor(){
         language.EN.add("Save project results");
         
 /*56*/  language.SK.add("Nový kotevný úsek");                     
-        language.CZ.add("Nový kotěvný úsek");                     
+        language.CZ.add("Nový kotevní úsek");                     
         language.EN.add("New tens. section");
         
 /*57*/  language.SK.add("Zmazať kotevný úsek");                     
-        language.CZ.add("Smazat kotěvný úsek");                     
+        language.CZ.add("Smazat kotěvní úsek");                     
         language.EN.add("Delete tens. section");
         
 /*58*/  language.SK.add("Spustiť výpočet");                     
@@ -163,7 +163,7 @@ public static void constructor(){
 
 // Main_frame_jdialog_create_kotevny_usek
 /*60*/  language.SK.add("Nový kotevný úsek");                     
-        language.CZ.add("Nový kotěvný úsek");                     
+        language.CZ.add("Nový kotevní úsek");                     
         language.EN.add("New tens. section");
 
         
@@ -240,19 +240,19 @@ public static void constructor(){
         language.EN.add("Icing type");
         
 /*77*/  language.SK.add("Mokrý sneh");                     
-        language.CZ.add("Mokrý sněh");                     
+        language.CZ.add("Mokrý sníh");                     
         language.EN.add("Wet snow");
         
 /*78*/  language.SK.add("Ľadovica");                     
-        language.CZ.add("Ledovice");                     
+        language.CZ.add("Náledí");                     
         language.EN.add("Black ice");
         
 /*79*/  language.SK.add("Ľahká inoväť");                     
-        language.CZ.add("Lehká inovať");                     
+        language.CZ.add("Mírna jinovatka");                     
         language.EN.add("Light frost");
         
 /*80*/  language.SK.add("Ťažká inoväť");                     
-        language.CZ.add("Těžká inovať");                     
+        language.CZ.add("Silná jinovatka");                     
         language.EN.add("Heavy frost");
         
 /*81*/  language.SK.add("NNA-SK");                     
@@ -338,11 +338,11 @@ public static void constructor(){
         language.EN.add("Initial a)");
         
 /*99*/  language.SK.add("Prechodné");                     
-        language.CZ.add("Prechodní");                     
+        language.CZ.add("Prechodné");                     
         language.EN.add("Transient");
         
 /*100*/  language.SK.add("Konečné");                     
-         language.CZ.add("Koneční");                     
+         language.CZ.add("Konečné");                     
          language.EN.add("Final");
          
 /*101*/  language.SK.add("Roky");                     
@@ -487,29 +487,29 @@ public static void constructor(){
         language.EN.add("Category V");
 
 /*135*/  language.SK.add("Kategória I\n\rBúrlivé otvorené more, jazerá do vzdialenosti najmenej 5 km proti smeru vetra a rovná krajina bez prekážok.");                    
-         language.CZ.add("Kategória I\n\rBouřlivé otevřené moře, jezera do vzdálenosti nejméne 5 km proti směru větra a rovná krajina bez překážek.");                    
+         language.CZ.add("Kategorie I\n\rBouřlivé otevřené moře, jezera do vzdálenosti nejméně 5 km proti směru větru a rovná krajina bez překážek.");                    
          language.EN.add("Category I\n\rStormy open sea, lakes at least 5 km away from the opposite side then wind orientation and landscape without obstacles.");
          
 /*136*/  language.SK.add("Kategória II\n\rPoľnohospodárska pôda s deliacimi živými plotmi, rozptýlené malé poľnohospodárske sídla, domy a stromy.");                    
-         language.CZ.add("Kategória II\n\rZemědělská půda s dělícími živými plotmi, rozptýlená malá polnohospodářská sídla, domy a stromy.");                    
+         language.CZ.add("Kategorie II\n\rZemědělská půda s dělícími živými plotmi,       rozptýlená malá polnohospodářská sídla, domy a stromy.");                    
          language.EN.add("Category II\n\rAgricultural land divided with hedges, distributed small agricultural settlements, houses and trees.");
          
 /*137*/  language.SK.add("Kategória III\n\rPredmestské alebo priemyselné oblasti a trvale zalesnené územia.");                    
-         language.CZ.add("Kategória III\n\rPředměstské nebo průmyslné oblasti a trvalo zalesněná území.");                    
+         language.CZ.add("Kategorie III\n\rPředměstské nebo průmyslové oblasti a trvale   zalesněná území.");                    
          language.EN.add("Category III\n\rSuburban or industrial areas and permanently forested areas.");
          
 /*138*/  language.SK.add("Kategória IV\n\rMestské oblasti, v ktorých je aspoň 15% povrchu pokrytého pozemnými stavbami s priemernou výškou > 15 m.");                    
-         language.CZ.add("Kategória IV\n\rMěstské oblasti, ve kterých je alespoň 15% povrchu pokrytého pozemními stavbami s průmernou výškou > 15 m.");                    
+         language.CZ.add("Kategorie IV\n\rMěstské oblasti, ve kterých je alespoň 15% povrchu pokrytého pozemními stavbami s průmernou výškou > 15 m.");                    
          language.EN.add("Category IV\n\rUrban areas with at least 15% of surface covered with ground structures with height over 15 m.");
          
 /*139*/  language.SK.add("Kategória V\n\rHornatý a viac členitý terén, kde sa vietor môže lokálne zosilňovať alebo zoslabovať.");                    
-         language.CZ.add("Kategória V\n\rHornatý a více članitý terén, kde se vítr může lokálně zesilovat nebo zoslabovat.");                    
+         language.CZ.add("Kategorie V\n\rHornatý a více člnitý terén, kde se vítr může    lokálně zesilovat nebo zeslabovat.");                    
          language.EN.add("Category V\n\rHighland and more indented terrain, where is the possibilty of local increase or decrease of wind speed.");
 
          // main_frame uroven spolahlivosti
          
 /*140*/  language.SK.add("Úroveň spoľahlivosti");                     
-        language.CZ.add("Úroveň spolahlivosti");                     
+        language.CZ.add("Úroveň spolehlivosti");                     
         language.EN.add("Reliabilty level");
         
 /*141*/  language.SK.add("1 (50 rokov)");                     
@@ -588,7 +588,7 @@ public static void constructor(){
         language.EN.add("Overloads");
         
 /*159*/  language.SK.add("Vypočítane");                       
-        language.CZ.add("Spočítáno");                     
+        language.CZ.add("Spočítáná");                     
         language.EN.add("Calculated");
         
 /*160*/  language.SK.add("Vlastné");                          
@@ -596,7 +596,7 @@ public static void constructor(){
         language.EN.add("Custom");
         
 /*161*/  language.SK.add("Stredná ročná teplota");       
-        language.CZ.add("Střední ročná teplota");                     
+        language.CZ.add("Průměrná roční teplota");                     
         language.EN.add("Average year temper.");
         
 /*162*/  language.SK.add("Stav");       
@@ -633,15 +633,15 @@ public static void constructor(){
          language.EN.add("Open flat terrain without trees, without obstacles, covered with snow, nearby water surfaces or over them.");
          
 /*170*/  language.SK.add("Otvorený plochý terén bez prekážok, bez snehu, napr. poľnohospodárska pôda bez akýchkoľvek prekážok.");                    
-         language.CZ.add("Otevřený plochý terén bez překážek, bez sněhu, např. zemědělská půda bez jakýkoliv překážky.");                    
+         language.CZ.add("Otevřený plochý terén bez překážek, bez sněhu, např. zemědělská půda bez jakékoliv překážky.");                    
          language.EN.add("Open flat terrain without obstacles, without snow, for example agricultural land without any obstacles.");
          
 /*171*/  language.SK.add("Otvorený plochý alebo zvlnený terén s ojedinelými prekážkami, napr. otvorené pastviny alebo poľnohospodárska pôda s málo stromami, živými plotmi a inými bariérami.");                    
-         language.CZ.add("Otevřený plochý nebo zvlnený terén s ojedinelými překážkami, např. otevřené pastviny nebo zemědělská půda s málo stromami, živými plotmi a jinými bariérami.");                    
+         language.CZ.add("Otevřený plochý nebo zvlněný terén s ojedinělými překážkami, např. otevřené pastviny nebo zemědělská půda s malým mnošstvím stromů, živých plotů a jiných bariér.");                    
          language.EN.add("Open flat or rolling landscape with occasional obstacles, for example open pastures or agricultural land with few tress, hedges and other obstacles.");
          
 /*172*/  language.SK.add("Zastavaný terén so stromami a stavbami, napr. predmestia, malé mestá, zalesnené oblasti s krovinami, malé polia s krovinami, stromami a živými plotmi");                    
-         language.CZ.add("Zastavaný terén se stromami a stavbami, např. pŕedměstí, malá města, zalesnené oblasti s krovinami, malé pole s krovinami, stromami a živými plotmi");                    
+         language.CZ.add("Zastavěný terén se stromy a stavbami, např. předměstí, malá města, zalesnené oblasti s křovinami, malé pole s křovinami,se stromy a živými ploty");                    
          language.EN.add("Built up landscape with trees and buildings, for example suburban areas, small cities, forested areas, small fields with bushes, trees and hedges.");
 
 /*173*/  language.SK.add("V čase rok po montáži");       
@@ -649,7 +649,7 @@ public static void constructor(){
          language.EN.add("In 1yr after constr. ");
         
 /*174*/  language.SK.add("V rovnakom čase ako prechodné tabuľky");       
-         language.CZ.add("V rovnakém čase jak přechodní tabulky");                     
+         language.CZ.add("Ve stejném čase jako přechodné tabulky");                     
          language.EN.add("Same time as transient tables");
              
 // main_frame texty do pdf 
@@ -663,7 +663,7 @@ public static void constructor(){
          language.EN.add("Calc. based on norm");
          
 /*177*/  language.SK.add("Nadpis pre prechodné");       
-         language.CZ.add("Nadpis pro přechodní");                     
+         language.CZ.add("Nadpis pro přechodné");                     
          language.EN.add("Name for transient");
          
 /*178*/  language.SK.add("Stavba");       
@@ -696,11 +696,11 @@ public static void constructor(){
          language.EN.add("Initial tables");
          
 /*185*/  language.SK.add("Prechodné tabuľky");       
-         language.CZ.add("Přechodní tabulky");                     
+         language.CZ.add("Přechodné tabulky");                     
          language.EN.add("Transient tables");
          
 /*186*/  language.SK.add("Konečné tabuľky");       
-         language.CZ.add("Koneční tabulky");                    
+         language.CZ.add("Konečné tabulky");                    
          language.EN.add("Final tables");
 
 /*187*/  language.SK.add("Výpočet podľa normy");       
@@ -735,20 +735,20 @@ public static void constructor(){
          language.CZ.add("Typ lana");                     
          language.EN.add("Conductor");
          
-/*195*/  language.SK.add("Parametre Lana");       
-         language.CZ.add("Parametre Lana");                     
-         language.EN.add("Parameters");
+/*195*/  language.SK.add("Parametre lana");       
+         language.CZ.add("Parametry lana");                     
+         language.EN.add("Parameters of conductor");
 
 /*196*/  language.SK.add("Menovitý priemer");       
          language.CZ.add("Menovitý průměr");                     
          language.EN.add("Diameter");
          
 /*197*/  language.SK.add("Menovitý prierez");       
-         language.CZ.add("Menovitý průřez");                     
+         language.CZ.add("Jmenovitý průměr");                     
          language.EN.add("Cross section");
          
 /*198*/  language.SK.add("Menovitá hmotnosť");       
-         language.CZ.add("Menovitá hmotnost");                     
+         language.CZ.add("Jmenovitá hmotnost");                     
          language.EN.add("Weight");
          
 /*199*/  language.SK.add("Modul pružnosti");       
@@ -756,7 +756,7 @@ public static void constructor(){
          language.EN.add("Young module");
          
 /*200*/  language.SK.add("Merná tiaž lana");       
-         language.CZ.add("Merná tíž lana");                     
+         language.CZ.add("Měrná váha lana");                     
          language.EN.add("Spec. gravity");
          
 /*201*/  language.SK.add("Koef. tep. rozťažnosti");      
@@ -768,7 +768,7 @@ public static void constructor(){
          language.EN.add("Rated Tens. Stren.");
 
 /*203*/  language.SK.add("Horizontálna zložka mechanického namáhania pri -5°C");       
-         language.CZ.add("Horizonrální složka mechanického namáhání při -5°C");                     
+         language.CZ.add("Horizontální složka mechanického namáhání při -5°C");                     
          language.EN.add("Horizontal mechanical stress in -5°C");
          
 /*204*/  language.SK.add("Stredná výška vodiča nad terénom v kotevnom úseku");       
@@ -889,7 +889,7 @@ public static void constructor(){
          language.EN.add("Stress values ");
          
 /*239*/  language.SK.add("a parametra c pre stredné rozpätie = ");       
-         language.CZ.add("a parametra c pro střední rozpetí  = ");                     
+         language.CZ.add("a parametry c pro střední rozpětí  = ");                     
          language.EN.add("and parameter c for average span   = ");
 
 /*240*/  language.SK.add("teplota [°C]");       
@@ -901,11 +901,11 @@ public static void constructor(){
          language.EN.add("overloads");
          
 /*242*/  language.SK.add("Viditeľné priehyby F");       
-         language.CZ.add("Viditeľné priehyby");                     
+         language.CZ.add("Viditeľné průhyby");                     
          language.EN.add("Visible sags");
          
 /*243*/  language.SK.add("v jednotlicých rozpätiach kotevného úseku");       
-         language.CZ.add("v jednotlivých rozpětích kotěvního úseku");                     
+         language.CZ.add("v jednotlivých rozpětích kotevního úseku");                     
          language.EN.add("in specific spans from tensioning section");
 
 /*244*/  language.SK.add("Nový projekt");       
@@ -937,15 +937,15 @@ public static void constructor(){
          language.EN.add("Pull and working nodes check");
          
 /*251*/  language.SK.add("Zavri povodný subor");       
-         language.CZ.add("Zavři původní soubor");                     
+         language.CZ.add("Zavřete původní soubor");                     
          language.EN.add("Close original file");
          
 /*252*/  language.SK.add("Nie je vybraný žiaden kotevný usek");       
-         language.CZ.add("Není vybraný žádný kotěvný úsek");                     
+         language.CZ.add("Není vybrán žádný kotevní úsek");                     
          language.EN.add("No tensioning section selected");
          
 /*253*/  language.SK.add("Rozpätie kot. úseku");       
-         language.CZ.add("Rozpetí kot. úseku");                     
+         language.CZ.add("Rozpětí kot. úseku");                     
          language.EN.add("Span of tens. sec.");
          
 /*254*/  language.SK.add("Oblasť");       
@@ -1046,7 +1046,7 @@ public static void constructor(){
          language.EN.add("Tensioning section deleted");
          
 /*281*/  language.SK.add("Ťah pre -5+N - percentuálny podiel námrazy");       
-         language.CZ.add("Tah pro -5+N - percentuální podíl námrazy");                     
+         language.CZ.add("Tah pro -5+N - procentuální podíl námrazy");                     
          language.EN.add("Pull for -5+N - ice overload percent");
 
 /*282*/  language.SK.add("Ťah -5+Nv konečné tab.");       
@@ -1058,7 +1058,7 @@ public static void constructor(){
          language.EN.add("Pull");
          
 /*284*/  language.SK.add("Nie je označený žiaden kot. úsek");       
-         language.CZ.add("Není označen žádný kotěvný úsek");                     
+         language.CZ.add("Není označen žádný kotěvní úsek");                     
          language.EN.add("No tensioning section selected");
          
 /*285*/  language.SK.add(" volitelné tab.");       
@@ -1109,6 +1109,24 @@ public static void constructor(){
 /*297*/  language.SK.add("Podiel z námrazy");       
          language.CZ.add("Podíl z námrazy");                    
          language.EN.add("Pecetage from iceload");
+/*298*/  language.SK.add("Neexistuje rozpätie.");       
+         language.CZ.add("Neexistuje rozpětí.");                    
+         language.EN.add("There is no span.");
+/*299*/  language.SK.add("Neexistujú výšky stožiarov");       
+         language.CZ.add("Neexistují vejšky stožárú");                    
+         language.EN.add("There are no tower heights");
+/*300*/  language.SK.add("Neexistujú výšky nad morom.");       
+         language.CZ.add("Neexistují vejšky nad morem.");                    
+         language.EN.add("There are no abowe see level heights");
+/*301*/  language.SK.add("Námrazová oblast nie je vybraná.");       
+         language.CZ.add("Námrazová oblast není je vybrána.");                    
+         language.EN.add("Ice load is not defined.");
+/*302*/  language.SK.add("Prekročené RTS na kot. úseku :");       
+         language.CZ.add("Prekročení RTS na kot. úseku :");                    
+         language.EN.add("Large RTS at :");
+/*303*/  language.SK.add("Pozor oblasť tlmenie 3 na kot. úseku :");       
+         language.CZ.add("Pozor oblast tlumení 3na kot. úseku :");                    
+         language.EN.add("Opps control area 3 at :");         
          
  inicializovane = true;
 }
