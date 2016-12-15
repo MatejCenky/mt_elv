@@ -33,10 +33,10 @@
                       <EmptySpace min="12" pref="12" max="-2" attributes="0"/>
                       <Component id="createButton" min="-2" pref="166" max="-2" attributes="0"/>
                   </Group>
-                  <Component id="jLabel1" min="-2" pref="218" max="-2" attributes="0"/>
                   <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLabel1" alignment="0" min="-2" pref="426" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace max="32767" attributes="0"/>
+              <EmptySpace pref="32" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>

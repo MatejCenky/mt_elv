@@ -104,6 +104,7 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
         initComponents();
         setDefaultCloseOperation(mainframe_3.DO_NOTHING_ON_CLOSE);
         setLocationRelativeTo(null);
+        isOpen = true;
         first_Start = true;
         povodna_hodnota_selekcie = 0;
         current_pdf_page = 1;
@@ -629,13 +630,14 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
             
             if(really_close_mainframe == true && really_close_mainframe_save == false ){
               
-                
+                isOpen=false;
                 e.getWindow().dispose();
             } 
             
             if(really_close_mainframe == true && really_close_mainframe_save == true ){
               
                 Button_Icon_save.doClick();
+                isOpen=false;
                 e.getWindow().dispose();
             } 
             
@@ -1063,7 +1065,7 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(Label_status, javax.swing.GroupLayout.PREFERRED_SIZE, 308, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1221,7 +1223,7 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
                             .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(jTextField_nazov_SOPS1, javax.swing.GroupLayout.DEFAULT_SIZE, 329, Short.MAX_VALUE)
                                 .addComponent(jTextField_nazov_nazov_stavby1)))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1887,7 +1889,7 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(TextField_pretazenia_stav14, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(43, Short.MAX_VALUE))
+                .addGap(43, 43, 43))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2080,9 +2082,7 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
                 .addContainerGap()
                 .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jComboBox_uroven_splahlivosti, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(jPanel11Layout.createSequentialGroup()
-                        .addComponent(Label_uroven_spolahlivosti, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(Label_uroven_spolahlivosti, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel11Layout.createSequentialGroup()
                         .addGap(1, 1, 1)
                         .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2178,34 +2178,35 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
         jPanel10Layout.setHorizontalGroup(
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel10Layout.createSequentialGroup()
-                .addGap(15, 15, 15)
                 .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel10Layout.createSequentialGroup()
-                        .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(Label_zakladne_mech_napatie_minis5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 177, Short.MAX_VALUE)
-                            .addComponent(Label_RTS, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(Label_max_zataz_lana, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addGroup(jPanel10Layout.createSequentialGroup()
+                        .addGap(15, 15, 15)
                         .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(TextField_RTS, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(TextField_zakladne_mech_lana_minus5, javax.swing.GroupLayout.DEFAULT_SIZE, 58, Short.MAX_VALUE)
-                                .addComponent(TextField_max_mech_podiel_z_RTS)))
-                        .addGap(2, 2, 2)
-                        .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(Label_RTS_velicina3)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel10Layout.createSequentialGroup()
-                                .addGap(13, 13, 13)
-                                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(Label_RTS_velicina)
-                                    .addComponent(Label_RTS_velicina2))))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jComboBox_conductor_chooser, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(Label_zakladne_mech_napatie_minis5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 177, Short.MAX_VALUE)
+                                    .addComponent(Label_RTS, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(Label_max_zataz_lana, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(TextField_RTS, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(TextField_zakladne_mech_lana_minus5, javax.swing.GroupLayout.DEFAULT_SIZE, 58, Short.MAX_VALUE)
+                                        .addComponent(TextField_max_mech_podiel_z_RTS)))
+                                .addGap(2, 2, 2)
+                                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(Label_RTS_velicina3)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel10Layout.createSequentialGroup()
+                                        .addGap(13, 13, 13)
+                                        .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(Label_RTS_velicina)
+                                            .addComponent(Label_RTS_velicina2))))
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addComponent(jComboBox_conductor_chooser, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(jPanel10Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(Label_kotevne_useky1, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
-            .addGroup(jPanel10Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(Label_kotevne_useky1, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel10Layout.setVerticalGroup(
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2373,12 +2374,24 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(Label_základna_rychlost_vetra, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(Label_RTS_velicina4))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jScrollPane5, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
+                                .addComponent(Label_char_terenu, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jComboBox_char_terenu, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(Label_vetrova_oblast)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jComboBox_vetrova_oblast, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(57, 57, 57))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(Label_základna_rychlost_vetra, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(Label_RTS_velicina4))
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(Label_vetrova_oblast_Cdir, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -2409,19 +2422,7 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
                                 .addComponent(Label_char_terenu_zo, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(1, 1, 1)
                                 .addComponent(TextField_dlzka_drsnjosti_zo, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jScrollPane5, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
-                                .addComponent(Label_char_terenu, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jComboBox_char_terenu, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(Label_vetrova_oblast)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jComboBox_vetrova_oblast, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(57, 57, 57))))
+                        .addContainerGap())))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2515,7 +2516,7 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel7Layout.createSequentialGroup()
                         .addComponent(Label_stredna_vyska_vodicov_nad_terenom, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addContainerGap())
                     .addGroup(jPanel7Layout.createSequentialGroup()
                         .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jRadioButton_with_label_vypoctana, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -3154,7 +3155,7 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         jPanel12Layout.setVerticalGroup(
             jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -3366,7 +3367,7 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
                         .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(jTabbedPane1, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jPanel6, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jPanel9, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 0, Short.MAX_VALUE))
+                            .addComponent(jPanel9, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jPanel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -4189,11 +4190,11 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
             
         /// WARNINGOVAC AND TESTER ZONE 
         kotevnyUsek Kot_usek = Variable_globeal_kotevny_usek.get(i);
-        warning_text ="Array Ai neni vyplneni";            if (Kot_usek.get_Ai_array().length == 1){}  // warning neni array A1 vyplneni a nebude to fungovať
-        warning_text ="Array HI neni vyplneni";            if (Kot_usek.get_Hi_array().length == 1){}  // warning neni array A1 vyplneni a nebude to fungovať     
-        warning_text ="Array dHI neni vyplneni";            if (Kot_usek.get_DeltaHi_array().length == 1){}  // warning neni array A1 vyplneni a nebude to fungovať        
-        warning_text ="Námazová oblast nie je vybraná ";  if (Kot_usek.get_I_R50() == 123456789.987654321){throw new NullPointerException();}
-        warning_text ="Hcmean = 0 ";  if (Kot_usek.get_h_c_mean() == 123456789.987654321 || Kot_usek.get_h_c_mean() == 0){throw new NullPointerException();}
+        warning_text =language.language_label(languageOption, 298);            if (Kot_usek.get_Ai_array().length == 1){}  // warning neni array A1 vyplneni a nebude to fungovať
+        warning_text =language.language_label(languageOption, 299);            if (Kot_usek.get_Hi_array().length == 1){}  // warning neni array A1 vyplneni a nebude to fungovať     
+        warning_text =language.language_label(languageOption, 300);            if (Kot_usek.get_DeltaHi_array().length == 1){}  // warning neni array A1 vyplneni a nebude to fungovať        
+        warning_text =language.language_label(languageOption, 301);  if (Kot_usek.get_I_R50() == 123456789.987654321){throw new NullPointerException();}
+        warning_text ="Error Hcmean=0";  if (Kot_usek.get_h_c_mean() == 123456789.987654321 || Kot_usek.get_h_c_mean() == 0){throw new NullPointerException();}
         
         
         ///MAIN CALCULATION
@@ -4522,8 +4523,8 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
         //insert value % into text fields
         int cislo = Table_kotevne_useky.getSelectedRow();
         set_percento_to_mainframe(Variable_globeal_kotevny_usek.get(cislo));
-        set_tahy_to_mainframe(Variable_globeal_kotevny_usek.get(cislo));
-        set_KPB_to_mainframe(Variable_globeal_kotevny_usek.get(cislo));
+        set_tahy_to_mainframe(true,Variable_globeal_kotevny_usek.get(cislo));
+        set_KPB_to_mainframe(true,Variable_globeal_kotevny_usek.get(cislo));
         Calculation_done=true;  // bool prebehla kalkulacia
         Variable_globeal_kotevny_usek_zmena = Variable_globeal_kotevny_usek;
         Label_status.setText(language.language_label(languageOption, 284));
@@ -4589,7 +4590,9 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
             return result_T;
     }
     
-    private  void set_KPB_to_mainframe(kotevnyUsek X){
+    private  void set_KPB_to_mainframe(Boolean perse,kotevnyUsek X){
+        
+      Boolean kontrola3 = false;  
         
       // vymaž všetky riadky ak su v tabulle KPB  
      try{ 
@@ -4604,14 +4607,27 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
             modeltable_KPB.addRow(new Object[0]);
             modeltable_KPB.setValueAt(X.get_Ai_array()[i], i, 0);
             modeltable_KPB.setValueAt(X.get_vysledky_KPB()[i], i, 1);
+            if(X.get_vysledky_KPB()[i] == 3 ){
+                kontrola3=true;
+            }
+            
            // Table_KPB.getComponentAt(0, 0).SETsetToolTipText(filename);
         }
+        if(perse==true){
+         warning_text =language.language_label(languageOption, 303) + X.get_name();
+     if( kontrola3==true){
+         throw new NullPointerException();
+         } }
+         
         
-     }catch(NullPointerException e ){Swriter("no data");}   
+     }catch(NullPointerException e ){Swriter("no data");
+     if(perse==true){warning_sign(warning_text);}}   
     }
     
-     private  void set_tahy_to_mainframe(kotevnyUsek X){
+     private  void set_tahy_to_mainframe(Boolean perse,kotevnyUsek X){
         
+            
+         
        DecimalFormatSymbols otherSymbols = new DecimalFormatSymbols();
                otherSymbols.setDecimalSeparator('.');
                DecimalFormat df = new DecimalFormat("####.##",otherSymbols);  // definovany počet desatinnych miest
@@ -4654,8 +4670,24 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
          podiel_z_RTS1.setText(df.format(podielzRTS1));
          podiel_z_RTS2.setText(df.format(podielzRTS2));
          
-     }catch(NullPointerException e ){Swriter("no data");}   
+     if(perse == true){
+     warning_text =language.language_label(languageOption, 302) + X.get_name();
+     if( podielzRTS1 > X.get_maximalne_zataz_lana_podiel_z_RTS_over()){
+         throw new NullPointerException();
+         }    
+     } 
+         
+     }catch(NullPointerException e ){Swriter("no data");
+      
+     if(perse ==true){warning_sign(warning_text);}}  
+     
+     
+     
+     
     }
+     
+     
+     
      private  void set_percento_to_mainframe(kotevnyUsek X){
         
        
@@ -4682,7 +4714,12 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
          vyp_percento2_sigma.setText( language.language_label(languageOption, 258)  );
          vyp_percento3_sigma.setText( language.language_label(languageOption, 258)  );
          vyp_percento4_sigma.setText( language.language_label(languageOption, 258)  );
-    }}
+    }
+     
+     
+     
+     
+     }
     
     
     private void Button_Icon_arr_row_table_kotevny_usekActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button_Icon_arr_row_table_kotevny_usekActionPerformed
@@ -4877,8 +4914,8 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
 
     private void jTabbedPane1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTabbedPane1MouseClicked
         int cislo = Table_kotevne_useky.getSelectedRow();
-        set_KPB_to_mainframe(Variable_globeal_kotevny_usek.get(cislo));
-        set_tahy_to_mainframe(Variable_globeal_kotevny_usek.get(cislo));
+        set_KPB_to_mainframe(false,Variable_globeal_kotevny_usek.get(cislo));
+        set_tahy_to_mainframe(false,Variable_globeal_kotevny_usek.get(cislo));
         tah_konecne1.setText(language.language_label(languageOption, 283) + String.valueOf(jComboBox_stav_KPB.getSelectedItem()) + language.language_label(languageOption, 285));
     }//GEN-LAST:event_jTabbedPane1MouseClicked
 
@@ -5389,7 +5426,21 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
     }//GEN-LAST:event_TextField_max_mech_podiel_z_RTSActionPerformed
 
     private void TextField_zakladne_mech_lana_minus5KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextField_zakladne_mech_lana_minus5KeyReleased
+        
+       
+       
+        DecimalFormatSymbols otherSymbols = new DecimalFormatSymbols();
+        otherSymbols.setDecimalSeparator('.');
+        DecimalFormat df = new DecimalFormat("###.##",otherSymbols); // definovany počet desatinnych miest
+       
+        
         Variable_zakladne_mech_napatie_lana_pre_minus5=doubleChecker_short_answer(TextField_zakladne_mech_lana_minus5);
+        if ( Variable_zakladne_mech_napatie_lana_pre_minus5 < 0){
+            Variable_zakladne_mech_napatie_lana_pre_minus5=Variable_zakladne_mech_napatie_lana_pre_minus5 * (-1);
+            TextField_zakladne_mech_lana_minus5.setText(df.format(Variable_zakladne_mech_napatie_lana_pre_minus5));
+        }
+        
+        
     }//GEN-LAST:event_TextField_zakladne_mech_lana_minus5KeyReleased
 
     private void TextField_zakladne_mech_lana_minus5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextField_zakladne_mech_lana_minus5ActionPerformed
@@ -6441,6 +6492,7 @@ private static String memory_path_plus_filename_here;
 private static boolean memory_path_plus_filename_existence = false;
 public static Object[] vlastnehodnoty_uroven_splahlivosti = new Object[4];
 public static String warning_text = "";
+public static Boolean isOpen = false;
 // importnt variables
 private static double  Variable_RTS;
 private static double  Variable_Ir50;

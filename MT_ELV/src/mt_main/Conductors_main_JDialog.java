@@ -23,8 +23,25 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableModel;
+import mainframe_10.mainframe_10;
+import mainframe_11.mainframe_11;
+import mainframe_12.mainframe_12;
+import mainframe_13.mainframe_13;
+import mainframe_14.mainframe_14;
+import mainframe_15.mainframe_15;
+import mainframe_16.mainframe_16;
+import mainframe_17.mainframe_17;
+import mainframe_18.mainframe_18;
+import mainframe_19.mainframe_19;
 import mainframe_2.mainframe_2;
+import mainframe_20.mainframe_20;
 import mainframe_3.mainframe_3;
+import mainframe_4.mainframe_4;
+import mainframe_5.mainframe_5;
+import mainframe_6.mainframe_6;
+import mainframe_7.mainframe_7;
+import mainframe_8.mainframe_8;
+import mainframe_9.mainframe_9;
 
 import static mt_main.startPanel.languageOption;
 
@@ -543,6 +560,24 @@ public class Conductors_main_JDialog extends javax.swing.JDialog {
             mainframe_1.lanochangeinDatabaze();
             mainframe_2.lanochangeinDatabaze();
             mainframe_3.lanochangeinDatabaze();
+            mainframe_4.lanochangeinDatabaze();
+            mainframe_5.lanochangeinDatabaze();
+            mainframe_6.lanochangeinDatabaze();
+            mainframe_7.lanochangeinDatabaze();
+            mainframe_8.lanochangeinDatabaze();
+            mainframe_9.lanochangeinDatabaze();
+            mainframe_10.lanochangeinDatabaze();
+            mainframe_11.lanochangeinDatabaze();
+            mainframe_12.lanochangeinDatabaze();
+            mainframe_13.lanochangeinDatabaze();
+            mainframe_14.lanochangeinDatabaze();
+            mainframe_15.lanochangeinDatabaze();
+            mainframe_16.lanochangeinDatabaze();
+            mainframe_17.lanochangeinDatabaze();
+            mainframe_18.lanochangeinDatabaze();
+            mainframe_19.lanochangeinDatabaze();
+            mainframe_20.lanochangeinDatabaze();
+  
         } catch (FileNotFoundException ex) {
             Logger.getLogger(Conductors_main_JDialog.class.getName()).log(Level.SEVERE, null, ex);
         }
