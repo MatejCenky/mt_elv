@@ -804,7 +804,6 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
         Label_vetrova_oblast = new javax.swing.JLabel();
         Label_základna_rychlost_vetra = new javax.swing.JLabel();
         TextField_Vmean_0 = new javax.swing.JTextField();
-        Label_RTS_velicina4 = new javax.swing.JLabel();
         Label_vetrova_oblast_Cdir = new javax.swing.JLabel();
         jRadioButton_vetrova_oblast_Cdir_1 = new javax.swing.JRadioButton();
         jRadioButton_vetrova_oblast_Cdir_vlastna = new javax.swing.JRadioButton();
@@ -2201,7 +2200,7 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
                                         .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                             .addComponent(Label_RTS_velicina)
                                             .addComponent(Label_RTS_velicina2))))
-                                .addGap(0, 0, Short.MAX_VALUE))
+                                .addGap(0, 5, Short.MAX_VALUE))
                             .addComponent(jComboBox_conductor_chooser, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(jPanel10Layout.createSequentialGroup()
                         .addContainerGap()
@@ -2258,8 +2257,6 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
                 TextField_Vmean_0KeyReleased(evt);
             }
         });
-
-        Label_RTS_velicina4.setText("m/s");
 
         Label_vetrova_oblast_Cdir.setText(language.language_label(languageOption, 110));
         Label_vetrova_oblast_Cdir.setToolTipText(language.language_label(languageOption, 111));
@@ -2388,10 +2385,7 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
                         .addGap(57, 57, 57))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(Label_základna_rychlost_vetra, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(Label_RTS_velicina4))
+                            .addComponent(Label_základna_rychlost_vetra, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(Label_vetrova_oblast_Cdir, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -2410,7 +2404,7 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
                                         .addComponent(Label_vetrova_oblast_C0, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(jRadioButton_vetrova_oblast_C0_1)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(jRadioButton_vetrova_oblast_C0_vlastna)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(TextField_vetrova_oblast_C0, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))))
@@ -2435,7 +2429,6 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Label_základna_rychlost_vetra)
                     .addComponent(TextField_Vmean_0, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Label_RTS_velicina4)
                     .addComponent(Label_RTS_velicina8))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -2850,7 +2843,7 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
             .addGroup(jPanel19Layout.createSequentialGroup()
                 .addGroup(jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 309, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, 309, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -4249,7 +4242,7 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
            vysledky_pretazenia5.add(overload.z_iW);
            double[] target = new double[vysledky_pretazenia5.size()];
            for (int a = 0; a < target.length; a++) {    
-           target[i] = vysledky_pretazenia5.get(a);                // java 1.5+ style (outboxing)
+           target[a] = vysledky_pretazenia5.get(a);                // java 1.5+ style (outboxing)
            }         
            Kot_usek.set_vysledky_pretazenia6(target);
 
@@ -6248,7 +6241,6 @@ pretazenia_intomainframe();
     private javax.swing.JLabel Label_RTS_velicina14;
     private javax.swing.JLabel Label_RTS_velicina2;
     private javax.swing.JLabel Label_RTS_velicina3;
-    private javax.swing.JLabel Label_RTS_velicina4;
     private javax.swing.JLabel Label_RTS_velicina5;
     private javax.swing.JLabel Label_RTS_velicina6;
     private javax.swing.JLabel Label_RTS_velicina7;

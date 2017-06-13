@@ -1639,7 +1639,7 @@
                           <Group type="102" alignment="0" attributes="0">
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                   <Component id="jPanel2" min="-2" pref="309" max="-2" attributes="0"/>
-                                  <Component id="jPanel10" min="-2" pref="309" max="-2" attributes="0"/>
+                                  <Component id="jPanel10" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
@@ -1852,7 +1852,7 @@
                                                           </Group>
                                                       </Group>
                                                   </Group>
-                                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                                  <EmptySpace min="0" pref="5" max="32767" attributes="0"/>
                                               </Group>
                                               <Component id="jComboBox_conductor_chooser" max="32767" attributes="0"/>
                                           </Group>
@@ -2026,11 +2026,7 @@
                                       </Group>
                                       <Group type="102" attributes="0">
                                           <Group type="103" groupAlignment="0" attributes="0">
-                                              <Group type="102" alignment="0" attributes="0">
-                                                  <Component id="Label_základna_rychlost_vetra" min="-2" pref="99" max="-2" attributes="0"/>
-                                                  <EmptySpace max="-2" attributes="0"/>
-                                                  <Component id="Label_RTS_velicina4" min="-2" max="-2" attributes="0"/>
-                                              </Group>
+                                              <Component id="Label_základna_rychlost_vetra" alignment="0" min="-2" pref="99" max="-2" attributes="0"/>
                                               <Group type="102" attributes="0">
                                                   <Component id="Label_vetrova_oblast_Cdir" min="-2" pref="39" max="-2" attributes="0"/>
                                                   <EmptySpace max="-2" attributes="0"/>
@@ -2050,7 +2046,7 @@
                                                           <Component id="Label_vetrova_oblast_C0" min="-2" pref="31" max="-2" attributes="0"/>
                                                           <EmptySpace min="-2" max="-2" attributes="0"/>
                                                           <Component id="jRadioButton_vetrova_oblast_C0_1" min="-2" max="-2" attributes="0"/>
-                                                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                                          <EmptySpace max="-2" attributes="0"/>
                                                           <Component id="jRadioButton_vetrova_oblast_C0_vlastna" min="-2" max="-2" attributes="0"/>
                                                           <EmptySpace max="-2" attributes="0"/>
                                                           <Component id="TextField_vetrova_oblast_C0" min="-2" pref="26" max="-2" attributes="0"/>
@@ -2085,7 +2081,6 @@
                                   <Group type="103" groupAlignment="3" attributes="0">
                                       <Component id="Label_základna_rychlost_vetra" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="TextField_Vmean_0" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="Label_RTS_velicina4" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="Label_RTS_velicina8" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace max="-2" attributes="0"/>
@@ -2167,11 +2162,6 @@
                             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="TextField_Vmean_0ActionPerformed"/>
                             <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="TextField_Vmean_0KeyReleased"/>
                           </Events>
-                        </Component>
-                        <Component class="javax.swing.JLabel" name="Label_RTS_velicina4">
-                          <Properties>
-                            <Property name="text" type="java.lang.String" value="m/s"/>
-                          </Properties>
                         </Component>
                         <Component class="javax.swing.JLabel" name="Label_vetrova_oblast_Cdir">
                           <Properties>
