@@ -438,7 +438,7 @@ public class overload {
      */
     private static void combined_load(){
         overload.q_wI3 = overload.q_p* overload.D_I* overload.C_cl* overload.G_c* overload.Psi_w;
-        overload.q_wIT = overload.q_p* overload.D_i* overload.C_cl* overload.G_c* overload.B_I* overload.B_I;
+        overload.q_wIT = overload.q_p* overload.D_i* overload.C_cl* overload.G_c* overload.B_I* overload.B_I* overload.gama_w;;
     }
     
     /**
