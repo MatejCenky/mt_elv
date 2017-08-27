@@ -29,7 +29,7 @@ public static void constructor(){
  /*1*/   language.SK.add("Súbor");                       language.CZ.add("Soubor");              language.EN.add("File");            //language String value  at position 
  /*2*/   language.SK.add("Nový");                        language.CZ.add("Nový");                language.EN.add("New");             //language String value  at position 
  /*3*/   language.SK.add("Načítať");                     language.CZ.add("Načíst");             language.EN.add("Load");            //language String value  at position 
- /*4*/   language.SK.add("Verzia 1.1 ");             language.CZ.add("Verze 1.1 ");      language.EN.add("Version 1.1 ");     //language String value  at position 
+ /*4*/   language.SK.add("Verzia 1.4 ");             language.CZ.add("Verze 1.4 ");      language.EN.add("Version 1.4 ");     //language String value  at position 
  /*5*/   language.SK.add("Nastavenia exportu");          language.CZ.add("Nastavení exportu");   language.EN.add("Export settings"); 
  /*6*/   language.SK.add("Koniec");                      language.CZ.add("Konec");               language.EN.add("Exit"); 
  /*7*/   language.SK.add("Knižnica");                    language.CZ.add("Knihovna");            language.EN.add("Library");
@@ -1126,7 +1126,19 @@ public static void constructor(){
          language.EN.add("Large RTS at :");
 /*303*/  language.SK.add("Pozor oblasť tlmenie 3 na kot. úseku :");       
          language.CZ.add("Pozor oblast tlumení 3na kot. úseku :");                    
-         language.EN.add("Opps control area 3 at :");         
+         language.EN.add("Opps control area 3 at :");
+/*304*/  language.SK.add("Uložiť");       
+         language.CZ.add("Ulozit");                    
+         language.EN.add("Save");
+/*305*/  language.SK.add("Stormo");       
+         language.CZ.add("Stormo");                    
+         language.EN.add("Stormo");  
+/*306*/  language.SK.add("Cesta pre load suborov MT3");       
+         language.CZ.add("Cesta pro načítaní souboru MT3");                    
+         language.EN.add("Path for loading of MT3 files");  
+/*307*/  language.SK.add("Cesta");       
+         language.CZ.add("Cesta");                    
+         language.EN.add("Path");          
          
  inicializovane = true;
 }

@@ -40,7 +40,7 @@ public class startPanel extends javax.swing.JFrame {
          
          EmptyLine= input.nextLine(); // first empty line info line
          conductor_memory_path_plus_filename=input.nextLine();
-         
+         load_memory_path_plus_filename=input.nextLine();
          
           } catch (FileNotFoundException ex) {
 
@@ -106,6 +106,7 @@ public class startPanel extends javax.swing.JFrame {
         jSeparator2 = new javax.swing.JPopupMenu.Separator();
         jMenuIFileExitButton = new javax.swing.JMenuItem();
         jMenuLibratyButton = new javax.swing.JMenu();
+        jMenuItem2 = new javax.swing.JMenuItem();
         jMenuILibratyConductorsButton = new javax.swing.JMenuItem();
         jMenuHelp = new javax.swing.JMenu();
         jMenuIHelpHelpMT3BUtton = new javax.swing.JMenuItem();
@@ -162,6 +163,14 @@ public class startPanel extends javax.swing.JFrame {
         jMenuBar1.add(JmenuFileMenu);
 
         jMenuLibratyButton.setText(language.language_label(languageOption,7));
+
+        jMenuItem2.setText(language.language_label(languageOption,307));
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
+        jMenuLibratyButton.add(jMenuItem2);
 
         jMenuILibratyConductorsButton.setText(language.language_label(languageOption,8));
         jMenuILibratyConductorsButton.addActionListener(new java.awt.event.ActionListener() {
@@ -325,6 +334,13 @@ public class startPanel extends javax.swing.JFrame {
        help_about_dialog_window.setVisible(true);   // opens dialog window 
     }//GEN-LAST:event_jMenuIHelpAboutButtonActionPerformed
 
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+          
+        path_load_Jdialog path_load_Jdialog_window = new path_load_Jdialog(this, rootPaneCheckingEnabled);
+       path_load_Jdialog_window.setVisible(true);   // opens dialog window 
+        
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
+
     //posiela status mainu aby odblokovalo vytvorenie noveho okna
     public static int getStatus_for_new_project() {
         return Clicked_NEW;
@@ -404,6 +420,7 @@ public class startPanel extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuIHelpStandardsButton;
     private javax.swing.JMenuItem jMenuILibratyConductorsButton;
     private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenu jMenuLibratyButton;
     private javax.swing.JPopupMenu jPopupMenu1;
     private javax.swing.JPopupMenu jPopupMenu2;
@@ -417,6 +434,7 @@ public static Integer languageOption  ;
  public static int Clicked_NEW = 0;
  public static boolean conductor_password_set = false;
  public static String conductor_memory_path_plus_filename="none";
+ public static String  load_memory_path_plus_filename="none";
  public static boolean end_of_programme = false;
  
     private void seticon() {

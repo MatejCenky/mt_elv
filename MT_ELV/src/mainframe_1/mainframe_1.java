@@ -24,9 +24,12 @@ import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 import com.itextpdf.text.pdf.draw.LineSeparator;
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Desktop;
 import java.awt.Point;
 import java.awt.Toolkit;
+import java.awt.event.FocusAdapter;
+import java.awt.event.FocusEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.awt.image.BufferedImage;
@@ -43,18 +46,28 @@ import java.text.DecimalFormatSymbols;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.EventObject;
 import java.util.Locale;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.DefaultCellEditor;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
+import javax.swing.JTable;
+import javax.swing.JTextField;
+import javax.swing.SwingConstants;
+import javax.swing.SwingUtilities;
+import javax.swing.event.CellEditorListener;
+import javax.swing.event.ChangeEvent;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.event.TableModelEvent;
 import javax.swing.event.TableModelListener;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableCellEditor;
+import javax.swing.table.TableColumn;
 import mt_main.language;
 import mt_main.startPanel;
 import static mt_main.startPanel.languageOption;
@@ -70,6 +83,7 @@ import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.rendering.ImageType;
 import org.apache.pdfbox.rendering.PDFRenderer;
 import org.apache.pdfbox.tools.imageio.ImageIOUtil;
+import sun.swing.DefaultLookup;
 
 /**
  *
@@ -144,11 +158,25 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
         Label_status.setText(language.language_label(languageOption, 271));
         
         seticon();
+        
+       
+        
         this.modelTable = (DefaultTableModel) Table_kotevne_useky.getModel();
         this.modeltable_rozpatia = (DefaultTableModel) Table_rozpatia.getModel();
         this.modeltable_rozpatia_nadm_vysky = (DefaultTableModel) Table_rozpatia_nadm_vysky.getModel();
         this.modeltable_KPB = (DefaultTableModel) Table_KPB.getModel();
         this.modeltable_tahy = (DefaultTableModel) Table_tahy.getModel();
+        // pridavame cell editory custom made uplne dole je separatna class nato
+        TableColumn col = Table_rozpatia_nadm_vysky.getColumnModel().getColumn(0);
+        col.setCellEditor( new MyCellEditor());
+        TableColumn col1 = Table_rozpatia_nadm_vysky.getColumnModel().getColumn(1);
+        col1.setCellEditor( new MyCellEditor());
+        TableColumn colr = Table_rozpatia.getColumnModel().getColumn(0);
+        colr.setCellEditor( new MyCellEditor());
+        TableColumn colk = Table_kotevne_useky.getColumnModel().getColumn(1);
+        colk.setCellEditor( new MyCellEditor());
+        
+   
         
         // lost focus when not selected auto enter select
         Table_rozpatia.putClientProperty("terminateEditOnFocusLost", Boolean.TRUE);
@@ -260,12 +288,13 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
         //testing Jtable
         
         modeltable_rozpatia.addRow(new Object[]{(String) "-----------------------------------------"});    // nulty riedok
-        Table_rozpatia.setRowHeight(0,8);
+        Table_rozpatia.setRowHeight(0,12);
         
         modeltable_rozpatia.addRow(new Object[0]);
         modeltable_rozpatia_nadm_vysky.addRow(new Object[1]);
         modeltable_rozpatia_nadm_vysky.addRow(new Object[1]);
-        Table_rozpatia.setRowHeight(1,16);
+        Table_rozpatia.setRowHeight(1,24);
+        Table_rozpatia_nadm_vysky.setRowHeight(1,24);
         
         // inicializacia_ ARRAZLISTOV?NULOVANIE
         Variable_Ai_dlzka_rozpatia.removeAll(Variable_Ai_dlzka_rozpatia);
@@ -296,7 +325,7 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
         try{hodnoty[1] =Double.valueOf(String.valueOf(hodnoty_namrazove_oblasti[1]));}catch(NullPointerException i){hodnoty[1]=0;}
         try{hodnoty[2] =Double.valueOf(String.valueOf(hodnoty_namrazove_oblasti[2]));}catch(NullPointerException i){hodnoty[2]=0;}
         try{hodnoty[3] =Double.valueOf(String.valueOf(hodnoty_namrazove_oblasti[3]));}catch(NullPointerException i){hodnoty[3]=0;}
-                        kotevnyUsek docasny_kot_usek = new kotevnyUsek(new_kotevny_usek_name, 0, 0, 0, 0, 0, filename, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, teplotyser, first_Start, teplotyser, teplotyser, teplotyser, first_Start, Variable_Ai_array, Variable_Hi_array, Variable_Hi_array, Variable_Hi_array_nmv, 0, 0, 0,hodnoty);
+                        kotevnyUsek docasny_kot_usek = new kotevnyUsek(new_kotevny_usek_name, 0,"0", 0, 0, 0, 0, filename, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, teplotyser, first_Start, teplotyser, teplotyser, teplotyser, first_Start, Variable_Ai_array, Variable_Hi_array, Variable_Hi_array, Variable_Hi_array_nmv, 0, 0, 0,hodnoty);
                         mainframe_to_kotevny_usek(docasny_kot_usek,povodna_hodnota_selekcie);
                         Variable_globeal_kotevny_usek.set(povodna_hodnota_selekcie, docasny_kot_usek);
                         mainframe_to_kotevny_usek(docasny_kot_usek,povodna_hodnota_selekcie);
@@ -3049,6 +3078,7 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
             }
         });
         Table_rozpatia.setColumnSelectionAllowed(true);
+        Table_rozpatia.setRowHeight(24);
         Table_rozpatia.setRowMargin(2);
         Table_rozpatia.addInputMethodListener(new java.awt.event.InputMethodListener() {
             public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
@@ -3091,6 +3121,7 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
                 return types [columnIndex];
             }
         });
+        Table_rozpatia_nadm_vysky.setRowHeight(24);
         Table_rozpatia_nadm_vysky.setRowMargin(2);
         Table_rozpatia_nadm_vysky.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
@@ -3124,6 +3155,7 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
             }
         });
         Table_kotevne_useky.setCellSelectionEnabled(true);
+        Table_kotevne_useky.setRowHeight(24);
         Table_kotevne_useky.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         Table_kotevne_useky.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(Table_kotevne_useky);
@@ -3188,6 +3220,7 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
             }
         });
         Table_KPB.setToolTipText("1--kokotbačov \\n\\r  1--kokotbačov \\n\\r 1--kokotbačov \\n\\r 1--kokotbačov ");
+        Table_KPB.setRowHeight(24);
         Table_KPB.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseMoved(java.awt.event.MouseEvent evt) {
                 Table_KPBMouseMoved(evt);
@@ -3233,6 +3266,7 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
                 return canEdit [columnIndex];
             }
         });
+        Table_tahy.setRowHeight(24);
         jScrollPane7.setViewportView(Table_tahy);
         if (Table_tahy.getColumnModel().getColumnCount() > 0) {
             Table_tahy.getColumnModel().getColumn(0).setResizable(false);
@@ -4171,7 +4205,7 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
         try{hodnoty[1] =Double.valueOf(String.valueOf(hodnoty_namrazove_oblasti[1]));}catch(NullPointerException e){hodnoty[1]=0;}
         try{hodnoty[2] =Double.valueOf(String.valueOf(hodnoty_namrazove_oblasti[2]));}catch(NullPointerException e){hodnoty[2]=0;}
         try{hodnoty[3] =Double.valueOf(String.valueOf(hodnoty_namrazove_oblasti[3]));}catch(NullPointerException e){hodnoty[3]=0;}
-             kotevnyUsek docasny_kot_usek = new kotevnyUsek(new_kotevny_usek_name, 0, 0, 0, 0, 0, filename, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, teplotyser, first_Start, teplotyser, teplotyser, teplotyser, first_Start, Variable_Ai_array, Variable_Hi_array, Variable_Hi_array,Variable_Hi_array_nmv,0,0,0,hodnoty);                     
+             kotevnyUsek docasny_kot_usek = new kotevnyUsek(new_kotevny_usek_name, 0,"0", 0, 0, 0, 0, filename, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, teplotyser, first_Start, teplotyser, teplotyser, teplotyser, first_Start, Variable_Ai_array, Variable_Hi_array, Variable_Hi_array,Variable_Hi_array_nmv,0,0,0,hodnoty);                     
              mainframe_to_kotevny_usek(docasny_kot_usek,rowNumber);                        
              Variable_globeal_kotevny_usek.set(rowNumber, docasny_kot_usek);  
                        
@@ -4730,7 +4764,7 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
         try{hodnoty[2] =Double.valueOf(String.valueOf(hodnoty_namrazove_oblasti[2]));}catch(NullPointerException e){hodnoty[2]=0;}
         try{hodnoty[3] =Double.valueOf(String.valueOf(hodnoty_namrazove_oblasti[3]));}catch(NullPointerException e){hodnoty[3]=0;}
       
-        kotevnyUsek novy_usek =  new kotevnyUsek(new_kotevny_usek_name, 0, 0, 0, 0, 0, language.language_label(languageOption, 60), 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, teplotyser, teplotyser, teplotyser, teplotyser, teplotyser, teplotyser, Variable_Ai_array, Variable_Hi_array, Variable_Hi_array,Variable_Hi_array_nmv,0,0,0,hodnoty);    
+        kotevnyUsek novy_usek =  new kotevnyUsek(new_kotevny_usek_name, 0,"0", 0, 0, 0, 0, language.language_label(languageOption, 60), 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, teplotyser, teplotyser, teplotyser, teplotyser, teplotyser, teplotyser, Variable_Ai_array, Variable_Hi_array, Variable_Hi_array,Variable_Hi_array_nmv,0,0,0,hodnoty);    
         
         
         Variable_globeal_kotevny_usek.add(novy_usek);
@@ -4760,7 +4794,7 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
            
         
          int rowNumber =  Table_kotevne_useky.getSelectedRow(); //- (e.getFirstIndex()-e.getLastIndex()); 
-             kotevnyUsek docasny_kot_usek = new kotevnyUsek(new_kotevny_usek_name, 0, 0, 0, 0, 0, filename, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, teplotyser, first_Start, teplotyser, teplotyser, teplotyser, first_Start, Variable_Ai_array, Variable_Hi_array, Variable_Hi_array,Variable_Hi_array_nmv,0,0,0,hodnoty);                     
+             kotevnyUsek docasny_kot_usek = new kotevnyUsek(new_kotevny_usek_name, 0,"0", 0, 0, 0, 0, filename, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, teplotyser, first_Start, teplotyser, teplotyser, teplotyser, first_Start, Variable_Ai_array, Variable_Hi_array, Variable_Hi_array,Variable_Hi_array_nmv,0,0,0,hodnoty);                     
              mainframe_to_kotevny_usek(docasny_kot_usek,rowNumber);
 
         kotevnyUsek novy_usek =  docasny_kot_usek;
@@ -4804,7 +4838,7 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
         try{hodnoty[1] =Double.valueOf(String.valueOf(hodnoty_namrazove_oblasti[1]));}catch(NullPointerException e){hodnoty[1]=0;}
         try{hodnoty[2] =Double.valueOf(String.valueOf(hodnoty_namrazove_oblasti[2]));}catch(NullPointerException e){hodnoty[2]=0;}
         try{hodnoty[3] =Double.valueOf(String.valueOf(hodnoty_namrazove_oblasti[3]));}catch(NullPointerException e){hodnoty[3]=0;}
-             kotevnyUsek docasny_kot_usek = new kotevnyUsek(new_kotevny_usek_name, 0, 0, 0, 0, 0, filename, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, teplotyser, first_Start, teplotyser, teplotyser, teplotyser, first_Start, Variable_Ai_array, Variable_Hi_array, Variable_Hi_array,Variable_Hi_array_nmv,0,0,0,hodnoty);                     
+             kotevnyUsek docasny_kot_usek = new kotevnyUsek(new_kotevny_usek_name, 0,"0", 0, 0, 0, 0, filename, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, teplotyser, first_Start, teplotyser, teplotyser, teplotyser, first_Start, Variable_Ai_array, Variable_Hi_array, Variable_Hi_array,Variable_Hi_array_nmv,0,0,0,hodnoty);                     
              mainframe_to_kotevny_usek(docasny_kot_usek,rowNumber);                        
              Variable_globeal_kotevny_usek.set(rowNumber, docasny_kot_usek);  
           
@@ -4832,7 +4866,7 @@ import org.apache.pdfbox.tools.imageio.ImageIOUtil;
         try{hodnoty[1] =Double.valueOf(String.valueOf(hodnoty_namrazove_oblasti[1]));}catch(NullPointerException e){hodnoty[1]=0;}
         try{hodnoty[2] =Double.valueOf(String.valueOf(hodnoty_namrazove_oblasti[2]));}catch(NullPointerException e){hodnoty[2]=0;}
         try{hodnoty[3] =Double.valueOf(String.valueOf(hodnoty_namrazove_oblasti[3]));}catch(NullPointerException e){hodnoty[3]=0;}
-             kotevnyUsek docasny_kot_usek = new kotevnyUsek(new_kotevny_usek_name, 0, 0, 0, 0, 0, filename, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, teplotyser, first_Start, teplotyser, teplotyser, teplotyser, first_Start, Variable_Ai_array, Variable_Hi_array, Variable_Hi_array,Variable_Hi_array_nmv,0,0,0,hodnoty);                     
+             kotevnyUsek docasny_kot_usek = new kotevnyUsek(new_kotevny_usek_name, 0,"0", 0, 0, 0, 0, filename, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, teplotyser, first_Start, teplotyser, teplotyser, teplotyser, first_Start, Variable_Ai_array, Variable_Hi_array, Variable_Hi_array,Variable_Hi_array_nmv,0,0,0,hodnoty);                     
              mainframe_to_kotevny_usek(docasny_kot_usek,rowNumber);                        
              Variable_globeal_kotevny_usek.set(rowNumber, docasny_kot_usek);  
           
@@ -5637,7 +5671,7 @@ pretazenia_intomainframe();
     }//GEN-LAST:event_jRadioButton_with_label_pociatocne1ActionPerformed
 
     private void TextField_tabulky_konecnaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextField_tabulky_konecnaKeyReleased
-        Variable_T0_zivotnost = doubleChecker_short_answer(TextField_tabulky_konecna);
+        Variable_T0_zivotnost = doubleChecker_short_answer(TextField_tabulky_konecna)*24*365;
     }//GEN-LAST:event_TextField_tabulky_konecnaKeyReleased
 
     private void TextField_tabulky_konecnaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextField_tabulky_konecnaActionPerformed
@@ -5646,6 +5680,39 @@ pretazenia_intomainframe();
 
     private void TextField_tabulky_prechodnaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextField_tabulky_prechodnaKeyReleased
         Variable_Tp_prechodna_doba=doubleChecker_short_answer(TextField_tabulky_prechodna)*24*365;
+        
+        if(jRadioButton_with_label_konecne.isSelected() == true){
+             Variable_Tp_prechodna_doba=doubleChecker_short_answer(TextField_tabulky_konecna)*24*365;
+
+        TextField_teploha_stav1.setText("-30");TextField_teploha_stav1.setEnabled(false);
+        TextField_teploha_stav2.setText("-20");TextField_teploha_stav2.setEnabled(true);
+        TextField_teploha_stav3.setText("-10");TextField_teploha_stav3.setEnabled(true);
+        TextField_teploha_stav4.setText("-5");TextField_teploha_stav4.setEnabled(false);
+        TextField_teploha_stav5.setText("-5+N");TextField_teploha_stav5.setEnabled(false);
+        TextField_teploha_stav6.setText("-5+V");TextField_teploha_stav6.setEnabled(false);
+        TextField_teploha_stav7.setText("-5+Nv");TextField_teploha_stav7.setEnabled(false);
+        TextField_teploha_stav8.setText("-5+Vn");TextField_teploha_stav8.setEnabled(false);
+        TextField_teploha_stav9.setText("0");TextField_teploha_stav9.setEnabled(false);
+        TextField_teploha_stav10.setText("10");TextField_teploha_stav10.setEnabled(true);
+        TextField_teploha_stav11.setText("20");TextField_teploha_stav11.setEnabled(true);
+        TextField_teploha_stav12.setText("40");TextField_teploha_stav12.setEnabled(true);
+        TextField_teploha_stav13.setText("60");TextField_teploha_stav13.setEnabled(true);
+        TextField_teploha_stav14.setText("80");TextField_teploha_stav14.setEnabled(false);
+
+        array_teploty_stav_rovnica_konecne_loader_setter();
+
+        Jcombo_stav_KPB_setter();
+
+        if (teplotyser == false){ // vloz prvu hodnotu
+            Variable_vybrany_stav_pre_KPB=Variable_teploty_stav_rovnica[0];
+        }
+
+        
+        pretazenia_intomainframe();
+        teplotyser=true;
+        PDF_VAR_typ_tabulky =3;
+            
+        }
     }//GEN-LAST:event_TextField_tabulky_prechodnaKeyReleased
 
     private void TextField_tabulky_prechodnaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextField_tabulky_prechodnaActionPerformed
@@ -6677,7 +6744,7 @@ private void seticon() {
                     break;
                 }
 
-            }
+            }   
 
             int numberofElements = Databaza.size();             //pregeneruj tabulku a nakresli ju
             for (int i = 0; i <= numberofElements - 1; i++) {
@@ -6686,7 +6753,7 @@ private void seticon() {
                 jComboBox_conductor_chooser.addItem((String) Conductor[0]); 
             }
 
-        } catch (FileNotFoundException ex) {
+        } catch (FileNotFoundException  | NullPointerException exx) {
 
         }
     
@@ -6770,7 +6837,7 @@ private void seticon() {
         }
      }
      
-      private double doubleChecker_tableinput (String Y){
+     private double doubleChecker_tableinput (String Y){
        
        String hodnota1 =Y;
        hodnota1=hodnota1.replace(",", ".");
@@ -6785,7 +6852,7 @@ private void seticon() {
         }
      }
       
-      public static void getvlastnehodnoty_uroven_splahlivosti(Object[] X) {
+     public static void getvlastnehodnoty_uroven_splahlivosti(Object[] X) {
         vlastnehodnoty_uroven_splahlivosti = X;
 
     }
@@ -6928,7 +6995,7 @@ private void seticon() {
      * @param X        input of kotevny usek
      * @param number   number of selected row if no change in table kotevny usek or number of row before change if change in table_kotevny usek_has beenn made
      */
-    private void mainframe_to_kotevny_usek(kotevnyUsek X,int number){
+    private void mainframe_to_kotevny_usek(kotevnyUsek X,int number)    {
         //vloz prave označeny kotevny usek
         
         int selekcia_for_name=number;
@@ -6951,6 +7018,8 @@ private void seticon() {
         
         }
         X.set_conductor_number(jComboBox_conductor_chooser.getSelectedIndex());
+         X.set_conductor_name(String.valueOf(Databaza.get(jComboBox_conductor_chooser.getSelectedIndex())[0]));
+         System.out.println(X.get_conductor_name());
         X.set_vetrova_oblast_porcislo(jComboBox_vetrova_oblast.getSelectedIndex());
         X.set_char_terenu_porcislo(jComboBox_char_terenu.getSelectedIndex());
         X.set_uroven_spolahlivosti_porcislo(jComboBox_uroven_splahlivosti.getSelectedIndex());
@@ -7001,7 +7070,17 @@ private void seticon() {
         hodnoty[2] =Double.valueOf(String.valueOf(hodnoty_namrazove_oblasti[2]));
         hodnoty[3] =Double.valueOf(String.valueOf(hodnoty_namrazove_oblasti[3]));
         X.set_hodnoty_namrazove_oblasti(hodnoty);
+        
+        if(is_namrazove_oblasti_setted== true){
+
+            Label_vybrana_namrazova_oblast.setText(namrazove_oblasti_názov_oblasti);
+            Variable_Ir50=double_setter(vypocet_IR50_namrazove_oblasti());
+            pretazenia_intomainframe();
+            Variable_Ir50=double_setter(vypocet_IR50_namrazove_oblasti());
+            pretazenia_intomainframe();
         }
+    
+    }
     
         
    
@@ -7016,7 +7095,7 @@ private void seticon() {
        DecimalFormatSymbols otherSymbols = new DecimalFormatSymbols();
                otherSymbols.setDecimalSeparator('.');
                DecimalFormat df = new DecimalFormat("###.###",otherSymbols);
-       jComboBox_conductor_chooser.setSelectedIndex(X.get_conductor_number());
+       jComboBox_conductor_chooser.setSelectedIndex(najdiconductor_number(X.get_conductor_name()));
        jComboBox_vetrova_oblast.setSelectedIndex(X.get_vetrova_oblast_porcislo());
        jComboBox_char_terenu.setSelectedIndex(X.get_char_terenu_porcislo()); 
        
@@ -7939,7 +8018,7 @@ private void seticon() {
             fw.println("General project data");
             fw.println(project_name); // name of project
             
-            fw.println(    jRadioButton_with_label_rozpatie_klasicky.isSelected()       );
+            fw.println(   jRadioButton_with_label_rozpatie_klasicky.isSelected()       );
             fw.println(   jRadioButton_KPB_cas_vypoctu_1_rok.isSelected()       );
             fw.println(   jComboBox_KPB_typ_terenu.getSelectedIndex()       );
             
@@ -7978,7 +8057,7 @@ private void seticon() {
             for(int i = 0 ; i< Table_kotevne_useky.getRowCount();i++ ){
             fw.println("-----------------------------------");
             fw.println(Variable_globeal_kotevny_usek.get(i).get_name());
-            fw.println(Variable_globeal_kotevny_usek.get(i).get_conductor_number());
+            fw.println(Variable_globeal_kotevny_usek.get(i).get_conductor_name());
             fw.println(Variable_globeal_kotevny_usek.get(i).get_vetrova_oblast_porcislo());
             fw.println(Variable_globeal_kotevny_usek.get(i).get_char_terenu_porcislo());
             fw.println(Variable_globeal_kotevny_usek.get(i).get_uroven_spolahlivosti_porcislo());
@@ -8080,9 +8159,13 @@ private void seticon() {
     private void load_project(String user_path){
         // load sa spusta pred nacitanim prvkov s tym že blokuje vačšinu veci
         // výdy sa pusťa chooser
-        
-        
-        String userhome = System.getProperty("user.dir");          //userhome is home folder of program
+        String userhome = System.getProperty("user.dir");
+        if(startPanel.load_memory_path_plus_filename.equals("none")){
+             userhome = System.getProperty("user.dir");
+        }else{
+            userhome = startPanel.load_memory_path_plus_filename;  
+        }
+                  //userhome is home folder of program
         
         // ak je zadaná špec lokaciakde ukladať tak tam ak nide default priečion kde existuje
          JFileChooser chooser;
@@ -8189,7 +8272,8 @@ private void seticon() {
               pokus = input.nextLine();
               
               String name = input.nextLine();
-              int    conductor_number = Integer.valueOf(input.nextLine());
+              String conductor_name = input.nextLine();
+              int    conductor_number = najdiconductor_number(conductor_name);
               int    vetrova_obl_number = Integer.valueOf(input.nextLine());
               int    chat_ter_number = Integer.valueOf(input.nextLine());
               int    uroven_splo_number = Integer.valueOf(input.nextLine());
@@ -8274,6 +8358,7 @@ private void seticon() {
              kotevnyUsek novy_usek =  new kotevnyUsek(
                      name,
                      conductor_number,
+                     conductor_name,
                      vetrova_obl_number,
                      chat_ter_number,
                      uroven_splo_number,
@@ -8351,6 +8436,23 @@ private void seticon() {
         
     }
     
+    public int najdiconductor_number(String name){
+        int index_v_databaze = 0;
+        
+        for(int cl1 = 0 ; cl1< Databaza.size();cl1 ++){
+            
+            if ( Databaza.get(cl1)[0].equals(name)){
+                index_v_databaze=cl1;
+                break;
+            }else{
+                index_v_databaze=0;
+            }
+            
+        }
+        
+        
+        return index_v_databaze; 
+    }
     
     public  double double_setter(double X){
        // pretazenia_intomainframe();
@@ -8566,7 +8668,8 @@ class header_pdf extends javax.swing.JFrame{
 class kotevnyUsek extends javax.swing.JFrame{
     
     private  String name;  
-    private  int conductor_porcislo;   
+    private  int conductor_porcislo;
+    private  String conductor_name; 
     private  int vetrova_oblast_porcislo;
     private  int char_terenu_porcislo;
     private  int uroven_spolahlivosti_porcislo;
@@ -8631,6 +8734,7 @@ class kotevnyUsek extends javax.swing.JFrame{
     
     kotevnyUsek(                String name_kot_useku,
                                 int conductor,
+                                String conductor_name,
                                 int vetrova_oblast_porC,
                                 int char_terenu_porC, 
                                 int uroven_spolahlivosti_porC,
@@ -8691,6 +8795,7 @@ class kotevnyUsek extends javax.swing.JFrame{
         
         name=name_kot_useku;
         conductor_porcislo = conductor;
+        this.conductor_name = conductor_name;
         vetrova_oblast_porcislo=vetrova_oblast_porC;
         char_terenu_porcislo=char_terenu_porC;
         uroven_spolahlivosti_porcislo=uroven_spolahlivosti_porC;
@@ -8746,7 +8851,9 @@ class kotevnyUsek extends javax.swing.JFrame{
     public int get_conductor_number(){
         return conductor_porcislo;
     }
-    
+     public String get_conductor_name(){
+        return this.conductor_name;
+    }
     public int get_vetrova_oblast_porcislo(){
         return vetrova_oblast_porcislo;
     }
@@ -8965,6 +9072,9 @@ class kotevnyUsek extends javax.swing.JFrame{
     
     public void set_conductor_number(int conductor){
         conductor_porcislo=conductor;
+    }
+    public void set_conductor_name(String conductor_name){
+        this.conductor_name=conductor_name;
     }
     
     public void set_vetrova_oblast_porcislo(int vetrova_oblast_porC){
@@ -9286,4 +9396,137 @@ projekt_global_variables(
          hlavicka_over=hlavicka;
     }
     
+}
+
+ class TextFieldCellEditor extends JTextField implements TableCellEditor
+{
+    private CellEditorListener  cellEditorListener  = null;
+
+    private boolean             isInteger           = false;
+    private Object              oldValue;
+
+    // Start editing
+    @Override
+    public Component getTableCellEditorComponent(JTable table, Object obj, boolean isSelected, int row, int column)
+    {
+        Color color2 = DefaultLookup.getColor(this, ui, "Table.alternateRowColor");
+        super.setBackground(color2 != null && (row & 1) == 1? color2 : table.getBackground());
+        super.setForeground(table.getForeground());
+        super.setBorder(DefaultLookup.getBorder(this, ui, "Table.focusCellHighlightBorder"));
+
+        super.setText(obj.toString());
+
+        if (isSelected) {
+    this.selectAll();
+}
+        
+        isInteger = obj instanceof Integer;
+        if (isInteger)
+        {
+            super.setHorizontalAlignment(SwingConstants.RIGHT);
+            oldValue = obj;
+        }
+
+        // SwingUtilities.invokeLater(new Runnable()
+        // {
+        // public void run()
+        // {
+        // TextFieldCellEditor.this.selectAll();
+        // }
+        // });
+
+        return this;
+    }
+
+    // Retrieve e dited value
+    @Override
+    public Object getCellEditorValue()
+    {
+        if (isInteger)
+        {
+            // Try to convert to integer. If input is invalid, revert.
+            try
+            {
+                return new Integer(super.getText());
+            }
+            catch (NumberFormatException e)
+            {
+                return oldValue;
+            }
+        }
+        return super.getText();
+    }
+
+    @Override
+    public boolean isCellEditable(EventObject e)
+    {
+        return true;
+    }
+
+    @Override
+    public boolean shouldSelectCell(EventObject e)
+    {
+        return true;
+    }
+
+    @Override
+    public boolean stopCellEditing()
+    {
+        cellEditorListener.editingStopped(new ChangeEvent(this));
+        return true;
+    }
+
+    @Override
+    public void cancelCellEditing()
+    {
+        cellEditorListener.editingCanceled(new ChangeEvent(this));
+    }
+
+    @Override
+    public void addCellEditorListener(CellEditorListener celleditorlistener)
+    {
+        cellEditorListener = celleditorlistener;
+    }
+
+    @Override
+    public void removeCellEditorListener(CellEditorListener celleditorlistener)
+    {
+        if (cellEditorListener == cellEditorListener) cellEditorListener = null;
+    }
+}
+
+ class MyCellEditor extends DefaultCellEditor {
+
+    private boolean keyTriggered;
+
+    public MyCellEditor() {
+        super(new JTextField());
+        final JTextField textField = (JTextField) getComponent();
+        textField.addFocusListener(new FocusAdapter() {
+            @Override
+            public void focusGained(FocusEvent e) {
+                SwingUtilities.invokeLater(new Runnable() {
+                    @Override
+                    public void run() {
+                        if (!keyTriggered) {
+                            textField.selectAll();
+                        }
+                    }
+                });
+            }
+        });
+    }
+
+    public void setKeyTriggered(boolean keyTriggered) {
+        this.keyTriggered = keyTriggered;
+    }
+
+    @Override
+    public Component getTableCellEditorComponent(
+            JTable table, Object value, boolean isSelected, int row, int column) {
+        final JTextField textField = (JTextField)
+                super.getTableCellEditorComponent(table, value, isSelected, row, column);
+        textField.selectAll();
+        return textField;
+    }
 }

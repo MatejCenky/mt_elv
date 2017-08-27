@@ -674,6 +674,7 @@ public class Conductors_main_JDialog extends javax.swing.JDialog {
          PrintWriter fw = new PrintWriter(subor);
          fw.println("Memory file do not edit");
          fw.println(filenamePath_plus_filename);
+         fw.println(startPanel.load_memory_path_plus_filename);
         fw.close();
          
           } catch (FileNotFoundException ex) {
