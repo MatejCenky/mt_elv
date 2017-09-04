@@ -54,6 +54,7 @@ import java.util.logging.Logger;
 import javax.swing.DefaultCellEditor;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
@@ -8013,8 +8014,8 @@ private void seticon() {
             PrintWriter fw = new PrintWriter(outputStreamWriter);
             
             fw.println("Saved project file DO NOT MODIFY or I will hunt you and eat you alive");
-            fw.println("Created by Jozef Bendík & Matej Cenký 2016 ");
-            fw.println("All rights restricked for SAG Elektrovod a.s.");
+            fw.println(language.language_label(languageOption,308));
+            fw.println("All rights restricked for SAG Elektrovod a.s. Created by Jozef Bendík & Matej Cenký 2016 ");
             fw.println("General project data");
             fw.println(project_name); // name of project
             
@@ -8199,6 +8200,13 @@ private void seticon() {
             
             pokus = input.nextLine();  // uvod kecy
             pokus = input.nextLine();
+            
+            if ( pokus.equals(language.language_label(languageOption,308))){
+                
+            }else{
+                JOptionPane.showMessageDialog(Table_kotevne_useky, language.language_label(languageOption,309));
+            }
+            
             pokus = input.nextLine();
             pokus = input.nextLine();
             

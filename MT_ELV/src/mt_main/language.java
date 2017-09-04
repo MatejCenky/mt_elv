@@ -1138,7 +1138,13 @@ public static void constructor(){
          language.EN.add("Path for loading of MT3 files");  
 /*307*/  language.SK.add("Cesta");       
          language.CZ.add("Cesta");                    
-         language.EN.add("Path");          
+         language.EN.add("Pathve");
+/*308*/  language.SK.add("ver 1.4");       
+         language.CZ.add("ver 1.4");                    
+         language.EN.add("ver 1.4"); 
+         /*308*/  language.SK.add("Subor vo verzii staršej ako 1.4");       
+         language.CZ.add("Soubor ve verzi starší než 1.4");                    
+         language.EN.add("File verzion older than 1.4"); 
          
  inicializovane = true;
 }
