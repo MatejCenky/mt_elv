@@ -22,9 +22,9 @@ public class language {
  */    
 public static void constructor(){
               /*SK*/                /*CZ*/              /*EN*/   
- /*0*/   language.SK.add("MT3 software, SAG Elektrovod, autori Jozef Bendík & Matej Cenký 2016 1.release");  
-         language.CZ.add("MT3 software, SAG Elektrovod, autoři Jozef Bendík & Matej Cenký 2016 1.release"); 
-         language.EN.add("MT3 software, SAG Elektrovod, created by Jozef Bendík & Matej Cenký 2016 1.release");                       //language String value  at position 
+ /*0*/   language.SK.add("MT3 software, SPIE Elektrovod, autori Jozef Bendík & Matej Cenký 2016 1.release");  
+         language.CZ.add("MT3 software, SPIE Elektrovod, autoři Jozef Bendík & Matej Cenký 2016 1.release"); 
+         language.EN.add("MT3 software, SPIE Elektrovod, created by Jozef Bendík & Matej Cenký 2016 1.release");                       //language String value  at position 
         
  /*1*/   language.SK.add("Súbor");                       language.CZ.add("Soubor");              language.EN.add("File");            //language String value  at position 
  /*2*/   language.SK.add("Nový");                        language.CZ.add("Nový");                language.EN.add("New");             //language String value  at position 
@@ -49,9 +49,9 @@ public static void constructor(){
  /*19*/  language.SK.add("O programe");                  language.CZ.add("O programe");          language.EN.add("About");
  /*20*/  language.SK.add("Zavri");                       language.CZ.add("Zavři");               language.EN.add("Close");
   
- /*21*/  language.SK.add("MT3 software je program na výpočet montážnych tabuliek vonkajších elektrických vedení. Program a všetky je práva s ním spojené sú majetkom SAG Elektrovod a.s. Program je napísaný v programovacom jazyku JAVA. V prípade akýchkoľvek otázok sa prosím obrátťe na na vývojárov tohto programu Mateja Cenkého && Jozef Bendíka.");  
-         language.CZ.add("MT3 software je program pro výpočet montážních tabulek venkovních elektrických vedení. Program a všechny je práva s ním spojené jsou majetkem SAG Elektrovod a.s. Program je napsán v programovacím jazyce JAVA. V případě jakéchkoliv dotazů se prosím obraťte na na vývojáře tohoto programu Matěje Čenkov && Jozef Bendíka."); 
-         language.EN.add("MT3 is a software for calculation of the mechanical properties of overhead power lines. Program and all the rights associated with it are the property of SAG Elektrovod a.s. The program is written in Java language. If you have any questions, please contact the developer of the program Matej Cenký && Josef Bendík.");
+ /*21*/  language.SK.add("MT3 software je program na výpočet montážnych tabuliek vonkajších elektrických vedení. Program a všetky je práva s ním spojené sú majetkom SPIE Elektrovod a.s. Program je napísaný v programovacom jazyku JAVA. V prípade akýchkoľvek otázok sa prosím obrátťe na na vývojárov tohto programu Mateja Cenkého && Jozef Bendíka.");  
+         language.CZ.add("MT3 software je program pro výpočet montážních tabulek venkovních elektrických vedení. Program a všechny je práva s ním spojené jsou majetkem SPIE Elektrovod a.s. Program je napsán v programovacím jazyce JAVA. V případě jakéchkoliv dotazů se prosím obraťte na na vývojáře tohoto programu Matěje Čenkov && Jozef Bendíka."); 
+         language.EN.add("MT3 is a software for calculation of the mechanical properties of overhead power lines. Program and all the rights associated with it are the property of SPIE Elektrovod a.s. The program is written in Java language. If you have any questions, please contact the developer of the program Matej Cenký && Josef Bendík.");
 //Conductors_Jdialog_main
  /*22*/  language.SK.add("Knižnica vodičov");            language.CZ.add("Knižnice vodičú");                language.EN.add("Conductor library");
  /*23*/  language.SK.add("Vodiče");                      language.CZ.add("Vodiče");                         language.EN.add("Conductors");
