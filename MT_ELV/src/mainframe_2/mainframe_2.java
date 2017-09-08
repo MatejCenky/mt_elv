@@ -6690,6 +6690,8 @@ private void seticon() {
             PrintWriter fw = new PrintWriter(subor);
             fw.println("Memory file do not edit");
             fw.println(filenamePath_plus_filename);
+             fw.println(startPanel.load_memory_path_plus_filename);
+            fw.println("....");
             fw.close();
 
         } catch (FileNotFoundException ex) {
