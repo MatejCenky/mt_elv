@@ -115,9 +115,9 @@ public class path_load_Jdialog extends javax.swing.JDialog {
          fw.println("Memory file do not edit");
          fw.println(startPanel.set_memory_path_conductor());
          fw.println(jTextField1.getText());
-        fw.close();
-        startPanel.load_memory_path_plus_filename = jTextField1.getText();
-        disinit();    
+         fw.close();
+         startPanel.load_memory_path_plus_filename = jTextField1.getText();
+         disinit();    
           } catch (FileNotFoundException ex) {
 
         }

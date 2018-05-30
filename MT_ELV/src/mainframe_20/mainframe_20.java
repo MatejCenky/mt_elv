@@ -135,7 +135,7 @@ import sun.swing.DefaultLookup;
        // loaded_file = false;
         project_filename = "";
         project_filepath = "";
-        is_namrazove_oblasti_setted = false;
+        is_namrazove_oblasti_setted = true;
         tablemodellistener_rozpatia = true;
         tablemodellistener_nad_vysky = true;
         tablemodellistener_total = true;

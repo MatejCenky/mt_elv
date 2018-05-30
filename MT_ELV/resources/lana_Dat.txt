@@ -2132,4 +2132,13 @@ XOTKtd 2Dx25-48J
 2.6E-6 1/°C
 48000.0 N
 0.5
+....next conductor....
+fff
+11.0 mm
+1111.0 mm2
+111.0 kg/m
+1.0 MPa
+111.0 1/°C
+1.0 N
+1111.0
 END_OF_FILE
