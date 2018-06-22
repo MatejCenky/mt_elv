@@ -7074,9 +7074,10 @@ private void seticon() {
         hodnoty[3] =Double.valueOf(String.valueOf(hodnoty_namrazove_oblasti[3]));
         X.set_hodnoty_namrazove_oblasti(hodnoty);
         
+       
         if(is_namrazove_oblasti_setted== true){
 
-            Label_vybrana_namrazova_oblast.setText(namrazove_oblasti_názov_oblasti);
+//            Label_vybrana_namrazova_oblast.setText(namrazove_oblasti_názov_oblasti);
             Variable_Ir50=double_setter(vypocet_IR50_namrazove_oblasti());
             pretazenia_intomainframe();
             Variable_Ir50=double_setter(vypocet_IR50_namrazove_oblasti());

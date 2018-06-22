@@ -76,7 +76,7 @@ public class mainframe_namrazova_oblast_jDialog_1 extends javax.swing.JDialog {
          modelTable.addRow(new Object[]{(String) "I-18"});
          modelTable.addRow(new Object[]{(String) "I-K " + language.language_label(languageOption,71)});
          
-               Object[] oblast_hodnoty = new Object[3];
+               Object[] oblast_hodnoty = new Object[3];this.Databaza_namrazova_oblast.clear();
      /*I-0*/   oblast_hodnoty = new Object[]{(double) 1.064, (double) 0.1280,(double) 3.963, (double) 0.0314};this.Databaza_namrazova_oblast.add(oblast_hodnoty);
      /*I-1*/   oblast_hodnoty = new Object[]{(double) 3.175, (double) 0.2212,(double) 8.515, (double) 0.0432};this.Databaza_namrazova_oblast.add(oblast_hodnoty);
      /*I-2*/   oblast_hodnoty = new Object[]{(double) 8.661, (double) 0.3653,(double) 17.53, (double) 0.070};this.Databaza_namrazova_oblast.add(oblast_hodnoty);

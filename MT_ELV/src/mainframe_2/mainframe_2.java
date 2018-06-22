@@ -7083,7 +7083,7 @@ private void seticon() {
         
         if(is_namrazove_oblasti_setted== true){
 
-            Label_vybrana_namrazova_oblast.setText(namrazove_oblasti_názov_oblasti);
+           // Label_vybrana_namrazova_oblast.setText(namrazove_oblasti_názov_oblasti);
             Variable_Ir50=double_setter(vypocet_IR50_namrazove_oblasti());
             pretazenia_intomainframe();
             Variable_Ir50=double_setter(vypocet_IR50_namrazove_oblasti());
