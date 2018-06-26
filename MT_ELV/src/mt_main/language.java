@@ -22,14 +22,14 @@ public class language {
  */    
 public static void constructor(){
               /*SK*/                /*CZ*/              /*EN*/   
- /*0*/   language.SK.add("MT3 software, SPIE Elektrovod, autori Jozef Bendík & Matej Cenký 2016 1.release");  
-         language.CZ.add("MT3 software, SPIE Elektrovod, autoři Jozef Bendík & Matej Cenký 2016 1.release"); 
-         language.EN.add("MT3 software, SPIE Elektrovod, created by Jozef Bendík & Matej Cenký 2016 1.release");                       //language String value  at position 
+ /*0*/   language.SK.add("MT3 software, SPIE Elektrovod, autori Jozef Bendík & Matej Cenký, 2016");  
+         language.CZ.add("MT3 software, SPIE Elektrovod, autoři Jozef Bendík & Matej Cenký, 2016"); 
+         language.EN.add("MT3 software, SPIE Elektrovod, created by Jozef Bendík & Matej Cenký, 2016");                       //language String value  at position 
         
  /*1*/   language.SK.add("Súbor");                       language.CZ.add("Soubor");              language.EN.add("File");            //language String value  at position 
  /*2*/   language.SK.add("Nový");                        language.CZ.add("Nový");                language.EN.add("New");             //language String value  at position 
  /*3*/   language.SK.add("Načítať");                     language.CZ.add("Načíst");             language.EN.add("Load");            //language String value  at position 
- /*4*/   language.SK.add("Verzia 1.4 ");             language.CZ.add("Verze 1.4 ");      language.EN.add("Version 1.4 ");     //language String value  at position 
+ /*4*/   language.SK.add("Verzia 1.7 ");             language.CZ.add("Verze 1.7 ");      language.EN.add("Version 1.7 ");     //language String value  at position 
  /*5*/   language.SK.add("Nastavenia exportu");          language.CZ.add("Nastavení exportu");   language.EN.add("Export settings"); 
  /*6*/   language.SK.add("Koniec");                      language.CZ.add("Konec");               language.EN.add("Exit"); 
  /*7*/   language.SK.add("Knižnica");                    language.CZ.add("Knihovna");            language.EN.add("Library");
